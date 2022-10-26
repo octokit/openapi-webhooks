@@ -1,0 +1,70 @@
+{
+  "name": "openapi-webhooks",
+  "publishConfig": {
+    "access": "public"
+  },
+  "version": "0.0.0-development",
+  "description": "GitHub's official Webhooks OpenAPI spec with Octokit extensions",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "generated"
+  ],
+  "scripts": {
+    "download": "node scripts/download.js",
+    "build": "node scripts/build.js",
+    "test": "node scripts/test.js"
+  },
+  "repository": "github:octokit/openapi",
+  "keywords": [
+    "github",
+    "openapi",
+    "octokit"
+  ],
+  "author": "Gregor Martynus (https://dev.to/gr2m)",
+  "license": "MIT",
+  "devDependencies": {
+    "@octokit/core": "^4.0.0",
+    "deep-equal": "^2.0.5",
+    "execa": "^5.1.1",
+    "github-enterprise-server-versions": "^1.1.0",
+    "lodash": "^4.17.21",
+    "map-obj": "^4.3.0",
+    "prettier": "^2.6.2",
+    "semantic-release": "^19.0.3",
+    "semantic-release-plugin-update-version-in-files": "^1.1.0",
+    "sort-keys": "^4.2.0"
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "release": {
+    "branches": [
+      "main"
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      [
+        "semantic-release-plugin-update-version-in-files",
+        {
+          "files": [
+            "generated/*"
+          ]
+        }
+      ],
+      [
+        "@semantic-release/github",
+        {
+          "assets": "generated/*.json"
+        }
+      ],
+      "@semantic-release/npm"
+    ]
+  },
+  "renovate": {
+    "extends": [
+      "github>octokit/.github"
+    ]
+  }
+}

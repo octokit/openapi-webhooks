@@ -1,0 +1,128 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "version": "0.0.0-development",
+    "title": "GitHub's official Webhooks OpenAPI spec + Octokit extension",
+    "description": "Webhooks OpenAPI specs from https://github.com/github/rest-api-description with the 'x-octokit' extension required by the Octokit SDKs",
+    "license": { "name": "MIT", "url": "https://spdx.org/licenses/MIT" },
+    "termsOfService": "https://docs.github.com/articles/github-terms-of-service",
+    "contact": {
+      "name": "Support",
+      "url": "https://github.com/octokit/openapi"
+    },
+    "x-github-plan": "ghes",
+    "x-github-release": 3.4
+  },
+  "tags": [
+    {
+      "name": "actions",
+      "description": "Endpoints to manage GitHub Actions using the REST API."
+    },
+    {
+      "name": "activity",
+      "description": "Activity APIs provide access to notifications, subscriptions, and timelines."
+    },
+    {
+      "name": "apps",
+      "description": "Information for integrations and installations."
+    },
+    {
+      "name": "billing",
+      "description": "Monitor charges and usage from Actions and Packages."
+    },
+    {
+      "name": "checks",
+      "description": "Rich interactions with checks run by your integrations."
+    },
+    {
+      "name": "code-scanning",
+      "description": "Retrieve code scanning alerts from a repository."
+    },
+    {
+      "name": "codes-of-conduct",
+      "description": "Insight into codes of conduct for your communities."
+    },
+    {
+      "name": "codespaces",
+      "description": "Endpoints to manage Codespaces using the REST API."
+    },
+    {
+      "name": "emojis",
+      "description": "List emojis available to use on GitHub."
+    },
+    {
+      "name": "enterprise-admin",
+      "description": "Administer a GitHub enterprise."
+    },
+    { "name": "dependabot", "description": "Endpoints to manage Dependabot." },
+    {
+      "name": "dependency-graph",
+      "description": "Endpoints to access Dependency Graph features."
+    },
+    { "name": "gists", "description": "View, modify your gists." },
+    { "name": "git", "description": "Raw Git functionality." },
+    { "name": "gitignore", "description": "View gitignore templates" },
+    {
+      "name": "interactions",
+      "description": "Owner or admin management of users interactions."
+    },
+    { "name": "issues", "description": "Interact with GitHub Issues." },
+    { "name": "licenses", "description": "View various OSS licenses." },
+    { "name": "markdown", "description": "Render GitHub flavored markdown" },
+    {
+      "name": "merge-queue",
+      "description": "Interact with GitHub Merge Queues."
+    },
+    {
+      "name": "meta",
+      "description": "Endpoints that give information about the API."
+    },
+    { "name": "migrations", "description": "Move projects to or from GitHub." },
+    { "name": "orgs", "description": "Interact with GitHub Orgs." },
+    {
+      "name": "packages",
+      "description": "Manage packages for authenticated users and organizations."
+    },
+    { "name": "projects", "description": "Interact with GitHub Projects." },
+    { "name": "pulls", "description": "Interact with GitHub Pull Requests." },
+    {
+      "name": "rate-limit",
+      "description": "Check your current rate limit status"
+    },
+    {
+      "name": "reactions",
+      "description": "Interact with reactions to various GitHub entities."
+    },
+    { "name": "repos", "description": "Interact with GitHub Repos." },
+    { "name": "search", "description": "Look for stuff on GitHub." },
+    {
+      "name": "secret-scanning",
+      "description": "Retrieve secret scanning alerts from a repository."
+    },
+    { "name": "server-statistics", "description": "GHES statistics" },
+    { "name": "teams", "description": "Interact with GitHub Teams." },
+    {
+      "name": "users",
+      "description": "Interact with and view information about users and also current user."
+    }
+  ],
+  "servers": [
+    {
+      "url": "{protocol}://{hostname}/api/v3",
+      "variables": {
+        "hostname": {
+          "description": "Self-hosted Enterprise Server or Enterprise Cloud hostname",
+          "default": "HOSTNAME"
+        },
+        "protocol": {
+          "description": "Self-hosted Enterprise Server or Enterprise Cloud protocol",
+          "default": "http"
+        }
+      }
+    }
+  ],
+  "externalDocs": {
+    "description": "GitHub Enterprise Developer Docs",
+    "url": "https://docs.github.com/enterprise-server@3.4/rest/"
+  }
+}
