@@ -35,7 +35,7 @@ async function run() {
     const schema = require(`../cache/${file}`);
 
     // apply overrides to the unaltered schemas from GitHub
-    overrides(file, schema);
+    /*overrides(file, schema);
 
     for (const [path, methods] of Object.entries(schema.paths)) {
       for (const [method, operation] of Object.entries(methods)) {
@@ -49,7 +49,7 @@ async function run() {
           operation["x-octokit"].changes.push(change);
         }
       }
-    }
+    }*/
 
     // overwrite version to "0.0.0-development", will be updated
     // right before publish via semantic-release
@@ -61,10 +61,40 @@ async function run() {
 
     // delete all the REST API routes
     delete schema.paths;
+    // Isolate the webhooks schemas
+    if (typeof schema.components !== "undefined") {
+      delete schema.components.responses;
+      delete schema.components.parameters;
+      delete schema.components.headers;
+      delete schema.components.examples;
+    }
+    
+    const tempSchema =  { ...schema };
 
+    // Check all instances of `$ref` in the JSON Schema and replace them with the correct path, and add them to the definitions
+    const handleRefs = (obj) => {
+      if (typeof obj !== 'object' || obj === null) return obj
+
+      for (let key in obj) {
+        if (key === '$ref') {
+          // Skip events
+          if (obj[key].includes('$')) continue
+          const ref = obj[key].split('/').at(-1)
+          tempSchema.components.schemas[ref] = schema.components.schemas[ref]
+          // Call the function with the new definition to handle any of it's $refs
+          handleRefs(tempSchema.components.schemas[ref])
+          obj[key] = `#/definitions/${ref}`
+        } else {
+          obj[key] = handleRefs(obj[key])
+        }
+      }
+      return obj
+    }
+    // Check all $ref properties and include them in the output
+    handleRefs(schema.components)
     writeFileSync(
       `generated/${file}`,
-      prettier.format(JSON.stringify(schema), { parser: "json" })
+      prettier.format(JSON.stringify(tempSchema), { parser: "json" })
     );
     console.log(`generated/${file} written`);
   }
@@ -196,6 +226,10 @@ async function run() {
 
 function toFromFilename(path, latestGhesVersion) {
   const filename = basename(path);
+  if (filename.startsWith("ghec")) {
+    return "api.github.com.deref.json";
+  }
+
   if (filename.startsWith("github.ae")) {
     return "api.github.com.deref.json";
   }
@@ -209,7 +243,7 @@ function toFromFilename(path, latestGhesVersion) {
   }
 
   if (filename.startsWith("ghes-3.")) {
-    const v3Version = parseInt(filename.substr("ghes-3.".length));
+    const v3Version = parseInt(filename.substring("ghes-3.".length));
     return `ghes-3.${v3Version + 1}.deref.json`;
   }
 
