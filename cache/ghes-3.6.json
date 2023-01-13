@@ -152,6 +152,14 @@
     {
       "name": "users",
       "description": "Interact with and view information about users and also current user."
+    },
+    {
+      "name": "enterprise-admin",
+      "description": "Enterprise Administration"
+    },
+    {
+      "name": "server-statistics",
+      "description": "Server statistics"
     }
   ],
   "servers": [
@@ -1264,6 +1272,14 @@
                     "description": "URL from which to download a tarball of this environment."
                   }
                 }
+              },
+              "examples": {
+                "default": {
+                  "value": {
+                    "name": "DevTools Hook Env",
+                    "image_url": "https://my_file_server/path/to/devtools_env.tar.gz"
+                  }
+                }
               }
             }
           }
@@ -2087,6 +2103,13 @@
                     "items": {
                       "type": "string"
                     }
+                  }
+                }
+              },
+              "examples": {
+                "default": {
+                  "value": {
+                    "scopes": ["public_repo"]
                   }
                 }
               }
@@ -4170,6 +4193,14 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/announcement"
+              },
+              "examples": {
+                "default": {
+                  "value": {
+                    "announcement": "Very **important** announcement about _something_.",
+                    "expires_at": "2021-01-01T00:00:00.000+00:00"
+                  }
+                }
               }
             }
           }
@@ -4307,6 +4338,18 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/enterprise-comment-overview"
+                },
+                "examples": {
+                  "examples": [
+                    {
+                      "value": {
+                        "total_commit_comments": 5000,
+                        "total_gist_comments": 400,
+                        "total_issue_comments": 10900,
+                        "total_pull_request_comments": 9900
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -4337,6 +4380,17 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/enterprise-gist-overview"
+                },
+                "examples": {
+                  "examples": [
+                    {
+                      "value": {
+                        "total_gists": 500,
+                        "private_gists": 30,
+                        "public_gists": 470
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -4366,6 +4420,17 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/enterprise-hook-overview"
+                },
+                "examples": {
+                  "examples": [
+                    {
+                      "value": {
+                        "total_hooks": 50,
+                        "active_hooks": 47,
+                        "inactive_hooks": 3
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -4396,6 +4461,17 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/enterprise-issue-overview"
+                },
+                "examples": {
+                  "examples": [
+                    {
+                      "value": {
+                        "total_issues": 5000,
+                        "open_issues": 300,
+                        "closed_issues": 4700
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -4426,6 +4502,17 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/enterprise-milestone-overview"
+                },
+                "examples": {
+                  "examples": [
+                    {
+                      "value": {
+                        "total_milestones": 90,
+                        "open_milestones": 10,
+                        "closed_milestones": 80
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -4456,6 +4543,18 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/enterprise-organization-overview"
+                },
+                "examples": {
+                  "examples": [
+                    {
+                      "value": {
+                        "total_orgs": 50,
+                        "disabled_orgs": 1,
+                        "total_teams": 70,
+                        "total_team_members": 700
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -4486,6 +4585,15 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/enterprise-page-overview"
+                },
+                "examples": {
+                  "examples": [
+                    {
+                      "value": {
+                        "total_pages": 20
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -4516,6 +4624,18 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/enterprise-pull-request-overview"
+                },
+                "examples": {
+                  "examples": [
+                    {
+                      "value": {
+                        "total_pulls": 1200,
+                        "merged_pulls": 1100,
+                        "mergeable_pulls": 90,
+                        "unmergeable_pulls": 10
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -4545,6 +4665,20 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/enterprise-repository-overview"
+                },
+                "examples": {
+                  "examples": [
+                    {
+                      "value": {
+                        "total_repos": 200,
+                        "root_repos": 1,
+                        "fork_repos": 10,
+                        "org_repos": 150,
+                        "total_pushes": 39000,
+                        "total_wikis": 5
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -4575,6 +4709,17 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/enterprise-user-overview"
+                },
+                "examples": {
+                  "examples": [
+                    {
+                      "value": {
+                        "total_users": 100,
+                        "admin_users": 3,
+                        "suspended_users": 1
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -5068,7 +5213,7 @@
     "/enterprises/{enterprise}/actions/permissions/workflow": {
       "get": {
         "summary": "Get default workflow permissions for an enterprise",
-        "description": "Gets the default workflow permissions granted to the `GITHUB_TOKEN` when running workflows in an enterprise,\nas well as whether GitHub Actions can submit approving pull request reviews. For more information, see\n\"[Enforcing a policy for workflow permissions in your enterprise](https://docs.github.com/enterprise-server@3.6/admin/policies/enforcing-policies-for-your-enterprise/enforcing-policies-for-github-actions-in-your-enterprise#enforcing-a-policy-for-workflow-permissions-in-your-enterprise).\"\n\nYou must authenticate using an access token with the `admin:enterprise` scope to use this endpoint. GitHub Apps must have the `enterprise_administration:write` permission to use this endpoint.",
+        "description": "Gets the default workflow permissions granted to the `GITHUB_TOKEN` when running workflows in an enterprise,\nas well as whether GitHub Actions can submit approving pull request reviews. For more information, see\n\"[Enforcing a policy for workflow permissions in your enterprise](https://docs.github.com/enterprise-server@3.6/admin/policies/enforcing-policies-for-your-enterprise/enforcing-policies-for-github-actions-in-your-enterprise#enforcing-a-policy-for-workflow-permissions-in-your-enterprise).\"\n\nYou must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.\nGitHub Apps must have the `enterprise_administration:write` permission to use this endpoint.",
         "tags": ["actions"],
         "operationId": "actions/get-github-actions-default-workflow-permissions-enterprise",
         "externalDocs": {
@@ -9856,7 +10001,7 @@
     "/orgs/{org}/actions/runner-groups": {
       "get": {
         "summary": "List self-hosted runner groups for an organization",
-        "description": "Lists all self-hosted runner groups configured in an organization and inherited from an enterprise.\nYou must authenticate using an access token with the `admin:org` scope to use this endpoint.",
+        "description": "Lists all self-hosted runner groups configured in an organization and inherited from an enterprise.\n\nYou must authenticate using an access token with the `admin:org` scope to use this endpoint.",
         "operationId": "actions/list-self-hosted-runner-groups-for-org",
         "tags": ["actions"],
         "externalDocs": {
@@ -9915,7 +10060,7 @@
       },
       "post": {
         "summary": "Create a self-hosted runner group for an organization",
-        "description": "The self-hosted runner groups REST API is available with GitHub Enterprise Cloud and GitHub Enterprise Server. For more information, see \"[GitHub's products](https://docs.github.com/enterprise-server@3.6/github/getting-started-with-github/githubs-products).\"\n\nCreates a new self-hosted runner group for an organization.\n\nYou must authenticate using an access token with the `admin:org` scope to use this endpoint.",
+        "description": "Creates a new self-hosted runner group for an organization.\n\nYou must authenticate using an access token with the `admin:org` scope to use this endpoint.",
         "operationId": "actions/create-self-hosted-runner-group-for-org",
         "tags": ["actions"],
         "externalDocs": {
@@ -10066,7 +10211,7 @@
       },
       "patch": {
         "summary": "Update a self-hosted runner group for an organization",
-        "description": "Updates the `name` and `visibility` of a self-hosted runner group in an organization.\nYou must authenticate using an access token with the `admin:org` scope to use this endpoint.",
+        "description": "Updates the `name` and `visibility` of a self-hosted runner group in an organization.\n\nYou must authenticate using an access token with the `admin:org` scope to use this endpoint.",
         "operationId": "actions/update-self-hosted-runner-group-for-org",
         "tags": ["actions"],
         "externalDocs": {
@@ -10189,7 +10334,7 @@
     "/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories": {
       "get": {
         "summary": "List repository access to a self-hosted runner group in an organization",
-        "description": "The self-hosted runner groups REST API is available with GitHub Enterprise Cloud and GitHub Enterprise Server. For more information, see \"[GitHub's products](https://docs.github.com/enterprise-server@3.6/github/getting-started-with-github/githubs-products).\"\n\nLists the repositories with access to a self-hosted runner group configured in an organization.\n\nYou must authenticate using an access token with the `admin:org` scope to use this endpoint.",
+        "description": "Lists the repositories with access to a self-hosted runner group configured in an organization.\n\nYou must authenticate using an access token with the `admin:org` scope to use this endpoint.",
         "operationId": "actions/list-repo-access-to-self-hosted-runner-group-in-org",
         "tags": ["actions"],
         "externalDocs": {
@@ -10248,7 +10393,7 @@
       },
       "put": {
         "summary": "Set repository access for a self-hosted runner group in an organization",
-        "description": "Replaces the list of repositories that have access to a self-hosted runner group configured in an organization.\nYou must authenticate using an access token with the `admin:org` scope to use this endpoint.",
+        "description": "Replaces the list of repositories that have access to a self-hosted runner group configured in an organization.\n\nYou must authenticate using an access token with the `admin:org` scope to use this endpoint.",
         "operationId": "actions/set-repo-access-to-self-hosted-runner-group-in-org",
         "tags": ["actions"],
         "externalDocs": {
@@ -10307,7 +10452,7 @@
     "/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}": {
       "put": {
         "summary": "Add repository access to a self-hosted runner group in an organization",
-        "description": "Adds a repository to the list of selected repositories that can access a self-hosted runner group. The runner group must have `visibility` set to `selected`. For more information, see \"[Create a self-hosted runner group for an organization](#create-a-self-hosted-runner-group-for-an-organization).\"\nYou must authenticate using an access token with the `admin:org` scope to use this endpoint.",
+        "description": "Adds a repository to the list of selected repositories that can access a self-hosted runner group. The runner group must have `visibility` set to `selected`. For more information, see \"[Create a self-hosted runner group for an organization](#create-a-self-hosted-runner-group-for-an-organization).\"\n\nYou must authenticate using an access token with the `admin:org`\nscope to use this endpoint.",
         "operationId": "actions/add-repo-access-to-self-hosted-runner-group-in-org",
         "tags": ["actions"],
         "externalDocs": {
@@ -10339,7 +10484,7 @@
       },
       "delete": {
         "summary": "Remove repository access to a self-hosted runner group in an organization",
-        "description": "Removes a repository from the list of selected repositories that can access a self-hosted runner group. The runner group must have `visibility` set to `selected`. For more information, see \"[Create a self-hosted runner group for an organization](#create-a-self-hosted-runner-group-for-an-organization).\"\nYou must authenticate using an access token with the `admin:org` scope to use this endpoint.",
+        "description": "Removes a repository from the list of selected repositories that can access a self-hosted runner group. The runner group must have `visibility` set to `selected`. For more information, see \"[Create a self-hosted runner group for an organization](#create-a-self-hosted-runner-group-for-an-organization).\"\n\nYou must authenticate using an access token with the `admin:org` scope to use this endpoint.",
         "operationId": "actions/remove-repo-access-to-self-hosted-runner-group-in-org",
         "tags": ["actions"],
         "externalDocs": {
@@ -10373,7 +10518,7 @@
     "/orgs/{org}/actions/runner-groups/{runner_group_id}/runners": {
       "get": {
         "summary": "List self-hosted runners in a group for an organization",
-        "description": "Lists self-hosted runners that are in a specific organization group.\nYou must authenticate using an access token with the `admin:org` scope to use this endpoint.",
+        "description": "Lists self-hosted runners that are in a specific organization group.\n\nYou must authenticate using an access token with the `admin:org` scope to use this endpoint.",
         "operationId": "actions/list-self-hosted-runners-in-group-for-org",
         "tags": ["actions"],
         "externalDocs": {
@@ -10437,7 +10582,7 @@
       },
       "put": {
         "summary": "Set self-hosted runners in a group for an organization",
-        "description": "Replaces the list of self-hosted runners that are part of an organization runner group.\nYou must authenticate using an access token with the `admin:org` scope to use this endpoint.",
+        "description": "Replaces the list of self-hosted runners that are part of an organization runner group.\n\nYou must authenticate using an access token with the `admin:org` scope to use this endpoint.",
         "operationId": "actions/set-self-hosted-runners-in-group-for-org",
         "tags": ["actions"],
         "externalDocs": {
@@ -10496,7 +10641,7 @@
     "/orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}": {
       "put": {
         "summary": "Add a self-hosted runner to a group for an organization",
-        "description": "Adds a self-hosted runner to a runner group configured in an organization.\nYou must authenticate using an access token with the `admin:org` scope to use this endpoint.",
+        "description": "Adds a self-hosted runner to a runner group configured in an organization.\n\nYou must authenticate using an access token with the `admin:org`\nscope to use this endpoint.",
         "operationId": "actions/add-self-hosted-runner-to-group-for-org",
         "tags": ["actions"],
         "externalDocs": {
@@ -10528,7 +10673,7 @@
       },
       "delete": {
         "summary": "Remove a self-hosted runner from a group for an organization",
-        "description": "Removes a self-hosted runner from a group configured in an organization. The runner is then returned to the default group.\nYou must authenticate using an access token with the `admin:org` scope to use this endpoint.",
+        "description": "Removes a self-hosted runner from a group configured in an organization. The runner is then returned to the default group.\n\nYou must authenticate using an access token with the `admin:org` scope to use this endpoint.",
         "operationId": "actions/remove-self-hosted-runner-from-group-for-org",
         "tags": ["actions"],
         "externalDocs": {
@@ -13403,7 +13548,7 @@
                 "properties": {
                   "role": {
                     "type": "string",
-                    "description": "The role to give the user in the organization. Can be one of:  \n\\* `admin` - The user will become an owner of the organization.  \n\\* `member` - The user will become a non-owner member of the organization.",
+                    "description": "The role to give the user in the organization. Can be one of:  \n * `admin` - The user will become an owner of the organization.  \n * `member` - The user will become a non-owner member of the organization.",
                     "enum": ["admin", "member"],
                     "default": "member"
                   }
@@ -14467,7 +14612,7 @@
           },
           {
             "name": "type",
-            "description": "Specifies the types of repositories you want returned. If your organization is associated with an enterprise account using GitHub Enterprise Cloud or GitHub Enterprise Server 2.20+, `type` can also be `internal`. However, the `internal` value is not yet supported when a GitHub App calls this API with an installation access token.",
+            "description": "Specifies the types of repositories you want returned. `internal` is not yet supported when a GitHub App calls this endpoint with an installation access token.",
             "in": "query",
             "required": false,
             "schema": {
@@ -14583,7 +14728,7 @@
                   },
                   "visibility": {
                     "type": "string",
-                    "description": "Can be `public` or `private`. If your organization is associated with an enterprise account using GitHub Enterprise Cloud or GitHub Enterprise Server 2.20+, `visibility` can also be `internal`. Note: For GitHub Enterprise Server and GitHub AE, this endpoint will only list repositories available to all users on the enterprise. For more information, see \"[Creating an internal repository](https://docs.github.com/enterprise-server@3.6/github/creating-cloning-and-archiving-repositories/about-repository-visibility#about-internal-repositories)\" in the GitHub Help documentation.",
+                    "description": "The visibility of the repository. **Note**: For GitHub Enterprise Server, this endpoint will only list repositories available to all users on the enterprise. For more information, see \"[Creating an internal repository](https://docs.github.com/enterprise-server@3.6/github/creating-cloning-and-archiving-repositories/about-repository-visibility#about-internal-repositories)\" in the GitHub Help documentation.  \nThe `visibility` parameter overrides the `private` parameter when you use both parameters with the `nebula-preview` preview header.",
                     "enum": ["public", "private", "internal"]
                   },
                   "has_issues": {
@@ -14963,7 +15108,7 @@
                   },
                   "privacy": {
                     "type": "string",
-                    "description": "The level of privacy this team should have. The options are:  \n**For a non-nested team:**  \n\\* `secret` - only visible to organization owners and members of this team.  \n\\* `closed` - visible to all members of this organization.  \nDefault: `secret`  \n**For a parent or child team:**  \n\\* `closed` - visible to all members of this organization.  \nDefault for child team: `closed`",
+                    "description": "The level of privacy this team should have. The options are:  \n**For a non-nested team:**  \n * `secret` - only visible to organization owners and members of this team.  \n * `closed` - visible to all members of this organization.  \nDefault: `secret`  \n**For a parent or child team:**  \n * `closed` - visible to all members of this organization.  \nDefault for child team: `closed`",
                     "enum": ["secret", "closed"]
                   },
                   "permission": {
@@ -15106,7 +15251,7 @@
                   },
                   "privacy": {
                     "type": "string",
-                    "description": "The level of privacy this team should have. Editing teams without specifying this parameter leaves `privacy` intact. When a team is nested, the `privacy` for parent teams cannot be `secret`. The options are:  \n**For a non-nested team:**  \n\\* `secret` - only visible to organization owners and members of this team.  \n\\* `closed` - visible to all members of this organization.  \n**For a parent or child team:**  \n\\* `closed` - visible to all members of this organization.",
+                    "description": "The level of privacy this team should have. Editing teams without specifying this parameter leaves `privacy` intact. When a team is nested, the `privacy` for parent teams cannot be `secret`. The options are:  \n**For a non-nested team:**  \n * `secret` - only visible to organization owners and members of this team.  \n * `closed` - visible to all members of this organization.  \n**For a parent or child team:**  \n * `closed` - visible to all members of this organization.",
                     "enum": ["secret", "closed"]
                   },
                   "permission": {
@@ -16475,7 +16620,7 @@
       },
       "put": {
         "summary": "Add or update team membership for a user",
-        "description": "Team synchronization is available for organizations using GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/enterprise-server@3.6/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.\n\nAdds an organization member to a team. An authenticated organization owner or team maintainer can add organization members to a team.\n\n**Note:** When you have team synchronization set up for a team with your organization's identity provider (IdP), you will see an error if you attempt to use the API for making changes to the team's membership. If you have access to manage group membership in your IdP, you can manage GitHub Enterprise Server team membership through your identity provider, which automatically adds and removes team members in an organization. For more information, see \"[Synchronizing teams between your identity provider and GitHub Enterprise Server](https://docs.github.com/enterprise-server@3.6/articles/synchronizing-teams-between-your-identity-provider-and-github/).\"\n\nAn organization owner can add someone who is not part of the team's organization to a team. When an organization owner adds someone to a team who is not an organization member, this endpoint will send an invitation to the person via email. This newly-created membership will be in the \"pending\" state until the person accepts the invitation, at which point the membership will transition to the \"active\" state and the user will be added as a member of the team.\n\nIf the user is already a member of the team, this endpoint will update the role of the team member's role. To update the membership of a team member, the authenticated user must be an organization owner or a team maintainer.\n\n**Note:** You can also specify a team by `org_id` and `team_id` using the route `PUT /organizations/{org_id}/team/{team_id}/memberships/{username}`.",
+        "description": "Adds an organization member to a team. An authenticated organization owner or team maintainer can add organization members to a team.\n\nTeam synchronization is available for organizations using GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/enterprise-server@3.6/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.\n\n**Note:** When you have team synchronization set up for a team with your organization's identity provider (IdP), you will see an error if you attempt to use the API for making changes to the team's membership. If you have access to manage group membership in your IdP, you can manage GitHub Enterprise Server team membership through your identity provider, which automatically adds and removes team members in an organization. For more information, see \"[Synchronizing teams between your identity provider and GitHub Enterprise Server](https://docs.github.com/enterprise-server@3.6/articles/synchronizing-teams-between-your-identity-provider-and-github/).\"\n\nAn organization owner can add someone who is not part of the team's organization to a team. When an organization owner adds someone to a team who is not an organization member, this endpoint will send an invitation to the person via email. This newly-created membership will be in the \"pending\" state until the person accepts the invitation, at which point the membership will transition to the \"active\" state and the user will be added as a member of the team.\n\nIf the user is already a member of the team, this endpoint will update the role of the team member's role. To update the membership of a team member, the authenticated user must be an organization owner or a team maintainer.\n\n**Note:** You can also specify a team by `org_id` and `team_id` using the route `PUT /organizations/{org_id}/team/{team_id}/memberships/{username}`.",
         "tags": ["teams"],
         "operationId": "teams/add-or-update-membership-for-user-in-org",
         "externalDocs": {
@@ -16551,7 +16696,7 @@
       },
       "delete": {
         "summary": "Remove team membership for a user",
-        "description": "Team synchronization is available for organizations using GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/enterprise-server@3.6/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.\n\nTo remove a membership between a user and a team, the authenticated user must have 'admin' permissions to the team or be an owner of the organization that the team is associated with. Removing team membership does not delete the user, it just removes their membership from the team.\n\n**Note:** When you have team synchronization set up for a team with your organization's identity provider (IdP), you will see an error if you attempt to use the API for making changes to the team's membership. If you have access to manage group membership in your IdP, you can manage GitHub Enterprise Server team membership through your identity provider, which automatically adds and removes team members in an organization. For more information, see \"[Synchronizing teams between your identity provider and GitHub Enterprise Server](https://docs.github.com/enterprise-server@3.6/articles/synchronizing-teams-between-your-identity-provider-and-github/).\"\n\n**Note:** You can also specify a team by `org_id` and `team_id` using the route `DELETE /organizations/{org_id}/team/{team_id}/memberships/{username}`.",
+        "description": "To remove a membership between a user and a team, the authenticated user must have 'admin' permissions to the team or be an owner of the organization that the team is associated with. Removing team membership does not delete the user, it just removes their membership from the team.\n\nTeam synchronization is available for organizations using GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/enterprise-server@3.6/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.\n\n**Note:** When you have team synchronization set up for a team with your organization's identity provider (IdP), you will see an error if you attempt to use the API for making changes to the team's membership. If you have access to manage group membership in your IdP, you can manage GitHub Enterprise Server team membership through your identity provider, which automatically adds and removes team members in an organization. For more information, see \"[Synchronizing teams between your identity provider and GitHub Enterprise Server](https://docs.github.com/enterprise-server@3.6/articles/synchronizing-teams-between-your-identity-provider-and-github/).\"\n\n**Note:** You can also specify a team by `org_id` and `team_id` using the route `DELETE /organizations/{org_id}/team/{team_id}/memberships/{username}`.",
         "tags": ["teams"],
         "operationId": "teams/remove-membership-for-user-in-org",
         "externalDocs": {
@@ -18575,7 +18720,7 @@
     "/repos/{owner}/{repo}": {
       "get": {
         "summary": "Get a repository",
-        "description": "The `parent` and `source` objects are present when the repository is a fork. `parent` is the repository this repository was forked from, `source` is the ultimate source for the network.",
+        "description": "The `parent` and `source` objects are present when the repository is a fork. `parent` is the repository this repository was forked from, `source` is the ultimate source for the network.\n\n**Note:** In order to see the `security_and_analysis` block for a repository you must have admin permissions for the repository or be an owner or security manager for the organization that owns the repository. For more information, see \"[Managing security managers in your organization](https://docs.github.com/enterprise-server@3.6/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization).\"",
         "tags": ["repos"],
         "operationId": "repos/get",
         "externalDocs": {
@@ -18666,44 +18811,8 @@
                   },
                   "visibility": {
                     "type": "string",
-                    "description": "Can be `public` or `private`. If your organization is associated with an enterprise account using GitHub Enterprise Cloud or GitHub Enterprise Server 2.20+, `visibility` can also be `internal`.\"",
+                    "description": "The visibility of the repository.",
                     "enum": ["public", "private", "internal"]
-                  },
-                  "security_and_analysis": {
-                    "type": ["object", "null"],
-                    "description": "Specify which security and analysis features to enable or disable for the repository.\n\nTo use this parameter, you must have admin permissions for the repository or be an owner or security manager for the organization that owns the repository. For more information, see \"[Managing security managers in your organization](https://docs.github.com/enterprise-server@3.6/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization).\"\n\nFor example, to enable GitHub Advanced Security, use this data in the body of the `PATCH` request:\n`{ \"security_and_analysis\": {\"advanced_security\": { \"status\": \"enabled\" } } }`.\n\nYou can check which security and analysis features are currently enabled by using a `GET /repos/{owner}/{repo}` request.",
-                    "properties": {
-                      "advanced_security": {
-                        "type": "object",
-                        "description": "Use the `status` property to enable or disable GitHub Advanced Security for this repository. For more information, see \"[About GitHub Advanced Security](/github/getting-started-with-github/learning-about-github/about-github-advanced-security).\"",
-                        "properties": {
-                          "status": {
-                            "type": "string",
-                            "description": "Can be `enabled` or `disabled`."
-                          }
-                        }
-                      },
-                      "secret_scanning": {
-                        "type": "object",
-                        "description": "Use the `status` property to enable or disable secret scanning for this repository. For more information, see \"[About secret scanning](/code-security/secret-security/about-secret-scanning).\"",
-                        "properties": {
-                          "status": {
-                            "type": "string",
-                            "description": "Can be `enabled` or `disabled`."
-                          }
-                        }
-                      },
-                      "secret_scanning_push_protection": {
-                        "type": "object",
-                        "description": "Use the `status` property to enable or disable secret scanning push protection for this repository. For more information, see \"[Protecting pushes with secret scanning](/code-security/secret-scanning/protecting-pushes-with-secret-scanning).\"",
-                        "properties": {
-                          "status": {
-                            "type": "string",
-                            "description": "Can be `enabled` or `disabled`."
-                          }
-                        }
-                      }
-                    }
                   },
                   "has_issues": {
                     "type": "boolean",
@@ -18744,11 +18853,6 @@
                     "description": "Either `true` to allow rebase-merging pull requests, or `false` to prevent rebase-merging.",
                     "default": true
                   },
-                  "allow_auto_merge": {
-                    "type": "boolean",
-                    "description": "Either `true` to allow auto-merge on pull requests, or `false` to disallow auto-merge.",
-                    "default": false
-                  },
                   "delete_branch_on_merge": {
                     "type": "boolean",
                     "description": "Either `true` to allow automatically deleting head branches when pull requests are merged, or `false` to prevent automatic deletion.",
@@ -18787,7 +18891,7 @@
                   },
                   "archived": {
                     "type": "boolean",
-                    "description": "`true` to archive this repository. **Note**: You cannot unarchive repositories through the API.",
+                    "description": "Whether to archive this repository. **Note**: You cannot unarchive repositories through the API.",
                     "default": false
                   },
                   "allow_forking": {
@@ -18851,7 +18955,18 @@
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
           "category": "repos",
-          "subcategory": null
+          "previews": [
+            {
+              "required": false,
+              "name": "nebula",
+              "note": "You can set the visibility of a repository using the new `visibility` parameter in the [Repositories API](https://docs.github.com/enterprise-server@3.6/rest/reference/repos/), and get a repository's visibility with a new response key. For more information, see the [blog post](https://developer.github.com/changes/2019-12-03-internal-visibility-changes/).\n\nTo access repository visibility during the preview period, you must provide a custom [media type](https://docs.github.com/enterprise-server@3.6/rest/overview/media-types) in the `Accept` header:\n```shell\napplication/vnd.github.nebula-preview+json\n```"
+            },
+            {
+              "required": false,
+              "name": "baptiste",
+              "note": "The `is_template` and `template_repository` keys are currently available for developer to preview. See [Create a repository using a template](https://docs.github.com/enterprise-server@3.6/rest/reference/repos#create-a-repository-using-a-template) to learn how to create template repositories. To access these new response keys during the preview period, you must provide a custom [media type](https://docs.github.com/enterprise-server@3.6/rest/overview/media-types) in the `Accept` header:\n\n```shell\napplication/vnd.github.baptiste-preview+json\n```"
+            }
+          ]
         }
       },
       "delete": {
@@ -19510,7 +19625,7 @@
     "/repos/{owner}/{repo}/actions/permissions/access": {
       "get": {
         "summary": "Get the level of access for workflows outside of the repository",
-        "description": "Gets the level of access that workflows outside of the repository have to actions and reusable workflows in the repository.\nThis endpoint only applies to internal repositories. For more information, see \"[Managing GitHub Actions settings for a repository](https://docs.github.com/enterprise-server@3.6/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#allowing-access-to-components-in-an-internal-repository).\"\n\nYou must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must have the\nrepository `administration` permission to use this endpoint.",
+        "description": "Gets the level of access that workflows outside of the repository have to actions and reusable workflows in the repository.\nThis endpoint only applies to internal repositories.\nFor more information, see \"[Managing GitHub Actions settings for a repository](https://docs.github.com/enterprise-server@3.6/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#allowing-access-to-components-in-an-internal-repository).\"\n\nYou must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must have the\nrepository `administration` permission to use this endpoint.",
         "tags": ["actions"],
         "operationId": "actions/get-workflow-access-to-repository",
         "externalDocs": {
@@ -19552,7 +19667,7 @@
       },
       "put": {
         "summary": "Set the level of access for workflows outside of the repository",
-        "description": "Sets the level of access that workflows outside of the repository have to actions and reusable workflows in the repository.\nThis endpoint only applies to internal repositories. For more information, see \"[Managing GitHub Actions settings for a repository](https://docs.github.com/enterprise-server@3.6/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#allowing-access-to-components-in-an-internal-repository).\"\n\nYou must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must have the\nrepository `administration` permission to use this endpoint.",
+        "description": "Sets the level of access that workflows outside of the repository have to actions and reusable workflows in the repository.\nThis endpoint only applies to internal repositories.\nFor more information, see \"[Managing GitHub Actions settings for a repository](https://docs.github.com/enterprise-server@3.6/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#allowing-access-to-components-in-an-internal-repository).\"\n\nYou must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must have the\nrepository `administration` permission to use this endpoint.",
         "tags": ["actions"],
         "operationId": "actions/set-workflow-access-to-repository",
         "externalDocs": {
@@ -27362,7 +27477,7 @@
           },
           {
             "name": "sha",
-            "description": "SHA or branch to start listing commits from. Default: the repository’s default branch (usually `master`).",
+            "description": "SHA or branch to start listing commits from. Default: the repository’s default branch (usually `main`).",
             "in": "query",
             "required": false,
             "schema": {
@@ -28114,7 +28229,7 @@
     "/repos/{owner}/{repo}/compare/{basehead}": {
       "get": {
         "summary": "Compare two commits",
-        "description": "The `basehead` param is comprised of two parts separated by triple dots: `{base}...{head}`. Both must be branch names in `repo`. To compare branches across other repositories in the same network as `repo`, use the format `<USERNAME>:branch`.\n\nThe response from the API is equivalent to running the `git log base..head` command; however, commits are returned in chronological order. Pass the appropriate [media type](https://docs.github.com/enterprise-server@3.6/rest/overview/media-types/#commits-commit-comparison-and-pull-requests) to fetch diff and patch formats.\n\nThe response also includes details on the files that were changed between the two commits. This includes the status of the change (for example, if a file was added, removed, modified, or renamed), and details of the change itself. For example, files with a `renamed` status have a `previous_filename` field showing the previous filename of the file, and files with a `modified` status have a `patch` field showing the changes made to the file.\n\n**Working with large comparisons**\n\nTo process a response with a large number of commits, you can use (`per_page` or `page`) to paginate the results. When using paging, the list of changed files is only returned with page 1, but includes all changed files for the entire comparison. For more information on working with pagination, see \"[Traversing with pagination](/rest/guides/traversing-with-pagination).\"\n\nWhen calling this API without any paging parameters (`per_page` or `page`), the returned list is limited to 250 commits and the last commit in the list is the most recent of the entire comparison. When a paging parameter is specified, the first commit in the returned list of each page is the earliest.\n\n**Signature verification object**\n\nThe response will include a `verification` object that describes the result of verifying the commit's signature. The following fields are included in the `verification` object:\n\n| Name | Type | Description |\n| ---- | ---- | ----------- |\n| `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be verified. |\n| `reason` | `string` | The reason for verified value. Possible values and their meanings are enumerated in table below. |\n| `signature` | `string` | The signature that was extracted from the commit. |\n| `payload` | `string` | The value that was signed. |\n\nThese are the possible values for `reason` in the `verification` object:\n\n| Value | Description |\n| ----- | ----------- |\n| `expired_key` | The key that made the signature is expired. |\n| `not_signing_key` | The \"signing\" flag is not among the usage flags in the GPG key that made the signature. |\n| `gpgverify_error` | There was an error communicating with the signature verification service. |\n| `gpgverify_unavailable` | The signature verification service is currently unavailable. |\n| `unsigned` | The object does not include a signature. |\n| `unknown_signature_type` | A non-PGP signature was found in the commit. |\n| `no_user` | No user was associated with the `committer` email address in the commit. |\n| `unverified_email` | The `committer` email address in the commit was associated with a user, but the email address is not verified on her/his account. |\n| `bad_email` | The `committer` email address in the commit is not included in the identities of the PGP key that made the signature. |\n| `unknown_key` | The key that made the signature has not been registered with any user's account. |\n| `malformed_signature` | There was an error parsing the signature. |\n| `invalid` | The signature could not be cryptographically verified using the key whose key-id was found in the signature. |\n| `valid` | None of the above errors applied, so the signature is considered to be verified. |",
+        "description": "Compares two commits against one another. You can compare branches in the same repository, or you can compare branches that exist in different repositories within the same repository network, including fork branches. For more information about how to view a repository's network, see \"[Understanding connections between repositories](https://docs.github.com/enterprise-server@3.6/repositories/viewing-activity-and-data-for-your-repository/understanding-connections-between-repositories).\"\n\nThis endpoint is equivalent to running the `git log BASE...HEAD` command, but it returns commits in a different order. The `git log BASE...HEAD` command returns commits in reverse chronological order, whereas the API returns commits in chronological order. You can pass the appropriate [media type](https://docs.github.com/enterprise-server@3.6/rest/overview/media-types/#commits-commit-comparison-and-pull-requests) to fetch diff and patch formats.\n\nThe API response includes details about the files that were changed between the two commits. This includes the status of the change (if a file was added, removed, modified, or renamed), and details of the change itself. For example, files with a `renamed` status have a `previous_filename` field showing the previous filename of the file, and files with a `modified` status have a `patch` field showing the changes made to the file.\n\nWhen calling this endpoint without any paging parameter (`per_page` or `page`), the returned list is limited to 250 commits, and the last commit in the list is the most recent of the entire comparison.\n\n**Working with large comparisons**\n\nTo process a response with a large number of commits, use a query parameter (`per_page` or `page`) to paginate the results. When using pagination:\n\n- The list of changed files is only shown on the first page of results, but it includes all changed files for the entire comparison.\n- The results are returned in chronological order, but the last commit in the returned list may not be the most recent one in the entire set if there are more pages of results.\n\nFor more information on working with pagination, see \"[Using pagination in the REST API](https://docs.github.com/enterprise-server@3.6/rest/guides/using-pagination-in-the-rest-api).\"\n\n**Signature verification object**\n\nThe response will include a `verification` object that describes the result of verifying the commit's signature. The `verification` object includes the following fields:\n\n| Name | Type | Description |\n| ---- | ---- | ----------- |\n| `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be verified. |\n| `reason` | `string` | The reason for verified value. Possible values and their meanings are enumerated in table below. |\n| `signature` | `string` | The signature that was extracted from the commit. |\n| `payload` | `string` | The value that was signed. |\n\nThese are the possible values for `reason` in the `verification` object:\n\n| Value | Description |\n| ----- | ----------- |\n| `expired_key` | The key that made the signature is expired. |\n| `not_signing_key` | The \"signing\" flag is not among the usage flags in the GPG key that made the signature. |\n| `gpgverify_error` | There was an error communicating with the signature verification service. |\n| `gpgverify_unavailable` | The signature verification service is currently unavailable. |\n| `unsigned` | The object does not include a signature. |\n| `unknown_signature_type` | A non-PGP signature was found in the commit. |\n| `no_user` | No user was associated with the `committer` email address in the commit. |\n| `unverified_email` | The `committer` email address in the commit was associated with a user, but the email address is not verified on her/his account. |\n| `bad_email` | The `committer` email address in the commit is not included in the identities of the PGP key that made the signature. |\n| `unknown_key` | The key that made the signature has not been registered with any user's account. |\n| `malformed_signature` | There was an error parsing the signature. |\n| `invalid` | The signature could not be cryptographically verified using the key whose key-id was found in the signature. |\n| `valid` | None of the above errors applied, so the signature is considered to be verified. |",
         "tags": ["repos"],
         "operationId": "repos/compare-commits",
         "externalDocs": {
@@ -28136,7 +28251,7 @@
           },
           {
             "name": "basehead",
-            "description": "The base branch and head branch to compare. This parameter expects the format `{base}...{head}`.",
+            "description": "The base branch and head branch to compare. This parameter expects the format `BASE...HEAD`. Both must be branch names in `repo`. To compare with a branch that exists in a different repository in the same network as `repo`, the `basehead` parameter expects the format `USERNAME:BASE...USERNAME:HEAD`.",
             "in": "path",
             "required": true,
             "x-multi-segment": true,
@@ -28990,7 +29105,7 @@
         "operationId": "repos/list-deployments",
         "externalDocs": {
           "description": "API method documentation",
-          "url": "https://docs.github.com/enterprise-server@3.6/rest/reference/repos#list-deployments"
+          "url": "https://docs.github.com/enterprise-server@3.6/rest/deployments/deployments#list-deployments"
         },
         "parameters": [
           {
@@ -29074,8 +29189,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "category": "repos",
-          "subcategory": "deployments"
+          "category": "deployments"
         }
       },
       "post": {
@@ -29085,7 +29199,7 @@
         "operationId": "repos/create-deployment",
         "externalDocs": {
           "description": "API method documentation",
-          "url": "https://docs.github.com/enterprise-server@3.6/rest/reference/repos#create-a-deployment"
+          "url": "https://docs.github.com/enterprise-server@3.6/rest/deployments/deployments#create-a-deployment"
         },
         "parameters": [
           {
@@ -29229,8 +29343,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "category": "repos",
-          "subcategory": "deployments"
+          "category": "deployments"
         }
       }
     },
@@ -29242,7 +29355,7 @@
         "operationId": "repos/get-deployment",
         "externalDocs": {
           "description": "API method documentation",
-          "url": "https://docs.github.com/enterprise-server@3.6/rest/reference/repos#get-a-deployment"
+          "url": "https://docs.github.com/enterprise-server@3.6/rest/deployments/deployments#get-a-deployment"
         },
         "parameters": [
           {
@@ -29278,18 +29391,17 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "category": "repos",
-          "subcategory": "deployments"
+          "category": "deployments"
         }
       },
       "delete": {
         "summary": "Delete a deployment",
-        "description": "If the repository only has one deployment, you can delete the deployment regardless of its status. If the repository has more than one deployment, you can only delete inactive deployments. This ensures that repositories with multiple deployments will always have an active deployment. Anyone with `repo` or `repo_deployment` scopes can delete a deployment.\n\nTo set a deployment as inactive, you must:\n\n*   Create a new deployment that is active so that the system has a record of the current state, then delete the previously active deployment.\n*   Mark the active deployment as inactive by adding any non-successful deployment status.\n\nFor more information, see \"[Create a deployment](https://docs.github.com/enterprise-server@3.6/rest/reference/repos/#create-a-deployment)\" and \"[Create a deployment status](https://docs.github.com/enterprise-server@3.6/rest/reference/repos#create-a-deployment-status).\"",
+        "description": "If the repository only has one deployment, you can delete the deployment regardless of its status. If the repository has more than one deployment, you can only delete inactive deployments. This ensures that repositories with multiple deployments will always have an active deployment. Anyone with `repo` or `repo_deployment` scopes can delete a deployment.\n\nTo set a deployment as inactive, you must:\n\n*   Create a new deployment that is active so that the system has a record of the current state, then delete the previously active deployment.\n*   Mark the active deployment as inactive by adding any non-successful deployment status.\n\nFor more information, see \"[Create a deployment](https://docs.github.com/enterprise-server@3.6/rest/deployments/deployments/#create-a-deployment)\" and \"[Create a deployment status](https://docs.github.com/enterprise-server@3.6/rest/deployments/deployment-statuses#create-a-deployment-status).\"",
         "tags": ["repos"],
         "operationId": "repos/delete-deployment",
         "externalDocs": {
           "description": "API method documentation",
-          "url": "https://docs.github.com/enterprise-server@3.6/rest/reference/repos#delete-a-deployment"
+          "url": "https://docs.github.com/enterprise-server@3.6/rest/deployments/deployments#delete-a-deployment"
         },
         "parameters": [
           {
@@ -29316,8 +29428,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "category": "repos",
-          "subcategory": "deployments"
+          "category": "deployments"
         }
       }
     },
@@ -29329,7 +29440,7 @@
         "operationId": "repos/list-deployment-statuses",
         "externalDocs": {
           "description": "API method documentation",
-          "url": "https://docs.github.com/enterprise-server@3.6/rest/reference/repos#list-deployment-statuses"
+          "url": "https://docs.github.com/enterprise-server@3.6/rest/deployments/statuses#list-deployment-statuses"
         },
         "parameters": [
           {
@@ -29379,8 +29490,8 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "category": "repos",
-          "subcategory": "deployments"
+          "category": "deployments",
+          "subcategory": "statuses"
         }
       },
       "post": {
@@ -29390,7 +29501,7 @@
         "operationId": "repos/create-deployment-status",
         "externalDocs": {
           "description": "API method documentation",
-          "url": "https://docs.github.com/enterprise-server@3.6/rest/reference/repos#create-a-deployment-status"
+          "url": "https://docs.github.com/enterprise-server@3.6/rest/deployments/statuses#create-a-deployment-status"
         },
         "parameters": [
           {
@@ -29499,8 +29610,8 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "category": "repos",
-          "subcategory": "deployments"
+          "category": "deployments",
+          "subcategory": "statuses"
         }
       }
     },
@@ -29512,7 +29623,7 @@
         "operationId": "repos/get-deployment-status",
         "externalDocs": {
           "description": "API method documentation",
-          "url": "https://docs.github.com/enterprise-server@3.6/rest/reference/repos#get-a-deployment-status"
+          "url": "https://docs.github.com/enterprise-server@3.6/rest/deployments/statuses#get-a-deployment-status"
         },
         "parameters": [
           {
@@ -29556,8 +29667,8 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "category": "repos",
-          "subcategory": "deployments"
+          "category": "deployments",
+          "subcategory": "statuses"
         }
       }
     },
@@ -29701,7 +29812,7 @@
         "operationId": "repos/get-environment",
         "externalDocs": {
           "description": "API method documentation",
-          "url": "https://docs.github.com/enterprise-server@3.6/rest/reference/repos#get-an-environment"
+          "url": "https://docs.github.com/enterprise-server@3.6/rest/deployments/environments#get-an-environment"
         },
         "parameters": [
           {
@@ -29734,7 +29845,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "category": "repos",
+          "category": "deployments",
           "subcategory": "environments"
         }
       },
@@ -29745,7 +29856,7 @@
         "operationId": "repos/create-or-update-environment",
         "externalDocs": {
           "description": "API method documentation",
-          "url": "https://docs.github.com/enterprise-server@3.6/rest/reference/repos#create-or-update-an-environment"
+          "url": "https://docs.github.com/enterprise-server@3.6/rest/deployments/environments#create-or-update-an-environment"
         },
         "parameters": [
           {
@@ -29845,7 +29956,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "category": "repos",
+          "category": "deployments",
           "subcategory": "environments"
         }
       },
@@ -29856,7 +29967,7 @@
         "operationId": "repos/delete-an-environment",
         "externalDocs": {
           "description": "API method documentation",
-          "url": "https://docs.github.com/enterprise-server@3.6/rest/reference/repos#delete-an-environment"
+          "url": "https://docs.github.com/enterprise-server@3.6/rest/deployments/environments#delete-an-environment"
         },
         "parameters": [
           {
@@ -29877,7 +29988,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "category": "repos",
+          "category": "deployments",
           "subcategory": "environments"
         }
       }
@@ -33611,6 +33722,58 @@
         }
       }
     },
+    "/repos/{owner}/{repo}/issues/{issue_number}/assignees/{assignee}": {
+      "get": {
+        "summary": "Check if a user can be assigned to a issue",
+        "description": "Checks if a user has permission to be assigned to a specific issue.\n\nIf the `assignee` can be assigned to this issue, a `204` status code with no content is returned.\n\nOtherwise a `404` status code is returned.",
+        "tags": ["issues"],
+        "operationId": "issues/check-user-can-be-assigned-to-issue",
+        "externalDocs": {
+          "description": "API method documentation",
+          "url": "https://docs.github.com/enterprise-server@3.6/rest/reference/issues#check-if-a-user-can-be-assigned-to-a-issue"
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/owner"
+          },
+          {
+            "$ref": "#/components/parameters/repo"
+          },
+          {
+            "$ref": "#/components/parameters/issue-number"
+          },
+          {
+            "name": "assignee",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Response if `assignee` can be assigned to `issue_number`"
+          },
+          "404": {
+            "description": "Response if `assignee` can not be assigned to `issue_number`",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/basic-error"
+                }
+              }
+            }
+          }
+        },
+        "x-github": {
+          "githubCloudOnly": false,
+          "enabledForGitHubApps": true,
+          "category": "issues",
+          "subcategory": "assignees"
+        }
+      }
+    },
     "/repos/{owner}/{repo}/issues/{issue_number}/comments": {
       "get": {
         "summary": "List issue comments",
@@ -34300,7 +34463,7 @@
                 "properties": {
                   "lock_reason": {
                     "type": "string",
-                    "description": "The reason for locking the issue or pull request conversation. Lock will fail if you don't use one of these reasons:  \n\\* `off-topic`  \n\\* `too heated`  \n\\* `resolved`  \n\\* `spam`",
+                    "description": "The reason for locking the issue or pull request conversation. Lock will fail if you don't use one of these reasons:  \n * `off-topic`  \n * `too heated`  \n * `resolved`  \n * `spam`",
                     "enum": ["off-topic", "too heated", "resolved", "spam"]
                   }
                 }
@@ -34671,7 +34834,7 @@
         "operationId": "repos/list-deploy-keys",
         "externalDocs": {
           "description": "API method documentation",
-          "url": "https://docs.github.com/enterprise-server@3.6/rest/reference/repos#list-deploy-keys"
+          "url": "https://docs.github.com/enterprise-server@3.6/rest/deploy-keys#list-deploy-keys"
         },
         "parameters": [
           {
@@ -34715,8 +34878,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "category": "repos",
-          "subcategory": "keys"
+          "category": "deploy-keys"
         }
       },
       "post": {
@@ -34726,7 +34888,7 @@
         "operationId": "repos/create-deploy-key",
         "externalDocs": {
           "description": "API method documentation",
-          "url": "https://docs.github.com/enterprise-server@3.6/rest/reference/repos#create-a-deploy-key"
+          "url": "https://docs.github.com/enterprise-server@3.6/rest/deploy-keys#create-a-deploy-key"
         },
         "parameters": [
           {
@@ -34801,8 +34963,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "category": "repos",
-          "subcategory": "keys"
+          "category": "deploy-keys"
         }
       }
     },
@@ -34814,7 +34975,7 @@
         "operationId": "repos/get-deploy-key",
         "externalDocs": {
           "description": "API method documentation",
-          "url": "https://docs.github.com/enterprise-server@3.6/rest/reference/repos#get-a-deploy-key"
+          "url": "https://docs.github.com/enterprise-server@3.6/rest/deploy-keys#get-a-deploy-key"
         },
         "parameters": [
           {
@@ -34850,8 +35011,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "category": "repos",
-          "subcategory": "keys"
+          "category": "deploy-keys"
         }
       },
       "delete": {
@@ -34861,7 +35021,7 @@
         "operationId": "repos/delete-deploy-key",
         "externalDocs": {
           "description": "API method documentation",
-          "url": "https://docs.github.com/enterprise-server@3.6/rest/reference/repos#delete-a-deploy-key"
+          "url": "https://docs.github.com/enterprise-server@3.6/rest/deploy-keys#delete-a-deploy-key"
         },
         "parameters": [
           {
@@ -34882,8 +35042,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "category": "repos",
-          "subcategory": "keys"
+          "category": "deploy-keys"
         }
       }
     },
@@ -36133,7 +36292,7 @@
       },
       "post": {
         "summary": "Create a GitHub Enterprise Server Pages site",
-        "description": "Configures a GitHub Enterprise Server Pages site. For more information, see \"[About GitHub Pages](/github/working-with-github-pages/about-github-pages).\" You must be an admin of the repository in order to use this operation.",
+        "description": "Configures a GitHub Enterprise Server Pages site. For more information, see \"[About GitHub Pages](/github/working-with-github-pages/about-github-pages).\"\n\nTo use this endpoint, you must be a repository administrator, maintainer, or have the 'manage GitHub Pages settings' permission. A token with the `repo` scope or Pages write permission is required. GitHub Apps must have the `administrative:write` and `pages:write` permissions.",
         "tags": ["repos"],
         "operationId": "repos/create-pages-site",
         "externalDocs": {
@@ -36226,12 +36385,13 @@
         },
         "x-github": {
           "githubCloudOnly": false,
+          "enabledForGitHubApps": true,
           "category": "pages"
         }
       },
       "put": {
         "summary": "Update information about a GitHub Enterprise Server Pages site",
-        "description": "Updates information for a GitHub Enterprise Server Pages site. For more information, see \"[About GitHub Pages](/github/working-with-github-pages/about-github-pages).",
+        "description": "Updates information for a GitHub Enterprise Server Pages site. For more information, see \"[About GitHub Pages](/github/working-with-github-pages/about-github-pages).\n\nTo use this endpoint, you must be a repository administrator, maintainer, or have the 'manage GitHub Pages settings' permission. A token with the `repo` scope or Pages write permission is required. GitHub Apps must have the `administrative:write` and `pages:write` permissions.",
         "tags": ["repos"],
         "operationId": "repos/update-information-about-pages-site",
         "externalDocs": {
@@ -36260,10 +36420,6 @@
                   "https_enforced": {
                     "type": "boolean",
                     "description": "Specify whether HTTPS should be enforced for the repository."
-                  },
-                  "public": {
-                    "type": "boolean",
-                    "description": "Configures access controls for the GitHub Pages site. If public is set to `true`, the site is accessible to anyone on the internet. If set to `false`, the site will only be accessible to users who have at least `read` access to the repository that published the site. This includes anyone in your Enterprise if the repository is set to `internal` visibility. This feature is only available to repositories in an organization on an Enterprise plan."
                   },
                   "build_type": {
                     "type": "string",
@@ -36350,7 +36506,7 @@
       },
       "delete": {
         "summary": "Delete a GitHub Enterprise Server Pages site",
-        "description": "Deletes a GitHub Pages site. You must be an admin of the repository in order to use this operation.",
+        "description": "Deletes a a GitHub Enterprise Server Pages site. For more information, see \"[About GitHub Pages](/github/working-with-github-pages/about-github-pages).\n\nTo use this endpoint, you must be a repository administrator, maintainer, or have the 'manage GitHub Pages settings' permission. A token with the `repo` scope or Pages write permission is required. GitHub Apps must have the `administrative:write` and `pages:write` permissions.",
         "tags": ["repos"],
         "operationId": "repos/delete-pages-site",
         "externalDocs": {
@@ -36381,6 +36537,7 @@
         },
         "x-github": {
           "githubCloudOnly": false,
+          "enabledForGitHubApps": true,
           "category": "pages"
         }
       }
@@ -41690,7 +41847,7 @@
     "/repos/{owner}/{repo}/tarball/{ref}": {
       "get": {
         "summary": "Download a repository archive (tar)",
-        "description": "Gets a redirect URL to download a tar archive for a repository. If you omit `:ref`, the repository’s default branch (usually\n`master`) will be used. Please make sure your HTTP framework is configured to follow redirects or you will need to use\nthe `Location` header to make a second `GET` request.\n**Note**: For private repositories, these links are temporary and expire after five minutes.",
+        "description": "Gets a redirect URL to download a tar archive for a repository. If you omit `:ref`, the repository’s default branch (usually\n`main`) will be used. Please make sure your HTTP framework is configured to follow redirects or you will need to use\nthe `Location` header to make a second `GET` request.\n**Note**: For private repositories, these links are temporary and expire after five minutes.",
         "tags": ["repos"],
         "externalDocs": {
           "description": "API method documentation",
@@ -41996,7 +42153,7 @@
     "/repos/{owner}/{repo}/zipball/{ref}": {
       "get": {
         "summary": "Download a repository archive (zip)",
-        "description": "Gets a redirect URL to download a zip archive for a repository. If you omit `:ref`, the repository’s default branch (usually\n`master`) will be used. Please make sure your HTTP framework is configured to follow redirects or you will need to use\nthe `Location` header to make a second `GET` request.\n\n**Note**: For private repositories, these links are temporary and expire after five minutes. If the repository is empty, you will receive a 404 when you follow the redirect.",
+        "description": "Gets a redirect URL to download a zip archive for a repository. If you omit `:ref`, the repository’s default branch (usually\n`main`) will be used. Please make sure your HTTP framework is configured to follow redirects or you will need to use\nthe `Location` header to make a second `GET` request.\n\n**Note**: For private repositories, these links are temporary and expire after five minutes. If the repository is empty, you will receive a 404 when you follow the redirect.",
         "tags": ["repos"],
         "externalDocs": {
           "description": "API method documentation",
@@ -43507,7 +43664,7 @@
     "/search/commits": {
       "get": {
         "summary": "Search commits",
-        "description": "Find commits via various criteria on the default branch (usually `master`). This method returns up to 100 results [per page](https://docs.github.com/enterprise-server@3.6/rest/overview/resources-in-the-rest-api#pagination).\n\nWhen searching for commits, you can get text match metadata for the **message** field when you provide the `text-match` media type. For more details about how to receive highlighted search results, see [Text match\nmetadata](https://docs.github.com/enterprise-server@3.6/rest/reference/search#text-match-metadata).\n\nFor example, if you want to find commits related to CSS in the [octocat/Spoon-Knife](https://github.com/octocat/Spoon-Knife) repository. Your query would look something like this:\n\n`q=repo:octocat/Spoon-Knife+css`",
+        "description": "Find commits via various criteria on the default branch (usually `main`). This method returns up to 100 results [per page](https://docs.github.com/enterprise-server@3.6/rest/overview/resources-in-the-rest-api#pagination).\n\nWhen searching for commits, you can get text match metadata for the **message** field when you provide the `text-match` media type. For more details about how to receive highlighted search results, see [Text match\nmetadata](https://docs.github.com/enterprise-server@3.6/rest/reference/search#text-match-metadata).\n\nFor example, if you want to find commits related to CSS in the [octocat/Spoon-Knife](https://github.com/octocat/Spoon-Knife) repository. Your query would look something like this:\n\n`q=repo:octocat/Spoon-Knife+css`",
         "tags": ["search"],
         "operationId": "search/commits",
         "externalDocs": {
@@ -44566,7 +44723,7 @@
     "/setup/api/start": {
       "post": {
         "summary": "Create a GitHub license",
-        "description": "When you boot a GitHub instance for the first time, you can use the following endpoint to upload a license.\n\nNote that you need to `POST` to [`/setup/api/configure`](https://docs.github.com/enterprise-server@3.6/rest/reference/enterprise-admin#start-a-configuration-process) to start the actual configuration process.\n\nWhen using this endpoint, your GitHub instance must have a password set. This can be accomplished two ways:\n\n1.  If you're working directly with the API before accessing the web interface, you must pass in the password parameter to set your password.\n2.  If you set up your instance via the web interface before accessing the API, your calls to this endpoint do not need the password parameter.\n\n**Note:** The request body for this operation must be submitted as `application/x-www-form-urlencoded` data. You can submit a parameter value as a string, or you can use a tool such as `curl` to submit a parameter value as the contents of a text file. For more information, see the [`curl` documentation](https://curl.se/docs/manpage.html#--data-urlencode).",
+        "description": "When you boot a GitHub instance for the first time, you can use the following endpoint to upload a license.\n\nNote that you need to `POST` to [`/setup/api/configure`](https://docs.github.com/enterprise-server@3.6/rest/reference/enterprise-admin#start-a-configuration-process) to start the actual configuration process.\n\nWhen using this endpoint, your GitHub instance must have a password set. This can be accomplished two ways:\n\n1.  If you're working directly with the API before accessing the web interface, you must pass in the password parameter to set your password.\n2.  If you set up your instance via the web interface before accessing the API, your calls to this endpoint do not need the password parameter.\n\n**Note:** The request body for this operation must be submitted as `multipart/form-data` data. You can can reference the license file by prefixing the filename with the `@` symbol using `curl`. For more information, see the [`curl` documentation](https://curl.se/docs/manpage.html#-F).",
         "operationId": "enterprise-admin/create-enterprise-server-license",
         "tags": ["enterprise-admin"],
         "externalDocs": {
@@ -44596,7 +44753,7 @@
         "requestBody": {
           "required": true,
           "content": {
-            "application/x-www-form-urlencoded": {
+            "multipart/form-data": {
               "schema": {
                 "type": "object",
                 "properties": {
@@ -44614,6 +44771,14 @@
                   }
                 },
                 "required": ["license"]
+              },
+              "examples": {
+                "default": {
+                  "value": {
+                    "license": "@enterprise.ghl",
+                    "password": "secret"
+                  }
+                }
               }
             }
           }
@@ -44629,7 +44794,7 @@
     "/setup/api/upgrade": {
       "post": {
         "summary": "Upgrade a license",
-        "description": "This API upgrades your license and also triggers the configuration process.\n\n**Note:** The request body for this operation must be submitted as `application/x-www-form-urlencoded` data. You can submit a parameter value as a string, or you can use a tool such as `curl` to submit a parameter value as the contents of a text file. For more information, see the [`curl` documentation](https://curl.se/docs/manpage.html#--data-urlencode).",
+        "description": "This API upgrades your license and also triggers the configuration process.\n\n**Note:** The request body for this operation must be submitted as `multipart/form-data` data. You can can reference the license file by prefixing the filename with the `@` symbol using `curl`. For more information, see the [`curl` documentation](https://curl.se/docs/manpage.html#-F).",
         "operationId": "enterprise-admin/upgrade-license",
         "tags": ["enterprise-admin"],
         "externalDocs": {
@@ -44658,13 +44823,20 @@
         },
         "requestBody": {
           "content": {
-            "application/x-www-form-urlencoded": {
+            "multipart/form-data": {
               "schema": {
                 "type": "object",
                 "properties": {
                   "license": {
                     "type": "string",
                     "description": "The content of your new _.ghl_ license file."
+                  }
+                }
+              },
+              "examples": {
+                "default": {
+                  "value": {
+                    "license": "@enterprise.ghl"
                   }
                 }
               }
@@ -44755,7 +44927,7 @@
                   },
                   "privacy": {
                     "type": "string",
-                    "description": "The level of privacy this team should have. Editing teams without specifying this parameter leaves `privacy` intact. The options are:  \n**For a non-nested team:**  \n\\* `secret` - only visible to organization owners and members of this team.  \n\\* `closed` - visible to all members of this organization.  \n**For a parent or child team:**  \n\\* `closed` - visible to all members of this organization.",
+                    "description": "The level of privacy this team should have. Editing teams without specifying this parameter leaves `privacy` intact. The options are:  \n**For a non-nested team:**  \n * `secret` - only visible to organization owners and members of this team.  \n * `closed` - visible to all members of this organization.  \n**For a parent or child team:**  \n * `closed` - visible to all members of this organization.",
                     "enum": ["secret", "closed"]
                   },
                   "permission": {
@@ -48784,7 +48956,7 @@
           },
           {
             "name": "affiliation",
-            "description": "Comma-separated list of values. Can include:  \n\\* `owner`: Repositories that are owned by the authenticated user.  \n\\* `collaborator`: Repositories that the user has been added to as a collaborator.  \n\\* `organization_member`: Repositories that the user has access to through being a member of an organization. This includes every repository on every team that the user is on.",
+            "description": "Comma-separated list of values. Can include:  \n * `owner`: Repositories that are owned by the authenticated user.  \n * `collaborator`: Repositories that the user has been added to as a collaborator.  \n * `organization_member`: Repositories that the user has access to through being a member of an organization. This includes every repository on every team that the user is on.",
             "in": "query",
             "required": false,
             "schema": {
@@ -50751,6 +50923,13 @@
                     "description": "The reason the user is being suspended. This message will be logged in the [audit log](https://docs.github.com/enterprise-server@3.6/admin/monitoring-activity-in-your-enterprise/reviewing-audit-logs-for-your-enterprise/about-the-audit-log-for-your-enterprise). If you don't provide a `reason`, it will default to \"Suspended via API by _SITE\\_ADMINISTRATOR_\", where _SITE\\_ADMINISTRATOR_ is the person who performed the action."
                   }
                 }
+              },
+              "examples": {
+                "reason": {
+                  "value": {
+                    "reason": "Suspended during leave of absence."
+                  }
+                }
               }
             }
           }
@@ -50790,6 +50969,13 @@
                   "reason": {
                     "type": "string",
                     "description": "The reason the user is being unsuspended. This message will be logged in the [audit log](https://docs.github.com/enterprise-server@3.6/admin/monitoring-activity-in-your-enterprise/reviewing-audit-logs-for-your-enterprise/about-the-audit-log-for-your-enterprise). If you don't provide a `reason`, it will default to \"Unsuspended via API by _SITE\\_ADMINISTRATOR_\", where _SITE\\_ADMINISTRATOR_ is the person who performed the action."
+                  }
+                }
+              },
+              "examples": {
+                "reason": {
+                  "value": {
+                    "reason": "Unsuspended after leave of absence."
                   }
                 }
               }
@@ -53919,7 +54105,7 @@
       "announcement-message": {
         "type": ["string", "null"],
         "description": "The announcement text in GitHub Flavored Markdown. For more information about GitHub Flavored Markdown, see \"[Basic writing and formatting syntax](https://docs.github.com/enterprise-server@3.6/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).\"",
-        "examples": ["Very **important** announcement about _nothing_."]
+        "examples": ["Very **important** announcement about _something_."]
       },
       "announcement-expiration": {
         "type": ["string", "null"],
@@ -61391,6 +61577,8 @@
           "run_id",
           "run_url",
           "head_sha",
+          "workflow_name",
+          "head_branch",
           "name",
           "url",
           "html_url",
@@ -61430,7 +61618,7 @@
         "properties": {
           "access_level": {
             "type": "string",
-            "description": "Defines the level of access that workflows outside of the repository have to actions and reusable workflows within the\nrepository. `none` means access is only possible from workflows in this repository.",
+            "description": "Defines the level of access that workflows outside of the repository have to actions and reusable workflows within the\nrepository.\n\n`none` means the access is only possible from workflows in this repository. `organization` level access allows sharing across the organization. `enterprise` level access allows sharing across the enterprise.",
             "enum": ["none", "organization", "enterprise"]
           }
         },
@@ -77548,7 +77736,7 @@
       "announcement": {
         "summary": "Announcement banner",
         "value": {
-          "announcement": "Very **important** announcement about _nothing_.",
+          "announcement": "Very **important** announcement about _something_.",
           "expires_at": "2021-01-01T00:00:00.000+00:00",
           "user_dismissible": false
         }
@@ -83283,7 +83471,18 @@
             },
             "forks": 1,
             "open_issues": 1,
-            "watchers": 1
+            "watchers": 1,
+            "security_and_analysis": {
+              "advanced_security": {
+                "status": "enabled"
+              },
+              "secret_scanning": {
+                "status": "enabled"
+              },
+              "secret_scanning_push_protection": {
+                "status": "disabled"
+              }
+            }
           }
         }
       },

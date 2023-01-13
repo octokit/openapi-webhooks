@@ -104,7 +104,9 @@
     {
       "name": "users",
       "description": "Interact with and view information about users and also current user."
-    }
+    },
+    { "name": "enterprise-admin", "description": "Enterprise Administration" },
+    { "name": "server-statistics", "description": "Server statistics" }
   ],
   "servers": [
     {
@@ -2323,7 +2325,7 @@
       "announcement-message": {
         "type": ["string", "null"],
         "description": "The announcement text in GitHub Flavored Markdown. For more information about GitHub Flavored Markdown, see \"[Basic writing and formatting syntax](https://docs.github.com/enterprise-server@3.5/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).\"",
-        "examples": ["Very **important** announcement about _nothing_."]
+        "examples": ["Very **important** announcement about _something_."]
       },
       "announcement-expiration": {
         "type": ["string", "null"],
@@ -7929,6 +7931,8 @@
           "run_id",
           "run_url",
           "head_sha",
+          "workflow_name",
+          "head_branch",
           "name",
           "url",
           "html_url",
@@ -7964,7 +7968,7 @@
         "properties": {
           "access_level": {
             "type": "string",
-            "description": "Defines the level of access that workflows outside of the repository have to actions and reusable workflows within the\nrepository. `none` means access is only possible from workflows in this repository.",
+            "description": "Defines the level of access that workflows outside of the repository have to actions and reusable workflows within the\nrepository.\n\n`none` means the access is only possible from workflows in this repository. `organization` level access allows sharing across the organization. `enterprise` level access allows sharing across the enterprise.",
             "enum": ["none", "organization", "enterprise"]
           }
         },
