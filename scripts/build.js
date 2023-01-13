@@ -62,28 +62,25 @@ async function run() {
     // delete all the REST API routes
     delete schema.paths;
     // Isolate the webhooks schemas
-    if (typeof schema.components !== "undefined") {
+    if (typeof schema.components !== "undefined" && !file.includes("deref")) {
       delete schema.components.responses;
       delete schema.components.parameters;
       delete schema.components.headers;
       delete schema.components.examples;
     }
-    
+
     const tempSchema =  { ...schema };
 
-    // Check all instances of `$ref` in the JSON Schema and replace them with the correct path, and add them to the definitions
+    // Check all instances of `$ref` in the OpenAPI spec, and add them to the definitions
     const handleRefs = (obj) => {
       if (typeof obj !== 'object' || obj === null) return obj
 
       for (let key in obj) {
-        if (key === '$ref') {
-          // Skip events
-          if (obj[key].includes('$')) continue
-          const ref = obj[key].split('/').at(-1)
+        if (key === '$ref' && typeof obj[key] === 'string') {
+          const ref = obj[key].split('/').at(-1);
           tempSchema.components.schemas[ref] = schema.components.schemas[ref]
           // Call the function with the new definition to handle any of it's $refs
           handleRefs(tempSchema.components.schemas[ref])
-          obj[key] = `#/definitions/${ref}`
         } else {
           obj[key] = handleRefs(obj[key])
         }
@@ -91,7 +88,9 @@ async function run() {
       return obj
     }
     // Check all $ref properties and include them in the output
-    handleRefs(schema.components)
+    if (typeof schema.components !== "undefined" && !file.includes("deref")) {
+      handleRefs(schema.components.schemas)
+    }
     writeFileSync(
       `generated/${file}`,
       prettier.format(JSON.stringify(tempSchema), { parser: "json" })
@@ -100,7 +99,7 @@ async function run() {
   }
 
   // generate diff files
-  for (const file of schemaFileNames) {
+  /*for (const file of schemaFileNames) {
     if (!file.endsWith("deref.json")) continue;
     if (file.startsWith("api.github.com")) continue;
 
@@ -196,7 +195,7 @@ async function run() {
     // add diff files
     createDiffVersion(toPath, latestGhesVersion);
     createDiffVersion(toPath.replace(".deref", ""), latestGhesVersion);
-  }
+  }*/
 
   let schemasCode = "";
 
@@ -238,18 +237,9 @@ function toFromFilename(path, latestGhesVersion) {
     return "api.github.com.deref.json";
   }
 
-  if (filename.startsWith("ghes-2.22")) {
-    return "ghes-3.0.deref.json";
-  }
-
   if (filename.startsWith("ghes-3.")) {
     const v3Version = parseInt(filename.substring("ghes-3.".length));
     return `ghes-3.${v3Version + 1}.deref.json`;
-  }
-
-  if (filename.startsWith("ghes-2.")) {
-    const v2Version = parseInt(filename.substr("ghes-2.".length));
-    return `ghes-2.${v2Version + 1}.deref.json`;
   }
 
   throw new Error(`Cannot calculate base version for ${filename}`);
