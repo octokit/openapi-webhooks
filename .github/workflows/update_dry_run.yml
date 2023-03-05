@@ -4,6 +4,8 @@ on:
       - cache/**
       - generated/**
 name: Dry-run the update process
+env:
+  NODE_OPTIONS: --max-old-space-size=8192
 jobs:
   update_dry_run:
     runs-on: ubuntu-latest
@@ -17,13 +19,13 @@ jobs:
           node-version: 16
       - run: npm ci
       - run: npm run download
-      - uses: actions/checkout@v3 # tag=v3
-        with:
-          repository: xuorig/anicca
-          path: anicca
-      - uses: actions-rs/toolchain@16499b5e05bf2e26879000db0c1d13f7e13fa3af # tag=v1
-        with:
-          toolchain: stable
-      - run: cargo build
-        working-directory: anicca
+      # - uses: actions/checkout@v3 # tag=v3
+      #   with:
+      #     repository: xuorig/anicca
+      #     path: anicca
+      # - uses: actions-rs/toolchain@16499b5e05bf2e26879000db0c1d13f7e13fa3af # tag=v1
+      #   with:
+      #     toolchain: stable
+      # - run: cargo build
+      #   working-directory: anicca
       - run: npm run build

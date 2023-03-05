@@ -3,6 +3,8 @@
     - cron: 0 12 * * *
   workflow_dispatch: {}
 name: Update
+env:
+  NODE_OPTIONS: --max-old-space-size=8192
 jobs:
   update:
     runs-on: ubuntu-latest
