@@ -1,9 +1,9 @@
-const { get } = require("https");
-const fs = require("fs");
+import { get } from "https";
+import fs from "fs";
 
-const { Octokit } = require("@octokit/core");
-const { getCurrentVersions } = require("github-enterprise-server-versions");
-const prettier = require("prettier");
+import { Octokit } from "@octokit/core";
+import { getCurrentVersions } from "github-enterprise-server-versions";
+import prettier from "prettier";
 
 run().then(() => console.log("done"), console.error);
 

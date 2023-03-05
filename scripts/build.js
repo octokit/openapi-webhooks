@@ -1,15 +1,15 @@
-const { createWriteStream, readdirSync, writeFileSync } = require("fs");
-const { basename, resolve } = require("path");
+import { createWriteStream, readdirSync, writeFileSync } from "node:fs";
+import { basename, resolve } from "node:path";
 
-const prettier = require("prettier");
-const execa = require("execa");
-const sortKeys = require("sort-keys");
-const equal = require("deep-equal");
-const _ = require("lodash");
-const { getCurrentVersions } = require("github-enterprise-server-versions");
-const mapObj = require("map-obj");
+import prettier from "prettier";
+import execa from "execa";
+import sortKeys from "sort-keys";
+import equal from "deep-equal";
+import _ from "lodash";
+import { getCurrentVersions } from "github-enterprise-server-versions";
+import mapObj from "map-obj";
 
-const overrides = require("./overrides");
+import overrides from "./overrides";
 
 if (!process.env.GITHUB_ACTIONS && !process.env.ANICCA_REPOSITORY_PATH) {
   throw new Error("Please set ANICCA_REPOSITORY_PATH");
@@ -197,7 +197,7 @@ async function run() {
     createDiffVersion(toPath.replace(".deref", ""), latestGhesVersion);
   }*/
 
-  let schemasCode = "";
+  /* let schemasCode = "";
 
   for (const name of schemaFileNames) {
     schemasCode += `["${name.replace(
@@ -220,7 +220,7 @@ async function run() {
         parser: "babel",
       }
     )
-  );
+  ); */
 }
 
 function toFromFilename(path, latestGhesVersion) {
