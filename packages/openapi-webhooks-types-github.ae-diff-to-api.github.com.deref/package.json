@@ -1,0 +1,20 @@
+{
+  "name": "@octokit/openapi-webhooks-types-github.ae-diff-to-api.github.com.deref",
+  "description": "Generated TypeScript definitions based on GitHub's OpenAPI spec for github.ae-diff-to-api.github.com.deref",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/octokit/openapi-types.ts.git",
+    "directory": "packages/openapi-webhooks-types-github.ae-diff-to-api.github.com.deref"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "version": "0.0.0-development",
+  "main": "",
+  "types": "types.d.ts",
+  "author": "Gregor Martynus (https://twitter.com/gr2m)",
+  "license": "MIT",
+  "octokit": {
+    "openapi-version": "9.0.0"
+  }
+}
