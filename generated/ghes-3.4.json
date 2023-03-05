@@ -50,10 +50,6 @@
       "name": "emojis",
       "description": "List emojis available to use on GitHub."
     },
-    {
-      "name": "enterprise-admin",
-      "description": "Administer a GitHub enterprise."
-    },
     { "name": "dependabot", "description": "Endpoints to manage Dependabot." },
     {
       "name": "dependency-graph",
@@ -78,6 +74,10 @@
       "description": "Endpoints that give information about the API."
     },
     { "name": "migrations", "description": "Move projects to or from GitHub." },
+    {
+      "name": "oidc",
+      "description": "Endpoints to manage GitHub OIDC configuration using the REST API."
+    },
     { "name": "orgs", "description": "Interact with GitHub Orgs." },
     {
       "name": "packages",
@@ -99,14 +99,12 @@
       "name": "secret-scanning",
       "description": "Retrieve secret scanning alerts from a repository."
     },
-    { "name": "server-statistics", "description": "GHES statistics" },
     { "name": "teams", "description": "Interact with GitHub Teams." },
     {
       "name": "users",
       "description": "Interact with and view information about users and also current user."
     },
-    { "name": "enterprise-admin", "description": "Enterprise Administration" },
-    { "name": "server-statistics", "description": "Server statistics" }
+    { "name": "enterprise-admin", "description": "Enterprise Administration" }
   ],
   "servers": [
     {
@@ -1465,6 +1463,35 @@
           "avatar_url"
         ]
       },
+      "integration-installation-request": {
+        "title": "Integration Installation Request",
+        "description": "Request to install an integration on a target",
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "Unique identifier of the request installation.",
+            "type": "integer",
+            "examples": [42]
+          },
+          "node_id": {
+            "type": "string",
+            "examples": ["MDExOkludGVncmF0aW9uMQ=="]
+          },
+          "account": {
+            "anyOf": [
+              { "$ref": "#/components/schemas/simple-user" },
+              { "$ref": "#/components/schemas/enterprise" }
+            ]
+          },
+          "requester": { "$ref": "#/components/schemas/simple-user" },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "examples": ["2022-07-08T16:18:44-04:00"]
+          }
+        },
+        "required": ["id", "account", "requester", "created_at"]
+      },
       "installation": {
         "title": "Installation",
         "description": "Installation",
@@ -2551,7 +2578,7 @@
           },
           "patterns_allowed": {
             "type": "array",
-            "description": "Specifies a list of string-matching patterns to allow specific action(s). Wildcards, tags, and SHAs are allowed. For example, `monalisa/octocat@*`, `monalisa/octocat@v2`, `monalisa/*`.\"",
+            "description": "Specifies a list of string-matching patterns to allow specific action(s). Wildcards, tags, and SHAs are allowed. For example, `monalisa/octocat@*`, `monalisa/octocat@v2`, `monalisa/*`.",
             "items": { "type": "string" }
           }
         },
@@ -5268,6 +5295,7 @@
           "org_metadata_only": { "type": "boolean" },
           "repositories": {
             "type": "array",
+            "description": "The repositories included in the migration. Only returned for export migrations.",
             "items": { "$ref": "#/components/schemas/repository" }
           },
           "url": {
@@ -7880,8 +7908,8 @@
             }
           },
           "state": {
-            "description": "Whether deployment to the environment(s) was approved or rejected",
-            "enum": ["approved", "rejected"],
+            "description": "Whether deployment to the environment(s) was approved or rejected or pending (with comments)",
+            "enum": ["approved", "rejected", "pending"],
             "type": "string",
             "examples": ["approved"]
           },
@@ -11062,6 +11090,7 @@
           },
           "protection_rules": {
             "type": "array",
+            "description": "Built-in deployment protection rules for the environment.",
             "items": {
               "anyOf": [
                 {

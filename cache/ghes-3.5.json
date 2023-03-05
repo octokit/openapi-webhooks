@@ -54,10 +54,6 @@
       "description": "List emojis available to use on GitHub."
     },
     {
-      "name": "enterprise-admin",
-      "description": "Administer a GitHub enterprise."
-    },
-    {
       "name": "dependabot",
       "description": "Endpoints to manage Dependabot."
     },
@@ -106,6 +102,10 @@
       "description": "Move projects to or from GitHub."
     },
     {
+      "name": "oidc",
+      "description": "Endpoints to manage GitHub OIDC configuration using the REST API."
+    },
+    {
       "name": "orgs",
       "description": "Interact with GitHub Orgs."
     },
@@ -142,10 +142,6 @@
       "description": "Retrieve secret scanning alerts from a repository."
     },
     {
-      "name": "server-statistics",
-      "description": "GHES statistics"
-    },
-    {
       "name": "teams",
       "description": "Interact with GitHub Teams."
     },
@@ -156,10 +152,6 @@
     {
       "name": "enterprise-admin",
       "description": "Enterprise Administration"
-    },
-    {
-      "name": "server-statistics",
-      "description": "Server statistics"
     }
   ],
   "servers": [
@@ -436,6 +428,7 @@
           }
         },
         "requestBody": {
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
@@ -1258,6 +1251,7 @@
           }
         },
         "requestBody": {
+          "required": false,
           "content": {
             "application/json": {
               "schema": {
@@ -1716,6 +1710,7 @@
           }
         },
         "requestBody": {
+          "required": false,
           "content": {
             "application/json": {
               "schema": {
@@ -2104,7 +2099,8 @@
                       "type": "string"
                     }
                   }
-                }
+                },
+                "required": ["scopes"]
               },
               "examples": {
                 "default": {
@@ -2504,6 +2500,58 @@
           "enabledForGitHubApps": false,
           "category": "apps",
           "subcategory": "webhooks"
+        }
+      }
+    },
+    "/app/installation-requests": {
+      "get": {
+        "summary": "List installation requests for the authenticated app",
+        "description": "Lists all the pending installation requests for the authenticated GitHub App.",
+        "tags": ["apps"],
+        "operationId": "apps/list-installation-requests-for-authenticated-app",
+        "externalDocs": {
+          "description": "API method documentation",
+          "url": "https://docs.github.com/enterprise-server@3.5/rest/reference/apps#list-installation-requests-for-the-authenticated-app"
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/per-page"
+          },
+          {
+            "$ref": "#/components/parameters/page"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of integration installation requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/integration-installation-request"
+                  }
+                },
+                "examples": {
+                  "exampleKey1": {
+                    "$ref": "#/components/examples/integration-installation-request-paginated"
+                  }
+                }
+              }
+            }
+          },
+          "304": {
+            "$ref": "#/components/responses/not_modified"
+          },
+          "401": {
+            "$ref": "#/components/responses/requires_authentication"
+          }
+        },
+        "x-github": {
+          "githubCloudOnly": false,
+          "enabledForGitHubApps": true,
+          "category": "apps",
+          "subcategory": null
         }
       }
     },
@@ -2963,7 +3011,7 @@
     "/applications/{client_id}/grant": {
       "delete": {
         "summary": "Delete an app authorization",
-        "description": "OAuth application owners can revoke a grant for their OAuth application and a specific user. You must use [Basic Authentication](https://docs.github.com/enterprise-server@3.5/rest/overview/other-authentication-methods#basic-authentication) when accessing this endpoint, using the OAuth application's `client_id` and `client_secret` as the username and password. You must also provide a valid OAuth `access_token` as an input parameter and the grant for the token's owner will be deleted.\nDeleting an OAuth application's grant will also delete all OAuth tokens associated with the application for the user. Once deleted, the application will have no access to the user's account and will no longer be listed on [the application authorizations settings screen within GitHub](https://github.com/settings/applications#authorized).",
+        "description": "OAuth and GitHub application owners can revoke a grant for their application and a specific user. You must use [Basic Authentication](https://docs.github.com/enterprise-server@3.5/rest/overview/other-authentication-methods#basic-authentication) when accessing this endpoint, using the OAuth application's `client_id` and `client_secret` as the username and password. You must also provide a valid OAuth `access_token` as an input parameter and the grant for the token's owner will be deleted.\nDeleting an application's grant will also delete all OAuth tokens associated with the application for the user. Once deleted, the application will have no access to the user's account and will no longer be listed on [the application authorizations settings screen within GitHub](https://github.com/settings/applications#authorized).",
         "operationId": "apps/delete-authorization",
         "tags": ["apps"],
         "externalDocs": {
@@ -3018,7 +3066,7 @@
     "/applications/{client_id}/token": {
       "post": {
         "summary": "Check a token",
-        "description": "OAuth applications can use a special API method for checking OAuth token validity without exceeding the normal rate limits for failed login attempts. Authentication works differently with this particular endpoint. You must use [Basic Authentication](https://docs.github.com/enterprise-server@3.5/rest/overview/other-authentication-methods#basic-authentication) to use this endpoint, where the username is the OAuth application `client_id` and the password is its `client_secret`. Invalid tokens will return `404 NOT FOUND`.",
+        "description": "OAuth applications and GitHub applications with OAuth authorizations can use this API method for checking OAuth token validity without exceeding the normal rate limits for failed login attempts. Authentication works differently with this particular endpoint. You must use [Basic Authentication](https://docs.github.com/enterprise-server@3.5/rest/overview/other-authentication-methods#basic-authentication) to use this endpoint, where the username is the application `client_id` and the password is its `client_secret`. Invalid tokens will return `404 NOT FOUND`.",
         "tags": ["apps"],
         "operationId": "apps/check-token",
         "externalDocs": {
@@ -3037,7 +3085,7 @@
               "schema": {
                 "properties": {
                   "access_token": {
-                    "description": "The access_token of the OAuth application.",
+                    "description": "The access_token of the OAuth or GitHub application.",
                     "type": "string"
                   }
                 },
@@ -3086,7 +3134,7 @@
       },
       "patch": {
         "summary": "Reset a token",
-        "description": "OAuth applications can use this API method to reset a valid OAuth token without end-user involvement. Applications must save the \"token\" property in the response because changes take effect immediately. You must use [Basic Authentication](https://docs.github.com/enterprise-server@3.5/rest/overview/other-authentication-methods#basic-authentication) when accessing this endpoint, using the OAuth application's `client_id` and `client_secret` as the username and password. Invalid tokens will return `404 NOT FOUND`.",
+        "description": "OAuth applications and GitHub applications with OAuth authorizations can use this API method to reset a valid OAuth token without end-user involvement. Applications must save the \"token\" property in the response because changes take effect immediately. You must use [Basic Authentication](https://docs.github.com/enterprise-server@3.5/rest/overview/other-authentication-methods#basic-authentication) when accessing this endpoint, using the application's `client_id` and `client_secret` as the username and password. Invalid tokens will return `404 NOT FOUND`.",
         "tags": ["apps"],
         "operationId": "apps/reset-token",
         "externalDocs": {
@@ -3105,7 +3153,7 @@
               "schema": {
                 "properties": {
                   "access_token": {
-                    "description": "The access_token of the OAuth application.",
+                    "description": "The access_token of the OAuth or GitHub application.",
                     "type": "string"
                   }
                 },
@@ -3151,7 +3199,7 @@
       },
       "delete": {
         "summary": "Delete an app token",
-        "description": "OAuth application owners can revoke a single token for an OAuth application. You must use [Basic Authentication](https://docs.github.com/enterprise-server@3.5/rest/overview/other-authentication-methods#basic-authentication) when accessing this endpoint, using the OAuth application's `client_id` and `client_secret` as the username and password.",
+        "description": "OAuth  or GitHub application owners can revoke a single token for an OAuth application or a GitHub application with an OAuth authorization. You must use [Basic Authentication](https://docs.github.com/enterprise-server@3.5/rest/overview/other-authentication-methods#basic-authentication) when accessing this endpoint, using the application's `client_id` and `client_secret` as the username and password.",
         "tags": ["apps"],
         "operationId": "apps/delete-token",
         "externalDocs": {
@@ -3206,12 +3254,12 @@
     "/applications/{client_id}/token/scoped": {
       "post": {
         "summary": "Create a scoped access token",
-        "description": "Use a non-scoped user-to-server OAuth access token to create a repository scoped and/or permission scoped user-to-server OAuth access token. You can specify which repositories the token can access and which permissions are granted to the token. You must use [Basic Authentication](https://docs.github.com/enterprise-server@3.5/rest/overview/other-authentication-methods#basic-authentication) when accessing this endpoint, using the OAuth application's `client_id` and `client_secret` as the username and password. Invalid tokens will return `404 NOT FOUND`.",
+        "description": "Use a non-scoped user-to-server access token to create a repository scoped and/or permission scoped user-to-server access token. You can specify which repositories the token can access and which permissions are granted to the token. You must use [Basic Authentication](https://docs.github.com/enterprise-server@3.5/rest/overview/other-authentication-methods#basic-authentication) when accessing this endpoint, using the `client_id` and `client_secret` of the GitHub App as the username and password. Invalid tokens will return `404 NOT FOUND`.",
         "tags": ["apps"],
         "operationId": "apps/scope-token",
         "externalDocs": {
           "description": "API method documentation",
-          "url": "https://docs.github.com/enterprise-server@3.5/rest/reference/apps#create-a-scoped-access-token"
+          "url": "https://docs.github.com/enterprise-server@3.5/rest/apps/apps#create-a-scoped-access-token"
         },
         "parameters": [
           {
@@ -3227,7 +3275,7 @@
                 "properties": {
                   "access_token": {
                     "type": "string",
-                    "description": "The OAuth access token used to authenticate to the GitHub API.",
+                    "description": "The access token used to authenticate to the GitHub API.",
                     "examples": ["e72e16c7e42f292c6912e7710c838347ae178b4a"]
                   },
                   "target": {
@@ -3311,7 +3359,7 @@
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
           "category": "apps",
-          "subcategory": "oauth-applications"
+          "subcategory": "apps"
         }
       }
     },
@@ -4772,7 +4820,7 @@
         },
         "x-github": {
           "enabledForGitHubApps": true,
-          "githubCloudOnly": false,
+          "githubCloudOnly": true,
           "category": "actions",
           "subcategory": "cache"
         }
@@ -4898,7 +4946,7 @@
         },
         "x-github": {
           "enabledForGitHubApps": false,
-          "githubCloudOnly": false,
+          "githubCloudOnly": true,
           "category": "actions",
           "subcategory": "permissions"
         }
@@ -4951,7 +4999,7 @@
         },
         "x-github": {
           "enabledForGitHubApps": false,
-          "githubCloudOnly": false,
+          "githubCloudOnly": true,
           "category": "actions",
           "subcategory": "permissions"
         }
@@ -5009,7 +5057,7 @@
         },
         "x-github": {
           "enabledForGitHubApps": false,
-          "githubCloudOnly": false,
+          "githubCloudOnly": true,
           "category": "actions",
           "subcategory": "permissions"
         }
@@ -5063,7 +5111,7 @@
         },
         "x-github": {
           "enabledForGitHubApps": false,
-          "githubCloudOnly": false,
+          "githubCloudOnly": true,
           "category": "actions",
           "subcategory": "permissions"
         }
@@ -5094,7 +5142,7 @@
         },
         "x-github": {
           "enabledForGitHubApps": false,
-          "githubCloudOnly": false,
+          "githubCloudOnly": true,
           "category": "actions",
           "subcategory": "permissions"
         }
@@ -5123,7 +5171,7 @@
         },
         "x-github": {
           "enabledForGitHubApps": false,
-          "githubCloudOnly": false,
+          "githubCloudOnly": true,
           "category": "actions",
           "subcategory": "permissions"
         }
@@ -5163,7 +5211,7 @@
         },
         "x-github": {
           "enabledForGitHubApps": false,
-          "githubCloudOnly": false,
+          "githubCloudOnly": true,
           "category": "actions",
           "subcategory": "permissions"
         }
@@ -5204,7 +5252,7 @@
         },
         "x-github": {
           "enabledForGitHubApps": false,
-          "githubCloudOnly": false,
+          "githubCloudOnly": true,
           "category": "actions",
           "subcategory": "permissions"
         }
@@ -5262,7 +5310,7 @@
         },
         "x-github": {
           "enabledForGitHubApps": false,
-          "githubCloudOnly": false,
+          "githubCloudOnly": true,
           "category": "actions",
           "subcategory": "self-hosted-runner-groups"
         }
@@ -5369,7 +5417,7 @@
         },
         "x-github": {
           "enabledForGitHubApps": false,
-          "githubCloudOnly": false,
+          "githubCloudOnly": true,
           "category": "actions",
           "subcategory": "self-hosted-runner-groups"
         }
@@ -5412,7 +5460,7 @@
         },
         "x-github": {
           "enabledForGitHubApps": false,
-          "githubCloudOnly": false,
+          "githubCloudOnly": true,
           "category": "actions",
           "subcategory": "self-hosted-runner-groups"
         }
@@ -5504,7 +5552,7 @@
         },
         "x-github": {
           "enabledForGitHubApps": false,
-          "githubCloudOnly": false,
+          "githubCloudOnly": true,
           "category": "actions",
           "subcategory": "self-hosted-runner-groups"
         }
@@ -5533,7 +5581,7 @@
         },
         "x-github": {
           "enabledForGitHubApps": false,
-          "githubCloudOnly": false,
+          "githubCloudOnly": true,
           "category": "actions",
           "subcategory": "self-hosted-runner-groups"
         }
@@ -5594,7 +5642,7 @@
         },
         "x-github": {
           "enabledForGitHubApps": false,
-          "githubCloudOnly": false,
+          "githubCloudOnly": true,
           "category": "actions",
           "subcategory": "self-hosted-runner-groups"
         }
@@ -5651,7 +5699,7 @@
         },
         "x-github": {
           "enabledForGitHubApps": false,
-          "githubCloudOnly": false,
+          "githubCloudOnly": true,
           "category": "actions",
           "subcategory": "self-hosted-runner-groups"
         }
@@ -5685,7 +5733,7 @@
         },
         "x-github": {
           "enabledForGitHubApps": false,
-          "githubCloudOnly": false,
+          "githubCloudOnly": true,
           "category": "actions",
           "subcategory": "self-hosted-runner-groups"
         }
@@ -5717,7 +5765,7 @@
         },
         "x-github": {
           "enabledForGitHubApps": false,
-          "githubCloudOnly": false,
+          "githubCloudOnly": true,
           "category": "actions",
           "subcategory": "self-hosted-runner-groups"
         }
@@ -5783,7 +5831,7 @@
         },
         "x-github": {
           "enabledForGitHubApps": false,
-          "githubCloudOnly": false,
+          "githubCloudOnly": true,
           "category": "actions",
           "subcategory": "self-hosted-runner-groups"
         }
@@ -5840,7 +5888,7 @@
         },
         "x-github": {
           "enabledForGitHubApps": false,
-          "githubCloudOnly": false,
+          "githubCloudOnly": true,
           "category": "actions",
           "subcategory": "self-hosted-runner-groups"
         }
@@ -5874,7 +5922,7 @@
         },
         "x-github": {
           "enabledForGitHubApps": false,
-          "githubCloudOnly": false,
+          "githubCloudOnly": true,
           "category": "actions",
           "subcategory": "self-hosted-runner-groups"
         }
@@ -5906,7 +5954,7 @@
         },
         "x-github": {
           "enabledForGitHubApps": false,
-          "githubCloudOnly": false,
+          "githubCloudOnly": true,
           "category": "actions",
           "subcategory": "self-hosted-runner-groups"
         }
@@ -5968,7 +6016,7 @@
         },
         "x-github": {
           "enabledForGitHubApps": false,
-          "githubCloudOnly": false,
+          "githubCloudOnly": true,
           "category": "actions",
           "subcategory": "self-hosted-runners"
         }
@@ -6011,7 +6059,7 @@
         },
         "x-github": {
           "enabledForGitHubApps": false,
-          "githubCloudOnly": false,
+          "githubCloudOnly": true,
           "category": "actions",
           "subcategory": "self-hosted-runners"
         }
@@ -6051,7 +6099,7 @@
         },
         "x-github": {
           "enabledForGitHubApps": false,
-          "githubCloudOnly": false,
+          "githubCloudOnly": true,
           "category": "actions",
           "subcategory": "self-hosted-runners"
         }
@@ -6091,7 +6139,7 @@
         },
         "x-github": {
           "enabledForGitHubApps": false,
-          "githubCloudOnly": false,
+          "githubCloudOnly": true,
           "category": "actions",
           "subcategory": "self-hosted-runners"
         }
@@ -6134,7 +6182,7 @@
         },
         "x-github": {
           "enabledForGitHubApps": false,
-          "githubCloudOnly": false,
+          "githubCloudOnly": true,
           "category": "actions",
           "subcategory": "self-hosted-runners"
         }
@@ -6163,7 +6211,7 @@
         },
         "x-github": {
           "enabledForGitHubApps": false,
-          "githubCloudOnly": false,
+          "githubCloudOnly": true,
           "category": "actions",
           "subcategory": "self-hosted-runners"
         }
@@ -6197,7 +6245,7 @@
         },
         "x-github": {
           "enabledForGitHubApps": false,
-          "githubCloudOnly": false,
+          "githubCloudOnly": true,
           "category": "actions",
           "subcategory": "self-hosted-runners"
         }
@@ -6260,7 +6308,7 @@
           }
         },
         "x-github": {
-          "githubCloudOnly": false,
+          "githubCloudOnly": true,
           "enabledForGitHubApps": false,
           "category": "actions",
           "subcategory": "self-hosted-runners"
@@ -6324,7 +6372,7 @@
           }
         },
         "x-github": {
-          "githubCloudOnly": false,
+          "githubCloudOnly": true,
           "enabledForGitHubApps": false,
           "category": "actions",
           "subcategory": "self-hosted-runners"
@@ -6359,7 +6407,7 @@
           }
         },
         "x-github": {
-          "githubCloudOnly": false,
+          "githubCloudOnly": true,
           "enabledForGitHubApps": false,
           "category": "actions",
           "subcategory": "self-hosted-runners"
@@ -6399,7 +6447,7 @@
           }
         },
         "x-github": {
-          "githubCloudOnly": false,
+          "githubCloudOnly": true,
           "enabledForGitHubApps": false,
           "category": "actions",
           "subcategory": "self-hosted-runners"
@@ -6421,7 +6469,7 @@
             "$ref": "#/components/parameters/enterprise"
           },
           {
-            "$ref": "#/components/parameters/audit-log-phrase"
+            "$ref": "#/components/parameters/audit-log-enterprise-phrase"
           },
           {
             "$ref": "#/components/parameters/audit-log-include"
@@ -6584,7 +6632,7 @@
           }
         },
         "x-github": {
-          "githubCloudOnly": false,
+          "githubCloudOnly": true,
           "enabledForGitHubApps": false,
           "category": "enterprise-admin",
           "subcategory": "billing"
@@ -9102,7 +9150,7 @@
     "/organizations/{organization_id}/custom_roles": {
       "get": {
         "summary": "List custom repository roles in an organization",
-        "description": "List the custom repository roles available in this organization. In order to see custom\nrepository roles in an organization, the authenticated user must be an organization owner.\n\nTo use this endpoint the authenticated user must be an administrator for the organization or of an repository of the organizaiton and must use an access token with `admin:org repo` scope.\nGitHub Apps must have the `organization_custom_roles:read` organization permission to use this endpoint.\n\nFor more information on custom repository roles, see \"[About custom repository roles](https://docs.github.com/enterprise-server@3.5/organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-repository-roles).\"",
+        "description": "List the custom repository roles available in this organization. In order to see custom\nrepository roles in an organization, the authenticated user must be an organization owner.\n\nTo use this endpoint the authenticated user must be an administrator for the organization or of an repository of the organization and must use an access token with `admin:org repo` scope.\nGitHub Apps must have the `organization_custom_roles:read` organization permission to use this endpoint.\n\nFor more information on custom repository roles, see \"[About custom repository roles](https://docs.github.com/enterprise-server@3.5/organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-repository-roles).\"",
         "tags": ["orgs"],
         "operationId": "orgs/list-custom-roles",
         "externalDocs": {
@@ -9151,7 +9199,7 @@
           }
         },
         "x-github": {
-          "githubCloudOnly": false,
+          "githubCloudOnly": true,
           "enabledForGitHubApps": true,
           "category": "orgs",
           "subcategory": "custom_roles"
@@ -9955,7 +10003,7 @@
         },
         "x-github": {
           "enabledForGitHubApps": true,
-          "githubCloudOnly": false,
+          "githubCloudOnly": true,
           "category": "actions",
           "subcategory": "self-hosted-runner-groups"
         }
@@ -10063,7 +10111,7 @@
         },
         "x-github": {
           "enabledForGitHubApps": true,
-          "githubCloudOnly": false,
+          "githubCloudOnly": true,
           "category": "actions",
           "subcategory": "self-hosted-runner-groups"
         }
@@ -10072,7 +10120,7 @@
     "/orgs/{org}/actions/runner-groups/{runner_group_id}": {
       "get": {
         "summary": "Get a self-hosted runner group for an organization",
-        "description": "Gets a specific self-hosted runner group for an organization.\nYou must authenticate using an access token with the `admin:org` scope to use this endpoint.",
+        "description": "Gets a specific self-hosted runner group for an organization.\n\nYou must authenticate using an access token with the `admin:org` scope to use this endpoint.",
         "operationId": "actions/get-self-hosted-runner-group-for-org",
         "tags": ["actions"],
         "externalDocs": {
@@ -10106,7 +10154,7 @@
         },
         "x-github": {
           "enabledForGitHubApps": true,
-          "githubCloudOnly": false,
+          "githubCloudOnly": true,
           "category": "actions",
           "subcategory": "self-hosted-runner-groups"
         }
@@ -10198,14 +10246,14 @@
         },
         "x-github": {
           "enabledForGitHubApps": true,
-          "githubCloudOnly": false,
+          "githubCloudOnly": true,
           "category": "actions",
           "subcategory": "self-hosted-runner-groups"
         }
       },
       "delete": {
         "summary": "Delete a self-hosted runner group from an organization",
-        "description": "Deletes a self-hosted runner group for an organization.\nYou must authenticate using an access token with the `admin:org` scope to use this endpoint.",
+        "description": "Deletes a self-hosted runner group for an organization.\n\nYou must authenticate using an access token with the `admin:org` scope to use this endpoint.",
         "operationId": "actions/delete-self-hosted-runner-group-from-org",
         "tags": ["actions"],
         "externalDocs": {
@@ -10227,7 +10275,7 @@
         },
         "x-github": {
           "enabledForGitHubApps": true,
-          "githubCloudOnly": false,
+          "githubCloudOnly": true,
           "category": "actions",
           "subcategory": "self-hosted-runner-groups"
         }
@@ -10288,7 +10336,7 @@
         },
         "x-github": {
           "enabledForGitHubApps": true,
-          "githubCloudOnly": false,
+          "githubCloudOnly": true,
           "category": "actions",
           "subcategory": "self-hosted-runner-groups"
         }
@@ -10345,7 +10393,7 @@
         },
         "x-github": {
           "enabledForGitHubApps": true,
-          "githubCloudOnly": false,
+          "githubCloudOnly": true,
           "category": "actions",
           "subcategory": "self-hosted-runner-groups"
         }
@@ -10411,7 +10459,7 @@
         },
         "x-github": {
           "enabledForGitHubApps": true,
-          "githubCloudOnly": false,
+          "githubCloudOnly": true,
           "category": "actions",
           "subcategory": "self-hosted-runner-groups"
         }
@@ -10477,7 +10525,7 @@
         },
         "x-github": {
           "enabledForGitHubApps": true,
-          "githubCloudOnly": false,
+          "githubCloudOnly": true,
           "category": "actions",
           "subcategory": "self-hosted-runner-groups"
         }
@@ -10534,7 +10582,7 @@
         },
         "x-github": {
           "enabledForGitHubApps": true,
-          "githubCloudOnly": false,
+          "githubCloudOnly": true,
           "category": "actions",
           "subcategory": "self-hosted-runner-groups"
         }
@@ -10568,7 +10616,7 @@
         },
         "x-github": {
           "enabledForGitHubApps": true,
-          "githubCloudOnly": false,
+          "githubCloudOnly": true,
           "category": "actions",
           "subcategory": "self-hosted-runner-groups"
         }
@@ -10600,7 +10648,7 @@
         },
         "x-github": {
           "enabledForGitHubApps": true,
-          "githubCloudOnly": false,
+          "githubCloudOnly": true,
           "category": "actions",
           "subcategory": "self-hosted-runner-groups"
         }
@@ -11632,7 +11680,7 @@
         "operationId": "code-scanning/list-alerts-for-org",
         "externalDocs": {
           "description": "API method documentation",
-          "url": "https://docs.github.com/enterprise-server@3.5/rest/reference/code-scanning#list-code-scanning-alerts-by-organization"
+          "url": "https://docs.github.com/enterprise-server@3.5/rest/reference/code-scanning#list-code-scanning-alerts-for-an-organization"
         },
         "parameters": [
           {
@@ -13426,12 +13474,12 @@
     "/orgs/{org}/migrations": {
       "get": {
         "summary": "List organization migrations",
-        "description": "Lists the most recent migrations.",
+        "description": "Lists the most recent migrations, including both exports (which can be started through the REST API) and imports (which cannot be started using the REST API).\n\nA list of `repositories` is only returned for export migrations.",
         "tags": ["migrations"],
         "operationId": "migrations/list-for-org",
         "externalDocs": {
           "description": "API method documentation",
-          "url": "https://docs.github.com/enterprise-server@3.5/rest/reference/migrations#list-organization-migrations"
+          "url": "https://docs.github.com/enterprise-server@3.5/rest/migrations/orgs#list-organization-migrations"
         },
         "parameters": [
           {
@@ -13497,7 +13545,7 @@
         "operationId": "migrations/start-for-org",
         "externalDocs": {
           "description": "API method documentation",
-          "url": "https://docs.github.com/enterprise-server@3.5/rest/reference/migrations#start-an-organization-migration"
+          "url": "https://docs.github.com/enterprise-server@3.5/rest/migrations/orgs#start-an-organization-migration"
         },
         "parameters": [
           {
@@ -13619,7 +13667,7 @@
         "operationId": "migrations/get-status-for-org",
         "externalDocs": {
           "description": "API method documentation",
-          "url": "https://docs.github.com/enterprise-server@3.5/rest/reference/migrations#get-an-organization-migration-status"
+          "url": "https://docs.github.com/enterprise-server@3.5/rest/migrations/orgs#get-an-organization-migration-status"
         },
         "parameters": [
           {
@@ -13656,6 +13704,169 @@
                     "$ref": "#/components/examples/migration-with-short-org"
                   }
                 }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/not_found"
+          }
+        },
+        "x-github": {
+          "githubCloudOnly": false,
+          "enabledForGitHubApps": false,
+          "category": "migrations",
+          "subcategory": "orgs"
+        }
+      }
+    },
+    "/orgs/{org}/migrations/{migration_id}/archive": {
+      "get": {
+        "summary": "Download an organization migration archive",
+        "description": "Fetches the URL to a migration archive.",
+        "tags": ["migrations"],
+        "operationId": "migrations/download-archive-for-org",
+        "externalDocs": {
+          "description": "API method documentation",
+          "url": "https://docs.github.com/enterprise-server@3.5/rest/migrations/orgs#download-an-organization-migration-archive"
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/org"
+          },
+          {
+            "$ref": "#/components/parameters/migration-id"
+          }
+        ],
+        "responses": {
+          "302": {
+            "description": "Response"
+          },
+          "404": {
+            "$ref": "#/components/responses/not_found"
+          }
+        },
+        "x-github": {
+          "githubCloudOnly": false,
+          "enabledForGitHubApps": false,
+          "category": "migrations",
+          "subcategory": "orgs"
+        }
+      },
+      "delete": {
+        "summary": "Delete an organization migration archive",
+        "description": "Deletes a previous migration archive. Migration archives are automatically deleted after seven days.",
+        "tags": ["migrations"],
+        "operationId": "migrations/delete-archive-for-org",
+        "externalDocs": {
+          "description": "API method documentation",
+          "url": "https://docs.github.com/enterprise-server@3.5/rest/migrations/orgs#delete-an-organization-migration-archive"
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/org"
+          },
+          {
+            "$ref": "#/components/parameters/migration-id"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Response"
+          },
+          "404": {
+            "$ref": "#/components/responses/not_found"
+          }
+        },
+        "x-github": {
+          "githubCloudOnly": false,
+          "enabledForGitHubApps": false,
+          "category": "migrations",
+          "subcategory": "orgs"
+        }
+      }
+    },
+    "/orgs/{org}/migrations/{migration_id}/repos/{repo_name}/lock": {
+      "delete": {
+        "summary": "Unlock an organization repository",
+        "description": "Unlocks a repository that was locked for migration. You should unlock each migrated repository and [delete them](https://docs.github.com/enterprise-server@3.5/rest/repos/repos#delete-a-repository) when the migration is complete and you no longer need the source data.",
+        "tags": ["migrations"],
+        "operationId": "migrations/unlock-repo-for-org",
+        "externalDocs": {
+          "description": "API method documentation",
+          "url": "https://docs.github.com/enterprise-server@3.5/rest/migrations/orgs#unlock-an-organization-repository"
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/org"
+          },
+          {
+            "$ref": "#/components/parameters/migration-id"
+          },
+          {
+            "$ref": "#/components/parameters/repo-name"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Response"
+          },
+          "404": {
+            "$ref": "#/components/responses/not_found"
+          }
+        },
+        "x-github": {
+          "githubCloudOnly": false,
+          "enabledForGitHubApps": false,
+          "category": "migrations",
+          "subcategory": "orgs"
+        }
+      }
+    },
+    "/orgs/{org}/migrations/{migration_id}/repositories": {
+      "get": {
+        "summary": "List repositories in an organization migration",
+        "description": "List all the repositories for this organization migration.",
+        "tags": ["migrations"],
+        "operationId": "migrations/list-repos-for-org",
+        "externalDocs": {
+          "description": "API method documentation",
+          "url": "https://docs.github.com/enterprise-server@3.5/rest/migrations/orgs#list-repositories-in-an-organization-migration"
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/org"
+          },
+          {
+            "$ref": "#/components/parameters/migration-id"
+          },
+          {
+            "$ref": "#/components/parameters/per-page"
+          },
+          {
+            "$ref": "#/components/parameters/page"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/minimal-repository"
+                  }
+                },
+                "examples": {
+                  "default": {
+                    "$ref": "#/components/examples/minimal-repository-items"
+                  }
+                }
+              }
+            },
+            "headers": {
+              "Link": {
+                "$ref": "#/components/headers/link"
               }
             }
           },
@@ -14014,6 +14225,7 @@
           }
         },
         "requestBody": {
+          "required": false,
           "content": {
             "application/json": {
               "schema": {
@@ -14588,7 +14800,7 @@
                   },
                   "delete_branch_on_merge": {
                     "type": "boolean",
-                    "description": "Either `true` to allow automatically deleting head branches when pull requests are merged, or `false` to prevent automatic deletion.",
+                    "description": "Either `true` to allow automatically deleting head branches when pull requests are merged, or `false` to prevent automatic deletion. **The authenticated user must be an organization owner to set this property to `true`.**",
                     "default": false
                   },
                   "use_squash_pr_title_as_default": {
@@ -14786,7 +14998,7 @@
           }
         },
         "x-github": {
-          "githubCloudOnly": false,
+          "githubCloudOnly": true,
           "enabledForGitHubApps": true,
           "category": "billing",
           "subcategory": null
@@ -14961,7 +15173,7 @@
     "/orgs/{org}/teams/{team_slug}": {
       "get": {
         "summary": "Get a team by name",
-        "description": "Gets a team using the team's `slug`. GitHub Enterprise Server generates the `slug` from the team `name`.\n\n**Note:** You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}`.",
+        "description": "Gets a team using the team's `slug`. To create the `slug`, GitHub Enterprise Server replaces special characters in the `name` string, changes all words to lowercase, and replaces spaces with a `-` separator. For example, `\"My TEam Näme\"` would become `my-team-name`.\n\n**Note:** You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}`.",
         "tags": ["teams"],
         "operationId": "teams/get-by-name",
         "externalDocs": {
@@ -16742,7 +16954,7 @@
                 "properties": {
                   "permission": {
                     "type": "string",
-                    "description": "The permission to grant the team on this repository. If no permission is specified, the team's `permission` attribute will be used to determine what permission to grant the team on this repository.",
+                    "description": "The permission to grant the team on this repository. We accept the following permissions to be set: `pull`, `triage`, `push`, `maintain`, `admin` and you can also specify a custom repository role name, if the owning organization has defined any. If no permission is specified, the team's `permission` attribute will be used to determine what permission to grant the team on this repository.",
                     "default": "push"
                   }
                 }
@@ -21606,7 +21818,7 @@
         "operationId": "repos/list-autolinks",
         "externalDocs": {
           "description": "API method documentation",
-          "url": "https://docs.github.com/enterprise-server@3.5/v3/repos#list-autolinks"
+          "url": "https://docs.github.com/enterprise-server@3.5/rest/repos/autolinks#list-all-autolinks-of-a-repository"
         },
         "parameters": [
           {
@@ -21653,7 +21865,7 @@
         "operationId": "repos/create-autolink",
         "externalDocs": {
           "description": "API method documentation",
-          "url": "https://docs.github.com/enterprise-server@3.5/v3/repos#create-an-autolink"
+          "url": "https://docs.github.com/enterprise-server@3.5/rest/repos/autolinks#create-an-autolink-reference-for-a-repository"
         },
         "parameters": [
           {
@@ -21680,7 +21892,7 @@
                   },
                   "is_alphanumeric": {
                     "type": "boolean",
-                    "default": "true",
+                    "default": true,
                     "description": "Whether this autolink reference matches alphanumeric characters. If true, the `<num>` parameter of the `url_template` matches alphanumeric characters `A-Z` (case insensitive), `0-9`, and `-`. If false, this autolink reference only matches numeric characters."
                   }
                 },
@@ -21742,7 +21954,7 @@
         "operationId": "repos/get-autolink",
         "externalDocs": {
           "description": "API method documentation",
-          "url": "https://docs.github.com/enterprise-server@3.5/v3/repos#get-autolink"
+          "url": "https://docs.github.com/enterprise-server@3.5/rest/repos/autolinks#get-an-autolink-reference-of-a-repository"
         },
         "parameters": [
           {
@@ -21789,7 +22001,7 @@
         "operationId": "repos/delete-autolink",
         "externalDocs": {
           "description": "API method documentation",
-          "url": "https://docs.github.com/enterprise-server@3.5/v3/repos#delete-autolink"
+          "url": "https://docs.github.com/enterprise-server@3.5/rest/repos/autolinks#delete-an-autolink-reference-from-a-repository"
         },
         "parameters": [
           {
@@ -23049,17 +23261,20 @@
                       "type": "string"
                     }
                   }
-                ]
+                ],
+                "type": "array",
+                "description": "The name of the status checks",
+                "items": {
+                  "type": "string"
+                }
               },
               "examples": {
                 "default": {
                   "summary": "Example adding status checks to a branch protection rule",
-                  "value": {
-                    "contexts": [
-                      "continuous-integration/travis-ci",
-                      "continuous-integration/jenkins"
-                    ]
-                  }
+                  "value": [
+                    "continuous-integration/travis-ci",
+                    "continuous-integration/jenkins"
+                  ]
                 }
               }
             }
@@ -23154,14 +23369,17 @@
                       "type": "string"
                     }
                   }
-                ]
+                ],
+                "type": "array",
+                "description": "The name of the status checks",
+                "items": {
+                  "type": "string"
+                }
               },
               "examples": {
                 "default": {
                   "summary": "Example updating status checks for a branch protection rule",
-                  "value": {
-                    "contexts": ["continuous-integration/travis-ci"]
-                  }
+                  "value": ["continuous-integration/travis-ci"]
                 }
               }
             }
@@ -23249,14 +23467,17 @@
                       "type": "string"
                     }
                   }
-                ]
+                ],
+                "type": "array",
+                "description": "The name of the status checks",
+                "items": {
+                  "type": "string"
+                }
               },
               "examples": {
                 "default": {
                   "summary": "Example removing status checks from a branch protection rule",
-                  "value": {
-                    "contexts": ["continuous-integration/travis-ci"]
-                  }
+                  "value": ["continuous-integration/jenkins"]
                 }
               }
             }
@@ -23755,7 +23976,7 @@
       },
       "post": {
         "summary": "Add team access restrictions",
-        "description": "Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-server@3.5/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.\n\nGrants the specified teams push access for this branch. You can also give push access to child teams.\n\n| Type    | Description                                                                                                                                |\n| ------- | ------------------------------------------------------------------------------------------------------------------------------------------ |\n| `array` | The teams that can have push access. Use the team's `slug`. **Note**: The list of users, apps, and teams in total is limited to 100 items. |",
+        "description": "Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-server@3.5/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.\n\nGrants the specified teams push access for this branch. You can also give push access to child teams.",
         "tags": ["repos"],
         "operationId": "repos/add-team-access-restrictions",
         "externalDocs": {
@@ -23802,14 +24023,17 @@
                       "type": "string"
                     }
                   }
-                ]
+                ],
+                "type": "array",
+                "description": "The slug values for teams",
+                "items": {
+                  "type": "string"
+                }
               },
               "examples": {
                 "default": {
                   "summary": "Example adding a team in a branch protection rule",
-                  "value": {
-                    "teams": ["justice-league"]
-                  }
+                  "value": ["justice-league"]
                 }
               }
             }
@@ -23848,7 +24072,7 @@
       },
       "put": {
         "summary": "Set team access restrictions",
-        "description": "Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-server@3.5/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.\n\nReplaces the list of teams that have push access to this branch. This removes all teams that previously had push access and grants push access to the new list of teams. Team restrictions include child teams.\n\n| Type    | Description                                                                                                                                |\n| ------- | ------------------------------------------------------------------------------------------------------------------------------------------ |\n| `array` | The teams that can have push access. Use the team's `slug`. **Note**: The list of users, apps, and teams in total is limited to 100 items. |",
+        "description": "Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-server@3.5/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.\n\nReplaces the list of teams that have push access to this branch. This removes all teams that previously had push access and grants push access to the new list of teams. Team restrictions include child teams.",
         "tags": ["repos"],
         "operationId": "repos/set-team-access-restrictions",
         "externalDocs": {
@@ -23895,14 +24119,17 @@
                       "type": "string"
                     }
                   }
-                ]
+                ],
+                "type": "array",
+                "description": "The slug values for teams",
+                "items": {
+                  "type": "string"
+                }
               },
               "examples": {
                 "default": {
                   "summary": "Example replacing a team in a branch protection rule",
-                  "value": {
-                    "teams": ["justice-league"]
-                  }
+                  "value": ["justice-league"]
                 }
               }
             }
@@ -23941,7 +24168,7 @@
       },
       "delete": {
         "summary": "Remove team access restrictions",
-        "description": "Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-server@3.5/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.\n\nRemoves the ability of a team to push to this branch. You can also remove push access for child teams.\n\n| Type    | Description                                                                                                                                         |\n| ------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |\n| `array` | Teams that should no longer have push access. Use the team's `slug`. **Note**: The list of users, apps, and teams in total is limited to 100 items. |",
+        "description": "Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-server@3.5/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.\n\nRemoves the ability of a team to push to this branch. You can also remove push access for child teams.",
         "tags": ["repos"],
         "operationId": "repos/remove-team-access-restrictions",
         "externalDocs": {
@@ -23987,18 +24214,22 @@
                       "type": "string"
                     }
                   }
-                ]
+                ],
+                "type": "array",
+                "description": "The slug values for teams",
+                "items": {
+                  "type": "string"
+                }
               },
               "examples": {
                 "default": {
                   "summary": "Example removing a team in a branch protection rule",
-                  "value": {
-                    "teams": ["justice-league"]
-                  }
+                  "value": ["octocats"]
                 }
               }
             }
-          }
+          },
+          "required": false
         },
         "responses": {
           "200": {
@@ -26081,12 +26312,12 @@
     "/repos/{owner}/{repo}/code-scanning/sarifs": {
       "post": {
         "summary": "Upload an analysis as SARIF data",
-        "description": "Uploads SARIF data containing the results of a code scanning analysis to make the results available in a repository. You must use an access token with the `security_events` scope to use this endpoint for private repositories. You can also use tokens with the `public_repo` scope for public repositories only. GitHub Apps must have the `security_events` write permission to use this endpoint.\n\nThere are two places where you can upload code scanning results.\n- If you upload to a pull request, for example `--ref refs/pull/42/merge` or `--ref refs/pull/42/head`, then the results appear as alerts in a pull request check. For more information, see \"[Triaging code scanning alerts in pull requests](/code-security/secure-coding/triaging-code-scanning-alerts-in-pull-requests).\"\n- If you upload to a branch, for example `--ref refs/heads/my-branch`, then the results appear in the **Security** tab for your repository. For more information, see \"[Managing code scanning alerts for your repository](/code-security/secure-coding/managing-code-scanning-alerts-for-your-repository#viewing-the-alerts-for-a-repository).\"\n\nYou must compress the SARIF-formatted analysis data that you want to upload, using `gzip`, and then encode it as a Base64 format string. For example:\n\n```\ngzip -c analysis-data.sarif | base64 -w0\n```\n<br>\nSARIF upload supports a maximum number of entries per the following data objects, and an analysis will be rejected if any of these objects is above its maximum value. For some objects, there are additional values over which the entries will be ignored while keeping the most important entries whenever applicable.\nTo get the most out of your analysis when it includes data above the supported limits, try to optimize the analysis configuration (For example, for the CodeQL tool, identify and remove the most noisy queries).\n\n\n| **SARIF data**                   | **Maximum values** | **Additional limits**                                                            |\n|----------------------------------|:------------------:|----------------------------------------------------------------------------------|\n| Runs per file                    |         15         |                                                                                  |\n| Results per run                  |       25,000       | Only the top 5,000 results will be included, prioritized by severity.            |\n| Rules per run                    |       25,000       |                                                                                  |\n| Thread Flow Locations per result |       10,000       | Only the top 1,000 Thread Flow Locations will be included, using prioritization. |\n| Location per result\t             |       1,000        | Only 100 locations will be included.                                             |\n\n\nThe `202 Accepted` response includes an `id` value.\nYou can use this ID to check the status of the upload by using it in the `/sarifs/{sarif_id}` endpoint.\nFor more information, see \"[Get information about a SARIF upload](/rest/reference/code-scanning#get-information-about-a-sarif-upload).\"",
+        "description": "Uploads SARIF data containing the results of a code scanning analysis to make the results available in a repository. You must use an access token with the `security_events` scope to use this endpoint for private repositories. You can also use tokens with the `public_repo` scope for public repositories only. GitHub Apps must have the `security_events` write permission to use this endpoint.\n\nThere are two places where you can upload code scanning results.\n- If you upload to a pull request, for example `--ref refs/pull/42/merge` or `--ref refs/pull/42/head`, then the results appear as alerts in a pull request check. For more information, see \"[Triaging code scanning alerts in pull requests](/code-security/secure-coding/triaging-code-scanning-alerts-in-pull-requests).\"\n- If you upload to a branch, for example `--ref refs/heads/my-branch`, then the results appear in the **Security** tab for your repository. For more information, see \"[Managing code scanning alerts for your repository](/code-security/secure-coding/managing-code-scanning-alerts-for-your-repository#viewing-the-alerts-for-a-repository).\"\n\nYou must compress the SARIF-formatted analysis data that you want to upload, using `gzip`, and then encode it as a Base64 format string. For example:\n\n```\ngzip -c analysis-data.sarif | base64 -w0\n```\n<br>\nSARIF upload supports a maximum number of entries per the following data objects, and an analysis will be rejected if any of these objects is above its maximum value. For some objects, there are additional values over which the entries will be ignored while keeping the most important entries whenever applicable.\nTo get the most out of your analysis when it includes data above the supported limits, try to optimize the analysis configuration. For example, for the CodeQL tool, identify and remove the most noisy queries.\n\n\n| **SARIF data**                   | **Maximum values** | **Additional limits**                                                            |\n|----------------------------------|:------------------:|----------------------------------------------------------------------------------|\n| Runs per file                    |         15         |                                                                                  |\n| Results per run                  |       25,000       | Only the top 5,000 results will be included, prioritized by severity.            |\n| Rules per run                    |       25,000       |                                                                                  |\n| Thread Flow Locations per result |       10,000       | Only the top 1,000 Thread Flow Locations will be included, using prioritization. |\n| Location per result\t             |       1,000        | Only 100 locations will be included.                                             |\n\nThe `202 Accepted` response includes an `id` value.\nYou can use this ID to check the status of the upload by using it in the `/sarifs/{sarif_id}` endpoint.\nFor more information, see \"[Get information about a SARIF upload](/rest/reference/code-scanning#get-information-about-a-sarif-upload).\"",
         "operationId": "code-scanning/upload-sarif",
         "tags": ["code-scanning"],
         "externalDocs": {
           "description": "API method documentation",
-          "url": "https://docs.github.com/enterprise-server@3.5/rest/reference/code-scanning#upload-a-sarif-file"
+          "url": "https://docs.github.com/enterprise-server@3.5/rest/reference/code-scanning#upload-an-analysis-as-sarif-data"
         },
         "parameters": [
           {
@@ -26189,7 +26420,7 @@
         "tags": ["code-scanning"],
         "externalDocs": {
           "description": "API method documentation",
-          "url": "https://docs.github.com/enterprise-server@3.5/rest/reference/code-scanning#list-recent-code-scanning-analyses-for-a-repository"
+          "url": "https://docs.github.com/enterprise-server@3.5/rest/reference/code-scanning#get-information-about-a-sarif-upload"
         },
         "parameters": [
           {
@@ -26990,7 +27221,7 @@
     "/repos/{owner}/{repo}/commits": {
       "get": {
         "summary": "List commits",
-        "description": "**Signature verification object**\n\nThe response will include a `verification` object that describes the result of verifying the commit's signature. The following fields are included in the `verification` object:\n\n| Name | Type | Description |\n| ---- | ---- | ----------- |\n| `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be verified. |\n| `reason` | `string` | The reason for verified value. Possible values and their meanings are enumerated in table below. |\n| `signature` | `string` | The signature that was extracted from the commit. |\n| `payload` | `string` | The value that was signed. |\n\nThese are the possible values for `reason` in the `verification` object:\n\n| Value | Description |\n| ----- | ----------- |\n| `expired_key` | The key that made the signature is expired. |\n| `not_signing_key` | The \"signing\" flag is not among the usage flags in the GPG key that made the signature. |\n| `gpgverify_error` | There was an error communicating with the signature verification service. |\n| `gpgverify_unavailable` | The signature verification service is currently unavailable. |\n| `unsigned` | The object does not include a signature. |\n| `unknown_signature_type` | A non-PGP signature was found in the commit. |\n| `no_user` | No user was associated with the `committer` email address in the commit. |\n| `unverified_email` | The `committer` email address in the commit was associated with a user, but the email address is not verified on her/his account. |\n| `bad_email` | The `committer` email address in the commit is not included in the identities of the PGP key that made the signature. |\n| `unknown_key` | The key that made the signature has not been registered with any user's account. |\n| `malformed_signature` | There was an error parsing the signature. |\n| `invalid` | The signature could not be cryptographically verified using the key whose key-id was found in the signature. |\n| `valid` | None of the above errors applied, so the signature is considered to be verified. |",
+        "description": "**Signature verification object**\n\nThe response will include a `verification` object that describes the result of verifying the commit's signature. The following fields are included in the `verification` object:\n\n| Name | Type | Description |\n| ---- | ---- | ----------- |\n| `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be verified. |\n| `reason` | `string` | The reason for verified value. Possible values and their meanings are enumerated in table below. |\n| `signature` | `string` | The signature that was extracted from the commit. |\n| `payload` | `string` | The value that was signed. |\n\nThese are the possible values for `reason` in the `verification` object:\n\n| Value | Description |\n| ----- | ----------- |\n| `expired_key` | The key that made the signature is expired. |\n| `not_signing_key` | The \"signing\" flag is not among the usage flags in the GPG key that made the signature. |\n| `gpgverify_error` | There was an error communicating with the signature verification service. |\n| `gpgverify_unavailable` | The signature verification service is currently unavailable. |\n| `unsigned` | The object does not include a signature. |\n| `unknown_signature_type` | A non-PGP signature was found in the commit. |\n| `no_user` | No user was associated with the `committer` email address in the commit. |\n| `unverified_email` | The `committer` email address in the commit was associated with a user, but the email address is not verified on their account. |\n| `bad_email` | The `committer` email address in the commit is not included in the identities of the PGP key that made the signature. |\n| `unknown_key` | The key that made the signature has not been registered with any user's account. |\n| `malformed_signature` | There was an error parsing the signature. |\n| `invalid` | The signature could not be cryptographically verified using the key whose key-id was found in the signature. |\n| `valid` | None of the above errors applied, so the signature is considered to be verified. |",
         "tags": ["repos"],
         "operationId": "repos/list-commits",
         "externalDocs": {
@@ -27024,7 +27255,16 @@
           },
           {
             "name": "author",
-            "description": "GitHub login or email address by which to filter by commit author.",
+            "description": "GitHub username or email address to use to filter by commit author.",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "committer",
+            "description": "GitHub username or email address to use to filter by commit committer.",
             "in": "query",
             "required": false,
             "schema": {
@@ -27366,7 +27606,7 @@
     "/repos/{owner}/{repo}/commits/{ref}": {
       "get": {
         "summary": "Get a commit",
-        "description": "Returns the contents of a single commit reference. You must have `read` access for the repository to use this endpoint.\n\n**Note:** If there are more than 300 files in the commit diff, the response will include pagination link headers for the remaining files, up to a limit of 3000 files. Each page contains the static commit information, and the only changes are to the file listing.\n\nYou can pass the appropriate [media type](https://docs.github.com/enterprise-server@3.5/rest/overview/media-types/#commits-commit-comparison-and-pull-requests) to  fetch `diff` and `patch` formats. Diffs with binary data will have no `patch` property.\n\nTo return only the SHA-1 hash of the commit reference, you can provide the `sha` custom [media type](https://docs.github.com/enterprise-server@3.5/rest/overview/media-types/#commits-commit-comparison-and-pull-requests) in the `Accept` header. You can use this endpoint to check if a remote reference's SHA-1 hash is the same as your local reference's SHA-1 hash by providing the local SHA-1 reference as the ETag.\n\n**Signature verification object**\n\nThe response will include a `verification` object that describes the result of verifying the commit's signature. The following fields are included in the `verification` object:\n\n| Name | Type | Description |\n| ---- | ---- | ----------- |\n| `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be verified. |\n| `reason` | `string` | The reason for verified value. Possible values and their meanings are enumerated in table below. |\n| `signature` | `string` | The signature that was extracted from the commit. |\n| `payload` | `string` | The value that was signed. |\n\nThese are the possible values for `reason` in the `verification` object:\n\n| Value | Description |\n| ----- | ----------- |\n| `expired_key` | The key that made the signature is expired. |\n| `not_signing_key` | The \"signing\" flag is not among the usage flags in the GPG key that made the signature. |\n| `gpgverify_error` | There was an error communicating with the signature verification service. |\n| `gpgverify_unavailable` | The signature verification service is currently unavailable. |\n| `unsigned` | The object does not include a signature. |\n| `unknown_signature_type` | A non-PGP signature was found in the commit. |\n| `no_user` | No user was associated with the `committer` email address in the commit. |\n| `unverified_email` | The `committer` email address in the commit was associated with a user, but the email address is not verified on her/his account. |\n| `bad_email` | The `committer` email address in the commit is not included in the identities of the PGP key that made the signature. |\n| `unknown_key` | The key that made the signature has not been registered with any user's account. |\n| `malformed_signature` | There was an error parsing the signature. |\n| `invalid` | The signature could not be cryptographically verified using the key whose key-id was found in the signature. |\n| `valid` | None of the above errors applied, so the signature is considered to be verified. |",
+        "description": "Returns the contents of a single commit reference. You must have `read` access for the repository to use this endpoint.\n\n**Note:** If there are more than 300 files in the commit diff, the response will include pagination link headers for the remaining files, up to a limit of 3000 files. Each page contains the static commit information, and the only changes are to the file listing.\n\nYou can pass the appropriate [media type](https://docs.github.com/enterprise-server@3.5/rest/overview/media-types/#commits-commit-comparison-and-pull-requests) to  fetch `diff` and `patch` formats. Diffs with binary data will have no `patch` property.\n\nTo return only the SHA-1 hash of the commit reference, you can provide the `sha` custom [media type](https://docs.github.com/enterprise-server@3.5/rest/overview/media-types/#commits-commit-comparison-and-pull-requests) in the `Accept` header. You can use this endpoint to check if a remote reference's SHA-1 hash is the same as your local reference's SHA-1 hash by providing the local SHA-1 reference as the ETag.\n\n**Signature verification object**\n\nThe response will include a `verification` object that describes the result of verifying the commit's signature. The following fields are included in the `verification` object:\n\n| Name | Type | Description |\n| ---- | ---- | ----------- |\n| `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be verified. |\n| `reason` | `string` | The reason for verified value. Possible values and their meanings are enumerated in table below. |\n| `signature` | `string` | The signature that was extracted from the commit. |\n| `payload` | `string` | The value that was signed. |\n\nThese are the possible values for `reason` in the `verification` object:\n\n| Value | Description |\n| ----- | ----------- |\n| `expired_key` | The key that made the signature is expired. |\n| `not_signing_key` | The \"signing\" flag is not among the usage flags in the GPG key that made the signature. |\n| `gpgverify_error` | There was an error communicating with the signature verification service. |\n| `gpgverify_unavailable` | The signature verification service is currently unavailable. |\n| `unsigned` | The object does not include a signature. |\n| `unknown_signature_type` | A non-PGP signature was found in the commit. |\n| `no_user` | No user was associated with the `committer` email address in the commit. |\n| `unverified_email` | The `committer` email address in the commit was associated with a user, but the email address is not verified on their account. |\n| `bad_email` | The `committer` email address in the commit is not included in the identities of the PGP key that made the signature. |\n| `unknown_key` | The key that made the signature has not been registered with any user's account. |\n| `malformed_signature` | There was an error parsing the signature. |\n| `invalid` | The signature could not be cryptographically verified using the key whose key-id was found in the signature. |\n| `valid` | None of the above errors applied, so the signature is considered to be verified. |",
         "tags": ["repos"],
         "operationId": "repos/get-commit",
         "externalDocs": {
@@ -27758,7 +27998,7 @@
     "/repos/{owner}/{repo}/compare/{basehead}": {
       "get": {
         "summary": "Compare two commits",
-        "description": "Compares two commits against one another. You can compare branches in the same repository, or you can compare branches that exist in different repositories within the same repository network, including fork branches. For more information about how to view a repository's network, see \"[Understanding connections between repositories](https://docs.github.com/enterprise-server@3.5/repositories/viewing-activity-and-data-for-your-repository/understanding-connections-between-repositories).\"\n\nThis endpoint is equivalent to running the `git log BASE...HEAD` command, but it returns commits in a different order. The `git log BASE...HEAD` command returns commits in reverse chronological order, whereas the API returns commits in chronological order. You can pass the appropriate [media type](https://docs.github.com/enterprise-server@3.5/rest/overview/media-types/#commits-commit-comparison-and-pull-requests) to fetch diff and patch formats.\n\nThe API response includes details about the files that were changed between the two commits. This includes the status of the change (if a file was added, removed, modified, or renamed), and details of the change itself. For example, files with a `renamed` status have a `previous_filename` field showing the previous filename of the file, and files with a `modified` status have a `patch` field showing the changes made to the file.\n\nWhen calling this endpoint without any paging parameter (`per_page` or `page`), the returned list is limited to 250 commits, and the last commit in the list is the most recent of the entire comparison.\n\n**Working with large comparisons**\n\nTo process a response with a large number of commits, use a query parameter (`per_page` or `page`) to paginate the results. When using pagination:\n\n- The list of changed files is only shown on the first page of results, but it includes all changed files for the entire comparison.\n- The results are returned in chronological order, but the last commit in the returned list may not be the most recent one in the entire set if there are more pages of results.\n\nFor more information on working with pagination, see \"[Using pagination in the REST API](https://docs.github.com/enterprise-server@3.5/rest/guides/using-pagination-in-the-rest-api).\"\n\n**Signature verification object**\n\nThe response will include a `verification` object that describes the result of verifying the commit's signature. The `verification` object includes the following fields:\n\n| Name | Type | Description |\n| ---- | ---- | ----------- |\n| `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be verified. |\n| `reason` | `string` | The reason for verified value. Possible values and their meanings are enumerated in table below. |\n| `signature` | `string` | The signature that was extracted from the commit. |\n| `payload` | `string` | The value that was signed. |\n\nThese are the possible values for `reason` in the `verification` object:\n\n| Value | Description |\n| ----- | ----------- |\n| `expired_key` | The key that made the signature is expired. |\n| `not_signing_key` | The \"signing\" flag is not among the usage flags in the GPG key that made the signature. |\n| `gpgverify_error` | There was an error communicating with the signature verification service. |\n| `gpgverify_unavailable` | The signature verification service is currently unavailable. |\n| `unsigned` | The object does not include a signature. |\n| `unknown_signature_type` | A non-PGP signature was found in the commit. |\n| `no_user` | No user was associated with the `committer` email address in the commit. |\n| `unverified_email` | The `committer` email address in the commit was associated with a user, but the email address is not verified on her/his account. |\n| `bad_email` | The `committer` email address in the commit is not included in the identities of the PGP key that made the signature. |\n| `unknown_key` | The key that made the signature has not been registered with any user's account. |\n| `malformed_signature` | There was an error parsing the signature. |\n| `invalid` | The signature could not be cryptographically verified using the key whose key-id was found in the signature. |\n| `valid` | None of the above errors applied, so the signature is considered to be verified. |",
+        "description": "Compares two commits against one another. You can compare branches in the same repository, or you can compare branches that exist in different repositories within the same repository network, including fork branches. For more information about how to view a repository's network, see \"[Understanding connections between repositories](https://docs.github.com/enterprise-server@3.5/repositories/viewing-activity-and-data-for-your-repository/understanding-connections-between-repositories).\"\n\nThis endpoint is equivalent to running the `git log BASE...HEAD` command, but it returns commits in a different order. The `git log BASE...HEAD` command returns commits in reverse chronological order, whereas the API returns commits in chronological order. You can pass the appropriate [media type](https://docs.github.com/enterprise-server@3.5/rest/overview/media-types/#commits-commit-comparison-and-pull-requests) to fetch diff and patch formats.\n\nThe API response includes details about the files that were changed between the two commits. This includes the status of the change (if a file was added, removed, modified, or renamed), and details of the change itself. For example, files with a `renamed` status have a `previous_filename` field showing the previous filename of the file, and files with a `modified` status have a `patch` field showing the changes made to the file.\n\nWhen calling this endpoint without any paging parameter (`per_page` or `page`), the returned list is limited to 250 commits, and the last commit in the list is the most recent of the entire comparison.\n\n**Working with large comparisons**\n\nTo process a response with a large number of commits, use a query parameter (`per_page` or `page`) to paginate the results. When using pagination:\n\n- The list of changed files is only shown on the first page of results, but it includes all changed files for the entire comparison.\n- The results are returned in chronological order, but the last commit in the returned list may not be the most recent one in the entire set if there are more pages of results.\n\nFor more information on working with pagination, see \"[Using pagination in the REST API](https://docs.github.com/enterprise-server@3.5/rest/guides/using-pagination-in-the-rest-api).\"\n\n**Signature verification object**\n\nThe response will include a `verification` object that describes the result of verifying the commit's signature. The `verification` object includes the following fields:\n\n| Name | Type | Description |\n| ---- | ---- | ----------- |\n| `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be verified. |\n| `reason` | `string` | The reason for verified value. Possible values and their meanings are enumerated in table below. |\n| `signature` | `string` | The signature that was extracted from the commit. |\n| `payload` | `string` | The value that was signed. |\n\nThese are the possible values for `reason` in the `verification` object:\n\n| Value | Description |\n| ----- | ----------- |\n| `expired_key` | The key that made the signature is expired. |\n| `not_signing_key` | The \"signing\" flag is not among the usage flags in the GPG key that made the signature. |\n| `gpgverify_error` | There was an error communicating with the signature verification service. |\n| `gpgverify_unavailable` | The signature verification service is currently unavailable. |\n| `unsigned` | The object does not include a signature. |\n| `unknown_signature_type` | A non-PGP signature was found in the commit. |\n| `no_user` | No user was associated with the `committer` email address in the commit. |\n| `unverified_email` | The `committer` email address in the commit was associated with a user, but the email address is not verified on their account. |\n| `bad_email` | The `committer` email address in the commit is not included in the identities of the PGP key that made the signature. |\n| `unknown_key` | The key that made the signature has not been registered with any user's account. |\n| `malformed_signature` | There was an error parsing the signature. |\n| `invalid` | The signature could not be cryptographically verified using the key whose key-id was found in the signature. |\n| `valid` | None of the above errors applied, so the signature is considered to be verified. |",
         "tags": ["repos"],
         "operationId": "repos/compare-commits",
         "externalDocs": {
@@ -30105,7 +30345,7 @@
     "/repos/{owner}/{repo}/git/commits": {
       "post": {
         "summary": "Create a commit",
-        "description": "Creates a new Git [commit object](https://git-scm.com/book/en/v1/Git-Internals-Git-Objects#Commit-Objects).\n\n**Signature verification object**\n\nThe response will include a `verification` object that describes the result of verifying the commit's signature. The following fields are included in the `verification` object:\n\n| Name | Type | Description |\n| ---- | ---- | ----------- |\n| `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be verified. |\n| `reason` | `string` | The reason for verified value. Possible values and their meanings are enumerated in the table below. |\n| `signature` | `string` | The signature that was extracted from the commit. |\n| `payload` | `string` | The value that was signed. |\n\nThese are the possible values for `reason` in the `verification` object:\n\n| Value | Description |\n| ----- | ----------- |\n| `expired_key` | The key that made the signature is expired. |\n| `not_signing_key` | The \"signing\" flag is not among the usage flags in the GPG key that made the signature. |\n| `gpgverify_error` | There was an error communicating with the signature verification service. |\n| `gpgverify_unavailable` | The signature verification service is currently unavailable. |\n| `unsigned` | The object does not include a signature. |\n| `unknown_signature_type` | A non-PGP signature was found in the commit. |\n| `no_user` | No user was associated with the `committer` email address in the commit. |\n| `unverified_email` | The `committer` email address in the commit was associated with a user, but the email address is not verified on her/his account. |\n| `bad_email` | The `committer` email address in the commit is not included in the identities of the PGP key that made the signature. |\n| `unknown_key` | The key that made the signature has not been registered with any user's account. |\n| `malformed_signature` | There was an error parsing the signature. |\n| `invalid` | The signature could not be cryptographically verified using the key whose key-id was found in the signature. |\n| `valid` | None of the above errors applied, so the signature is considered to be verified. |",
+        "description": "Creates a new Git [commit object](https://git-scm.com/book/en/v1/Git-Internals-Git-Objects#Commit-Objects).\n\n**Signature verification object**\n\nThe response will include a `verification` object that describes the result of verifying the commit's signature. The following fields are included in the `verification` object:\n\n| Name | Type | Description |\n| ---- | ---- | ----------- |\n| `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be verified. |\n| `reason` | `string` | The reason for verified value. Possible values and their meanings are enumerated in the table below. |\n| `signature` | `string` | The signature that was extracted from the commit. |\n| `payload` | `string` | The value that was signed. |\n\nThese are the possible values for `reason` in the `verification` object:\n\n| Value | Description |\n| ----- | ----------- |\n| `expired_key` | The key that made the signature is expired. |\n| `not_signing_key` | The \"signing\" flag is not among the usage flags in the GPG key that made the signature. |\n| `gpgverify_error` | There was an error communicating with the signature verification service. |\n| `gpgverify_unavailable` | The signature verification service is currently unavailable. |\n| `unsigned` | The object does not include a signature. |\n| `unknown_signature_type` | A non-PGP signature was found in the commit. |\n| `no_user` | No user was associated with the `committer` email address in the commit. |\n| `unverified_email` | The `committer` email address in the commit was associated with a user, but the email address is not verified on their account. |\n| `bad_email` | The `committer` email address in the commit is not included in the identities of the PGP key that made the signature. |\n| `unknown_key` | The key that made the signature has not been registered with any user's account. |\n| `malformed_signature` | There was an error parsing the signature. |\n| `invalid` | The signature could not be cryptographically verified using the key whose key-id was found in the signature. |\n| `valid` | None of the above errors applied, so the signature is considered to be verified. |",
         "tags": ["git"],
         "operationId": "git/create-commit",
         "externalDocs": {
@@ -30248,7 +30488,7 @@
     "/repos/{owner}/{repo}/git/commits/{commit_sha}": {
       "get": {
         "summary": "Get a commit",
-        "description": "Gets a Git [commit object](https://git-scm.com/book/en/v1/Git-Internals-Git-Objects#Commit-Objects).\n\n**Signature verification object**\n\nThe response will include a `verification` object that describes the result of verifying the commit's signature. The following fields are included in the `verification` object:\n\n| Name | Type | Description |\n| ---- | ---- | ----------- |\n| `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be verified. |\n| `reason` | `string` | The reason for verified value. Possible values and their meanings are enumerated in the table below. |\n| `signature` | `string` | The signature that was extracted from the commit. |\n| `payload` | `string` | The value that was signed. |\n\nThese are the possible values for `reason` in the `verification` object:\n\n| Value | Description |\n| ----- | ----------- |\n| `expired_key` | The key that made the signature is expired. |\n| `not_signing_key` | The \"signing\" flag is not among the usage flags in the GPG key that made the signature. |\n| `gpgverify_error` | There was an error communicating with the signature verification service. |\n| `gpgverify_unavailable` | The signature verification service is currently unavailable. |\n| `unsigned` | The object does not include a signature. |\n| `unknown_signature_type` | A non-PGP signature was found in the commit. |\n| `no_user` | No user was associated with the `committer` email address in the commit. |\n| `unverified_email` | The `committer` email address in the commit was associated with a user, but the email address is not verified on her/his account. |\n| `bad_email` | The `committer` email address in the commit is not included in the identities of the PGP key that made the signature. |\n| `unknown_key` | The key that made the signature has not been registered with any user's account. |\n| `malformed_signature` | There was an error parsing the signature. |\n| `invalid` | The signature could not be cryptographically verified using the key whose key-id was found in the signature. |\n| `valid` | None of the above errors applied, so the signature is considered to be verified. |",
+        "description": "Gets a Git [commit object](https://git-scm.com/book/en/v1/Git-Internals-Git-Objects#Commit-Objects).\n\n**Signature verification object**\n\nThe response will include a `verification` object that describes the result of verifying the commit's signature. The following fields are included in the `verification` object:\n\n| Name | Type | Description |\n| ---- | ---- | ----------- |\n| `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be verified. |\n| `reason` | `string` | The reason for verified value. Possible values and their meanings are enumerated in the table below. |\n| `signature` | `string` | The signature that was extracted from the commit. |\n| `payload` | `string` | The value that was signed. |\n\nThese are the possible values for `reason` in the `verification` object:\n\n| Value | Description |\n| ----- | ----------- |\n| `expired_key` | The key that made the signature is expired. |\n| `not_signing_key` | The \"signing\" flag is not among the usage flags in the GPG key that made the signature. |\n| `gpgverify_error` | There was an error communicating with the signature verification service. |\n| `gpgverify_unavailable` | The signature verification service is currently unavailable. |\n| `unsigned` | The object does not include a signature. |\n| `unknown_signature_type` | A non-PGP signature was found in the commit. |\n| `no_user` | No user was associated with the `committer` email address in the commit. |\n| `unverified_email` | The `committer` email address in the commit was associated with a user, but the email address is not verified on their account. |\n| `bad_email` | The `committer` email address in the commit is not included in the identities of the PGP key that made the signature. |\n| `unknown_key` | The key that made the signature has not been registered with any user's account. |\n| `malformed_signature` | There was an error parsing the signature. |\n| `invalid` | The signature could not be cryptographically verified using the key whose key-id was found in the signature. |\n| `valid` | None of the above errors applied, so the signature is considered to be verified. |",
         "tags": ["git"],
         "operationId": "git/get-commit",
         "externalDocs": {
@@ -30630,7 +30870,7 @@
     "/repos/{owner}/{repo}/git/tags": {
       "post": {
         "summary": "Create a tag object",
-        "description": "Note that creating a tag object does not create the reference that makes a tag in Git. If you want to create an annotated tag in Git, you have to do this call to create the tag object, and then [create](https://docs.github.com/enterprise-server@3.5/rest/reference/git#create-a-reference) the `refs/tags/[tag]` reference. If you want to create a lightweight tag, you only have to [create](https://docs.github.com/enterprise-server@3.5/rest/reference/git#create-a-reference) the tag reference - this call would be unnecessary.\n\n**Signature verification object**\n\nThe response will include a `verification` object that describes the result of verifying the commit's signature. The following fields are included in the `verification` object:\n\n| Name | Type | Description |\n| ---- | ---- | ----------- |\n| `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be verified. |\n| `reason` | `string` | The reason for verified value. Possible values and their meanings are enumerated in table below. |\n| `signature` | `string` | The signature that was extracted from the commit. |\n| `payload` | `string` | The value that was signed. |\n\nThese are the possible values for `reason` in the `verification` object:\n\n| Value | Description |\n| ----- | ----------- |\n| `expired_key` | The key that made the signature is expired. |\n| `not_signing_key` | The \"signing\" flag is not among the usage flags in the GPG key that made the signature. |\n| `gpgverify_error` | There was an error communicating with the signature verification service. |\n| `gpgverify_unavailable` | The signature verification service is currently unavailable. |\n| `unsigned` | The object does not include a signature. |\n| `unknown_signature_type` | A non-PGP signature was found in the commit. |\n| `no_user` | No user was associated with the `committer` email address in the commit. |\n| `unverified_email` | The `committer` email address in the commit was associated with a user, but the email address is not verified on her/his account. |\n| `bad_email` | The `committer` email address in the commit is not included in the identities of the PGP key that made the signature. |\n| `unknown_key` | The key that made the signature has not been registered with any user's account. |\n| `malformed_signature` | There was an error parsing the signature. |\n| `invalid` | The signature could not be cryptographically verified using the key whose key-id was found in the signature. |\n| `valid` | None of the above errors applied, so the signature is considered to be verified. |",
+        "description": "Note that creating a tag object does not create the reference that makes a tag in Git. If you want to create an annotated tag in Git, you have to do this call to create the tag object, and then [create](https://docs.github.com/enterprise-server@3.5/rest/reference/git#create-a-reference) the `refs/tags/[tag]` reference. If you want to create a lightweight tag, you only have to [create](https://docs.github.com/enterprise-server@3.5/rest/reference/git#create-a-reference) the tag reference - this call would be unnecessary.\n\n**Signature verification object**\n\nThe response will include a `verification` object that describes the result of verifying the commit's signature. The following fields are included in the `verification` object:\n\n| Name | Type | Description |\n| ---- | ---- | ----------- |\n| `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be verified. |\n| `reason` | `string` | The reason for verified value. Possible values and their meanings are enumerated in table below. |\n| `signature` | `string` | The signature that was extracted from the commit. |\n| `payload` | `string` | The value that was signed. |\n\nThese are the possible values for `reason` in the `verification` object:\n\n| Value | Description |\n| ----- | ----------- |\n| `expired_key` | The key that made the signature is expired. |\n| `not_signing_key` | The \"signing\" flag is not among the usage flags in the GPG key that made the signature. |\n| `gpgverify_error` | There was an error communicating with the signature verification service. |\n| `gpgverify_unavailable` | The signature verification service is currently unavailable. |\n| `unsigned` | The object does not include a signature. |\n| `unknown_signature_type` | A non-PGP signature was found in the commit. |\n| `no_user` | No user was associated with the `committer` email address in the commit. |\n| `unverified_email` | The `committer` email address in the commit was associated with a user, but the email address is not verified on their account. |\n| `bad_email` | The `committer` email address in the commit is not included in the identities of the PGP key that made the signature. |\n| `unknown_key` | The key that made the signature has not been registered with any user's account. |\n| `malformed_signature` | There was an error parsing the signature. |\n| `invalid` | The signature could not be cryptographically verified using the key whose key-id was found in the signature. |\n| `valid` | None of the above errors applied, so the signature is considered to be verified. |",
         "tags": ["git"],
         "operationId": "git/create-tag",
         "externalDocs": {
@@ -30749,7 +30989,7 @@
     "/repos/{owner}/{repo}/git/tags/{tag_sha}": {
       "get": {
         "summary": "Get a tag",
-        "description": "**Signature verification object**\n\nThe response will include a `verification` object that describes the result of verifying the commit's signature. The following fields are included in the `verification` object:\n\n| Name | Type | Description |\n| ---- | ---- | ----------- |\n| `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be verified. |\n| `reason` | `string` | The reason for verified value. Possible values and their meanings are enumerated in table below. |\n| `signature` | `string` | The signature that was extracted from the commit. |\n| `payload` | `string` | The value that was signed. |\n\nThese are the possible values for `reason` in the `verification` object:\n\n| Value | Description |\n| ----- | ----------- |\n| `expired_key` | The key that made the signature is expired. |\n| `not_signing_key` | The \"signing\" flag is not among the usage flags in the GPG key that made the signature. |\n| `gpgverify_error` | There was an error communicating with the signature verification service. |\n| `gpgverify_unavailable` | The signature verification service is currently unavailable. |\n| `unsigned` | The object does not include a signature. |\n| `unknown_signature_type` | A non-PGP signature was found in the commit. |\n| `no_user` | No user was associated with the `committer` email address in the commit. |\n| `unverified_email` | The `committer` email address in the commit was associated with a user, but the email address is not verified on her/his account. |\n| `bad_email` | The `committer` email address in the commit is not included in the identities of the PGP key that made the signature. |\n| `unknown_key` | The key that made the signature has not been registered with any user's account. |\n| `malformed_signature` | There was an error parsing the signature. |\n| `invalid` | The signature could not be cryptographically verified using the key whose key-id was found in the signature. |\n| `valid` | None of the above errors applied, so the signature is considered to be verified. |",
+        "description": "**Signature verification object**\n\nThe response will include a `verification` object that describes the result of verifying the commit's signature. The following fields are included in the `verification` object:\n\n| Name | Type | Description |\n| ---- | ---- | ----------- |\n| `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be verified. |\n| `reason` | `string` | The reason for verified value. Possible values and their meanings are enumerated in table below. |\n| `signature` | `string` | The signature that was extracted from the commit. |\n| `payload` | `string` | The value that was signed. |\n\nThese are the possible values for `reason` in the `verification` object:\n\n| Value | Description |\n| ----- | ----------- |\n| `expired_key` | The key that made the signature is expired. |\n| `not_signing_key` | The \"signing\" flag is not among the usage flags in the GPG key that made the signature. |\n| `gpgverify_error` | There was an error communicating with the signature verification service. |\n| `gpgverify_unavailable` | The signature verification service is currently unavailable. |\n| `unsigned` | The object does not include a signature. |\n| `unknown_signature_type` | A non-PGP signature was found in the commit. |\n| `no_user` | No user was associated with the `committer` email address in the commit. |\n| `unverified_email` | The `committer` email address in the commit was associated with a user, but the email address is not verified on their account. |\n| `bad_email` | The `committer` email address in the commit is not included in the identities of the PGP key that made the signature. |\n| `unknown_key` | The key that made the signature has not been registered with any user's account. |\n| `malformed_signature` | There was an error parsing the signature. |\n| `invalid` | The signature could not be cryptographically verified using the key whose key-id was found in the signature. |\n| `valid` | None of the above errors applied, so the signature is considered to be verified. |",
         "tags": ["git"],
         "operationId": "git/get-tag",
         "externalDocs": {
@@ -32260,7 +32500,7 @@
     "/repos/{owner}/{repo}/issues/comments": {
       "get": {
         "summary": "List issue comments for a repository",
-        "description": "By default, Issue Comments are ordered by ascending ID.",
+        "description": "You can use the REST API to list comments on issues and pull requests for a repository. Every pull request is an issue, but not every issue is a pull request.\n\nBy default, issue comments are ordered by ascending ID.",
         "tags": ["issues"],
         "operationId": "issues/list-comments-for-repo",
         "externalDocs": {
@@ -32339,7 +32579,7 @@
     "/repos/{owner}/{repo}/issues/comments/{comment_id}": {
       "get": {
         "summary": "Get an issue comment",
-        "description": "",
+        "description": "You can use the REST API to get comments on issues and pull requests. Every pull request is an issue, but not every issue is a pull request.",
         "tags": ["issues"],
         "operationId": "issues/get-comment",
         "externalDocs": {
@@ -32386,7 +32626,7 @@
       },
       "patch": {
         "summary": "Update an issue comment",
-        "description": "",
+        "description": "You can use the REST API to update comments on issues and pull requests. Every pull request is an issue, but not every issue is a pull request.",
         "tags": ["issues"],
         "operationId": "issues/update-comment",
         "externalDocs": {
@@ -32457,7 +32697,7 @@
       },
       "delete": {
         "summary": "Delete an issue comment",
-        "description": "",
+        "description": "You can use the REST API to delete comments on issues and pull requests. Every pull request is an issue, but not every issue is a pull request.",
         "tags": ["issues"],
         "operationId": "issues/delete-comment",
         "externalDocs": {
@@ -32925,17 +33165,17 @@
                   },
                   "assignee": {
                     "type": ["string", "null"],
-                    "description": "Login for the user that this issue should be assigned to. **This field is deprecated.**"
+                    "description": "Username to assign to this issue. **This field is deprecated.**"
                   },
                   "state": {
                     "type": "string",
-                    "description": "State of the issue. Either `open` or `closed`.",
+                    "description": "The open or closed state of the issue.",
                     "enum": ["open", "closed"]
                   },
                   "state_reason": {
                     "type": ["string", "null"],
                     "enum": ["completed", "not_planned", "reopened", null],
-                    "description": "The reason for the current state",
+                    "description": "The reason for the state change. Ignored unless `state` is changed.",
                     "examples": ["not_planned"]
                   },
                   "milestone": {
@@ -32945,14 +33185,14 @@
                       },
                       {
                         "type": "integer",
-                        "description": "The `number` of the milestone to associate this issue with or `null` to remove current. _NOTE: Only users with push access can set the milestone for issues. The milestone is silently dropped otherwise._"
+                        "description": "The `number` of the milestone to associate this issue with or use `null` to remove the current milestone. Only users with push access can set the milestone for issues. Without push access to the repository, milestone changes are silently dropped."
                       }
                     ],
                     "type": ["null", "string", "integer"]
                   },
                   "labels": {
                     "type": "array",
-                    "description": "Labels to associate with this issue. Pass one or more Labels to _replace_ the set of Labels on this Issue. Send an empty array (`[]`) to clear all Labels from the Issue. _NOTE: Only users with push access can set labels for issues. Labels are silently dropped otherwise._",
+                    "description": "Labels to associate with this issue. Pass one or more labels to _replace_ the set of labels on this issue. Send an empty array (`[]`) to clear all labels from the issue. Only users with push access can set labels for issues. Without push access to the repository, label changes are silently dropped.",
                     "items": {
                       "oneOf": [
                         {
@@ -32980,7 +33220,7 @@
                   },
                   "assignees": {
                     "type": "array",
-                    "description": "Logins for Users to assign to this issue. Pass one or more user logins to _replace_ the set of assignees on this Issue. Send an empty array (`[]`) to clear all assignees from the Issue. _NOTE: Only users with push access can set assignees for new issues. Assignees are silently dropped otherwise._",
+                    "description": "Usernames to assign to this issue. Pass one or more user logins to _replace_ the set of assignees on this issue. Send an empty array (`[]`) to clear all assignees from the issue. Only users with push access can set assignees for new issues. Without push access to the repository, assignee changes are silently dropped.",
                     "items": {
                       "type": "string"
                     }
@@ -33241,7 +33481,7 @@
     "/repos/{owner}/{repo}/issues/{issue_number}/comments": {
       "get": {
         "summary": "List issue comments",
-        "description": "Issue Comments are ordered by ascending ID.",
+        "description": "You can use the REST API to list comments on issues and pull requests. Every pull request is an issue, but not every issue is a pull request.\n\nIssue comments are ordered by ascending ID.",
         "tags": ["issues"],
         "operationId": "issues/list-comments",
         "externalDocs": {
@@ -33308,7 +33548,7 @@
       },
       "post": {
         "summary": "Create an issue comment",
-        "description": "This endpoint triggers [notifications](https://docs.github.com/enterprise-server@3.5/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. See \"[Secondary rate limits](https://docs.github.com/enterprise-server@3.5/rest/overview/resources-in-the-rest-api#secondary-rate-limits)\" and \"[Dealing with secondary rate limits](https://docs.github.com/enterprise-server@3.5/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)\" for details.",
+        "description": "\nYou can use the REST API to create comments on issues and pull requests. Every pull request is an issue, but not every issue is a pull request.\n\nThis endpoint triggers [notifications](https://docs.github.com/enterprise-server@3.5/github/managing-subscriptions-and-notifications-on-github/about-notifications).\nCreating content too quickly using this endpoint may result in secondary rate limiting.\nSee \"[Secondary rate limits](https://docs.github.com/enterprise-server@3.5/rest/overview/resources-in-the-rest-api#secondary-rate-limits)\"\nand \"[Dealing with secondary rate limits](https://docs.github.com/enterprise-server@3.5/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)\"\nfor details.",
         "tags": ["issues"],
         "operationId": "issues/create-comment",
         "externalDocs": {
@@ -35756,7 +35996,7 @@
       },
       "post": {
         "summary": "Create a GitHub Enterprise Server Pages site",
-        "description": "Configures a GitHub Enterprise Server Pages site. For more information, see \"[About GitHub Pages](/github/working-with-github-pages/about-github-pages).\"\n\nTo use this endpoint, you must be a repository administrator, maintainer, or have the 'manage GitHub Pages settings' permission. A token with the `repo` scope or Pages write permission is required. GitHub Apps must have the `administrative:write` and `pages:write` permissions.",
+        "description": "Configures a GitHub Enterprise Server Pages site. For more information, see \"[About GitHub Pages](/github/working-with-github-pages/about-github-pages).\"\n\nTo use this endpoint, you must be a repository administrator, maintainer, or have the 'manage GitHub Pages settings' permission. A token with the `repo` scope or Pages write permission is required. GitHub Apps must have the `administration:write` and `pages:write` permissions.",
         "tags": ["repos"],
         "operationId": "repos/create-pages-site",
         "externalDocs": {
@@ -35855,7 +36095,7 @@
       },
       "put": {
         "summary": "Update information about a GitHub Enterprise Server Pages site",
-        "description": "Updates information for a GitHub Enterprise Server Pages site. For more information, see \"[About GitHub Pages](/github/working-with-github-pages/about-github-pages).\n\nTo use this endpoint, you must be a repository administrator, maintainer, or have the 'manage GitHub Pages settings' permission. A token with the `repo` scope or Pages write permission is required. GitHub Apps must have the `administrative:write` and `pages:write` permissions.",
+        "description": "Updates information for a GitHub Enterprise Server Pages site. For more information, see \"[About GitHub Pages](/github/working-with-github-pages/about-github-pages).\n\nTo use this endpoint, you must be a repository administrator, maintainer, or have the 'manage GitHub Pages settings' permission. A token with the `repo` scope or Pages write permission is required. GitHub Apps must have the `administration:write` and `pages:write` permissions.",
         "tags": ["repos"],
         "operationId": "repos/update-information-about-pages-site",
         "externalDocs": {
@@ -35970,7 +36210,7 @@
       },
       "delete": {
         "summary": "Delete a GitHub Enterprise Server Pages site",
-        "description": "Deletes a a GitHub Enterprise Server Pages site. For more information, see \"[About GitHub Pages](/github/working-with-github-pages/about-github-pages).\n\nTo use this endpoint, you must be a repository administrator, maintainer, or have the 'manage GitHub Pages settings' permission. A token with the `repo` scope or Pages write permission is required. GitHub Apps must have the `administrative:write` and `pages:write` permissions.",
+        "description": "Deletes a GitHub Enterprise Server Pages site. For more information, see \"[About GitHub Pages](/github/working-with-github-pages/about-github-pages).\n\nTo use this endpoint, you must be a repository administrator, maintainer, or have the 'manage GitHub Pages settings' permission. A token with the `repo` scope or Pages write permission is required. GitHub Apps must have the `administration:write` and `pages:write` permissions.",
         "tags": ["repos"],
         "operationId": "repos/delete-pages-site",
         "externalDocs": {
@@ -36342,6 +36582,7 @@
           }
         },
         "requestBody": {
+          "required": false,
           "content": {
             "application/json": {
               "schema": {
@@ -39111,7 +39352,7 @@
         "operationId": "repos/create-release",
         "externalDocs": {
           "description": "API method documentation",
-          "url": "https://docs.github.com/enterprise-server@3.5/rest/reference/repos#create-a-release"
+          "url": "https://docs.github.com/enterprise-server@3.5/rest/releases/releases#create-a-release"
         },
         "parameters": [
           {
@@ -39793,7 +40034,7 @@
       },
       "post": {
         "summary": "Upload a release asset",
-        "description": "This endpoint makes use of [a Hypermedia relation](https://docs.github.com/enterprise-server@3.5/rest/overview/resources-in-the-rest-api#hypermedia) to determine which URL to access. The endpoint you call to upload release assets is specific to your release. Use the `upload_url` returned in\nthe response of the [Create a release endpoint](https://docs.github.com/enterprise-server@3.5/rest/reference/repos#create-a-release) to upload a release asset.\n\nYou need to use an HTTP client which supports [SNI](http://en.wikipedia.org/wiki/Server_Name_Indication) to make calls to this endpoint.\n\nMost libraries will set the required `Content-Length` header automatically. Use the required `Content-Type` header to provide the media type of the asset. For a list of media types, see [Media Types](https://www.iana.org/assignments/media-types/media-types.xhtml). For example: \n\n`application/zip`\n\nGitHub Enterprise Server expects the asset data in its raw binary form, rather than JSON. You will send the raw binary content of the asset as the request body. Everything else about the endpoint is the same as the rest of the API. For example,\nyou'll still need to pass your authentication to be able to upload an asset.\n\nWhen an upstream failure occurs, you will receive a `502 Bad Gateway` status. This may leave an empty asset with a state of `starter`. It can be safely deleted.\n\n**Notes:**\n*   GitHub Enterprise Server renames asset filenames that have special characters, non-alphanumeric characters, and leading or trailing periods. The \"[List assets for a release](https://docs.github.com/enterprise-server@3.5/rest/reference/repos#list-assets-for-a-release)\"\nendpoint lists the renamed filenames. For more information and help, contact [GitHub Enterprise Server Support](https://support.github.com/contact?tags=dotcom-rest-api).\n*   If you upload an asset with the same filename as another uploaded asset, you'll receive an error and must delete the old file before you can re-upload the new asset.",
+        "description": "This endpoint makes use of [a Hypermedia relation](https://docs.github.com/enterprise-server@3.5/rest/overview/resources-in-the-rest-api#hypermedia) to determine which URL to access. The endpoint you call to upload release assets is specific to your release. Use the `upload_url` returned in\nthe response of the [Create a release endpoint](https://docs.github.com/enterprise-server@3.5/rest/releases/releases#create-a-release) to upload a release asset.\n\nYou need to use an HTTP client which supports [SNI](http://en.wikipedia.org/wiki/Server_Name_Indication) to make calls to this endpoint.\n\nMost libraries will set the required `Content-Length` header automatically. Use the required `Content-Type` header to provide the media type of the asset. For a list of media types, see [Media Types](https://www.iana.org/assignments/media-types/media-types.xhtml). For example: \n\n`application/zip`\n\nGitHub Enterprise Server expects the asset data in its raw binary form, rather than JSON. You will send the raw binary content of the asset as the request body. Everything else about the endpoint is the same as the rest of the API. For example,\nyou'll still need to pass your authentication to be able to upload an asset.\n\nWhen an upstream failure occurs, you will receive a `502 Bad Gateway` status. This may leave an empty asset with a state of `starter`. It can be safely deleted.\n\n**Notes:**\n*   GitHub Enterprise Server renames asset filenames that have special characters, non-alphanumeric characters, and leading or trailing periods. The \"[List assets for a release](https://docs.github.com/enterprise-server@3.5/rest/reference/repos#list-assets-for-a-release)\"\nendpoint lists the renamed filenames. For more information and help, contact [GitHub Enterprise Server Support](https://support.github.com/contact?tags=dotcom-rest-api).\n*   To find the `release_id` query the [`GET /repos/{owner}/{repo}/releases/latest` endpoint](https://docs.github.com/enterprise-server@3.5/rest/releases/releases#get-the-latest-release). \n*   If you upload an asset with the same filename as another uploaded asset, you'll receive an error and must delete the old file before you can re-upload the new asset.",
         "tags": ["repos"],
         "operationId": "repos/upload-release-asset",
         "externalDocs": {
@@ -39835,10 +40076,16 @@
         "requestBody": {
           "required": false,
           "content": {
-            "*/*": {
+            "application/octet-stream": {
               "schema": {
                 "type": "string",
+                "format": "binary",
                 "description": "The raw file data"
+              },
+              "examples": {
+                "default": {
+                  "value": "@example.zip"
+                }
               }
             }
           }
@@ -40736,7 +40983,7 @@
         "operationId": "repos/get-punch-card-stats",
         "externalDocs": {
           "description": "API method documentation",
-          "url": "https://docs.github.com/enterprise-server@3.5/rest/statistics/repos#get-the-hourly-commit-count-for-each-day"
+          "url": "https://docs.github.com/enterprise-server@3.5/rest/metrics/statistics#get-the-hourly-commit-count-for-each-day"
         },
         "parameters": [
           {
@@ -43355,6 +43602,7 @@
           }
         },
         "requestBody": {
+          "required": false,
           "content": {
             "multipart/form-data": {
               "schema": {
@@ -46981,7 +47229,7 @@
         "operationId": "migrations/list-for-authenticated-user",
         "externalDocs": {
           "description": "API method documentation",
-          "url": "https://docs.github.com/enterprise-server@3.5/rest/reference/migrations#list-user-migrations"
+          "url": "https://docs.github.com/enterprise-server@3.5/rest/migrations/users#list-user-migrations"
         },
         "parameters": [
           {
@@ -47039,7 +47287,7 @@
         "operationId": "migrations/start-for-authenticated-user",
         "externalDocs": {
           "description": "API method documentation",
-          "url": "https://docs.github.com/enterprise-server@3.5/rest/reference/migrations#start-a-user-migration"
+          "url": "https://docs.github.com/enterprise-server@3.5/rest/migrations/users#start-a-user-migration"
         },
         "parameters": [],
         "requestBody": {
@@ -47170,7 +47418,7 @@
         "operationId": "migrations/get-archive-for-authenticated-user",
         "externalDocs": {
           "description": "API method documentation",
-          "url": "https://docs.github.com/enterprise-server@3.5/rest/reference/migrations#download-a-user-migration-archive"
+          "url": "https://docs.github.com/enterprise-server@3.5/rest/migrations/users#download-a-user-migration-archive"
         },
         "parameters": [
           {
@@ -47207,7 +47455,7 @@
         "operationId": "migrations/list-repos-for-authenticated-user",
         "externalDocs": {
           "description": "API method documentation",
-          "url": "https://docs.github.com/enterprise-server@3.5/rest/reference/migrations#list-repositories-for-a-user-migration"
+          "url": "https://docs.github.com/enterprise-server@3.5/rest/migrations/users#list-repositories-for-a-user-migration"
         },
         "parameters": [
           {
@@ -47532,10 +47780,10 @@
             "$ref": "#/components/parameters/page"
           },
           {
-            "$ref": "#/components/parameters/since"
+            "$ref": "#/components/parameters/since-repo-date"
           },
           {
-            "$ref": "#/components/parameters/before"
+            "$ref": "#/components/parameters/before-repo-date"
           }
         ],
         "responses": {
@@ -49442,6 +49690,7 @@
           }
         },
         "requestBody": {
+          "required": false,
           "content": {
             "application/json": {
               "schema": {
@@ -51366,6 +51615,41 @@
           "avatar_url"
         ]
       },
+      "integration-installation-request": {
+        "title": "Integration Installation Request",
+        "description": "Request to install an integration on a target",
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "Unique identifier of the request installation.",
+            "type": "integer",
+            "examples": [42]
+          },
+          "node_id": {
+            "type": "string",
+            "examples": ["MDExOkludGVncmF0aW9uMQ=="]
+          },
+          "account": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/simple-user"
+              },
+              {
+                "$ref": "#/components/schemas/enterprise"
+              }
+            ]
+          },
+          "requester": {
+            "$ref": "#/components/schemas/simple-user"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "examples": ["2022-07-08T16:18:44-04:00"]
+          }
+        },
+        "required": ["id", "account", "requester", "created_at"]
+      },
       "installation": {
         "title": "Installation",
         "description": "Installation",
@@ -52944,7 +53228,7 @@
           },
           "patterns_allowed": {
             "type": "array",
-            "description": "Specifies a list of string-matching patterns to allow specific action(s). Wildcards, tags, and SHAs are allowed. For example, `monalisa/octocat@*`, `monalisa/octocat@v2`, `monalisa/*`.\"",
+            "description": "Specifies a list of string-matching patterns to allow specific action(s). Wildcards, tags, and SHAs are allowed. For example, `monalisa/octocat@*`, `monalisa/octocat@v2`, `monalisa/*`.",
             "items": {
               "type": "string"
             }
@@ -57038,6 +57322,7 @@
           },
           "repositories": {
             "type": "array",
+            "description": "The repositories included in the migration. Only returned for export migrations.",
             "items": {
               "$ref": "#/components/schemas/repository"
             }
@@ -60258,8 +60543,8 @@
             }
           },
           "state": {
-            "description": "Whether deployment to the environment(s) was approved or rejected",
-            "enum": ["approved", "rejected"],
+            "description": "Whether deployment to the environment(s) was approved or rejected or pending (with comments)",
+            "enum": ["approved", "rejected", "pending"],
             "type": "string",
             "examples": ["approved"]
           },
@@ -64490,6 +64775,7 @@
           },
           "protection_rules": {
             "type": "array",
+            "description": "Built-in deployment protection rules for the environment.",
             "items": {
               "anyOf": [
                 {
@@ -72928,6 +73214,54 @@
           }
         }
       },
+      "integration-installation-request-paginated": {
+        "value": [
+          {
+            "id": 25381,
+            "node_id": "MDEyOkludGVncmF0aW9uMTIzNDU2Nzg5MA==",
+            "account": {
+              "login": "octo-org",
+              "id": 6811672,
+              "node_id": "MDEyOk9yZ2FuaXphdGlvbjY4MTE2NzI=",
+              "avatar_url": "https://avatars3.githubusercontent.com/u/6811672?v=4",
+              "gravatar_id": "",
+              "url": "https://api.github.com/users/octo-org",
+              "html_url": "https://github.com/octo-org",
+              "followers_url": "https://api.github.com/users/octo-org/followers",
+              "following_url": "https://api.github.com/users/octo-org/following{/other_user}",
+              "gists_url": "https://api.github.com/users/octo-org/gists{/gist_id}",
+              "starred_url": "https://api.github.com/users/octo-org/starred{/owner}{/repo}",
+              "subscriptions_url": "https://api.github.com/users/octo-org/subscriptions",
+              "organizations_url": "https://api.github.com/users/octo-org/orgs",
+              "repos_url": "https://api.github.com/users/octo-org/repos",
+              "events_url": "https://api.github.com/users/octo-org/events{/privacy}",
+              "received_events_url": "https://api.github.com/users/octo-org/received_events",
+              "type": "Organization",
+              "site_admin": false
+            },
+            "requester": {
+              "id": 1,
+              "node_id": "MDQ6VXNlcjE=",
+              "avatar_url": "https://github.com/images/error/octocat_happy.gif",
+              "gravatar_id": "",
+              "url": "https://api.github.com/users/octocat",
+              "html_url": "https://github.com/octocat",
+              "followers_url": "https://api.github.com/users/octocat/followers",
+              "following_url": "https://api.github.com/users/octocat/following{/other_user}",
+              "gists_url": "https://api.github.com/users/octocat/gists{/gist_id}",
+              "starred_url": "https://api.github.com/users/octocat/starred{/owner}{/repo}",
+              "subscriptions_url": "https://api.github.com/users/octocat/subscriptions",
+              "organizations_url": "https://api.github.com/users/octocat/orgs",
+              "repos_url": "https://api.github.com/users/octocat/repos",
+              "events_url": "https://api.github.com/users/octocat/events{/privacy}",
+              "received_events_url": "https://api.github.com/users/octocat/received_events",
+              "type": "User",
+              "site_admin": false
+            },
+            "created_at": "2022-07-08T16:18:44-04:00"
+          }
+        ]
+      },
       "base-installation-items": {
         "value": [
           {
@@ -73865,6 +74199,7 @@
           "deer": "https://github.githubassets.com/images/icons/emoji/unicode/1f98c.png?v8",
           "denmark": "https://github.githubassets.com/images/icons/emoji/unicode/1f1e9-1f1f0.png?v8",
           "department_store": "https://github.githubassets.com/images/icons/emoji/unicode/1f3ec.png?v8",
+          "dependabot": "https://github.githubassets.com/images/icons/emoji/dependabot.png?v8",
           "derelict_house": "https://github.githubassets.com/images/icons/emoji/unicode/1f3da.png?v8",
           "desert": "https://github.githubassets.com/images/icons/emoji/unicode/1f3dc.png?v8",
           "desert_island": "https://github.githubassets.com/images/icons/emoji/unicode/1f3dd.png?v8",
@@ -74023,6 +74358,7 @@
           "first_quarter_moon_with_face": "https://github.githubassets.com/images/icons/emoji/unicode/1f31b.png?v8",
           "fish": "https://github.githubassets.com/images/icons/emoji/unicode/1f41f.png?v8",
           "fish_cake": "https://github.githubassets.com/images/icons/emoji/unicode/1f365.png?v8",
+          "fishsticks": "https://github.githubassets.com/images/icons/emoji/fishsticks.png?v8",
           "fishing_pole_and_fish": "https://github.githubassets.com/images/icons/emoji/unicode/1f3a3.png?v8",
           "fist": "https://github.githubassets.com/images/icons/emoji/unicode/270a.png?v8",
           "fist_left": "https://github.githubassets.com/images/icons/emoji/unicode/1f91b.png?v8",
@@ -77122,8 +77458,17 @@
       "api-overview": {
         "value": {
           "verifiable_password_authentication": true,
-          "packages": ["192.30.252.0/22"],
-          "dependabot": ["54.158.161.132"],
+          "packages": [
+            "140.82.121.33/32",
+            "192.30.255.164/31",
+            "20.200.245.241/32",
+            "20.233.54.55/32"
+          ],
+          "dependabot": [
+            "18.213.123.130/32",
+            "3.217.79.163/32",
+            "3.217.93.44/32"
+          ],
           "installed_version": "3.5.0"
         }
       },
@@ -79154,6 +79499,109 @@
           "updated_at": "2015-07-06T15:33:38-07:00"
         }
       },
+      "minimal-repository-items": {
+        "value": [
+          {
+            "id": 1296269,
+            "node_id": "MDEwOlJlcG9zaXRvcnkxMjk2MjY5",
+            "name": "Hello-World",
+            "full_name": "octocat/Hello-World",
+            "owner": {
+              "login": "octocat",
+              "id": 1,
+              "node_id": "MDQ6VXNlcjE=",
+              "avatar_url": "https://github.com/images/error/octocat_happy.gif",
+              "gravatar_id": "",
+              "url": "https://api.github.com/users/octocat",
+              "html_url": "https://github.com/octocat",
+              "followers_url": "https://api.github.com/users/octocat/followers",
+              "following_url": "https://api.github.com/users/octocat/following{/other_user}",
+              "gists_url": "https://api.github.com/users/octocat/gists{/gist_id}",
+              "starred_url": "https://api.github.com/users/octocat/starred{/owner}{/repo}",
+              "subscriptions_url": "https://api.github.com/users/octocat/subscriptions",
+              "organizations_url": "https://api.github.com/users/octocat/orgs",
+              "repos_url": "https://api.github.com/users/octocat/repos",
+              "events_url": "https://api.github.com/users/octocat/events{/privacy}",
+              "received_events_url": "https://api.github.com/users/octocat/received_events",
+              "type": "User",
+              "site_admin": false
+            },
+            "private": false,
+            "html_url": "https://github.com/octocat/Hello-World",
+            "description": "This your first repo!",
+            "fork": false,
+            "url": "https://api.github.com/repos/octocat/Hello-World",
+            "archive_url": "https://api.github.com/repos/octocat/Hello-World/{archive_format}{/ref}",
+            "assignees_url": "https://api.github.com/repos/octocat/Hello-World/assignees{/user}",
+            "blobs_url": "https://api.github.com/repos/octocat/Hello-World/git/blobs{/sha}",
+            "branches_url": "https://api.github.com/repos/octocat/Hello-World/branches{/branch}",
+            "collaborators_url": "https://api.github.com/repos/octocat/Hello-World/collaborators{/collaborator}",
+            "comments_url": "https://api.github.com/repos/octocat/Hello-World/comments{/number}",
+            "commits_url": "https://api.github.com/repos/octocat/Hello-World/commits{/sha}",
+            "compare_url": "https://api.github.com/repos/octocat/Hello-World/compare/{base}...{head}",
+            "contents_url": "https://api.github.com/repos/octocat/Hello-World/contents/{+path}",
+            "contributors_url": "https://api.github.com/repos/octocat/Hello-World/contributors",
+            "deployments_url": "https://api.github.com/repos/octocat/Hello-World/deployments",
+            "downloads_url": "https://api.github.com/repos/octocat/Hello-World/downloads",
+            "events_url": "https://api.github.com/repos/octocat/Hello-World/events",
+            "forks_url": "https://api.github.com/repos/octocat/Hello-World/forks",
+            "git_commits_url": "https://api.github.com/repos/octocat/Hello-World/git/commits{/sha}",
+            "git_refs_url": "https://api.github.com/repos/octocat/Hello-World/git/refs{/sha}",
+            "git_tags_url": "https://api.github.com/repos/octocat/Hello-World/git/tags{/sha}",
+            "git_url": "git:github.com/octocat/Hello-World.git",
+            "issue_comment_url": "https://api.github.com/repos/octocat/Hello-World/issues/comments{/number}",
+            "issue_events_url": "https://api.github.com/repos/octocat/Hello-World/issues/events{/number}",
+            "issues_url": "https://api.github.com/repos/octocat/Hello-World/issues{/number}",
+            "keys_url": "https://api.github.com/repos/octocat/Hello-World/keys{/key_id}",
+            "labels_url": "https://api.github.com/repos/octocat/Hello-World/labels{/name}",
+            "languages_url": "https://api.github.com/repos/octocat/Hello-World/languages",
+            "merges_url": "https://api.github.com/repos/octocat/Hello-World/merges",
+            "milestones_url": "https://api.github.com/repos/octocat/Hello-World/milestones{/number}",
+            "notifications_url": "https://api.github.com/repos/octocat/Hello-World/notifications{?since,all,participating}",
+            "pulls_url": "https://api.github.com/repos/octocat/Hello-World/pulls{/number}",
+            "releases_url": "https://api.github.com/repos/octocat/Hello-World/releases{/id}",
+            "ssh_url": "git@github.com:octocat/Hello-World.git",
+            "stargazers_url": "https://api.github.com/repos/octocat/Hello-World/stargazers",
+            "statuses_url": "https://api.github.com/repos/octocat/Hello-World/statuses/{sha}",
+            "subscribers_url": "https://api.github.com/repos/octocat/Hello-World/subscribers",
+            "subscription_url": "https://api.github.com/repos/octocat/Hello-World/subscription",
+            "tags_url": "https://api.github.com/repos/octocat/Hello-World/tags",
+            "teams_url": "https://api.github.com/repos/octocat/Hello-World/teams",
+            "trees_url": "https://api.github.com/repos/octocat/Hello-World/git/trees{/sha}",
+            "clone_url": "https://github.com/octocat/Hello-World.git",
+            "mirror_url": "git:git.example.com/octocat/Hello-World",
+            "hooks_url": "https://api.github.com/repos/octocat/Hello-World/hooks",
+            "svn_url": "https://svn.github.com/octocat/Hello-World",
+            "homepage": "https://github.com",
+            "language": null,
+            "forks_count": 9,
+            "stargazers_count": 80,
+            "watchers_count": 80,
+            "size": 108,
+            "default_branch": "master",
+            "open_issues_count": 0,
+            "is_template": false,
+            "topics": ["octocat", "atom", "electron", "api"],
+            "has_issues": true,
+            "has_projects": true,
+            "has_wiki": true,
+            "has_pages": false,
+            "has_downloads": true,
+            "has_discussions": false,
+            "archived": false,
+            "disabled": false,
+            "visibility": "public",
+            "pushed_at": "2011-01-26T19:06:43Z",
+            "created_at": "2011-01-26T19:01:12Z",
+            "updated_at": "2011-01-26T19:14:43Z",
+            "permissions": {
+              "admin": false,
+              "push": false,
+              "pull": true
+            }
+          }
+        ]
+      },
       "org-pre-receive-hook-items": {
         "value": [
           {
@@ -79258,109 +79706,6 @@
           "created_at": "2011-04-11T20:09:31Z",
           "updated_at": "2014-03-04T18:58:10Z"
         }
-      },
-      "minimal-repository-items": {
-        "value": [
-          {
-            "id": 1296269,
-            "node_id": "MDEwOlJlcG9zaXRvcnkxMjk2MjY5",
-            "name": "Hello-World",
-            "full_name": "octocat/Hello-World",
-            "owner": {
-              "login": "octocat",
-              "id": 1,
-              "node_id": "MDQ6VXNlcjE=",
-              "avatar_url": "https://github.com/images/error/octocat_happy.gif",
-              "gravatar_id": "",
-              "url": "https://api.github.com/users/octocat",
-              "html_url": "https://github.com/octocat",
-              "followers_url": "https://api.github.com/users/octocat/followers",
-              "following_url": "https://api.github.com/users/octocat/following{/other_user}",
-              "gists_url": "https://api.github.com/users/octocat/gists{/gist_id}",
-              "starred_url": "https://api.github.com/users/octocat/starred{/owner}{/repo}",
-              "subscriptions_url": "https://api.github.com/users/octocat/subscriptions",
-              "organizations_url": "https://api.github.com/users/octocat/orgs",
-              "repos_url": "https://api.github.com/users/octocat/repos",
-              "events_url": "https://api.github.com/users/octocat/events{/privacy}",
-              "received_events_url": "https://api.github.com/users/octocat/received_events",
-              "type": "User",
-              "site_admin": false
-            },
-            "private": false,
-            "html_url": "https://github.com/octocat/Hello-World",
-            "description": "This your first repo!",
-            "fork": false,
-            "url": "https://api.github.com/repos/octocat/Hello-World",
-            "archive_url": "https://api.github.com/repos/octocat/Hello-World/{archive_format}{/ref}",
-            "assignees_url": "https://api.github.com/repos/octocat/Hello-World/assignees{/user}",
-            "blobs_url": "https://api.github.com/repos/octocat/Hello-World/git/blobs{/sha}",
-            "branches_url": "https://api.github.com/repos/octocat/Hello-World/branches{/branch}",
-            "collaborators_url": "https://api.github.com/repos/octocat/Hello-World/collaborators{/collaborator}",
-            "comments_url": "https://api.github.com/repos/octocat/Hello-World/comments{/number}",
-            "commits_url": "https://api.github.com/repos/octocat/Hello-World/commits{/sha}",
-            "compare_url": "https://api.github.com/repos/octocat/Hello-World/compare/{base}...{head}",
-            "contents_url": "https://api.github.com/repos/octocat/Hello-World/contents/{+path}",
-            "contributors_url": "https://api.github.com/repos/octocat/Hello-World/contributors",
-            "deployments_url": "https://api.github.com/repos/octocat/Hello-World/deployments",
-            "downloads_url": "https://api.github.com/repos/octocat/Hello-World/downloads",
-            "events_url": "https://api.github.com/repos/octocat/Hello-World/events",
-            "forks_url": "https://api.github.com/repos/octocat/Hello-World/forks",
-            "git_commits_url": "https://api.github.com/repos/octocat/Hello-World/git/commits{/sha}",
-            "git_refs_url": "https://api.github.com/repos/octocat/Hello-World/git/refs{/sha}",
-            "git_tags_url": "https://api.github.com/repos/octocat/Hello-World/git/tags{/sha}",
-            "git_url": "git:github.com/octocat/Hello-World.git",
-            "issue_comment_url": "https://api.github.com/repos/octocat/Hello-World/issues/comments{/number}",
-            "issue_events_url": "https://api.github.com/repos/octocat/Hello-World/issues/events{/number}",
-            "issues_url": "https://api.github.com/repos/octocat/Hello-World/issues{/number}",
-            "keys_url": "https://api.github.com/repos/octocat/Hello-World/keys{/key_id}",
-            "labels_url": "https://api.github.com/repos/octocat/Hello-World/labels{/name}",
-            "languages_url": "https://api.github.com/repos/octocat/Hello-World/languages",
-            "merges_url": "https://api.github.com/repos/octocat/Hello-World/merges",
-            "milestones_url": "https://api.github.com/repos/octocat/Hello-World/milestones{/number}",
-            "notifications_url": "https://api.github.com/repos/octocat/Hello-World/notifications{?since,all,participating}",
-            "pulls_url": "https://api.github.com/repos/octocat/Hello-World/pulls{/number}",
-            "releases_url": "https://api.github.com/repos/octocat/Hello-World/releases{/id}",
-            "ssh_url": "git@github.com:octocat/Hello-World.git",
-            "stargazers_url": "https://api.github.com/repos/octocat/Hello-World/stargazers",
-            "statuses_url": "https://api.github.com/repos/octocat/Hello-World/statuses/{sha}",
-            "subscribers_url": "https://api.github.com/repos/octocat/Hello-World/subscribers",
-            "subscription_url": "https://api.github.com/repos/octocat/Hello-World/subscription",
-            "tags_url": "https://api.github.com/repos/octocat/Hello-World/tags",
-            "teams_url": "https://api.github.com/repos/octocat/Hello-World/teams",
-            "trees_url": "https://api.github.com/repos/octocat/Hello-World/git/trees{/sha}",
-            "clone_url": "https://github.com/octocat/Hello-World.git",
-            "mirror_url": "git:git.example.com/octocat/Hello-World",
-            "hooks_url": "https://api.github.com/repos/octocat/Hello-World/hooks",
-            "svn_url": "https://svn.github.com/octocat/Hello-World",
-            "homepage": "https://github.com",
-            "language": null,
-            "forks_count": 9,
-            "stargazers_count": 80,
-            "watchers_count": 80,
-            "size": 108,
-            "default_branch": "master",
-            "open_issues_count": 0,
-            "is_template": false,
-            "topics": ["octocat", "atom", "electron", "api"],
-            "has_issues": true,
-            "has_projects": true,
-            "has_wiki": true,
-            "has_pages": false,
-            "has_downloads": true,
-            "has_discussions": false,
-            "archived": false,
-            "disabled": false,
-            "visibility": "public",
-            "pushed_at": "2011-01-26T19:06:43Z",
-            "created_at": "2011-01-26T19:01:12Z",
-            "updated_at": "2011-01-26T19:14:43Z",
-            "permissions": {
-              "admin": false,
-              "push": false,
-              "pull": true
-            }
-          }
-        ]
       },
       "repository": {
         "value": {
@@ -94904,9 +95249,9 @@
           "type": "string"
         }
       },
-      "audit-log-phrase": {
+      "audit-log-enterprise-phrase": {
         "name": "phrase",
-        "description": "A search phrase. For more information, see [Searching the audit log](https://docs.github.com/enterprise-server@3.5/github/setting-up-and-managing-organizations-and-teams/reviewing-the-audit-log-for-your-organization#searching-the-audit-log).",
+        "description": "A search phrase. For more information, see [Searching the audit log](https://docs.github.com/enterprise-server@3.5/admin/monitoring-activity-in-your-enterprise/reviewing-audit-logs-for-your-enterprise/searching-the-audit-log-for-your-enterprise#searching-the-audit-log).",
         "in": "query",
         "required": false,
         "schema": {
@@ -95108,6 +95453,15 @@
           "type": "string"
         }
       },
+      "audit-log-phrase": {
+        "name": "phrase",
+        "description": "A search phrase. For more information, see [Searching the audit log](https://docs.github.com/enterprise-server@3.5/github/setting-up-and-managing-organizations-and-teams/reviewing-the-audit-log-for-your-organization#searching-the-audit-log).",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
       "tool-name": {
         "name": "tool_name",
         "description": "The name of a code scanning tool. Only results by this tool will be listed. You can specify the tool by using either `tool_name` or `tool_guid`, but not both.",
@@ -95133,6 +95487,15 @@
         "required": true,
         "schema": {
           "type": "integer"
+        }
+      },
+      "repo-name": {
+        "name": "repo_name",
+        "description": "repo_name parameter",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string"
         }
       },
       "team-slug": {
@@ -95263,7 +95626,8 @@
             "in_progress",
             "queued",
             "requested",
-            "waiting"
+            "waiting",
+            "pending"
           ]
         }
       },
@@ -95561,6 +95925,26 @@
           "type": "integer"
         }
       },
+      "since-repo-date": {
+        "name": "since",
+        "description": "Only show repositories updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "before-repo-date": {
+        "name": "before",
+        "description": "Only show repositories updated before the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
       "since-user": {
         "name": "since",
         "description": "A user ID. Only return users with an ID greater than this ID.",
@@ -95677,15 +96061,8 @@
           }
         }
       },
-      "forbidden": {
-        "description": "Forbidden",
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/basic-error"
-            }
-          }
-        }
+      "not_modified": {
+        "description": "Not modified"
       },
       "requires_authentication": {
         "description": "Requires authentication",
@@ -95697,8 +96074,15 @@
           }
         }
       },
-      "not_modified": {
-        "description": "Not modified"
+      "forbidden": {
+        "description": "Forbidden",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/basic-error"
+            }
+          }
+        }
       },
       "gone": {
         "description": "Gone",

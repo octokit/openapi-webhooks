@@ -50,10 +50,6 @@
       "name": "emojis",
       "description": "List emojis available to use on GitHub."
     },
-    {
-      "name": "enterprise-admin",
-      "description": "Administer a GitHub enterprise."
-    },
     { "name": "dependabot", "description": "Endpoints to manage Dependabot." },
     {
       "name": "dependency-graph",
@@ -78,6 +74,10 @@
       "description": "Endpoints that give information about the API."
     },
     { "name": "migrations", "description": "Move projects to or from GitHub." },
+    {
+      "name": "oidc",
+      "description": "Endpoints to manage GitHub OIDC configuration using the REST API."
+    },
     { "name": "orgs", "description": "Interact with GitHub Orgs." },
     {
       "name": "packages",
@@ -99,14 +99,12 @@
       "name": "secret-scanning",
       "description": "Retrieve secret scanning alerts from a repository."
     },
-    { "name": "server-statistics", "description": "GHES statistics" },
     { "name": "teams", "description": "Interact with GitHub Teams." },
     {
       "name": "users",
       "description": "Interact with and view information about users and also current user."
     },
-    { "name": "enterprise-admin", "description": "Enterprise Administration" },
-    { "name": "server-statistics", "description": "Server statistics" }
+    { "name": "enterprise-admin", "description": "Enterprise Administration" }
   ],
   "servers": [
     {
