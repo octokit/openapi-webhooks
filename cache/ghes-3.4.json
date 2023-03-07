@@ -8992,7 +8992,7 @@
         "operationId": "orgs/list-custom-roles",
         "externalDocs": {
           "description": "API method documentation",
-          "url": "https://docs.github.com/enterprise-server@3.4/rest/reference/orgs#list-custom-repository-roles-in-an-organization"
+          "url": "https://docs.github.com/enterprise-server@3.4/rest/reference/orgs#deprecated-list-custom-repository-roles-in-an-organization"
         },
         "parameters": [
           {
@@ -9028,7 +9028,7 @@
                 },
                 "examples": {
                   "default": {
-                    "$ref": "#/components/examples/organization-custom-repository-role-example"
+                    "$ref": "#/components/examples/organization-custom-repository-role-example-old"
                   }
                 }
               }
@@ -9038,9 +9038,12 @@
         "x-github": {
           "githubCloudOnly": true,
           "enabledForGitHubApps": true,
+          "removalDate": "2025-02-15",
+          "deprecationDate": "2023-02-15",
           "category": "orgs",
-          "subcategory": "custom_roles"
-        }
+          "subcategory": "custom-roles"
+        },
+        "deprecated": true
       }
     },
     "/orgs/{org}": {
@@ -52387,7 +52390,7 @@
       "secret-scanning-alert-resolution": {
         "type": ["string", "null"],
         "description": "**Required when the `state` is `resolved`.** The reason for resolving the alert.",
-        "enum": [null, "false_positive", "wont_fix", "revoked", "used_in_tests"]
+        "enum": ["false_positive", "wont_fix", "revoked", "used_in_tests", null]
       },
       "simple-repository": {
         "title": "Simple Repository",
@@ -76169,7 +76172,7 @@
           }
         ]
       },
-      "organization-custom-repository-role-example": {
+      "organization-custom-repository-role-example-old": {
         "value": {
           "total_count": 2,
           "custom_roles": [
