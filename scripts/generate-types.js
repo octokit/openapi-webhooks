@@ -19,9 +19,9 @@ const packageDefaults = {
   types: "types.d.ts",
   author: "Gregor Martynus (https://twitter.com/gr2m)",
   license: "MIT",
-  octokit: {
+  /*octokit: {
     "openapi-version": process.env.OCTOKIT_OPENAPI_VERSION.replace(/^v/, ""),
-  },
+  },*/
 };
 
 async function run() {
