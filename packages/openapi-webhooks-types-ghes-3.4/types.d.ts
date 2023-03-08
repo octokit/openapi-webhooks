@@ -1488,11 +1488,11 @@ export interface components {
      * @enum {string|null}
      */
     "secret-scanning-alert-resolution":
-      | ""
       | "false_positive"
       | "wont_fix"
       | "revoked"
       | "used_in_tests"
+      | ""
       | null;
     /**
      * Simple Repository

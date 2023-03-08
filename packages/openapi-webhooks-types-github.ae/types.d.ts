@@ -3304,6 +3304,18 @@ export interface components {
       selected_organizations_url?: string;
       runners_url: string;
       allows_public_repositories: boolean;
+      /**
+       * @description If `true`, the `restricted_to_workflows` and `selected_workflows` fields cannot be modified.
+       * @default false
+       */
+      workflow_restrictions_read_only?: boolean;
+      /**
+       * @description If `true`, the runner group will be restricted to running only the workflows specified in the `selected_workflows` array.
+       * @default false
+       */
+      restricted_to_workflows?: boolean;
+      /** @description List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`. */
+      selected_workflows?: string[];
     };
     /**
      * Self hosted runner label
@@ -3465,11 +3477,11 @@ export interface components {
      * @enum {string|null}
      */
     "secret-scanning-alert-resolution":
-      | ""
       | "false_positive"
       | "wont_fix"
       | "revoked"
       | "used_in_tests"
+      | ""
       | null;
     /**
      * Simple Repository
@@ -4452,6 +4464,21 @@ export interface components {
       allowed_actions?: components["schemas"]["allowed-actions"];
       selected_actions_url?: components["schemas"]["selected-actions-url"];
     };
+    /**
+     * @description The default workflow permissions granted to the GITHUB_TOKEN when running workflows.
+     * @enum {string}
+     */
+    "actions-default-workflow-permissions": "read" | "write";
+    /** @description Whether GitHub Actions can approve pull requests. Enabling this can be a security risk. */
+    "actions-can-approve-pull-request-reviews": boolean;
+    "actions-get-default-workflow-permissions": {
+      default_workflow_permissions: components["schemas"]["actions-default-workflow-permissions"];
+      can_approve_pull_request_reviews: components["schemas"]["actions-can-approve-pull-request-reviews"];
+    };
+    "actions-set-default-workflow-permissions": {
+      default_workflow_permissions?: components["schemas"]["actions-default-workflow-permissions"];
+      can_approve_pull_request_reviews?: components["schemas"]["actions-can-approve-pull-request-reviews"];
+    };
     "runner-groups-org": {
       id: number;
       name: string;
@@ -4463,6 +4490,18 @@ export interface components {
       inherited: boolean;
       inherited_allows_public_repositories?: boolean;
       allows_public_repositories: boolean;
+      /**
+       * @description If `true`, the `restricted_to_workflows` and `selected_workflows` fields cannot be modified.
+       * @default false
+       */
+      workflow_restrictions_read_only?: boolean;
+      /**
+       * @description If `true`, the runner group will be restricted to running only the workflows specified in the `selected_workflows` array.
+       * @default false
+       */
+      restricted_to_workflows?: boolean;
+      /** @description List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`. */
+      selected_workflows?: string[];
     };
     /**
      * Actions Secret for an Organization
@@ -9773,6 +9812,7 @@ export interface components {
      */
     "gpg-key": {
       id: number;
+      name?: OneOf<[string, null]>;
       primary_key_id: OneOf<[number, null]>;
       key_id: string;
       public_key: string;
@@ -9794,6 +9834,7 @@ export interface components {
         created_at?: string;
         expires_at?: OneOf<[string, null]>;
         raw_key?: OneOf<[string, null]>;
+        revoked?: boolean;
       }[];
       can_sign: boolean;
       can_encrypt_comms: boolean;
@@ -9803,6 +9844,7 @@ export interface components {
       created_at: string;
       /** Format: date-time */
       expires_at: OneOf<[string, null]>;
+      revoked: boolean;
       raw_key: OneOf<[string, null]>;
     };
     /**
@@ -10188,6 +10230,17 @@ export interface components {
        * @enum {string}
        */
       state: "open" | "closed" | "locked" | "converting" | "transferring";
+      /**
+       * @description The reason for the current state
+       * @enum {string|null}
+       */
+      state_reason:
+        | "resolved"
+        | "outdated"
+        | "duplicate"
+        | "reopened"
+        | ""
+        | null;
       timeline_url?: string;
       title: string;
       /** Format: date-time */

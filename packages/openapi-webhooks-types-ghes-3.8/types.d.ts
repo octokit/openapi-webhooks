@@ -4345,11 +4345,11 @@ export interface components {
      * @enum {string|null}
      */
     "secret-scanning-alert-resolution":
-      | ""
       | "false_positive"
       | "wont_fix"
       | "revoked"
       | "used_in_tests"
+      | ""
       | null;
     "organization-secret-scanning-alert": {
       number?: components["schemas"]["alert-number"];
@@ -11581,6 +11581,17 @@ export interface components {
        * @enum {string}
        */
       state: "open" | "closed" | "locked" | "converting" | "transferring";
+      /**
+       * @description The reason for the current state
+       * @enum {string|null}
+       */
+      state_reason:
+        | "resolved"
+        | "outdated"
+        | "duplicate"
+        | "reopened"
+        | ""
+        | null;
       timeline_url?: string;
       title: string;
       /** Format: date-time */
