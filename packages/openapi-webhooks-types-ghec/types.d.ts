@@ -365,6 +365,19 @@ export interface webhooks {
      */
     post: operations["discussion/category-changed"];
   };
+  "discussion-closed": {
+    /**
+     * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-cloud@latest//discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#discussion).
+     *
+     * For activity relating to a comment on a discussion, use the `discussion_comment` event.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
+     *
+     * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     * @description A discussion was closed.
+     */
+    post: operations["discussion/closed"];
+  };
   "discussion-comment-created": {
     /**
      * This event occurs when there is activity relating to a comment on a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-cloud@latest//discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#discussion).
@@ -481,6 +494,19 @@ export interface webhooks {
      * @description A discussion was pinned.
      */
     post: operations["discussion/pinned"];
+  };
+  "discussion-reopened": {
+    /**
+     * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-cloud@latest//discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#discussion).
+     *
+     * For activity relating to a comment on a discussion, use the `discussion_comment` event.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
+     *
+     * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     * @description A discussion was reopened.
+     */
+    post: operations["discussion/reopened"];
   };
   "discussion-transferred": {
     /**
@@ -4248,11 +4274,11 @@ export interface components {
      * @enum {string|null}
      */
     "secret-scanning-alert-resolution":
-      | ""
       | "false_positive"
       | "wont_fix"
       | "revoked"
       | "used_in_tests"
+      | ""
       | null;
     "organization-secret-scanning-alert": {
       number?: components["schemas"]["alert-number"];
@@ -5205,14 +5231,14 @@ export interface components {
        * @description The system role from which this role inherits permissions.
        * @enum {string}
        */
-      base_role?: "read" | "triage" | "write" | "maintain";
+      base_role: "read" | "triage" | "write" | "maintain";
       /** @description A list of additional permissions included in this role. */
-      permissions?: string[];
-      organization?: components["schemas"]["simple-user"];
+      permissions: string[];
+      organization: components["schemas"]["simple-user"];
       /** Format: date-time */
-      created_at?: string;
+      created_at: string;
       /** Format: date-time */
-      updated_at?: string;
+      updated_at: string;
     };
     /**
      * Organization Full
@@ -5717,6 +5743,32 @@ export interface components {
        * @description The expiry for the token. This will only be present when the credential is a token.
        */
       authorized_credential_expires_at?: OneOf<[string, null]>;
+    };
+    "organization-custom-repository-role-create-schema": {
+      /** @description The name of the custom role. */
+      name: string;
+      /** @description A short description about who this role is for or what permissions it grants. */
+      description?: OneOf<[string, null]>;
+      /**
+       * @description The system role from which this role inherits permissions.
+       * @enum {string}
+       */
+      base_role: "read" | "triage" | "write" | "maintain";
+      /** @description A list of additional permissions included in this role. */
+      permissions: string[];
+    };
+    "organization-custom-repository-role-update-schema": {
+      /** @description The name of the custom role. */
+      name?: string;
+      /** @description A short description about who this role is for or what permissions it grants. */
+      description?: OneOf<[string, null]>;
+      /**
+       * @description The system role from which this role inherits permissions.
+       * @enum {string}
+       */
+      base_role?: "read" | "triage" | "write" | "maintain";
+      /** @description A list of additional permissions included in this role. */
+      permissions?: string[];
     };
     /**
      * Dependabot Secret for an Organization
@@ -11996,6 +12048,14 @@ export interface components {
       plan: components["schemas"]["marketplace-listing-plan"];
     };
     /**
+     * Social account
+     * @description Social media account
+     */
+    "social-account": {
+      provider: string;
+      url: string;
+    };
+    /**
      * SSH Signing Key
      * @description A public SSH key used to sign Git commits
      */
@@ -12237,6 +12297,17 @@ export interface components {
        * @enum {string}
        */
       state: "open" | "closed" | "locked" | "converting" | "transferring";
+      /**
+       * @description The reason for the current state
+       * @enum {string|null}
+       */
+      state_reason:
+        | "resolved"
+        | "outdated"
+        | "duplicate"
+        | "reopened"
+        | ""
+        | null;
       timeline_url?: string;
       title: string;
       /** Format: date-time */
@@ -16235,6 +16306,17 @@ export interface components {
       repository: components["schemas"]["repository"];
       sender: components["schemas"]["simple-user"];
     };
+    /** discussion closed event */
+    "webhook-discussion-closed": {
+      /** @enum {string} */
+      action: "closed";
+      discussion: components["schemas"]["discussion"];
+      enterprise?: components["schemas"]["enterprise"];
+      installation?: components["schemas"]["simple-installation"];
+      organization?: components["schemas"]["organization-simple"];
+      repository: components["schemas"]["repository"];
+      sender: components["schemas"]["simple-user"];
+    };
     /** discussion_comment created event */
     "webhook-discussion-comment-created": {
       /** @enum {string} */
@@ -16812,6 +16894,17 @@ export interface components {
     "webhook-discussion-pinned": {
       /** @enum {string} */
       action: "pinned";
+      discussion: components["schemas"]["discussion"];
+      enterprise?: components["schemas"]["enterprise"];
+      installation?: components["schemas"]["simple-installation"];
+      organization?: components["schemas"]["organization-simple"];
+      repository: components["schemas"]["repository"];
+      sender: components["schemas"]["simple-user"];
+    };
+    /** discussion reopened event */
+    "webhook-discussion-reopened": {
+      /** @enum {string} */
+      action: "reopened";
       discussion: components["schemas"]["discussion"];
       enterprise?: components["schemas"]["enterprise"];
       installation?: components["schemas"]["simple-installation"];
@@ -76926,6 +77019,45 @@ export interface operations {
       200: never;
     };
   };
+  "discussion/closed": {
+    /**
+     * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-cloud@latest//discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#discussion).
+     *
+     * For activity relating to a comment on a discussion, use the `discussion_comment` event.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
+     *
+     * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     * @description A discussion was closed.
+     */
+    parameters: {
+      /** @example GitHub-Hookshot/123abc */
+      /** @example 12312312 */
+      /** @example discussions */
+      /** @example 123123 */
+      /** @example repository */
+      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+      header: {
+        "User-Agent"?: string;
+        "X-Github-Hook-Id"?: string;
+        "X-Github-Event"?: string;
+        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-GitHub-Delivery"?: string;
+        "X-Hub-Signature-256"?: string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-discussion-closed"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: never;
+    };
+  };
   "discussion-comment/created": {
     /**
      * This event occurs when there is activity relating to a comment on a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-cloud@latest//discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#discussion).
@@ -77270,6 +77402,45 @@ export interface operations {
     requestBody: {
       content: {
         "application/json": components["schemas"]["webhook-discussion-pinned"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: never;
+    };
+  };
+  "discussion/reopened": {
+    /**
+     * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-cloud@latest//discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#discussion).
+     *
+     * For activity relating to a comment on a discussion, use the `discussion_comment` event.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
+     *
+     * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     * @description A discussion was reopened.
+     */
+    parameters: {
+      /** @example GitHub-Hookshot/123abc */
+      /** @example 12312312 */
+      /** @example discussions */
+      /** @example 123123 */
+      /** @example repository */
+      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+      header: {
+        "User-Agent"?: string;
+        "X-Github-Hook-Id"?: string;
+        "X-Github-Event"?: string;
+        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-GitHub-Delivery"?: string;
+        "X-Hub-Signature-256"?: string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-discussion-reopened"];
       };
     };
     responses: {
