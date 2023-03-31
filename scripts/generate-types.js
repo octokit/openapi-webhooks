@@ -4,9 +4,9 @@ import { basename } from "node:path";
 import prettier from "prettier";
 import openapiTS from "openapi-typescript";
 
-if (!process.env.OCTOKIT_OPENAPI_VERSION) {
+/* (!process.env.OCTOKIT_OPENAPI_VERSION) {
   throw new Error("OCTOKIT_OPENAPI_VERSION is not set");
-}
+}*/
 
 run();
 
