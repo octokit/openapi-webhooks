@@ -1265,45 +1265,6 @@ export interface webhooks {
      */
     post: operations["project/reopened"];
   };
-  "projects-v2-closed": {
-    /**
-     * This event occurs when there is activity relating to an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.7/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#projectv2).
-     *
-     * For activity relating to a item on a project, use the `projects_v2_item` event. For activity relating to Projects (classic), use the `project`, project_card`, and `project_column` events instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
-     *
-     * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
-     * @description A project in the organization was closed.
-     */
-    post: operations["projects-v2/closed"];
-  };
-  "projects-v2-created": {
-    /**
-     * This event occurs when there is activity relating to an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.7/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#projectv2).
-     *
-     * For activity relating to a item on a project, use the `projects_v2_item` event. For activity relating to Projects (classic), use the `project`, project_card`, and `project_column` events instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
-     *
-     * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
-     * @description A project in the organization was created.
-     */
-    post: operations["projects-v2/created"];
-  };
-  "projects-v2-edited": {
-    /**
-     * This event occurs when there is activity relating to an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.7/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#projectv2).
-     *
-     * For activity relating to a item on a project, use the `projects_v2_item` event. For activity relating to Projects (classic), use the `project`, project_card`, and `project_column` events instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
-     *
-     * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
-     * @description The title, description, or README of a project in the organization was changed.
-     */
-    post: operations["projects-v2/edited"];
-  };
   "projects-v2-item-archived": {
     /**
      * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.7/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#projectv2item).
@@ -1394,19 +1355,6 @@ export interface webhooks {
      * @description An archived item on an organization project was restored from the archive. For more information, see "[Archiving items from your project](https://docs.github.com/enterprise-server@3.7/issues/planning-and-tracking-with-projects/managing-items-in-your-project/archiving-items-from-your-project)."
      */
     post: operations["projects-v2-item/restored"];
-  };
-  "projects-v2-reopened": {
-    /**
-     * This event occurs when there is activity relating to an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.7/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#projectv2).
-     *
-     * For activity relating to a item on a project, use the `projects_v2_item` event. For activity relating to Projects (classic), use the `project`, project_card`, and `project_column` events instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
-     *
-     * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
-     * @description A project in the organization was reopened.
-     */
-    post: operations["projects-v2/reopened"];
   };
   public: {
     /**
@@ -2721,6 +2669,16 @@ export interface components {
        * @enum {string}
        */
       organization_hooks?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token for viewing and managing fine-grained personal access token requests to an organization.
+       * @enum {string}
+       */
+      organization_personal_access_tokens?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token for viewing and managing fine-grained personal access tokens that have been approved by an organization.
+       * @enum {string}
+       */
+      organization_personal_access_token_requests?: "read" | "write";
       /**
        * @description The level of permission to grant the access token for viewing an organization's plan.
        * @enum {string}
@@ -4318,6 +4276,7 @@ export interface components {
      * @description Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.
      */
     issue: {
+      /** Format: int64 */
       id: number;
       node_id: string;
       /**
@@ -4405,7 +4364,10 @@ export interface components {
      * @description Comments provide a way for people to collaborate on an issue.
      */
     "issue-comment": {
-      /** @description Unique identifier of the issue comment */
+      /**
+       * Format: int64
+       * @description Unique identifier of the issue comment
+       */
       id: number;
       node_id: string;
       /**
@@ -5339,7 +5301,8 @@ export interface components {
       node_id: string;
       /** Format: uri */
       archive_url?: string;
-      exclude?: Record<string, never>[];
+      /** @description Exclude related items from being returned in the response in order to improve performance of the request. The array can include any of: `"repositories"`. */
+      exclude?: string[];
     };
     "org-pre-receive-hook": {
       id?: number;
@@ -8372,6 +8335,7 @@ export interface components {
      * @description Issue Event
      */
     "issue-event": {
+      /** Format: int64 */
       id: number;
       node_id: string;
       /** Format: uri */
@@ -8957,6 +8921,11 @@ export interface components {
        * @enum {string}
        */
       side?: "LEFT" | "RIGHT";
+      /**
+       * @description The level at which the comment is targeted, can be a diff line or a file.
+       * @enum {string}
+       */
+      subject_type?: "line" | "file";
       reactions?: components["schemas"]["reaction-rollup"];
       body_html?: string;
       body_text?: string;
@@ -10348,6 +10317,7 @@ export interface components {
       events_url: string;
       /** Format: uri */
       html_url: string;
+      /** Format: int64 */
       id: number;
       node_id: string;
       number: number;
@@ -11366,30 +11336,6 @@ export interface components {
           null
         ]
       >;
-    };
-    /**
-     * Projects v2 Project
-     * @description A projects v2 project
-     */
-    "projects-v2": {
-      id: number;
-      node_id: string;
-      owner: components["schemas"]["simple-user"];
-      creator: components["schemas"]["simple-user"];
-      title: string;
-      description: OneOf<[string, null]>;
-      public: boolean;
-      /** Format: date-time */
-      closed_at: OneOf<[string, null]>;
-      /** Format: date-time */
-      created_at: string;
-      /** Format: date-time */
-      updated_at: string;
-      number: number;
-      short_description: OneOf<[string, null]>;
-      /** Format: date-time */
-      deleted_at: OneOf<[string, null]>;
-      deleted_by: null | components["schemas"]["simple-user"];
     };
     /**
      * Projects v2 Item Content Type
@@ -12774,6 +12720,8 @@ export interface components {
             {
               /** @description Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name. */
               analysis_key: string;
+              /** @description Identifies the configuration under which the analysis was executed. */
+              category?: string;
               classifications?: string[];
               commit_sha?: string;
               /** @description Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed. */
@@ -12915,6 +12863,8 @@ export interface components {
             {
               /** @description Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name. */
               analysis_key: string;
+              /** @description Identifies the configuration under which the analysis was executed. */
+              category?: string;
               classifications?: string[];
               commit_sha?: string;
               /** @description Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed. */
@@ -13014,6 +12964,8 @@ export interface components {
             {
               /** @description Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name. */
               analysis_key: string;
+              /** @description Identifies the configuration under which the analysis was executed. */
+              category?: string;
               classifications?: string[];
               commit_sha?: string;
               /** @description Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed. */
@@ -13170,6 +13122,8 @@ export interface components {
             {
               /** @description Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name. */
               analysis_key: string;
+              /** @description Identifies the configuration under which the analysis was executed. */
+              category?: string;
               classifications?: string[];
               commit_sha?: string;
               /** @description Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed. */
@@ -13268,6 +13222,8 @@ export interface components {
                 {
                   /** @description Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name. */
                   analysis_key: string;
+                  /** @description Identifies the configuration under which the analysis was executed. */
+                  category?: string;
                   classifications?: string[];
                   commit_sha?: string;
                   /** @description Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed. */
@@ -13367,6 +13323,8 @@ export interface components {
             {
               /** @description Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name. */
               analysis_key: string;
+              /** @description Identifies the configuration under which the analysis was executed. */
+              category?: string;
               classifications?: string[];
               commit_sha?: string;
               /** @description Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed. */
@@ -16864,7 +16822,10 @@ export interface components {
         created_at: string;
         /** Format: uri */
         html_url: string;
-        /** @description Unique identifier of the issue comment */
+        /**
+         * Format: int64
+         * @description Unique identifier of the issue comment
+         */
         id: number;
         /** Format: uri */
         issue_url: string;
@@ -17057,6 +17018,7 @@ export interface components {
         events_url: string;
         /** Format: uri */
         html_url: string;
+        /** Format: int64 */
         id: number;
         labels?: {
           /** @description 6-character hex code, without the leading #, identifying the color */
@@ -17589,7 +17551,10 @@ export interface components {
         created_at: string;
         /** Format: uri */
         html_url: string;
-        /** @description Unique identifier of the issue comment */
+        /**
+         * Format: int64
+         * @description Unique identifier of the issue comment
+         */
         id: number;
         /** Format: uri */
         issue_url: string;
@@ -17782,6 +17747,7 @@ export interface components {
         events_url: string;
         /** Format: uri */
         html_url: string;
+        /** Format: int64 */
         id: number;
         labels?: {
           /** @description 6-character hex code, without the leading #, identifying the color */
@@ -18319,7 +18285,10 @@ export interface components {
         created_at: string;
         /** Format: uri */
         html_url: string;
-        /** @description Unique identifier of the issue comment */
+        /**
+         * Format: int64
+         * @description Unique identifier of the issue comment
+         */
         id: number;
         /** Format: uri */
         issue_url: string;
@@ -18512,6 +18481,7 @@ export interface components {
         events_url: string;
         /** Format: uri */
         html_url: string;
+        /** Format: int64 */
         id: number;
         labels?: {
           /** @description 6-character hex code, without the leading #, identifying the color */
@@ -19190,6 +19160,7 @@ export interface components {
         events_url: string;
         /** Format: uri */
         html_url: string;
+        /** Format: int64 */
         id: number;
         labels?: {
           /** @description 6-character hex code, without the leading #, identifying the color */
@@ -19706,6 +19677,7 @@ export interface components {
         events_url: string;
         /** Format: uri */
         html_url: string;
+        /** Format: int64 */
         id: number;
         labels?: {
           /** @description 6-character hex code, without the leading #, identifying the color */
@@ -20282,6 +20254,7 @@ export interface components {
         events_url: string;
         /** Format: uri */
         html_url: string;
+        /** Format: int64 */
         id: number;
         labels?: {
           /** @description 6-character hex code, without the leading #, identifying the color */
@@ -20793,6 +20766,7 @@ export interface components {
         events_url: string;
         /** Format: uri */
         html_url: string;
+        /** Format: int64 */
         id: number;
         labels?: {
           /** @description 6-character hex code, without the leading #, identifying the color */
@@ -21532,6 +21506,7 @@ export interface components {
         events_url: string;
         /** Format: uri */
         html_url: string;
+        /** Format: int64 */
         id: number;
         labels?: {
           /** @description 6-character hex code, without the leading #, identifying the color */
@@ -22065,6 +22040,7 @@ export interface components {
         events_url: string;
         /** Format: uri */
         html_url: string;
+        /** Format: int64 */
         id: number;
         labels?: {
           /** @description 6-character hex code, without the leading #, identifying the color */
@@ -22593,6 +22569,7 @@ export interface components {
         events_url: string;
         /** Format: uri */
         html_url: string;
+        /** Format: int64 */
         id: number;
         labels?: {
           /** @description 6-character hex code, without the leading #, identifying the color */
@@ -23171,6 +23148,7 @@ export interface components {
         events_url: string;
         /** Format: uri */
         html_url: string;
+        /** Format: int64 */
         id: number;
         labels?: {
           /** @description 6-character hex code, without the leading #, identifying the color */
@@ -23896,6 +23874,7 @@ export interface components {
               events_url: string;
               /** Format: uri */
               html_url: string;
+              /** Format: int64 */
               id: number;
               labels?: {
                 /** @description 6-character hex code, without the leading #, identifying the color */
@@ -24651,6 +24630,7 @@ export interface components {
         events_url: string;
         /** Format: uri */
         html_url: string;
+        /** Format: int64 */
         id: number;
         labels?: {
           /** @description 6-character hex code, without the leading #, identifying the color */
@@ -25168,6 +25148,7 @@ export interface components {
         events_url: string;
         /** Format: uri */
         html_url: string;
+        /** Format: int64 */
         id: number;
         labels?: {
           /** @description 6-character hex code, without the leading #, identifying the color */
@@ -25678,6 +25659,7 @@ export interface components {
         events_url: string;
         /** Format: uri */
         html_url: string;
+        /** Format: int64 */
         id: number;
         labels?: {
           /** @description 6-character hex code, without the leading #, identifying the color */
@@ -26252,6 +26234,7 @@ export interface components {
           events_url: string;
           /** Format: uri */
           html_url: string;
+          /** Format: int64 */
           id: number;
           labels?: {
             /** @description 6-character hex code, without the leading #, identifying the color */
@@ -27011,6 +26994,7 @@ export interface components {
         events_url: string;
         /** Format: uri */
         html_url: string;
+        /** Format: int64 */
         id: number;
         labels?: {
           /** @description 6-character hex code, without the leading #, identifying the color */
@@ -27570,6 +27554,7 @@ export interface components {
         events_url: string;
         /** Format: uri */
         html_url: string;
+        /** Format: int64 */
         id: number;
         labels?: {
           /** @description 6-character hex code, without the leading #, identifying the color */
@@ -28086,6 +28071,7 @@ export interface components {
         events_url: string;
         /** Format: uri */
         html_url: string;
+        /** Format: int64 */
         id: number;
         labels?: {
           /** @description 6-character hex code, without the leading #, identifying the color */
@@ -28614,6 +28600,7 @@ export interface components {
         events_url: string;
         /** Format: uri */
         html_url: string;
+        /** Format: int64 */
         id: number;
         labels?: {
           /** @description 6-character hex code, without the leading #, identifying the color */
@@ -29187,6 +29174,7 @@ export interface components {
         events_url: string;
         /** Format: uri */
         html_url: string;
+        /** Format: int64 */
         id: number;
         labels?: {
           /** @description 6-character hex code, without the leading #, identifying the color */
@@ -32693,48 +32681,6 @@ export interface components {
       repository?: components["schemas"]["repository"];
       sender: components["schemas"]["simple-user"];
     };
-    /** Projects v2 Project Closed Event */
-    "webhook-projects-v2-project-closed": {
-      /** @enum {string} */
-      action: "closed";
-      organization: components["schemas"]["organization-simple"];
-      projects_v2: components["schemas"]["projects-v2"];
-      sender: components["schemas"]["simple-user"];
-    };
-    /** @description A project was created */
-    "webhook-projects-v2-project-created": {
-      /** @enum {string} */
-      action: "created";
-      organization: components["schemas"]["organization-simple"];
-      projects_v2: components["schemas"]["projects-v2"];
-      sender: components["schemas"]["simple-user"];
-    };
-    /** Projects v2 Project Edited Event */
-    "webhook-projects-v2-project-edited": {
-      /** @enum {string} */
-      action: "edited";
-      changes: {
-        description?: {
-          from?: OneOf<[string, null]>;
-          to?: OneOf<[string, null]>;
-        };
-        public?: {
-          from?: boolean;
-          to?: boolean;
-        };
-        short_description?: {
-          from?: OneOf<[string, null]>;
-          to?: OneOf<[string, null]>;
-        };
-        title?: {
-          from?: string;
-          to?: string;
-        };
-      };
-      organization: components["schemas"]["organization-simple"];
-      projects_v2: components["schemas"]["projects-v2"];
-      sender: components["schemas"]["simple-user"];
-    };
     /** Projects v2 Item Archived Event */
     "webhook-projects-v2-item-archived": {
       /** @enum {string} */
@@ -32840,14 +32786,6 @@ export interface components {
       installation?: components["schemas"]["simple-installation"];
       organization: components["schemas"]["organization-simple"];
       projects_v2_item: components["schemas"]["projects-v2-item"];
-      sender: components["schemas"]["simple-user"];
-    };
-    /** Projects v2 Project Reopened Event */
-    "webhook-projects-v2-project-reopened": {
-      /** @enum {string} */
-      action: "reopened";
-      organization: components["schemas"]["organization-simple"];
-      projects_v2: components["schemas"]["projects-v2"];
       sender: components["schemas"]["simple-user"];
     };
     /** public event */
@@ -42516,6 +42454,11 @@ export interface components {
          * @enum {string|null}
          */
         start_side: "LEFT" | "RIGHT" | "" | null;
+        /**
+         * @description The level at which the comment is targeted, can be a diff line or a file.
+         * @enum {string}
+         */
+        subject_type?: "line" | "file";
         /** Format: date-time */
         updated_at: string;
         /**
@@ -43906,6 +43849,11 @@ export interface components {
          * @enum {string|null}
          */
         start_side: "LEFT" | "RIGHT" | "" | null;
+        /**
+         * @description The level at which the comment is targeted, can be a diff line or a file.
+         * @enum {string}
+         */
+        subject_type?: "line" | "file";
         /** Format: date-time */
         updated_at: string;
         /**
@@ -45303,6 +45251,11 @@ export interface components {
          * @enum {string|null}
          */
         start_side: "LEFT" | "RIGHT" | "" | null;
+        /**
+         * @description The level at which the comment is targeted, can be a diff line or a file.
+         * @enum {string}
+         */
+        subject_type?: "line" | "file";
         /** Format: date-time */
         updated_at: string;
         /**
@@ -57116,6 +57069,11 @@ export interface components {
            * @enum {string|null}
            */
           start_side: "LEFT" | "RIGHT" | "" | null;
+          /**
+           * @description The level at which the comment is targeted, can be a diff line or a file.
+           * @enum {string}
+           */
+          subject_type?: "line" | "file";
           /** Format: date-time */
           updated_at: string;
           /**
@@ -58417,6 +58375,11 @@ export interface components {
            * @enum {string|null}
            */
           start_side: "LEFT" | "RIGHT" | "" | null;
+          /**
+           * @description The level at which the comment is targeted, can be a diff line or a file.
+           * @enum {string}
+           */
+          subject_type?: "line" | "file";
           /** Format: date-time */
           updated_at: string;
           /**
@@ -71817,32 +71780,32 @@ export interface components {
 export type external = Record<string, never>;
 
 export interface operations {
+  /**
+   * This event occurs when there is activity relating to branch protection rules. For more information, see "[About protected branches](https://docs.github.com/enterprise-server@3.7/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches)." For information about the APIs to manage branch protection rules, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#branchprotectionrule) or "[Branch protection](https://docs.github.com/enterprise-server@3.7/rest/branches/branch-protection)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission
+   * @description A branch protection rule was created.
+   */
   "branch-protection-rule/created": {
-    /**
-     * This event occurs when there is activity relating to branch protection rules. For more information, see "[About protected branches](https://docs.github.com/enterprise-server@3.7/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches)." For information about the APIs to manage branch protection rules, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#branchprotectionrule) or "[Branch protection](https://docs.github.com/enterprise-server@3.7/rest/branches/branch-protection)" in the REST API documentation.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission
-     * @description A branch protection rule was created.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -71856,32 +71819,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to branch protection rules. For more information, see "[About protected branches](https://docs.github.com/enterprise-server@3.7/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches)." For information about the APIs to manage branch protection rules, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#branchprotectionrule) or "[Branch protection](https://docs.github.com/enterprise-server@3.7/rest/branches/branch-protection)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+   * @description A branch protection rule was deleted.
+   */
   "branch-protection-rule/deleted": {
-    /**
-     * This event occurs when there is activity relating to branch protection rules. For more information, see "[About protected branches](https://docs.github.com/enterprise-server@3.7/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches)." For information about the APIs to manage branch protection rules, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#branchprotectionrule) or "[Branch protection](https://docs.github.com/enterprise-server@3.7/rest/branches/branch-protection)" in the REST API documentation.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
-     * @description A branch protection rule was deleted.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -71895,32 +71858,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to branch protection rules. For more information, see "[About protected branches](https://docs.github.com/enterprise-server@3.7/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches)." For information about the APIs to manage branch protection rules, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#branchprotectionrule) or "[Branch protection](https://docs.github.com/enterprise-server@3.7/rest/branches/branch-protection)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+   * @description A branch protection rule was edited.
+   */
   "branch-protection-rule/edited": {
-    /**
-     * This event occurs when there is activity relating to branch protection rules. For more information, see "[About protected branches](https://docs.github.com/enterprise-server@3.7/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches)." For information about the APIs to manage branch protection rules, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#branchprotectionrule) or "[Branch protection](https://docs.github.com/enterprise-server@3.7/rest/branches/branch-protection)" in the REST API documentation.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
-     * @description A branch protection rule was edited.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -71934,27 +71897,27 @@ export interface operations {
       200: never;
     };
   };
+  /** This event occurs when a Git ref has been successfully synced to a cache replica. For more information, see "[About repository caching](https://docs.github.com/enterprise-server@3.7/admin/enterprise-management/caching-repositories/about-repository-caching)." */
   "cache-sync": {
-    /** This event occurs when a Git ref has been successfully synced to a cache replica. For more information, see "[About repository caching](https://docs.github.com/enterprise-server@3.7/admin/enterprise-management/caching-repositories/about-repository-caching)." */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -71968,38 +71931,38 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a check run. For information about check runs, see "[Getting started with the Checks API](https://docs.github.com/enterprise-server@3.7/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check runs, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#checkrun) or "[Check Runs](https://docs.github.com/enterprise-server@3.7/rest/checks/runs)" in the REST API documentation.
+   *
+   * For activity relating to check suites, use the `check-suite` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Checks" repository permission. To receive the `rerequested` and `requested_action` event types, the app must have at least write-level access for the "Checks" permission. GitHub Apps with write-level access for the "Checks" permission are automatically subscribed to this webhook event.
+   *
+   * Repository and organization webhooks only receive payloads for the `created` and `completed` event types in repositories.
+   *
+   * **Note**: The API only looks for pushes in the repository where the check run was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
+   * @description A check run was completed, and a conclusion is available.
+   */
   "check-run/completed": {
-    /**
-     * This event occurs when there is activity relating to a check run. For information about check runs, see "[Getting started with the Checks API](https://docs.github.com/enterprise-server@3.7/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check runs, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#checkrun) or "[Check Runs](https://docs.github.com/enterprise-server@3.7/rest/checks/runs)" in the REST API documentation.
-     *
-     * For activity relating to check suites, use the `check-suite` event.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Checks" repository permission. To receive the `rerequested` and `requested_action` event types, the app must have at least write-level access for the "Checks" permission. GitHub Apps with write-level access for the "Checks" permission are automatically subscribed to this webhook event.
-     *
-     * Repository and organization webhooks only receive payloads for the `created` and `completed` event types in repositories.
-     *
-     * **Note**: The API only looks for pushes in the repository where the check run was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
-     * @description A check run was completed, and a conclusion is available.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -72014,38 +71977,38 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a check run. For information about check runs, see "[Getting started with the Checks API](https://docs.github.com/enterprise-server@3.7/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check runs, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#checkrun) or "[Check Runs](https://docs.github.com/enterprise-server@3.7/rest/checks/runs)" in the REST API documentation.
+   *
+   * For activity relating to check suites, use the `check-suite` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Checks" repository permission. To receive the `rerequested` and `requested_action` event types, the app must have at least write-level access for the "Checks" permission. GitHub Apps with write-level access for the "Checks" permission are automatically subscribed to this webhook event.
+   *
+   * Repository and organization webhooks only receive payloads for the `created` and `completed` event types in repositories.
+   *
+   * **Note**: The API only looks for pushes in the repository where the check run was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
+   * @description A new check run was created.
+   */
   "check-run/created": {
-    /**
-     * This event occurs when there is activity relating to a check run. For information about check runs, see "[Getting started with the Checks API](https://docs.github.com/enterprise-server@3.7/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check runs, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#checkrun) or "[Check Runs](https://docs.github.com/enterprise-server@3.7/rest/checks/runs)" in the REST API documentation.
-     *
-     * For activity relating to check suites, use the `check-suite` event.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Checks" repository permission. To receive the `rerequested` and `requested_action` event types, the app must have at least write-level access for the "Checks" permission. GitHub Apps with write-level access for the "Checks" permission are automatically subscribed to this webhook event.
-     *
-     * Repository and organization webhooks only receive payloads for the `created` and `completed` event types in repositories.
-     *
-     * **Note**: The API only looks for pushes in the repository where the check run was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
-     * @description A new check run was created.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -72060,38 +72023,38 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a check run. For information about check runs, see "[Getting started with the Checks API](https://docs.github.com/enterprise-server@3.7/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check runs, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#checkrun) or "[Check Runs](https://docs.github.com/enterprise-server@3.7/rest/checks/runs)" in the REST API documentation.
+   *
+   * For activity relating to check suites, use the `check-suite` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Checks" repository permission. To receive the `rerequested` and `requested_action` event types, the app must have at least write-level access for the "Checks" permission. GitHub Apps with write-level access for the "Checks" permission are automatically subscribed to this webhook event.
+   *
+   * Repository and organization webhooks only receive payloads for the `created` and `completed` event types in repositories.
+   *
+   * **Note**: The API only looks for pushes in the repository where the check run was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
+   * @description A check run completed, and someone requested a followup action that your app provides. Only the GitHub App someone requests to perform an action will receive the `requested_action` payload. For more information, see "[Creating CI tests with the Checks API](https://docs.github.com/enterprise-server@3.7/developers/apps/guides/creating-ci-tests-with-the-checks-api)."
+   */
   "check-run/requested-action": {
-    /**
-     * This event occurs when there is activity relating to a check run. For information about check runs, see "[Getting started with the Checks API](https://docs.github.com/enterprise-server@3.7/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check runs, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#checkrun) or "[Check Runs](https://docs.github.com/enterprise-server@3.7/rest/checks/runs)" in the REST API documentation.
-     *
-     * For activity relating to check suites, use the `check-suite` event.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Checks" repository permission. To receive the `rerequested` and `requested_action` event types, the app must have at least write-level access for the "Checks" permission. GitHub Apps with write-level access for the "Checks" permission are automatically subscribed to this webhook event.
-     *
-     * Repository and organization webhooks only receive payloads for the `created` and `completed` event types in repositories.
-     *
-     * **Note**: The API only looks for pushes in the repository where the check run was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
-     * @description A check run completed, and someone requested a followup action that your app provides. Only the GitHub App someone requests to perform an action will receive the `requested_action` payload. For more information, see "[Creating CI tests with the Checks API](https://docs.github.com/enterprise-server@3.7/developers/apps/guides/creating-ci-tests-with-the-checks-api)."
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -72106,38 +72069,38 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a check run. For information about check runs, see "[Getting started with the Checks API](https://docs.github.com/enterprise-server@3.7/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check runs, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#checkrun) or "[Check Runs](https://docs.github.com/enterprise-server@3.7/rest/checks/runs)" in the REST API documentation.
+   *
+   * For activity relating to check suites, use the `check-suite` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Checks" repository permission. To receive the `rerequested` and `requested_action` event types, the app must have at least write-level access for the "Checks" permission. GitHub Apps with write-level access for the "Checks" permission are automatically subscribed to this webhook event.
+   *
+   * Repository and organization webhooks only receive payloads for the `created` and `completed` event types in repositories.
+   *
+   * **Note**: The API only looks for pushes in the repository where the check run was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
+   * @description Someone requested to re-run a check run. Only the GitHub App that someone requests to re-run the check will receive the `rerequested` payload.
+   */
   "check-run/rerequested": {
-    /**
-     * This event occurs when there is activity relating to a check run. For information about check runs, see "[Getting started with the Checks API](https://docs.github.com/enterprise-server@3.7/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check runs, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#checkrun) or "[Check Runs](https://docs.github.com/enterprise-server@3.7/rest/checks/runs)" in the REST API documentation.
-     *
-     * For activity relating to check suites, use the `check-suite` event.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Checks" repository permission. To receive the `rerequested` and `requested_action` event types, the app must have at least write-level access for the "Checks" permission. GitHub Apps with write-level access for the "Checks" permission are automatically subscribed to this webhook event.
-     *
-     * Repository and organization webhooks only receive payloads for the `created` and `completed` event types in repositories.
-     *
-     * **Note**: The API only looks for pushes in the repository where the check run was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
-     * @description Someone requested to re-run a check run. Only the GitHub App that someone requests to re-run the check will receive the `rerequested` payload.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -72152,38 +72115,38 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a check suite. For information about check suites, see "[Getting started with the Checks API](https://docs.github.com/enterprise-server@3.7/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check suites, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#checksuite) or "[Check Suites](https://docs.github.com/enterprise-server@3.7/rest/checks/suites)" in the REST API documentation.
+   *
+   * For activity relating to check runs, use the `check_run` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Checks" permission. To receive the `requested` and `rerequested` event types, the app must have at lease write-level access for the "Checks" permission. GitHub Apps with write-level access for the "Checks" permission are automatically subscribed to this webhook event.
+   *
+   * Repository and organization webhooks only receive payloads for the `completed` event types in repositories.
+   *
+   * **Note**: The API only looks for pushes in the repository where the check suite was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
+   * @description All check runs in a check suite have completed, and a conclusion is available.
+   */
   "check-suite/completed": {
-    /**
-     * This event occurs when there is activity relating to a check suite. For information about check suites, see "[Getting started with the Checks API](https://docs.github.com/enterprise-server@3.7/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check suites, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#checksuite) or "[Check Suites](https://docs.github.com/enterprise-server@3.7/rest/checks/suites)" in the REST API documentation.
-     *
-     * For activity relating to check runs, use the `check_run` event.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Checks" permission. To receive the `requested` and `rerequested` event types, the app must have at lease write-level access for the "Checks" permission. GitHub Apps with write-level access for the "Checks" permission are automatically subscribed to this webhook event.
-     *
-     * Repository and organization webhooks only receive payloads for the `completed` event types in repositories.
-     *
-     * **Note**: The API only looks for pushes in the repository where the check suite was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
-     * @description All check runs in a check suite have completed, and a conclusion is available.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -72197,38 +72160,38 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a check suite. For information about check suites, see "[Getting started with the Checks API](https://docs.github.com/enterprise-server@3.7/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check suites, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#checksuite) or "[Check Suites](https://docs.github.com/enterprise-server@3.7/rest/checks/suites)" in the REST API documentation.
+   *
+   * For activity relating to check runs, use the `check_run` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Checks" permission. To receive the `requested` and `rerequested` event types, the app must have at lease write-level access for the "Checks" permission. GitHub Apps with write-level access for the "Checks" permission are automatically subscribed to this webhook event.
+   *
+   * Repository and organization webhooks only receive payloads for the `completed` event types in repositories.
+   *
+   * **Note**: The API only looks for pushes in the repository where the check suite was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
+   * @description Someone requested to run a check suite. By default, check suites are automatically created when you create a check run. For more information, see [the GraphQL API documentation for creating a check run](https://docs.github.com/enterprise-server@3.7/graphql/reference/mutations#createcheckrun) or "[Create a check run](https://docs.github.com/enterprise-server@3.7/rest/checks/runs#create-a-check-run)" in the REST API documentation.
+   */
   "check-suite/requested": {
-    /**
-     * This event occurs when there is activity relating to a check suite. For information about check suites, see "[Getting started with the Checks API](https://docs.github.com/enterprise-server@3.7/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check suites, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#checksuite) or "[Check Suites](https://docs.github.com/enterprise-server@3.7/rest/checks/suites)" in the REST API documentation.
-     *
-     * For activity relating to check runs, use the `check_run` event.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Checks" permission. To receive the `requested` and `rerequested` event types, the app must have at lease write-level access for the "Checks" permission. GitHub Apps with write-level access for the "Checks" permission are automatically subscribed to this webhook event.
-     *
-     * Repository and organization webhooks only receive payloads for the `completed` event types in repositories.
-     *
-     * **Note**: The API only looks for pushes in the repository where the check suite was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
-     * @description Someone requested to run a check suite. By default, check suites are automatically created when you create a check run. For more information, see [the GraphQL API documentation for creating a check run](https://docs.github.com/enterprise-server@3.7/graphql/reference/mutations#createcheckrun) or "[Create a check run](https://docs.github.com/enterprise-server@3.7/rest/checks/runs#create-a-check-run)" in the REST API documentation.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -72242,38 +72205,38 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a check suite. For information about check suites, see "[Getting started with the Checks API](https://docs.github.com/enterprise-server@3.7/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check suites, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#checksuite) or "[Check Suites](https://docs.github.com/enterprise-server@3.7/rest/checks/suites)" in the REST API documentation.
+   *
+   * For activity relating to check runs, use the `check_run` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Checks" permission. To receive the `requested` and `rerequested` event types, the app must have at lease write-level access for the "Checks" permission. GitHub Apps with write-level access for the "Checks" permission are automatically subscribed to this webhook event.
+   *
+   * Repository and organization webhooks only receive payloads for the `completed` event types in repositories.
+   *
+   * **Note**: The API only looks for pushes in the repository where the check suite was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
+   * @description Someone requested to re-run the check runs in a check suite. For more information, see [the GraphQL API documentation for creating a check suite](https://docs.github.com/enterprise-server@3.7/graphql/reference/mutations#createchecksuite) or "[Create a check suite](https://docs.github.com/enterprise-server@3.7/rest/checks/suites#create-a-check-suite)" in the REST API documentation.
+   */
   "check-suite/rerequested": {
-    /**
-     * This event occurs when there is activity relating to a check suite. For information about check suites, see "[Getting started with the Checks API](https://docs.github.com/enterprise-server@3.7/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check suites, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#checksuite) or "[Check Suites](https://docs.github.com/enterprise-server@3.7/rest/checks/suites)" in the REST API documentation.
-     *
-     * For activity relating to check runs, use the `check_run` event.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Checks" permission. To receive the `requested` and `rerequested` event types, the app must have at lease write-level access for the "Checks" permission. GitHub Apps with write-level access for the "Checks" permission are automatically subscribed to this webhook event.
-     *
-     * Repository and organization webhooks only receive payloads for the `completed` event types in repositories.
-     *
-     * **Note**: The API only looks for pushes in the repository where the check suite was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
-     * @description Someone requested to re-run the check runs in a check suite. For more information, see [the GraphQL API documentation for creating a check suite](https://docs.github.com/enterprise-server@3.7/graphql/reference/mutations#createchecksuite) or "[Create a check suite](https://docs.github.com/enterprise-server@3.7/rest/checks/suites#create-a-check-suite)" in the REST API documentation.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -72287,32 +72250,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/enterprise-server@3.7/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/enterprise-server@3.7/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/enterprise-server@3.7/rest/code-scanning)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Code scanning alerts" repository permission.
+   * @description A previously created code scanning alert appeared in another branch. This can happen when a branch is merged into or created from a branch with a pre-existing code scanning alert.
+   */
   "code-scanning-alert/appeared-in-branch": {
-    /**
-     * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/enterprise-server@3.7/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/enterprise-server@3.7/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/enterprise-server@3.7/rest/code-scanning)" in the REST API documentation.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Code scanning alerts" repository permission.
-     * @description A previously created code scanning alert appeared in another branch. This can happen when a branch is merged into or created from a branch with a pre-existing code scanning alert.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -72326,32 +72289,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/enterprise-server@3.7/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/enterprise-server@3.7/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/enterprise-server@3.7/rest/code-scanning)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Code scanning alerts" repository permission.
+   * @description Someone closed a code scanning alert.
+   */
   "code-scanning-alert/closed-by-user": {
-    /**
-     * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/enterprise-server@3.7/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/enterprise-server@3.7/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/enterprise-server@3.7/rest/code-scanning)" in the REST API documentation.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Code scanning alerts" repository permission.
-     * @description Someone closed a code scanning alert.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -72365,32 +72328,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/enterprise-server@3.7/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/enterprise-server@3.7/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/enterprise-server@3.7/rest/code-scanning)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Code scanning alerts" repository permission.
+   * @description A code scanning alert was created in a repository.
+   */
   "code-scanning-alert/created": {
-    /**
-     * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/enterprise-server@3.7/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/enterprise-server@3.7/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/enterprise-server@3.7/rest/code-scanning)" in the REST API documentation.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Code scanning alerts" repository permission.
-     * @description A code scanning alert was created in a repository.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -72404,32 +72367,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/enterprise-server@3.7/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/enterprise-server@3.7/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/enterprise-server@3.7/rest/code-scanning)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Code scanning alerts" repository permission.
+   * @description A code scanning alert was fixed in a branch by a commit.
+   */
   "code-scanning-alert/fixed": {
-    /**
-     * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/enterprise-server@3.7/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/enterprise-server@3.7/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/enterprise-server@3.7/rest/code-scanning)" in the REST API documentation.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Code scanning alerts" repository permission.
-     * @description A code scanning alert was fixed in a branch by a commit.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -72443,32 +72406,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/enterprise-server@3.7/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/enterprise-server@3.7/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/enterprise-server@3.7/rest/code-scanning)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Code scanning alerts" repository permission.
+   * @description A previously fixed code scanning alert reappeared in a branch.
+   */
   "code-scanning-alert/reopened": {
-    /**
-     * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/enterprise-server@3.7/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/enterprise-server@3.7/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/enterprise-server@3.7/rest/code-scanning)" in the REST API documentation.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Code scanning alerts" repository permission.
-     * @description A previously fixed code scanning alert reappeared in a branch.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -72482,32 +72445,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/enterprise-server@3.7/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/enterprise-server@3.7/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/enterprise-server@3.7/rest/code-scanning)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Code scanning alerts" repository permission.
+   * @description Someone reopened a code scanning alert.
+   */
   "code-scanning-alert/reopened-by-user": {
-    /**
-     * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/enterprise-server@3.7/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/enterprise-server@3.7/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/enterprise-server@3.7/rest/code-scanning)" in the REST API documentation.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Code scanning alerts" repository permission.
-     * @description Someone reopened a code scanning alert.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -72521,34 +72484,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to commit comments. For more information about commit comments, see "[Commenting on a pull request](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request)." For information about the APIs to manage commit comments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#commitcomment) or "[Commit comments](https://docs.github.com/enterprise-server@3.7/rest/commits/comments)" in the REST API documentation.
+   *
+   * For activity relating to comments on pull request reviews, use the `pull_request_review_comment` event. For activity relating to issue comments, use the `issue_comment` event. For activity relating to discussion comments, use the `discussion_comment` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
+   * @description Someone commented on a commit.
+   */
   "commit-comment/created": {
-    /**
-     * This event occurs when there is activity relating to commit comments. For more information about commit comments, see "[Commenting on a pull request](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request)." For information about the APIs to manage commit comments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#commitcomment) or "[Commit comments](https://docs.github.com/enterprise-server@3.7/rest/commits/comments)" in the REST API documentation.
-     *
-     * For activity relating to comments on pull request reviews, use the `pull_request_review_comment` event. For activity relating to issue comments, use the `issue_comment` event. For activity relating to discussion comments, use the `discussion_comment` event.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
-     * @description Someone commented on a commit.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -72562,33 +72525,33 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when a Git branch or tag is created.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
+   *
+   * **Note**: This event will not occur when more than three tags are created at once.
+   */
   create: {
-    /**
-     * This event occurs when a Git branch or tag is created.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
-     *
-     * **Note**: This event will not occur when more than three tags are created at once.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -72602,33 +72565,33 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when a Git branch or tag is deleted.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
+   *
+   * **Note**: This event will not occur when more than three tags are deleted at once.
+   */
   delete: {
-    /**
-     * This event occurs when a Git branch or tag is deleted.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
-     *
-     * **Note**: This event will not occur when more than three tags are deleted at once.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -72642,36 +72605,36 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to Dependabot alerts.
+   *
+   * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.7/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.7/rest/dependabot/alerts)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
+   *
+   * **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
+   * @description A manifest file change introduced a vulnerable dependency, or a GitHub Security Advisory was published and an existing dependency was found to be vulnerable.
+   */
   "dependabot-alert/created": {
-    /**
-     * This event occurs when there is activity relating to Dependabot alerts.
-     *
-     * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.7/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.7/rest/dependabot/alerts)" in the REST API documentation.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
-     *
-     * **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
-     * @description A manifest file change introduced a vulnerable dependency, or a GitHub Security Advisory was published and an existing dependency was found to be vulnerable.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -72685,36 +72648,36 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to Dependabot alerts.
+   *
+   * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.7/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.7/rest/dependabot/alerts)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
+   *
+   * **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
+   * @description A Dependabot alert was manually closed.
+   */
   "dependabot-alert/dismissed": {
-    /**
-     * This event occurs when there is activity relating to Dependabot alerts.
-     *
-     * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.7/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.7/rest/dependabot/alerts)" in the REST API documentation.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
-     *
-     * **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
-     * @description A Dependabot alert was manually closed.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -72728,36 +72691,36 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to Dependabot alerts.
+   *
+   * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.7/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.7/rest/dependabot/alerts)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
+   *
+   * **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
+   * @description A manifest file change removed a vulnerability.
+   */
   "dependabot-alert/fixed": {
-    /**
-     * This event occurs when there is activity relating to Dependabot alerts.
-     *
-     * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.7/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.7/rest/dependabot/alerts)" in the REST API documentation.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
-     *
-     * **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
-     * @description A manifest file change removed a vulnerability.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -72771,36 +72734,36 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to Dependabot alerts.
+   *
+   * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.7/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.7/rest/dependabot/alerts)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
+   *
+   * **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
+   * @description A manifest file change introduced a vulnerable dependency that had previously been fixed.
+   */
   "dependabot-alert/reintroduced": {
-    /**
-     * This event occurs when there is activity relating to Dependabot alerts.
-     *
-     * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.7/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.7/rest/dependabot/alerts)" in the REST API documentation.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
-     *
-     * **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
-     * @description A manifest file change introduced a vulnerable dependency that had previously been fixed.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -72814,36 +72777,36 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to Dependabot alerts.
+   *
+   * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.7/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.7/rest/dependabot/alerts)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
+   *
+   * **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
+   * @description A Dependabot alert was manually reopened.
+   */
   "dependabot-alert/reopened": {
-    /**
-     * This event occurs when there is activity relating to Dependabot alerts.
-     *
-     * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.7/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.7/rest/dependabot/alerts)" in the REST API documentation.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
-     *
-     * **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
-     * @description A Dependabot alert was manually reopened.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -72857,32 +72820,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to deploy keys. For more information, see "[Managing deploy keys](https://docs.github.com/enterprise-server@3.7/developers/overview/managing-deploy-keys)." For information about the APIs to manage deploy keys, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#deploykey) or "[Deploy keys](https://docs.github.com/enterprise-server@3.7/rest/deploy-keys)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
+   * @description A deploy key was created.
+   */
   "deploy-key/created": {
-    /**
-     * This event occurs when there is activity relating to deploy keys. For more information, see "[Managing deploy keys](https://docs.github.com/enterprise-server@3.7/developers/overview/managing-deploy-keys)." For information about the APIs to manage deploy keys, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#deploykey) or "[Deploy keys](https://docs.github.com/enterprise-server@3.7/rest/deploy-keys)" in the REST API documentation.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
-     * @description A deploy key was created.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -72896,32 +72859,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to deploy keys. For more information, see "[Managing deploy keys](https://docs.github.com/enterprise-server@3.7/developers/overview/managing-deploy-keys)." For information about the APIs to manage deploy keys, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#deploykey) or "[Deploy keys](https://docs.github.com/enterprise-server@3.7/rest/deploy-keys)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
+   * @description A deploy key was deleted.
+   */
   "deploy-key/deleted": {
-    /**
-     * This event occurs when there is activity relating to deploy keys. For more information, see "[Managing deploy keys](https://docs.github.com/enterprise-server@3.7/developers/overview/managing-deploy-keys)." For information about the APIs to manage deploy keys, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#deploykey) or "[Deploy keys](https://docs.github.com/enterprise-server@3.7/rest/deploy-keys)" in the REST API documentation.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
-     * @description A deploy key was deleted.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -72935,34 +72898,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to deployments. For more information, see "[About deployments](https://docs.github.com/enterprise-server@3.7/actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/enterprise-server@3.7/rest/deployments/deployments)" in the REST API documentation.
+   *
+   * For activity relating to deployment status, use the `deployment_status` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
+   * @description A deployment was created.
+   */
   "deployment/created": {
-    /**
-     * This event occurs when there is activity relating to deployments. For more information, see "[About deployments](https://docs.github.com/enterprise-server@3.7/actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/enterprise-server@3.7/rest/deployments/deployments)" in the REST API documentation.
-     *
-     * For activity relating to deployment status, use the `deployment_status` event.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
-     * @description A deployment was created.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -72976,34 +72939,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to deployment statuses. For more information, see "[About deployments](https://docs.github.com/enterprise-server@3.7/actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/enterprise-server@3.7/rest/deployments/deployments)" in the REST API documentation.
+   *
+   * For activity relating to deployment creation, use the `deployment` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
+   * @description A new deployment status was created.
+   */
   "deployment-status/created": {
-    /**
-     * This event occurs when there is activity relating to deployment statuses. For more information, see "[About deployments](https://docs.github.com/enterprise-server@3.7/actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/enterprise-server@3.7/rest/deployments/deployments)" in the REST API documentation.
-     *
-     * For activity relating to deployment creation, use the `deployment` event.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
-     * @description A new deployment status was created.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -73017,36 +72980,36 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.7/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#discussion).
+   *
+   * For activity relating to a comment on a discussion, use the `discussion_comment` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
+   *
+   * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+   * @description A comment on the discussion was marked as the answer.
+   */
   "discussion/answered": {
-    /**
-     * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.7/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#discussion).
-     *
-     * For activity relating to a comment on a discussion, use the `discussion_comment` event.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
-     *
-     * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
-     * @description A comment on the discussion was marked as the answer.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -73060,36 +73023,36 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.7/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#discussion).
+   *
+   * For activity relating to a comment on a discussion, use the `discussion_comment` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
+   *
+   * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+   * @description The category of a discussion was changed.
+   */
   "discussion/category-changed": {
-    /**
-     * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.7/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#discussion).
-     *
-     * For activity relating to a comment on a discussion, use the `discussion_comment` event.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
-     *
-     * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
-     * @description The category of a discussion was changed.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -73103,36 +73066,36 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a comment on a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.7/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#discussion).
+   *
+   * For activity relating to a discussion as opposed to comments on a discussion, use the `discussion` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
+   *
+   * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+   * @description A comment on a discussion was created.
+   */
   "discussion-comment/created": {
-    /**
-     * This event occurs when there is activity relating to a comment on a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.7/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#discussion).
-     *
-     * For activity relating to a discussion as opposed to comments on a discussion, use the `discussion` event.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
-     *
-     * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
-     * @description A comment on a discussion was created.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -73146,36 +73109,36 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a comment on a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.7/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#discussion).
+   *
+   * For activity relating to a discussion as opposed to comments on a discussion, use the `discussion` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
+   *
+   * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+   * @description A comment on a discussion was deleted.
+   */
   "discussion-comment/deleted": {
-    /**
-     * This event occurs when there is activity relating to a comment on a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.7/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#discussion).
-     *
-     * For activity relating to a discussion as opposed to comments on a discussion, use the `discussion` event.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
-     *
-     * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
-     * @description A comment on a discussion was deleted.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -73189,36 +73152,36 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a comment on a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.7/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#discussion).
+   *
+   * For activity relating to a discussion as opposed to comments on a discussion, use the `discussion` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
+   *
+   * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+   * @description A comment on a discussion was edited.
+   */
   "discussion-comment/edited": {
-    /**
-     * This event occurs when there is activity relating to a comment on a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.7/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#discussion).
-     *
-     * For activity relating to a discussion as opposed to comments on a discussion, use the `discussion` event.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
-     *
-     * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
-     * @description A comment on a discussion was edited.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -73232,36 +73195,36 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.7/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#discussion).
+   *
+   * For activity relating to a comment on a discussion, use the `discussion_comment` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
+   *
+   * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+   * @description A discussion was created.
+   */
   "discussion/created": {
-    /**
-     * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.7/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#discussion).
-     *
-     * For activity relating to a comment on a discussion, use the `discussion_comment` event.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
-     *
-     * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
-     * @description A discussion was created.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -73275,36 +73238,36 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.7/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#discussion).
+   *
+   * For activity relating to a comment on a discussion, use the `discussion_comment` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
+   *
+   * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+   * @description A discussion was deleted.
+   */
   "discussion/deleted": {
-    /**
-     * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.7/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#discussion).
-     *
-     * For activity relating to a comment on a discussion, use the `discussion_comment` event.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
-     *
-     * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
-     * @description A discussion was deleted.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -73318,36 +73281,36 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.7/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#discussion).
+   *
+   * For activity relating to a comment on a discussion, use the `discussion_comment` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
+   *
+   * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+   * @description The title or body on a discussion was edited, or the category of the discussion was changed.
+   */
   "discussion/edited": {
-    /**
-     * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.7/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#discussion).
-     *
-     * For activity relating to a comment on a discussion, use the `discussion_comment` event.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
-     *
-     * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
-     * @description The title or body on a discussion was edited, or the category of the discussion was changed.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -73361,36 +73324,36 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.7/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#discussion).
+   *
+   * For activity relating to a comment on a discussion, use the `discussion_comment` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
+   *
+   * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+   * @description A label was added to a discussion.
+   */
   "discussion/labeled": {
-    /**
-     * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.7/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#discussion).
-     *
-     * For activity relating to a comment on a discussion, use the `discussion_comment` event.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
-     *
-     * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
-     * @description A label was added to a discussion.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -73404,36 +73367,36 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.7/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#discussion).
+   *
+   * For activity relating to a comment on a discussion, use the `discussion_comment` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
+   *
+   * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+   * @description A discussion was locked.
+   */
   "discussion/locked": {
-    /**
-     * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.7/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#discussion).
-     *
-     * For activity relating to a comment on a discussion, use the `discussion_comment` event.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
-     *
-     * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
-     * @description A discussion was locked.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -73447,36 +73410,36 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.7/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#discussion).
+   *
+   * For activity relating to a comment on a discussion, use the `discussion_comment` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
+   *
+   * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+   * @description A discussion was pinned.
+   */
   "discussion/pinned": {
-    /**
-     * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.7/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#discussion).
-     *
-     * For activity relating to a comment on a discussion, use the `discussion_comment` event.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
-     *
-     * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
-     * @description A discussion was pinned.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -73490,36 +73453,36 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.7/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#discussion).
+   *
+   * For activity relating to a comment on a discussion, use the `discussion_comment` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
+   *
+   * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+   * @description A discussion was transferred to another repository.
+   */
   "discussion/transferred": {
-    /**
-     * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.7/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#discussion).
-     *
-     * For activity relating to a comment on a discussion, use the `discussion_comment` event.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
-     *
-     * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
-     * @description A discussion was transferred to another repository.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -73533,36 +73496,36 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.7/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#discussion).
+   *
+   * For activity relating to a comment on a discussion, use the `discussion_comment` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
+   *
+   * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+   * @description A comment on the discussion was unmarked as the answer.
+   */
   "discussion/unanswered": {
-    /**
-     * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.7/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#discussion).
-     *
-     * For activity relating to a comment on a discussion, use the `discussion_comment` event.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
-     *
-     * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
-     * @description A comment on the discussion was unmarked as the answer.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -73576,36 +73539,36 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.7/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#discussion).
+   *
+   * For activity relating to a comment on a discussion, use the `discussion_comment` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
+   *
+   * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+   * @description A label was removed from a discussion.
+   */
   "discussion/unlabeled": {
-    /**
-     * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.7/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#discussion).
-     *
-     * For activity relating to a comment on a discussion, use the `discussion_comment` event.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
-     *
-     * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
-     * @description A label was removed from a discussion.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -73619,36 +73582,36 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.7/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#discussion).
+   *
+   * For activity relating to a comment on a discussion, use the `discussion_comment` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
+   *
+   * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+   * @description A discussion was unlocked.
+   */
   "discussion/unlocked": {
-    /**
-     * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.7/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#discussion).
-     *
-     * For activity relating to a comment on a discussion, use the `discussion_comment` event.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
-     *
-     * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
-     * @description A discussion was unlocked.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -73662,36 +73625,36 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.7/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#discussion).
+   *
+   * For activity relating to a comment on a discussion, use the `discussion_comment` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
+   *
+   * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+   * @description A discussion was unpinned.
+   */
   "discussion/unpinned": {
-    /**
-     * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.7/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#discussion).
-     *
-     * For activity relating to a comment on a discussion, use the `discussion_comment` event.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
-     *
-     * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
-     * @description A discussion was unpinned.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -73705,30 +73668,30 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to anonymous Git read access in an enterprise. For more information, see "[Enforcing repository management policies in your enterprise](https://docs.github.com/enterprise-server@3.7/admin/policies/enforcing-policies-for-your-enterprise/enforcing-repository-management-policies-in-your-enterprise#configuring-anonymous-git-read-access)."
+   * @description Anonymous Git read access was disabled.
+   */
   "enterprise/anonymous-access-disabled": {
-    /**
-     * This event occurs when there is activity relating to anonymous Git read access in an enterprise. For more information, see "[Enforcing repository management policies in your enterprise](https://docs.github.com/enterprise-server@3.7/admin/policies/enforcing-policies-for-your-enterprise/enforcing-repository-management-policies-in-your-enterprise#configuring-anonymous-git-read-access)."
-     * @description Anonymous Git read access was disabled.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -73742,30 +73705,30 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to anonymous Git read access in an enterprise. For more information, see "[Enforcing repository management policies in your enterprise](https://docs.github.com/enterprise-server@3.7/admin/policies/enforcing-policies-for-your-enterprise/enforcing-repository-management-policies-in-your-enterprise#configuring-anonymous-git-read-access)."
+   * @description Anonymous Git read access was enabled.
+   */
   "enterprise/anonymous-access-enabled": {
-    /**
-     * This event occurs when there is activity relating to anonymous Git read access in an enterprise. For more information, see "[Enforcing repository management policies in your enterprise](https://docs.github.com/enterprise-server@3.7/admin/policies/enforcing-policies-for-your-enterprise/enforcing-repository-management-policies-in-your-enterprise#configuring-anonymous-git-read-access)."
-     * @description Anonymous Git read access was enabled.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -73779,31 +73742,31 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when someone forks a repository. For more information, see "[Fork a repo](https://docs.github.com/enterprise-server@3.7/get-started/quickstart/fork-a-repo)." For information about the API to manage forks, see "[Forks](https://docs.github.com/enterprise-server@3.7/rest/repos/forks)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
+   */
   fork: {
-    /**
-     * This event occurs when someone forks a repository. For more information, see "[Fork a repo](https://docs.github.com/enterprise-server@3.7/get-started/quickstart/fork-a-repo)." For information about the API to manage forks, see "[Forks](https://docs.github.com/enterprise-server@3.7/rest/repos/forks)" in the REST API documentation.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -73817,34 +73780,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when a user revokes their authorization of a GitHub App. For more information, see "[About apps](https://docs.github.com/enterprise-server@3.7/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the API to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.7/rest/apps)" in the REST API documentation.
+   *
+   * A GitHub App receives this webhook by default and cannot unsubscribe from this event.
+   *
+   * Anyone can revoke their authorization of a GitHub App from their [GitHub account settings page](https://github.com/settings/apps/authorizations). Revoking the authorization of a GitHub App does not uninstall the GitHub App. You should program your GitHub App so that when it receives this webhook, it stops calling the API on behalf of the person who revoked the token. If your GitHub App continues to use a revoked access token, it will receive the `401 Bad Credentials` error. For details about user-to-server requests, which require GitHub App authorization, see "[Identifying and authorizing users for GitHub Apps](https://docs.github.com/enterprise-server@3.7/apps/building-github-apps/identifying-and-authorizing-users-for-github-apps/)."
+   * @description Someone revoked their authorization of a GitHub App.
+   */
   "github-app-authorization/revoked": {
-    /**
-     * This event occurs when a user revokes their authorization of a GitHub App. For more information, see "[About apps](https://docs.github.com/enterprise-server@3.7/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the API to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.7/rest/apps)" in the REST API documentation.
-     *
-     * A GitHub App receives this webhook by default and cannot unsubscribe from this event.
-     *
-     * Anyone can revoke their authorization of a GitHub App from their [GitHub account settings page](https://github.com/settings/apps/authorizations). Revoking the authorization of a GitHub App does not uninstall the GitHub App. You should program your GitHub App so that when it receives this webhook, it stops calling the API on behalf of the person who revoked the token. If your GitHub App continues to use a revoked access token, it will receive the `401 Bad Credentials` error. For details about user-to-server requests, which require GitHub App authorization, see "[Identifying and authorizing users for GitHub Apps](https://docs.github.com/enterprise-server@3.7/apps/building-github-apps/identifying-and-authorizing-users-for-github-apps/)."
-     * @description Someone revoked their authorization of a GitHub App.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -73858,31 +73821,31 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when someone creates or updates a wiki page. For more information, see "[About wikis](https://docs.github.com/enterprise-server@3.7/communities/documenting-your-project-with-wikis/about-wikis)."
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
+   */
   gollum: {
-    /**
-     * This event occurs when someone creates or updates a wiki page. For more information, see "[About wikis](https://docs.github.com/enterprise-server@3.7/communities/documenting-your-project-with-wikis/about-wikis)."
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -73896,32 +73859,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
+   *
+   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.7/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.7/rest/reference/apps)" in the REST API documentation.
+   * @description Someone installed a GitHub App on a user or organization account.
+   */
   "installation/created": {
-    /**
-     * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
-     *
-     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.7/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.7/rest/reference/apps)" in the REST API documentation.
-     * @description Someone installed a GitHub App on a user or organization account.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -73935,32 +73898,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
+   *
+   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.7/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.7/rest/reference/apps)" in the REST API documentation.
+   * @description Someone uninstalled a GitHub App from their user or organization account.
+   */
   "installation/deleted": {
-    /**
-     * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
-     *
-     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.7/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.7/rest/reference/apps)" in the REST API documentation.
-     * @description Someone uninstalled a GitHub App from their user or organization account.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -73974,32 +73937,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
+   *
+   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.7/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.7/rest/reference/apps)" in the REST API documentation.
+   * @description Someone granted new permissions to a GitHub App.
+   */
   "installation/new-permissions-accepted": {
-    /**
-     * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
-     *
-     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.7/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.7/rest/reference/apps)" in the REST API documentation.
-     * @description Someone granted new permissions to a GitHub App.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -74013,32 +73976,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to which repositories a GitHub App installation can access. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
+   *
+   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.7/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.7/rest/reference/apps)" in the REST API documentation.
+   * @description A GitHub App installation was granted access to one or more repositories.
+   */
   "installation-repositories/added": {
-    /**
-     * This event occurs when there is activity relating to which repositories a GitHub App installation can access. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
-     *
-     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.7/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.7/rest/reference/apps)" in the REST API documentation.
-     * @description A GitHub App installation was granted access to one or more repositories.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -74052,32 +74015,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to which repositories a GitHub App installation can access. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
+   *
+   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.7/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.7/rest/reference/apps)" in the REST API documentation.
+   * @description Access to one or more repositories was revoked for a GitHub App installation.
+   */
   "installation-repositories/removed": {
-    /**
-     * This event occurs when there is activity relating to which repositories a GitHub App installation can access. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
-     *
-     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.7/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.7/rest/reference/apps)" in the REST API documentation.
-     * @description Access to one or more repositories was revoked for a GitHub App installation.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -74091,32 +74054,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
+   *
+   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.7/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.7/rest/reference/apps)" in the REST API documentation.
+   * @description Someone blocked access by a GitHub App to their user or organization account.
+   */
   "installation/suspend": {
-    /**
-     * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
-     *
-     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.7/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.7/rest/reference/apps)" in the REST API documentation.
-     * @description Someone blocked access by a GitHub App to their user or organization account.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -74130,30 +74093,30 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to the user or organization account that a GitHub App is installed on. For more information, see "[About apps](https://docs.github.com/enterprise-server@3.7/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.7/rest/reference/apps)" in the REST API documentation.
+   * @description Somebody renamed the user or organization account that a GitHub App is installed on.
+   */
   "installation-target/renamed": {
-    /**
-     * This event occurs when there is activity relating to the user or organization account that a GitHub App is installed on. For more information, see "[About apps](https://docs.github.com/enterprise-server@3.7/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.7/rest/reference/apps)" in the REST API documentation.
-     * @description Somebody renamed the user or organization account that a GitHub App is installed on.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -74167,32 +74130,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
+   *
+   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.7/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.7/rest/reference/apps)" in the REST API documentation.
+   * @description A GitHub App that was blocked from accessing a user or organization account was given access the account again.
+   */
   "installation/unsuspend": {
-    /**
-     * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
-     *
-     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.7/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.7/rest/reference/apps)" in the REST API documentation.
-     * @description A GitHub App that was blocked from accessing a user or organization account was given access the account again.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -74206,34 +74169,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a comment on an issue or pull request. For more information about issues and pull requests, see "[About issues](https://docs.github.com/enterprise-server@3.7/issues/tracking-your-work-with-issues/about-issues)" and "[About pull requests](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage issue comments, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#issuecomment) or "[Issue comments](https://docs.github.com/enterprise-server@3.7/rest/issues/comments)" in the REST API documentation.
+   *
+   * For activity relating to an issue as opposed to comments on an issue, use the `issue` event. For activity related to pull request reviews or pull request review comments, use the `pull_request_review` or `pull_request_review_comment` events. For more information about the different types of pull request comments, see "[Working with comments](https://docs.github.com/enterprise-server@3.7/rest/guides/working-with-comments)."
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" or "Pull requests" repository permissions.
+   * @description A comment on an issue or pull request was created.
+   */
   "issue-comment/created": {
-    /**
-     * This event occurs when there is activity relating to a comment on an issue or pull request. For more information about issues and pull requests, see "[About issues](https://docs.github.com/enterprise-server@3.7/issues/tracking-your-work-with-issues/about-issues)" and "[About pull requests](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage issue comments, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#issuecomment) or "[Issue comments](https://docs.github.com/enterprise-server@3.7/rest/issues/comments)" in the REST API documentation.
-     *
-     * For activity relating to an issue as opposed to comments on an issue, use the `issue` event. For activity related to pull request reviews or pull request review comments, use the `pull_request_review` or `pull_request_review_comment` events. For more information about the different types of pull request comments, see "[Working with comments](https://docs.github.com/enterprise-server@3.7/rest/guides/working-with-comments)."
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" or "Pull requests" repository permissions.
-     * @description A comment on an issue or pull request was created.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -74247,34 +74210,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a comment on an issue or pull request. For more information about issues and pull requests, see "[About issues](https://docs.github.com/enterprise-server@3.7/issues/tracking-your-work-with-issues/about-issues)" and "[About pull requests](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage issue comments, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#issuecomment) or "[Issue comments](https://docs.github.com/enterprise-server@3.7/rest/issues/comments)" in the REST API documentation.
+   *
+   * For activity relating to an issue as opposed to comments on an issue, use the `issue` event. For activity related to pull request reviews or pull request review comments, use the `pull_request_review` or `pull_request_review_comment` events. For more information about the different types of pull request comments, see "[Working with comments](https://docs.github.com/enterprise-server@3.7/rest/guides/working-with-comments)."
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" or "Pull requests" repository permissions.
+   * @description A comment on an issue or pull request was deleted.
+   */
   "issue-comment/deleted": {
-    /**
-     * This event occurs when there is activity relating to a comment on an issue or pull request. For more information about issues and pull requests, see "[About issues](https://docs.github.com/enterprise-server@3.7/issues/tracking-your-work-with-issues/about-issues)" and "[About pull requests](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage issue comments, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#issuecomment) or "[Issue comments](https://docs.github.com/enterprise-server@3.7/rest/issues/comments)" in the REST API documentation.
-     *
-     * For activity relating to an issue as opposed to comments on an issue, use the `issue` event. For activity related to pull request reviews or pull request review comments, use the `pull_request_review` or `pull_request_review_comment` events. For more information about the different types of pull request comments, see "[Working with comments](https://docs.github.com/enterprise-server@3.7/rest/guides/working-with-comments)."
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" or "Pull requests" repository permissions.
-     * @description A comment on an issue or pull request was deleted.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -74288,34 +74251,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a comment on an issue or pull request. For more information about issues and pull requests, see "[About issues](https://docs.github.com/enterprise-server@3.7/issues/tracking-your-work-with-issues/about-issues)" and "[About pull requests](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage issue comments, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#issuecomment) or "[Issue comments](https://docs.github.com/enterprise-server@3.7/rest/issues/comments)" in the REST API documentation.
+   *
+   * For activity relating to an issue as opposed to comments on an issue, use the `issue` event. For activity related to pull request reviews or pull request review comments, use the `pull_request_review` or `pull_request_review_comment` events. For more information about the different types of pull request comments, see "[Working with comments](https://docs.github.com/enterprise-server@3.7/rest/guides/working-with-comments)."
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" or "Pull requests" repository permissions.
+   * @description A comment on an issue or pull request was edited.
+   */
   "issue-comment/edited": {
-    /**
-     * This event occurs when there is activity relating to a comment on an issue or pull request. For more information about issues and pull requests, see "[About issues](https://docs.github.com/enterprise-server@3.7/issues/tracking-your-work-with-issues/about-issues)" and "[About pull requests](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage issue comments, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#issuecomment) or "[Issue comments](https://docs.github.com/enterprise-server@3.7/rest/issues/comments)" in the REST API documentation.
-     *
-     * For activity relating to an issue as opposed to comments on an issue, use the `issue` event. For activity related to pull request reviews or pull request review comments, use the `pull_request_review` or `pull_request_review_comment` events. For more information about the different types of pull request comments, see "[Working with comments](https://docs.github.com/enterprise-server@3.7/rest/guides/working-with-comments)."
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" or "Pull requests" repository permissions.
-     * @description A comment on an issue or pull request was edited.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -74329,34 +74292,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.7/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.7/rest/issues)" in the REST API documentation.
+   *
+   * For activity relating to a comment on an issue, use the `issue_comment` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
+   * @description An issue was assigned to a user.
+   */
   "issues/assigned": {
-    /**
-     * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.7/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.7/rest/issues)" in the REST API documentation.
-     *
-     * For activity relating to a comment on an issue, use the `issue_comment` event.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
-     * @description An issue was assigned to a user.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -74370,34 +74333,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.7/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.7/rest/issues)" in the REST API documentation.
+   *
+   * For activity relating to a comment on an issue, use the `issue_comment` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
+   * @description An issue was closed.
+   */
   "issues/closed": {
-    /**
-     * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.7/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.7/rest/issues)" in the REST API documentation.
-     *
-     * For activity relating to a comment on an issue, use the `issue_comment` event.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
-     * @description An issue was closed.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -74411,34 +74374,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.7/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.7/rest/issues)" in the REST API documentation.
+   *
+   * For activity relating to a comment on an issue, use the `issue_comment` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
+   * @description An issue was deleted.
+   */
   "issues/deleted": {
-    /**
-     * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.7/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.7/rest/issues)" in the REST API documentation.
-     *
-     * For activity relating to a comment on an issue, use the `issue_comment` event.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
-     * @description An issue was deleted.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -74452,34 +74415,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.7/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.7/rest/issues)" in the REST API documentation.
+   *
+   * For activity relating to a comment on an issue, use the `issue_comment` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
+   * @description An issue was removed from a milestone.
+   */
   "issues/demilestoned": {
-    /**
-     * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.7/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.7/rest/issues)" in the REST API documentation.
-     *
-     * For activity relating to a comment on an issue, use the `issue_comment` event.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
-     * @description An issue was removed from a milestone.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -74493,34 +74456,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.7/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.7/rest/issues)" in the REST API documentation.
+   *
+   * For activity relating to a comment on an issue, use the `issue_comment` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
+   * @description The title or body on an issue was edited.
+   */
   "issues/edited": {
-    /**
-     * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.7/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.7/rest/issues)" in the REST API documentation.
-     *
-     * For activity relating to a comment on an issue, use the `issue_comment` event.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
-     * @description The title or body on an issue was edited.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -74534,34 +74497,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.7/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.7/rest/issues)" in the REST API documentation.
+   *
+   * For activity relating to a comment on an issue, use the `issue_comment` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
+   * @description A label was added to an issue.
+   */
   "issues/labeled": {
-    /**
-     * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.7/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.7/rest/issues)" in the REST API documentation.
-     *
-     * For activity relating to a comment on an issue, use the `issue_comment` event.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
-     * @description A label was added to an issue.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -74575,34 +74538,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.7/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.7/rest/issues)" in the REST API documentation.
+   *
+   * For activity relating to a comment on an issue, use the `issue_comment` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
+   * @description Conversation on an issue was locked. For more information, see "[Locking conversations](https://docs.github.com/enterprise-server@3.7/communities/moderating-comments-and-conversations/locking-conversations)."
+   */
   "issues/locked": {
-    /**
-     * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.7/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.7/rest/issues)" in the REST API documentation.
-     *
-     * For activity relating to a comment on an issue, use the `issue_comment` event.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
-     * @description Conversation on an issue was locked. For more information, see "[Locking conversations](https://docs.github.com/enterprise-server@3.7/communities/moderating-comments-and-conversations/locking-conversations)."
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -74616,34 +74579,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.7/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.7/rest/issues)" in the REST API documentation.
+   *
+   * For activity relating to a comment on an issue, use the `issue_comment` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
+   * @description An issue was added to a milestone.
+   */
   "issues/milestoned": {
-    /**
-     * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.7/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.7/rest/issues)" in the REST API documentation.
-     *
-     * For activity relating to a comment on an issue, use the `issue_comment` event.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
-     * @description An issue was added to a milestone.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -74657,34 +74620,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.7/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.7/rest/issues)" in the REST API documentation.
+   *
+   * For activity relating to a comment on an issue, use the `issue_comment` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
+   * @description An issue was created. When a closed issue is reopened, the action will be `reopened` instead.
+   */
   "issues/opened": {
-    /**
-     * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.7/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.7/rest/issues)" in the REST API documentation.
-     *
-     * For activity relating to a comment on an issue, use the `issue_comment` event.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
-     * @description An issue was created. When a closed issue is reopened, the action will be `reopened` instead.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -74698,34 +74661,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.7/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.7/rest/issues)" in the REST API documentation.
+   *
+   * For activity relating to a comment on an issue, use the `issue_comment` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
+   * @description An issue was pinned to a repository. For more information, see "[Pinning an issue to your repository](https://docs.github.com/enterprise-server@3.7/issues/tracking-your-work-with-issues/pinning-an-issue-to-your-repository)."
+   */
   "issues/pinned": {
-    /**
-     * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.7/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.7/rest/issues)" in the REST API documentation.
-     *
-     * For activity relating to a comment on an issue, use the `issue_comment` event.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
-     * @description An issue was pinned to a repository. For more information, see "[Pinning an issue to your repository](https://docs.github.com/enterprise-server@3.7/issues/tracking-your-work-with-issues/pinning-an-issue-to-your-repository)."
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -74739,34 +74702,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.7/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.7/rest/issues)" in the REST API documentation.
+   *
+   * For activity relating to a comment on an issue, use the `issue_comment` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
+   * @description A closed issue was reopened.
+   */
   "issues/reopened": {
-    /**
-     * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.7/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.7/rest/issues)" in the REST API documentation.
-     *
-     * For activity relating to a comment on an issue, use the `issue_comment` event.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
-     * @description A closed issue was reopened.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -74780,34 +74743,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.7/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.7/rest/issues)" in the REST API documentation.
+   *
+   * For activity relating to a comment on an issue, use the `issue_comment` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
+   * @description An issue was transferred to another repository. For more information, see "[Transferring an issue to another repository](https://docs.github.com/enterprise-server@3.7/issues/tracking-your-work-with-issues/transferring-an-issue-to-another-repository)."
+   */
   "issues/transferred": {
-    /**
-     * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.7/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.7/rest/issues)" in the REST API documentation.
-     *
-     * For activity relating to a comment on an issue, use the `issue_comment` event.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
-     * @description An issue was transferred to another repository. For more information, see "[Transferring an issue to another repository](https://docs.github.com/enterprise-server@3.7/issues/tracking-your-work-with-issues/transferring-an-issue-to-another-repository)."
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -74821,34 +74784,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.7/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.7/rest/issues)" in the REST API documentation.
+   *
+   * For activity relating to a comment on an issue, use the `issue_comment` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
+   * @description A user was unassigned from an issue.
+   */
   "issues/unassigned": {
-    /**
-     * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.7/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.7/rest/issues)" in the REST API documentation.
-     *
-     * For activity relating to a comment on an issue, use the `issue_comment` event.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
-     * @description A user was unassigned from an issue.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -74862,34 +74825,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.7/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.7/rest/issues)" in the REST API documentation.
+   *
+   * For activity relating to a comment on an issue, use the `issue_comment` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
+   * @description A label was removed from an issue.
+   */
   "issues/unlabeled": {
-    /**
-     * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.7/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.7/rest/issues)" in the REST API documentation.
-     *
-     * For activity relating to a comment on an issue, use the `issue_comment` event.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
-     * @description A label was removed from an issue.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -74903,34 +74866,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.7/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.7/rest/issues)" in the REST API documentation.
+   *
+   * For activity relating to a comment on an issue, use the `issue_comment` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
+   * @description Conversation on an issue was locked. For more information, see "[Locking conversations](https://docs.github.com/enterprise-server@3.7/communities/moderating-comments-and-conversations/locking-conversations)."
+   */
   "issues/unlocked": {
-    /**
-     * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.7/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.7/rest/issues)" in the REST API documentation.
-     *
-     * For activity relating to a comment on an issue, use the `issue_comment` event.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
-     * @description Conversation on an issue was locked. For more information, see "[Locking conversations](https://docs.github.com/enterprise-server@3.7/communities/moderating-comments-and-conversations/locking-conversations)."
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -74944,34 +74907,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.7/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.7/rest/issues)" in the REST API documentation.
+   *
+   * For activity relating to a comment on an issue, use the `issue_comment` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
+   * @description An issue was unpinned from a repository. For more information, see "[Pinning an issue to your repository](https://docs.github.com/enterprise-server@3.7/issues/tracking-your-work-with-issues/pinning-an-issue-to-your-repository)."
+   */
   "issues/unpinned": {
-    /**
-     * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.7/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.7/rest/issues)" in the REST API documentation.
-     *
-     * For activity relating to a comment on an issue, use the `issue_comment` event.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
-     * @description An issue was unpinned from a repository. For more information, see "[Pinning an issue to your repository](https://docs.github.com/enterprise-server@3.7/issues/tracking-your-work-with-issues/pinning-an-issue-to-your-repository)."
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -74985,34 +74948,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to labels. For more information, see "[Managing labels](https://docs.github.com/enterprise-server@3.7/issues/using-labels-and-milestones-to-track-work/managing-labels)." For information about the APIs to manage labels, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#label) or "[Labels](https://docs.github.com/enterprise-server@3.7/rest/issues/labels)" in the REST API documentation.
+   *
+   * If you want to receive an event when a label is added to or removed from an issue, pull request, or discussion, use the `labeled` or `unlabeled` action type for the `issues`, `pull_request`, or `discussion` events instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
+   * @description A label was created.
+   */
   "label/created": {
-    /**
-     * This event occurs when there is activity relating to labels. For more information, see "[Managing labels](https://docs.github.com/enterprise-server@3.7/issues/using-labels-and-milestones-to-track-work/managing-labels)." For information about the APIs to manage labels, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#label) or "[Labels](https://docs.github.com/enterprise-server@3.7/rest/issues/labels)" in the REST API documentation.
-     *
-     * If you want to receive an event when a label is added to or removed from an issue, pull request, or discussion, use the `labeled` or `unlabeled` action type for the `issues`, `pull_request`, or `discussion` events instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
-     * @description A label was created.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -75026,34 +74989,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to labels. For more information, see "[Managing labels](https://docs.github.com/enterprise-server@3.7/issues/using-labels-and-milestones-to-track-work/managing-labels)." For information about the APIs to manage labels, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#label) or "[Labels](https://docs.github.com/enterprise-server@3.7/rest/issues/labels)" in the REST API documentation.
+   *
+   * If you want to receive an event when a label is added to or removed from an issue, pull request, or discussion, use the `labeled` or `unlabeled` action type for the `issues`, `pull_request`, or `discussion` events instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
+   * @description A label was deleted.
+   */
   "label/deleted": {
-    /**
-     * This event occurs when there is activity relating to labels. For more information, see "[Managing labels](https://docs.github.com/enterprise-server@3.7/issues/using-labels-and-milestones-to-track-work/managing-labels)." For information about the APIs to manage labels, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#label) or "[Labels](https://docs.github.com/enterprise-server@3.7/rest/issues/labels)" in the REST API documentation.
-     *
-     * If you want to receive an event when a label is added to or removed from an issue, pull request, or discussion, use the `labeled` or `unlabeled` action type for the `issues`, `pull_request`, or `discussion` events instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
-     * @description A label was deleted.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -75067,34 +75030,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to labels. For more information, see "[Managing labels](https://docs.github.com/enterprise-server@3.7/issues/using-labels-and-milestones-to-track-work/managing-labels)." For information about the APIs to manage labels, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#label) or "[Labels](https://docs.github.com/enterprise-server@3.7/rest/issues/labels)" in the REST API documentation.
+   *
+   * If you want to receive an event when a label is added to or removed from an issue, pull request, or discussion, use the `labeled` or `unlabeled` action type for the `issues`, `pull_request`, or `discussion` events instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
+   * @description A label's name, description, or color was changed.
+   */
   "label/edited": {
-    /**
-     * This event occurs when there is activity relating to labels. For more information, see "[Managing labels](https://docs.github.com/enterprise-server@3.7/issues/using-labels-and-milestones-to-track-work/managing-labels)." For information about the APIs to manage labels, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#label) or "[Labels](https://docs.github.com/enterprise-server@3.7/rest/issues/labels)" in the REST API documentation.
-     *
-     * If you want to receive an event when a label is added to or removed from an issue, pull request, or discussion, use the `labeled` or `unlabeled` action type for the `issues`, `pull_request`, or `discussion` events instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
-     * @description A label's name, description, or color was changed.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -75108,32 +75071,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to collaborators in a repository. For more information, see "[Adding outside collaborators to repositories in your organization](https://docs.github.com/enterprise-server@3.7/organizations/managing-user-access-to-your-organizations-repositories/adding-outside-collaborators-to-repositories-in-your-organization)." For more information about the API to manage repository collaborators, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#repositorycollaboratorconnection) or "[Collaborators](https://docs.github.com/enterprise-server@3.7/rest/collaborators/collaborators)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
+   * @description A GitHub user accepted an invitation to a repository.
+   */
   "member/added": {
-    /**
-     * This event occurs when there is activity relating to collaborators in a repository. For more information, see "[Adding outside collaborators to repositories in your organization](https://docs.github.com/enterprise-server@3.7/organizations/managing-user-access-to-your-organizations-repositories/adding-outside-collaborators-to-repositories-in-your-organization)." For more information about the API to manage repository collaborators, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#repositorycollaboratorconnection) or "[Collaborators](https://docs.github.com/enterprise-server@3.7/rest/collaborators/collaborators)" in the REST API documentation.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
-     * @description A GitHub user accepted an invitation to a repository.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -75147,32 +75110,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to collaborators in a repository. For more information, see "[Adding outside collaborators to repositories in your organization](https://docs.github.com/enterprise-server@3.7/organizations/managing-user-access-to-your-organizations-repositories/adding-outside-collaborators-to-repositories-in-your-organization)." For more information about the API to manage repository collaborators, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#repositorycollaboratorconnection) or "[Collaborators](https://docs.github.com/enterprise-server@3.7/rest/collaborators/collaborators)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
+   * @description Permissions were changed for a collaborator on a repository.
+   */
   "member/edited": {
-    /**
-     * This event occurs when there is activity relating to collaborators in a repository. For more information, see "[Adding outside collaborators to repositories in your organization](https://docs.github.com/enterprise-server@3.7/organizations/managing-user-access-to-your-organizations-repositories/adding-outside-collaborators-to-repositories-in-your-organization)." For more information about the API to manage repository collaborators, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#repositorycollaboratorconnection) or "[Collaborators](https://docs.github.com/enterprise-server@3.7/rest/collaborators/collaborators)" in the REST API documentation.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
-     * @description Permissions were changed for a collaborator on a repository.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -75186,32 +75149,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to collaborators in a repository. For more information, see "[Adding outside collaborators to repositories in your organization](https://docs.github.com/enterprise-server@3.7/organizations/managing-user-access-to-your-organizations-repositories/adding-outside-collaborators-to-repositories-in-your-organization)." For more information about the API to manage repository collaborators, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#repositorycollaboratorconnection) or "[Collaborators](https://docs.github.com/enterprise-server@3.7/rest/collaborators/collaborators)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
+   * @description A collaborator was removed from a repository.
+   */
   "member/removed": {
-    /**
-     * This event occurs when there is activity relating to collaborators in a repository. For more information, see "[Adding outside collaborators to repositories in your organization](https://docs.github.com/enterprise-server@3.7/organizations/managing-user-access-to-your-organizations-repositories/adding-outside-collaborators-to-repositories-in-your-organization)." For more information about the API to manage repository collaborators, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#repositorycollaboratorconnection) or "[Collaborators](https://docs.github.com/enterprise-server@3.7/rest/collaborators/collaborators)" in the REST API documentation.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
-     * @description A collaborator was removed from a repository.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -75225,32 +75188,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to team membership. For more information, see "[About teams](https://docs.github.com/enterprise-server@3.7/organizations/organizing-members-into-teams/about-teams)." For more information about the APIs to manage team memberships, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#team) or "[Team members](https://docs.github.com/enterprise-server@3.7/rest/teams/members)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
+   * @description An organization member was added to a team.
+   */
   "membership/added": {
-    /**
-     * This event occurs when there is activity relating to team membership. For more information, see "[About teams](https://docs.github.com/enterprise-server@3.7/organizations/organizing-members-into-teams/about-teams)." For more information about the APIs to manage team memberships, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#team) or "[Team members](https://docs.github.com/enterprise-server@3.7/rest/teams/members)" in the REST API documentation.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
-     * @description An organization member was added to a team.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -75264,32 +75227,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to team membership. For more information, see "[About teams](https://docs.github.com/enterprise-server@3.7/organizations/organizing-members-into-teams/about-teams)." For more information about the API to manage team memberships, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#team) or "[Team members](https://docs.github.com/enterprise-server@3.7/rest/teams/members)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
+   * @description An organization member was removed from a team.
+   */
   "membership/removed": {
-    /**
-     * This event occurs when there is activity relating to team membership. For more information, see "[About teams](https://docs.github.com/enterprise-server@3.7/organizations/organizing-members-into-teams/about-teams)." For more information about the API to manage team memberships, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#team) or "[Team members](https://docs.github.com/enterprise-server@3.7/rest/teams/members)" in the REST API documentation.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
-     * @description An organization member was removed from a team.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -75303,36 +75266,36 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a merge group in a merge queue. For more information, see "[Managing a merge queue](https://docs.github.com/enterprise-server@3.7/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue)."
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Merge queues" repository permission.
+   *
+   * **Note**: The pull request merge queue feature is currently in public beta and subject to change.
+   * @description Status checks were requested for a merge group. This happens when a merge group is created or added to by the merge queue because a pull request was queued.
+   *
+   * When you receive this event, you should perform checks on the head SHA and report status back using check runs or commit statuses.
+   */
   "merge-group/checks-requested": {
-    /**
-     * This event occurs when there is activity relating to a merge group in a merge queue. For more information, see "[Managing a merge queue](https://docs.github.com/enterprise-server@3.7/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue)."
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Merge queues" repository permission.
-     *
-     * **Note**: The pull request merge queue feature is currently in public beta and subject to change.
-     * @description Status checks were requested for a merge group. This happens when a merge group is created or added to by the merge queue because a pull request was queued.
-     *
-     * When you receive this event, you should perform checks on the head SHA and report status back using check runs or commit statuses.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -75346,32 +75309,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a webhook itself.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Meta" app permission.
+   * @description The webhook was deleted.
+   */
   "meta/deleted": {
-    /**
-     * This event occurs when there is activity relating to a webhook itself.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Meta" app permission.
-     * @description The webhook was deleted.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -75385,34 +75348,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to milestones. For more information, see "[About milestones](https://docs.github.com/enterprise-server@3.7/issues/using-labels-and-milestones-to-track-work/about-milestones)." For information about the APIs to manage milestones, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#milestone) or "[Milestones](https://docs.github.com/enterprise-server@3.7/rest/issues/milestones)" in the REST API documentation.
+   *
+   * If you want to receive an event when an issue or pull request is added to or removed from a milestone, use the `milestoned` or `demilestoned` action type for the `issues` or `pull_request` events instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" or "Pull requests" repository permissions.
+   * @description A milestone was closed.
+   */
   "milestone/closed": {
-    /**
-     * This event occurs when there is activity relating to milestones. For more information, see "[About milestones](https://docs.github.com/enterprise-server@3.7/issues/using-labels-and-milestones-to-track-work/about-milestones)." For information about the APIs to manage milestones, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#milestone) or "[Milestones](https://docs.github.com/enterprise-server@3.7/rest/issues/milestones)" in the REST API documentation.
-     *
-     * If you want to receive an event when an issue or pull request is added to or removed from a milestone, use the `milestoned` or `demilestoned` action type for the `issues` or `pull_request` events instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" or "Pull requests" repository permissions.
-     * @description A milestone was closed.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -75426,34 +75389,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to milestones. For more information, see "[About milestones](https://docs.github.com/enterprise-server@3.7/issues/using-labels-and-milestones-to-track-work/about-milestones)." For information about the APIs to manage milestones, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#milestone) or "[Milestones](https://docs.github.com/enterprise-server@3.7/rest/issues/milestones)" in the REST API documentation.
+   *
+   * If you want to receive an event when an issue or pull request is added to or removed from a milestone, use the `milestoned` or `demilestoned` action type for the `issues` or `pull_request` events instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" or "Pull requests" repository permissions.
+   * @description A milestone was created.
+   */
   "milestone/created": {
-    /**
-     * This event occurs when there is activity relating to milestones. For more information, see "[About milestones](https://docs.github.com/enterprise-server@3.7/issues/using-labels-and-milestones-to-track-work/about-milestones)." For information about the APIs to manage milestones, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#milestone) or "[Milestones](https://docs.github.com/enterprise-server@3.7/rest/issues/milestones)" in the REST API documentation.
-     *
-     * If you want to receive an event when an issue or pull request is added to or removed from a milestone, use the `milestoned` or `demilestoned` action type for the `issues` or `pull_request` events instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" or "Pull requests" repository permissions.
-     * @description A milestone was created.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -75467,34 +75430,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to milestones. For more information, see "[About milestones](https://docs.github.com/enterprise-server@3.7/issues/using-labels-and-milestones-to-track-work/about-milestones)." For information about the APIs to manage milestones, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#milestone) or "[Milestones](https://docs.github.com/enterprise-server@3.7/rest/issues/milestones)" in the REST API documentation.
+   *
+   * If you want to receive an event when an issue or pull request is added to or removed from a milestone, use the `milestoned` or `demilestoned` action type for the `issues` or `pull_request` events instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" or "Pull requests" repository permissions.
+   * @description A milestone was deleted.
+   */
   "milestone/deleted": {
-    /**
-     * This event occurs when there is activity relating to milestones. For more information, see "[About milestones](https://docs.github.com/enterprise-server@3.7/issues/using-labels-and-milestones-to-track-work/about-milestones)." For information about the APIs to manage milestones, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#milestone) or "[Milestones](https://docs.github.com/enterprise-server@3.7/rest/issues/milestones)" in the REST API documentation.
-     *
-     * If you want to receive an event when an issue or pull request is added to or removed from a milestone, use the `milestoned` or `demilestoned` action type for the `issues` or `pull_request` events instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" or "Pull requests" repository permissions.
-     * @description A milestone was deleted.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -75508,34 +75471,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to milestones. For more information, see "[About milestones](https://docs.github.com/enterprise-server@3.7/issues/using-labels-and-milestones-to-track-work/about-milestones)." For information about the APIs to manage milestones, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#milestone) or "[Milestones](https://docs.github.com/enterprise-server@3.7/rest/issues/milestones)" in the REST API documentation.
+   *
+   * If you want to receive an event when an issue or pull request is added to or removed from a milestone, use the `milestoned` or `demilestoned` action type for the `issues` or `pull_request` events instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" or "Pull requests" repository permissions.
+   * @description A milestone was edited.
+   */
   "milestone/edited": {
-    /**
-     * This event occurs when there is activity relating to milestones. For more information, see "[About milestones](https://docs.github.com/enterprise-server@3.7/issues/using-labels-and-milestones-to-track-work/about-milestones)." For information about the APIs to manage milestones, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#milestone) or "[Milestones](https://docs.github.com/enterprise-server@3.7/rest/issues/milestones)" in the REST API documentation.
-     *
-     * If you want to receive an event when an issue or pull request is added to or removed from a milestone, use the `milestoned` or `demilestoned` action type for the `issues` or `pull_request` events instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" or "Pull requests" repository permissions.
-     * @description A milestone was edited.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -75549,34 +75512,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to milestones. For more information, see "[About milestones](https://docs.github.com/enterprise-server@3.7/issues/using-labels-and-milestones-to-track-work/about-milestones)." For information about the APIs to manage milestones, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#milestone) or "[Milestones](https://docs.github.com/enterprise-server@3.7/rest/issues/milestones)" in the REST API documentation.
+   *
+   * If you want to receive an event when an issue or pull request is added to or removed from a milestone, use the `milestoned` or `demilestoned` action type for the `issues` or `pull_request` events instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" or "Pull requests" repository permissions.
+   * @description A milestone was opened.
+   */
   "milestone/opened": {
-    /**
-     * This event occurs when there is activity relating to milestones. For more information, see "[About milestones](https://docs.github.com/enterprise-server@3.7/issues/using-labels-and-milestones-to-track-work/about-milestones)." For information about the APIs to manage milestones, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#milestone) or "[Milestones](https://docs.github.com/enterprise-server@3.7/rest/issues/milestones)" in the REST API documentation.
-     *
-     * If you want to receive an event when an issue or pull request is added to or removed from a milestone, use the `milestoned` or `demilestoned` action type for the `issues` or `pull_request` events instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" or "Pull requests" repository permissions.
-     * @description A milestone was opened.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -75590,34 +75553,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to an organization and its members. For more information, see "[About organizations](https://docs.github.com/enterprise-server@3.7/organizations/collaborating-with-groups-in-organizations/about-organizations)." For information about the APIs to manage organizations, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#organization) or "[Organizations](https://docs.github.com/enterprise-server@3.7/rest/orgs)" in the REST API documentation.
+   *
+   * If you want to receive an event when a non-member is blocked or unblocked from an organization, use the `org_block` event instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
+   * @description An organization was deleted.
+   */
   "organization/deleted": {
-    /**
-     * This event occurs when there is activity relating to an organization and its members. For more information, see "[About organizations](https://docs.github.com/enterprise-server@3.7/organizations/collaborating-with-groups-in-organizations/about-organizations)." For information about the APIs to manage organizations, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#organization) or "[Organizations](https://docs.github.com/enterprise-server@3.7/rest/orgs)" in the REST API documentation.
-     *
-     * If you want to receive an event when a non-member is blocked or unblocked from an organization, use the `org_block` event instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
-     * @description An organization was deleted.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -75631,34 +75594,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to an organization and its members. For more information, see "[About organizations](https://docs.github.com/enterprise-server@3.7/organizations/collaborating-with-groups-in-organizations/about-organizations)." For information about the APIs to manage organizations, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#organization) or "[Organizations](https://docs.github.com/enterprise-server@3.7/rest/orgs)" in the REST API documentation.
+   *
+   * If you want to receive an event when a non-member is blocked or unblocked from an organization, use the `org_block` event instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
+   * @description A member accepted an invitation to join an organization.
+   */
   "organization/member-added": {
-    /**
-     * This event occurs when there is activity relating to an organization and its members. For more information, see "[About organizations](https://docs.github.com/enterprise-server@3.7/organizations/collaborating-with-groups-in-organizations/about-organizations)." For information about the APIs to manage organizations, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#organization) or "[Organizations](https://docs.github.com/enterprise-server@3.7/rest/orgs)" in the REST API documentation.
-     *
-     * If you want to receive an event when a non-member is blocked or unblocked from an organization, use the `org_block` event instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
-     * @description A member accepted an invitation to join an organization.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -75672,34 +75635,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to an organization and its members. For more information, see "[About organizations](https://docs.github.com/enterprise-server@3.7/organizations/collaborating-with-groups-in-organizations/about-organizations)." For information about the APIs to manage organizations, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#organization) or "[Organizations](https://docs.github.com/enterprise-server@3.7/rest/orgs)" in the REST API documentation.
+   *
+   * If you want to receive an event when a non-member is blocked or unblocked from an organization, use the `org_block` event instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
+   * @description A member was invited to join the organization.
+   */
   "organization/member-invited": {
-    /**
-     * This event occurs when there is activity relating to an organization and its members. For more information, see "[About organizations](https://docs.github.com/enterprise-server@3.7/organizations/collaborating-with-groups-in-organizations/about-organizations)." For information about the APIs to manage organizations, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#organization) or "[Organizations](https://docs.github.com/enterprise-server@3.7/rest/orgs)" in the REST API documentation.
-     *
-     * If you want to receive an event when a non-member is blocked or unblocked from an organization, use the `org_block` event instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
-     * @description A member was invited to join the organization.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -75713,34 +75676,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to an organization and its members. For more information, see "[About organizations](https://docs.github.com/enterprise-server@3.7/organizations/collaborating-with-groups-in-organizations/about-organizations)." For information about the APIs to manage organizations, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#organization) or "[Organizations](https://docs.github.com/enterprise-server@3.7/rest/orgs)" in the REST API documentation.
+   *
+   * If you want to receive an event when a non-member is blocked or unblocked from an organization, use the `org_block` event instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
+   * @description A member was removed from the organization.
+   */
   "organization/member-removed": {
-    /**
-     * This event occurs when there is activity relating to an organization and its members. For more information, see "[About organizations](https://docs.github.com/enterprise-server@3.7/organizations/collaborating-with-groups-in-organizations/about-organizations)." For information about the APIs to manage organizations, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#organization) or "[Organizations](https://docs.github.com/enterprise-server@3.7/rest/orgs)" in the REST API documentation.
-     *
-     * If you want to receive an event when a non-member is blocked or unblocked from an organization, use the `org_block` event instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
-     * @description A member was removed from the organization.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -75754,34 +75717,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to an organization and its members. For more information, see "[About organizations](https://docs.github.com/enterprise-server@3.7/organizations/collaborating-with-groups-in-organizations/about-organizations)." For information about the APIs to manage organizations, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#organization) or "[Organizations](https://docs.github.com/enterprise-server@3.7/rest/orgs)" in the REST API documentation.
+   *
+   * If you want to receive an event when a non-member is blocked or unblocked from an organization, use the `org_block` event instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
+   * @description The name of an organization was changed.
+   */
   "organization/renamed": {
-    /**
-     * This event occurs when there is activity relating to an organization and its members. For more information, see "[About organizations](https://docs.github.com/enterprise-server@3.7/organizations/collaborating-with-groups-in-organizations/about-organizations)." For information about the APIs to manage organizations, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#organization) or "[Organizations](https://docs.github.com/enterprise-server@3.7/rest/orgs)" in the REST API documentation.
-     *
-     * If you want to receive an event when a non-member is blocked or unblocked from an organization, use the `org_block` event instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
-     * @description The name of an organization was changed.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -75795,32 +75758,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to GitHub Packages. For more information, see "[Introduction to GitHub Packages](https://docs.github.com/enterprise-server@3.7/packages/learn-github-packages/introduction-to-github-packages)." For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#package) or "[Packages](https://docs.github.com/enterprise-server@3.7/rest/packages)" in the REST API documentation.
+   *
+   * To install this event on a GitHub App, the app must have at least read-level access for the "Packages" repository permission.
+   * @description A package was published to a registry.
+   */
   "package/published": {
-    /**
-     * This event occurs when there is activity relating to GitHub Packages. For more information, see "[Introduction to GitHub Packages](https://docs.github.com/enterprise-server@3.7/packages/learn-github-packages/introduction-to-github-packages)." For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#package) or "[Packages](https://docs.github.com/enterprise-server@3.7/rest/packages)" in the REST API documentation.
-     *
-     * To install this event on a GitHub App, the app must have at least read-level access for the "Packages" repository permission.
-     * @description A package was published to a registry.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -75834,32 +75797,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to GitHub Packages. For more information, see "[Introduction to GitHub Packages](https://docs.github.com/enterprise-server@3.7/packages/learn-github-packages/introduction-to-github-packages)." For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#package) or "[Packages](https://docs.github.com/enterprise-server@3.7/rest/packages)" in the REST API documentation.
+   *
+   * To install this event on a GitHub App, the app must have at least read-level access for the "Packages" repository permission.
+   * @description A previously published package was updated.
+   */
   "package/updated": {
-    /**
-     * This event occurs when there is activity relating to GitHub Packages. For more information, see "[Introduction to GitHub Packages](https://docs.github.com/enterprise-server@3.7/packages/learn-github-packages/introduction-to-github-packages)." For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#package) or "[Packages](https://docs.github.com/enterprise-server@3.7/rest/packages)" in the REST API documentation.
-     *
-     * To install this event on a GitHub App, the app must have at least read-level access for the "Packages" repository permission.
-     * @description A previously published package was updated.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -75873,31 +75836,31 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is an attempted build of a GitHub Pages site. This event occurs regardless of whether the build is successful. For more information, see "[Configuring a publishing source for your GitHub Pages site](https://docs.github.com/enterprise-server@3.7/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)." For information about the API to manage GitHub Pages, see "[Pages](https://docs.github.com/enterprise-server@3.7/rest/pages)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pages" repository permission.
+   */
   "page-build": {
-    /**
-     * This event occurs when there is an attempted build of a GitHub Pages site. This event occurs regardless of whether the build is successful. For more information, see "[Configuring a publishing source for your GitHub Pages site](https://docs.github.com/enterprise-server@3.7/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)." For information about the API to manage GitHub Pages, see "[Pages](https://docs.github.com/enterprise-server@3.7/rest/pages)" in the REST API documentation.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pages" repository permission.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -75911,27 +75874,27 @@ export interface operations {
       200: never;
     };
   };
+  /** This event occurs when you create a new webhook. The ping event is a confirmation from GitHub that you configured the webhook correctly. */
   ping: {
-    /** This event occurs when you create a new webhook. The ping event is a confirmation from GitHub that you configured the webhook correctly. */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -75946,34 +75909,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a card on a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.7/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.7/rest/projects)" in the REST API documentation.
+   *
+   * For activity relating to a project or a column on a project, use the `project` and `project_column` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
+   * @description A note in a classic project was converted to an issue.
+   */
   "project-card/converted": {
-    /**
-     * This event occurs when there is activity relating to a card on a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.7/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.7/rest/projects)" in the REST API documentation.
-     *
-     * For activity relating to a project or a column on a project, use the `project` and `project_column` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-     * @description A note in a classic project was converted to an issue.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -75987,34 +75950,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a card on a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.7/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.7/rest/projects)" in the REST API documentation.
+   *
+   * For activity relating to a project or a column on a project, use the `project` and `project_column` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
+   * @description A card was added to a classic project.
+   */
   "project-card/created": {
-    /**
-     * This event occurs when there is activity relating to a card on a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.7/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.7/rest/projects)" in the REST API documentation.
-     *
-     * For activity relating to a project or a column on a project, use the `project` and `project_column` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-     * @description A card was added to a classic project.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -76028,34 +75991,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a card on a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.7/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.7/rest/projects)" in the REST API documentation.
+   *
+   * For activity relating to a project or a column on a project, use the `project` and `project_column` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
+   * @description A card on a classic project was deleted.
+   */
   "project-card/deleted": {
-    /**
-     * This event occurs when there is activity relating to a card on a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.7/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.7/rest/projects)" in the REST API documentation.
-     *
-     * For activity relating to a project or a column on a project, use the `project` and `project_column` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-     * @description A card on a classic project was deleted.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -76069,34 +76032,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a card on a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.7/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.7/rest/projects)" in the REST API documentation.
+   *
+   * For activity relating to a project or a column on a project, use the `project` and `project_column` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
+   * @description A note on a classic project was edited.
+   */
   "project-card/edited": {
-    /**
-     * This event occurs when there is activity relating to a card on a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.7/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.7/rest/projects)" in the REST API documentation.
-     *
-     * For activity relating to a project or a column on a project, use the `project` and `project_column` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-     * @description A note on a classic project was edited.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -76110,34 +76073,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a card on a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.7/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.7/rest/projects)" in the REST API documentation.
+   *
+   * For activity relating to a project or a column on a project, use the `project` and `project_column` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
+   * @description A card on a classic project was moved to another column or to another position in its column.
+   */
   "project-card/moved": {
-    /**
-     * This event occurs when there is activity relating to a card on a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.7/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.7/rest/projects)" in the REST API documentation.
-     *
-     * For activity relating to a project or a column on a project, use the `project` and `project_column` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-     * @description A card on a classic project was moved to another column or to another position in its column.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -76151,34 +76114,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.7/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.7/rest/projects)" in the REST API documentation.
+   *
+   * For activity relating to a card or column on a project, use the `project_card` and `project_column` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
+   * @description A classic project was closed.
+   */
   "project/closed": {
-    /**
-     * This event occurs when there is activity relating to a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.7/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.7/rest/projects)" in the REST API documentation.
-     *
-     * For activity relating to a card or column on a project, use the `project_card` and `project_column` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-     * @description A classic project was closed.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -76192,34 +76155,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a column on a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.7/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.7/rest/projects)" in the REST API documentation.
+   *
+   * For activity relating to a project or a card on a project, use the `project` and `project_card` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
+   * @description A column was added to a classic project.
+   */
   "project-column/created": {
-    /**
-     * This event occurs when there is activity relating to a column on a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.7/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.7/rest/projects)" in the REST API documentation.
-     *
-     * For activity relating to a project or a card on a project, use the `project` and `project_card` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-     * @description A column was added to a classic project.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -76233,34 +76196,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a column on a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.7/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.7/rest/projects)" in the REST API documentation.
+   *
+   * For activity relating to a project or a card on a project, use the `project` and `project_card` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
+   * @description A column was deleted from a classic project.
+   */
   "project-column/deleted": {
-    /**
-     * This event occurs when there is activity relating to a column on a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.7/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.7/rest/projects)" in the REST API documentation.
-     *
-     * For activity relating to a project or a card on a project, use the `project` and `project_card` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-     * @description A column was deleted from a classic project.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -76274,34 +76237,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a column on a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.7/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.7/rest/projects)" in the REST API documentation.
+   *
+   * For activity relating to a project or a card on a project, use the `project` and `project_card` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
+   * @description The name of a column on a classic project was changed.
+   */
   "project-column/edited": {
-    /**
-     * This event occurs when there is activity relating to a column on a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.7/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.7/rest/projects)" in the REST API documentation.
-     *
-     * For activity relating to a project or a card on a project, use the `project` and `project_card` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-     * @description The name of a column on a classic project was changed.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -76315,34 +76278,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a column on a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.7/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.7/rest/projects)" in the REST API documentation.
+   *
+   * For activity relating to a project or a card on a project, use the `project` and `project_card` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
+   * @description A column was moved to a new position on a classic project.
+   */
   "project-column/moved": {
-    /**
-     * This event occurs when there is activity relating to a column on a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.7/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.7/rest/projects)" in the REST API documentation.
-     *
-     * For activity relating to a project or a card on a project, use the `project` and `project_card` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-     * @description A column was moved to a new position on a classic project.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -76356,34 +76319,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.7/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.7/rest/projects)" in the REST API documentation.
+   *
+   * For activity relating to a card or column on a project, use the `project_card` and `project_column` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
+   * @description A classic project was created.
+   */
   "project/created": {
-    /**
-     * This event occurs when there is activity relating to a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.7/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.7/rest/projects)" in the REST API documentation.
-     *
-     * For activity relating to a card or column on a project, use the `project_card` and `project_column` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-     * @description A classic project was created.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -76397,34 +76360,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.7/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.7/rest/projects)" in the REST API documentation.
+   *
+   * For activity relating to a card or column on a project, use the `project_card` and `project_column` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
+   * @description A classic project was deleted.
+   */
   "project/deleted": {
-    /**
-     * This event occurs when there is activity relating to a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.7/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.7/rest/projects)" in the REST API documentation.
-     *
-     * For activity relating to a card or column on a project, use the `project_card` and `project_column` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-     * @description A classic project was deleted.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -76438,34 +76401,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.7/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.7/rest/projects)" in the REST API documentation.
+   *
+   * For activity relating to a card or column on a project, use the `project_card` and `project_column` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
+   * @description The name or description of a classic project was changed.
+   */
   "project/edited": {
-    /**
-     * This event occurs when there is activity relating to a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.7/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.7/rest/projects)" in the REST API documentation.
-     *
-     * For activity relating to a card or column on a project, use the `project_card` and `project_column` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-     * @description The name or description of a classic project was changed.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -76479,34 +76442,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.7/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.7/rest/projects)" in the REST API documentation.
+   *
+   * For activity relating to a card or column on a project, use the `project_card` and `project_column` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
+   * @description A classic project was closed.
+   */
   "project/reopened": {
-    /**
-     * This event occurs when there is activity relating to a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.7/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.7/rest/projects)" in the REST API documentation.
-     *
-     * For activity relating to a card or column on a project, use the `project_card` and `project_column` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-     * @description A classic project was closed.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -76520,165 +76483,36 @@ export interface operations {
       200: never;
     };
   };
-  "projects-v2/closed": {
-    /**
-     * This event occurs when there is activity relating to an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.7/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#projectv2).
-     *
-     * For activity relating to a item on a project, use the `projects_v2_item` event. For activity relating to Projects (classic), use the `project`, project_card`, and `project_column` events instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
-     *
-     * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
-     * @description A project in the organization was closed.
-     */
-    parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example project-v2 */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
-      header: {
-        "User-Agent"?: string;
-        "X-Github-Hook-Id"?: string;
-        "X-Github-Event"?: string;
-        "X-Github-Hook-Installation-Target-Id"?: string;
-        "X-Github-Hook-Installation-Target-Type"?: string;
-        "X-GitHub-Delivery"?: string;
-        "X-Hub-Signature-256"?: string;
-        "X-GitHub-Enterprise-Version"?: string;
-        "X-GitHub-Enterprise-Host"?: string;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["webhook-projects-v2-project-closed"];
-      };
-    };
-    responses: {
-      /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
-    };
-  };
-  "projects-v2/created": {
-    /**
-     * This event occurs when there is activity relating to an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.7/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#projectv2).
-     *
-     * For activity relating to a item on a project, use the `projects_v2_item` event. For activity relating to Projects (classic), use the `project`, project_card`, and `project_column` events instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
-     *
-     * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
-     * @description A project in the organization was created.
-     */
-    parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example project-v2 */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
-      header: {
-        "User-Agent"?: string;
-        "X-Github-Hook-Id"?: string;
-        "X-Github-Event"?: string;
-        "X-Github-Hook-Installation-Target-Id"?: string;
-        "X-Github-Hook-Installation-Target-Type"?: string;
-        "X-GitHub-Delivery"?: string;
-        "X-Hub-Signature-256"?: string;
-        "X-GitHub-Enterprise-Version"?: string;
-        "X-GitHub-Enterprise-Host"?: string;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["webhook-projects-v2-project-created"];
-      };
-    };
-    responses: {
-      /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
-    };
-  };
-  "projects-v2/edited": {
-    /**
-     * This event occurs when there is activity relating to an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.7/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#projectv2).
-     *
-     * For activity relating to a item on a project, use the `projects_v2_item` event. For activity relating to Projects (classic), use the `project`, project_card`, and `project_column` events instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
-     *
-     * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
-     * @description The title, description, or README of a project in the organization was changed.
-     */
-    parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example project-v2 */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
-      header: {
-        "User-Agent"?: string;
-        "X-Github-Hook-Id"?: string;
-        "X-Github-Event"?: string;
-        "X-Github-Hook-Installation-Target-Id"?: string;
-        "X-Github-Hook-Installation-Target-Type"?: string;
-        "X-GitHub-Delivery"?: string;
-        "X-Hub-Signature-256"?: string;
-        "X-GitHub-Enterprise-Version"?: string;
-        "X-GitHub-Enterprise-Host"?: string;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["webhook-projects-v2-project-edited"];
-      };
-    };
-    responses: {
-      /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
-    };
-  };
+  /**
+   * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.7/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#projectv2item).
+   *
+   * For activity relating to a project (instead of an item on a project), use the `projects_v2` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
+   *
+   * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+   * @description An item on an organization project was archived. For more information, see "[Archiving items from your project](https://docs.github.com/enterprise-server@3.7/issues/planning-and-tracking-with-projects/managing-items-in-your-project/archiving-items-from-your-project)."
+   */
   "projects-v2-item/archived": {
-    /**
-     * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.7/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#projectv2item).
-     *
-     * For activity relating to a project (instead of an item on a project), use the `projects_v2` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
-     *
-     * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
-     * @description An item on an organization project was archived. For more information, see "[Archiving items from your project](https://docs.github.com/enterprise-server@3.7/issues/planning-and-tracking-with-projects/managing-items-in-your-project/archiving-items-from-your-project)."
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example project-v2-item */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example project-v2-item */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -76692,36 +76526,36 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.7/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#projectv2item).
+   *
+   * For activity relating to a project (instead of an item on a project), use the `projects_v2` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
+   *
+   * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+   * @description A draft issue in an organization project was converted to an issue.
+   */
   "projects-v2-item/converted": {
-    /**
-     * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.7/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#projectv2item).
-     *
-     * For activity relating to a project (instead of an item on a project), use the `projects_v2` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
-     *
-     * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
-     * @description A draft issue in an organization project was converted to an issue.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example project-v2-item */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example project-v2-item */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -76735,36 +76569,36 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.7/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#projectv2item).
+   *
+   * For activity relating to a project (instead of an item on a project), use the `projects_v2` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
+   *
+   * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+   * @description An item was added to a project in the organization.
+   */
   "projects-v2-item/created": {
-    /**
-     * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.7/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#projectv2item).
-     *
-     * For activity relating to a project (instead of an item on a project), use the `projects_v2` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
-     *
-     * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
-     * @description An item was added to a project in the organization.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example project-v2-item */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example project-v2-item */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -76778,36 +76612,36 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.7/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#projectv2item).
+   *
+   * For activity relating to a project (instead of an item on a project), use the `projects_v2` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
+   *
+   * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+   * @description An item was deleted from a project in the organization.
+   */
   "projects-v2-item/deleted": {
-    /**
-     * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.7/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#projectv2item).
-     *
-     * For activity relating to a project (instead of an item on a project), use the `projects_v2` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
-     *
-     * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
-     * @description An item was deleted from a project in the organization.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example project-v2-item */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example project-v2-item */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -76821,36 +76655,36 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.7/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#projectv2item).
+   *
+   * For activity relating to a project (instead of an item on a project), use the `projects_v2` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
+   *
+   * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+   * @description The values or state of an item in an organization project were changed. For example, the value of a field was updated, the body of a draft issue was changed, or a draft issue was converted to an issue.
+   */
   "projects-v2-item/edited": {
-    /**
-     * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.7/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#projectv2item).
-     *
-     * For activity relating to a project (instead of an item on a project), use the `projects_v2` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
-     *
-     * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
-     * @description The values or state of an item in an organization project were changed. For example, the value of a field was updated, the body of a draft issue was changed, or a draft issue was converted to an issue.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example project-v2-item */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example project-v2-item */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -76864,36 +76698,36 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.7/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#projectv2item).
+   *
+   * For activity relating to a project (instead of an item on a project), use the `projects_v2` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
+   *
+   * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+   * @description The position of an item in an organization project was changed. For example, an item was moved above or below another item in the table or board layout.
+   */
   "projects-v2-item/reordered": {
-    /**
-     * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.7/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#projectv2item).
-     *
-     * For activity relating to a project (instead of an item on a project), use the `projects_v2` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
-     *
-     * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
-     * @description The position of an item in an organization project was changed. For example, an item was moved above or below another item in the table or board layout.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example project-v2-item */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example project-v2-item */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -76907,36 +76741,36 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.7/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#projectv2item).
+   *
+   * For activity relating to a project (instead of an item on a project), use the `projects_v2` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
+   *
+   * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+   * @description An archived item on an organization project was restored from the archive. For more information, see "[Archiving items from your project](https://docs.github.com/enterprise-server@3.7/issues/planning-and-tracking-with-projects/managing-items-in-your-project/archiving-items-from-your-project)."
+   */
   "projects-v2-item/restored": {
-    /**
-     * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.7/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#projectv2item).
-     *
-     * For activity relating to a project (instead of an item on a project), use the `projects_v2` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
-     *
-     * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
-     * @description An archived item on an organization project was restored from the archive. For more information, see "[Archiving items from your project](https://docs.github.com/enterprise-server@3.7/issues/planning-and-tracking-with-projects/managing-items-in-your-project/archiving-items-from-your-project)."
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example project-v2-item */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example project-v2-item */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -76950,74 +76784,31 @@ export interface operations {
       200: never;
     };
   };
-  "projects-v2/reopened": {
-    /**
-     * This event occurs when there is activity relating to an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.7/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#projectv2).
-     *
-     * For activity relating to a item on a project, use the `projects_v2_item` event. For activity relating to Projects (classic), use the `project`, project_card`, and `project_column` events instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
-     *
-     * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
-     * @description A project in the organization was reopened.
-     */
-    parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example project-v2 */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
-      header: {
-        "User-Agent"?: string;
-        "X-Github-Hook-Id"?: string;
-        "X-Github-Event"?: string;
-        "X-Github-Hook-Installation-Target-Id"?: string;
-        "X-Github-Hook-Installation-Target-Type"?: string;
-        "X-GitHub-Delivery"?: string;
-        "X-Hub-Signature-256"?: string;
-        "X-GitHub-Enterprise-Version"?: string;
-        "X-GitHub-Enterprise-Host"?: string;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["webhook-projects-v2-project-reopened"];
-      };
-    };
-    responses: {
-      /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
-    };
-  };
+  /**
+   * This event occurs when repository visibility changes from private to public. For more information, see "[Setting repository visibility](https://docs.github.com/enterprise-server@3.7/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/setting-repository-visibility)."
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
+   */
   public: {
-    /**
-     * This event occurs when repository visibility changes from private to public. For more information, see "[Setting repository visibility](https://docs.github.com/enterprise-server@3.7/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/setting-repository-visibility)."
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -77031,34 +76822,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.7/rest/pulls/pulls)" in the REST API documentation.
+   *
+   * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+   * @description A pull request was assigned to a user.
+   */
   "pull-request/assigned": {
-    /**
-     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.7/rest/pulls/pulls)" in the REST API documentation.
-     *
-     * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-     * @description A pull request was assigned to a user.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -77072,34 +76863,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.7/rest/pulls/pulls)" in the REST API documentation.
+   *
+   * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+   * @description Auto merge was disabled for a pull request. For more information, see "[Automatically merging a pull request](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/automatically-merging-a-pull-request)."
+   */
   "pull-request/auto-merge-disabled": {
-    /**
-     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.7/rest/pulls/pulls)" in the REST API documentation.
-     *
-     * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-     * @description Auto merge was disabled for a pull request. For more information, see "[Automatically merging a pull request](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/automatically-merging-a-pull-request)."
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -77113,34 +76904,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.7/rest/pulls/pulls)" in the REST API documentation.
+   *
+   * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+   * @description Auto merge was enabled for a pull request. For more information, see "[Automatically merging a pull request](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/automatically-merging-a-pull-request)."
+   */
   "pull-request/auto-merge-enabled": {
-    /**
-     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.7/rest/pulls/pulls)" in the REST API documentation.
-     *
-     * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-     * @description Auto merge was enabled for a pull request. For more information, see "[Automatically merging a pull request](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/automatically-merging-a-pull-request)."
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -77154,34 +76945,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.7/rest/pulls/pulls)" in the REST API documentation.
+   *
+   * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+   * @description A pull request was closed. If `merged` is false in the webhook payload, the pull request was closed with unmerged commits. If `merged` is true in the webhook payload, the pull request was merged.
+   */
   "pull-request/closed": {
-    /**
-     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.7/rest/pulls/pulls)" in the REST API documentation.
-     *
-     * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-     * @description A pull request was closed. If `merged` is false in the webhook payload, the pull request was closed with unmerged commits. If `merged` is true in the webhook payload, the pull request was merged.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -77195,34 +76986,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.7/rest/pulls/pulls)" in the REST API documentation.
+   *
+   * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+   * @description A pull request was converted to a draft. For more information, see "[Changing the stage of a pull request](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/changing-the-stage-of-a-pull-request)."
+   */
   "pull-request/converted-to-draft": {
-    /**
-     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.7/rest/pulls/pulls)" in the REST API documentation.
-     *
-     * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-     * @description A pull request was converted to a draft. For more information, see "[Changing the stage of a pull request](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/changing-the-stage-of-a-pull-request)."
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -77236,34 +77027,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.7/rest/pulls/pulls)" in the REST API documentation.
+   *
+   * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+   * @description A pull request was removed from a milestone.
+   */
   "pull-request/demilestoned": {
-    /**
-     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.7/rest/pulls/pulls)" in the REST API documentation.
-     *
-     * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-     * @description A pull request was removed from a milestone.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -77277,34 +77068,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.7/rest/pulls/pulls)" in the REST API documentation.
+   *
+   * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+   * @description The title or body of a pull request was edited.
+   */
   "pull-request/edited": {
-    /**
-     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.7/rest/pulls/pulls)" in the REST API documentation.
-     *
-     * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-     * @description The title or body of a pull request was edited.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -77318,34 +77109,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.7/rest/pulls/pulls)" in the REST API documentation.
+   *
+   * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+   * @description A label was added to a pull request.
+   */
   "pull-request/labeled": {
-    /**
-     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.7/rest/pulls/pulls)" in the REST API documentation.
-     *
-     * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-     * @description A label was added to a pull request.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -77359,34 +77150,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.7/rest/pulls/pulls)" in the REST API documentation.
+   *
+   * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+   * @description Conversation on a pull request was locked. For more information, see "[Locking conversations](https://docs.github.com/enterprise-server@3.7/communities/moderating-comments-and-conversations/locking-conversations)."
+   */
   "pull-request/locked": {
-    /**
-     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.7/rest/pulls/pulls)" in the REST API documentation.
-     *
-     * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-     * @description Conversation on a pull request was locked. For more information, see "[Locking conversations](https://docs.github.com/enterprise-server@3.7/communities/moderating-comments-and-conversations/locking-conversations)."
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -77400,34 +77191,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.7/rest/pulls/pulls)" in the REST API documentation.
+   *
+   * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+   * @description A pull request was added to a milestone.
+   */
   "pull-request/milestoned": {
-    /**
-     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.7/rest/pulls/pulls)" in the REST API documentation.
-     *
-     * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-     * @description A pull request was added to a milestone.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -77441,34 +77232,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.7/rest/pulls/pulls)" in the REST API documentation.
+   *
+   * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+   * @description A pull request was created
+   */
   "pull-request/opened": {
-    /**
-     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.7/rest/pulls/pulls)" in the REST API documentation.
-     *
-     * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-     * @description A pull request was created
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -77482,34 +77273,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.7/rest/pulls/pulls)" in the REST API documentation.
+   *
+   * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+   * @description A draft pull request was marked as ready for review. For more information, see "[Changing the stage of a pull request](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/changing-the-stage-of-a-pull-request)."
+   */
   "pull-request/ready-for-review": {
-    /**
-     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.7/rest/pulls/pulls)" in the REST API documentation.
-     *
-     * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-     * @description A draft pull request was marked as ready for review. For more information, see "[Changing the stage of a pull request](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/changing-the-stage-of-a-pull-request)."
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -77523,34 +77314,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.7/rest/pulls/pulls)" in the REST API documentation.
+   *
+   * For activity related to pull request reviews, pull request review comments, pull request comments,or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+   * @description A previously closed pull request was reopened.
+   */
   "pull-request/reopened": {
-    /**
-     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.7/rest/pulls/pulls)" in the REST API documentation.
-     *
-     * For activity related to pull request reviews, pull request review comments, pull request comments,or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-     * @description A previously closed pull request was reopened.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -77564,34 +77355,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a pull request review comment. A pull request review comment is a comment on a pull request's diff. For more information, see "[Commenting on a pull request](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request)." For information about the APIs to manage pull request review comments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#pullrequestreviewcomment) or "[Pull request review comments](https://docs.github.com/enterprise-server@3.7/rest/pulls/comments)" in the REST API documentation.
+   *
+   * For activity related to pull request reviews, pull request comments, or pull request review threads, use the `pull_request_review`, `issue_comment`, or `pull_request_review_thread` events instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+   * @description A comment on a pull request diff was created.
+   */
   "pull-request-review-comment/created": {
-    /**
-     * This event occurs when there is activity relating to a pull request review comment. A pull request review comment is a comment on a pull request's diff. For more information, see "[Commenting on a pull request](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request)." For information about the APIs to manage pull request review comments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#pullrequestreviewcomment) or "[Pull request review comments](https://docs.github.com/enterprise-server@3.7/rest/pulls/comments)" in the REST API documentation.
-     *
-     * For activity related to pull request reviews, pull request comments, or pull request review threads, use the `pull_request_review`, `issue_comment`, or `pull_request_review_thread` events instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-     * @description A comment on a pull request diff was created.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -77605,34 +77396,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a pull request review comment. A pull request review comment is a comment on a pull request's diff. For more information, see "[Commenting on a pull request](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request)." For information about the APIs to manage pull request review comments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#pullrequestreviewcomment) or "[Pull request review comments](https://docs.github.com/enterprise-server@3.7/rest/pulls/comments)" in the REST API documentation.
+   *
+   * For activity related to pull request reviews, pull request comments, or pull request review threads, use the `pull_request_review`, `issue_comment`, or `pull_request_review_thread` events instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+   * @description A comment on a pull request diff was deleted.
+   */
   "pull-request-review-comment/deleted": {
-    /**
-     * This event occurs when there is activity relating to a pull request review comment. A pull request review comment is a comment on a pull request's diff. For more information, see "[Commenting on a pull request](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request)." For information about the APIs to manage pull request review comments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#pullrequestreviewcomment) or "[Pull request review comments](https://docs.github.com/enterprise-server@3.7/rest/pulls/comments)" in the REST API documentation.
-     *
-     * For activity related to pull request reviews, pull request comments, or pull request review threads, use the `pull_request_review`, `issue_comment`, or `pull_request_review_thread` events instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-     * @description A comment on a pull request diff was deleted.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -77646,34 +77437,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a pull request review comment. A pull request review comment is a comment on a pull request's diff. For more information, see "[Commenting on a pull request](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request)." For information about the APIs to manage pull request review comments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#pullrequestreviewcomment) or "[Pull request review comments](https://docs.github.com/enterprise-server@3.7/rest/pulls/comments)" in the REST API documentation.
+   *
+   * For activity related to pull request reviews, pull request comments, or pull request review threads, use the `pull_request_review`, `issue_comment`, or `pull_request_review_thread` events instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+   * @description The content of a comment on a pull request diff was changed.
+   */
   "pull-request-review-comment/edited": {
-    /**
-     * This event occurs when there is activity relating to a pull request review comment. A pull request review comment is a comment on a pull request's diff. For more information, see "[Commenting on a pull request](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request)." For information about the APIs to manage pull request review comments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#pullrequestreviewcomment) or "[Pull request review comments](https://docs.github.com/enterprise-server@3.7/rest/pulls/comments)" in the REST API documentation.
-     *
-     * For activity related to pull request reviews, pull request comments, or pull request review threads, use the `pull_request_review`, `issue_comment`, or `pull_request_review_thread` events instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-     * @description The content of a comment on a pull request diff was changed.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -77687,34 +77478,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a pull request review. A pull request review is a group of pull request review comments in addition to a body comment and a state. For more information, see "[About pull request reviews](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request reviews, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#pullrequestreview) or "[Pull request reviews](https://docs.github.com/enterprise-server@3.7/rest/pulls/reviews)" in the REST API documentation.
+   *
+   * For activity related to pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+   * @description A review on a pull request was dismissed.
+   */
   "pull-request-review/dismissed": {
-    /**
-     * This event occurs when there is activity relating to a pull request review. A pull request review is a group of pull request review comments in addition to a body comment and a state. For more information, see "[About pull request reviews](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request reviews, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#pullrequestreview) or "[Pull request reviews](https://docs.github.com/enterprise-server@3.7/rest/pulls/reviews)" in the REST API documentation.
-     *
-     * For activity related to pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-     * @description A review on a pull request was dismissed.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -77728,34 +77519,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a pull request review. A pull request review is a group of pull request review comments in addition to a body comment and a state. For more information, see "[About pull request reviews](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request reviews, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#pullrequestreview) or "[Pull request reviews](https://docs.github.com/enterprise-server@3.7/rest/pulls/reviews)" in the REST API documentation.
+   *
+   * For activity related to pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+   * @description The body comment on a pull request review was edited.
+   */
   "pull-request-review/edited": {
-    /**
-     * This event occurs when there is activity relating to a pull request review. A pull request review is a group of pull request review comments in addition to a body comment and a state. For more information, see "[About pull request reviews](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request reviews, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#pullrequestreview) or "[Pull request reviews](https://docs.github.com/enterprise-server@3.7/rest/pulls/reviews)" in the REST API documentation.
-     *
-     * For activity related to pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-     * @description The body comment on a pull request review was edited.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -77769,34 +77560,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.7/rest/pulls/pulls)" in the REST API documentation.
+   *
+   * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+   * @description A request for review by a person or team was removed from a pull request.
+   */
   "pull-request/review-request-removed": {
-    /**
-     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.7/rest/pulls/pulls)" in the REST API documentation.
-     *
-     * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-     * @description A request for review by a person or team was removed from a pull request.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -77810,34 +77601,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.7/rest/pulls/pulls)" in the REST API documentation.
+   *
+   * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+   * @description Review by a person or team was requested for a pull request. For more information, see "[Requesting a pull request review](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/requesting-a-pull-request-review)."
+   */
   "pull-request/review-requested": {
-    /**
-     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.7/rest/pulls/pulls)" in the REST API documentation.
-     *
-     * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-     * @description Review by a person or team was requested for a pull request. For more information, see "[Requesting a pull request review](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/requesting-a-pull-request-review)."
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -77851,34 +77642,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a pull request review. A pull request review is a group of pull request review comments in addition to a body comment and a state. For more information, see "[About pull request reviews](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request reviews, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#pullrequestreview) or "[Pull request reviews](https://docs.github.com/enterprise-server@3.7/rest/pulls/reviews)" in the REST API documentation.
+   *
+   * For activity related to pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+   * @description A review on a pull request was submitted.
+   */
   "pull-request-review/submitted": {
-    /**
-     * This event occurs when there is activity relating to a pull request review. A pull request review is a group of pull request review comments in addition to a body comment and a state. For more information, see "[About pull request reviews](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request reviews, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#pullrequestreview) or "[Pull request reviews](https://docs.github.com/enterprise-server@3.7/rest/pulls/reviews)" in the REST API documentation.
-     *
-     * For activity related to pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-     * @description A review on a pull request was submitted.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -77892,34 +77683,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a comment thread on a pull request. For more information, see "[About pull request reviews](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request review comment threads, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#pullrequestreviewthread) or "[Pull request reviews](https://docs.github.com/enterprise-server@3.7/rest/pulls/reviews)" in the REST API documentation.
+   *
+   * For activity related to pull request review comments, pull request comments, or pull request reviews, use the `pull_request_review_comment`, `issue_comment`, or `pull_request_review` events instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+   * @description A comment thread on a pull request was marked as resolved.
+   */
   "pull-request-review-thread/resolved": {
-    /**
-     * This event occurs when there is activity relating to a comment thread on a pull request. For more information, see "[About pull request reviews](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request review comment threads, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#pullrequestreviewthread) or "[Pull request reviews](https://docs.github.com/enterprise-server@3.7/rest/pulls/reviews)" in the REST API documentation.
-     *
-     * For activity related to pull request review comments, pull request comments, or pull request reviews, use the `pull_request_review_comment`, `issue_comment`, or `pull_request_review` events instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-     * @description A comment thread on a pull request was marked as resolved.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -77933,34 +77724,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a comment thread on a pull request. For more information, see "[About pull request reviews](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request reviews, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#pullrequestreviewthread) or "[Pull request review comments](https://docs.github.com/enterprise-server@3.7/rest/pulls/comments)" in the REST API documentation.
+   *
+   * For activity related to pull request review comments, pull request comments, or pull request reviews, use the `pull_request_review_comment`, `issue_comment`, or `pull_request_review` events instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+   * @description A previously resolved comment thread on a pull request was marked as unresolved.
+   */
   "pull-request-review-thread/unresolved": {
-    /**
-     * This event occurs when there is activity relating to a comment thread on a pull request. For more information, see "[About pull request reviews](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request reviews, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#pullrequestreviewthread) or "[Pull request review comments](https://docs.github.com/enterprise-server@3.7/rest/pulls/comments)" in the REST API documentation.
-     *
-     * For activity related to pull request review comments, pull request comments, or pull request reviews, use the `pull_request_review_comment`, `issue_comment`, or `pull_request_review` events instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-     * @description A previously resolved comment thread on a pull request was marked as unresolved.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -77974,34 +77765,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.7/rest/pulls/pulls)" in the REST API documentation.
+   *
+   * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+   * @description A pull request's head branch was updated. For example, the head branch was updated from the base branch or new commits were pushed to the head branch.
+   */
   "pull-request/synchronize": {
-    /**
-     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.7/rest/pulls/pulls)" in the REST API documentation.
-     *
-     * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-     * @description A pull request's head branch was updated. For example, the head branch was updated from the base branch or new commits were pushed to the head branch.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -78015,34 +77806,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.7/rest/pulls/pulls)" in the REST API documentation.
+   *
+   * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+   * @description A user was unassigned from a pull request.
+   */
   "pull-request/unassigned": {
-    /**
-     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.7/rest/pulls/pulls)" in the REST API documentation.
-     *
-     * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-     * @description A user was unassigned from a pull request.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -78056,34 +77847,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.7/rest/pulls/pulls)" in the REST API documentation.
+   *
+   * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+   * @description A label was removed from a pull request.
+   */
   "pull-request/unlabeled": {
-    /**
-     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.7/rest/pulls/pulls)" in the REST API documentation.
-     *
-     * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-     * @description A label was removed from a pull request.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -78097,34 +77888,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.7/rest/pulls/pulls)" in the REST API documentation.
+   *
+   * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+   * @description Conversation on a pull request was unlocked. For more information, see "[Locking conversations](https://docs.github.com/enterprise-server@3.7/communities/moderating-comments-and-conversations/locking-conversations)."
+   */
   "pull-request/unlocked": {
-    /**
-     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.7/rest/pulls/pulls)" in the REST API documentation.
-     *
-     * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-     * @description Conversation on a pull request was unlocked. For more information, see "[Locking conversations](https://docs.github.com/enterprise-server@3.7/communities/moderating-comments-and-conversations/locking-conversations)."
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -78138,33 +77929,33 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when a commit or tag is pushed.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
+   *
+   * **Note**: An event will not be created when more than three tags are pushed at once.
+   */
   push: {
-    /**
-     * This event occurs when a commit or tag is pushed.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
-     *
-     * **Note**: An event will not be created when more than three tags are pushed at once.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -78178,34 +77969,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to GitHub Packages. For more information, see "[Introduction to GitHub Packages](https://docs.github.com/enterprise-server@3.7/packages/learn-github-packages/introduction-to-github-packages)." For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#package) or "[Packages](https://docs.github.com/enterprise-server@3.7/rest/packages)" in the REST API documentation.
+   *
+   * To install this event on a GitHub App, the app must have at least read-level access for the "Packages" repository permission.
+   *
+   * **Note**: GitHub recommends that you use the newer `package` event instead.
+   * @description A package was published to a registry.
+   */
   "registry-package/published": {
-    /**
-     * This event occurs when there is activity relating to GitHub Packages. For more information, see "[Introduction to GitHub Packages](https://docs.github.com/enterprise-server@3.7/packages/learn-github-packages/introduction-to-github-packages)." For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#package) or "[Packages](https://docs.github.com/enterprise-server@3.7/rest/packages)" in the REST API documentation.
-     *
-     * To install this event on a GitHub App, the app must have at least read-level access for the "Packages" repository permission.
-     *
-     * **Note**: GitHub recommends that you use the newer `package` event instead.
-     * @description A package was published to a registry.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -78219,34 +78010,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to GitHub Packages. For more information, see "[Introduction to GitHub Packages](https://docs.github.com/enterprise-server@3.7/packages/learn-github-packages/introduction-to-github-packages)." For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#package) or "[Packages](https://docs.github.com/enterprise-server@3.7/rest/packages)" in the REST API documentation.
+   *
+   * To install this event on a GitHub App, the app must have at least read-level access for the "Packages" repository permission.
+   *
+   * **Note**: GitHub recommends that you use the newer `package` event instead
+   * @description A package that was previously published to a registry was updated.
+   */
   "registry-package/updated": {
-    /**
-     * This event occurs when there is activity relating to GitHub Packages. For more information, see "[Introduction to GitHub Packages](https://docs.github.com/enterprise-server@3.7/packages/learn-github-packages/introduction-to-github-packages)." For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#package) or "[Packages](https://docs.github.com/enterprise-server@3.7/rest/packages)" in the REST API documentation.
-     *
-     * To install this event on a GitHub App, the app must have at least read-level access for the "Packages" repository permission.
-     *
-     * **Note**: GitHub recommends that you use the newer `package` event instead
-     * @description A package that was previously published to a registry was updated.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -78260,32 +78051,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-server@3.7/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-server@3.7/rest/releases)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
+   * @description A draft was saved, or a release or pre-release was published without previously being saved as a draft.
+   */
   "release/created": {
-    /**
-     * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-server@3.7/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-server@3.7/rest/releases)" in the REST API documentation.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
-     * @description A draft was saved, or a release or pre-release was published without previously being saved as a draft.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -78299,32 +78090,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-server@3.7/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-server@3.7/rest/packages)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
+   * @description A release, pre-release, or draft release was deleted.
+   */
   "release/deleted": {
-    /**
-     * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-server@3.7/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-server@3.7/rest/packages)" in the REST API documentation.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
-     * @description A release, pre-release, or draft release was deleted.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -78338,32 +78129,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-server@3.7/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-server@3.7/rest/packages)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
+   * @description The details of a release, pre-release, or draft release were edited. For more information, see "[Managing releases in a repository](https://docs.github.com/enterprise-server@3.7/repositories/releasing-projects-on-github/managing-releases-in-a-repository#editing-a-release)."
+   */
   "release/edited": {
-    /**
-     * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-server@3.7/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-server@3.7/rest/packages)" in the REST API documentation.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
-     * @description The details of a release, pre-release, or draft release were edited. For more information, see "[Managing releases in a repository](https://docs.github.com/enterprise-server@3.7/repositories/releasing-projects-on-github/managing-releases-in-a-repository#editing-a-release)."
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -78377,32 +78168,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-server@3.7/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-server@3.7/rest/packages)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
+   * @description A release was created and identified as a pre-release. A pre-release is a release that is not ready for production and may be unstable.
+   */
   "release/prereleased": {
-    /**
-     * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-server@3.7/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-server@3.7/rest/packages)" in the REST API documentation.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
-     * @description A release was created and identified as a pre-release. A pre-release is a release that is not ready for production and may be unstable.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -78416,32 +78207,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-server@3.7/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-server@3.7/rest/packages)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
+   * @description A release, pre-release, or draft of a release was published.
+   */
   "release/published": {
-    /**
-     * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-server@3.7/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-server@3.7/rest/packages)" in the REST API documentation.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
-     * @description A release, pre-release, or draft of a release was published.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -78455,32 +78246,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-server@3.7/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-server@3.7/rest/packages)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
+   * @description A release was published, or a pre-release was changed to a release.
+   */
   "release/released": {
-    /**
-     * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-server@3.7/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-server@3.7/rest/packages)" in the REST API documentation.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
-     * @description A release was published, or a pre-release was changed to a release.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -78494,32 +78285,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-server@3.7/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-server@3.7/rest/packages)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
+   * @description A release or pre-release was unpublished.
+   */
   "release/unpublished": {
-    /**
-     * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-server@3.7/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-server@3.7/rest/packages)" in the REST API documentation.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
-     * @description A release or pre-release was unpublished.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -78533,32 +78324,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.7/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.7/rest/repos)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
+   * @description Someone disabled anonymous Git read access to the repository. For more information, see "[Enabling anonymous Git read access for a repository](/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/enabling-anonymous-git-read-access-for-a-repository)."
+   */
   "repository/anonymous-access-disabled": {
-    /**
-     * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.7/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.7/rest/repos)" in the REST API documentation.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
-     * @description Someone disabled anonymous Git read access to the repository. For more information, see "[Enabling anonymous Git read access for a repository](/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/enabling-anonymous-git-read-access-for-a-repository)."
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -78572,32 +78363,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.7/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.7/rest/repos)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
+   * @description Someone enabled anonymous Git read access to the repository. For more information, see "[Enabling anonymous Git read access for a repository](/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/enabling-anonymous-git-read-access-for-a-repository)."
+   */
   "repository/anonymous-access-enabled": {
-    /**
-     * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.7/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.7/rest/repos)" in the REST API documentation.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
-     * @description Someone enabled anonymous Git read access to the repository. For more information, see "[Enabling anonymous Git read access for a repository](/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/enabling-anonymous-git-read-access-for-a-repository)."
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -78611,32 +78402,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.7/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.7/rest/repos)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
+   * @description A repository was archived.
+   */
   "repository/archived": {
-    /**
-     * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.7/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.7/rest/repos)" in the REST API documentation.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
-     * @description A repository was archived.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -78650,32 +78441,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.7/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.7/rest/repos)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
+   * @description A repository was created.
+   */
   "repository/created": {
-    /**
-     * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.7/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.7/rest/repos)" in the REST API documentation.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
-     * @description A repository was created.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -78689,32 +78480,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.7/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.7/rest/repos)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
+   * @description A repository was deleted. GitHub Apps and repository webhooks will not receive this event.
+   */
   "repository/deleted": {
-    /**
-     * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.7/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.7/rest/repos)" in the REST API documentation.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
-     * @description A repository was deleted. GitHub Apps and repository webhooks will not receive this event.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -78728,32 +78519,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when a GitHub App sends a `POST` request to `/repos/{owner}/{repo}/dispatches`. For more information, see [the REST API documentation for creating a repository dispatch event](https://docs.github.com/enterprise-server@3.7/rest/repos/repos#create-a-repository-dispatch-event).
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
+   * @description The `event_type` that was specified in the `POST /repos/{owner}/{repo}/dispatches` request body.
+   */
   "repository-dispatch/sample.collected": {
-    /**
-     * This event occurs when a GitHub App sends a `POST` request to `/repos/{owner}/{repo}/dispatches`. For more information, see [the REST API documentation for creating a repository dispatch event](https://docs.github.com/enterprise-server@3.7/rest/repos/repos#create-a-repository-dispatch-event).
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
-     * @description The `event_type` that was specified in the `POST /repos/{owner}/{repo}/dispatches` request body.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -78767,32 +78558,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.7/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.7/rest/repos)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
+   * @description The topics, default branch, description, or homepage of a repository was changed.
+   */
   "repository/edited": {
-    /**
-     * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.7/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.7/rest/repos)" in the REST API documentation.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
-     * @description The topics, default branch, description, or homepage of a repository was changed.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -78806,32 +78597,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.7/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.7/rest/repos)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
+   * @description The visibility of a repository was changed to `private`.
+   */
   "repository/privatized": {
-    /**
-     * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.7/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.7/rest/repos)" in the REST API documentation.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
-     * @description The visibility of a repository was changed to `private`.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -78845,32 +78636,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.7/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.7/rest/repos)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
+   * @description The visibility of a repository was changed to `public`.
+   */
   "repository/publicized": {
-    /**
-     * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.7/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.7/rest/repos)" in the REST API documentation.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
-     * @description The visibility of a repository was changed to `public`.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -78884,32 +78675,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.7/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.7/rest/repos)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
+   * @description The name of a repository was changed.
+   */
   "repository/renamed": {
-    /**
-     * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.7/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.7/rest/repos)" in the REST API documentation.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
-     * @description The name of a repository was changed.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -78923,32 +78714,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.7/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.7/rest/repos)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
+   * @description Ownership of the repository was transferred to a user or organization account. This event is only sent to the account where the ownership is transferred. To receive the `repository.transferred` event, the new owner account must have the GitHub App installed, and the App must be subscribed to "Repository" events.
+   */
   "repository/transferred": {
-    /**
-     * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.7/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.7/rest/repos)" in the REST API documentation.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
-     * @description Ownership of the repository was transferred to a user or organization account. This event is only sent to the account where the ownership is transferred. To receive the `repository.transferred` event, the new owner account must have the GitHub App installed, and the App must be subscribed to "Repository" events.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -78962,32 +78753,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.7/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.7/rest/repos)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
+   * @description A previously archived repository was unarchived.
+   */
   "repository/unarchived": {
-    /**
-     * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.7/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.7/rest/repos)" in the REST API documentation.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
-     * @description A previously archived repository was unarchived.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -79001,32 +78792,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a security vulnerability alert in a repository.
+   *
+   * **Note**: This event is deprecated. Use the `dependabot_alert` event instead.
+   * @description A repository vulnerability alert was created.
+   */
   "repository-vulnerability-alert/create": {
-    /**
-     * This event occurs when there is activity relating to a security vulnerability alert in a repository.
-     *
-     * **Note**: This event is deprecated. Use the `dependabot_alert` event instead.
-     * @description A repository vulnerability alert was created.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -79040,32 +78831,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a security vulnerability alert in a repository.
+   *
+   * **Note**: This event is deprecated. Use the `dependabot_alert` event instead.
+   * @description A repository vulnerability alert was dismissed.
+   */
   "repository-vulnerability-alert/dismiss": {
-    /**
-     * This event occurs when there is activity relating to a security vulnerability alert in a repository.
-     *
-     * **Note**: This event is deprecated. Use the `dependabot_alert` event instead.
-     * @description A repository vulnerability alert was dismissed.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -79079,32 +78870,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a security vulnerability alert in a repository.
+   *
+   * **Note**: This event is deprecated. Use the `dependabot_alert` event instead.
+   * @description A previously dismissed or resolved repository vulnerability alert was reopened.
+   */
   "repository-vulnerability-alert/reopen": {
-    /**
-     * This event occurs when there is activity relating to a security vulnerability alert in a repository.
-     *
-     * **Note**: This event is deprecated. Use the `dependabot_alert` event instead.
-     * @description A previously dismissed or resolved repository vulnerability alert was reopened.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -79118,32 +78909,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a security vulnerability alert in a repository.
+   *
+   * **Note**: This event is deprecated. Use the `dependabot_alert` event instead.
+   * @description A repository vulnerability alert was marked as resolved.
+   */
   "repository-vulnerability-alert/resolve": {
-    /**
-     * This event occurs when there is activity relating to a security vulnerability alert in a repository.
-     *
-     * **Note**: This event is deprecated. Use the `dependabot_alert` event instead.
-     * @description A repository vulnerability alert was marked as resolved.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -79157,34 +78948,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a secret scanning alert. For more information about secret scanning, see "[About secret scanning](https://docs.github.com/enterprise-server@3.7/code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/enterprise-server@3.7/rest/secret-scanning)" in the REST API documentation.
+   *
+   * For activity relating to secret scanning alert locations, use the `secret_scanning_alert_location` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
+   * @description A secret scanning alert was created.
+   */
   "secret-scanning-alert/created": {
-    /**
-     * This event occurs when there is activity relating to a secret scanning alert. For more information about secret scanning, see "[About secret scanning](https://docs.github.com/enterprise-server@3.7/code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/enterprise-server@3.7/rest/secret-scanning)" in the REST API documentation.
-     *
-     * For activity relating to secret scanning alert locations, use the `secret_scanning_alert_location` event.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
-     * @description A secret scanning alert was created.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -79198,36 +78989,36 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to the locations of a secret in a secret scanning alert.
+   *
+   * For more information about secret scanning, see "[About secret scanning](https://docs.github.com/enterprise-server@3.7/code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/enterprise-server@3.7/rest/secret-scanning)" in the REST API documentation.
+   *
+   * For activity relating to secret scanning alerts, use the `secret_scanning_alert` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
+   * @description A new instance of a previously detected secret was detected in a repository, and the location of the secret was added to the existing alert.
+   */
   "secret-scanning-alert-location/created": {
-    /**
-     * This event occurs when there is activity relating to the locations of a secret in a secret scanning alert.
-     *
-     * For more information about secret scanning, see "[About secret scanning](https://docs.github.com/enterprise-server@3.7/code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/enterprise-server@3.7/rest/secret-scanning)" in the REST API documentation.
-     *
-     * For activity relating to secret scanning alerts, use the `secret_scanning_alert` event.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
-     * @description A new instance of a previously detected secret was detected in a repository, and the location of the secret was added to the existing alert.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -79242,34 +79033,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a secret scanning alert. For more information about secret scanning, see "[About secret scanning](https://docs.github.com/enterprise-server@3.7/code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/enterprise-server@3.7/rest/secret-scanning)" in the REST API documentation.
+   *
+   * For activity relating to secret scanning alert locations, use the `secret_scanning_alert_location` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
+   * @description A previously closed secret scanning alert was reopened.
+   */
   "secret-scanning-alert/reopened": {
-    /**
-     * This event occurs when there is activity relating to a secret scanning alert. For more information about secret scanning, see "[About secret scanning](https://docs.github.com/enterprise-server@3.7/code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/enterprise-server@3.7/rest/secret-scanning)" in the REST API documentation.
-     *
-     * For activity relating to secret scanning alert locations, use the `secret_scanning_alert_location` event.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
-     * @description A previously closed secret scanning alert was reopened.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -79283,34 +79074,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a secret scanning alert. For more information about secret scanning, see "[About secret scanning](https://docs.github.com/enterprise-server@3.7/code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/enterprise-server@3.7/rest/secret-scanning)" in the REST API documentation.
+   *
+   * For activity relating to secret scanning alert locations, use the `secret_scanning_alert_location` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
+   * @description A secret scanning alert was closed.
+   */
   "secret-scanning-alert/resolved": {
-    /**
-     * This event occurs when there is activity relating to a secret scanning alert. For more information about secret scanning, see "[About secret scanning](https://docs.github.com/enterprise-server@3.7/code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/enterprise-server@3.7/rest/secret-scanning)" in the REST API documentation.
-     *
-     * For activity relating to secret scanning alert locations, use the `secret_scanning_alert_location` event.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
-     * @description A secret scanning alert was closed.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -79324,34 +79115,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a secret scanning alert. For more information about secret scanning, see "[About secret scanning](https://docs.github.com/enterprise-server@3.7/code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/enterprise-server@3.7/rest/secret-scanning)" in the REST API documentation.
+   *
+   * For activity relating to secret scanning alert locations, use the `secret_scanning_alert_location` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
+   * @description A secret scanning alert was marked as revoked.
+   */
   "secret-scanning-alert/revoked": {
-    /**
-     * This event occurs when there is activity relating to a secret scanning alert. For more information about secret scanning, see "[About secret scanning](https://docs.github.com/enterprise-server@3.7/code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/enterprise-server@3.7/rest/secret-scanning)" in the REST API documentation.
-     *
-     * For activity relating to secret scanning alert locations, use the `secret_scanning_alert_location` event.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
-     * @description A secret scanning alert was marked as revoked.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -79365,32 +79156,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a security advisory that was reviewed by GitHub. A GitHub-reviewed security advisory provides information about security-related vulnerabilities in software on GitHub. For more information about security advisories, see "[About GitHub Security Advisories for repositories](https://docs.github.com/enterprise-server@3.7/code-security/repository-security-advisories/about-github-security-advisories-for-repositories)." For information about the API to manage security advisories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#securityadvisory).
+   *
+   * GitHub Dependabot alerts are also powered by the security advisory dataset. For more information, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.7/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)."
+   * @description A security advisory was published to the GitHub community.
+   */
   "security-advisory/published": {
-    /**
-     * This event occurs when there is activity relating to a security advisory that was reviewed by GitHub. A GitHub-reviewed security advisory provides information about security-related vulnerabilities in software on GitHub. For more information about security advisories, see "[About GitHub Security Advisories for repositories](https://docs.github.com/enterprise-server@3.7/code-security/repository-security-advisories/about-github-security-advisories-for-repositories)." For information about the API to manage security advisories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#securityadvisory).
-     *
-     * GitHub Dependabot alerts are also powered by the security advisory dataset. For more information, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.7/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)."
-     * @description A security advisory was published to the GitHub community.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -79404,32 +79195,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a security advisory that was reviewed by GitHub. A GitHub-reviewed security advisory provides information about security-related vulnerabilities in software on GitHub. For more information about security advisories, see "[About GitHub Security Advisories for repositories](https://docs.github.com/enterprise-server@3.7/code-security/repository-security-advisories/about-github-security-advisories-for-repositories)." For information about the API to manage security advisories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#securityadvisory).
+   *
+   * GitHub Dependabot alerts are also powered by the security advisory dataset. For more information, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.7/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)."
+   * @description The metadata or description of a security advisory was changed, or the security advisory was withdrawn.
+   */
   "security-advisory/updated": {
-    /**
-     * This event occurs when there is activity relating to a security advisory that was reviewed by GitHub. A GitHub-reviewed security advisory provides information about security-related vulnerabilities in software on GitHub. For more information about security advisories, see "[About GitHub Security Advisories for repositories](https://docs.github.com/enterprise-server@3.7/code-security/repository-security-advisories/about-github-security-advisories-for-repositories)." For information about the API to manage security advisories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#securityadvisory).
-     *
-     * GitHub Dependabot alerts are also powered by the security advisory dataset. For more information, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.7/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)."
-     * @description The metadata or description of a security advisory was changed, or the security advisory was withdrawn.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -79443,32 +79234,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a security advisory that was reviewed by GitHub. A GitHub-reviewed security advisory provides information about security-related vulnerabilities in software on GitHub. For more information about security advisories, see "[About GitHub Security Advisories for repositories](https://docs.github.com/enterprise-server@3.7/code-security/repository-security-advisories/about-github-security-advisories-for-repositories)." For information about the API to manage security advisories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#securityadvisory).
+   *
+   * GitHub Dependabot alerts are also powered by the security advisory dataset. For more information, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.7/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)."
+   * @description A previously published security advisory was withdrawn.
+   */
   "security-advisory/withdrawn": {
-    /**
-     * This event occurs when there is activity relating to a security advisory that was reviewed by GitHub. A GitHub-reviewed security advisory provides information about security-related vulnerabilities in software on GitHub. For more information about security advisories, see "[About GitHub Security Advisories for repositories](https://docs.github.com/enterprise-server@3.7/code-security/repository-security-advisories/about-github-security-advisories-for-repositories)." For information about the API to manage security advisories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#securityadvisory).
-     *
-     * GitHub Dependabot alerts are also powered by the security advisory dataset. For more information, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.7/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)."
-     * @description A previously published security advisory was withdrawn.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -79482,31 +79273,31 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when code security and analysis features are enabled or disabled for a repository. For more information, see "[GitHub security features](https://docs.github.com/enterprise-server@3.7/code-security/getting-started/github-security-features)."
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+   */
   "security-and-analysis": {
-    /**
-     * This event occurs when code security and analysis features are enabled or disabled for a repository. For more information, see "[GitHub security features](https://docs.github.com/enterprise-server@3.7/code-security/getting-started/github-security-features)."
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -79520,34 +79311,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a sponsorship listing. For more information, see "[About GitHub Sponsors](https://docs.github.com/enterprise-server@3.7/sponsors/getting-started-with-github-sponsors/about-github-sponsors)." For information about the API to manage sponsors, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#sponsorship).
+   *
+   * You can only create a sponsorship webhook on GitHub.com. For more information, see "[Configuring webhooks for events in your sponsored account](https://docs.github.com/enterprise-server@3.7/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)."
+   * @description A sponsorship was cancelled and the last billing cycle has ended.
+   *
+   * This event is only sent when a recurring (monthly) sponsorship is cancelled; it is not sent for one-time sponsorships.
+   */
   "sponsorship/cancelled": {
-    /**
-     * This event occurs when there is activity relating to a sponsorship listing. For more information, see "[About GitHub Sponsors](https://docs.github.com/enterprise-server@3.7/sponsors/getting-started-with-github-sponsors/about-github-sponsors)." For information about the API to manage sponsors, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#sponsorship).
-     *
-     * You can only create a sponsorship webhook on GitHub.com. For more information, see "[Configuring webhooks for events in your sponsored account](https://docs.github.com/enterprise-server@3.7/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)."
-     * @description A sponsorship was cancelled and the last billing cycle has ended.
-     *
-     * This event is only sent when a recurring (monthly) sponsorship is cancelled; it is not sent for one-time sponsorships.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -79561,32 +79352,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a sponsorship listing. For more information, see "[About GitHub Sponsors](https://docs.github.com/enterprise-server@3.7/sponsors/getting-started-with-github-sponsors/about-github-sponsors)." For information about the API to manage sponsors, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#sponsorship).
+   *
+   * You can only create a sponsorship webhook on GitHub.com. For more information, see "[Configuring webhooks for events in your sponsored account](https://docs.github.com/enterprise-server@3.7/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)."
+   * @description A sponsor created a sponsorship for a sponsored account. This event occurs once the payment is successfully processed.
+   */
   "sponsorship/created": {
-    /**
-     * This event occurs when there is activity relating to a sponsorship listing. For more information, see "[About GitHub Sponsors](https://docs.github.com/enterprise-server@3.7/sponsors/getting-started-with-github-sponsors/about-github-sponsors)." For information about the API to manage sponsors, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#sponsorship).
-     *
-     * You can only create a sponsorship webhook on GitHub.com. For more information, see "[Configuring webhooks for events in your sponsored account](https://docs.github.com/enterprise-server@3.7/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)."
-     * @description A sponsor created a sponsorship for a sponsored account. This event occurs once the payment is successfully processed.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -79600,32 +79391,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a sponsorship listing. For more information, see "[About GitHub Sponsors](https://docs.github.com/enterprise-server@3.7/sponsors/getting-started-with-github-sponsors/about-github-sponsors)." For information about the API to manage sponsors, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#sponsorship).
+   *
+   * You can only create a sponsorship webhook on GitHub.com. For more information, see "[Configuring webhooks for events in your sponsored account](https://docs.github.com/enterprise-server@3.7/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)."
+   * @description A monthly sponsor changed who can see their sponsorship. If you recognize your sponsors publicly, you may want to update your sponsor recognition to reflect the change when this event occurs.
+   */
   "sponsorship/edited": {
-    /**
-     * This event occurs when there is activity relating to a sponsorship listing. For more information, see "[About GitHub Sponsors](https://docs.github.com/enterprise-server@3.7/sponsors/getting-started-with-github-sponsors/about-github-sponsors)." For information about the API to manage sponsors, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#sponsorship).
-     *
-     * You can only create a sponsorship webhook on GitHub.com. For more information, see "[Configuring webhooks for events in your sponsored account](https://docs.github.com/enterprise-server@3.7/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)."
-     * @description A monthly sponsor changed who can see their sponsorship. If you recognize your sponsors publicly, you may want to update your sponsor recognition to reflect the change when this event occurs.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -79639,34 +79430,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a sponsorship listing. For more information, see "[About GitHub Sponsors](https://docs.github.com/enterprise-server@3.7/sponsors/getting-started-with-github-sponsors/about-github-sponsors)." For information about the API to manage sponsors, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#sponsorship).
+   *
+   * You can only create a sponsorship webhook on GitHub.com. For more information, see "[Configuring webhooks for events in your sponsored account](https://docs.github.com/enterprise-server@3.7/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)."
+   * @description A sponsor scheduled a cancellation for their sponsorship. The cancellation will become effective on their next billing date.
+   *
+   * This event is only sent when a recurring (monthly) sponsorship is cancelled; it is not sent for one-time sponsorships.
+   */
   "sponsorship/pending-cancellation": {
-    /**
-     * This event occurs when there is activity relating to a sponsorship listing. For more information, see "[About GitHub Sponsors](https://docs.github.com/enterprise-server@3.7/sponsors/getting-started-with-github-sponsors/about-github-sponsors)." For information about the API to manage sponsors, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#sponsorship).
-     *
-     * You can only create a sponsorship webhook on GitHub.com. For more information, see "[Configuring webhooks for events in your sponsored account](https://docs.github.com/enterprise-server@3.7/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)."
-     * @description A sponsor scheduled a cancellation for their sponsorship. The cancellation will become effective on their next billing date.
-     *
-     * This event is only sent when a recurring (monthly) sponsorship is cancelled; it is not sent for one-time sponsorships.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -79680,32 +79471,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a sponsorship listing. For more information, see "[About GitHub Sponsors](https://docs.github.com/enterprise-server@3.7/sponsors/getting-started-with-github-sponsors/about-github-sponsors)." For information about the API to manage sponsors, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#sponsorship).
+   *
+   * You can only create a sponsorship webhook on GitHub.com. For more information, see "[Configuring webhooks for events in your sponsored account](https://docs.github.com/enterprise-server@3.7/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)."
+   * @description A sponsor scheduled a downgrade to a lower sponsorship tier. The new tier will become effective on their next billing date.
+   */
   "sponsorship/pending-tier-change": {
-    /**
-     * This event occurs when there is activity relating to a sponsorship listing. For more information, see "[About GitHub Sponsors](https://docs.github.com/enterprise-server@3.7/sponsors/getting-started-with-github-sponsors/about-github-sponsors)." For information about the API to manage sponsors, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#sponsorship).
-     *
-     * You can only create a sponsorship webhook on GitHub.com. For more information, see "[Configuring webhooks for events in your sponsored account](https://docs.github.com/enterprise-server@3.7/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)."
-     * @description A sponsor scheduled a downgrade to a lower sponsorship tier. The new tier will become effective on their next billing date.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -79719,32 +79510,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a sponsorship listing. For more information, see "[About GitHub Sponsors](https://docs.github.com/enterprise-server@3.7/sponsors/getting-started-with-github-sponsors/about-github-sponsors)." For information about the API to manage sponsors, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#sponsorship).
+   *
+   * You can only create a sponsorship webhook on GitHub.com. For more information, see "[Configuring webhooks for events in your sponsored account](https://docs.github.com/enterprise-server@3.7/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)."
+   * @description A sponsor changed the tier of their sponsorship and the change has taken effect. If a sponsor upgraded their tier, the change took effect immediately. If a sponsor downgraded their tier, the change took effect at the beginning of the sponsor's next billing cycle.
+   */
   "sponsorship/tier-changed": {
-    /**
-     * This event occurs when there is activity relating to a sponsorship listing. For more information, see "[About GitHub Sponsors](https://docs.github.com/enterprise-server@3.7/sponsors/getting-started-with-github-sponsors/about-github-sponsors)." For information about the API to manage sponsors, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#sponsorship).
-     *
-     * You can only create a sponsorship webhook on GitHub.com. For more information, see "[Configuring webhooks for events in your sponsored account](https://docs.github.com/enterprise-server@3.7/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)."
-     * @description A sponsor changed the tier of their sponsorship and the change has taken effect. If a sponsor upgraded their tier, the change took effect immediately. If a sponsor downgraded their tier, the change took effect at the beginning of the sponsor's next billing cycle.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -79758,32 +79549,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to repository stars. For more information about stars, see "[Saving repositories with stars](https://docs.github.com/enterprise-server@3.7/get-started/exploring-projects-on-github/saving-repositories-with-stars)." For information about the APIs to manage stars, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#starredrepositoryconnection) or "[Starring](https://docs.github.com/enterprise-server@3.7/rest/activity/starring)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
+   * @description Someone starred a repository.
+   */
   "star/created": {
-    /**
-     * This event occurs when there is activity relating to repository stars. For more information about stars, see "[Saving repositories with stars](https://docs.github.com/enterprise-server@3.7/get-started/exploring-projects-on-github/saving-repositories-with-stars)." For information about the APIs to manage stars, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#starredrepositoryconnection) or "[Starring](https://docs.github.com/enterprise-server@3.7/rest/activity/starring)" in the REST API documentation.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
-     * @description Someone starred a repository.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -79797,32 +79588,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to repository stars. For more information about stars, see "[Saving repositories with stars](https://docs.github.com/enterprise-server@3.7/get-started/exploring-projects-on-github/saving-repositories-with-stars)." For information about the APIs to manage stars, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#starredrepositoryconnection) or "[Starring](https://docs.github.com/enterprise-server@3.7/rest/activity/starring)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
+   * @description Someone unstarred the repository.
+   */
   "star/deleted": {
-    /**
-     * This event occurs when there is activity relating to repository stars. For more information about stars, see "[Saving repositories with stars](https://docs.github.com/enterprise-server@3.7/get-started/exploring-projects-on-github/saving-repositories-with-stars)." For information about the APIs to manage stars, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#starredrepositoryconnection) or "[Starring](https://docs.github.com/enterprise-server@3.7/rest/activity/starring)" in the REST API documentation.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
-     * @description Someone unstarred the repository.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -79836,31 +79627,31 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when the status of a Git commit changes. For example, commits can be marked as `error`, `failure`, `pending`, or `success`. For more information, see "[About status checks](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/collaborating-on-repositories-with-code-quality-features/about-status-checks)." For information about the APIs to manage commit statuses, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#status) or "[Statuses](https://docs.github.com/enterprise-server@3.7/rest/reference/commits#commit-statuses)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Commit statuses" repository permission.
+   */
   status: {
-    /**
-     * This event occurs when the status of a Git commit changes. For example, commits can be marked as `error`, `failure`, `pending`, or `success`. For more information, see "[About status checks](https://docs.github.com/enterprise-server@3.7/pull-requests/collaborating-with-pull-requests/collaborating-on-repositories-with-code-quality-features/about-status-checks)." For information about the APIs to manage commit statuses, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#status) or "[Statuses](https://docs.github.com/enterprise-server@3.7/rest/reference/commits#commit-statuses)" in the REST API documentation.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Commit statuses" repository permission.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -79874,34 +79665,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when a team is added to a repository.
+   * For more information, see "[Managing teams and people with access to your repository](https://docs.github.com/enterprise-server@3.7/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/managing-teams-and-people-with-access-to-your-repository)."
+   *
+   * For activity relating to teams, see the `teams` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
+   */
   "team-add": {
-    /**
-     * This event occurs when a team is added to a repository.
-     * For more information, see "[Managing teams and people with access to your repository](https://docs.github.com/enterprise-server@3.7/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/managing-teams-and-people-with-access-to-your-repository)."
-     *
-     * For activity relating to teams, see the `teams` event.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -79915,33 +79706,33 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to teams in an organization.
+   * For more information, see "[About teams](https://docs.github.com/enterprise-server@3.7/organizations/organizing-members-into-teams/about-teams)."
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
+   * @description A team was granted access to a repository.
+   */
   "team/added-to-repository": {
-    /**
-     * This event occurs when there is activity relating to teams in an organization.
-     * For more information, see "[About teams](https://docs.github.com/enterprise-server@3.7/organizations/organizing-members-into-teams/about-teams)."
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
-     * @description A team was granted access to a repository.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -79955,33 +79746,33 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to teams in an organization.
+   * For more information, see "[About teams](https://docs.github.com/enterprise-server@3.7/organizations/organizing-members-into-teams/about-teams)."
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
+   * @description A team was created.
+   */
   "team/created": {
-    /**
-     * This event occurs when there is activity relating to teams in an organization.
-     * For more information, see "[About teams](https://docs.github.com/enterprise-server@3.7/organizations/organizing-members-into-teams/about-teams)."
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
-     * @description A team was created.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -79995,33 +79786,33 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to teams in an organization.
+   * For more information, see "[About teams](https://docs.github.com/enterprise-server@3.7/organizations/organizing-members-into-teams/about-teams)."
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
+   * @description A team was deleted.
+   */
   "team/deleted": {
-    /**
-     * This event occurs when there is activity relating to teams in an organization.
-     * For more information, see "[About teams](https://docs.github.com/enterprise-server@3.7/organizations/organizing-members-into-teams/about-teams)."
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
-     * @description A team was deleted.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -80035,33 +79826,33 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to teams in an organization.
+   * For more information, see "[About teams](https://docs.github.com/enterprise-server@3.7/organizations/organizing-members-into-teams/about-teams)."
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
+   * @description The name, description, or visibility of a team was changed.
+   */
   "team/edited": {
-    /**
-     * This event occurs when there is activity relating to teams in an organization.
-     * For more information, see "[About teams](https://docs.github.com/enterprise-server@3.7/organizations/organizing-members-into-teams/about-teams)."
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
-     * @description The name, description, or visibility of a team was changed.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -80075,33 +79866,33 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to teams in an organization.
+   * For more information, see "[About teams](https://docs.github.com/enterprise-server@3.7/organizations/organizing-members-into-teams/about-teams)."
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
+   * @description A team's access to a repository was removed.
+   */
   "team/removed-from-repository": {
-    /**
-     * This event occurs when there is activity relating to teams in an organization.
-     * For more information, see "[About teams](https://docs.github.com/enterprise-server@3.7/organizations/organizing-members-into-teams/about-teams)."
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
-     * @description A team's access to a repository was removed.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -80115,30 +79906,30 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to user accounts in an enterprise.
+   * @description A user account was added to the enterprise.
+   */
   "user/created": {
-    /**
-     * This event occurs when there is activity relating to user accounts in an enterprise.
-     * @description A user account was added to the enterprise.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -80152,30 +79943,30 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to user accounts in an enterprise.
+   * @description A user account was removed from the enterprise.
+   */
   "user/deleted": {
-    /**
-     * This event occurs when there is activity relating to user accounts in an enterprise.
-     * @description A user account was removed from the enterprise.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -80189,32 +79980,32 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to watching, or subscribing to, a repository. For more information about watching, see "[Managing your subscriptions](https://docs.github.com/enterprise-server@3.7/account-and-profile/managing-subscriptions-and-notifications-on-github/managing-subscriptions-for-activity-on-github/managing-your-subscriptions)." For information about the APIs to manage watching, see "[Watching](https://docs.github.com/enterprise-server@3.7/rest/activity/watching)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
+   * @description Someone started watching the repository.
+   */
   "watch/started": {
-    /**
-     * This event occurs when there is activity relating to watching, or subscribing to, a repository. For more information about watching, see "[Managing your subscriptions](https://docs.github.com/enterprise-server@3.7/account-and-profile/managing-subscriptions-and-notifications-on-github/managing-subscriptions-for-activity-on-github/managing-your-subscriptions)." For information about the APIs to manage watching, see "[Watching](https://docs.github.com/enterprise-server@3.7/rest/activity/watching)" in the REST API documentation.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
-     * @description Someone started watching the repository.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -80228,33 +80019,33 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when a GitHub Actions workflow is manually triggered. For more information, see "[Manually running a workflow](https://docs.github.com/enterprise-server@3.7/actions/managing-workflow-runs/manually-running-a-workflow)."
+   *
+   * For activity relating to workflow runs, use the `workflow_run` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
+   */
   "workflow-dispatch": {
-    /**
-     * This event occurs when a GitHub Actions workflow is manually triggered. For more information, see "[Manually running a workflow](https://docs.github.com/enterprise-server@3.7/actions/managing-workflow-runs/manually-running-a-workflow)."
-     *
-     * For activity relating to workflow runs, use the `workflow_run` event.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -80268,34 +80059,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a job in a GitHub Actions workflow. For more information, see "[Using jobs in a workflow](https://docs.github.com/enterprise-server@3.7/actions/using-jobs/using-jobs-in-a-workflow)." For information about the API to manage workflow jobs, see "[Workflow jobs](https://docs.github.com/enterprise-server@3.7/rest/actions/workflow-jobs)" in the REST API documentation.
+   *
+   * For activity relating to a workflow run instead of a job in a workflow run, use the `workflow_run` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Actions" repository permission.
+   * @description A job in a workflow run finished. This event occurs when a job in a workflow is completed, regardless of whether the job was successful or unsuccessful.
+   */
   "workflow-job/completed": {
-    /**
-     * This event occurs when there is activity relating to a job in a GitHub Actions workflow. For more information, see "[Using jobs in a workflow](https://docs.github.com/enterprise-server@3.7/actions/using-jobs/using-jobs-in-a-workflow)." For information about the API to manage workflow jobs, see "[Workflow jobs](https://docs.github.com/enterprise-server@3.7/rest/actions/workflow-jobs)" in the REST API documentation.
-     *
-     * For activity relating to a workflow run instead of a job in a workflow run, use the `workflow_run` event.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Actions" repository permission.
-     * @description A job in a workflow run finished. This event occurs when a job in a workflow is completed, regardless of whether the job was successful or unsuccessful.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -80309,34 +80100,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a job in a GitHub Actions workflow. For more information, see "[Using jobs in a workflow](https://docs.github.com/enterprise-server@3.7/actions/using-jobs/using-jobs-in-a-workflow)." For information about the API to manage workflow jobs, see "[Workflow jobs](https://docs.github.com/enterprise-server@3.7/rest/actions/workflow-jobs)" in the REST API documentation.
+   *
+   * For activity relating to a workflow run instead of a job in a workflow run, use the `workflow_run` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Actions" repository permission.
+   * @description A job in a workflow run started processing on a runner.
+   */
   "workflow-job/in-progress": {
-    /**
-     * This event occurs when there is activity relating to a job in a GitHub Actions workflow. For more information, see "[Using jobs in a workflow](https://docs.github.com/enterprise-server@3.7/actions/using-jobs/using-jobs-in-a-workflow)." For information about the API to manage workflow jobs, see "[Workflow jobs](https://docs.github.com/enterprise-server@3.7/rest/actions/workflow-jobs)" in the REST API documentation.
-     *
-     * For activity relating to a workflow run instead of a job in a workflow run, use the `workflow_run` event.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Actions" repository permission.
-     * @description A job in a workflow run started processing on a runner.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -80350,34 +80141,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a job in a GitHub Actions workflow. For more information, see "[Using jobs in a workflow](https://docs.github.com/enterprise-server@3.7/actions/using-jobs/using-jobs-in-a-workflow)." For information about the API to manage workflow jobs, see "[Workflow jobs](https://docs.github.com/enterprise-server@3.7/rest/actions/workflow-jobs)" in the REST API documentation.
+   *
+   * For activity relating to a workflow run instead of a job in a workflow run, use the `workflow_run` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Actions" repository permission.
+   * @description A job in a workflow run was created.
+   */
   "workflow-job/queued": {
-    /**
-     * This event occurs when there is activity relating to a job in a GitHub Actions workflow. For more information, see "[Using jobs in a workflow](https://docs.github.com/enterprise-server@3.7/actions/using-jobs/using-jobs-in-a-workflow)." For information about the API to manage workflow jobs, see "[Workflow jobs](https://docs.github.com/enterprise-server@3.7/rest/actions/workflow-jobs)" in the REST API documentation.
-     *
-     * For activity relating to a workflow run instead of a job in a workflow run, use the `workflow_run` event.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Actions" repository permission.
-     * @description A job in a workflow run was created.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -80391,34 +80182,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a run of a GitHub Actions workflow. For more information, see "[About workflows](https://docs.github.com/enterprise-server@3.7/actions/using-workflows/about-workflows)." For information about the APIs to manage workflow runs, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#workflowrun) or "[Workflow runs](https://docs.github.com/enterprise-server@3.7/rest/actions/workflow-runs)" in the REST API documentation.
+   *
+   * For activity relating to a job in a workflow run, use the `workflow_job` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Actions" repository permission.
+   * @description A workflow run finished. This event occurs when a workflow run is completed, regardless of whether the workflow was successful or unsuccessful.
+   */
   "workflow-run/completed": {
-    /**
-     * This event occurs when there is activity relating to a run of a GitHub Actions workflow. For more information, see "[About workflows](https://docs.github.com/enterprise-server@3.7/actions/using-workflows/about-workflows)." For information about the APIs to manage workflow runs, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#workflowrun) or "[Workflow runs](https://docs.github.com/enterprise-server@3.7/rest/actions/workflow-runs)" in the REST API documentation.
-     *
-     * For activity relating to a job in a workflow run, use the `workflow_job` event.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Actions" repository permission.
-     * @description A workflow run finished. This event occurs when a workflow run is completed, regardless of whether the workflow was successful or unsuccessful.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -80432,34 +80223,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a run of a GitHub Actions workflow. For more information, see "[About workflows](https://docs.github.com/enterprise-server@3.7/actions/using-workflows/about-workflows)." For information about the APIs to manage workflow runs, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#workflowrun) or "[Workflow runs](https://docs.github.com/enterprise-server@3.7/rest/actions/workflow-runs)" in the REST API documentation.
+   *
+   * For activity relating to a job in a workflow run, use the `workflow_job` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Actions" repository permission.
+   * @description A workflow run started processing on a runner.
+   */
   "workflow-run/in-progress": {
-    /**
-     * This event occurs when there is activity relating to a run of a GitHub Actions workflow. For more information, see "[About workflows](https://docs.github.com/enterprise-server@3.7/actions/using-workflows/about-workflows)." For information about the APIs to manage workflow runs, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#workflowrun) or "[Workflow runs](https://docs.github.com/enterprise-server@3.7/rest/actions/workflow-runs)" in the REST API documentation.
-     *
-     * For activity relating to a job in a workflow run, use the `workflow_job` event.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Actions" repository permission.
-     * @description A workflow run started processing on a runner.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
@@ -80473,34 +80264,34 @@ export interface operations {
       200: never;
     };
   };
+  /**
+   * This event occurs when there is activity relating to a run of a GitHub Actions workflow. For more information, see "[About workflows](https://docs.github.com/enterprise-server@3.7/actions/using-workflows/about-workflows)." For information about the APIs to manage workflow runs, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#workflowrun) or "[Workflow runs](https://docs.github.com/enterprise-server@3.7/rest/actions/workflow-runs)" in the REST API documentation.
+   *
+   * For activity relating to a job in a workflow run, use the `workflow_job` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Actions" repository permission.
+   * @description A workflow run was triggered.
+   */
   "workflow-run/requested": {
-    /**
-     * This event occurs when there is activity relating to a run of a GitHub Actions workflow. For more information, see "[About workflows](https://docs.github.com/enterprise-server@3.7/actions/using-workflows/about-workflows)." For information about the APIs to manage workflow runs, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.7/graphql/reference/objects#workflowrun) or "[Workflow runs](https://docs.github.com/enterprise-server@3.7/rest/actions/workflow-runs)" in the REST API documentation.
-     *
-     * For activity relating to a job in a workflow run, use the `workflow_job` event.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Actions" repository permission.
-     * @description A workflow run was triggered.
-     */
     parameters: {
-      /** @example GitHub-Hookshot/123abc */
-      /** @example 12312312 */
-      /** @example issues */
-      /** @example 123123 */
-      /** @example repository */
-      /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-      /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-      /** @example 3.1.9 */
-      /** @example ghes.github.com */
       header: {
+        /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
+        /** @example 12312312 */
         "X-Github-Hook-Id"?: string;
+        /** @example issues */
         "X-Github-Event"?: string;
+        /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
         "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
         "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256"?: string;
+        /** @example 3.1.9 */
         "X-GitHub-Enterprise-Version"?: string;
+        /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host"?: string;
       };
     };
