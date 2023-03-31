@@ -60,8 +60,6 @@ async function run() {
       "Webhooks OpenAPI specs from https://github.com/github/rest-api-description with the 'x-octokit' extension required by the Octokit SDKs";
     schema.info.contact.url = "https://github.com/octokit/openapi";
 
-    // delete all the REST API routes
-    delete schema.paths;
     // Isolate the webhooks schemas
     if (typeof schema.components !== "undefined" && !file.includes("deref")) {
       delete schema.components.responses;

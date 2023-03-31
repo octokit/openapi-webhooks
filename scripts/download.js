@@ -112,9 +112,11 @@ async function download(name, remotePath) {
   console.log("Formatting %s", path);
 
   const content = fs.readFileSync(path, "utf-8");
+  const jsonContent = JSON.parse(content);
+  delete jsonContent.paths;
   fs.writeFileSync(
     path,
-    prettier.format(content, {
+    prettier.format(JSON.stringify(jsonContent), {
       parser: "json",
     })
   );
