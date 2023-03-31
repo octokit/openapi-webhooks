@@ -447,6 +447,16 @@ export interface components {
        */
       organization_hooks?: "read" | "write";
       /**
+       * @description The level of permission to grant the access token for viewing and managing fine-grained personal access token requests to an organization.
+       * @enum {string}
+       */
+      organization_personal_access_tokens?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token for viewing and managing fine-grained personal access tokens that have been approved by an organization.
+       * @enum {string}
+       */
+      organization_personal_access_token_requests?: "read" | "write";
+      /**
        * @description The level of permission to grant the access token for viewing an organization's plan.
        * @enum {string}
        */
@@ -1791,6 +1801,7 @@ export interface components {
      * @description Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.
      */
     issue: {
+      /** Format: int64 */
       id: number;
       node_id: string;
       /**
@@ -1878,7 +1889,10 @@ export interface components {
      * @description Comments provide a way for people to collaborate on an issue.
      */
     "issue-comment": {
-      /** @description Unique identifier of the issue comment */
+      /**
+       * Format: int64
+       * @description Unique identifier of the issue comment
+       */
       id: number;
       node_id: string;
       /**
@@ -2870,7 +2884,8 @@ export interface components {
       node_id: string;
       /** Format: uri */
       archive_url?: string;
-      exclude?: Record<string, never>[];
+      /** @description Exclude related items from being returned in the response in order to improve performance of the request. The array can include any of: `"repositories"`. */
+      exclude?: string[];
     };
     "org-pre-receive-hook": {
       id?: number;
@@ -5715,6 +5730,7 @@ export interface components {
      * @description Issue Event
      */
     "issue-event": {
+      /** Format: int64 */
       id: number;
       node_id: string;
       /** Format: uri */
@@ -6300,6 +6316,11 @@ export interface components {
        * @enum {string}
        */
       side?: "LEFT" | "RIGHT";
+      /**
+       * @description The level at which the comment is targeted, can be a diff line or a file.
+       * @enum {string}
+       */
+      subject_type?: "line" | "file";
       reactions?: components["schemas"]["reaction-rollup"];
       body_html?: string;
       body_text?: string;
@@ -7459,6 +7480,7 @@ export interface components {
       events_url: string;
       /** Format: uri */
       html_url: string;
+      /** Format: int64 */
       id: number;
       node_id: string;
       number: number;

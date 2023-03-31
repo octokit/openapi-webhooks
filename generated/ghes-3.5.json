@@ -99,6 +99,10 @@
       "name": "secret-scanning",
       "description": "Retrieve secret scanning alerts from a repository."
     },
+    {
+      "name": "security-advisories",
+      "description": "Manage security advisories."
+    },
     { "name": "teams", "description": "Interact with GitHub Teams." },
     {
       "name": "users",
@@ -851,6 +855,16 @@
           "organization_hooks": {
             "type": "string",
             "description": "The level of permission to grant the access token to manage the post-receive hooks for an organization.",
+            "enum": ["read", "write"]
+          },
+          "organization_personal_access_tokens": {
+            "type": "string",
+            "description": "The level of permission to grant the access token for viewing and managing fine-grained personal access token requests to an organization.",
+            "enum": ["read", "write"]
+          },
+          "organization_personal_access_token_requests": {
+            "type": "string",
+            "description": "The level of permission to grant the access token for viewing and managing fine-grained personal access tokens that have been approved by an organization.",
             "enum": ["read", "write"]
           },
           "organization_plan": {
@@ -3518,7 +3532,7 @@
         "description": "Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
         "type": "object",
         "properties": {
-          "id": { "type": "integer" },
+          "id": { "type": "integer", "format": "int64" },
           "node_id": { "type": "string" },
           "url": {
             "description": "URL for the issue",
@@ -3677,6 +3691,7 @@
           "id": {
             "description": "Unique identifier of the issue comment",
             "type": "integer",
+            "format": "int64",
             "examples": [42]
           },
           "node_id": { "type": "string" },
@@ -5668,7 +5683,14 @@
           },
           "node_id": { "type": "string" },
           "archive_url": { "type": "string", "format": "uri" },
-          "exclude": { "type": "array", "items": {} }
+          "exclude": {
+            "description": "Exclude related items from being returned in the response in order to improve performance of the request. The array can include any of: `\"repositories\"`.",
+            "type": "array",
+            "items": {
+              "description": "Allowed values that can be passed to the exclude parameter. The array can include any of: `\"repositories\"`.",
+              "type": "string"
+            }
+          }
         },
         "required": [
           "id",
@@ -11945,7 +11967,7 @@
         "description": "Issue Event",
         "type": "object",
         "properties": {
-          "id": { "type": "integer", "examples": [1] },
+          "id": { "type": "integer", "format": "int64", "examples": [1] },
           "node_id": { "type": "string", "examples": ["MDEwOklzc3VlRXZlbnQx"] },
           "url": {
             "type": "string",
@@ -13183,6 +13205,11 @@
             "enum": ["LEFT", "RIGHT"],
             "default": "RIGHT",
             "type": "string"
+          },
+          "subject_type": {
+            "description": "The level at which the comment is targeted, can be a diff line or a file.",
+            "type": "string",
+            "enum": ["line", "file"]
           },
           "reactions": { "$ref": "#/components/schemas/reaction-rollup" },
           "body_html": {
@@ -15330,7 +15357,7 @@
           "comments_url": { "type": "string", "format": "uri" },
           "events_url": { "type": "string", "format": "uri" },
           "html_url": { "type": "string", "format": "uri" },
-          "id": { "type": "integer" },
+          "id": { "type": "integer", "format": "int64" },
           "node_id": { "type": "string" },
           "number": { "type": "integer" },
           "title": { "type": "string" },
