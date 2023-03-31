@@ -12,7 +12,9 @@ updatePackage();
 async function updatePackage() {
   // set semantic-release configuration of npm packages
   const items = await readdir("packages");
-  const packages = items.filter((item) => item.startsWith("openapi-webhooks-types"));
+  const packages = items.filter((item) =>
+    item.startsWith("openapi-webhooks-types")
+  );
 
   pkg.release.plugins = [
     "@semantic-release/commit-analyzer",

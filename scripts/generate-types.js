@@ -35,7 +35,9 @@ async function run() {
     const name = basename(fileName, ".json");
 
     const packageName =
-      name === "api.github.com" ? "openapi-webhooks-types" : `openapi-webhooks-types-${name}`;
+      name === "api.github.com"
+        ? "openapi-webhooks-types"
+        : `openapi-webhooks-types-${name}`;
 
     await mkdir(`packages/${packageName}`);
     await writeFile(

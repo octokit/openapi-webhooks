@@ -1,4 +1,4 @@
-import { readdirSync, readFileSync } from "node:fs"
+import { readdirSync, readFileSync } from "node:fs";
 
 const VERIFY_FOLDERS = ["cache", "changes", "generated"];
 

@@ -1,4 +1,9 @@
-import { createWriteStream, readdirSync, writeFileSync, readFileSync } from "node:fs";
+import {
+  createWriteStream,
+  readdirSync,
+  writeFileSync,
+  readFileSync,
+} from "node:fs";
 import { basename, resolve } from "node:path";
 
 import prettier from "prettier";
@@ -10,7 +15,7 @@ import { getCurrentVersions } from "github-enterprise-server-versions";
 import mapObj from "map-obj";
 
 import overrides from "./overrides/index.js";
-import { readFile } from "node:fs/promises"
+import { readFile } from "node:fs/promises";
 
 /* if (!process.env.GITHUB_ACTIONS && !process.env.ANICCA_REPOSITORY_PATH) {
   throw new Error("Please set ANICCA_REPOSITORY_PATH");
@@ -26,7 +31,9 @@ async function run() {
   const changeFileNames = readdirSync("changes");
 
   const changes = changeFileNames.reduce((map, file) => {
-    const { route, ...change } = JSON.parse(readFileSync(`changes/${file}`).toString());
+    const { route, ...change } = JSON.parse(
+      readFileSync(`changes/${file}`).toString()
+    );
     if (!map[route]) map[route] = [];
     map[route].push(change);
     return map;
@@ -55,7 +62,8 @@ async function run() {
     // overwrite version to "0.0.0-development", will be updated
     // right before publish via semantic-release
     schema.info.version = "0.0.0-development";
-    schema.info.title = "GitHub's official Webhooks OpenAPI spec + Octokit extension";
+    schema.info.title =
+      "GitHub's official Webhooks OpenAPI spec + Octokit extension";
     schema.info.description =
       "Webhooks OpenAPI specs from https://github.com/github/rest-api-description with the 'x-octokit' extension required by the Octokit SDKs";
     schema.info.contact.url = "https://github.com/octokit/openapi";
@@ -68,27 +76,27 @@ async function run() {
       delete schema.components.examples;
     }
 
-    const tempSchema =  { ...schema };
+    const tempSchema = { ...schema };
 
     // Check all instances of `$ref` in the OpenAPI spec, and add them to the definitions
     const handleRefs = (obj) => {
-      if (typeof obj !== 'object' || obj === null) return obj
+      if (typeof obj !== "object" || obj === null) return obj;
 
       for (let key in obj) {
-        if (key === '$ref' && typeof obj[key] === 'string') {
-          const ref = obj[key].split('/').at(-1);
-          tempSchema.components.schemas[ref] = schema.components.schemas[ref]
+        if (key === "$ref" && typeof obj[key] === "string") {
+          const ref = obj[key].split("/").at(-1);
+          tempSchema.components.schemas[ref] = schema.components.schemas[ref];
           // Call the function with the new definition to handle any of it's $refs
-          handleRefs(tempSchema.components.schemas[ref])
+          handleRefs(tempSchema.components.schemas[ref]);
         } else {
-          obj[key] = handleRefs(obj[key])
+          obj[key] = handleRefs(obj[key]);
         }
       }
-      return obj
-    }
+      return obj;
+    };
     // Check all $ref properties and include them in the output
     if (typeof schema.components !== "undefined" && !file.includes("deref")) {
-      handleRefs(schema.components.schemas)
+      handleRefs(schema.components.schemas);
     }
     writeFileSync(
       `generated/${file}`,
