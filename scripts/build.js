@@ -77,6 +77,11 @@ async function run() {
     }
 
     const tempSchema = { ...schema };
+    if (!file.includes("deref")) {
+      tempSchema.components = {
+        schemas: {},
+      };
+    }
 
     // Check all instances of `$ref` in the OpenAPI spec, and add them to the definitions
     const handleRefs = (obj) => {
@@ -95,8 +100,16 @@ async function run() {
       return obj;
     };
     // Check all $ref properties and include them in the output
-    if (typeof schema.components !== "undefined" && !file.includes("deref")) {
-      handleRefs(schema.components.schemas);
+    if (!file.includes("deref")) {
+      const webhooks = schema.webhooks;
+      for (const webhookId in webhooks) {
+        const webhook = webhooks[webhookId].post.requestBody;
+        const ref = webhook.content["application/json"].schema.$ref
+          .split("/")
+          .at(-1);
+        tempSchema.components.schemas[ref] = schema.components.schemas[ref];
+        handleRefs(schema.components.schemas[ref]);
+      }
     }
     writeFileSync(
       `generated/${file}`,
