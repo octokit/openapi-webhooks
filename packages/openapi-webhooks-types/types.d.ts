@@ -23023,7 +23023,8 @@ export interface components {
       };
     };
     "webhook-merge-group-checks-requested": {
-      action: string;
+      /** @enum {string} */
+      action: "checks_requested";
       installation?: components["schemas"]["simple-installation"];
       /** MergeGroup */
       merge_group: {
