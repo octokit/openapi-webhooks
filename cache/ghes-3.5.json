@@ -16294,7 +16294,16 @@
                 "primary_key_id": { "type": "integer" },
                 "key_id": { "type": "string" },
                 "public_key": { "type": "string" },
-                "emails": { "type": "array", "items": {} },
+                "emails": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "email": { "type": "string" },
+                      "verified": { "type": "boolean" }
+                    }
+                  }
+                },
                 "subkeys": { "type": "array", "items": {} },
                 "can_sign": { "type": "boolean" },
                 "can_encrypt_comms": { "type": "boolean" },
