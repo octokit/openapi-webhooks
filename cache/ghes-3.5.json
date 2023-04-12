@@ -2702,6 +2702,11 @@
             "type": "integer",
             "examples": [5]
           },
+          "runner_group_id": {
+            "description": "The id of the runner group.",
+            "type": "integer",
+            "examples": [1]
+          },
           "name": {
             "description": "The name of the runner.",
             "type": "string",
@@ -13768,12 +13773,7 @@
             "type": "string",
             "examples": ["Amazing new feature"]
           },
-          "user": {
-            "anyOf": [
-              { "type": "null" },
-              { "$ref": "#/components/schemas/simple-user" }
-            ]
-          },
+          "user": { "$ref": "#/components/schemas/simple-user" },
           "body": {
             "type": ["string", "null"],
             "examples": ["Please pull these awesome changes"]

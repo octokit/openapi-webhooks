@@ -5242,7 +5242,7 @@ export interface components {
        * @description The state of the Dependabot alert.
        * @enum {string}
        */
-      state: "dismissed" | "fixed" | "open";
+      state: "auto_dismissed" | "dismissed" | "fixed" | "open";
       /** @description Details for the vulnerable dependency. */
       dependency: {
         readonly package?: components["schemas"]["dependabot-alert-package"];
@@ -5277,6 +5277,7 @@ export interface components {
       /** @description An optional comment associated with the alert's dismissal. */
       dismissed_comment: OneOf<[string, null]>;
       fixed_at: components["schemas"]["alert-fixed-at"];
+      auto_dismissed_at?: components["schemas"]["alert-auto-dismissed-at"];
     };
     /** @description The security alert number. */
     readonly "alert-number": number;
@@ -5403,6 +5404,11 @@ export interface components {
      * @description The time that the alert was no longer detected and was considered fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
      */
     readonly "alert-fixed-at": OneOf<[string, null]>;
+    /**
+     * Format: date-time
+     * @description The time that the alert was auto-dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+     */
+    readonly "alert-auto-dismissed-at": OneOf<[string, null]>;
     /** Dependabot alert dismissed event */
     "webhook-dependabot-alert-dismissed": {
       /** @enum {string} */
@@ -5439,7 +5445,7 @@ export interface components {
     /** Dependabot alert reopened event */
     "webhook-dependabot-alert-reopened": {
       /** @enum {string} */
-      action: "reopened";
+      action: "reopened" | "auto_reopened";
       alert: components["schemas"]["dependabot-alert"];
       installation?: components["schemas"]["simple-installation"];
       organization?: components["schemas"]["organization-simple"];
@@ -29093,7 +29099,7 @@ export interface components {
       locked: boolean;
       /** @description The title of the pull request. */
       title: string;
-      user: null | components["schemas"]["simple-user"];
+      user: components["schemas"]["simple-user"];
       body: OneOf<[string, null]>;
       labels: {
         /** Format: int64 */
