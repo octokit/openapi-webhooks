@@ -307,7 +307,6 @@
           "slug": { "type": "string" },
           "description": { "type": ["string", "null"] },
           "privacy": { "type": "string" },
-          "notification_setting": { "type": "string" },
           "permission": { "type": "string" },
           "members_url": { "type": "string" },
           "repositories_url": { "type": "string" },
@@ -5860,11 +5859,6 @@
             "type": "string",
             "examples": ["closed"]
           },
-          "notification_setting": {
-            "description": "The notification setting the team has set",
-            "type": "string",
-            "examples": ["notifications_enabled"]
-          },
           "html_url": {
             "type": "string",
             "format": "uri",
@@ -5906,7 +5900,6 @@
           "slug": { "type": "string" },
           "description": { "type": ["string", "null"] },
           "privacy": { "type": "string" },
-          "notification_setting": { "type": "string" },
           "permission": { "type": "string" },
           "permissions": {
             "type": "object",
@@ -6161,12 +6154,6 @@
             "type": "string",
             "enum": ["closed", "secret"],
             "examples": ["closed"]
-          },
-          "notification_setting": {
-            "description": "The notification setting the team has set",
-            "type": "string",
-            "enum": ["notifications_enabled", "notifications_disabled"],
-            "examples": ["notifications_enabled"]
           },
           "permission": {
             "description": "Permission that the team will have for its repositories",
@@ -8824,7 +8811,6 @@
                 "slug": { "type": "string" },
                 "description": { "type": ["string", "null"] },
                 "privacy": { "type": "string" },
-                "notification_setting": { "type": "string" },
                 "permission": { "type": "string" },
                 "members_url": { "type": "string" },
                 "repositories_url": { "type": "string" },
@@ -23434,7 +23420,6 @@
             "slug": "justice-league",
             "description": "A great team.",
             "privacy": "closed",
-            "notification_setting": "notifications_enabled",
             "permission": "admin",
             "members_url": "https://api.github.com/teams/1/members{/member}",
             "repositories_url": "https://api.github.com/teams/1/repos",
@@ -23452,7 +23437,6 @@
           "slug": "justice-league",
           "description": "A great team.",
           "privacy": "closed",
-          "notification_setting": "notifications_enabled",
           "permission": "admin",
           "members_url": "https://api.github.com/teams/1/members{/member}",
           "repositories_url": "https://api.github.com/teams/1/repos",
@@ -24210,7 +24194,6 @@
               "slug": "justice-league",
               "description": "A great team.",
               "privacy": "closed",
-              "notification_setting": "notifications_enabled",
               "permission": "admin",
               "members_url": "https://api.github.com/teams/1/members{/member}",
               "repositories_url": "https://api.github.com/teams/1/repos"
@@ -26171,7 +26154,6 @@
                   "slug": "justice-league",
                   "description": "A great team.",
                   "privacy": "closed",
-                  "notification_setting": "notifications_enabled",
                   "permission": "admin",
                   "members_url": "https://api.github.com/teams/1/members{/member}",
                   "repositories_url": "https://api.github.com/teams/1/repos",
@@ -26482,7 +26464,6 @@
                   "slug": "justice-league",
                   "description": "A great team.",
                   "privacy": "closed",
-                  "notification_setting": "notifications_enabled",
                   "permission": "admin",
                   "members_url": "https://api.github.com/teams/1/members{/member}",
                   "repositories_url": "https://api.github.com/teams/1/repos",
@@ -26565,7 +26546,6 @@
                 "slug": "justice-league",
                 "description": "A great team.",
                 "privacy": "closed",
-                "notification_setting": "notifications_enabled",
                 "permission": "admin",
                 "members_url": "https://api.github.com/teams/1/members{/member}",
                 "repositories_url": "https://api.github.com/teams/1/repos",
@@ -26708,7 +26688,6 @@
                 "slug": "justice-league",
                 "description": "A great team.",
                 "privacy": "closed",
-                "notification_setting": "notifications_enabled",
                 "permission": "admin",
                 "members_url": "https://api.github.com/teams/1/members{/member}",
                 "repositories_url": "https://api.github.com/teams/1/repos",
@@ -26807,7 +26786,6 @@
               "slug": "justice-league",
               "description": "A great team.",
               "privacy": "closed",
-              "notification_setting": "notifications_enabled",
               "permission": "admin",
               "members_url": "https://api.github.com/teams/1/members{/member}",
               "repositories_url": "https://api.github.com/teams/1/repos",
@@ -28848,7 +28826,6 @@
                 "description": "A great team.",
                 "privacy": "closed",
                 "permission": "admin",
-                "notification_setting": "notifications_enabled",
                 "members_url": "https://api.github.com/teams/1/members{/member}",
                 "repositories_url": "https://api.github.com/teams/1/repos",
                 "parent": null
@@ -30395,7 +30372,6 @@
                         "slug": "justice-league",
                         "description": "A great team.",
                         "privacy": "closed",
-                        "notification_setting": "notifications_enabled",
                         "permission": "admin",
                         "members_url": "https://api.github.com/teams/1/members{/member}",
                         "repositories_url": "https://api.github.com/teams/1/repos",
@@ -30473,7 +30449,6 @@
                     "slug": "justice-league",
                     "description": "A great team.",
                     "privacy": "closed",
-                    "notification_setting": "notifications_enabled",
                     "permission": "admin",
                     "members_url": "https://api.github.com/teams/1/members{/member}",
                     "repositories_url": "https://api.github.com/teams/1/repos",
@@ -32693,7 +32668,6 @@
               "slug": "justice-league",
               "description": "A great team.",
               "privacy": "closed",
-              "notification_setting": "notifications_enabled",
               "permission": "admin",
               "members_url": "https://api.github.com/teams/1/members{/member}",
               "repositories_url": "https://api.github.com/teams/1/repos"
@@ -32991,7 +32965,6 @@
             }
           },
           "author_association": "OWNER",
-          "auto_merge": null,
           "draft": false,
           "merged": false,
           "mergeable": true,
@@ -33317,7 +33290,6 @@
               "slug": "justice-league",
               "description": "A great team.",
               "privacy": "closed",
-              "notification_setting": "notifications_enabled",
               "permission": "admin",
               "members_url": "https://api.github.com/teams/1/members{/member}",
               "repositories_url": "https://api.github.com/teams/1/repos",
@@ -33553,7 +33525,6 @@
               "slug": "justice-league",
               "description": "A great team.",
               "privacy": "closed",
-              "notification_setting": "notifications_enabled",
               "permission": "admin",
               "members_url": "https://api.github.com/teams/1/members{/member}",
               "repositories_url": "https://api.github.com/teams/1/repos",
@@ -33865,7 +33836,6 @@
             }
           },
           "author_association": "OWNER",
-          "auto_merge": null,
           "draft": false
         }
       },
@@ -34056,7 +34026,6 @@
               "slug": "justice-league",
               "description": "A great team.",
               "privacy": "closed",
-              "notification_setting": "notifications_enabled",
               "permission": "admin",
               "members_url": "https://api.github.com/teams/1/members{/member}",
               "repositories_url": "https://api.github.com/teams/1/repos",
@@ -34159,7 +34128,6 @@
               "hooks_url": "https://api.github.com/repos/octocat/Hello-World/hooks",
               "svn_url": "https://svn.github.com/octocat/Hello-World",
               "homepage": "https://github.com",
-              "language": null,
               "forks_count": 9,
               "stargazers_count": 80,
               "watchers_count": 80,
@@ -34181,7 +34149,6 @@
               "updated_at": "2011-01-26T19:14:43Z",
               "permissions": { "admin": false, "push": false, "pull": true },
               "allow_rebase_merge": true,
-              "template_repository": null,
               "temp_clone_token": "ABTLWHOULUVAXGTRYU7OC2876QJ2O",
               "allow_squash_merge": true,
               "allow_auto_merge": false,
@@ -34298,7 +34265,6 @@
               "hooks_url": "https://api.github.com/repos/octocat/Hello-World/hooks",
               "svn_url": "https://svn.github.com/octocat/Hello-World",
               "homepage": "https://github.com",
-              "language": null,
               "forks_count": 9,
               "stargazers_count": 80,
               "watchers_count": 80,
@@ -34320,7 +34286,6 @@
               "updated_at": "2011-01-26T19:14:43Z",
               "permissions": { "admin": false, "push": false, "pull": true },
               "allow_rebase_merge": true,
-              "template_repository": null,
               "temp_clone_token": "ABTLWHOULUVAXGTRYU7OC2876QJ2O",
               "allow_squash_merge": true,
               "allow_auto_merge": false,
@@ -34368,7 +34333,6 @@
             }
           },
           "author_association": "OWNER",
-          "auto_merge": null,
           "draft": false
         }
       },
@@ -37762,7 +37726,6 @@
             "slug": "justice-league",
             "description": "A great team.",
             "privacy": "closed",
-            "notification_setting": "notifications_enabled",
             "permission": "admin",
             "members_url": "https://api.github.com/teams/1/members{/member}",
             "repositories_url": "https://api.github.com/teams/1/repos",
@@ -37789,6 +37752,7 @@
               "blog": "https://github.com/blog",
               "location": "San Francisco",
               "email": "octocat@github.com",
+              "is_verified": true,
               "has_organization_projects": true,
               "has_repository_projects": true,
               "public_repos": 2,
@@ -37797,9 +37761,9 @@
               "following": 0,
               "html_url": "https://github.com/octocat",
               "created_at": "2008-01-14T04:33:35Z",
+              "updated_at": "2017-08-17T12:37:15Z",
               "type": "Organization"
-            },
-            "ldap_dn": "uid=asdf,ou=users,dc=github,dc=com"
+            }
           }
         ]
       },
