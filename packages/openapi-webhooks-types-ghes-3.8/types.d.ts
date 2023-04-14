@@ -5242,7 +5242,7 @@ export interface components {
        * @description The state of the Dependabot alert.
        * @enum {string}
        */
-      state: "dismissed" | "fixed" | "open";
+      state: "auto_dismissed" | "dismissed" | "fixed" | "open";
       /** @description Details for the vulnerable dependency. */
       dependency: {
         readonly package?: components["schemas"]["dependabot-alert-package"];
@@ -5277,6 +5277,7 @@ export interface components {
       /** @description An optional comment associated with the alert's dismissal. */
       dismissed_comment: OneOf<[string, null]>;
       fixed_at: components["schemas"]["alert-fixed-at"];
+      auto_dismissed_at?: components["schemas"]["alert-auto-dismissed-at"];
     };
     /** @description The security alert number. */
     readonly "alert-number": number;
@@ -5403,6 +5404,11 @@ export interface components {
      * @description The time that the alert was no longer detected and was considered fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
      */
     readonly "alert-fixed-at": OneOf<[string, null]>;
+    /**
+     * Format: date-time
+     * @description The time that the alert was auto-dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+     */
+    readonly "alert-auto-dismissed-at": OneOf<[string, null]>;
     /** Dependabot alert dismissed event */
     "webhook-dependabot-alert-dismissed": {
       /** @enum {string} */
@@ -22207,13 +22213,6 @@ export interface components {
               permission: string;
               /** @enum {string} */
               privacy: "open" | "closed" | "secret";
-              /**
-               * @description Whether team members will receive notifications when their team is @mentioned
-               * @enum {string}
-               */
-              notification_setting:
-                | "notifications_enabled"
-                | "notifications_disabled";
               /** Format: uri */
               repositories_url: string;
               slug: string;
@@ -22230,10 +22229,6 @@ export interface components {
         permission?: string;
         /** @enum {string} */
         privacy?: "open" | "closed" | "secret";
-        /** @enum {string} */
-        notification_setting?:
-          | "notifications_enabled"
-          | "notifications_disabled";
         /** Format: uri */
         repositories_url?: string;
         slug?: string;
@@ -22376,13 +22371,6 @@ export interface components {
               permission: string;
               /** @enum {string} */
               privacy: "open" | "closed" | "secret";
-              /**
-               * @description Whether team members will receive notifications when their team is @mentioned
-               * @enum {string}
-               */
-              notification_setting:
-                | "notifications_enabled"
-                | "notifications_disabled";
               /** Format: uri */
               repositories_url: string;
               slug: string;
@@ -22399,10 +22387,6 @@ export interface components {
         permission?: string;
         /** @enum {string} */
         privacy?: "open" | "closed" | "secret";
-        /** @enum {string} */
-        notification_setting?:
-          | "notifications_enabled"
-          | "notifications_disabled";
         /** Format: uri */
         repositories_url?: string;
         slug?: string;
@@ -29093,7 +29077,7 @@ export interface components {
       locked: boolean;
       /** @description The title of the pull request. */
       title: string;
-      user: null | components["schemas"]["simple-user"];
+      user: components["schemas"]["simple-user"];
       body: OneOf<[string, null]>;
       labels: {
         /** Format: int64 */
@@ -29575,8 +29559,6 @@ export interface components {
       permission: string;
       /** @description The level of privacy this team should have */
       privacy?: string;
-      /** @description The notification setting the team has set */
-      notification_setting?: string;
       /** Format: uri */
       html_url: string;
       /** Format: uri */
@@ -60849,13 +60831,6 @@ export interface components {
               permission: string;
               /** @enum {string} */
               privacy: "open" | "closed" | "secret";
-              /**
-               * @description Whether team members will receive notifications when their team is @mentioned
-               * @enum {string}
-               */
-              notification_setting:
-                | "notifications_enabled"
-                | "notifications_disabled";
               /** Format: uri */
               repositories_url: string;
               slug: string;
@@ -60872,13 +60847,6 @@ export interface components {
         permission?: string;
         /** @enum {string} */
         privacy?: "open" | "closed" | "secret";
-        /**
-         * @description Whether team members will receive notifications when their team is @mentioned
-         * @enum {string}
-         */
-        notification_setting?:
-          | "notifications_enabled"
-          | "notifications_disabled";
         /** Format: uri */
         repositories_url?: string;
         slug?: string;
@@ -61177,13 +61145,6 @@ export interface components {
               permission: string;
               /** @enum {string} */
               privacy: "open" | "closed" | "secret";
-              /**
-               * @description Whether team members will receive notifications when their team is @mentioned
-               * @enum {string}
-               */
-              notification_setting:
-                | "notifications_enabled"
-                | "notifications_disabled";
               /** Format: uri */
               repositories_url: string;
               slug: string;
@@ -61200,13 +61161,6 @@ export interface components {
         permission?: string;
         /** @enum {string} */
         privacy?: "open" | "closed" | "secret";
-        /**
-         * @description Whether team members will receive notifications when their team is @mentioned
-         * @enum {string}
-         */
-        notification_setting?:
-          | "notifications_enabled"
-          | "notifications_disabled";
         /** Format: uri */
         repositories_url?: string;
         slug?: string;
@@ -61505,13 +61459,6 @@ export interface components {
               permission: string;
               /** @enum {string} */
               privacy: "open" | "closed" | "secret";
-              /**
-               * @description Whether team members will receive notifications when their team is @mentioned
-               * @enum {string}
-               */
-              notification_setting:
-                | "notifications_enabled"
-                | "notifications_disabled";
               /** Format: uri */
               repositories_url: string;
               slug: string;
@@ -61528,13 +61475,6 @@ export interface components {
         permission?: string;
         /** @enum {string} */
         privacy?: "open" | "closed" | "secret";
-        /**
-         * @description Whether team members will receive notifications when their team is @mentioned
-         * @enum {string}
-         */
-        notification_setting?:
-          | "notifications_enabled"
-          | "notifications_disabled";
         /** Format: uri */
         repositories_url?: string;
         slug?: string;
@@ -61833,13 +61773,6 @@ export interface components {
               permission: string;
               /** @enum {string} */
               privacy: "open" | "closed" | "secret";
-              /**
-               * @description Whether team members will receive notifications when their team is @mentioned
-               * @enum {string}
-               */
-              notification_setting:
-                | "notifications_enabled"
-                | "notifications_disabled";
               /** Format: uri */
               repositories_url: string;
               slug: string;
@@ -61856,13 +61789,6 @@ export interface components {
         permission?: string;
         /** @enum {string} */
         privacy?: "open" | "closed" | "secret";
-        /**
-         * @description Whether team members will receive notifications when their team is @mentioned
-         * @enum {string}
-         */
-        notification_setting?:
-          | "notifications_enabled"
-          | "notifications_disabled";
         /** Format: uri */
         repositories_url?: string;
         slug?: string;
@@ -61889,10 +61815,6 @@ export interface components {
         };
         privacy?: {
           /** @description The previous version of the team's privacy if the action was `edited`. */
-          from: string;
-        };
-        notification_setting?: {
-          /** @description The previous version of the team's notification setting if the action was `edited`. */
           from: string;
         };
         repository?: {
@@ -62192,13 +62114,6 @@ export interface components {
               permission: string;
               /** @enum {string} */
               privacy: "open" | "closed" | "secret";
-              /**
-               * @description Whether team members will receive notifications when their team is @mentioned
-               * @enum {string}
-               */
-              notification_setting:
-                | "notifications_enabled"
-                | "notifications_disabled";
               /** Format: uri */
               repositories_url: string;
               slug: string;
@@ -62215,13 +62130,6 @@ export interface components {
         permission?: string;
         /** @enum {string} */
         privacy?: "open" | "closed" | "secret";
-        /**
-         * @description Whether team members will receive notifications when their team is @mentioned
-         * @enum {string}
-         */
-        notification_setting?:
-          | "notifications_enabled"
-          | "notifications_disabled";
         /** Format: uri */
         repositories_url?: string;
         slug?: string;
@@ -62520,13 +62428,6 @@ export interface components {
               permission: string;
               /** @enum {string} */
               privacy: "open" | "closed" | "secret";
-              /**
-               * @description Whether team members will receive notifications when their team is @mentioned
-               * @enum {string}
-               */
-              notification_setting:
-                | "notifications_enabled"
-                | "notifications_disabled";
               /** Format: uri */
               repositories_url: string;
               slug: string;
@@ -62543,13 +62444,6 @@ export interface components {
         permission?: string;
         /** @enum {string} */
         privacy?: "open" | "closed" | "secret";
-        /**
-         * @description Whether team members will receive notifications when their team is @mentioned
-         * @enum {string}
-         */
-        notification_setting?:
-          | "notifications_enabled"
-          | "notifications_disabled";
         /** Format: uri */
         repositories_url?: string;
         slug?: string;
