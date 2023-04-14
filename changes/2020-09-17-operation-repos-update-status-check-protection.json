@@ -1,8 +1,0 @@
-{
-  "route": "PATCH /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks",
-  "type": "OPERATION",
-  "date": "2020-09-17",
-  "before": {
-    "operationId": "repos/update-status-check-potection"
-  }
-}

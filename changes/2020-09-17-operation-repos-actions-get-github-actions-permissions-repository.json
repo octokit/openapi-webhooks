@@ -1,8 +1,0 @@
-{
-  "route": "GET /repos/{owner}/{repo}/actions/permissions",
-  "type": "OPERATION",
-  "date": "2020-11-10",
-  "before": {
-    "operationId": "actions/get-repo-permissions"
-  }
-}
