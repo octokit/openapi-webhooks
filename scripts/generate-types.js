@@ -17,7 +17,7 @@ const packageDefaults = {
   version: "0.0.0-development",
   main: "",
   types: "types.d.ts",
-  author: "Gregor Martynus (https://twitter.com/gr2m)",
+  author: "wolfy1339 <webmaster@wolfy1339.com>",
   license: "MIT",
   /*octokit: {
     "openapi-version": process.env.OCTOKIT_OPENAPI_VERSION.replace(/^v/, ""),
@@ -44,11 +44,11 @@ async function run() {
       `packages/${packageName}/package.json`,
       prettier.format(
         JSON.stringify({
-          name: `@octokit/${packageName}`,
+          name: `@wolfy1339/${packageName}`,
           description: `Generated TypeScript definitions based on GitHub's OpenAPI spec for ${name}`,
           repository: {
             type: "git",
-            url: "https://github.com/octokit/openapi-types.ts.git",
+            url: "https://github.com/wolfy1330/openapi-webhooks.git",
             directory: `packages/${packageName}`,
           },
           ...packageDefaults,
