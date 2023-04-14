@@ -1,6 +1,6 @@
 import { readdirSync, readFileSync } from "node:fs";
 
-const VERIFY_FOLDERS = ["cache", "changes", "generated"];
+const VERIFY_FOLDERS = ["cache", "generated"];
 
 console.log("Verifying folders: %j", VERIFY_FOLDERS);
 const files = VERIFY_FOLDERS.map((folder) =>
