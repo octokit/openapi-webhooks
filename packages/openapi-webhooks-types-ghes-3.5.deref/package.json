@@ -1,9 +1,9 @@
 {
-  "name": "@octokit/openapi-webhooks-types-ghes-3.5.deref",
+  "name": "@wolfy1339/openapi-webhooks-types-ghes-3.5.deref",
   "description": "Generated TypeScript definitions based on GitHub's OpenAPI spec for ghes-3.5.deref",
   "repository": {
     "type": "git",
-    "url": "https://github.com/octokit/openapi-types.ts.git",
+    "url": "https://github.com/wolfy1339/openapi-types.ts.git",
     "directory": "packages/openapi-webhooks-types-ghes-3.5.deref"
   },
   "publishConfig": {
@@ -12,6 +12,6 @@
   "version": "0.0.0-development",
   "main": "",
   "types": "types.d.ts",
-  "author": "Gregor Martynus (https://twitter.com/gr2m)",
+  "author": "wolfy1339 <webmaster@wolfy1339.com>",
   "license": "MIT"
 }

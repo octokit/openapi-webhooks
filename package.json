@@ -1,5 +1,5 @@
 {
-  "name": "openapi-webhooks",
+  "name": "@wolfy1339/openapi-webhooks",
   "private": true,
   "version": "0.0.0-development",
   "description": "GitHub's official Webhooks OpenAPI spec with Octokit extensions",
@@ -21,7 +21,7 @@
     "openapi",
     "octokit"
   ],
-  "author": "Gregor Martynus (https://dev.to/gr2m)",
+  "author": "Wolfy1339 <webmaster@wolfy1339.com>",
   "license": "MIT",
   "devDependencies": {
     "@octokit/core": "^4.0.0",
