@@ -78,10 +78,6 @@ async function run() {
     }
 
     await download(name, `${ref}/descriptions-next/${name}/${name}.json`);
-    await download(
-      `${name}.deref`,
-      `${ref}/descriptions-next/${name}/dereferenced/${name}.deref.json`
-    );
   }
 }
 
