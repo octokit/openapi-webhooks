@@ -26,7 +26,6 @@ run();
 async function run() {
   const schemaFileNames = readdirSync("cache");
 
-
   for (const file of schemaFileNames) {
     const schema = JSON.parse(readFileSync(`cache/${file}`).toString());
 
@@ -71,10 +70,9 @@ async function run() {
     for (const webhookId in webhooks) {
       const webhook = webhooks[webhookId].post.requestBody;
       const ref = webhook.content["application/json"].schema.$ref;
-      const refName = ref
-        .split("/")
-        .at(-1);
-      tempSchema.components.schemas[refName] = schema.components.schemas[refName];
+      const refName = ref.split("/").at(-1);
+      tempSchema.components.schemas[refName] =
+        schema.components.schemas[refName];
       handleRefs(schema.components.schemas[refName]);
     }
 
@@ -85,8 +83,7 @@ async function run() {
     console.log(`generated/${file} written`);
   }
 
-
-/*   for (const name of schemaFileNames) {
+  /*   for (const name of schemaFileNames) {
     schemasCode += `["${name.replace(
       ".json",
       ""
