@@ -1,21 +1,10 @@
 import {
-  createWriteStream,
   readdirSync,
   writeFileSync,
   readFileSync,
 } from "node:fs";
-import { basename, resolve } from "node:path";
-
 import prettier from "prettier";
-import execa from "execa";
-import sortKeys from "sort-keys";
-import equal from "deep-equal";
 import _ from "lodash";
-import { getCurrentVersions } from "github-enterprise-server-versions";
-import mapObj from "map-obj";
-
-import overrides from "./overrides/index.js";
-import { readFile } from "node:fs/promises";
 
 /* if (!process.env.GITHUB_ACTIONS && !process.env.ANICCA_REPOSITORY_PATH) {
   throw new Error("Please set ANICCA_REPOSITORY_PATH");
