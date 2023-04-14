@@ -15,7 +15,7 @@
     "lint": "prettier --check '*.{md,json}' 'scripts/*.js' 'packages/**/*.{ts,md,json,d.ts}'",
     "lint:fix": "prettier --write '*.{md,json}' 'scripts/*.js' 'packages/**/*.{ts,md,json,d.ts}'"
   },
-  "repository": "github:octokit/openapi",
+  "repository": "github:wolfy1339/openapi-webhooks",
   "keywords": [
     "github",
     "openapi",
