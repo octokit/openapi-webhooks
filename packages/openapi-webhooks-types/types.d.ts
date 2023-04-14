@@ -234,6 +234,32 @@ export interface webhooks {
      */
     post: operations["delete"];
   };
+  "dependabot-alert-auto-dismissed": {
+    /**
+     * This event occurs when there is activity relating to Dependabot alerts.
+     *
+     * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/rest/dependabot/alerts)" in the REST API documentation.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
+     *
+     * **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
+     * @description A Dependabot alert was automatically closed.
+     */
+    post: operations["dependabot-alert/auto-dismissed"];
+  };
+  "dependabot-alert-auto-reopened": {
+    /**
+     * This event occurs when there is activity relating to Dependabot alerts.
+     *
+     * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/rest/dependabot/alerts)" in the REST API documentation.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
+     *
+     * **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
+     * @description A Dependabot alert was automatically reopened.
+     */
+    post: operations["dependabot-alert/auto-reopened"];
+  };
   "dependabot-alert-created": {
     /**
      * This event occurs when there is activity relating to Dependabot alerts.
@@ -5416,10 +5442,10 @@ export interface components {
       repository: components["schemas"]["repository"];
       sender: components["schemas"]["simple-user"];
     };
-    /** Dependabot alert created event */
-    "webhook-dependabot-alert-created": {
+    /** Dependabot alert auto-dismissed event */
+    "webhook-dependabot-alert-auto-dismissed": {
       /** @enum {string} */
-      action: "created";
+      action: "auto_dismissed";
       alert: components["schemas"]["dependabot-alert"];
       installation?: components["schemas"]["simple-installation"];
       organization?: components["schemas"]["organization-simple"];
@@ -5434,7 +5460,7 @@ export interface components {
        * @description The state of the Dependabot alert.
        * @enum {string}
        */
-      state: "dismissed" | "fixed" | "open";
+      state: "auto_dismissed" | "dismissed" | "fixed" | "open";
       /** @description Details for the vulnerable dependency. */
       dependency: {
         readonly package?: components["schemas"]["dependabot-alert-package"];
@@ -5469,6 +5495,7 @@ export interface components {
       /** @description An optional comment associated with the alert's dismissal. */
       dismissed_comment: OneOf<[string, null]>;
       fixed_at: components["schemas"]["alert-fixed-at"];
+      auto_dismissed_at?: components["schemas"]["alert-auto-dismissed-at"];
     };
     /** @description The security alert number. */
     readonly "alert-number": number;
@@ -5595,6 +5622,33 @@ export interface components {
      * @description The time that the alert was no longer detected and was considered fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
      */
     readonly "alert-fixed-at": OneOf<[string, null]>;
+    /**
+     * Format: date-time
+     * @description The time that the alert was auto-dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+     */
+    readonly "alert-auto-dismissed-at": OneOf<[string, null]>;
+    /** Dependabot alert auto-reopened event */
+    "webhook-dependabot-alert-auto-reopened": {
+      /** @enum {string} */
+      action: "auto_reopened";
+      alert: components["schemas"]["dependabot-alert"];
+      installation?: components["schemas"]["simple-installation"];
+      organization?: components["schemas"]["organization-simple"];
+      enterprise?: components["schemas"]["enterprise"];
+      repository: components["schemas"]["repository"];
+      sender: components["schemas"]["simple-user"];
+    };
+    /** Dependabot alert created event */
+    "webhook-dependabot-alert-created": {
+      /** @enum {string} */
+      action: "created";
+      alert: components["schemas"]["dependabot-alert"];
+      installation?: components["schemas"]["simple-installation"];
+      organization?: components["schemas"]["organization-simple"];
+      enterprise?: components["schemas"]["enterprise"];
+      repository: components["schemas"]["repository"];
+      sender: components["schemas"]["simple-user"];
+    };
     /** Dependabot alert dismissed event */
     "webhook-dependabot-alert-dismissed": {
       /** @enum {string} */
@@ -30074,7 +30128,7 @@ export interface components {
       locked: boolean;
       /** @description The title of the pull request. */
       title: string;
-      user: null | components["schemas"]["simple-user"];
+      user: components["schemas"]["simple-user"];
       body: OneOf<[string, null]>;
       labels: {
         /** Format: int64 */
@@ -69474,6 +69528,84 @@ export interface operations {
     requestBody: {
       content: {
         "application/json": components["schemas"]["webhook-delete"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: never;
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to Dependabot alerts.
+   *
+   * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/rest/dependabot/alerts)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
+   *
+   * **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
+   * @description A Dependabot alert was automatically closed.
+   */
+  "dependabot-alert/auto-dismissed": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent"?: string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id"?: string;
+        /** @example issues */
+        "X-Github-Event"?: string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256"?: string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-dependabot-alert-auto-dismissed"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: never;
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to Dependabot alerts.
+   *
+   * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/rest/dependabot/alerts)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
+   *
+   * **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
+   * @description A Dependabot alert was automatically reopened.
+   */
+  "dependabot-alert/auto-reopened": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent"?: string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id"?: string;
+        /** @example issues */
+        "X-Github-Event"?: string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256"?: string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-dependabot-alert-auto-reopened"];
       };
     };
     responses: {
