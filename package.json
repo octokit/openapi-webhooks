@@ -46,21 +46,49 @@
     "plugins": [
       "@semantic-release/commit-analyzer",
       "@semantic-release/release-notes-generator",
+      "@semantic-release/github",
       [
-        "semantic-release-plugin-update-version-in-files",
+        "@semantic-release/npm",
         {
-          "files": [
-            "generated/*"
-          ]
+          "pkgRoot": "packages/openapi-webhooks-types"
         }
       ],
       [
-        "@semantic-release/github",
+        "@semantic-release/npm",
         {
-          "assets": "generated/*.json"
+          "pkgRoot": "packages/openapi-webhooks-types-ghec"
         }
       ],
-      "@semantic-release/npm"
+      [
+        "@semantic-release/npm",
+        {
+          "pkgRoot": "packages/openapi-webhooks-types-ghes-3.5"
+        }
+      ],
+      [
+        "@semantic-release/npm",
+        {
+          "pkgRoot": "packages/openapi-webhooks-types-ghes-3.6"
+        }
+      ],
+      [
+        "@semantic-release/npm",
+        {
+          "pkgRoot": "packages/openapi-webhooks-types-ghes-3.7"
+        }
+      ],
+      [
+        "@semantic-release/npm",
+        {
+          "pkgRoot": "packages/openapi-webhooks-types-ghes-3.8"
+        }
+      ],
+      [
+        "@semantic-release/npm",
+        {
+          "pkgRoot": "packages/openapi-webhooks-types-github.ae"
+        }
+      ]
     ]
   },
   "renovate": {
