@@ -60,11 +60,15 @@ async function run() {
       const webhook = webhooks[webhookId].post.requestBody;
       const ref = webhook.content["application/json"].schema.$ref;
       const refName = ref.split("/").at(-1);
+      if (typeof webhook.content["application/x-www-form-urlencoded"] !== "undefined") {
+        delete webhook.content["application/x-www-form-urlencoded"];
+      }
       tempSchema.components.schemas[refName] =
         schema.components.schemas[refName];
       handleRefs(schema.components.schemas[refName]);
     }
 
+    
     writeFileSync(
       `generated/${file}`,
       prettier.format(JSON.stringify(tempSchema), { parser: "json" })
