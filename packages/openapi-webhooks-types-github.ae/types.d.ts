@@ -64344,7 +64344,6 @@ export interface operations {
     requestBody: {
       content: {
         "application/json": components["schemas"]["webhook-check-run-completed"];
-        "application/x-www-form-urlencoded": components["schemas"]["webhook-check-run-completed-form-encoded"];
       };
     };
     responses: {
@@ -64386,7 +64385,6 @@ export interface operations {
     requestBody: {
       content: {
         "application/json": components["schemas"]["webhook-check-run-created"];
-        "application/x-www-form-urlencoded": components["schemas"]["webhook-check-run-created-form-encoded"];
       };
     };
     responses: {
@@ -64428,7 +64426,6 @@ export interface operations {
     requestBody: {
       content: {
         "application/json": components["schemas"]["webhook-check-run-requested-action"];
-        "application/x-www-form-urlencoded": components["schemas"]["webhook-check-run-requested-action-form-encoded"];
       };
     };
     responses: {
@@ -64470,7 +64467,6 @@ export interface operations {
     requestBody: {
       content: {
         "application/json": components["schemas"]["webhook-check-run-rerequested"];
-        "application/x-www-form-urlencoded": components["schemas"]["webhook-check-run-rerequested-form-encoded"];
       };
     };
     responses: {
@@ -67865,7 +67861,6 @@ export interface operations {
     requestBody: {
       content: {
         "application/json": components["schemas"]["webhook-ping"];
-        "application/x-www-form-urlencoded": components["schemas"]["webhook-ping-form-encoded"];
       };
     };
     responses: {
@@ -70463,7 +70458,6 @@ export interface operations {
     requestBody: {
       content: {
         "application/json": components["schemas"]["webhook-secret-scanning-alert-location-created"];
-        "application/x-www-form-urlencoded": components["schemas"]["webhook-secret-scanning-alert-location-created-form-encoded"];
       };
     };
     responses: {
