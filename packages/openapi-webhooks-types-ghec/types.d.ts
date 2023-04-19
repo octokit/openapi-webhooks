@@ -354,6 +354,15 @@ export interface webhooks {
      */
     post: operations["deployment/created"];
   };
+  "deployment-protection-rule-requested": {
+    /**
+     * This event occurs when there is activity relating to deployment protection rules. For more information, see "[Using environments for deployment](https://docs.github.com/enterprise-cloud@latest//actions/deployment/targeting-different-environments/using-environments-for-deployment#environment-protection-rules)." For information about the API to manage deployment protection rules, see [the REST API documentation](https://docs.github.com/enterprise-cloud@latest//rest/deployments/environments).
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
+     * @description A deployment protection rule was requested for an environment.
+     */
+    post: operations["deployment-protection-rule/requested"];
+  };
   "deployment-status-created": {
     /**
      * This event occurs when there is activity relating to deployment statuses. For more information, see "[About deployments](https://docs.github.com/enterprise-cloud@latest//actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/enterprise-cloud@latest//rest/deployments/deployments)" in the REST API documentation.
@@ -6349,6 +6358,638 @@ export interface components {
         ]
       >;
     };
+    /** deployment protection rule requested event */
+    "webhook-deployment-protection-rule-requested": {
+      /** @enum {string} */
+      action?: "requested";
+      /** @description The name of the environment that has the deployment protection rule. */
+      environment?: string;
+      /** @description The event that triggered the deployment protection rule. */
+      event?: string;
+      /**
+       * Format: uri
+       * @description The URL to review the deployment protection rule.
+       */
+      deployment_callback_url?: string;
+      deployment?: components["schemas"]["deployment"];
+      pull_requests?: components["schemas"]["pull-request"][];
+      repository?: components["schemas"]["repository"];
+      organization?: components["schemas"]["organization-simple"];
+      installation?: components["schemas"]["simple-installation"];
+      sender?: components["schemas"]["simple-user"];
+    };
+    /**
+     * Deployment
+     * @description A request for a specific ref(branch,sha,tag) to be deployed
+     */
+    deployment: {
+      /** Format: uri */
+      url: string;
+      /** @description Unique identifier of the deployment */
+      id: number;
+      node_id: string;
+      sha: string;
+      /** @description The ref to deploy. This can be a branch, tag, or sha. */
+      ref: string;
+      /** @description Parameter to specify a task to execute */
+      task: string;
+      payload: OneOf<
+        [
+          {
+            [key: string]: unknown | undefined;
+          },
+          string
+        ]
+      >;
+      original_environment?: string;
+      /** @description Name for the target deployment environment. */
+      environment: string;
+      description: OneOf<[string, null]>;
+      creator: null | components["schemas"]["simple-user"];
+      /** Format: date-time */
+      created_at: string;
+      /** Format: date-time */
+      updated_at: string;
+      /** Format: uri */
+      statuses_url: string;
+      /** Format: uri */
+      repository_url: string;
+      /** @description Specifies if the given environment is will no longer exist at some point in the future. Default: false. */
+      transient_environment?: boolean;
+      /** @description Specifies if the given environment is one that end-users directly interact with. Default: false. */
+      production_environment?: boolean;
+      performed_via_github_app?: null | components["schemas"]["integration"];
+    };
+    /**
+     * Pull Request
+     * @description Pull requests let you tell others about changes you've pushed to a repository on GitHub. Once a pull request is sent, interested parties can review the set of changes, discuss potential modifications, and even push follow-up commits if necessary.
+     */
+    "pull-request": {
+      /** Format: uri */
+      url: string;
+      id: number;
+      node_id: string;
+      /** Format: uri */
+      html_url: string;
+      /** Format: uri */
+      diff_url: string;
+      /** Format: uri */
+      patch_url: string;
+      /** Format: uri */
+      issue_url: string;
+      /** Format: uri */
+      commits_url: string;
+      /** Format: uri */
+      review_comments_url: string;
+      review_comment_url: string;
+      /** Format: uri */
+      comments_url: string;
+      /** Format: uri */
+      statuses_url: string;
+      /** @description Number uniquely identifying the pull request within its repository. */
+      number: number;
+      /**
+       * @description State of this Pull Request. Either `open` or `closed`.
+       * @enum {string}
+       */
+      state: "open" | "closed";
+      locked: boolean;
+      /** @description The title of the pull request. */
+      title: string;
+      user: components["schemas"]["simple-user"];
+      body: OneOf<[string, null]>;
+      labels: {
+        /** Format: int64 */
+        id: number;
+        node_id: string;
+        url: string;
+        name: string;
+        description: OneOf<[string, null]>;
+        color: string;
+        default: boolean;
+      }[];
+      milestone: null | components["schemas"]["milestone"];
+      active_lock_reason?: OneOf<[string, null]>;
+      /** Format: date-time */
+      created_at: string;
+      /** Format: date-time */
+      updated_at: string;
+      /** Format: date-time */
+      closed_at: OneOf<[string, null]>;
+      /** Format: date-time */
+      merged_at: OneOf<[string, null]>;
+      merge_commit_sha: OneOf<[string, null]>;
+      assignee: null | components["schemas"]["simple-user"];
+      assignees?: OneOf<[components["schemas"]["simple-user"][], null]>;
+      requested_reviewers?: OneOf<
+        [components["schemas"]["simple-user"][], null]
+      >;
+      requested_teams?: OneOf<[components["schemas"]["team-simple"][], null]>;
+      head: {
+        label: string;
+        ref: string;
+        repo: OneOf<
+          [
+            {
+              archive_url: string;
+              assignees_url: string;
+              blobs_url: string;
+              branches_url: string;
+              collaborators_url: string;
+              comments_url: string;
+              commits_url: string;
+              compare_url: string;
+              contents_url: string;
+              /** Format: uri */
+              contributors_url: string;
+              /** Format: uri */
+              deployments_url: string;
+              description: OneOf<[string, null]>;
+              /** Format: uri */
+              downloads_url: string;
+              /** Format: uri */
+              events_url: string;
+              fork: boolean;
+              /** Format: uri */
+              forks_url: string;
+              full_name: string;
+              git_commits_url: string;
+              git_refs_url: string;
+              git_tags_url: string;
+              /** Format: uri */
+              hooks_url: string;
+              /** Format: uri */
+              html_url: string;
+              id: number;
+              node_id: string;
+              issue_comment_url: string;
+              issue_events_url: string;
+              issues_url: string;
+              keys_url: string;
+              labels_url: string;
+              /** Format: uri */
+              languages_url: string;
+              /** Format: uri */
+              merges_url: string;
+              milestones_url: string;
+              name: string;
+              notifications_url: string;
+              owner: {
+                /** Format: uri */
+                avatar_url: string;
+                events_url: string;
+                /** Format: uri */
+                followers_url: string;
+                following_url: string;
+                gists_url: string;
+                gravatar_id: OneOf<[string, null]>;
+                /** Format: uri */
+                html_url: string;
+                id: number;
+                node_id: string;
+                login: string;
+                /** Format: uri */
+                organizations_url: string;
+                /** Format: uri */
+                received_events_url: string;
+                /** Format: uri */
+                repos_url: string;
+                site_admin: boolean;
+                starred_url: string;
+                /** Format: uri */
+                subscriptions_url: string;
+                type: string;
+                /** Format: uri */
+                url: string;
+              };
+              private: boolean;
+              pulls_url: string;
+              releases_url: string;
+              /** Format: uri */
+              stargazers_url: string;
+              statuses_url: string;
+              /** Format: uri */
+              subscribers_url: string;
+              /** Format: uri */
+              subscription_url: string;
+              /** Format: uri */
+              tags_url: string;
+              /** Format: uri */
+              teams_url: string;
+              trees_url: string;
+              /** Format: uri */
+              url: string;
+              clone_url: string;
+              default_branch: string;
+              forks: number;
+              forks_count: number;
+              git_url: string;
+              has_downloads: boolean;
+              has_issues: boolean;
+              has_projects: boolean;
+              has_wiki: boolean;
+              has_pages: boolean;
+              has_discussions: boolean;
+              /** Format: uri */
+              homepage: OneOf<[string, null]>;
+              language: OneOf<[string, null]>;
+              master_branch?: string;
+              archived: boolean;
+              disabled: boolean;
+              /** @description The repository visibility: public, private, or internal. */
+              visibility?: string;
+              /** Format: uri */
+              mirror_url: OneOf<[string, null]>;
+              open_issues: number;
+              open_issues_count: number;
+              permissions?: {
+                admin: boolean;
+                maintain?: boolean;
+                push: boolean;
+                triage?: boolean;
+                pull: boolean;
+              };
+              temp_clone_token?: string;
+              allow_merge_commit?: boolean;
+              allow_squash_merge?: boolean;
+              allow_rebase_merge?: boolean;
+              license: OneOf<
+                [
+                  {
+                    key: string;
+                    name: string;
+                    /** Format: uri */
+                    url: OneOf<[string, null]>;
+                    spdx_id: OneOf<[string, null]>;
+                    node_id: string;
+                  },
+                  null
+                ]
+              >;
+              /** Format: date-time */
+              pushed_at: string;
+              size: number;
+              ssh_url: string;
+              stargazers_count: number;
+              /** Format: uri */
+              svn_url: string;
+              topics?: string[];
+              watchers: number;
+              watchers_count: number;
+              /** Format: date-time */
+              created_at: string;
+              /** Format: date-time */
+              updated_at: string;
+              allow_forking?: boolean;
+              is_template?: boolean;
+              web_commit_signoff_required?: boolean;
+            },
+            null
+          ]
+        >;
+        sha: string;
+        user: {
+          /** Format: uri */
+          avatar_url: string;
+          events_url: string;
+          /** Format: uri */
+          followers_url: string;
+          following_url: string;
+          gists_url: string;
+          gravatar_id: OneOf<[string, null]>;
+          /** Format: uri */
+          html_url: string;
+          id: number;
+          node_id: string;
+          login: string;
+          /** Format: uri */
+          organizations_url: string;
+          /** Format: uri */
+          received_events_url: string;
+          /** Format: uri */
+          repos_url: string;
+          site_admin: boolean;
+          starred_url: string;
+          /** Format: uri */
+          subscriptions_url: string;
+          type: string;
+          /** Format: uri */
+          url: string;
+        };
+      };
+      base: {
+        label: string;
+        ref: string;
+        repo: {
+          archive_url: string;
+          assignees_url: string;
+          blobs_url: string;
+          branches_url: string;
+          collaborators_url: string;
+          comments_url: string;
+          commits_url: string;
+          compare_url: string;
+          contents_url: string;
+          /** Format: uri */
+          contributors_url: string;
+          /** Format: uri */
+          deployments_url: string;
+          description: OneOf<[string, null]>;
+          /** Format: uri */
+          downloads_url: string;
+          /** Format: uri */
+          events_url: string;
+          fork: boolean;
+          /** Format: uri */
+          forks_url: string;
+          full_name: string;
+          git_commits_url: string;
+          git_refs_url: string;
+          git_tags_url: string;
+          /** Format: uri */
+          hooks_url: string;
+          /** Format: uri */
+          html_url: string;
+          id: number;
+          is_template?: boolean;
+          node_id: string;
+          issue_comment_url: string;
+          issue_events_url: string;
+          issues_url: string;
+          keys_url: string;
+          labels_url: string;
+          /** Format: uri */
+          languages_url: string;
+          /** Format: uri */
+          merges_url: string;
+          milestones_url: string;
+          name: string;
+          notifications_url: string;
+          owner: {
+            /** Format: uri */
+            avatar_url: string;
+            events_url: string;
+            /** Format: uri */
+            followers_url: string;
+            following_url: string;
+            gists_url: string;
+            gravatar_id: OneOf<[string, null]>;
+            /** Format: uri */
+            html_url: string;
+            id: number;
+            node_id: string;
+            login: string;
+            /** Format: uri */
+            organizations_url: string;
+            /** Format: uri */
+            received_events_url: string;
+            /** Format: uri */
+            repos_url: string;
+            site_admin: boolean;
+            starred_url: string;
+            /** Format: uri */
+            subscriptions_url: string;
+            type: string;
+            /** Format: uri */
+            url: string;
+          };
+          private: boolean;
+          pulls_url: string;
+          releases_url: string;
+          /** Format: uri */
+          stargazers_url: string;
+          statuses_url: string;
+          /** Format: uri */
+          subscribers_url: string;
+          /** Format: uri */
+          subscription_url: string;
+          /** Format: uri */
+          tags_url: string;
+          /** Format: uri */
+          teams_url: string;
+          trees_url: string;
+          /** Format: uri */
+          url: string;
+          clone_url: string;
+          default_branch: string;
+          forks: number;
+          forks_count: number;
+          git_url: string;
+          has_downloads: boolean;
+          has_issues: boolean;
+          has_projects: boolean;
+          has_wiki: boolean;
+          has_pages: boolean;
+          has_discussions: boolean;
+          /** Format: uri */
+          homepage: OneOf<[string, null]>;
+          language: OneOf<[string, null]>;
+          master_branch?: string;
+          archived: boolean;
+          disabled: boolean;
+          /** @description The repository visibility: public, private, or internal. */
+          visibility?: string;
+          /** Format: uri */
+          mirror_url: OneOf<[string, null]>;
+          open_issues: number;
+          open_issues_count: number;
+          permissions?: {
+            admin: boolean;
+            maintain?: boolean;
+            push: boolean;
+            triage?: boolean;
+            pull: boolean;
+          };
+          temp_clone_token?: string;
+          allow_merge_commit?: boolean;
+          allow_squash_merge?: boolean;
+          allow_rebase_merge?: boolean;
+          license: null | components["schemas"]["license-simple"];
+          /** Format: date-time */
+          pushed_at: string;
+          size: number;
+          ssh_url: string;
+          stargazers_count: number;
+          /** Format: uri */
+          svn_url: string;
+          topics?: string[];
+          watchers: number;
+          watchers_count: number;
+          /** Format: date-time */
+          created_at: string;
+          /** Format: date-time */
+          updated_at: string;
+          allow_forking?: boolean;
+          web_commit_signoff_required?: boolean;
+        };
+        sha: string;
+        user: {
+          /** Format: uri */
+          avatar_url: string;
+          events_url: string;
+          /** Format: uri */
+          followers_url: string;
+          following_url: string;
+          gists_url: string;
+          gravatar_id: OneOf<[string, null]>;
+          /** Format: uri */
+          html_url: string;
+          id: number;
+          node_id: string;
+          login: string;
+          /** Format: uri */
+          organizations_url: string;
+          /** Format: uri */
+          received_events_url: string;
+          /** Format: uri */
+          repos_url: string;
+          site_admin: boolean;
+          starred_url: string;
+          /** Format: uri */
+          subscriptions_url: string;
+          type: string;
+          /** Format: uri */
+          url: string;
+        };
+      };
+      _links: {
+        comments: components["schemas"]["link"];
+        commits: components["schemas"]["link"];
+        statuses: components["schemas"]["link"];
+        html: components["schemas"]["link"];
+        issue: components["schemas"]["link"];
+        review_comments: components["schemas"]["link"];
+        review_comment: components["schemas"]["link"];
+        self: components["schemas"]["link"];
+      };
+      author_association: components["schemas"]["author-association"];
+      auto_merge: components["schemas"]["auto-merge"];
+      /** @description Indicates whether or not the pull request is a draft. */
+      draft?: boolean;
+      merged: boolean;
+      mergeable: OneOf<[boolean, null]>;
+      rebaseable?: OneOf<[boolean, null]>;
+      mergeable_state: string;
+      merged_by: null | components["schemas"]["simple-user"];
+      comments: number;
+      review_comments: number;
+      /** @description Indicates whether maintainers can modify the pull request. */
+      maintainer_can_modify: boolean;
+      commits: number;
+      additions: number;
+      deletions: number;
+      changed_files: number;
+    };
+    /**
+     * Milestone
+     * @description A collection of related issues and pull requests.
+     */
+    milestone: {
+      /** Format: uri */
+      url: string;
+      /** Format: uri */
+      html_url: string;
+      /** Format: uri */
+      labels_url: string;
+      id: number;
+      node_id: string;
+      /** @description The number of the milestone. */
+      number: number;
+      /**
+       * @description The state of the milestone.
+       * @default open
+       * @enum {string}
+       */
+      state: "open" | "closed";
+      /** @description The title of the milestone. */
+      title: string;
+      description: OneOf<[string, null]>;
+      creator: null | components["schemas"]["simple-user"];
+      open_issues: number;
+      closed_issues: number;
+      /** Format: date-time */
+      created_at: string;
+      /** Format: date-time */
+      updated_at: string;
+      /** Format: date-time */
+      closed_at: OneOf<[string, null]>;
+      /** Format: date-time */
+      due_on: OneOf<[string, null]>;
+    };
+    /**
+     * Team Simple
+     * @description Groups of organization members that gives permissions on specified repositories.
+     */
+    "team-simple": {
+      /** @description Unique identifier of the team */
+      id: number;
+      node_id: string;
+      /**
+       * Format: uri
+       * @description URL for the team
+       */
+      url: string;
+      members_url: string;
+      /** @description Name of the team */
+      name: string;
+      /** @description Description of the team */
+      description: OneOf<[string, null]>;
+      /** @description Permission that the team will have for its repositories */
+      permission: string;
+      /** @description The level of privacy this team should have */
+      privacy?: string;
+      /** @description The notification setting the team has set */
+      notification_setting?: string;
+      /** Format: uri */
+      html_url: string;
+      /** Format: uri */
+      repositories_url: string;
+      slug: string;
+      /** @description Distinguished Name (DN) that team maps to within LDAP environment */
+      ldap_dn?: string;
+    };
+    /**
+     * Link
+     * @description Hypermedia Link
+     */
+    link: {
+      href: string;
+    };
+    /**
+     * author_association
+     * @description How the author is associated with the repository.
+     * @enum {string}
+     */
+    "author-association":
+      | "COLLABORATOR"
+      | "CONTRIBUTOR"
+      | "FIRST_TIMER"
+      | "FIRST_TIME_CONTRIBUTOR"
+      | "MANNEQUIN"
+      | "MEMBER"
+      | "NONE"
+      | "OWNER";
+    /**
+     * Auto merge
+     * @description The status of auto merging a pull request.
+     */
+    "auto-merge": OneOf<
+      [
+        {
+          enabled_by: components["schemas"]["simple-user"];
+          /**
+           * @description The merge method to use.
+           * @enum {string}
+           */
+          merge_method: "merge" | "squash" | "rebase";
+          /** @description Title for the merge commit message. */
+          commit_title: string;
+          /** @description Commit message for the merge commit. */
+          commit_message: string;
+        },
+        null
+      ]
+    >;
     /** deployment_status created event */
     "webhook-deployment-status-created": {
       /** @enum {string} */
@@ -30092,576 +30733,6 @@ export interface components {
       repository: components["schemas"]["repository"];
       sender: components["schemas"]["simple-user"];
     };
-    /**
-     * Pull Request
-     * @description Pull requests let you tell others about changes you've pushed to a repository on GitHub. Once a pull request is sent, interested parties can review the set of changes, discuss potential modifications, and even push follow-up commits if necessary.
-     */
-    "pull-request": {
-      /** Format: uri */
-      url: string;
-      id: number;
-      node_id: string;
-      /** Format: uri */
-      html_url: string;
-      /** Format: uri */
-      diff_url: string;
-      /** Format: uri */
-      patch_url: string;
-      /** Format: uri */
-      issue_url: string;
-      /** Format: uri */
-      commits_url: string;
-      /** Format: uri */
-      review_comments_url: string;
-      review_comment_url: string;
-      /** Format: uri */
-      comments_url: string;
-      /** Format: uri */
-      statuses_url: string;
-      /** @description Number uniquely identifying the pull request within its repository. */
-      number: number;
-      /**
-       * @description State of this Pull Request. Either `open` or `closed`.
-       * @enum {string}
-       */
-      state: "open" | "closed";
-      locked: boolean;
-      /** @description The title of the pull request. */
-      title: string;
-      user: components["schemas"]["simple-user"];
-      body: OneOf<[string, null]>;
-      labels: {
-        /** Format: int64 */
-        id: number;
-        node_id: string;
-        url: string;
-        name: string;
-        description: OneOf<[string, null]>;
-        color: string;
-        default: boolean;
-      }[];
-      milestone: null | components["schemas"]["milestone"];
-      active_lock_reason?: OneOf<[string, null]>;
-      /** Format: date-time */
-      created_at: string;
-      /** Format: date-time */
-      updated_at: string;
-      /** Format: date-time */
-      closed_at: OneOf<[string, null]>;
-      /** Format: date-time */
-      merged_at: OneOf<[string, null]>;
-      merge_commit_sha: OneOf<[string, null]>;
-      assignee: null | components["schemas"]["simple-user"];
-      assignees?: OneOf<[components["schemas"]["simple-user"][], null]>;
-      requested_reviewers?: OneOf<
-        [components["schemas"]["simple-user"][], null]
-      >;
-      requested_teams?: OneOf<[components["schemas"]["team-simple"][], null]>;
-      head: {
-        label: string;
-        ref: string;
-        repo: OneOf<
-          [
-            {
-              archive_url: string;
-              assignees_url: string;
-              blobs_url: string;
-              branches_url: string;
-              collaborators_url: string;
-              comments_url: string;
-              commits_url: string;
-              compare_url: string;
-              contents_url: string;
-              /** Format: uri */
-              contributors_url: string;
-              /** Format: uri */
-              deployments_url: string;
-              description: OneOf<[string, null]>;
-              /** Format: uri */
-              downloads_url: string;
-              /** Format: uri */
-              events_url: string;
-              fork: boolean;
-              /** Format: uri */
-              forks_url: string;
-              full_name: string;
-              git_commits_url: string;
-              git_refs_url: string;
-              git_tags_url: string;
-              /** Format: uri */
-              hooks_url: string;
-              /** Format: uri */
-              html_url: string;
-              id: number;
-              node_id: string;
-              issue_comment_url: string;
-              issue_events_url: string;
-              issues_url: string;
-              keys_url: string;
-              labels_url: string;
-              /** Format: uri */
-              languages_url: string;
-              /** Format: uri */
-              merges_url: string;
-              milestones_url: string;
-              name: string;
-              notifications_url: string;
-              owner: {
-                /** Format: uri */
-                avatar_url: string;
-                events_url: string;
-                /** Format: uri */
-                followers_url: string;
-                following_url: string;
-                gists_url: string;
-                gravatar_id: OneOf<[string, null]>;
-                /** Format: uri */
-                html_url: string;
-                id: number;
-                node_id: string;
-                login: string;
-                /** Format: uri */
-                organizations_url: string;
-                /** Format: uri */
-                received_events_url: string;
-                /** Format: uri */
-                repos_url: string;
-                site_admin: boolean;
-                starred_url: string;
-                /** Format: uri */
-                subscriptions_url: string;
-                type: string;
-                /** Format: uri */
-                url: string;
-              };
-              private: boolean;
-              pulls_url: string;
-              releases_url: string;
-              /** Format: uri */
-              stargazers_url: string;
-              statuses_url: string;
-              /** Format: uri */
-              subscribers_url: string;
-              /** Format: uri */
-              subscription_url: string;
-              /** Format: uri */
-              tags_url: string;
-              /** Format: uri */
-              teams_url: string;
-              trees_url: string;
-              /** Format: uri */
-              url: string;
-              clone_url: string;
-              default_branch: string;
-              forks: number;
-              forks_count: number;
-              git_url: string;
-              has_downloads: boolean;
-              has_issues: boolean;
-              has_projects: boolean;
-              has_wiki: boolean;
-              has_pages: boolean;
-              has_discussions: boolean;
-              /** Format: uri */
-              homepage: OneOf<[string, null]>;
-              language: OneOf<[string, null]>;
-              master_branch?: string;
-              archived: boolean;
-              disabled: boolean;
-              /** @description The repository visibility: public, private, or internal. */
-              visibility?: string;
-              /** Format: uri */
-              mirror_url: OneOf<[string, null]>;
-              open_issues: number;
-              open_issues_count: number;
-              permissions?: {
-                admin: boolean;
-                maintain?: boolean;
-                push: boolean;
-                triage?: boolean;
-                pull: boolean;
-              };
-              temp_clone_token?: string;
-              allow_merge_commit?: boolean;
-              allow_squash_merge?: boolean;
-              allow_rebase_merge?: boolean;
-              license: OneOf<
-                [
-                  {
-                    key: string;
-                    name: string;
-                    /** Format: uri */
-                    url: OneOf<[string, null]>;
-                    spdx_id: OneOf<[string, null]>;
-                    node_id: string;
-                  },
-                  null
-                ]
-              >;
-              /** Format: date-time */
-              pushed_at: string;
-              size: number;
-              ssh_url: string;
-              stargazers_count: number;
-              /** Format: uri */
-              svn_url: string;
-              topics?: string[];
-              watchers: number;
-              watchers_count: number;
-              /** Format: date-time */
-              created_at: string;
-              /** Format: date-time */
-              updated_at: string;
-              allow_forking?: boolean;
-              is_template?: boolean;
-              web_commit_signoff_required?: boolean;
-            },
-            null
-          ]
-        >;
-        sha: string;
-        user: {
-          /** Format: uri */
-          avatar_url: string;
-          events_url: string;
-          /** Format: uri */
-          followers_url: string;
-          following_url: string;
-          gists_url: string;
-          gravatar_id: OneOf<[string, null]>;
-          /** Format: uri */
-          html_url: string;
-          id: number;
-          node_id: string;
-          login: string;
-          /** Format: uri */
-          organizations_url: string;
-          /** Format: uri */
-          received_events_url: string;
-          /** Format: uri */
-          repos_url: string;
-          site_admin: boolean;
-          starred_url: string;
-          /** Format: uri */
-          subscriptions_url: string;
-          type: string;
-          /** Format: uri */
-          url: string;
-        };
-      };
-      base: {
-        label: string;
-        ref: string;
-        repo: {
-          archive_url: string;
-          assignees_url: string;
-          blobs_url: string;
-          branches_url: string;
-          collaborators_url: string;
-          comments_url: string;
-          commits_url: string;
-          compare_url: string;
-          contents_url: string;
-          /** Format: uri */
-          contributors_url: string;
-          /** Format: uri */
-          deployments_url: string;
-          description: OneOf<[string, null]>;
-          /** Format: uri */
-          downloads_url: string;
-          /** Format: uri */
-          events_url: string;
-          fork: boolean;
-          /** Format: uri */
-          forks_url: string;
-          full_name: string;
-          git_commits_url: string;
-          git_refs_url: string;
-          git_tags_url: string;
-          /** Format: uri */
-          hooks_url: string;
-          /** Format: uri */
-          html_url: string;
-          id: number;
-          is_template?: boolean;
-          node_id: string;
-          issue_comment_url: string;
-          issue_events_url: string;
-          issues_url: string;
-          keys_url: string;
-          labels_url: string;
-          /** Format: uri */
-          languages_url: string;
-          /** Format: uri */
-          merges_url: string;
-          milestones_url: string;
-          name: string;
-          notifications_url: string;
-          owner: {
-            /** Format: uri */
-            avatar_url: string;
-            events_url: string;
-            /** Format: uri */
-            followers_url: string;
-            following_url: string;
-            gists_url: string;
-            gravatar_id: OneOf<[string, null]>;
-            /** Format: uri */
-            html_url: string;
-            id: number;
-            node_id: string;
-            login: string;
-            /** Format: uri */
-            organizations_url: string;
-            /** Format: uri */
-            received_events_url: string;
-            /** Format: uri */
-            repos_url: string;
-            site_admin: boolean;
-            starred_url: string;
-            /** Format: uri */
-            subscriptions_url: string;
-            type: string;
-            /** Format: uri */
-            url: string;
-          };
-          private: boolean;
-          pulls_url: string;
-          releases_url: string;
-          /** Format: uri */
-          stargazers_url: string;
-          statuses_url: string;
-          /** Format: uri */
-          subscribers_url: string;
-          /** Format: uri */
-          subscription_url: string;
-          /** Format: uri */
-          tags_url: string;
-          /** Format: uri */
-          teams_url: string;
-          trees_url: string;
-          /** Format: uri */
-          url: string;
-          clone_url: string;
-          default_branch: string;
-          forks: number;
-          forks_count: number;
-          git_url: string;
-          has_downloads: boolean;
-          has_issues: boolean;
-          has_projects: boolean;
-          has_wiki: boolean;
-          has_pages: boolean;
-          has_discussions: boolean;
-          /** Format: uri */
-          homepage: OneOf<[string, null]>;
-          language: OneOf<[string, null]>;
-          master_branch?: string;
-          archived: boolean;
-          disabled: boolean;
-          /** @description The repository visibility: public, private, or internal. */
-          visibility?: string;
-          /** Format: uri */
-          mirror_url: OneOf<[string, null]>;
-          open_issues: number;
-          open_issues_count: number;
-          permissions?: {
-            admin: boolean;
-            maintain?: boolean;
-            push: boolean;
-            triage?: boolean;
-            pull: boolean;
-          };
-          temp_clone_token?: string;
-          allow_merge_commit?: boolean;
-          allow_squash_merge?: boolean;
-          allow_rebase_merge?: boolean;
-          license: null | components["schemas"]["license-simple"];
-          /** Format: date-time */
-          pushed_at: string;
-          size: number;
-          ssh_url: string;
-          stargazers_count: number;
-          /** Format: uri */
-          svn_url: string;
-          topics?: string[];
-          watchers: number;
-          watchers_count: number;
-          /** Format: date-time */
-          created_at: string;
-          /** Format: date-time */
-          updated_at: string;
-          allow_forking?: boolean;
-          web_commit_signoff_required?: boolean;
-        };
-        sha: string;
-        user: {
-          /** Format: uri */
-          avatar_url: string;
-          events_url: string;
-          /** Format: uri */
-          followers_url: string;
-          following_url: string;
-          gists_url: string;
-          gravatar_id: OneOf<[string, null]>;
-          /** Format: uri */
-          html_url: string;
-          id: number;
-          node_id: string;
-          login: string;
-          /** Format: uri */
-          organizations_url: string;
-          /** Format: uri */
-          received_events_url: string;
-          /** Format: uri */
-          repos_url: string;
-          site_admin: boolean;
-          starred_url: string;
-          /** Format: uri */
-          subscriptions_url: string;
-          type: string;
-          /** Format: uri */
-          url: string;
-        };
-      };
-      _links: {
-        comments: components["schemas"]["link"];
-        commits: components["schemas"]["link"];
-        statuses: components["schemas"]["link"];
-        html: components["schemas"]["link"];
-        issue: components["schemas"]["link"];
-        review_comments: components["schemas"]["link"];
-        review_comment: components["schemas"]["link"];
-        self: components["schemas"]["link"];
-      };
-      author_association: components["schemas"]["author-association"];
-      auto_merge: components["schemas"]["auto-merge"];
-      /** @description Indicates whether or not the pull request is a draft. */
-      draft?: boolean;
-      merged: boolean;
-      mergeable: OneOf<[boolean, null]>;
-      rebaseable?: OneOf<[boolean, null]>;
-      mergeable_state: string;
-      merged_by: null | components["schemas"]["simple-user"];
-      comments: number;
-      review_comments: number;
-      /** @description Indicates whether maintainers can modify the pull request. */
-      maintainer_can_modify: boolean;
-      commits: number;
-      additions: number;
-      deletions: number;
-      changed_files: number;
-    };
-    /**
-     * Milestone
-     * @description A collection of related issues and pull requests.
-     */
-    milestone: {
-      /** Format: uri */
-      url: string;
-      /** Format: uri */
-      html_url: string;
-      /** Format: uri */
-      labels_url: string;
-      id: number;
-      node_id: string;
-      /** @description The number of the milestone. */
-      number: number;
-      /**
-       * @description The state of the milestone.
-       * @default open
-       * @enum {string}
-       */
-      state: "open" | "closed";
-      /** @description The title of the milestone. */
-      title: string;
-      description: OneOf<[string, null]>;
-      creator: null | components["schemas"]["simple-user"];
-      open_issues: number;
-      closed_issues: number;
-      /** Format: date-time */
-      created_at: string;
-      /** Format: date-time */
-      updated_at: string;
-      /** Format: date-time */
-      closed_at: OneOf<[string, null]>;
-      /** Format: date-time */
-      due_on: OneOf<[string, null]>;
-    };
-    /**
-     * Team Simple
-     * @description Groups of organization members that gives permissions on specified repositories.
-     */
-    "team-simple": {
-      /** @description Unique identifier of the team */
-      id: number;
-      node_id: string;
-      /**
-       * Format: uri
-       * @description URL for the team
-       */
-      url: string;
-      members_url: string;
-      /** @description Name of the team */
-      name: string;
-      /** @description Description of the team */
-      description: OneOf<[string, null]>;
-      /** @description Permission that the team will have for its repositories */
-      permission: string;
-      /** @description The level of privacy this team should have */
-      privacy?: string;
-      /** @description The notification setting the team has set */
-      notification_setting?: string;
-      /** Format: uri */
-      html_url: string;
-      /** Format: uri */
-      repositories_url: string;
-      slug: string;
-      /** @description Distinguished Name (DN) that team maps to within LDAP environment */
-      ldap_dn?: string;
-    };
-    /**
-     * Link
-     * @description Hypermedia Link
-     */
-    link: {
-      href: string;
-    };
-    /**
-     * author_association
-     * @description How the author is associated with the repository.
-     * @enum {string}
-     */
-    "author-association":
-      | "COLLABORATOR"
-      | "CONTRIBUTOR"
-      | "FIRST_TIMER"
-      | "FIRST_TIME_CONTRIBUTOR"
-      | "MANNEQUIN"
-      | "MEMBER"
-      | "NONE"
-      | "OWNER";
-    /**
-     * Auto merge
-     * @description The status of auto merging a pull request.
-     */
-    "auto-merge": OneOf<
-      [
-        {
-          enabled_by: components["schemas"]["simple-user"];
-          /**
-           * @description The merge method to use.
-           * @enum {string}
-           */
-          merge_method: "merge" | "squash" | "rebase";
-          /** @description Title for the merge commit message. */
-          commit_title: string;
-          /** @description Commit message for the merge commit. */
-          commit_message: string;
-        },
-        null
-      ]
-    >;
     /** pull_request converted_to_draft event */
     "webhook-pull-request-converted-to-draft": {
       /** @enum {string} */
@@ -66527,48 +66598,6 @@ export interface components {
       };
       deployment?: components["schemas"]["deployment"];
     };
-    /**
-     * Deployment
-     * @description A request for a specific ref(branch,sha,tag) to be deployed
-     */
-    deployment: {
-      /** Format: uri */
-      url: string;
-      /** @description Unique identifier of the deployment */
-      id: number;
-      node_id: string;
-      sha: string;
-      /** @description The ref to deploy. This can be a branch, tag, or sha. */
-      ref: string;
-      /** @description Parameter to specify a task to execute */
-      task: string;
-      payload: OneOf<
-        [
-          {
-            [key: string]: unknown | undefined;
-          },
-          string
-        ]
-      >;
-      original_environment?: string;
-      /** @description Name for the target deployment environment. */
-      environment: string;
-      description: OneOf<[string, null]>;
-      creator: null | components["schemas"]["simple-user"];
-      /** Format: date-time */
-      created_at: string;
-      /** Format: date-time */
-      updated_at: string;
-      /** Format: uri */
-      statuses_url: string;
-      /** Format: uri */
-      repository_url: string;
-      /** @description Specifies if the given environment is will no longer exist at some point in the future. Default: false. */
-      transient_environment?: boolean;
-      /** @description Specifies if the given environment is one that end-users directly interact with. Default: false. */
-      production_environment?: boolean;
-      performed_via_github_app?: null | components["schemas"]["integration"];
-    };
     /** workflow_job in_progress event */
     "webhook-workflow-job-in-progress": {
       /** @enum {string} */
@@ -69904,6 +69933,41 @@ export interface operations {
     requestBody: {
       content: {
         "application/json": components["schemas"]["webhook-deployment-created"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: never;
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to deployment protection rules. For more information, see "[Using environments for deployment](https://docs.github.com/enterprise-cloud@latest//actions/deployment/targeting-different-environments/using-environments-for-deployment#environment-protection-rules)." For information about the API to manage deployment protection rules, see [the REST API documentation](https://docs.github.com/enterprise-cloud@latest//rest/deployments/environments).
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
+   * @description A deployment protection rule was requested for an environment.
+   */
+  "deployment-protection-rule/requested": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent"?: string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id"?: string;
+        /** @example issues */
+        "X-Github-Event"?: string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256"?: string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-deployment-protection-rule-requested"];
       };
     };
     responses: {
