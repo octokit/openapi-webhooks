@@ -23419,7 +23419,9 @@ export interface components {
               >;
               created_at?: string;
               description: string;
-              docker_metadata?: Record<string, never>[];
+              docker_metadata?: {
+                tags?: string[];
+              }[];
               draft?: boolean;
               /** Format: uri */
               html_url: string;
@@ -23568,7 +23570,7 @@ export interface components {
                 /** Format: uri */
                 url: string;
               };
-              rubygems_metadata?: Record<string, never>[];
+              rubygems_metadata?: components["schemas"]["webhook-rubygems-metadata"][];
               source_url?: string;
               summary: string;
               tag_name?: string;
@@ -23598,6 +23600,25 @@ export interface components {
       };
       repository?: components["schemas"]["repository"];
       sender: components["schemas"]["simple-user"];
+    };
+    /** Ruby Gems metadata */
+    "webhook-rubygems-metadata": {
+      name?: string;
+      description?: string;
+      readme?: string;
+      homepage?: string;
+      version_info?: {
+        version?: string;
+      };
+      platform?: string;
+      metadata?: {
+        [key: string]: string | undefined;
+      };
+      repo?: string;
+      dependencies?: {
+        [key: string]: string | undefined;
+      }[];
+      commit_oid?: string;
     };
     /** package updated event */
     "webhook-package-updated": {
@@ -23706,14 +23727,18 @@ export interface components {
           body_html: string;
           created_at: string;
           description: string;
-          docker_metadata?: Record<string, never>[];
+          docker_metadata?: {
+            tags?: string[];
+          }[];
           draft?: boolean;
           /** Format: uri */
           html_url: string;
           id: number;
           installation_command: string;
           manifest?: string;
-          metadata: Record<string, never>[];
+          metadata: {
+            [key: string]: unknown | undefined;
+          }[];
           name: string;
           package_files: {
             content_type: string;
@@ -23787,7 +23812,7 @@ export interface components {
             /** Format: uri */
             url: string;
           };
-          rubygems_metadata?: Record<string, never>[];
+          rubygems_metadata?: components["schemas"]["webhook-rubygems-metadata"][];
           /** Format: uri */
           source_url?: string;
           summary: string;
@@ -56962,7 +56987,9 @@ export interface components {
               };
               created_at?: string;
               description: string;
-              docker_metadata?: Record<string, never>[];
+              docker_metadata?: {
+                tags?: string[];
+              }[];
               draft?: boolean;
               html_url: string;
               id: number;
@@ -57085,7 +57112,7 @@ export interface components {
                 target_commitish?: string;
                 url?: string;
               };
-              rubygems_metadata?: Record<string, never>[];
+              rubygems_metadata?: components["schemas"]["webhook-rubygems-metadata"][];
               summary: string;
               tag_name?: string;
               target_commitish?: string;
@@ -57172,13 +57199,22 @@ export interface components {
           body_html: string;
           created_at: string;
           description: string;
-          docker_metadata?: null[];
+          docker_metadata?: OneOf<
+            [
+              {
+                tags?: string[];
+              },
+              null
+            ]
+          >[];
           draft?: boolean;
           html_url: string;
           id: number;
           installation_command: string;
           manifest?: string;
-          metadata: Record<string, never>[];
+          metadata: {
+            [key: string]: unknown | undefined;
+          }[];
           name: string;
           package_files: {
             content_type?: string;
@@ -57227,7 +57263,7 @@ export interface components {
             target_commitish: string;
             url: string;
           };
-          rubygems_metadata?: Record<string, never>[];
+          rubygems_metadata?: components["schemas"]["webhook-rubygems-metadata"][];
           summary: string;
           tag_name?: string;
           target_commitish: string;
