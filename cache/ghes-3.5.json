@@ -4421,6 +4421,29 @@
         },
         "required": ["verifiable_password_authentication"]
       },
+      "security-and-analysis": {
+        "type": ["object", "null"],
+        "properties": {
+          "advanced_security": {
+            "type": "object",
+            "properties": {
+              "status": { "type": "string", "enum": ["enabled", "disabled"] }
+            }
+          },
+          "secret_scanning": {
+            "type": "object",
+            "properties": {
+              "status": { "type": "string", "enum": ["enabled", "disabled"] }
+            }
+          },
+          "secret_scanning_push_protection": {
+            "type": "object",
+            "properties": {
+              "status": { "type": "string", "enum": ["enabled", "disabled"] }
+            }
+          }
+        }
+      },
       "minimal-repository": {
         "title": "Minimal Repository",
         "description": "Minimal Repository",
@@ -4750,7 +4773,10 @@
           "forks": { "type": "integer", "examples": [0] },
           "open_issues": { "type": "integer", "examples": [0] },
           "watchers": { "type": "integer", "examples": [0] },
-          "allow_forking": { "type": "boolean" }
+          "allow_forking": { "type": "boolean" },
+          "security_and_analysis": {
+            "$ref": "#/components/schemas/security-and-analysis"
+          }
         },
         "required": [
           "archive_url",
@@ -7255,29 +7281,6 @@
           }
         },
         "required": ["url", "key", "name", "html_url"]
-      },
-      "security-and-analysis": {
-        "type": ["object", "null"],
-        "properties": {
-          "advanced_security": {
-            "type": "object",
-            "properties": {
-              "status": { "type": "string", "enum": ["enabled", "disabled"] }
-            }
-          },
-          "secret_scanning": {
-            "type": "object",
-            "properties": {
-              "status": { "type": "string", "enum": ["enabled", "disabled"] }
-            }
-          },
-          "secret_scanning_push_protection": {
-            "type": "object",
-            "properties": {
-              "status": { "type": "string", "enum": ["enabled", "disabled"] }
-            }
-          }
-        }
       },
       "full-repository": {
         "title": "Full Repository",
