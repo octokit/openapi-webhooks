@@ -4523,6 +4523,29 @@
         },
         "required": ["verifiable_password_authentication"]
       },
+      "security-and-analysis": {
+        "type": ["object", "null"],
+        "properties": {
+          "advanced_security": {
+            "type": "object",
+            "properties": {
+              "status": { "type": "string", "enum": ["enabled", "disabled"] }
+            }
+          },
+          "secret_scanning": {
+            "type": "object",
+            "properties": {
+              "status": { "type": "string", "enum": ["enabled", "disabled"] }
+            }
+          },
+          "secret_scanning_push_protection": {
+            "type": "object",
+            "properties": {
+              "status": { "type": "string", "enum": ["enabled", "disabled"] }
+            }
+          }
+        }
+      },
       "minimal-repository": {
         "title": "Minimal Repository",
         "description": "Minimal Repository",
@@ -4856,6 +4879,9 @@
           "web_commit_signoff_required": {
             "type": "boolean",
             "examples": [false]
+          },
+          "security_and_analysis": {
+            "$ref": "#/components/schemas/security-and-analysis"
           }
         },
         "required": [
@@ -7488,29 +7514,6 @@
           }
         },
         "required": ["url", "key", "name", "html_url"]
-      },
-      "security-and-analysis": {
-        "type": ["object", "null"],
-        "properties": {
-          "advanced_security": {
-            "type": "object",
-            "properties": {
-              "status": { "type": "string", "enum": ["enabled", "disabled"] }
-            }
-          },
-          "secret_scanning": {
-            "type": "object",
-            "properties": {
-              "status": { "type": "string", "enum": ["enabled", "disabled"] }
-            }
-          },
-          "secret_scanning_push_protection": {
-            "type": "object",
-            "properties": {
-              "status": { "type": "string", "enum": ["enabled", "disabled"] }
-            }
-          }
-        }
       },
       "full-repository": {
         "title": "Full Repository",
