@@ -62405,7 +62405,7 @@ export interface components {
           {
             /** @description The username of the user credited. */
             login?: string;
-            type?: components["schemas"]["repository-advisory-credit-types"];
+            type?: components["schemas"]["security-advisory-credit-types"];
           }[],
           null
         ]
@@ -62420,7 +62420,7 @@ export interface components {
       package: OneOf<
         [
           {
-            ecosystem: components["schemas"]["repository-advisory-ecosystems"];
+            ecosystem: components["schemas"]["security-advisory-ecosystems"];
             /** @description The unique package name within its ecosystem. */
             name: OneOf<[string, null]>;
           },
@@ -62438,7 +62438,7 @@ export interface components {
      * @description The package's language or package management ecosystem.
      * @enum {string}
      */
-    "repository-advisory-ecosystems":
+    "security-advisory-ecosystems":
       | "rubygems"
       | "npm"
       | "pip"
@@ -62455,7 +62455,7 @@ export interface components {
      * @description The type of credit the user is receiving.
      * @enum {string}
      */
-    "repository-advisory-credit-types":
+    "security-advisory-credit-types":
       | "analyst"
       | "finder"
       | "reporter"
@@ -62469,7 +62469,7 @@ export interface components {
     /** @description A credit given to a user for a repository security advisory. */
     "repository-advisory-credit": {
       user: components["schemas"]["simple-user"];
-      type: components["schemas"]["repository-advisory-credit-types"];
+      type: components["schemas"]["security-advisory-credit-types"];
       /**
        * @description The state of the user's acceptance of the credit.
        * @enum {string}
