@@ -1040,6 +1040,19 @@ export interface webhooks {
      */
     post: operations["merge-group/checks-requested"];
   };
+  "merge-group-destroyed": {
+    /**
+     * This event occurs when there is activity relating to a merge group in a merge queue. For more information, see "[Managing a merge queue](https://docs.github.com/enterprise-cloud@latest//repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue)."
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Merge queues" repository permission.
+     *
+     * **Note**: The pull request merge queue feature is currently in public beta and subject to change.
+     * @description The merge queue groups pull requests together to be merged. This event indicates that one of those merge groups was destroyed. This happens when a pull request is removed from the queue: any group containing that pull request is also destroyed.
+     *
+     * When you receive this event, you may want to cancel any checks that are running on the head SHA to avoid wasting computing resources on a merge group that will not be used.
+     */
+    post: operations["merge-group/destroyed"];
+  };
   "meta-deleted": {
     /**
      * This event occurs when there is activity relating to a webhook itself.
@@ -23743,50 +23756,83 @@ export interface components {
       /** @enum {string} */
       action: "checks_requested";
       installation?: components["schemas"]["simple-installation"];
-      /** MergeGroup */
-      merge_group: {
-        /** @description The SHA of the merge group. */
-        head_sha: string;
-        /** @description The full ref of the merge group. */
-        head_ref: string;
-        /** @description The SHA of the merge group's parent commit. */
-        base_sha: string;
-        /** @description The full ref of the branch the merge group will be merged into. */
-        base_ref: string;
-        /** SimpleCommit */
-        head_commit: {
-          /**
-           * Committer
-           * @description Metaproperties for Git author/committer information.
-           */
-          author: {
-            /** Format: date-time */
-            date?: string;
-            /** Format: email */
-            email: OneOf<[string, null]>;
-            /** @description The git author's name. */
+      merge_group: components["schemas"]["merge-group"];
+      organization?: components["schemas"]["organization-simple"];
+      repository?: components["schemas"]["repository"];
+      sender?: components["schemas"]["simple-user"];
+    };
+    /**
+     * Merge Group
+     * @description A group of pull requests that the merge queue has grouped together to be merged.
+     */
+    "merge-group": {
+      /** @description The SHA of the merge group. */
+      head_sha: string;
+      /** @description The full ref of the merge group. */
+      head_ref: string;
+      /** @description The SHA of the merge group's parent commit. */
+      base_sha: string;
+      /** @description The full ref of the branch the merge group will be merged into. */
+      base_ref: string;
+      head_commit: components["schemas"]["simple-commit"];
+    };
+    /**
+     * Simple Commit
+     * @description A commit.
+     */
+    "simple-commit": {
+      /** @description SHA for the commit */
+      id: string;
+      /** @description SHA for the commit's tree */
+      tree_id: string;
+      /** @description Message describing the purpose of the commit */
+      message: string;
+      /**
+       * Format: date-time
+       * @description Timestamp of the commit
+       */
+      timestamp: string;
+      /** @description Information about the Git author */
+      author: OneOf<
+        [
+          {
+            /** @description Name of the commit's author */
             name: string;
-            username?: string;
-          };
-          /**
-           * Committer
-           * @description Metaproperties for Git author/committer information.
-           */
-          committer: {
-            /** Format: date-time */
-            date?: string;
-            /** Format: email */
-            email: OneOf<[string, null]>;
-            /** @description The git author's name. */
+            /**
+             * Format: email
+             * @description Git email address of the commit's author
+             */
+            email: string;
+          },
+          null
+        ]
+      >;
+      /** @description Information about the Git committer */
+      committer: OneOf<
+        [
+          {
+            /** @description Name of the commit's committer */
             name: string;
-            username?: string;
-          };
-          id: string;
-          message: string;
-          timestamp: string;
-          tree_id: string;
-        };
-      };
+            /**
+             * Format: email
+             * @description Git email address of the commit's committer
+             */
+            email: string;
+          },
+          null
+        ]
+      >;
+    };
+    "webhook-merge-group-destroyed": {
+      /** @enum {string} */
+      action: "destroyed";
+      /**
+       * @description Explains why the merge group is being destroyed. The group could have been merged, removed from the queue (dequeued), or invalidated by an earlier queue entry being dequeued (invalidated).
+       * @enum {string}
+       */
+      reason?: "merged" | "invalidated" | "dequeued";
+      installation?: components["schemas"]["simple-installation"];
+      merge_group: components["schemas"]["merge-group"];
       organization?: components["schemas"]["organization-simple"];
       repository?: components["schemas"]["repository"];
       sender?: components["schemas"]["simple-user"];
@@ -72319,6 +72365,45 @@ export interface operations {
     requestBody: {
       content: {
         "application/json": components["schemas"]["webhook-merge-group-checks-requested"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: never;
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to a merge group in a merge queue. For more information, see "[Managing a merge queue](https://docs.github.com/enterprise-cloud@latest//repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue)."
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Merge queues" repository permission.
+   *
+   * **Note**: The pull request merge queue feature is currently in public beta and subject to change.
+   * @description The merge queue groups pull requests together to be merged. This event indicates that one of those merge groups was destroyed. This happens when a pull request is removed from the queue: any group containing that pull request is also destroyed.
+   *
+   * When you receive this event, you may want to cancel any checks that are running on the head SHA to avoid wasting computing resources on a merge group that will not be used.
+   */
+  "merge-group/destroyed": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent"?: string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id"?: string;
+        /** @example issues */
+        "X-Github-Event"?: string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id"?: string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type"?: string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery"?: string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256"?: string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-merge-group-destroyed"];
       };
     };
     responses: {
