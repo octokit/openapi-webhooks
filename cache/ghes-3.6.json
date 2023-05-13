@@ -8353,23 +8353,59 @@
         "description": "A commit.",
         "type": "object",
         "properties": {
-          "id": { "type": "string" },
-          "tree_id": { "type": "string" },
-          "message": { "type": "string" },
-          "timestamp": { "type": "string", "format": "date-time" },
+          "id": {
+            "type": "string",
+            "description": "SHA for the commit",
+            "examples": ["7638417db6d59f3c431d3e1f261cc637155684cd"]
+          },
+          "tree_id": {
+            "type": "string",
+            "description": "SHA for the commit's tree"
+          },
+          "message": {
+            "description": "Message describing the purpose of the commit",
+            "type": "string",
+            "examples": ["Fix #42"]
+          },
+          "timestamp": {
+            "description": "Timestamp of the commit",
+            "format": "date-time",
+            "type": "string",
+            "examples": ["2014-08-09T08:02:04+12:00"]
+          },
           "author": {
             "type": ["object", "null"],
+            "description": "Information about the Git author",
             "properties": {
-              "name": { "type": "string" },
-              "email": { "type": "string" }
+              "name": {
+                "description": "Name of the commit's author",
+                "type": "string",
+                "examples": ["Monalisa Octocat"]
+              },
+              "email": {
+                "description": "Git email address of the commit's author",
+                "type": "string",
+                "format": "email",
+                "examples": ["monalisa.octocat@example.com"]
+              }
             },
             "required": ["name", "email"]
           },
           "committer": {
             "type": ["object", "null"],
+            "description": "Information about the Git committer",
             "properties": {
-              "name": { "type": "string" },
-              "email": { "type": "string" }
+              "name": {
+                "description": "Name of the commit's committer",
+                "type": "string",
+                "examples": ["Monalisa Octocat"]
+              },
+              "email": {
+                "description": "Git email address of the commit's committer",
+                "type": "string",
+                "format": "email",
+                "examples": ["monalisa.octocat@example.com"]
+              }
             },
             "required": ["name", "email"]
           }
@@ -17224,7 +17260,6 @@
                 "key_id": "4A595D4C72EE49C7",
                 "public_key": "zsBNBFayYZ...",
                 "emails": [],
-                "subkeys": [],
                 "can_sign": false,
                 "can_encrypt_comms": true,
                 "can_encrypt_storage": true,
@@ -37999,7 +38034,6 @@
                 "key_id": "4A595D4C72EE49C7",
                 "public_key": "zsBNBFayYZ...",
                 "emails": [],
-                "subkeys": [],
                 "can_sign": false,
                 "can_encrypt_comms": true,
                 "can_encrypt_storage": true,
@@ -38037,7 +38071,6 @@
               "key_id": "4A595D4C72EE49C7",
               "public_key": "zsBNBFayYZ...",
               "emails": [],
-              "subkeys": [],
               "can_sign": false,
               "can_encrypt_comms": true,
               "can_encrypt_storage": true,
