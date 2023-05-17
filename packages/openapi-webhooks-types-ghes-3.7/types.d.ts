@@ -23411,7 +23411,7 @@ export interface components {
               installation_command: string;
               manifest?: string;
               metadata: {
-                [key: string]: unknown | undefined;
+                [key: string]: unknown;
               }[];
               name: string;
               npm_metadata?: OneOf<
@@ -23719,7 +23719,7 @@ export interface components {
           installation_command: string;
           manifest?: string;
           metadata: {
-            [key: string]: unknown | undefined;
+            [key: string]: unknown;
           }[];
           name: string;
           package_files: {
@@ -56978,7 +56978,7 @@ export interface components {
               installation_command: string;
               manifest?: string;
               metadata: {
-                [key: string]: unknown | undefined;
+                [key: string]: unknown;
               }[];
               name: string;
               npm_metadata?: OneOf<
@@ -57195,7 +57195,7 @@ export interface components {
           installation_command: string;
           manifest?: string;
           metadata: {
-            [key: string]: unknown | undefined;
+            [key: string]: unknown;
           }[];
           name: string;
           package_files: {
@@ -58600,7 +58600,7 @@ export interface components {
       client_payload: OneOf<
         [
           {
-            [key: string]: unknown | undefined;
+            [key: string]: unknown;
           },
           null
         ]
@@ -62560,7 +62560,7 @@ export interface components {
       inputs: OneOf<
         [
           {
-            [key: string]: unknown | undefined;
+            [key: string]: unknown;
           },
           null
         ]
