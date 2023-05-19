@@ -16,5 +16,8 @@
     "octokit"
   ],
   "author": "Wolfy1339 <webmaster@wolfy1339.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  }
 }
