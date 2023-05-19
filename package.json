@@ -46,7 +46,26 @@
     "plugins": [
       "@semantic-release/commit-analyzer",
       "@semantic-release/release-notes-generator",
-      "@semantic-release/github",
+      [
+        "semantic-release-plugin-update-version-in-files",
+        {
+          "files": [
+            "packages/openapi-webhooks/generated/*"
+          ]
+        }
+      ],
+      [
+        "@semantic-release/github",
+        {
+          "assets": "packages/openapi-webhooks/generated/*.json"
+        }
+      ],
+      [
+        "@semantic-release/npm",
+        {
+          "pkgRoot": "packages/openapi-webhooks"
+        }
+      ],
       [
         "@semantic-release/npm",
         {
@@ -93,26 +112,6 @@
         "@semantic-release/npm",
         {
           "pkgRoot": "packages/openapi-webhooks-types-github.ae"
-        }
-      ],
-      [
-        "semantic-release-plugin-update-version-in-files",
-        {
-          "files": [
-            "packages/openapi-webhooks/generated/*"
-          ]
-        }
-      ],
-      [
-        "@semantic-release/github",
-        {
-          "assets": "packages/openapi-webhooks/generated/*.json"
-        }
-      ],
-      [
-        "@semantic-release/npm",
-        {
-          "pkgRoot": "packages/openapi-webhooks"
         }
       ]
     ]

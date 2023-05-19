@@ -19,7 +19,19 @@ async function updatePackage() {
   pkg.release.plugins = [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
-    "@semantic-release/github",
+    [
+      "semantic-release-plugin-update-version-in-files",
+      {
+        files: ["packages/openapi-webhooks/generated/*"],
+      },
+    ],
+    [
+      "@semantic-release/github",
+      {
+        assets: "packages/openapi-webhooks/generated/*.json",
+      },
+    ],
+    ["@semantic-release/npm", { pkgRoot: "packages/openapi-webhooks" }],
   ]
     .concat(
       typePackages.map((packageName) => {
@@ -30,22 +42,7 @@ async function updatePackage() {
           },
         ];
       })
-    )
-    .concat([
-      [
-        "semantic-release-plugin-update-version-in-files",
-        {
-          files: ["generated/*"],
-        },
-      ],
-      [
-        "@semantic-release/github",
-        {
-          assets: "generated/*.json",
-        },
-      ],
-      ["@semantic-release/npm", { pkgRoot: "packages/openapi-webhooks" }],
-    ]);
+    );
 
   await writeFile(
     "package.json",
