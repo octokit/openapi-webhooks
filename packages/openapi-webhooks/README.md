@@ -10,7 +10,7 @@ Amends webhooks from [GitHub's official OpenAPI specification](https://github.co
 
 ## Download
 
-Download from https://unpkg.com/browse/@wolfy1339/openapi-webhooks-webhooks/generated/
+Download from https://unpkg.com/browse/@wolfy1339/openapi-webhooks/generated/
 
 ## Node Usage
 
