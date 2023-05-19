@@ -70,13 +70,15 @@ async function run() {
 
     
     writeFileSync(
-      `generated/${file}`,
+      `packages/openapi-webhooks/generated/${file}`,
       prettier.format(JSON.stringify(tempSchema), { parser: "json" })
     );
-    console.log(`generated/${file} written`);
+    console.log(`packages/openapi-webhooks/generated/${file} written`);
   }
 
-  /*   for (const name of schemaFileNames) {
+  let schemasCode = "";
+
+  for (const name of schemaFileNames) {
     schemasCode += `["${name.replace(
       ".json",
       ""
@@ -84,7 +86,7 @@ async function run() {
   }
 
   writeFileSync(
-    "index.js",
+    "packages/openapi-webhooks/index.js",
     prettier.format(
       `
       module.exports = {
@@ -97,5 +99,5 @@ async function run() {
         parser: "babel",
       }
     )
-  ); */
+  );
 }

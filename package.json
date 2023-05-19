@@ -86,7 +86,33 @@
       [
         "@semantic-release/npm",
         {
+          "pkgRoot": "packages/openapi-webhooks-types-ghes-3.9"
+        }
+      ],
+      [
+        "@semantic-release/npm",
+        {
           "pkgRoot": "packages/openapi-webhooks-types-github.ae"
+        }
+      ],
+      [
+        "semantic-release-plugin-update-version-in-files",
+        {
+          "files": [
+            "packages/openapi-webhooks/generated/*"
+          ]
+        }
+      ],
+      [
+        "@semantic-release/github",
+        {
+          "assets": "packages/openapi-webhooks/generated/*.json"
+        }
+      ],
+      [
+        "@semantic-release/npm",
+        {
+          "pkgRoot": "packages/openapi-webhooks"
         }
       ]
     ]

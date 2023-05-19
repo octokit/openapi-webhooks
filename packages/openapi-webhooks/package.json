@@ -1,0 +1,21 @@
+{
+  "name": "@wolfy1339/openapi-webhooks",
+  "private": true,
+  "version": "0.0.0-development",
+  "description": "GitHub's official Webhooks OpenAPI spec with Octokit extensions",
+  "main": "index.js",
+  "files": [],
+  "type": "commonjs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wolfy1330/openapi-webhooks.git",
+    "directory": "packages/openapi-webhooks"
+  },
+  "keywords": [
+    "github",
+    "openapi",
+    "octokit"
+  ],
+  "author": "Wolfy1339 <webmaster@wolfy1339.com>",
+  "license": "MIT"
+}

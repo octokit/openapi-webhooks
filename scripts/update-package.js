@@ -12,7 +12,7 @@ updatePackage();
 async function updatePackage() {
   // set semantic-release configuration of npm packages
   const items = await readdir("packages");
-  const packages = items.filter((item) =>
+  const typePackages = items.filter((item) =>
     item.startsWith("openapi-webhooks-types")
   );
 
@@ -21,7 +21,7 @@ async function updatePackage() {
     "@semantic-release/release-notes-generator",
     "@semantic-release/github",
   ].concat(
-    packages.map((packageName) => {
+    typePackages.map((packageName) => {
       return [
         "@semantic-release/npm",
         {
@@ -29,7 +29,23 @@ async function updatePackage() {
         },
       ];
     })
-  );
+  ).concat([
+    [
+        "semantic-release-plugin-update-version-in-files",
+        {
+          "files": [
+            "generated/*"
+          ]
+        }
+      ],
+      [
+        "@semantic-release/github",
+        {
+          "assets": "generated/*.json"
+        }
+      ],
+      ["@semantic-release/npm", { pkgRoot: "packages/openapi-webhooks" }]
+    ]);
 
   await writeFile(
     "package.json",
