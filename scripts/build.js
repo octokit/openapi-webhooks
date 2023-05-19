@@ -1,8 +1,4 @@
-import {
-  readdirSync,
-  writeFileSync,
-  readFileSync,
-} from "node:fs";
+import { readdirSync, writeFileSync, readFileSync } from "node:fs";
 import prettier from "prettier";
 import _ from "lodash";
 
@@ -60,7 +56,10 @@ async function run() {
       const webhook = webhooks[webhookId].post.requestBody;
       const ref = webhook.content["application/json"].schema.$ref;
       const refName = ref.split("/").at(-1);
-      if (typeof webhook.content["application/x-www-form-urlencoded"] !== "undefined") {
+      if (
+        typeof webhook.content["application/x-www-form-urlencoded"] !==
+        "undefined"
+      ) {
         delete webhook.content["application/x-www-form-urlencoded"];
       }
       tempSchema.components.schemas[refName] =
@@ -68,7 +67,6 @@ async function run() {
       handleRefs(schema.components.schemas[refName]);
     }
 
-    
     writeFileSync(
       `packages/openapi-webhooks/generated/${file}`,
       prettier.format(JSON.stringify(tempSchema), { parser: "json" })
