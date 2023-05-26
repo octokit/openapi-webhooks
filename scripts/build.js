@@ -1,3 +1,4 @@
+import { rm, mkdir } from "node:fs/promises";
 import { readdirSync, writeFileSync, readFileSync } from "node:fs";
 import prettier from "prettier";
 import _ from "lodash";
