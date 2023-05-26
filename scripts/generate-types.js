@@ -28,7 +28,7 @@ async function run() {
   await rm("packages", { recursive: true }).catch(() => {});
   await mkdir("packages");
 
-  const files = await readdir("generated");
+  const files = await readdir("packages/openapi-webhooks/generated");
   for (const fileName of files) {
     if (!/\.json$/.test(fileName)) continue;
 
