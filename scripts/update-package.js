@@ -32,17 +32,16 @@ async function updatePackage() {
       },
     ],
     ["@semantic-release/npm", { pkgRoot: "packages/openapi-webhooks" }],
-  ]
-    .concat(
-      typePackages.map((packageName) => {
-        return [
-          "@semantic-release/npm",
-          {
-            pkgRoot: `packages/${packageName}`,
-          },
-        ];
-      })
-    );
+  ].concat(
+    typePackages.map((packageName) => {
+      return [
+        "@semantic-release/npm",
+        {
+          pkgRoot: `packages/${packageName}`,
+        },
+      ];
+    })
+  );
 
   await writeFile(
     "package.json",
