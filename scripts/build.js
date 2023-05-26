@@ -9,6 +9,8 @@ import _ from "lodash";
 run();
 
 async function run() {
+  await rm("packages", { recursive: true }).catch(() => {});
+  await mkdir("packages");
   const schemaFileNames = readdirSync("cache");
 
   for (const file of schemaFileNames) {

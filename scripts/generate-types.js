@@ -25,9 +25,6 @@ const packageDefaults = {
 };
 
 async function run() {
-  await rm("packages", { recursive: true }).catch(() => {});
-  await mkdir("packages");
-
   const files = await readdir("packages/openapi-webhooks/generated");
   for (const fileName of files) {
     if (!/\.json$/.test(fileName)) continue;
@@ -39,6 +36,7 @@ async function run() {
         ? "openapi-webhooks-types"
         : `openapi-webhooks-types-${name}`;
 
+    await rm(`packages/${packageName}`, { recursive: true, force: true });
     await mkdir(`packages/${packageName}`);
     await writeFile(
       `packages/${packageName}/package.json`,
@@ -88,7 +86,7 @@ type Repository = components["schemas"]["full-repository"]
 
     await writeFile(
       `packages/${packageName}/types.d.ts`,
-      prettier.format(await openapiTS(`generated/${name}.json`), {
+      prettier.format(await openapiTS(`packages/openapi-webhooks/generated/${name}.json`), {
         parser: "typescript",
       })
     );
