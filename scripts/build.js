@@ -1,5 +1,10 @@
 import { rm, mkdir } from "node:fs/promises";
-import { readdirSync, writeFileSync, readFileSync } from "node:fs";
+import {
+  readdirSync,
+  writeFileSync,
+  readFileSync,
+  copyFileSync,
+} from "node:fs";
 import prettier from "prettier";
 import _ from "lodash";
 
@@ -87,6 +92,15 @@ async function run() {
   }
 
   writeFileSync(
+    "packages/openapi-webhooks/generated/README.md",
+    prettier.format(
+      `# Please do not edit files in this folder
+
+They are all generated, your changes would be overwritten with the next update. If you found a problem with GitHub's OpenAPI schema, file an issue at https://github.com/github/rest-api-description/. If you found a problem specific to the \`x-octokit\` extension or usage of the \`@octokit/openapi\` module, please file an issue at https://github.com/octokit/openapi.`,
+      { parser: "markdown" }
+    )
+  );
+  writeFileSync(
     "packages/openapi-webhooks/index.js",
     prettier.format(
       `
@@ -101,4 +115,38 @@ async function run() {
       }
     )
   );
+  writeFileSync(
+    `packages/openapi-webhooks/package.json`,
+    prettier.format(
+      JSON.stringify({
+        name: `@wolfy1339/openapi-webhooks`,
+        version: "0.0.0-development",
+        description:
+          "GitHub's official Webhooks OpenAPI spec with Octokit extensions",
+        main: "index.js",
+        files: ["generated/*", "index.js"],
+        type: "commonjs",
+        repository: {
+          type: "git",
+          url: "https://github.com/wolfy1330/openapi-webhooks.git",
+          directory: `packages/openapi-webhooks`,
+        },
+        keywords: ["github", "openapi", "octokit", "webhooks"],
+        author: "wolfy1339 <webmaster@wolfy1339.com>",
+        license: "MIT",
+        publishConfig: {
+          access: "public",
+        },
+      }),
+      { parser: "json-stringify" }
+    )
+  );
+
+  writeFileSync(
+    `packages/openapi-webhooks/README.md`,
+    readFileSync("README.md", "utf8")
+      .toString()
+      .replace("(CONTRIBUTING.md)", "(../../CONTRIBUTING.md)")
+  );
+  copyFileSync("LICENSE", `packages/openapi-webhooks/LICENSE`);
 }
