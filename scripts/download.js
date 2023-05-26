@@ -63,7 +63,7 @@ async function run() {
   }
 
   // temporarily hardcode versions until we unblock automated updates
-  const currentGhesVersions = await getCurrentVersions();
+  const currentGhesVersions = [...await getCurrentVersions(), 3.9];
 
   for (const folder of data) {
     const { name } = folder;
