@@ -1,6 +1,6 @@
 # openapi
 
-> GitHub's official OpenAPI spec with Octokit extensions
+> GitHub's official Webhooks OpenAPI spec with Octokit extensions
 
 [![@latest](https://img.shields.io/npm/v/@wolfy1339/openapi-webhooks.svg)](https://www.npmjs.com/package/@wolfy1339/openapi-webhooks)
 

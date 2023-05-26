@@ -16,9 +16,10 @@
   "keywords": [
     "github",
     "openapi",
-    "octokit"
+    "octokit",
+    "webhooks"
   ],
-  "author": "Wolfy1339 <webmaster@wolfy1339.com>",
+  "author": "wolfy1339 <webmaster@wolfy1339.com>",
   "license": "MIT",
   "publishConfig": {
     "access": "public"
