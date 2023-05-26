@@ -11,7 +11,7 @@ run();
 
 async function run() {
   await rm("packages", { recursive: true }).catch(() => {});
-  await mkdir("packages");
+  await mkdir("packages/openapi-webhooks/generated", { recursive: true });
   const schemaFileNames = readdirSync("cache");
 
   for (const file of schemaFileNames) {
