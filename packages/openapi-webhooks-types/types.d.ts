@@ -68939,7 +68939,7 @@ export interface operations {
    */
   "branch-protection-rule/created": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -68974,7 +68974,7 @@ export interface operations {
    */
   "branch-protection-rule/deleted": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -69009,7 +69009,7 @@ export interface operations {
    */
   "branch-protection-rule/edited": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -69050,7 +69050,7 @@ export interface operations {
    */
   "check-run/completed": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -69091,7 +69091,7 @@ export interface operations {
    */
   "check-run/created": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -69132,7 +69132,7 @@ export interface operations {
    */
   "check-run/requested-action": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -69173,7 +69173,7 @@ export interface operations {
    */
   "check-run/rerequested": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -69214,7 +69214,7 @@ export interface operations {
    */
   "check-suite/completed": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -69255,7 +69255,7 @@ export interface operations {
    */
   "check-suite/requested": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -69296,7 +69296,7 @@ export interface operations {
    */
   "check-suite/rerequested": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -69331,7 +69331,7 @@ export interface operations {
    */
   "code-scanning-alert/appeared-in-branch": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -69366,7 +69366,7 @@ export interface operations {
    */
   "code-scanning-alert/closed-by-user": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -69401,7 +69401,7 @@ export interface operations {
    */
   "code-scanning-alert/created": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -69436,7 +69436,7 @@ export interface operations {
    */
   "code-scanning-alert/fixed": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -69471,7 +69471,7 @@ export interface operations {
    */
   "code-scanning-alert/reopened": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -69506,7 +69506,7 @@ export interface operations {
    */
   "code-scanning-alert/reopened-by-user": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -69543,7 +69543,7 @@ export interface operations {
    */
   "commit-comment/created": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -69579,7 +69579,7 @@ export interface operations {
    */
   create: {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -69615,7 +69615,7 @@ export interface operations {
    */
   delete: {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -69654,7 +69654,7 @@ export interface operations {
    */
   "dependabot-alert/auto-dismissed": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -69693,7 +69693,7 @@ export interface operations {
    */
   "dependabot-alert/auto-reopened": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -69732,7 +69732,7 @@ export interface operations {
    */
   "dependabot-alert/created": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -69771,7 +69771,7 @@ export interface operations {
    */
   "dependabot-alert/dismissed": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -69810,7 +69810,7 @@ export interface operations {
    */
   "dependabot-alert/fixed": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -69849,7 +69849,7 @@ export interface operations {
    */
   "dependabot-alert/reintroduced": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -69888,7 +69888,7 @@ export interface operations {
    */
   "dependabot-alert/reopened": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -69923,7 +69923,7 @@ export interface operations {
    */
   "deploy-key/created": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -69958,7 +69958,7 @@ export interface operations {
    */
   "deploy-key/deleted": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -69995,7 +69995,7 @@ export interface operations {
    */
   "deployment/created": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -70030,7 +70030,7 @@ export interface operations {
    */
   "deployment-protection-rule/requested": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -70067,7 +70067,7 @@ export interface operations {
    */
   "deployment-status/created": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -70106,7 +70106,7 @@ export interface operations {
    */
   "discussion/answered": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -70145,7 +70145,7 @@ export interface operations {
    */
   "discussion/category-changed": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -70184,7 +70184,7 @@ export interface operations {
    */
   "discussion/closed": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -70223,7 +70223,7 @@ export interface operations {
    */
   "discussion-comment/created": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -70262,7 +70262,7 @@ export interface operations {
    */
   "discussion-comment/deleted": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -70301,7 +70301,7 @@ export interface operations {
    */
   "discussion-comment/edited": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -70340,7 +70340,7 @@ export interface operations {
    */
   "discussion/created": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -70379,7 +70379,7 @@ export interface operations {
    */
   "discussion/deleted": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -70418,7 +70418,7 @@ export interface operations {
    */
   "discussion/edited": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -70457,7 +70457,7 @@ export interface operations {
    */
   "discussion/labeled": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -70496,7 +70496,7 @@ export interface operations {
    */
   "discussion/locked": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -70535,7 +70535,7 @@ export interface operations {
    */
   "discussion/pinned": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -70574,7 +70574,7 @@ export interface operations {
    */
   "discussion/reopened": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -70613,7 +70613,7 @@ export interface operations {
    */
   "discussion/transferred": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -70652,7 +70652,7 @@ export interface operations {
    */
   "discussion/unanswered": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -70691,7 +70691,7 @@ export interface operations {
    */
   "discussion/unlabeled": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -70730,7 +70730,7 @@ export interface operations {
    */
   "discussion/unlocked": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -70769,7 +70769,7 @@ export interface operations {
    */
   "discussion/unpinned": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -70803,7 +70803,7 @@ export interface operations {
    */
   fork: {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -70840,7 +70840,7 @@ export interface operations {
    */
   "github-app-authorization/revoked": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -70874,7 +70874,7 @@ export interface operations {
    */
   gollum: {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -70909,7 +70909,7 @@ export interface operations {
    */
   "installation/created": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -70944,7 +70944,7 @@ export interface operations {
    */
   "installation/deleted": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -70979,7 +70979,7 @@ export interface operations {
    */
   "installation/new-permissions-accepted": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -71014,7 +71014,7 @@ export interface operations {
    */
   "installation-repositories/added": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -71049,7 +71049,7 @@ export interface operations {
    */
   "installation-repositories/removed": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -71084,7 +71084,7 @@ export interface operations {
    */
   "installation/suspend": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -71117,7 +71117,7 @@ export interface operations {
    */
   "installation-target/renamed": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -71152,7 +71152,7 @@ export interface operations {
    */
   "installation/unsuspend": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -71189,7 +71189,7 @@ export interface operations {
    */
   "issue-comment/created": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -71226,7 +71226,7 @@ export interface operations {
    */
   "issue-comment/deleted": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -71263,7 +71263,7 @@ export interface operations {
    */
   "issue-comment/edited": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -71300,7 +71300,7 @@ export interface operations {
    */
   "issues/assigned": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -71337,7 +71337,7 @@ export interface operations {
    */
   "issues/closed": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -71374,7 +71374,7 @@ export interface operations {
    */
   "issues/deleted": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -71411,7 +71411,7 @@ export interface operations {
    */
   "issues/demilestoned": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -71448,7 +71448,7 @@ export interface operations {
    */
   "issues/edited": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -71485,7 +71485,7 @@ export interface operations {
    */
   "issues/labeled": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -71522,7 +71522,7 @@ export interface operations {
    */
   "issues/locked": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -71559,7 +71559,7 @@ export interface operations {
    */
   "issues/milestoned": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -71596,7 +71596,7 @@ export interface operations {
    */
   "issues/opened": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -71633,7 +71633,7 @@ export interface operations {
    */
   "issues/pinned": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -71670,7 +71670,7 @@ export interface operations {
    */
   "issues/reopened": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -71707,7 +71707,7 @@ export interface operations {
    */
   "issues/transferred": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -71744,7 +71744,7 @@ export interface operations {
    */
   "issues/unassigned": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -71781,7 +71781,7 @@ export interface operations {
    */
   "issues/unlabeled": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -71818,7 +71818,7 @@ export interface operations {
    */
   "issues/unlocked": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -71855,7 +71855,7 @@ export interface operations {
    */
   "issues/unpinned": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -71892,7 +71892,7 @@ export interface operations {
    */
   "label/created": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -71929,7 +71929,7 @@ export interface operations {
    */
   "label/deleted": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -71966,7 +71966,7 @@ export interface operations {
    */
   "label/edited": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -71999,7 +71999,7 @@ export interface operations {
    */
   "marketplace-purchase/cancelled": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -72032,7 +72032,7 @@ export interface operations {
    */
   "marketplace-purchase/changed": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -72065,7 +72065,7 @@ export interface operations {
    */
   "marketplace-purchase/pending-change": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -72098,7 +72098,7 @@ export interface operations {
    */
   "marketplace-purchase/pending-change-cancelled": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -72131,7 +72131,7 @@ export interface operations {
    */
   "marketplace-purchase/purchased": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -72166,7 +72166,7 @@ export interface operations {
    */
   "member/added": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -72201,7 +72201,7 @@ export interface operations {
    */
   "member/edited": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -72236,7 +72236,7 @@ export interface operations {
    */
   "member/removed": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -72271,7 +72271,7 @@ export interface operations {
    */
   "membership/added": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -72306,7 +72306,7 @@ export interface operations {
    */
   "membership/removed": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -72345,7 +72345,7 @@ export interface operations {
    */
   "merge-group/checks-requested": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -72384,7 +72384,7 @@ export interface operations {
    */
   "merge-group/destroyed": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -72419,7 +72419,7 @@ export interface operations {
    */
   "meta/deleted": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -72456,7 +72456,7 @@ export interface operations {
    */
   "milestone/closed": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -72493,7 +72493,7 @@ export interface operations {
    */
   "milestone/created": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -72530,7 +72530,7 @@ export interface operations {
    */
   "milestone/deleted": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -72567,7 +72567,7 @@ export interface operations {
    */
   "milestone/edited": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -72604,7 +72604,7 @@ export interface operations {
    */
   "milestone/opened": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -72641,7 +72641,7 @@ export interface operations {
    */
   "org-block/blocked": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -72678,7 +72678,7 @@ export interface operations {
    */
   "org-block/unblocked": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -72715,7 +72715,7 @@ export interface operations {
    */
   "organization/deleted": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -72752,7 +72752,7 @@ export interface operations {
    */
   "organization/member-added": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -72789,7 +72789,7 @@ export interface operations {
    */
   "organization/member-invited": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -72826,7 +72826,7 @@ export interface operations {
    */
   "organization/member-removed": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -72863,7 +72863,7 @@ export interface operations {
    */
   "organization/renamed": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -72898,7 +72898,7 @@ export interface operations {
    */
   "package/published": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -72933,7 +72933,7 @@ export interface operations {
    */
   "package/updated": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -72967,7 +72967,7 @@ export interface operations {
    */
   "page-build": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -73004,7 +73004,7 @@ export interface operations {
    */
   "personal-access-token-request/approved": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
@@ -73041,7 +73041,7 @@ export interface operations {
    */
   "personal-access-token-request/cancelled": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
@@ -73078,7 +73078,7 @@ export interface operations {
    */
   "personal-access-token-request/created": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
@@ -73115,7 +73115,7 @@ export interface operations {
    */
   "personal-access-token-request/denied": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
@@ -73145,7 +73145,7 @@ export interface operations {
   /** This event occurs when you create a new webhook. The ping event is a confirmation from GitHub that you configured the webhook correctly. */
   ping: {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -73182,7 +73182,7 @@ export interface operations {
    */
   "project-card/converted": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -73219,7 +73219,7 @@ export interface operations {
    */
   "project-card/created": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -73256,7 +73256,7 @@ export interface operations {
    */
   "project-card/deleted": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -73293,7 +73293,7 @@ export interface operations {
    */
   "project-card/edited": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -73330,7 +73330,7 @@ export interface operations {
    */
   "project-card/moved": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -73367,7 +73367,7 @@ export interface operations {
    */
   "project/closed": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -73404,7 +73404,7 @@ export interface operations {
    */
   "project-column/created": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -73441,7 +73441,7 @@ export interface operations {
    */
   "project-column/deleted": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -73478,7 +73478,7 @@ export interface operations {
    */
   "project-column/edited": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -73515,7 +73515,7 @@ export interface operations {
    */
   "project-column/moved": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -73552,7 +73552,7 @@ export interface operations {
    */
   "project/created": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -73589,7 +73589,7 @@ export interface operations {
    */
   "project/deleted": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -73626,7 +73626,7 @@ export interface operations {
    */
   "project/edited": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -73663,7 +73663,7 @@ export interface operations {
    */
   "project/reopened": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -73702,7 +73702,7 @@ export interface operations {
    */
   "projects-v2/closed": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -73741,7 +73741,7 @@ export interface operations {
    */
   "projects-v2/created": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -73780,7 +73780,7 @@ export interface operations {
    */
   "projects-v2/deleted": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -73819,7 +73819,7 @@ export interface operations {
    */
   "projects-v2/edited": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -73858,7 +73858,7 @@ export interface operations {
    */
   "projects-v2-item/archived": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -73897,7 +73897,7 @@ export interface operations {
    */
   "projects-v2-item/converted": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -73936,7 +73936,7 @@ export interface operations {
    */
   "projects-v2-item/created": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -73975,7 +73975,7 @@ export interface operations {
    */
   "projects-v2-item/deleted": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -74014,7 +74014,7 @@ export interface operations {
    */
   "projects-v2-item/edited": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -74053,7 +74053,7 @@ export interface operations {
    */
   "projects-v2-item/reordered": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -74092,7 +74092,7 @@ export interface operations {
    */
   "projects-v2-item/restored": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -74131,7 +74131,7 @@ export interface operations {
    */
   "projects-v2/reopened": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -74165,7 +74165,7 @@ export interface operations {
    */
   public: {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -74202,7 +74202,7 @@ export interface operations {
    */
   "pull-request/assigned": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -74239,7 +74239,7 @@ export interface operations {
    */
   "pull-request/auto-merge-disabled": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -74276,7 +74276,7 @@ export interface operations {
    */
   "pull-request/auto-merge-enabled": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -74313,7 +74313,7 @@ export interface operations {
    */
   "pull-request/closed": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -74350,7 +74350,7 @@ export interface operations {
    */
   "pull-request/converted-to-draft": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -74387,7 +74387,7 @@ export interface operations {
    */
   "pull-request/demilestoned": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -74426,7 +74426,7 @@ export interface operations {
    */
   "pull-request/dequeued": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -74463,7 +74463,7 @@ export interface operations {
    */
   "pull-request/edited": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -74502,7 +74502,7 @@ export interface operations {
    */
   "pull-request/enqueued": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -74539,7 +74539,7 @@ export interface operations {
    */
   "pull-request/labeled": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -74576,7 +74576,7 @@ export interface operations {
    */
   "pull-request/locked": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -74613,7 +74613,7 @@ export interface operations {
    */
   "pull-request/milestoned": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -74650,7 +74650,7 @@ export interface operations {
    */
   "pull-request/opened": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -74687,7 +74687,7 @@ export interface operations {
    */
   "pull-request/ready-for-review": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -74724,7 +74724,7 @@ export interface operations {
    */
   "pull-request/reopened": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -74761,7 +74761,7 @@ export interface operations {
    */
   "pull-request-review-comment/created": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -74798,7 +74798,7 @@ export interface operations {
    */
   "pull-request-review-comment/deleted": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -74835,7 +74835,7 @@ export interface operations {
    */
   "pull-request-review-comment/edited": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -74872,7 +74872,7 @@ export interface operations {
    */
   "pull-request-review/dismissed": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -74909,7 +74909,7 @@ export interface operations {
    */
   "pull-request-review/edited": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -74946,7 +74946,7 @@ export interface operations {
    */
   "pull-request/review-request-removed": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -74983,7 +74983,7 @@ export interface operations {
    */
   "pull-request/review-requested": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -75020,7 +75020,7 @@ export interface operations {
    */
   "pull-request-review/submitted": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -75057,7 +75057,7 @@ export interface operations {
    */
   "pull-request-review-thread/resolved": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -75094,7 +75094,7 @@ export interface operations {
    */
   "pull-request-review-thread/unresolved": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -75131,7 +75131,7 @@ export interface operations {
    */
   "pull-request/synchronize": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -75168,7 +75168,7 @@ export interface operations {
    */
   "pull-request/unassigned": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -75205,7 +75205,7 @@ export interface operations {
    */
   "pull-request/unlabeled": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -75242,7 +75242,7 @@ export interface operations {
    */
   "pull-request/unlocked": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -75278,7 +75278,7 @@ export interface operations {
    */
   push: {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -75315,7 +75315,7 @@ export interface operations {
    */
   "registry-package/published": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -75352,7 +75352,7 @@ export interface operations {
    */
   "registry-package/updated": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -75387,7 +75387,7 @@ export interface operations {
    */
   "release/created": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -75422,7 +75422,7 @@ export interface operations {
    */
   "release/deleted": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -75457,7 +75457,7 @@ export interface operations {
    */
   "release/edited": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -75492,7 +75492,7 @@ export interface operations {
    */
   "release/prereleased": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -75527,7 +75527,7 @@ export interface operations {
    */
   "release/published": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -75562,7 +75562,7 @@ export interface operations {
    */
   "release/released": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -75597,7 +75597,7 @@ export interface operations {
    */
   "release/unpublished": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -75632,7 +75632,7 @@ export interface operations {
    */
   "repository-advisory/published": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -75667,7 +75667,7 @@ export interface operations {
    */
   "repository-advisory/reported": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -75702,7 +75702,7 @@ export interface operations {
    */
   "repository/archived": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -75737,7 +75737,7 @@ export interface operations {
    */
   "repository/created": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -75772,7 +75772,7 @@ export interface operations {
    */
   "repository/deleted": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -75807,7 +75807,7 @@ export interface operations {
    */
   "repository-dispatch/sample.collected": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -75842,7 +75842,7 @@ export interface operations {
    */
   "repository/edited": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -75872,7 +75872,7 @@ export interface operations {
   /** This event occurs when a repository is imported to GitHub. For more information, see "[Importing a repository with GitHub Importer](https://docs.github.com/get-started/importing-your-projects-to-github/importing-source-code-to-github/importing-a-repository-with-github-importer)." For more information about the API to manage imports, see [the REST API documentation](https://docs.github.com/rest/migrations/source-imports). */
   "repository-import": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -75907,7 +75907,7 @@ export interface operations {
    */
   "repository/privatized": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -75942,7 +75942,7 @@ export interface operations {
    */
   "repository/publicized": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -75977,7 +75977,7 @@ export interface operations {
    */
   "repository/renamed": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -76012,7 +76012,7 @@ export interface operations {
    */
   "repository/transferred": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -76047,7 +76047,7 @@ export interface operations {
    */
   "repository/unarchived": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -76082,7 +76082,7 @@ export interface operations {
    */
   "repository-vulnerability-alert/create": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -76117,7 +76117,7 @@ export interface operations {
    */
   "repository-vulnerability-alert/dismiss": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -76152,7 +76152,7 @@ export interface operations {
    */
   "repository-vulnerability-alert/reopen": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -76187,7 +76187,7 @@ export interface operations {
    */
   "repository-vulnerability-alert/resolve": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -76224,7 +76224,7 @@ export interface operations {
    */
   "secret-scanning-alert/created": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -76263,7 +76263,7 @@ export interface operations {
    */
   "secret-scanning-alert-location/created": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -76300,7 +76300,7 @@ export interface operations {
    */
   "secret-scanning-alert/reopened": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -76337,7 +76337,7 @@ export interface operations {
    */
   "secret-scanning-alert/resolved": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -76374,7 +76374,7 @@ export interface operations {
    */
   "secret-scanning-alert/revoked": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -76409,7 +76409,7 @@ export interface operations {
    */
   "security-advisory/published": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -76444,7 +76444,7 @@ export interface operations {
    */
   "security-advisory/updated": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -76479,7 +76479,7 @@ export interface operations {
    */
   "security-advisory/withdrawn": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -76513,7 +76513,7 @@ export interface operations {
    */
   "security-and-analysis": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -76550,7 +76550,7 @@ export interface operations {
    */
   "sponsorship/cancelled": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -76585,7 +76585,7 @@ export interface operations {
    */
   "sponsorship/created": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -76620,7 +76620,7 @@ export interface operations {
    */
   "sponsorship/edited": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -76657,7 +76657,7 @@ export interface operations {
    */
   "sponsorship/pending-cancellation": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -76692,7 +76692,7 @@ export interface operations {
    */
   "sponsorship/pending-tier-change": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -76727,7 +76727,7 @@ export interface operations {
    */
   "sponsorship/tier-changed": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -76762,7 +76762,7 @@ export interface operations {
    */
   "star/created": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -76797,7 +76797,7 @@ export interface operations {
    */
   "star/deleted": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -76831,7 +76831,7 @@ export interface operations {
    */
   status: {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -76868,7 +76868,7 @@ export interface operations {
    */
   "team-add": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -76904,7 +76904,7 @@ export interface operations {
    */
   "team/added-to-repository": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -76940,7 +76940,7 @@ export interface operations {
    */
   "team/created": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -76976,7 +76976,7 @@ export interface operations {
    */
   "team/deleted": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -77012,7 +77012,7 @@ export interface operations {
    */
   "team/edited": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -77048,7 +77048,7 @@ export interface operations {
    */
   "team/removed-from-repository": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -77083,7 +77083,7 @@ export interface operations {
    */
   "watch/started": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -77119,7 +77119,7 @@ export interface operations {
    */
   "workflow-dispatch": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -77156,7 +77156,7 @@ export interface operations {
    */
   "workflow-job/completed": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -77193,7 +77193,7 @@ export interface operations {
    */
   "workflow-job/in-progress": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -77230,7 +77230,7 @@ export interface operations {
    */
   "workflow-job/queued": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -77269,7 +77269,7 @@ export interface operations {
    */
   "workflow-job/waiting": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -77306,7 +77306,7 @@ export interface operations {
    */
   "workflow-run/completed": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -77343,7 +77343,7 @@ export interface operations {
    */
   "workflow-run/in-progress": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
@@ -77380,7 +77380,7 @@ export interface operations {
    */
   "workflow-run/requested": {
     parameters: {
-      header: {
+      header?: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent"?: string;
         /** @example 12312312 */
