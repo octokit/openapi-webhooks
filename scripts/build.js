@@ -61,14 +61,19 @@ async function run() {
 
     const webhooks = schema.webhooks;
     for (const webhookId in webhooks) {
-      const webhook = webhooks[webhookId].post.requestBody;
-      const ref = webhook.content["application/json"].schema.$ref;
+      const webhook = webhooks[webhookId].post;
+      const requestBody = webhook.requestBody;
+      const ref = requestBody.content["application/json"].schema.$ref;
       const refName = ref.split("/").at(-1);
       if (
-        typeof webhook.content["application/x-www-form-urlencoded"] !==
+        typeof requestBody.content["application/x-www-form-urlencoded"] !==
         "undefined"
       ) {
-        delete webhook.content["application/x-www-form-urlencoded"];
+        delete requestBody.content["application/x-www-form-urlencoded"];
+      }
+      // Mark all headers as required
+      for (let parameter of webhook.parameters) {
+        parameter.required = true;
       }
       tempSchema.components.schemas[refName] =
         schema.components.schemas[refName];
