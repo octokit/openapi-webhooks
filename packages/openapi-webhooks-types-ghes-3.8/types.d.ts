@@ -65035,23 +65035,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -65074,23 +65074,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -65113,23 +65113,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -65147,23 +65147,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -65192,23 +65192,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -65237,23 +65237,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -65282,23 +65282,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -65327,23 +65327,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -65372,23 +65372,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -65417,23 +65417,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -65462,23 +65462,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -65501,23 +65501,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -65540,23 +65540,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -65579,23 +65579,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -65618,23 +65618,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -65657,23 +65657,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -65696,23 +65696,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -65737,23 +65737,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -65777,23 +65777,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -65817,23 +65817,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -65860,23 +65860,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -65903,23 +65903,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -65946,23 +65946,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -65989,23 +65989,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -66032,23 +66032,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -66071,23 +66071,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -66110,23 +66110,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -66151,23 +66151,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -66192,23 +66192,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -66235,23 +66235,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -66278,23 +66278,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -66321,23 +66321,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -66364,23 +66364,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -66407,23 +66407,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -66450,23 +66450,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -66493,23 +66493,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -66536,23 +66536,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -66579,23 +66579,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -66622,23 +66622,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -66665,23 +66665,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -66708,23 +66708,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -66751,23 +66751,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -66794,23 +66794,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -66837,23 +66837,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -66880,23 +66880,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -66917,23 +66917,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -66954,23 +66954,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -66992,23 +66992,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -67033,23 +67033,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -67071,23 +67071,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -67110,23 +67110,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -67149,23 +67149,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -67188,23 +67188,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -67227,23 +67227,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -67266,23 +67266,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -67305,23 +67305,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -67342,23 +67342,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -67381,23 +67381,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -67422,23 +67422,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -67463,23 +67463,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -67504,23 +67504,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -67545,23 +67545,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -67586,23 +67586,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -67627,23 +67627,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -67668,23 +67668,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -67709,23 +67709,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -67750,23 +67750,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -67791,23 +67791,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -67832,23 +67832,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -67873,23 +67873,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -67914,23 +67914,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -67955,23 +67955,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -67996,23 +67996,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -68037,23 +68037,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -68078,23 +68078,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -68119,23 +68119,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -68160,23 +68160,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -68201,23 +68201,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -68242,23 +68242,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -68283,23 +68283,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -68322,23 +68322,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -68361,23 +68361,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -68400,23 +68400,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -68439,23 +68439,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -68478,23 +68478,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -68517,23 +68517,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -68558,23 +68558,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -68599,23 +68599,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -68640,23 +68640,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -68681,23 +68681,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -68722,23 +68722,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -68763,23 +68763,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -68804,23 +68804,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -68845,23 +68845,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -68886,23 +68886,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -68927,23 +68927,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -68966,23 +68966,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -69005,23 +69005,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -69043,23 +69043,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -69077,23 +69077,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -69118,23 +69118,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -69159,23 +69159,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -69200,23 +69200,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -69241,23 +69241,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -69282,23 +69282,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -69323,23 +69323,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -69364,23 +69364,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -69405,23 +69405,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -69446,23 +69446,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -69487,23 +69487,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -69528,23 +69528,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -69569,23 +69569,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -69610,23 +69610,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -69651,23 +69651,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -69694,23 +69694,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example project-v2-item */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -69737,23 +69737,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example project-v2-item */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -69780,23 +69780,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example project-v2-item */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -69823,23 +69823,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example project-v2-item */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -69866,23 +69866,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example project-v2-item */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -69909,23 +69909,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example project-v2-item */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -69952,23 +69952,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example project-v2-item */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -69990,23 +69990,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -70031,23 +70031,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -70072,23 +70072,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -70113,23 +70113,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -70154,23 +70154,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -70195,23 +70195,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -70236,23 +70236,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -70277,23 +70277,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -70318,23 +70318,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -70359,23 +70359,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -70400,23 +70400,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -70441,23 +70441,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -70482,23 +70482,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -70523,23 +70523,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -70564,23 +70564,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -70605,23 +70605,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -70646,23 +70646,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -70687,23 +70687,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -70728,23 +70728,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -70769,23 +70769,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -70810,23 +70810,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -70851,23 +70851,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -70892,23 +70892,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -70933,23 +70933,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -70974,23 +70974,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -71015,23 +71015,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -71056,23 +71056,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -71097,23 +71097,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -71137,23 +71137,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -71178,23 +71178,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -71219,23 +71219,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -71258,23 +71258,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -71297,23 +71297,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -71336,23 +71336,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -71375,23 +71375,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -71414,23 +71414,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -71453,23 +71453,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -71492,23 +71492,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -71531,23 +71531,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -71570,23 +71570,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -71609,23 +71609,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -71648,23 +71648,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -71687,23 +71687,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -71726,23 +71726,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -71765,23 +71765,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -71804,23 +71804,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -71843,23 +71843,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -71882,23 +71882,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -71921,23 +71921,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -71960,23 +71960,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -71999,23 +71999,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -72038,23 +72038,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -72077,23 +72077,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -72116,23 +72116,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -72157,23 +72157,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -72200,23 +72200,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -72241,23 +72241,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -72282,23 +72282,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -72323,23 +72323,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -72362,23 +72362,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -72401,23 +72401,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -72440,23 +72440,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -72478,23 +72478,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -72519,23 +72519,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -72558,23 +72558,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -72597,23 +72597,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -72638,23 +72638,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -72677,23 +72677,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -72716,23 +72716,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -72755,23 +72755,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -72794,23 +72794,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -72832,23 +72832,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -72873,23 +72873,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -72913,23 +72913,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -72953,23 +72953,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -72993,23 +72993,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -73033,23 +73033,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -73073,23 +73073,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -73110,23 +73110,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -73147,23 +73147,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -73186,23 +73186,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -73226,23 +73226,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -73267,23 +73267,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -73308,23 +73308,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -73349,23 +73349,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -73392,23 +73392,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -73433,23 +73433,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -73474,23 +73474,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
@@ -73515,23 +73515,23 @@ export interface operations {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
-        "User-Agent"?: string;
+        "User-Agent": string;
         /** @example 12312312 */
-        "X-Github-Hook-Id"?: string;
+        "X-Github-Hook-Id": string;
         /** @example issues */
-        "X-Github-Event"?: string;
+        "X-Github-Event": string;
         /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id"?: string;
+        "X-Github-Hook-Installation-Target-Id": string;
         /** @example repository */
-        "X-Github-Hook-Installation-Target-Type"?: string;
+        "X-Github-Hook-Installation-Target-Type": string;
         /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery"?: string;
+        "X-GitHub-Delivery": string;
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256"?: string;
+        "X-Hub-Signature-256": string;
         /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version"?: string;
+        "X-GitHub-Enterprise-Version": string;
         /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host"?: string;
+        "X-GitHub-Enterprise-Host": string;
       };
     };
     requestBody: {
