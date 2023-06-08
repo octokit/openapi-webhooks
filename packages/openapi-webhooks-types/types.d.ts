@@ -1032,8 +1032,6 @@ export interface webhooks {
      * This event occurs when there is activity relating to a merge group in a merge queue. For more information, see "[Managing a merge queue](https://docs.github.com/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue)."
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Merge queues" repository permission.
-     *
-     * **Note**: The pull request merge queue feature is currently in public beta and subject to change.
      * @description Status checks were requested for a merge group. This happens when a merge group is created or added to by the merge queue because a pull request was queued.
      *
      * When you receive this event, you should perform checks on the head SHA and report status back using check runs or commit statuses.
@@ -72337,8 +72335,6 @@ export interface operations {
    * This event occurs when there is activity relating to a merge group in a merge queue. For more information, see "[Managing a merge queue](https://docs.github.com/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue)."
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Merge queues" repository permission.
-   *
-   * **Note**: The pull request merge queue feature is currently in public beta and subject to change.
    * @description Status checks were requested for a merge group. This happens when a merge group is created or added to by the merge queue because a pull request was queued.
    *
    * When you receive this event, you should perform checks on the head SHA and report status back using check runs or commit statuses.

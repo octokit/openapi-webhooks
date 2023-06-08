@@ -22144,6 +22144,12 @@
           "verifiable_password_authentication": true,
           "packages": ["192.0.2.1"],
           "dependabot": ["192.0.2.1"],
+          "domains": {
+            "website": ["*.example.com"],
+            "codespaces": ["*.example.com"],
+            "copilot": ["*.example.com"],
+            "packages": ["*.example.com"]
+          },
           "installed_version": "3.6.0"
         }
       },
@@ -39816,7 +39822,7 @@
       },
       "repo": {
         "name": "repo",
-        "description": "The name of the repository. The name is not case sensitive.",
+        "description": "The name of the repository without the `.git` extension. The name is not case sensitive.",
         "in": "path",
         "required": true,
         "schema": { "type": "string" }
