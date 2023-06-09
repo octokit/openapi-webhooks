@@ -7494,6 +7494,7 @@
               "core": { "$ref": "#/components/schemas/rate-limit" },
               "graphql": { "$ref": "#/components/schemas/rate-limit" },
               "search": { "$ref": "#/components/schemas/rate-limit" },
+              "code_search": { "$ref": "#/components/schemas/rate-limit" },
               "source_import": { "$ref": "#/components/schemas/rate-limit" },
               "integration_manifest": {
                 "$ref": "#/components/schemas/rate-limit"
@@ -17859,14 +17860,12 @@
           "slug": "octoapp",
           "node_id": "MDExOkludGVncmF0aW9uMQ==",
           "owner": {
-            "login": "github",
+            "login": "octocat",
             "id": 1,
-            "node_id": "MDEyOk9yZ2FuaXphdGlvbjE=",
-            "url": "https://api.github.com/orgs/github",
-            "repos_url": "https://api.github.com/orgs/github/repos",
-            "events_url": "https://api.github.com/orgs/github/events",
+            "node_id": "MDQ6VXNlcjE=",
             "avatar_url": "https://github.com/images/error/octocat_happy.gif",
             "gravatar_id": "",
+            "url": "https://api.github.com/users/octocat",
             "html_url": "https://github.com/octocat",
             "followers_url": "https://api.github.com/users/octocat/followers",
             "following_url": "https://api.github.com/users/octocat/following{/other_user}",
@@ -17874,9 +17873,11 @@
             "starred_url": "https://api.github.com/users/octocat/starred{/owner}{/repo}",
             "subscriptions_url": "https://api.github.com/users/octocat/subscriptions",
             "organizations_url": "https://api.github.com/users/octocat/orgs",
+            "repos_url": "https://api.github.com/users/octocat/repos",
+            "events_url": "https://api.github.com/users/octocat/events{/privacy}",
             "received_events_url": "https://api.github.com/users/octocat/received_events",
             "type": "User",
-            "site_admin": true
+            "site_admin": false
           },
           "name": "Octocat App",
           "description": "",
