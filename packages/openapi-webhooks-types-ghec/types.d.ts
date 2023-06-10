@@ -1032,8 +1032,6 @@ export interface webhooks {
      * This event occurs when there is activity relating to a merge group in a merge queue. For more information, see "[Managing a merge queue](https://docs.github.com/enterprise-cloud@latest//repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue)."
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Merge queues" repository permission.
-     *
-     * **Note**: The pull request merge queue feature is currently in public beta and subject to change.
      * @description Status checks were requested for a merge group. This happens when a merge group is created or added to by the merge queue because a pull request was queued.
      *
      * When you receive this event, you should perform checks on the head SHA and report status back using check runs or commit statuses.
@@ -26582,6 +26580,7 @@ export interface components {
     "webhook-projects-v2-project-closed": {
       /** @enum {string} */
       action: "closed";
+      installation?: components["schemas"]["simple-installation"];
       organization: components["schemas"]["organization-simple"];
       projects_v2: components["schemas"]["projects-v2"];
       sender: components["schemas"]["simple-user"];
@@ -26614,6 +26613,7 @@ export interface components {
     "webhook-projects-v2-project-created": {
       /** @enum {string} */
       action: "created";
+      installation?: components["schemas"]["simple-installation"];
       organization: components["schemas"]["organization-simple"];
       projects_v2: components["schemas"]["projects-v2"];
       sender: components["schemas"]["simple-user"];
@@ -26622,6 +26622,7 @@ export interface components {
     "webhook-projects-v2-project-deleted": {
       /** @enum {string} */
       action: "deleted";
+      installation?: components["schemas"]["simple-installation"];
       organization: components["schemas"]["organization-simple"];
       projects_v2: components["schemas"]["projects-v2"];
       sender: components["schemas"]["simple-user"];
@@ -26648,6 +26649,7 @@ export interface components {
           to?: string;
         };
       };
+      installation?: components["schemas"]["simple-installation"];
       organization: components["schemas"]["organization-simple"];
       projects_v2: components["schemas"]["projects-v2"];
       sender: components["schemas"]["simple-user"];
@@ -26787,6 +26789,7 @@ export interface components {
     "webhook-projects-v2-project-reopened": {
       /** @enum {string} */
       action: "reopened";
+      installation?: components["schemas"]["simple-installation"];
       organization: components["schemas"]["organization-simple"];
       projects_v2: components["schemas"]["projects-v2"];
       sender: components["schemas"]["simple-user"];
@@ -72337,8 +72340,6 @@ export interface operations {
    * This event occurs when there is activity relating to a merge group in a merge queue. For more information, see "[Managing a merge queue](https://docs.github.com/enterprise-cloud@latest//repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue)."
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Merge queues" repository permission.
-   *
-   * **Note**: The pull request merge queue feature is currently in public beta and subject to change.
    * @description Status checks were requested for a merge group. This happens when a merge group is created or added to by the merge queue because a pull request was queued.
    *
    * When you receive this event, you should perform checks on the head SHA and report status back using check runs or commit statuses.

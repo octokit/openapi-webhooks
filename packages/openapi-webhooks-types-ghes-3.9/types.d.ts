@@ -25044,6 +25044,7 @@ export interface components {
     "webhook-projects-v2-project-closed": {
       /** @enum {string} */
       action: "closed";
+      installation?: components["schemas"]["simple-installation"];
       organization: components["schemas"]["organization-simple"];
       projects_v2: components["schemas"]["projects-v2"];
       sender: components["schemas"]["simple-user"];
@@ -25076,6 +25077,7 @@ export interface components {
     "webhook-projects-v2-project-created": {
       /** @enum {string} */
       action: "created";
+      installation?: components["schemas"]["simple-installation"];
       organization: components["schemas"]["organization-simple"];
       projects_v2: components["schemas"]["projects-v2"];
       sender: components["schemas"]["simple-user"];
@@ -25084,6 +25086,7 @@ export interface components {
     "webhook-projects-v2-project-deleted": {
       /** @enum {string} */
       action: "deleted";
+      installation?: components["schemas"]["simple-installation"];
       organization: components["schemas"]["organization-simple"];
       projects_v2: components["schemas"]["projects-v2"];
       sender: components["schemas"]["simple-user"];
@@ -25110,6 +25113,7 @@ export interface components {
           to?: string;
         };
       };
+      installation?: components["schemas"]["simple-installation"];
       organization: components["schemas"]["organization-simple"];
       projects_v2: components["schemas"]["projects-v2"];
       sender: components["schemas"]["simple-user"];
@@ -25249,6 +25253,7 @@ export interface components {
     "webhook-projects-v2-project-reopened": {
       /** @enum {string} */
       action: "reopened";
+      installation?: components["schemas"]["simple-installation"];
       organization: components["schemas"]["organization-simple"];
       projects_v2: components["schemas"]["projects-v2"];
       sender: components["schemas"]["simple-user"];
