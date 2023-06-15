@@ -336,7 +336,7 @@ export interface webhooks {
   };
   "deploy-key-deleted": {
     /**
-     * This event occurs when there is activity relating to deploy keys. For more information, see "[Managing deploy keys](https://docs.github.com/enterprise-cloud@latest//developers/overview/managing-deploy-keys)." For information about the APIs to manage deploy keys, see [the GraphQL documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#deploykey) or "[Deploy keys](https://docs.github.com/enterprise-cloud@latest//rest/deploy-keys)" in the REST API documentation.
+     * This event occurs when there is activity relating to deploy keys. For more information, see "[Managing deploy keys](https://docs.github.com/enterprise-cloud@latest//developers/overview/managing-deploy-keys)." For information about the APIs to manage deploy keys, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#deploykey) or "[Deploy keys](https://docs.github.com/enterprise-cloud@latest//rest/deploy-keys)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
      * @description A deploy key was deleted.
@@ -69954,7 +69954,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to deploy keys. For more information, see "[Managing deploy keys](https://docs.github.com/enterprise-cloud@latest//developers/overview/managing-deploy-keys)." For information about the APIs to manage deploy keys, see [the GraphQL documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#deploykey) or "[Deploy keys](https://docs.github.com/enterprise-cloud@latest//rest/deploy-keys)" in the REST API documentation.
+   * This event occurs when there is activity relating to deploy keys. For more information, see "[Managing deploy keys](https://docs.github.com/enterprise-cloud@latest//developers/overview/managing-deploy-keys)." For information about the APIs to manage deploy keys, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#deploykey) or "[Deploy keys](https://docs.github.com/enterprise-cloud@latest//rest/deploy-keys)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
    * @description A deploy key was deleted.
