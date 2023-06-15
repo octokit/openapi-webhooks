@@ -40152,6 +40152,14 @@
         "schema": { "type": "string" },
         "x-multi-segment": true
       },
+      "commit-ref": {
+        "name": "ref",
+        "description": "The commit reference. Can be a commit SHA, branch name (`heads/BRANCH_NAME`), or tag name (`tags/TAG_NAME`). For more information, see \"[Git References](https://git-scm.com/book/en/v2/Git-Internals-Git-References)\" in the Git documentation.",
+        "in": "path",
+        "required": true,
+        "schema": { "type": "string" },
+        "x-multi-segment": true
+      },
       "manifest-path": {
         "name": "name",
         "description": "The full path, relative to the repository root, of the dependency manifest file.",
