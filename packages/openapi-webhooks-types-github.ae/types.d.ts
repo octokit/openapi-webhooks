@@ -2197,6 +2197,8 @@ export interface components {
           | "everyone";
         repository_id: number;
         require_code_owner_review: boolean;
+        /** @description Whether the most recent push must be approved by someone other than the person who pushed it */
+        require_last_push_approval?: boolean;
         required_approving_review_count: number;
         /** @enum {string} */
         required_conversation_resolution_level:
@@ -2681,6 +2683,8 @@ export interface components {
           | "everyone";
         repository_id: number;
         require_code_owner_review: boolean;
+        /** @description Whether the most recent push must be approved by someone other than the person who pushed it */
+        require_last_push_approval?: boolean;
         required_approving_review_count: number;
         /** @enum {string} */
         required_conversation_resolution_level:
@@ -2777,6 +2781,8 @@ export interface components {
           | "everyone";
         repository_id: number;
         require_code_owner_review: boolean;
+        /** @description Whether the most recent push must be approved by someone other than the person who pushed it */
+        require_last_push_approval?: boolean;
         required_approving_review_count: number;
         /** @enum {string} */
         required_conversation_resolution_level:
