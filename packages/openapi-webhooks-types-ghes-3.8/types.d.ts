@@ -579,7 +579,7 @@ export interface webhooks {
      *
      * A GitHub App receives this webhook by default and cannot unsubscribe from this event.
      *
-     * Anyone can revoke their authorization of a GitHub App from their [GitHub account settings page](https://github.com/settings/apps/authorizations). Revoking the authorization of a GitHub App does not uninstall the GitHub App. You should program your GitHub App so that when it receives this webhook, it stops calling the API on behalf of the person who revoked the token. If your GitHub App continues to use a revoked access token, it will receive the `401 Bad Credentials` error. For details about user-to-server requests, which require GitHub App authorization, see "[Identifying and authorizing users for GitHub Apps](https://docs.github.com/enterprise-server@3.8/apps/building-github-apps/identifying-and-authorizing-users-for-github-apps/)."
+     * Anyone can revoke their authorization of a GitHub App from their [GitHub account settings page](https://github.com/settings/apps/authorizations). Revoking the authorization of a GitHub App does not uninstall the GitHub App. You should program your GitHub App so that when it receives this webhook, it stops calling the API on behalf of the person who revoked the token. If your GitHub App continues to use a revoked access token, it will receive the `401 Bad Credentials` error. For details about requests with a user access token, which require GitHub App authorization, see "[Authenticating with a GitHub App on behalf of a user](https://docs.github.com/enterprise-server@3.8/apps/creating-github-apps/authenticating-with-a-github-app/authenticating-with-a-github-app-on-behalf-of-a-user)."
      * @description Someone revoked their authorization of a GitHub App.
      */
     post: operations["github-app-authorization/revoked"];
@@ -8574,7 +8574,7 @@ export interface components {
     };
     /**
      * App Permissions
-     * @description The permissions granted to the user-to-server access token.
+     * @description The permissions granted to the user access token.
      * @example {
      *   "contents": "read",
      *   "issues": "read",
@@ -67026,7 +67026,7 @@ export interface operations {
    *
    * A GitHub App receives this webhook by default and cannot unsubscribe from this event.
    *
-   * Anyone can revoke their authorization of a GitHub App from their [GitHub account settings page](https://github.com/settings/apps/authorizations). Revoking the authorization of a GitHub App does not uninstall the GitHub App. You should program your GitHub App so that when it receives this webhook, it stops calling the API on behalf of the person who revoked the token. If your GitHub App continues to use a revoked access token, it will receive the `401 Bad Credentials` error. For details about user-to-server requests, which require GitHub App authorization, see "[Identifying and authorizing users for GitHub Apps](https://docs.github.com/enterprise-server@3.8/apps/building-github-apps/identifying-and-authorizing-users-for-github-apps/)."
+   * Anyone can revoke their authorization of a GitHub App from their [GitHub account settings page](https://github.com/settings/apps/authorizations). Revoking the authorization of a GitHub App does not uninstall the GitHub App. You should program your GitHub App so that when it receives this webhook, it stops calling the API on behalf of the person who revoked the token. If your GitHub App continues to use a revoked access token, it will receive the `401 Bad Credentials` error. For details about requests with a user access token, which require GitHub App authorization, see "[Authenticating with a GitHub App on behalf of a user](https://docs.github.com/enterprise-server@3.8/apps/creating-github-apps/authenticating-with-a-github-app/authenticating-with-a-github-app-on-behalf-of-a-user)."
    * @description Someone revoked their authorization of a GitHub App.
    */
   "github-app-authorization/revoked": {

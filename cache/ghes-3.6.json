@@ -744,7 +744,7 @@
       "app-permissions": {
         "title": "App Permissions",
         "type": "object",
-        "description": "The permissions granted to the user-to-server access token.",
+        "description": "The permissions granted to the user access token.",
         "properties": {
           "actions": {
             "type": "string",
