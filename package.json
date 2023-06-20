@@ -29,7 +29,7 @@
     "execa": "^5.1.1",
     "github-enterprise-server-versions": "^1.1.1",
     "lodash": "^4.17.21",
-    "map-obj": "^4.3.0",
+    "map-obj": "^5.0.0",
     "openapi-typescript": "^6.2.1",
     "prettier": "^2.8.4",
     "semantic-release": "^21.0.0",
