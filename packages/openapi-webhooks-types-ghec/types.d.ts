@@ -62505,7 +62505,8 @@ export interface components {
       | "erlang"
       | "actions"
       | "pub"
-      | "other";
+      | "other"
+      | "swift";
     /**
      * @description The type of credit the user is receiving.
      * @enum {string}
