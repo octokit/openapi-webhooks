@@ -5400,7 +5400,7 @@
       "code-scanning-alert-state": {
         "type": "string",
         "description": "State of a code scanning alert.",
-        "enum": ["open", "closed", "dismissed", "fixed"]
+        "enum": ["open", "dismissed", "fixed"]
       },
       "alert-instances-url": {
         "type": "string",
