@@ -3264,7 +3264,6 @@ export interface components {
       watchers?: number;
       allow_forking?: boolean;
       web_commit_signoff_required?: boolean;
-      security_and_analysis?: components["schemas"]["security-and-analysis"];
     };
     /**
      * Code Of Conduct
@@ -3279,25 +3278,6 @@ export interface components {
       /** Format: uri */
       html_url: OneOf<[string, null]>;
     };
-    "security-and-analysis": OneOf<
-      [
-        {
-          advanced_security?: {
-            /** @enum {string} */
-            status?: "enabled" | "disabled";
-          };
-          secret_scanning?: {
-            /** @enum {string} */
-            status?: "enabled" | "disabled";
-          };
-          secret_scanning_push_protection?: {
-            /** @enum {string} */
-            status?: "enabled" | "disabled";
-          };
-        },
-        null
-      ]
-    >;
     /**
      * Deployment
      * @description A deployment created as the result of an Actions check run from a workflow that references an environment
@@ -59520,6 +59500,25 @@ export interface components {
       repository: components["schemas"]["full-repository"];
       sender?: components["schemas"]["simple-user"];
     };
+    "security-and-analysis": OneOf<
+      [
+        {
+          advanced_security?: {
+            /** @enum {string} */
+            status?: "enabled" | "disabled";
+          };
+          secret_scanning?: {
+            /** @enum {string} */
+            status?: "enabled" | "disabled";
+          };
+          secret_scanning_push_protection?: {
+            /** @enum {string} */
+            status?: "enabled" | "disabled";
+          };
+        },
+        null
+      ]
+    >;
     /**
      * Full Repository
      * @description Full Repository
