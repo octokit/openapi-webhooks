@@ -3126,6 +3126,14 @@ export interface components {
             /** @enum {string} */
             status?: "enabled" | "disabled";
           };
+          /** @description Enable or disable Dependabot security updates for the repository. */
+          dependabot_security_updates?: {
+            /**
+             * @description The enablement status of Dependabot security updates for the repository.
+             * @enum {string}
+             */
+            status?: "enabled" | "disabled";
+          };
           secret_scanning?: {
             /** @enum {string} */
             status?: "enabled" | "disabled";
