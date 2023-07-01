@@ -3360,7 +3360,6 @@ export interface components {
     "webhook-check-suite-completed": {
       /** @enum {string} */
       action: "completed";
-      actions_meta?: OneOf<[Record<string, never>, null]>;
       /** @description The [check_suite](https://docs.github.com/enterprise-server@3.8/rest/reference/checks#suites). */
       check_suite: {
         after: OneOf<[string, null]>;
@@ -3678,7 +3677,6 @@ export interface components {
     "webhook-check-suite-requested": {
       /** @enum {string} */
       action: "requested";
-      actions_meta?: OneOf<[Record<string, never>, null]>;
       /** @description The [check_suite](https://docs.github.com/enterprise-server@3.8/rest/reference/checks#suites). */
       check_suite: {
         after: OneOf<[string, null]>;
@@ -3995,17 +3993,6 @@ export interface components {
     "webhook-check-suite-rerequested": {
       /** @enum {string} */
       action: "rerequested";
-      actions_meta?: OneOf<
-        [
-          {
-            rerun_info?: {
-              plan_id?: string;
-              job_ids?: string[];
-            };
-          },
-          null
-        ]
-      >;
       /** @description The [check_suite](https://docs.github.com/enterprise-server@3.8/rest/reference/checks#suites). */
       check_suite: {
         after: OneOf<[string, null]>;
