@@ -579,7 +579,7 @@ export interface webhooks {
      *
      * A GitHub App receives this webhook by default and cannot unsubscribe from this event.
      *
-     * Anyone can revoke their authorization of a GitHub App from their [GitHub account settings page](https://github.com/settings/apps/authorizations). Revoking the authorization of a GitHub App does not uninstall the GitHub App. You should program your GitHub App so that when it receives this webhook, it stops calling the API on behalf of the person who revoked the token. If your GitHub App continues to use a revoked access token, it will receive the `401 Bad Credentials` error. For details about user-to-server requests, which require GitHub App authorization, see "[Identifying and authorizing users for GitHub Apps](https://docs.github.com/enterprise-server@3.8/apps/building-github-apps/identifying-and-authorizing-users-for-github-apps/)."
+     * Anyone can revoke their authorization of a GitHub App from their [GitHub account settings page](https://github.com/settings/apps/authorizations). Revoking the authorization of a GitHub App does not uninstall the GitHub App. You should program your GitHub App so that when it receives this webhook, it stops calling the API on behalf of the person who revoked the token. If your GitHub App continues to use a revoked access token, it will receive the `401 Bad Credentials` error. For details about requests with a user access token, which require GitHub App authorization, see "[Authenticating with a GitHub App on behalf of a user](https://docs.github.com/enterprise-server@3.8/apps/creating-github-apps/authenticating-with-a-github-app/authenticating-with-a-github-app-on-behalf-of-a-user)."
      * @description Someone revoked their authorization of a GitHub App.
      */
     post: operations["github-app-authorization/revoked"];
@@ -3277,7 +3277,6 @@ export interface components {
       watchers?: number;
       allow_forking?: boolean;
       web_commit_signoff_required?: boolean;
-      security_and_analysis?: components["schemas"]["security-and-analysis"];
     };
     /**
      * Code Of Conduct
@@ -3292,25 +3291,6 @@ export interface components {
       /** Format: uri */
       html_url: OneOf<[string, null]>;
     };
-    "security-and-analysis": OneOf<
-      [
-        {
-          advanced_security?: {
-            /** @enum {string} */
-            status?: "enabled" | "disabled";
-          };
-          secret_scanning?: {
-            /** @enum {string} */
-            status?: "enabled" | "disabled";
-          };
-          secret_scanning_push_protection?: {
-            /** @enum {string} */
-            status?: "enabled" | "disabled";
-          };
-        },
-        null
-      ]
-    >;
     /**
      * Deployment
      * @description A deployment created as the result of an Actions check run from a workflow that references an environment
@@ -3380,7 +3360,6 @@ export interface components {
     "webhook-check-suite-completed": {
       /** @enum {string} */
       action: "completed";
-      actions_meta?: OneOf<[Record<string, never>, null]>;
       /** @description The [check_suite](https://docs.github.com/enterprise-server@3.8/rest/reference/checks#suites). */
       check_suite: {
         after: OneOf<[string, null]>;
@@ -3698,7 +3677,6 @@ export interface components {
     "webhook-check-suite-requested": {
       /** @enum {string} */
       action: "requested";
-      actions_meta?: OneOf<[Record<string, never>, null]>;
       /** @description The [check_suite](https://docs.github.com/enterprise-server@3.8/rest/reference/checks#suites). */
       check_suite: {
         after: OneOf<[string, null]>;
@@ -4015,17 +3993,6 @@ export interface components {
     "webhook-check-suite-rerequested": {
       /** @enum {string} */
       action: "rerequested";
-      actions_meta?: OneOf<
-        [
-          {
-            rerun_info?: {
-              plan_id?: string;
-              job_ids?: string[];
-            };
-          },
-          null
-        ]
-      >;
       /** @description The [check_suite](https://docs.github.com/enterprise-server@3.8/rest/reference/checks#suites). */
       check_suite: {
         after: OneOf<[string, null]>;
@@ -8574,7 +8541,7 @@ export interface components {
     };
     /**
      * App Permissions
-     * @description The permissions granted to the user-to-server access token.
+     * @description The permissions granted to the user access token.
      * @example {
      *   "contents": "read",
      *   "issues": "read",
@@ -59568,6 +59535,25 @@ export interface components {
       repository: components["schemas"]["full-repository"];
       sender?: components["schemas"]["simple-user"];
     };
+    "security-and-analysis": OneOf<
+      [
+        {
+          advanced_security?: {
+            /** @enum {string} */
+            status?: "enabled" | "disabled";
+          };
+          secret_scanning?: {
+            /** @enum {string} */
+            status?: "enabled" | "disabled";
+          };
+          secret_scanning_push_protection?: {
+            /** @enum {string} */
+            status?: "enabled" | "disabled";
+          };
+        },
+        null
+      ]
+    >;
     /**
      * Full Repository
      * @description Full Repository
@@ -67026,7 +67012,7 @@ export interface operations {
    *
    * A GitHub App receives this webhook by default and cannot unsubscribe from this event.
    *
-   * Anyone can revoke their authorization of a GitHub App from their [GitHub account settings page](https://github.com/settings/apps/authorizations). Revoking the authorization of a GitHub App does not uninstall the GitHub App. You should program your GitHub App so that when it receives this webhook, it stops calling the API on behalf of the person who revoked the token. If your GitHub App continues to use a revoked access token, it will receive the `401 Bad Credentials` error. For details about user-to-server requests, which require GitHub App authorization, see "[Identifying and authorizing users for GitHub Apps](https://docs.github.com/enterprise-server@3.8/apps/building-github-apps/identifying-and-authorizing-users-for-github-apps/)."
+   * Anyone can revoke their authorization of a GitHub App from their [GitHub account settings page](https://github.com/settings/apps/authorizations). Revoking the authorization of a GitHub App does not uninstall the GitHub App. You should program your GitHub App so that when it receives this webhook, it stops calling the API on behalf of the person who revoked the token. If your GitHub App continues to use a revoked access token, it will receive the `401 Bad Credentials` error. For details about requests with a user access token, which require GitHub App authorization, see "[Authenticating with a GitHub App on behalf of a user](https://docs.github.com/enterprise-server@3.8/apps/creating-github-apps/authenticating-with-a-github-app/authenticating-with-a-github-app-on-behalf-of-a-user)."
    * @description Someone revoked their authorization of a GitHub App.
    */
   "github-app-authorization/revoked": {
