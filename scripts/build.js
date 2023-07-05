@@ -5,7 +5,7 @@ import {
   readFileSync,
   copyFileSync,
 } from "node:fs";
-import prettier from "prettier";
+import * as prettier from "prettier";
 import _ from "lodash";
 
 /* if (!process.env.GITHUB_ACTIONS && !process.env.ANICCA_REPOSITORY_PATH) {

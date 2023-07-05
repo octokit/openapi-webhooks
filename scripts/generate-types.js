@@ -1,7 +1,7 @@
 import { readdir, mkdir, rm, writeFile, copyFile } from "node:fs/promises";
 import { basename } from "node:path";
 
-import prettier from "prettier";
+import * as prettier from "prettier";
 import openapiTS from "openapi-typescript";
 
 /* (!process.env.OCTOKIT_OPENAPI_VERSION) {

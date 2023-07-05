@@ -3,7 +3,7 @@ import fs from "fs";
 
 import { Octokit } from "@octokit/core";
 import { getCurrentVersions } from "github-enterprise-server-versions";
-import prettier from "prettier";
+import * as prettier from "prettier";
 
 run().then(() => console.log("done"), console.error);
 
