@@ -111,7 +111,7 @@ async function download(name, remotePath) {
   delete jsonContent.paths;
   fs.writeFileSync(
     path,
-    prettier.format(JSON.stringify(jsonContent), {
+    await prettier.format(JSON.stringify(jsonContent), {
       parser: "json",
     })
   );
