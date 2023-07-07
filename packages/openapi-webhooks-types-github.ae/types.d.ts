@@ -9436,6 +9436,7 @@ export interface components {
     };
     "webhook-installation-target-renamed": {
       account: {
+        archived_at?: OneOf<[string, null]>;
         avatar_url: string;
         created_at?: string;
         description?: null;
