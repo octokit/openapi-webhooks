@@ -5,7 +5,7 @@ import {
   readFileSync,
   copyFileSync,
 } from "node:fs";
-import prettier from "prettier";
+import * as prettier from "prettier";
 import _ from "lodash";
 
 /* if (!process.env.GITHUB_ACTIONS && !process.env.ANICCA_REPOSITORY_PATH) {
@@ -82,7 +82,7 @@ async function run() {
 
     writeFileSync(
       `packages/openapi-webhooks/generated/${file}`,
-      prettier.format(JSON.stringify(tempSchema), { parser: "json" })
+      await prettier.format(JSON.stringify(tempSchema), { parser: "json" })
     );
     console.log(`packages/openapi-webhooks/generated/${file} written`);
   }
@@ -98,7 +98,7 @@ async function run() {
 
   writeFileSync(
     "packages/openapi-webhooks/generated/README.md",
-    prettier.format(
+    await prettier.format(
       `# Please do not edit files in this folder
 
 They are all generated, your changes would be overwritten with the next update. If you found a problem with GitHub's OpenAPI schema, file an issue at https://github.com/github/rest-api-description/. If you found a problem specific to the \`x-octokit\` extension or usage of the \`@octokit/openapi\` module, please file an issue at https://github.com/octokit/openapi.`,
@@ -107,7 +107,7 @@ They are all generated, your changes would be overwritten with the next update. 
   );
   writeFileSync(
     "packages/openapi-webhooks/index.js",
-    prettier.format(
+    await prettier.format(
       `
       module.exports = {
         schemas: {
@@ -122,7 +122,7 @@ They are all generated, your changes would be overwritten with the next update. 
   );
   writeFileSync(
     `packages/openapi-webhooks/package.json`,
-    prettier.format(
+    await prettier.format(
       JSON.stringify({
         name: `@wolfy1339/openapi-webhooks`,
         version: "0.0.0-development",
