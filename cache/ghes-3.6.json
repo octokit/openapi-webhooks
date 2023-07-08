@@ -744,7 +744,7 @@
       "app-permissions": {
         "title": "App Permissions",
         "type": "object",
-        "description": "The permissions granted to the user-to-server access token.",
+        "description": "The permissions granted to the user access token.",
         "properties": {
           "actions": {
             "type": "string",
@@ -4548,29 +4548,6 @@
         },
         "required": ["verifiable_password_authentication"]
       },
-      "security-and-analysis": {
-        "type": ["object", "null"],
-        "properties": {
-          "advanced_security": {
-            "type": "object",
-            "properties": {
-              "status": { "type": "string", "enum": ["enabled", "disabled"] }
-            }
-          },
-          "secret_scanning": {
-            "type": "object",
-            "properties": {
-              "status": { "type": "string", "enum": ["enabled", "disabled"] }
-            }
-          },
-          "secret_scanning_push_protection": {
-            "type": "object",
-            "properties": {
-              "status": { "type": "string", "enum": ["enabled", "disabled"] }
-            }
-          }
-        }
-      },
       "minimal-repository": {
         "title": "Minimal Repository",
         "description": "Minimal Repository",
@@ -4904,9 +4881,6 @@
           "web_commit_signoff_required": {
             "type": "boolean",
             "examples": [false]
-          },
-          "security_and_analysis": {
-            "$ref": "#/components/schemas/security-and-analysis"
           }
         },
         "required": [
@@ -5132,11 +5106,6 @@
             "format": "uri",
             "examples": ["https://github.com/octocat"]
           },
-          "created_at": {
-            "type": "string",
-            "format": "date-time",
-            "examples": ["2008-01-14T04:33:35Z"]
-          },
           "type": { "type": "string", "examples": ["Organization"] },
           "total_private_repos": { "type": "integer", "examples": [100] },
           "owned_private_repos": { "type": "integer", "examples": [100] },
@@ -5201,6 +5170,11 @@
             "type": "boolean",
             "examples": [false]
           },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "examples": ["2008-01-14T04:33:35Z"]
+          },
           "updated_at": { "type": "string", "format": "date-time" }
         },
         "required": [
@@ -5225,7 +5199,8 @@
           "following",
           "type",
           "created_at",
-          "updated_at"
+          "updated_at",
+          "archived_at"
         ]
       },
       "actions-cache-usage-by-repository": {
@@ -5400,7 +5375,7 @@
       "code-scanning-alert-state": {
         "type": "string",
         "description": "State of a code scanning alert.",
-        "enum": ["open", "closed", "dismissed", "fixed"]
+        "enum": ["open", "dismissed", "fixed"]
       },
       "alert-instances-url": {
         "type": "string",
@@ -6392,7 +6367,8 @@
           "following",
           "type",
           "created_at",
-          "updated_at"
+          "updated_at",
+          "archived_at"
         ]
       },
       "team-full": {
@@ -7541,6 +7517,29 @@
         },
         "required": ["url", "key", "name", "html_url"]
       },
+      "security-and-analysis": {
+        "type": ["object", "null"],
+        "properties": {
+          "advanced_security": {
+            "type": "object",
+            "properties": {
+              "status": { "type": "string", "enum": ["enabled", "disabled"] }
+            }
+          },
+          "secret_scanning": {
+            "type": "object",
+            "properties": {
+              "status": { "type": "string", "enum": ["enabled", "disabled"] }
+            }
+          },
+          "secret_scanning_push_protection": {
+            "type": "object",
+            "properties": {
+              "status": { "type": "string", "enum": ["enabled", "disabled"] }
+            }
+          }
+        }
+      },
       "full-repository": {
         "title": "Full Repository",
         "description": "Full Repository",
@@ -8516,6 +8515,7 @@
             "examples": ["https://github.com/github/hello-world/suites/4"]
           },
           "pull_requests": {
+            "description": "Pull requests that are open with a `head_sha` or `head_branch` that matches the workflow run. The returned pull requests do not necessarily indicate pull requests that triggered the run.",
             "type": ["array", "null"],
             "items": { "$ref": "#/components/schemas/pull-request-minimal" }
           },
@@ -9976,6 +9976,7 @@
             ]
           },
           "pull_requests": {
+            "description": "Pull requests that are open with a `head_sha` or `head_branch` that matches the check. The returned pull requests do not necessarily indicate pull requests that triggered the check.",
             "type": "array",
             "items": { "$ref": "#/components/schemas/pull-request-minimal" }
           },
