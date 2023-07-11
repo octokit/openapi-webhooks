@@ -62464,6 +62464,8 @@ export interface components {
       credits_detailed: OneOf<
         [readonly components["schemas"]["repository-advisory-credit"][], null]
       >;
+      /** @description A temporary private fork of the advisory's repository for collaborating on a fix. */
+      private_fork: null;
     };
     /** @description A product affected by the vulnerability detailed in a repository security advisory. */
     "repository-advisory-vulnerability": {
@@ -62527,6 +62529,148 @@ export interface components {
        * @enum {string}
        */
       state: "accepted" | "declined" | "pending";
+    };
+    /**
+     * Simple Repository
+     * @description A GitHub repository.
+     */
+    "simple-repository": {
+      /** @description A unique identifier of the repository. */
+      id: number;
+      /** @description The GraphQL identifier of the repository. */
+      node_id: string;
+      /** @description The name of the repository. */
+      name: string;
+      /** @description The full, globally unique, name of the repository. */
+      full_name: string;
+      owner: components["schemas"]["simple-user"];
+      /** @description Whether the repository is private. */
+      private: boolean;
+      /**
+       * Format: uri
+       * @description The URL to view the repository on GitHub.com.
+       */
+      html_url: string;
+      /** @description The repository description. */
+      description: OneOf<[string, null]>;
+      /** @description Whether the repository is a fork. */
+      fork: boolean;
+      /**
+       * Format: uri
+       * @description The URL to get more information about the repository from the GitHub API.
+       */
+      url: string;
+      /** @description A template for the API URL to download the repository as an archive. */
+      archive_url: string;
+      /** @description A template for the API URL to list the available assignees for issues in the repository. */
+      assignees_url: string;
+      /** @description A template for the API URL to create or retrieve a raw Git blob in the repository. */
+      blobs_url: string;
+      /** @description A template for the API URL to get information about branches in the repository. */
+      branches_url: string;
+      /** @description A template for the API URL to get information about collaborators of the repository. */
+      collaborators_url: string;
+      /** @description A template for the API URL to get information about comments on the repository. */
+      comments_url: string;
+      /** @description A template for the API URL to get information about commits on the repository. */
+      commits_url: string;
+      /** @description A template for the API URL to compare two commits or refs. */
+      compare_url: string;
+      /** @description A template for the API URL to get the contents of the repository. */
+      contents_url: string;
+      /**
+       * Format: uri
+       * @description A template for the API URL to list the contributors to the repository.
+       */
+      contributors_url: string;
+      /**
+       * Format: uri
+       * @description The API URL to list the deployments of the repository.
+       */
+      deployments_url: string;
+      /**
+       * Format: uri
+       * @description The API URL to list the downloads on the repository.
+       */
+      downloads_url: string;
+      /**
+       * Format: uri
+       * @description The API URL to list the events of the repository.
+       */
+      events_url: string;
+      /**
+       * Format: uri
+       * @description The API URL to list the forks of the repository.
+       */
+      forks_url: string;
+      /** @description A template for the API URL to get information about Git commits of the repository. */
+      git_commits_url: string;
+      /** @description A template for the API URL to get information about Git refs of the repository. */
+      git_refs_url: string;
+      /** @description A template for the API URL to get information about Git tags of the repository. */
+      git_tags_url: string;
+      /** @description A template for the API URL to get information about issue comments on the repository. */
+      issue_comment_url: string;
+      /** @description A template for the API URL to get information about issue events on the repository. */
+      issue_events_url: string;
+      /** @description A template for the API URL to get information about issues on the repository. */
+      issues_url: string;
+      /** @description A template for the API URL to get information about deploy keys on the repository. */
+      keys_url: string;
+      /** @description A template for the API URL to get information about labels of the repository. */
+      labels_url: string;
+      /**
+       * Format: uri
+       * @description The API URL to get information about the languages of the repository.
+       */
+      languages_url: string;
+      /**
+       * Format: uri
+       * @description The API URL to merge branches in the repository.
+       */
+      merges_url: string;
+      /** @description A template for the API URL to get information about milestones of the repository. */
+      milestones_url: string;
+      /** @description A template for the API URL to get information about notifications on the repository. */
+      notifications_url: string;
+      /** @description A template for the API URL to get information about pull requests on the repository. */
+      pulls_url: string;
+      /** @description A template for the API URL to get information about releases on the repository. */
+      releases_url: string;
+      /**
+       * Format: uri
+       * @description The API URL to list the stargazers on the repository.
+       */
+      stargazers_url: string;
+      /** @description A template for the API URL to get information about statuses of a commit. */
+      statuses_url: string;
+      /**
+       * Format: uri
+       * @description The API URL to list the subscribers on the repository.
+       */
+      subscribers_url: string;
+      /**
+       * Format: uri
+       * @description The API URL to subscribe to notifications for this repository.
+       */
+      subscription_url: string;
+      /**
+       * Format: uri
+       * @description The API URL to get information about tags on the repository.
+       */
+      tags_url: string;
+      /**
+       * Format: uri
+       * @description The API URL to list the teams on the repository.
+       */
+      teams_url: string;
+      /** @description A template for the API URL to create or retrieve a raw Git tree of the repository. */
+      trees_url: string;
+      /**
+       * Format: uri
+       * @description The API URL to list the hooks on the repository.
+       */
+      hooks_url: string;
     };
     /** Repository advisory reported event */
     "webhook-repository-advisory-reported": {
