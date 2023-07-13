@@ -1043,8 +1043,6 @@ export interface webhooks {
      * This event occurs when there is activity relating to a merge group in a merge queue. For more information, see "[Managing a merge queue](https://docs.github.com/enterprise-cloud@latest//repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue)."
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Merge queues" repository permission.
-     *
-     * **Note**: The pull request merge queue feature is currently in public beta and subject to change.
      * @description The merge queue groups pull requests together to be merged. This event indicates that one of those merge groups was destroyed. This happens when a pull request is removed from the queue: any group containing that pull request is also destroyed.
      *
      * When you receive this event, you may want to cancel any checks that are running on the head SHA to avoid wasting computing resources on a merge group that will not be used.
@@ -1658,8 +1656,6 @@ export interface webhooks {
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
      * @description A pull request was removed from the merge queue.
-     *
-     * **Note**: The pull request merge queue feature is currently in limited public beta and subject to change.
      */
     post: operations["pull-request/dequeued"];
   };
@@ -1682,8 +1678,6 @@ export interface webhooks {
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
      * @description A pull request was added to the merge queue.
-     *
-     * **Note**: The pull request merge queue feature is currently in limited public beta and subject to change.
      */
     post: operations["pull-request/enqueued"];
   };
@@ -62464,6 +62458,12 @@ export interface components {
       credits_detailed: OneOf<
         [readonly components["schemas"]["repository-advisory-credit"][], null]
       >;
+      /** @description A list of users that collaborate on the advisory. */
+      collaborating_users: OneOf<
+        [components["schemas"]["simple-user"][], null]
+      >;
+      /** @description A list of teams that collaborate on the advisory. */
+      collaborating_teams: OneOf<[components["schemas"]["team"][], null]>;
       /** @description A temporary private fork of the advisory's repository for collaborating on a fix. */
       private_fork: null;
     };
@@ -62529,6 +62529,35 @@ export interface components {
        * @enum {string}
        */
       state: "accepted" | "declined" | "pending";
+    };
+    /**
+     * Team
+     * @description Groups of organization members that gives permissions on specified repositories.
+     */
+    team: {
+      id: number;
+      node_id: string;
+      name: string;
+      slug: string;
+      description: OneOf<[string, null]>;
+      privacy?: string;
+      notification_setting?: string;
+      permission: string;
+      permissions?: {
+        pull: boolean;
+        triage: boolean;
+        push: boolean;
+        maintain: boolean;
+        admin: boolean;
+      };
+      /** Format: uri */
+      url: string;
+      /** Format: uri */
+      html_url: string;
+      members_url: string;
+      /** Format: uri */
+      repositories_url: string;
+      parent: null | components["schemas"]["team-simple"];
     };
     /**
      * Simple Repository
@@ -72524,8 +72553,6 @@ export interface operations {
    * This event occurs when there is activity relating to a merge group in a merge queue. For more information, see "[Managing a merge queue](https://docs.github.com/enterprise-cloud@latest//repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue)."
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Merge queues" repository permission.
-   *
-   * **Note**: The pull request merge queue feature is currently in public beta and subject to change.
    * @description The merge queue groups pull requests together to be merged. This event indicates that one of those merge groups was destroyed. This happens when a pull request is removed from the queue: any group containing that pull request is also destroyed.
    *
    * When you receive this event, you may want to cancel any checks that are running on the head SHA to avoid wasting computing resources on a merge group that will not be used.
@@ -74569,8 +74596,6 @@ export interface operations {
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
    * @description A pull request was removed from the merge queue.
-   *
-   * **Note**: The pull request merge queue feature is currently in limited public beta and subject to change.
    */
   "pull-request/dequeued": {
     parameters: {
@@ -74645,8 +74670,6 @@ export interface operations {
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
    * @description A pull request was added to the merge queue.
-   *
-   * **Note**: The pull request merge queue feature is currently in limited public beta and subject to change.
    */
   "pull-request/enqueued": {
     parameters: {
