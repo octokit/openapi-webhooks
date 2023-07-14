@@ -24,7 +24,7 @@
   "author": "Wolfy1339 <webmaster@wolfy1339.com>",
   "license": "MIT",
   "devDependencies": {
-    "@octokit/core": "^4.0.0",
+    "@octokit/core": "^5.0.0",
     "deep-equal": "^2.0.5",
     "execa": "^5.1.1",
     "github-enterprise-server-versions": "^1.1.1",
