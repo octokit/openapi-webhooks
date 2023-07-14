@@ -2660,7 +2660,7 @@ export interface components {
             subscribers_count?: number;
             network_count?: number;
           },
-          null
+          null,
         ]
       >;
       temp_clone_token?: string;
@@ -3256,7 +3256,7 @@ export interface components {
             url?: string;
             node_id?: string;
           },
-          null
+          null,
         ]
       >;
       forks?: number;
@@ -3461,7 +3461,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
           /** @description The set of permissions for the GitHub app */
@@ -3779,7 +3779,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
           /** @description The set of permissions for the GitHub app */
@@ -4090,7 +4090,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
           /** @description The set of permissions for the GitHub app */
@@ -4341,7 +4341,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         /**
@@ -4389,7 +4389,7 @@ export interface components {
                */
               state: "open" | "dismissed" | "fixed";
             },
-            null
+            null,
           ]
         >;
         /** @description The code scanning alert number. */
@@ -4484,7 +4484,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         /**
@@ -4532,7 +4532,7 @@ export interface components {
                */
               state: "open" | "dismissed" | "fixed";
             },
-            null
+            null,
           ]
         >;
         /** @description The code scanning alert number. */
@@ -4633,7 +4633,7 @@ export interface components {
                */
               state: "open" | "dismissed" | "fixed";
             },
-            null
+            null,
           ]
         >;
         /** @description The code scanning alert number. */
@@ -4669,7 +4669,7 @@ export interface components {
               /** @description The version of the tool used to detect the alert. */
               version: OneOf<[string, null]>;
             },
-            null
+            null,
           ]
         >;
         updated_at?: OneOf<[string, null]>;
@@ -4743,7 +4743,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         /**
@@ -4793,7 +4793,7 @@ export interface components {
                */
               state: "open" | "dismissed" | "fixed";
             },
-            null
+            null,
           ]
         >;
         /** @description The code scanning alert number. */
@@ -4893,7 +4893,7 @@ export interface components {
                    */
                   state: "open" | "dismissed" | "fixed";
                 },
-                null
+                null,
               ]
             >;
             /** @description The code scanning alert number. */
@@ -4930,7 +4930,7 @@ export interface components {
             /** Format: uri */
             url: string;
           },
-          null
+          null,
         ]
       >;
       /** @description The commit SHA of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty. */
@@ -4994,7 +4994,7 @@ export interface components {
                */
               state: "open" | "dismissed" | "fixed";
             },
-            null
+            null,
           ]
         >;
         /** @description The code scanning alert number. */
@@ -5130,7 +5130,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       };
@@ -5324,7 +5324,7 @@ export interface components {
             /** @description The package version that patches this vulnerability. */
             readonly identifier: string;
           },
-          null
+          null,
         ]
       >;
     };
@@ -5502,7 +5502,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         description: OneOf<[string, null]>;
@@ -5622,7 +5622,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /** @description The set of permissions for the GitHub app */
@@ -5703,7 +5703,7 @@ export interface components {
               /** Format: date-time */
               updated_at: OneOf<[string, null]>;
             },
-            null
+            null,
           ]
         >;
         production_environment?: boolean;
@@ -5744,7 +5744,7 @@ export interface components {
             /** Format: uri */
             url: string;
           },
-          null
+          null,
         ]
       >;
       /** Deployment Workflow Run */
@@ -5790,7 +5790,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >;
             artifacts_url?: string;
@@ -5927,7 +5927,7 @@ export interface components {
                   ref?: string;
                   sha: string;
                 }[],
-                null
+                null,
               ]
             >;
             repository?: {
@@ -6049,7 +6049,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >;
             /** Format: date-time */
@@ -6059,7 +6059,7 @@ export interface components {
             workflow_id: number;
             workflow_url?: string;
           },
-          null
+          null,
         ]
       >;
     };
@@ -6114,7 +6114,7 @@ export interface components {
             /** Format: uri */
             url: string;
           },
-          null
+          null,
         ]
       >;
       /**
@@ -6162,7 +6162,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         description: OneOf<[string, null]>;
@@ -6282,7 +6282,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /** @description The set of permissions for the GitHub app */
@@ -6363,7 +6363,7 @@ export interface components {
               /** Format: date-time */
               updated_at: OneOf<[string, null]>;
             },
-            null
+            null,
           ]
         >;
         production_environment?: boolean;
@@ -6421,7 +6421,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         /** Format: uri */
@@ -6546,7 +6546,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /** @description The set of permissions for the GitHub app */
@@ -6627,7 +6627,7 @@ export interface components {
               /** Format: date-time */
               updated_at: OneOf<[string, null]>;
             },
-            null
+            null,
           ]
         >;
         /** Format: uri */
@@ -6665,7 +6665,7 @@ export interface components {
             /** Format: uri */
             url: string;
           },
-          null
+          null,
         ]
       >;
       /** Deployment Workflow Run */
@@ -6711,7 +6711,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >;
             artifacts_url?: string;
@@ -6849,7 +6849,7 @@ export interface components {
                   ref?: string;
                   sha: string;
                 }[],
-                null
+                null,
               ]
             >;
             repository?: {
@@ -6971,7 +6971,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >;
             /** Format: date-time */
@@ -6981,7 +6981,7 @@ export interface components {
             workflow_id: number;
             workflow_url?: string;
           },
-          null
+          null,
         ]
       >;
     };
@@ -7069,7 +7069,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       };
@@ -7126,7 +7126,7 @@ export interface components {
             /** Format: uri */
             url?: string;
           },
-          null
+          null,
         ]
       >;
       answer_html_url: OneOf<[string, null]>;
@@ -7242,7 +7242,7 @@ export interface components {
             /** Format: uri */
             url?: string;
           },
-          null
+          null,
         ]
       >;
     };
@@ -7356,7 +7356,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       };
@@ -7449,7 +7449,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       };
@@ -7547,7 +7547,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       };
@@ -7604,7 +7604,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         answer_html_url: OneOf<[string, null]>;
@@ -7704,7 +7704,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       } & {
@@ -7958,7 +7958,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       };
@@ -8167,7 +8167,7 @@ export interface components {
               /** Format: uri */
               url: OneOf<[string, null]>;
             },
-            null
+            null,
           ]
         >;
         master_branch?: string;
@@ -8224,7 +8224,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         permissions?: {
@@ -8475,7 +8475,7 @@ export interface components {
             /** Format: uri */
             url?: string;
           },
-          null
+          null,
         ]
       >;
       sender: components["schemas"]["simple-user"];
@@ -8493,7 +8493,7 @@ export interface components {
           (
             | components["schemas"]["simple-user"]
             | components["schemas"]["enterprise"]
-          )
+          ),
         ]
       >;
       /**
@@ -8816,7 +8816,7 @@ export interface components {
             /** Format: uri */
             url?: string;
           },
-          null
+          null,
         ]
       >;
       sender: components["schemas"]["simple-user"];
@@ -8895,7 +8895,7 @@ export interface components {
             /** Format: uri */
             url?: string;
           },
-          null
+          null,
         ]
       >;
       sender: components["schemas"]["simple-user"];
@@ -9096,7 +9096,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       };
@@ -9151,7 +9151,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         assignees: OneOf<
@@ -9192,7 +9192,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >[];
         /**
@@ -9294,7 +9294,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               description: OneOf<[string, null]>;
@@ -9321,7 +9321,7 @@ export interface components {
               /** Format: uri */
               url: string;
             },
-            null
+            null,
           ]
         >;
         node_id: string;
@@ -9434,7 +9434,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /** @description The set of permissions for the GitHub app */
@@ -9515,7 +9515,7 @@ export interface components {
               /** Format: date-time */
               updated_at: OneOf<[string, null]>;
             },
-            null
+            null,
           ]
         >;
         pull_request?: {
@@ -9602,7 +9602,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       } & {
@@ -9646,7 +9646,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         assignees?: OneOf<[Record<string, never>, null]>[];
@@ -9825,7 +9825,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       };
@@ -9880,7 +9880,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         assignees: OneOf<
@@ -9921,7 +9921,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >[];
         /**
@@ -10023,7 +10023,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               description: OneOf<[string, null]>;
@@ -10050,7 +10050,7 @@ export interface components {
               /** Format: uri */
               url: string;
             },
-            null
+            null,
           ]
         >;
         node_id: string;
@@ -10161,7 +10161,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /** @description The set of permissions for the GitHub app */
@@ -10242,7 +10242,7 @@ export interface components {
               /** Format: date-time */
               updated_at: OneOf<[string, null]>;
             },
-            null
+            null,
           ]
         >;
         pull_request?: {
@@ -10329,7 +10329,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       } & {
@@ -10373,7 +10373,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         assignees?: OneOf<[Record<string, never>, null]>[];
@@ -10559,7 +10559,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       };
@@ -10614,7 +10614,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         assignees: OneOf<
@@ -10655,7 +10655,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >[];
         /**
@@ -10757,7 +10757,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               description: OneOf<[string, null]>;
@@ -10784,7 +10784,7 @@ export interface components {
               /** Format: uri */
               url: string;
             },
-            null
+            null,
           ]
         >;
         node_id: string;
@@ -10897,7 +10897,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /** @description The set of permissions for the GitHub app */
@@ -10978,7 +10978,7 @@ export interface components {
               /** Format: date-time */
               updated_at: OneOf<[string, null]>;
             },
-            null
+            null,
           ]
         >;
         pull_request?: {
@@ -11065,7 +11065,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       } & {
@@ -11109,7 +11109,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         assignees?: OneOf<[Record<string, never>, null]>[];
@@ -11236,7 +11236,7 @@ export interface components {
             /** Format: uri */
             url?: string;
           },
-          null
+          null,
         ]
       >;
       enterprise?: components["schemas"]["enterprise"];
@@ -11293,7 +11293,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         assignees: OneOf<
@@ -11334,7 +11334,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >[];
         /**
@@ -11436,7 +11436,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               description: OneOf<[string, null]>;
@@ -11463,7 +11463,7 @@ export interface components {
               /** Format: uri */
               url: string;
             },
-            null
+            null,
           ]
         >;
         node_id: string;
@@ -11576,7 +11576,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /** @description The set of permissions for the GitHub app */
@@ -11657,7 +11657,7 @@ export interface components {
               /** Format: date-time */
               updated_at: OneOf<[string, null]>;
             },
-            null
+            null,
           ]
         >;
         pull_request?: {
@@ -11744,7 +11744,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       };
@@ -11810,7 +11810,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         assignees: OneOf<
@@ -11851,7 +11851,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >[];
         /**
@@ -11953,7 +11953,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               description: OneOf<[string, null]>;
@@ -11980,7 +11980,7 @@ export interface components {
               /** Format: uri */
               url: string;
             },
-            null
+            null,
           ]
         >;
         node_id: string;
@@ -12094,7 +12094,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /** @description The set of permissions for the GitHub app */
@@ -12175,7 +12175,7 @@ export interface components {
               /** Format: date-time */
               updated_at: OneOf<[string, null]>;
             },
-            null
+            null,
           ]
         >;
         pull_request?: {
@@ -12262,7 +12262,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       } & {
@@ -12387,7 +12387,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         assignees: OneOf<
@@ -12428,7 +12428,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >[];
         /**
@@ -12530,7 +12530,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               description: OneOf<[string, null]>;
@@ -12557,7 +12557,7 @@ export interface components {
               /** Format: uri */
               url: string;
             },
-            null
+            null,
           ]
         >;
         node_id: string;
@@ -12669,7 +12669,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /** @description The set of permissions for the GitHub app */
@@ -12750,7 +12750,7 @@ export interface components {
               /** Format: date-time */
               updated_at: OneOf<[string, null]>;
             },
-            null
+            null,
           ]
         >;
         pull_request?: {
@@ -12837,7 +12837,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       };
@@ -12899,7 +12899,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         assignees: OneOf<
@@ -12940,7 +12940,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >[];
         /**
@@ -13042,7 +13042,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               description: OneOf<[string, null]>;
@@ -13069,7 +13069,7 @@ export interface components {
               /** Format: uri */
               url: string;
             },
-            null
+            null,
           ]
         >;
         node_id: string;
@@ -13180,7 +13180,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /** @description The set of permissions for the GitHub app */
@@ -13261,7 +13261,7 @@ export interface components {
               /** Format: date-time */
               updated_at: OneOf<[string, null]>;
             },
-            null
+            null,
           ]
         >;
         pull_request?: {
@@ -13348,7 +13348,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       } & {
@@ -13418,7 +13418,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               description: OneOf<[string, null]>;
@@ -13445,7 +13445,7 @@ export interface components {
               /** Format: uri */
               url: string;
             },
-            null
+            null,
           ]
         >;
         node_id?: string;
@@ -13539,7 +13539,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         description: OneOf<[string, null]>;
@@ -13639,7 +13639,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         assignees: OneOf<
@@ -13680,7 +13680,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >[];
         /**
@@ -13782,7 +13782,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               description: OneOf<[string, null]>;
@@ -13809,7 +13809,7 @@ export interface components {
               /** Format: uri */
               url: string;
             },
-            null
+            null,
           ]
         >;
         node_id: string;
@@ -13923,7 +13923,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /** @description The set of permissions for the GitHub app */
@@ -14004,7 +14004,7 @@ export interface components {
               /** Format: date-time */
               updated_at: OneOf<[string, null]>;
             },
-            null
+            null,
           ]
         >;
         pull_request?: {
@@ -14091,7 +14091,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       };
@@ -14173,7 +14173,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         assignees: OneOf<
@@ -14214,7 +14214,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >[];
         /**
@@ -14316,7 +14316,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               description: OneOf<[string, null]>;
@@ -14343,7 +14343,7 @@ export interface components {
               /** Format: uri */
               url: string;
             },
-            null
+            null,
           ]
         >;
         node_id: string;
@@ -14456,7 +14456,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /** @description The set of permissions for the GitHub app */
@@ -14537,7 +14537,7 @@ export interface components {
               /** Format: date-time */
               updated_at: OneOf<[string, null]>;
             },
-            null
+            null,
           ]
         >;
         pull_request?: {
@@ -14624,7 +14624,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       };
@@ -14702,7 +14702,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         assignees: OneOf<
@@ -14743,7 +14743,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >[];
         /**
@@ -14845,7 +14845,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               description: OneOf<[string, null]>;
@@ -14872,7 +14872,7 @@ export interface components {
               /** Format: uri */
               url: string;
             },
-            null
+            null,
           ]
         >;
         node_id: string;
@@ -14985,7 +14985,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /** @description The set of permissions for the GitHub app */
@@ -15066,7 +15066,7 @@ export interface components {
               /** Format: date-time */
               updated_at: OneOf<[string, null]>;
             },
-            null
+            null,
           ]
         >;
         pull_request?: {
@@ -15153,7 +15153,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       } & {
@@ -15281,7 +15281,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         assignees: OneOf<
@@ -15322,7 +15322,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >[];
         /**
@@ -15424,7 +15424,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               description: OneOf<[string, null]>;
@@ -15451,7 +15451,7 @@ export interface components {
               /** Format: uri */
               url: string;
             },
-            null
+            null,
           ]
         >;
         node_id: string;
@@ -15563,7 +15563,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /** @description The set of permissions for the GitHub app */
@@ -15644,7 +15644,7 @@ export interface components {
               /** Format: date-time */
               updated_at: OneOf<[string, null]>;
             },
-            null
+            null,
           ]
         >;
         pull_request?: {
@@ -15731,7 +15731,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       } & {
@@ -15799,7 +15799,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
           description: OneOf<[string, null]>;
@@ -15917,7 +15917,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         description: OneOf<[string, null]>;
@@ -16007,7 +16007,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               assignees: OneOf<
@@ -16048,7 +16048,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >[];
               /**
@@ -16150,7 +16150,7 @@ export interface components {
                           /** Format: uri */
                           url?: string;
                         },
-                        null
+                        null,
                       ]
                     >;
                     description: OneOf<[string, null]>;
@@ -16177,7 +16177,7 @@ export interface components {
                     /** Format: uri */
                     url: string;
                   },
-                  null
+                  null,
                 ]
               >;
               node_id: string;
@@ -16288,7 +16288,7 @@ export interface components {
                           /** Format: uri */
                           url?: string;
                         },
-                        null
+                        null,
                       ]
                     >;
                     /** @description The set of permissions for the GitHub app */
@@ -16369,7 +16369,7 @@ export interface components {
                     /** Format: date-time */
                     updated_at: OneOf<[string, null]>;
                   },
-                  null
+                  null,
                 ]
               >;
               pull_request?: {
@@ -16456,11 +16456,11 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
             },
-            null
+            null,
           ]
         >;
         /**
@@ -16602,7 +16602,7 @@ export interface components {
                 /** Format: uri */
                 url: OneOf<[string, null]>;
               },
-              null
+              null,
             ]
           >;
           master_branch?: string;
@@ -16659,7 +16659,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
           permissions?: {
@@ -16763,7 +16763,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         assignees: OneOf<
@@ -16804,7 +16804,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >[];
         /**
@@ -16906,7 +16906,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               description: OneOf<[string, null]>;
@@ -16933,7 +16933,7 @@ export interface components {
               /** Format: uri */
               url: string;
             },
-            null
+            null,
           ]
         >;
         node_id: string;
@@ -17047,7 +17047,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /** @description The set of permissions for the GitHub app */
@@ -17128,7 +17128,7 @@ export interface components {
               /** Format: date-time */
               updated_at: OneOf<[string, null]>;
             },
-            null
+            null,
           ]
         >;
         pull_request?: {
@@ -17215,7 +17215,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       };
@@ -17281,7 +17281,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         assignees: OneOf<
@@ -17322,7 +17322,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >[];
         /**
@@ -17424,7 +17424,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               description: OneOf<[string, null]>;
@@ -17451,7 +17451,7 @@ export interface components {
               /** Format: uri */
               url: string;
             },
-            null
+            null,
           ]
         >;
         node_id: string;
@@ -17562,7 +17562,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /** @description The set of permissions for the GitHub app */
@@ -17643,7 +17643,7 @@ export interface components {
               /** Format: date-time */
               updated_at: OneOf<[string, null]>;
             },
-            null
+            null,
           ]
         >;
         pull_request?: {
@@ -17730,7 +17730,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       };
@@ -17792,7 +17792,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         assignees: OneOf<
@@ -17833,7 +17833,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >[];
         /**
@@ -17935,7 +17935,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               description: OneOf<[string, null]>;
@@ -17962,7 +17962,7 @@ export interface components {
               /** Format: uri */
               url: string;
             },
-            null
+            null,
           ]
         >;
         node_id: string;
@@ -18075,7 +18075,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /** @description The set of permissions for the GitHub app */
@@ -18156,7 +18156,7 @@ export interface components {
               /** Format: date-time */
               updated_at: OneOf<[string, null]>;
             },
-            null
+            null,
           ]
         >;
         pull_request?: {
@@ -18243,7 +18243,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       } & {
@@ -18367,7 +18367,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
           assignees: OneOf<
@@ -18408,7 +18408,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >[];
           /**
@@ -18510,7 +18510,7 @@ export interface components {
                       /** Format: uri */
                       url?: string;
                     },
-                    null
+                    null,
                   ]
                 >;
                 description: OneOf<[string, null]>;
@@ -18537,7 +18537,7 @@ export interface components {
                 /** Format: uri */
                 url: string;
               },
-              null
+              null,
             ]
           >;
           node_id: string;
@@ -18648,7 +18648,7 @@ export interface components {
                       /** Format: uri */
                       url?: string;
                     },
-                    null
+                    null,
                   ]
                 >;
                 /** @description The set of permissions for the GitHub app */
@@ -18729,7 +18729,7 @@ export interface components {
                 /** Format: date-time */
                 updated_at: OneOf<[string, null]>;
               },
-              null
+              null,
             ]
           >;
           pull_request?: {
@@ -18816,7 +18816,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
         };
@@ -18964,7 +18964,7 @@ export interface components {
                 /** Format: uri */
                 url: OneOf<[string, null]>;
               },
-              null
+              null,
             ]
           >;
           master_branch?: string;
@@ -19021,7 +19021,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
           permissions?: {
@@ -19127,7 +19127,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         assignees: OneOf<
@@ -19168,7 +19168,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >[];
         /**
@@ -19270,7 +19270,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               description: OneOf<[string, null]>;
@@ -19297,7 +19297,7 @@ export interface components {
               /** Format: uri */
               url: string;
             },
-            null
+            null,
           ]
         >;
         node_id: string;
@@ -19408,7 +19408,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /** @description The set of permissions for the GitHub app */
@@ -19489,7 +19489,7 @@ export interface components {
               /** Format: date-time */
               updated_at: OneOf<[string, null]>;
             },
-            null
+            null,
           ]
         >;
         pull_request?: {
@@ -19576,7 +19576,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       };
@@ -19630,7 +19630,7 @@ export interface components {
             /** Format: uri */
             url?: string;
           },
-          null
+          null,
         ]
       >;
       enterprise?: components["schemas"]["enterprise"];
@@ -19687,7 +19687,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         assignees: OneOf<
@@ -19728,7 +19728,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >[];
         /**
@@ -19830,7 +19830,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               description: OneOf<[string, null]>;
@@ -19857,7 +19857,7 @@ export interface components {
               /** Format: uri */
               url: string;
             },
-            null
+            null,
           ]
         >;
         node_id: string;
@@ -19970,7 +19970,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /** @description The set of permissions for the GitHub app */
@@ -20051,7 +20051,7 @@ export interface components {
               /** Format: date-time */
               updated_at: OneOf<[string, null]>;
             },
-            null
+            null,
           ]
         >;
         pull_request?: {
@@ -20138,7 +20138,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       };
@@ -20204,7 +20204,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         assignees: OneOf<
@@ -20245,7 +20245,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >[];
         /**
@@ -20347,7 +20347,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               description: OneOf<[string, null]>;
@@ -20374,7 +20374,7 @@ export interface components {
               /** Format: uri */
               url: string;
             },
-            null
+            null,
           ]
         >;
         node_id: string;
@@ -20487,7 +20487,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /** @description The set of permissions for the GitHub app */
@@ -20568,7 +20568,7 @@ export interface components {
               /** Format: date-time */
               updated_at: OneOf<[string, null]>;
             },
-            null
+            null,
           ]
         >;
         pull_request?: {
@@ -20655,7 +20655,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       };
@@ -20733,7 +20733,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         assignees: OneOf<
@@ -20774,7 +20774,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >[];
         /**
@@ -20876,7 +20876,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               description: OneOf<[string, null]>;
@@ -20903,7 +20903,7 @@ export interface components {
               /** Format: uri */
               url: string;
             },
-            null
+            null,
           ]
         >;
         node_id: string;
@@ -21014,7 +21014,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /** @description The set of permissions for the GitHub app */
@@ -21095,7 +21095,7 @@ export interface components {
               /** Format: date-time */
               updated_at: OneOf<[string, null]>;
             },
-            null
+            null,
           ]
         >;
         pull_request?: {
@@ -21182,7 +21182,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       } & {
@@ -21307,7 +21307,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         assignees: OneOf<
@@ -21348,7 +21348,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >[];
         /**
@@ -21450,7 +21450,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               description: OneOf<[string, null]>;
@@ -21477,7 +21477,7 @@ export interface components {
               /** Format: uri */
               url: string;
             },
-            null
+            null,
           ]
         >;
         node_id: string;
@@ -21588,7 +21588,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /** @description The set of permissions for the GitHub app */
@@ -21669,7 +21669,7 @@ export interface components {
               /** Format: date-time */
               updated_at: OneOf<[string, null]>;
             },
-            null
+            null,
           ]
         >;
         pull_request?: {
@@ -21756,7 +21756,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       };
@@ -21908,7 +21908,7 @@ export interface components {
             /** Format: uri */
             url?: string;
           },
-          null
+          null,
         ]
       >;
       organization?: components["schemas"]["organization-simple"];
@@ -21971,7 +21971,7 @@ export interface components {
             /** Format: uri */
             url?: string;
           },
-          null
+          null,
         ]
       >;
       organization?: components["schemas"]["organization-simple"];
@@ -22023,7 +22023,7 @@ export interface components {
             /** Format: uri */
             url?: string;
           },
-          null
+          null,
         ]
       >;
       organization?: components["schemas"]["organization-simple"];
@@ -22075,7 +22075,7 @@ export interface components {
             /** Format: uri */
             url?: string;
           },
-          null
+          null,
         ]
       >;
       organization: components["schemas"]["organization-simple"];
@@ -22124,7 +22124,7 @@ export interface components {
             /** Format: uri */
             url?: string;
           },
-          null
+          null,
         ]
       >;
       /**
@@ -22171,7 +22171,7 @@ export interface components {
                */
               url: string;
             },
-            null
+            null,
           ]
         >;
         /** @description Permission that the team will have for its repositories */
@@ -22233,7 +22233,7 @@ export interface components {
             /** Format: uri */
             url?: string;
           },
-          null
+          null,
         ]
       >;
       organization: components["schemas"]["organization-simple"];
@@ -22282,7 +22282,7 @@ export interface components {
             /** Format: uri */
             url?: string;
           },
-          null
+          null,
         ]
       >;
       /**
@@ -22329,7 +22329,7 @@ export interface components {
                */
               url: string;
             },
-            null
+            null,
           ]
         >;
         /** @description Permission that the team will have for its repositories */
@@ -22484,7 +22484,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         description: OneOf<[string, null]>;
@@ -22570,7 +22570,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         description: OneOf<[string, null]>;
@@ -22656,7 +22656,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         description: OneOf<[string, null]>;
@@ -22757,7 +22757,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         description: OneOf<[string, null]>;
@@ -22843,7 +22843,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         description: OneOf<[string, null]>;
@@ -22930,7 +22930,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       };
@@ -22994,7 +22994,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       };
@@ -23058,7 +23058,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         login: OneOf<[string, null]>;
@@ -23109,7 +23109,7 @@ export interface components {
             /** Format: uri */
             url?: string;
           },
-          null
+          null,
         ]
       >;
     };
@@ -23169,7 +23169,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       };
@@ -23238,7 +23238,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       };
@@ -23302,7 +23302,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         package_type: string;
@@ -23348,7 +23348,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               body?: string | Record<string, never>;
@@ -23363,7 +23363,7 @@ export interface components {
                       name?: string;
                     };
                   },
-                  null
+                  null,
                 ]
               >;
               created_at?: string;
@@ -23422,7 +23422,7 @@ export interface components {
                     published_via_actions?: boolean;
                     deleted_by_id?: number;
                   },
-                  null
+                  null,
                 ]
               >;
               nuget_metadata?: OneOf<
@@ -23440,11 +23440,11 @@ export interface components {
                           branch?: string;
                           commit?: string;
                           type?: string;
-                        }
+                        },
                       ]
                     >;
                   }[],
-                  null
+                  null,
                 ]
               >;
               package_files: {
@@ -23503,7 +23503,7 @@ export interface components {
                       /** Format: uri */
                       url?: string;
                     },
-                    null
+                    null,
                   ]
                 >;
                 created_at: string;
@@ -23528,7 +23528,7 @@ export interface components {
               updated_at?: string;
               version: string;
             },
-            null
+            null,
           ]
         >;
         registry: OneOf<
@@ -23542,7 +23542,7 @@ export interface components {
               url: string;
               vendor: string;
             },
-            null
+            null,
           ]
         >;
         updated_at: OneOf<[string, null]>;
@@ -23625,7 +23625,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         package_type: string;
@@ -23669,7 +23669,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
           body: string;
@@ -23745,7 +23745,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >;
             created_at: string;
@@ -23782,7 +23782,7 @@ export interface components {
               url: string;
               vendor: string;
             },
-            null
+            null,
           ]
         >;
         updated_at: string;
@@ -23839,7 +23839,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         status: string;
@@ -23981,7 +23981,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         /** @description The project card's ID */
@@ -24056,7 +24056,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         /** @description The project card's ID */
@@ -24131,7 +24131,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         /** @description The project card's ID */
@@ -24211,7 +24211,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         /** @description The project card's ID */
@@ -24290,7 +24290,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         /** @description The project card's ID */
@@ -24331,7 +24331,7 @@ export interface components {
               type?: string;
               url?: string;
             },
-            null
+            null,
           ]
         >;
         id?: number;
@@ -24398,7 +24398,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         /** Format: uri */
@@ -24598,7 +24598,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         /** Format: uri */
@@ -24677,7 +24677,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         /** Format: uri */
@@ -24767,7 +24767,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         /** Format: uri */
@@ -24846,7 +24846,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         /** Format: uri */
@@ -24962,7 +24962,7 @@ export interface components {
               from?: OneOf<[string, null]>;
               to?: OneOf<[string, null]>;
             };
-          }
+          },
         ]
       >;
       installation?: components["schemas"]["simple-installation"];
@@ -25053,7 +25053,7 @@ export interface components {
             /** Format: uri */
             url?: string;
           },
-          null
+          null,
         ]
       >;
       enterprise?: components["schemas"]["enterprise"];
@@ -25153,7 +25153,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         assignees: OneOf<
@@ -25194,7 +25194,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >[];
         /**
@@ -25261,7 +25261,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /**
@@ -25270,7 +25270,7 @@ export interface components {
                */
               merge_method: "merge" | "squash" | "rebase";
             },
-            null
+            null,
           ]
         >;
         base: {
@@ -25420,7 +25420,7 @@ export interface components {
                   /** Format: uri */
                   url: OneOf<[string, null]>;
                 },
-                null
+                null,
               ]
             >;
             master_branch?: string;
@@ -25494,7 +25494,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >;
             permissions?: {
@@ -25610,7 +25610,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
         };
@@ -25780,7 +25780,7 @@ export interface components {
                       /** Format: uri */
                       url: OneOf<[string, null]>;
                     },
-                    null
+                    null,
                   ]
                 >;
                 master_branch?: string;
@@ -25854,7 +25854,7 @@ export interface components {
                       /** Format: uri */
                       url?: string;
                     },
-                    null
+                    null,
                   ]
                 >;
                 permissions?: {
@@ -25930,7 +25930,7 @@ export interface components {
                 /** @description Whether to require contributors to sign off on web-based commits */
                 web_commit_signoff_required?: boolean;
               },
-              null
+              null,
             ]
           >;
           sha: string;
@@ -25973,7 +25973,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
         };
@@ -26045,7 +26045,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         /**
@@ -26099,7 +26099,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               description: OneOf<[string, null]>;
@@ -26126,7 +26126,7 @@ export interface components {
               /** Format: uri */
               url: string;
             },
-            null
+            null,
           ]
         >;
         node_id: string;
@@ -26175,7 +26175,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >,
             {
@@ -26218,7 +26218,7 @@ export interface components {
                      */
                     url: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /** @description Permission that the team will have for its repositories */
@@ -26233,7 +26233,7 @@ export interface components {
                * @description URL for the team
                */
               url: string;
-            }
+            },
           ]
         >[];
         requested_teams: {
@@ -26276,7 +26276,7 @@ export interface components {
                  */
                 url: string;
               },
-              null
+              null,
             ]
           >;
           /** @description Permission that the team will have for its repositories */
@@ -26349,7 +26349,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       };
@@ -26456,7 +26456,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         assignees: OneOf<
@@ -26497,7 +26497,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >[];
         /**
@@ -26564,7 +26564,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /**
@@ -26573,7 +26573,7 @@ export interface components {
                */
               merge_method: "merge" | "squash" | "rebase";
             },
-            null
+            null,
           ]
         >;
         base: {
@@ -26723,7 +26723,7 @@ export interface components {
                   /** Format: uri */
                   url: OneOf<[string, null]>;
                 },
-                null
+                null,
               ]
             >;
             master_branch?: string;
@@ -26797,7 +26797,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >;
             permissions?: {
@@ -26913,7 +26913,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
         };
@@ -27081,7 +27081,7 @@ export interface components {
                   /** Format: uri */
                   url: OneOf<[string, null]>;
                 },
-                null
+                null,
               ]
             >;
             master_branch?: string;
@@ -27155,7 +27155,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >;
             permissions?: {
@@ -27271,7 +27271,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
         };
@@ -27343,7 +27343,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         /**
@@ -27397,7 +27397,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               description: OneOf<[string, null]>;
@@ -27424,7 +27424,7 @@ export interface components {
               /** Format: uri */
               url: string;
             },
-            null
+            null,
           ]
         >;
         node_id: string;
@@ -27473,7 +27473,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >,
             {
@@ -27516,7 +27516,7 @@ export interface components {
                      */
                     url: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /** @description Permission that the team will have for its repositories */
@@ -27531,7 +27531,7 @@ export interface components {
                * @description URL for the team
                */
               url: string;
-            }
+            },
           ]
         >[];
         requested_teams: {
@@ -27574,7 +27574,7 @@ export interface components {
                  */
                 url: string;
               },
-              null
+              null,
             ]
           >;
           /** @description Permission that the team will have for its repositories */
@@ -27647,7 +27647,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       };
@@ -27755,7 +27755,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         assignees: OneOf<
@@ -27796,7 +27796,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >[];
         /**
@@ -27863,7 +27863,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /**
@@ -27872,7 +27872,7 @@ export interface components {
                */
               merge_method: "merge" | "squash" | "rebase";
             },
-            null
+            null,
           ]
         >;
         base: {
@@ -28022,7 +28022,7 @@ export interface components {
                   /** Format: uri */
                   url: OneOf<[string, null]>;
                 },
-                null
+                null,
               ]
             >;
             master_branch?: string;
@@ -28096,7 +28096,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >;
             permissions?: {
@@ -28212,7 +28212,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
         };
@@ -28380,7 +28380,7 @@ export interface components {
                   /** Format: uri */
                   url: OneOf<[string, null]>;
                 },
-                null
+                null,
               ]
             >;
             master_branch?: string;
@@ -28454,7 +28454,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >;
             permissions?: {
@@ -28570,7 +28570,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
         };
@@ -28642,7 +28642,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         /**
@@ -28696,7 +28696,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               description: OneOf<[string, null]>;
@@ -28723,7 +28723,7 @@ export interface components {
               /** Format: uri */
               url: string;
             },
-            null
+            null,
           ]
         >;
         node_id: string;
@@ -28772,7 +28772,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >,
             {
@@ -28815,7 +28815,7 @@ export interface components {
                      */
                     url: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /** @description Permission that the team will have for its repositories */
@@ -28830,7 +28830,7 @@ export interface components {
                * @description URL for the team
                */
               url: string;
-            }
+            },
           ]
         >[];
         requested_teams: {
@@ -28873,7 +28873,7 @@ export interface components {
                  */
                 url: string;
               },
-              null
+              null,
             ]
           >;
           /** @description Permission that the team will have for its repositories */
@@ -28946,7 +28946,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       };
@@ -29218,7 +29218,7 @@ export interface components {
                     spdx_id: OneOf<[string, null]>;
                     node_id: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /** Format: date-time */
@@ -29239,7 +29239,7 @@ export interface components {
               is_template?: boolean;
               web_commit_signoff_required?: boolean;
             },
-            null
+            null,
           ]
         >;
         sha: string;
@@ -29580,7 +29580,7 @@ export interface components {
           /** @description Commit message for the merge commit. */
           commit_message: string;
         },
-        null
+        null,
       ]
     >;
     /** pull_request converted_to_draft event */
@@ -29745,7 +29745,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         assignees: OneOf<
@@ -29786,7 +29786,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >[];
         /**
@@ -29853,7 +29853,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /**
@@ -29862,7 +29862,7 @@ export interface components {
                */
               merge_method: "merge" | "squash" | "rebase";
             },
-            null
+            null,
           ]
         >;
         base: {
@@ -30012,7 +30012,7 @@ export interface components {
                   /** Format: uri */
                   url: OneOf<[string, null]>;
                 },
-                null
+                null,
               ]
             >;
             master_branch?: string;
@@ -30086,7 +30086,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >;
             permissions?: {
@@ -30202,7 +30202,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
         };
@@ -30370,7 +30370,7 @@ export interface components {
                   /** Format: uri */
                   url: OneOf<[string, null]>;
                 },
-                null
+                null,
               ]
             >;
             master_branch?: string;
@@ -30444,7 +30444,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >;
             permissions?: {
@@ -30560,7 +30560,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
         };
@@ -30632,7 +30632,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         /**
@@ -30686,7 +30686,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               description: OneOf<[string, null]>;
@@ -30713,7 +30713,7 @@ export interface components {
               /** Format: uri */
               url: string;
             },
-            null
+            null,
           ]
         >;
         node_id: string;
@@ -30762,7 +30762,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >,
             {
@@ -30805,7 +30805,7 @@ export interface components {
                      */
                     url: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /** @description Permission that the team will have for its repositories */
@@ -30820,7 +30820,7 @@ export interface components {
                * @description URL for the team
                */
               url?: string;
-            }
+            },
           ]
         >[];
         requested_teams: {
@@ -30863,7 +30863,7 @@ export interface components {
                  */
                 url: string;
               },
-              null
+              null,
             ]
           >;
           /** @description Permission that the team will have for its repositories */
@@ -30936,7 +30936,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       };
@@ -31140,7 +31140,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         assignees: OneOf<
@@ -31181,7 +31181,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >[];
         /**
@@ -31248,7 +31248,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /**
@@ -31257,7 +31257,7 @@ export interface components {
                */
               merge_method: "merge" | "squash" | "rebase";
             },
-            null
+            null,
           ]
         >;
         base: {
@@ -31407,7 +31407,7 @@ export interface components {
                   /** Format: uri */
                   url: OneOf<[string, null]>;
                 },
-                null
+                null,
               ]
             >;
             master_branch?: string;
@@ -31481,7 +31481,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >;
             permissions?: {
@@ -31597,7 +31597,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
         };
@@ -31767,7 +31767,7 @@ export interface components {
                       /** Format: uri */
                       url: OneOf<[string, null]>;
                     },
-                    null
+                    null,
                   ]
                 >;
                 master_branch?: string;
@@ -31841,7 +31841,7 @@ export interface components {
                       /** Format: uri */
                       url?: string;
                     },
-                    null
+                    null,
                   ]
                 >;
                 permissions?: {
@@ -31917,7 +31917,7 @@ export interface components {
                 /** @description Whether to require contributors to sign off on web-based commits */
                 web_commit_signoff_required?: boolean;
               },
-              null
+              null,
             ]
           >;
           sha: string;
@@ -31960,7 +31960,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
         };
@@ -32032,7 +32032,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         /**
@@ -32086,7 +32086,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               description: OneOf<[string, null]>;
@@ -32113,7 +32113,7 @@ export interface components {
               /** Format: uri */
               url: string;
             },
-            null
+            null,
           ]
         >;
         node_id: string;
@@ -32162,7 +32162,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >,
             {
@@ -32205,7 +32205,7 @@ export interface components {
                      */
                     url: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /** @description Permission that the team will have for its repositories */
@@ -32220,7 +32220,7 @@ export interface components {
                * @description URL for the team
                */
               url: string;
-            }
+            },
           ]
         >[];
         requested_teams: {
@@ -32263,7 +32263,7 @@ export interface components {
                  */
                 url: string;
               },
-              null
+              null,
             ]
           >;
           /** @description Permission that the team will have for its repositories */
@@ -32336,7 +32336,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       };
@@ -32444,7 +32444,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         assignees: OneOf<
@@ -32485,7 +32485,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >[];
         /**
@@ -32552,7 +32552,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /**
@@ -32561,7 +32561,7 @@ export interface components {
                */
               merge_method: "merge" | "squash" | "rebase";
             },
-            null
+            null,
           ]
         >;
         base: {
@@ -32711,7 +32711,7 @@ export interface components {
                   /** Format: uri */
                   url: OneOf<[string, null]>;
                 },
-                null
+                null,
               ]
             >;
             master_branch?: string;
@@ -32785,7 +32785,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >;
             permissions?: {
@@ -32901,7 +32901,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
         };
@@ -33071,7 +33071,7 @@ export interface components {
                       /** Format: uri */
                       url: OneOf<[string, null]>;
                     },
-                    null
+                    null,
                   ]
                 >;
                 master_branch?: string;
@@ -33145,7 +33145,7 @@ export interface components {
                       /** Format: uri */
                       url?: string;
                     },
-                    null
+                    null,
                   ]
                 >;
                 permissions?: {
@@ -33221,7 +33221,7 @@ export interface components {
                 /** @description Whether to require contributors to sign off on web-based commits */
                 web_commit_signoff_required?: boolean;
               },
-              null
+              null,
             ]
           >;
           sha: string;
@@ -33264,7 +33264,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
         };
@@ -33336,7 +33336,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         /**
@@ -33390,7 +33390,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               description: OneOf<[string, null]>;
@@ -33417,7 +33417,7 @@ export interface components {
               /** Format: uri */
               url: string;
             },
-            null
+            null,
           ]
         >;
         node_id: string;
@@ -33466,7 +33466,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >,
             {
@@ -33509,7 +33509,7 @@ export interface components {
                      */
                     url: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /** @description Permission that the team will have for its repositories */
@@ -33524,7 +33524,7 @@ export interface components {
                * @description URL for the team
                */
               url: string;
-            }
+            },
           ]
         >[];
         requested_teams: {
@@ -33567,7 +33567,7 @@ export interface components {
                  */
                 url: string;
               },
-              null
+              null,
             ]
           >;
           /** @description Permission that the team will have for its repositories */
@@ -33640,7 +33640,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       };
@@ -33748,7 +33748,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         assignees: OneOf<
@@ -33789,7 +33789,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >[];
         /**
@@ -33856,7 +33856,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /**
@@ -33865,7 +33865,7 @@ export interface components {
                */
               merge_method: "merge" | "squash" | "rebase";
             },
-            null
+            null,
           ]
         >;
         base: {
@@ -34015,7 +34015,7 @@ export interface components {
                   /** Format: uri */
                   url: OneOf<[string, null]>;
                 },
-                null
+                null,
               ]
             >;
             master_branch?: string;
@@ -34089,7 +34089,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >;
             permissions?: {
@@ -34205,7 +34205,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
         };
@@ -34373,7 +34373,7 @@ export interface components {
                   /** Format: uri */
                   url: OneOf<[string, null]>;
                 },
-                null
+                null,
               ]
             >;
             master_branch?: string;
@@ -34447,7 +34447,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >;
             permissions?: {
@@ -34563,7 +34563,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
         };
@@ -34635,7 +34635,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         /**
@@ -34689,7 +34689,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               description: OneOf<[string, null]>;
@@ -34716,7 +34716,7 @@ export interface components {
               /** Format: uri */
               url: string;
             },
-            null
+            null,
           ]
         >;
         node_id: string;
@@ -34765,7 +34765,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >,
             {
@@ -34808,7 +34808,7 @@ export interface components {
                      */
                     url: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /** @description Permission that the team will have for its repositories */
@@ -34823,7 +34823,7 @@ export interface components {
                * @description URL for the team
                */
               url?: string;
-            }
+            },
           ]
         >[];
         requested_teams: {
@@ -34866,7 +34866,7 @@ export interface components {
                  */
                 url: string;
               },
-              null
+              null,
             ]
           >;
           /** @description Permission that the team will have for its repositories */
@@ -34939,7 +34939,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       };
@@ -35287,7 +35287,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       };
@@ -35384,7 +35384,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         assignees: OneOf<
@@ -35425,7 +35425,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >[];
         /**
@@ -35492,7 +35492,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /**
@@ -35501,7 +35501,7 @@ export interface components {
                */
               merge_method: "merge" | "squash" | "rebase";
             },
-            null
+            null,
           ]
         >;
         base: {
@@ -35651,7 +35651,7 @@ export interface components {
                   /** Format: uri */
                   url: OneOf<[string, null]>;
                 },
-                null
+                null,
               ]
             >;
             master_branch?: string;
@@ -35725,7 +35725,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >;
             permissions?: {
@@ -35841,7 +35841,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
         };
@@ -36004,7 +36004,7 @@ export interface components {
                       /** Format: uri */
                       url: OneOf<[string, null]>;
                     },
-                    null
+                    null,
                   ]
                 >;
                 master_branch?: string;
@@ -36078,7 +36078,7 @@ export interface components {
                       /** Format: uri */
                       url?: string;
                     },
-                    null
+                    null,
                   ]
                 >;
                 permissions?: {
@@ -36154,7 +36154,7 @@ export interface components {
                 /** @description Whether to require contributors to sign off on web-based commits */
                 web_commit_signoff_required?: boolean;
               },
-              null
+              null,
             ]
           >;
           sha: string;
@@ -36197,7 +36197,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
         };
@@ -36275,7 +36275,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               description: OneOf<[string, null]>;
@@ -36302,7 +36302,7 @@ export interface components {
               /** Format: uri */
               url: string;
             },
-            null
+            null,
           ]
         >;
         node_id: string;
@@ -36349,7 +36349,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >,
             {
@@ -36392,7 +36392,7 @@ export interface components {
                      */
                     url: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /** @description Permission that the team will have for its repositories */
@@ -36407,7 +36407,7 @@ export interface components {
                * @description URL for the team
                */
               url: string;
-            }
+            },
           ]
         >[];
         requested_teams: {
@@ -36450,7 +36450,7 @@ export interface components {
                  */
                 url: string;
               },
-              null
+              null,
             ]
           >;
           /** @description Permission that the team will have for its repositories */
@@ -36517,7 +36517,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       };
@@ -36682,7 +36682,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       };
@@ -36779,7 +36779,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         assignees: OneOf<
@@ -36820,7 +36820,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >[];
         /**
@@ -36887,7 +36887,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /**
@@ -36896,7 +36896,7 @@ export interface components {
                */
               merge_method: "merge" | "squash" | "rebase";
             },
-            null
+            null,
           ]
         >;
         base: {
@@ -37046,7 +37046,7 @@ export interface components {
                   /** Format: uri */
                   url: OneOf<[string, null]>;
                 },
-                null
+                null,
               ]
             >;
             master_branch?: string;
@@ -37120,7 +37120,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >;
             permissions?: {
@@ -37236,7 +37236,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
         };
@@ -37399,7 +37399,7 @@ export interface components {
                       /** Format: uri */
                       url: OneOf<[string, null]>;
                     },
-                    null
+                    null,
                   ]
                 >;
                 master_branch?: string;
@@ -37473,7 +37473,7 @@ export interface components {
                       /** Format: uri */
                       url?: string;
                     },
-                    null
+                    null,
                   ]
                 >;
                 permissions?: {
@@ -37549,7 +37549,7 @@ export interface components {
                 /** @description Whether to require contributors to sign off on web-based commits */
                 web_commit_signoff_required?: boolean;
               },
-              null
+              null,
             ]
           >;
           sha: string;
@@ -37592,7 +37592,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
         };
@@ -37670,7 +37670,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               description: OneOf<[string, null]>;
@@ -37697,7 +37697,7 @@ export interface components {
               /** Format: uri */
               url: string;
             },
-            null
+            null,
           ]
         >;
         node_id: string;
@@ -37744,7 +37744,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >,
             {
@@ -37787,7 +37787,7 @@ export interface components {
                      */
                     url: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /** @description Permission that the team will have for its repositories */
@@ -37802,7 +37802,7 @@ export interface components {
                * @description URL for the team
                */
               url?: string;
-            }
+            },
           ]
         >[];
         requested_teams: {
@@ -37845,7 +37845,7 @@ export interface components {
                  */
                 url: string;
               },
-              null
+              null,
             ]
           >;
           /** @description Permission that the team will have for its repositories */
@@ -37912,7 +37912,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       };
@@ -38084,7 +38084,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       };
@@ -38181,7 +38181,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         assignees: OneOf<
@@ -38222,7 +38222,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >[];
         /**
@@ -38289,7 +38289,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /**
@@ -38298,7 +38298,7 @@ export interface components {
                */
               merge_method: "merge" | "squash" | "rebase";
             },
-            null
+            null,
           ]
         >;
         base: {
@@ -38448,7 +38448,7 @@ export interface components {
                   /** Format: uri */
                   url: OneOf<[string, null]>;
                 },
-                null
+                null,
               ]
             >;
             master_branch?: string;
@@ -38522,7 +38522,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >;
             permissions?: {
@@ -38638,7 +38638,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
         };
@@ -38801,7 +38801,7 @@ export interface components {
                       /** Format: uri */
                       url: OneOf<[string, null]>;
                     },
-                    null
+                    null,
                   ]
                 >;
                 master_branch?: string;
@@ -38875,7 +38875,7 @@ export interface components {
                       /** Format: uri */
                       url?: string;
                     },
-                    null
+                    null,
                   ]
                 >;
                 permissions?: {
@@ -38951,7 +38951,7 @@ export interface components {
                 /** @description Whether to require contributors to sign off on web-based commits */
                 web_commit_signoff_required?: boolean;
               },
-              null
+              null,
             ]
           >;
           sha: string;
@@ -38994,7 +38994,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
         };
@@ -39072,7 +39072,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               description: OneOf<[string, null]>;
@@ -39099,7 +39099,7 @@ export interface components {
               /** Format: uri */
               url: string;
             },
-            null
+            null,
           ]
         >;
         node_id: string;
@@ -39146,7 +39146,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >,
             {
@@ -39189,7 +39189,7 @@ export interface components {
                      */
                     url: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /** @description Permission that the team will have for its repositories */
@@ -39204,7 +39204,7 @@ export interface components {
                * @description URL for the team
                */
               url?: string;
-            }
+            },
           ]
         >[];
         requested_teams: {
@@ -39247,7 +39247,7 @@ export interface components {
                  */
                 url: string;
               },
-              null
+              null,
             ]
           >;
           /** @description Permission that the team will have for its repositories */
@@ -39314,7 +39314,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       };
@@ -39419,7 +39419,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         assignees: OneOf<
@@ -39460,7 +39460,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >[];
         /**
@@ -39527,7 +39527,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /**
@@ -39536,7 +39536,7 @@ export interface components {
                */
               merge_method: "merge" | "squash" | "rebase";
             },
-            null
+            null,
           ]
         >;
         base: {
@@ -39686,7 +39686,7 @@ export interface components {
                   /** Format: uri */
                   url: OneOf<[string, null]>;
                 },
-                null
+                null,
               ]
             >;
             master_branch?: string;
@@ -39760,7 +39760,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >;
             permissions?: {
@@ -39876,7 +39876,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
         };
@@ -40039,7 +40039,7 @@ export interface components {
                       /** Format: uri */
                       url: OneOf<[string, null]>;
                     },
-                    null
+                    null,
                   ]
                 >;
                 master_branch?: string;
@@ -40113,7 +40113,7 @@ export interface components {
                       /** Format: uri */
                       url?: string;
                     },
-                    null
+                    null,
                   ]
                 >;
                 permissions?: {
@@ -40189,7 +40189,7 @@ export interface components {
                 /** @description Whether to require contributors to sign off on web-based commits */
                 web_commit_signoff_required?: boolean;
               },
-              null
+              null,
             ]
           >;
           sha: string;
@@ -40232,7 +40232,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
         };
@@ -40310,7 +40310,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               description: OneOf<[string, null]>;
@@ -40337,7 +40337,7 @@ export interface components {
               /** Format: uri */
               url: string;
             },
-            null
+            null,
           ]
         >;
         node_id: string;
@@ -40384,7 +40384,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >,
             {
@@ -40427,7 +40427,7 @@ export interface components {
                      */
                     url: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /** @description Permission that the team will have for its repositories */
@@ -40442,7 +40442,7 @@ export interface components {
                * @description URL for the team
                */
               url: string;
-            }
+            },
           ]
         >[];
         requested_teams: {
@@ -40485,7 +40485,7 @@ export interface components {
                  */
                 url: string;
               },
-              null
+              null,
             ]
           >;
           /** @description Permission that the team will have for its repositories */
@@ -40552,7 +40552,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       };
@@ -40639,7 +40639,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       };
@@ -40749,7 +40749,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         assignees: OneOf<
@@ -40790,7 +40790,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >[];
         /**
@@ -40857,7 +40857,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /**
@@ -40866,7 +40866,7 @@ export interface components {
                */
               merge_method: "merge" | "squash" | "rebase";
             },
-            null
+            null,
           ]
         >;
         base: {
@@ -41011,7 +41011,7 @@ export interface components {
                   /** Format: uri */
                   url: OneOf<[string, null]>;
                 },
-                null
+                null,
               ]
             >;
             master_branch?: string;
@@ -41068,7 +41068,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >;
             permissions?: {
@@ -41157,7 +41157,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
         };
@@ -41315,7 +41315,7 @@ export interface components {
                       /** Format: uri */
                       url: OneOf<[string, null]>;
                     },
-                    null
+                    null,
                   ]
                 >;
                 master_branch?: string;
@@ -41372,7 +41372,7 @@ export interface components {
                       /** Format: uri */
                       url?: string;
                     },
-                    null
+                    null,
                   ]
                 >;
                 permissions?: {
@@ -41421,7 +41421,7 @@ export interface components {
                 watchers: number;
                 watchers_count: number;
               },
-              null
+              null,
             ]
           >;
           sha: string;
@@ -41464,7 +41464,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
         };
@@ -41542,7 +41542,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               description: OneOf<[string, null]>;
@@ -41569,7 +41569,7 @@ export interface components {
               /** Format: uri */
               url: string;
             },
-            null
+            null,
           ]
         >;
         node_id: string;
@@ -41616,7 +41616,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >,
             {
@@ -41659,7 +41659,7 @@ export interface components {
                      */
                     url: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /** @description Permission that the team will have for its repositories */
@@ -41674,7 +41674,7 @@ export interface components {
                * @description URL for the team
                */
               url: string;
-            }
+            },
           ]
         >[];
         requested_teams: {
@@ -41717,7 +41717,7 @@ export interface components {
                  */
                 url: string;
               },
-              null
+              null,
             ]
           >;
           /** @description Permission that the team will have for its repositories */
@@ -41784,7 +41784,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       };
@@ -41870,7 +41870,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       };
@@ -41979,7 +41979,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >;
             assignees: OneOf<
@@ -42020,7 +42020,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >[];
             /**
@@ -42087,7 +42087,7 @@ export interface components {
                         /** Format: uri */
                         url?: string;
                       },
-                      null
+                      null,
                     ]
                   >;
                   /**
@@ -42096,7 +42096,7 @@ export interface components {
                    */
                   merge_method: "merge" | "squash" | "rebase";
                 },
-                null
+                null,
               ]
             >;
             base: {
@@ -42246,7 +42246,7 @@ export interface components {
                       /** Format: uri */
                       url: OneOf<[string, null]>;
                     },
-                    null
+                    null,
                   ]
                 >;
                 master_branch?: string;
@@ -42320,7 +42320,7 @@ export interface components {
                       /** Format: uri */
                       url?: string;
                     },
-                    null
+                    null,
                   ]
                 >;
                 permissions?: {
@@ -42429,7 +42429,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
             };
@@ -42597,7 +42597,7 @@ export interface components {
                       /** Format: uri */
                       url: OneOf<[string, null]>;
                     },
-                    null
+                    null,
                   ]
                 >;
                 master_branch?: string;
@@ -42671,7 +42671,7 @@ export interface components {
                       /** Format: uri */
                       url?: string;
                     },
-                    null
+                    null,
                   ]
                 >;
                 permissions?: {
@@ -42787,7 +42787,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
             };
@@ -42859,7 +42859,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >;
             /**
@@ -42913,7 +42913,7 @@ export interface components {
                         /** Format: uri */
                         url?: string;
                       },
-                      null
+                      null,
                     ]
                   >;
                   description: OneOf<[string, null]>;
@@ -42940,7 +42940,7 @@ export interface components {
                   /** Format: uri */
                   url: string;
                 },
-                null
+                null,
               ]
             >;
             node_id: string;
@@ -42989,7 +42989,7 @@ export interface components {
                       /** Format: uri */
                       url?: string;
                     },
-                    null
+                    null,
                   ]
                 >,
                 {
@@ -43032,7 +43032,7 @@ export interface components {
                          */
                         url: string;
                       },
-                      null
+                      null,
                     ]
                   >;
                   /** @description Permission that the team will have for its repositories */
@@ -43047,7 +43047,7 @@ export interface components {
                    * @description URL for the team
                    */
                   url: string;
-                }
+                },
               ]
             >[];
             requested_teams: {
@@ -43090,7 +43090,7 @@ export interface components {
                      */
                     url: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /** @description Permission that the team will have for its repositories */
@@ -43163,7 +43163,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >;
           };
@@ -43207,7 +43207,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
           sender: components["schemas"]["simple-user"];
@@ -43312,7 +43312,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >;
             assignees: OneOf<
@@ -43353,7 +43353,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >[];
             /**
@@ -43420,7 +43420,7 @@ export interface components {
                         /** Format: uri */
                         url?: string;
                       },
-                      null
+                      null,
                     ]
                   >;
                   /**
@@ -43429,7 +43429,7 @@ export interface components {
                    */
                   merge_method: "merge" | "squash" | "rebase";
                 },
-                null
+                null,
               ]
             >;
             base: {
@@ -43579,7 +43579,7 @@ export interface components {
                       /** Format: uri */
                       url: OneOf<[string, null]>;
                     },
-                    null
+                    null,
                   ]
                 >;
                 master_branch?: string;
@@ -43653,7 +43653,7 @@ export interface components {
                       /** Format: uri */
                       url?: string;
                     },
-                    null
+                    null,
                   ]
                 >;
                 permissions?: {
@@ -43769,7 +43769,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
             };
@@ -43937,7 +43937,7 @@ export interface components {
                       /** Format: uri */
                       url: OneOf<[string, null]>;
                     },
-                    null
+                    null,
                   ]
                 >;
                 master_branch?: string;
@@ -44011,7 +44011,7 @@ export interface components {
                       /** Format: uri */
                       url?: string;
                     },
-                    null
+                    null,
                   ]
                 >;
                 permissions?: {
@@ -44127,7 +44127,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
             };
@@ -44199,7 +44199,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >;
             /**
@@ -44253,7 +44253,7 @@ export interface components {
                         /** Format: uri */
                         url?: string;
                       },
-                      null
+                      null,
                     ]
                   >;
                   description: OneOf<[string, null]>;
@@ -44280,7 +44280,7 @@ export interface components {
                   /** Format: uri */
                   url: string;
                 },
-                null
+                null,
               ]
             >;
             node_id: string;
@@ -44329,7 +44329,7 @@ export interface components {
                       /** Format: uri */
                       url?: string;
                     },
-                    null
+                    null,
                   ]
                 >,
                 {
@@ -44372,7 +44372,7 @@ export interface components {
                          */
                         url: string;
                       },
-                      null
+                      null,
                     ]
                   >;
                   /** @description Permission that the team will have for its repositories */
@@ -44387,7 +44387,7 @@ export interface components {
                    * @description URL for the team
                    */
                   url: string;
-                }
+                },
               ]
             >[];
             requested_teams: {
@@ -44430,7 +44430,7 @@ export interface components {
                      */
                     url: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /** @description Permission that the team will have for its repositories */
@@ -44503,7 +44503,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >;
           };
@@ -44552,7 +44552,7 @@ export interface components {
                    */
                   url: string;
                 },
-                null
+                null,
               ]
             >;
             /** @description Permission that the team will have for its repositories */
@@ -44569,7 +44569,7 @@ export interface components {
             url: string;
           };
           sender: components["schemas"]["simple-user"];
-        }
+        },
       ]
     >;
     /** pull_request review_requested event */
@@ -44675,7 +44675,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >;
             assignees: OneOf<
@@ -44716,7 +44716,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >[];
             /**
@@ -44783,7 +44783,7 @@ export interface components {
                         /** Format: uri */
                         url?: string;
                       },
-                      null
+                      null,
                     ]
                   >;
                   /**
@@ -44792,7 +44792,7 @@ export interface components {
                    */
                   merge_method: "merge" | "squash" | "rebase";
                 },
-                null
+                null,
               ]
             >;
             base: {
@@ -44942,7 +44942,7 @@ export interface components {
                       /** Format: uri */
                       url: OneOf<[string, null]>;
                     },
-                    null
+                    null,
                   ]
                 >;
                 master_branch?: string;
@@ -45016,7 +45016,7 @@ export interface components {
                       /** Format: uri */
                       url?: string;
                     },
-                    null
+                    null,
                   ]
                 >;
                 permissions?: {
@@ -45132,7 +45132,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
             };
@@ -45300,7 +45300,7 @@ export interface components {
                       /** Format: uri */
                       url: OneOf<[string, null]>;
                     },
-                    null
+                    null,
                   ]
                 >;
                 master_branch?: string;
@@ -45374,7 +45374,7 @@ export interface components {
                       /** Format: uri */
                       url?: string;
                     },
-                    null
+                    null,
                   ]
                 >;
                 permissions?: {
@@ -45490,7 +45490,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
             };
@@ -45562,7 +45562,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >;
             /**
@@ -45616,7 +45616,7 @@ export interface components {
                         /** Format: uri */
                         url?: string;
                       },
-                      null
+                      null,
                     ]
                   >;
                   description: OneOf<[string, null]>;
@@ -45643,7 +45643,7 @@ export interface components {
                   /** Format: uri */
                   url: string;
                 },
-                null
+                null,
               ]
             >;
             node_id: string;
@@ -45692,7 +45692,7 @@ export interface components {
                       /** Format: uri */
                       url?: string;
                     },
-                    null
+                    null,
                   ]
                 >,
                 {
@@ -45735,7 +45735,7 @@ export interface components {
                          */
                         url: string;
                       },
-                      null
+                      null,
                     ]
                   >;
                   /** @description Permission that the team will have for its repositories */
@@ -45750,7 +45750,7 @@ export interface components {
                    * @description URL for the team
                    */
                   url: string;
-                }
+                },
               ]
             >[];
             requested_teams: {
@@ -45793,7 +45793,7 @@ export interface components {
                      */
                     url: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /** @description Permission that the team will have for its repositories */
@@ -45866,7 +45866,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >;
           };
@@ -45910,7 +45910,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
           sender: components["schemas"]["simple-user"];
@@ -46015,7 +46015,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >;
             assignees: OneOf<
@@ -46056,7 +46056,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >[];
             /**
@@ -46123,7 +46123,7 @@ export interface components {
                         /** Format: uri */
                         url?: string;
                       },
-                      null
+                      null,
                     ]
                   >;
                   /**
@@ -46132,7 +46132,7 @@ export interface components {
                    */
                   merge_method: "merge" | "squash" | "rebase";
                 },
-                null
+                null,
               ]
             >;
             base: {
@@ -46282,7 +46282,7 @@ export interface components {
                       /** Format: uri */
                       url: OneOf<[string, null]>;
                     },
-                    null
+                    null,
                   ]
                 >;
                 master_branch?: string;
@@ -46356,7 +46356,7 @@ export interface components {
                       /** Format: uri */
                       url?: string;
                     },
-                    null
+                    null,
                   ]
                 >;
                 permissions?: {
@@ -46472,7 +46472,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
             };
@@ -46640,7 +46640,7 @@ export interface components {
                       /** Format: uri */
                       url: OneOf<[string, null]>;
                     },
-                    null
+                    null,
                   ]
                 >;
                 master_branch?: string;
@@ -46714,7 +46714,7 @@ export interface components {
                       /** Format: uri */
                       url?: string;
                     },
-                    null
+                    null,
                   ]
                 >;
                 permissions?: {
@@ -46830,7 +46830,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
             };
@@ -46902,7 +46902,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >;
             /**
@@ -46956,7 +46956,7 @@ export interface components {
                         /** Format: uri */
                         url?: string;
                       },
-                      null
+                      null,
                     ]
                   >;
                   description: OneOf<[string, null]>;
@@ -46983,7 +46983,7 @@ export interface components {
                   /** Format: uri */
                   url: string;
                 },
-                null
+                null,
               ]
             >;
             node_id: string;
@@ -47032,7 +47032,7 @@ export interface components {
                       /** Format: uri */
                       url?: string;
                     },
-                    null
+                    null,
                   ]
                 >,
                 {
@@ -47075,7 +47075,7 @@ export interface components {
                          */
                         url: string;
                       },
-                      null
+                      null,
                     ]
                   >;
                   /** @description Permission that the team will have for its repositories */
@@ -47090,7 +47090,7 @@ export interface components {
                    * @description URL for the team
                    */
                   url?: string;
-                }
+                },
               ]
             >[];
             requested_teams: {
@@ -47133,7 +47133,7 @@ export interface components {
                      */
                     url: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /** @description Permission that the team will have for its repositories */
@@ -47206,7 +47206,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >;
           };
@@ -47255,7 +47255,7 @@ export interface components {
                    */
                   url: string;
                 },
-                null
+                null,
               ]
             >;
             /** @description Permission that the team will have for its repositories */
@@ -47272,7 +47272,7 @@ export interface components {
             url?: string;
           };
           sender: components["schemas"]["simple-user"];
-        }
+        },
       ]
     >;
     /** pull_request_review submitted event */
@@ -47373,7 +47373,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         assignees: OneOf<
@@ -47414,7 +47414,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >[];
         /**
@@ -47481,7 +47481,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /**
@@ -47490,7 +47490,7 @@ export interface components {
                */
               merge_method: "merge" | "squash" | "rebase";
             },
-            null
+            null,
           ]
         >;
         base: {
@@ -47640,7 +47640,7 @@ export interface components {
                   /** Format: uri */
                   url: OneOf<[string, null]>;
                 },
-                null
+                null,
               ]
             >;
             master_branch?: string;
@@ -47714,7 +47714,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >;
             permissions?: {
@@ -47830,7 +47830,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
         };
@@ -47993,7 +47993,7 @@ export interface components {
                       /** Format: uri */
                       url: OneOf<[string, null]>;
                     },
-                    null
+                    null,
                   ]
                 >;
                 master_branch?: string;
@@ -48067,7 +48067,7 @@ export interface components {
                       /** Format: uri */
                       url?: string;
                     },
-                    null
+                    null,
                   ]
                 >;
                 permissions?: {
@@ -48143,7 +48143,7 @@ export interface components {
                 /** @description Whether to require contributors to sign off on web-based commits */
                 web_commit_signoff_required?: boolean;
               },
-              null
+              null,
             ]
           >;
           sha: string;
@@ -48186,7 +48186,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
         };
@@ -48264,7 +48264,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               description: OneOf<[string, null]>;
@@ -48291,7 +48291,7 @@ export interface components {
               /** Format: uri */
               url: string;
             },
-            null
+            null,
           ]
         >;
         node_id: string;
@@ -48338,7 +48338,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >,
             {
@@ -48381,7 +48381,7 @@ export interface components {
                      */
                     url: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /** @description Permission that the team will have for its repositories */
@@ -48396,7 +48396,7 @@ export interface components {
                * @description URL for the team
                */
               url: string;
-            }
+            },
           ]
         >[];
         requested_teams: {
@@ -48439,7 +48439,7 @@ export interface components {
                  */
                 url: string;
               },
-              null
+              null,
             ]
           >;
           /** @description Permission that the team will have for its repositories */
@@ -48506,7 +48506,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       };
@@ -48592,7 +48592,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       };
@@ -48696,7 +48696,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         assignees: OneOf<
@@ -48737,7 +48737,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >[];
         /**
@@ -48804,7 +48804,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /**
@@ -48813,7 +48813,7 @@ export interface components {
                */
               merge_method: "merge" | "squash" | "rebase";
             },
-            null
+            null,
           ]
         >;
         base: {
@@ -48963,7 +48963,7 @@ export interface components {
                   /** Format: uri */
                   url: OneOf<[string, null]>;
                 },
-                null
+                null,
               ]
             >;
             master_branch?: string;
@@ -49020,7 +49020,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >;
             permissions?: {
@@ -49111,7 +49111,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
         };
@@ -49274,7 +49274,7 @@ export interface components {
                       /** Format: uri */
                       url: OneOf<[string, null]>;
                     },
-                    null
+                    null,
                   ]
                 >;
                 master_branch?: string;
@@ -49331,7 +49331,7 @@ export interface components {
                       /** Format: uri */
                       url?: string;
                     },
-                    null
+                    null,
                   ]
                 >;
                 permissions?: {
@@ -49382,7 +49382,7 @@ export interface components {
                 /** @description Whether to require contributors to sign off on web-based commits */
                 web_commit_signoff_required?: boolean;
               },
-              null
+              null,
             ]
           >;
           sha: string;
@@ -49425,7 +49425,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
         };
@@ -49503,7 +49503,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               description: OneOf<[string, null]>;
@@ -49530,7 +49530,7 @@ export interface components {
               /** Format: uri */
               url: string;
             },
-            null
+            null,
           ]
         >;
         node_id: string;
@@ -49577,7 +49577,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >,
             {
@@ -49620,7 +49620,7 @@ export interface components {
                      */
                     url: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /** @description Permission that the team will have for its repositories */
@@ -49635,7 +49635,7 @@ export interface components {
                * @description URL for the team
                */
               url: string;
-            }
+            },
           ]
         >[];
         requested_teams: {
@@ -49678,7 +49678,7 @@ export interface components {
                  */
                 url: string;
               },
-              null
+              null,
             ]
           >;
           /** @description Permission that the team will have for its repositories */
@@ -49745,7 +49745,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       };
@@ -49902,7 +49902,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
         }[];
@@ -50007,7 +50007,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         assignees: OneOf<
@@ -50048,7 +50048,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >[];
         /**
@@ -50115,7 +50115,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /**
@@ -50124,7 +50124,7 @@ export interface components {
                */
               merge_method: "merge" | "squash" | "rebase";
             },
-            null
+            null,
           ]
         >;
         base: {
@@ -50274,7 +50274,7 @@ export interface components {
                   /** Format: uri */
                   url: OneOf<[string, null]>;
                 },
-                null
+                null,
               ]
             >;
             master_branch?: string;
@@ -50331,7 +50331,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >;
             permissions?: {
@@ -50422,7 +50422,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
         };
@@ -50583,7 +50583,7 @@ export interface components {
                   /** Format: uri */
                   url: OneOf<[string, null]>;
                 },
-                null
+                null,
               ]
             >;
             master_branch?: string;
@@ -50640,7 +50640,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >;
             permissions?: {
@@ -50731,7 +50731,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
         };
@@ -50809,7 +50809,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               description: OneOf<[string, null]>;
@@ -50836,7 +50836,7 @@ export interface components {
               /** Format: uri */
               url: string;
             },
-            null
+            null,
           ]
         >;
         node_id: string;
@@ -50883,7 +50883,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >,
             {
@@ -50926,7 +50926,7 @@ export interface components {
                      */
                     url: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /** @description Permission that the team will have for its repositories */
@@ -50941,7 +50941,7 @@ export interface components {
                * @description URL for the team
                */
               url?: string;
-            }
+            },
           ]
         >[];
         requested_teams: {
@@ -50984,7 +50984,7 @@ export interface components {
                  */
                 url: string;
               },
-              null
+              null,
             ]
           >;
           /** @description Permission that the team will have for its repositories */
@@ -51051,7 +51051,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       };
@@ -51208,7 +51208,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
         }[];
@@ -51318,7 +51318,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         assignees: OneOf<
@@ -51359,7 +51359,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >[];
         /**
@@ -51426,7 +51426,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /**
@@ -51435,7 +51435,7 @@ export interface components {
                */
               merge_method: "merge" | "squash" | "rebase";
             },
-            null
+            null,
           ]
         >;
         base: {
@@ -51585,7 +51585,7 @@ export interface components {
                   /** Format: uri */
                   url: OneOf<[string, null]>;
                 },
-                null
+                null,
               ]
             >;
             master_branch?: string;
@@ -51659,7 +51659,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >;
             permissions?: {
@@ -51775,7 +51775,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
         };
@@ -51943,7 +51943,7 @@ export interface components {
                   /** Format: uri */
                   url: OneOf<[string, null]>;
                 },
-                null
+                null,
               ]
             >;
             master_branch?: string;
@@ -52010,7 +52010,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >;
             permissions?: {
@@ -52126,7 +52126,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
         };
@@ -52198,7 +52198,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         /**
@@ -52252,7 +52252,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               description: OneOf<[string, null]>;
@@ -52279,7 +52279,7 @@ export interface components {
               /** Format: uri */
               url: string;
             },
-            null
+            null,
           ]
         >;
         node_id: string;
@@ -52328,7 +52328,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >,
             {
@@ -52371,7 +52371,7 @@ export interface components {
                      */
                     url: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /** @description Permission that the team will have for its repositories */
@@ -52386,7 +52386,7 @@ export interface components {
                * @description URL for the team
                */
               url: string;
-            }
+            },
           ]
         >[];
         requested_teams: {
@@ -52429,7 +52429,7 @@ export interface components {
                  */
                 url: string;
               },
-              null
+              null,
             ]
           >;
           /** @description Permission that the team will have for its repositories */
@@ -52502,7 +52502,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       };
@@ -52552,7 +52552,7 @@ export interface components {
             /** Format: uri */
             url?: string;
           },
-          null
+          null,
         ]
       >;
       enterprise?: components["schemas"]["enterprise"];
@@ -52652,7 +52652,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         assignees: OneOf<
@@ -52693,7 +52693,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >[];
         /**
@@ -52760,7 +52760,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /**
@@ -52769,7 +52769,7 @@ export interface components {
                */
               merge_method: "merge" | "squash" | "rebase";
             },
-            null
+            null,
           ]
         >;
         base: {
@@ -52919,7 +52919,7 @@ export interface components {
                   /** Format: uri */
                   url: OneOf<[string, null]>;
                 },
-                null
+                null,
               ]
             >;
             master_branch?: string;
@@ -52993,7 +52993,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >;
             permissions?: {
@@ -53109,7 +53109,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
         };
@@ -53279,7 +53279,7 @@ export interface components {
                       /** Format: uri */
                       url: OneOf<[string, null]>;
                     },
-                    null
+                    null,
                   ]
                 >;
                 master_branch?: string;
@@ -53353,7 +53353,7 @@ export interface components {
                       /** Format: uri */
                       url?: string;
                     },
-                    null
+                    null,
                   ]
                 >;
                 permissions?: {
@@ -53429,7 +53429,7 @@ export interface components {
                 /** @description Whether to require contributors to sign off on web-based commits */
                 web_commit_signoff_required?: boolean;
               },
-              null
+              null,
             ]
           >;
           sha: string;
@@ -53472,7 +53472,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
         };
@@ -53544,7 +53544,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         /**
@@ -53598,7 +53598,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               description: OneOf<[string, null]>;
@@ -53625,7 +53625,7 @@ export interface components {
               /** Format: uri */
               url: string;
             },
-            null
+            null,
           ]
         >;
         node_id: string;
@@ -53674,7 +53674,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >,
             {
@@ -53717,7 +53717,7 @@ export interface components {
                      */
                     url: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /** @description Permission that the team will have for its repositories */
@@ -53732,7 +53732,7 @@ export interface components {
                * @description URL for the team
                */
               url: string;
-            }
+            },
           ]
         >[];
         requested_teams: {
@@ -53775,7 +53775,7 @@ export interface components {
                  */
                 url: string;
               },
-              null
+              null,
             ]
           >;
           /** @description Permission that the team will have for its repositories */
@@ -53848,7 +53848,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       };
@@ -53972,7 +53972,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         assignees: OneOf<
@@ -54013,7 +54013,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >[];
         /**
@@ -54080,7 +54080,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /**
@@ -54089,7 +54089,7 @@ export interface components {
                */
               merge_method: "merge" | "squash" | "rebase";
             },
-            null
+            null,
           ]
         >;
         base: {
@@ -54239,7 +54239,7 @@ export interface components {
                   /** Format: uri */
                   url: OneOf<[string, null]>;
                 },
-                null
+                null,
               ]
             >;
             master_branch?: string;
@@ -54313,7 +54313,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >;
             permissions?: {
@@ -54429,7 +54429,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
         };
@@ -54599,7 +54599,7 @@ export interface components {
                       /** Format: uri */
                       url: OneOf<[string, null]>;
                     },
-                    null
+                    null,
                   ]
                 >;
                 master_branch?: string;
@@ -54666,7 +54666,7 @@ export interface components {
                       /** Format: uri */
                       url?: string;
                     },
-                    null
+                    null,
                   ]
                 >;
                 permissions?: {
@@ -54742,7 +54742,7 @@ export interface components {
                 /** @description Whether to require contributors to sign off on web-based commits */
                 web_commit_signoff_required?: boolean;
               },
-              null
+              null,
             ]
           >;
           sha: string;
@@ -54785,7 +54785,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
         };
@@ -54857,7 +54857,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         /**
@@ -54911,7 +54911,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               description: OneOf<[string, null]>;
@@ -54938,7 +54938,7 @@ export interface components {
               /** Format: uri */
               url: string;
             },
-            null
+            null,
           ]
         >;
         node_id: string;
@@ -54987,7 +54987,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >,
             {
@@ -55030,7 +55030,7 @@ export interface components {
                      */
                     url: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /** @description Permission that the team will have for its repositories */
@@ -55045,7 +55045,7 @@ export interface components {
                * @description URL for the team
                */
               url: string;
-            }
+            },
           ]
         >[];
         requested_teams: {
@@ -55088,7 +55088,7 @@ export interface components {
                  */
                 url: string;
               },
-              null
+              null,
             ]
           >;
           /** @description Permission that the team will have for its repositories */
@@ -55161,7 +55161,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       };
@@ -55269,7 +55269,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         assignees: OneOf<
@@ -55310,7 +55310,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >[];
         /**
@@ -55377,7 +55377,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /**
@@ -55386,7 +55386,7 @@ export interface components {
                */
               merge_method: "merge" | "squash" | "rebase";
             },
-            null
+            null,
           ]
         >;
         base: {
@@ -55536,7 +55536,7 @@ export interface components {
                   /** Format: uri */
                   url: OneOf<[string, null]>;
                 },
-                null
+                null,
               ]
             >;
             master_branch?: string;
@@ -55610,7 +55610,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >;
             permissions?: {
@@ -55726,7 +55726,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
         };
@@ -55896,7 +55896,7 @@ export interface components {
                       /** Format: uri */
                       url: OneOf<[string, null]>;
                     },
-                    null
+                    null,
                   ]
                 >;
                 master_branch?: string;
@@ -55970,7 +55970,7 @@ export interface components {
                       /** Format: uri */
                       url?: string;
                     },
-                    null
+                    null,
                   ]
                 >;
                 permissions?: {
@@ -56046,7 +56046,7 @@ export interface components {
                 /** @description Whether to require contributors to sign off on web-based commits */
                 web_commit_signoff_required?: boolean;
               },
-              null
+              null,
             ]
           >;
           sha: string;
@@ -56089,7 +56089,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
         };
@@ -56161,7 +56161,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         /**
@@ -56215,7 +56215,7 @@ export interface components {
                     /** Format: uri */
                     url?: string;
                   },
-                  null
+                  null,
                 ]
               >;
               description: OneOf<[string, null]>;
@@ -56242,7 +56242,7 @@ export interface components {
               /** Format: uri */
               url: string;
             },
-            null
+            null,
           ]
         >;
         node_id: string;
@@ -56291,7 +56291,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >,
             {
@@ -56334,7 +56334,7 @@ export interface components {
                      */
                     url: string;
                   },
-                  null
+                  null,
                 ]
               >;
               /** @description Permission that the team will have for its repositories */
@@ -56349,7 +56349,7 @@ export interface components {
                * @description URL for the team
                */
               url?: string;
-            }
+            },
           ]
         >[];
         requested_teams: {
@@ -56392,7 +56392,7 @@ export interface components {
                  */
                 url: string;
               },
-              null
+              null,
             ]
           >;
           /** @description Permission that the team will have for its repositories */
@@ -56465,7 +56465,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
       };
@@ -56592,7 +56592,7 @@ export interface components {
              */
             url: string;
           },
-          null
+          null,
         ]
       >;
       installation?: components["schemas"]["simple-installation"];
@@ -56756,7 +56756,7 @@ export interface components {
               /** Format: uri */
               url: OneOf<[string, null]>;
             },
-            null
+            null,
           ]
         >;
         master_branch?: string;
@@ -56813,7 +56813,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         permissions?: {
@@ -56989,7 +56989,7 @@ export interface components {
                     published_via_actions?: boolean;
                     deleted_by_id?: number;
                   },
-                  null
+                  null,
                 ]
               >;
               nuget_metadata?: OneOf<
@@ -57007,11 +57007,11 @@ export interface components {
                           branch?: string;
                           commit?: string;
                           type?: string;
-                        }
+                        },
                       ]
                     >;
                   }[],
-                  null
+                  null,
                 ]
               >;
               package_files: {
@@ -57069,7 +57069,7 @@ export interface components {
               updated_at?: string;
               version: string;
             },
-            null
+            null,
           ]
         >;
         registry: OneOf<
@@ -57081,7 +57081,7 @@ export interface components {
               url?: string;
               vendor?: string;
             },
-            null
+            null,
           ]
         >;
         updated_at: OneOf<[string, null]>;
@@ -57153,7 +57153,7 @@ export interface components {
               {
                 tags?: string[];
               },
-              null
+              null,
             ]
           >[];
           draft?: boolean;
@@ -57297,7 +57297,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
           /** Format: uri */
@@ -57344,7 +57344,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         body: OneOf<[string, null]>;
@@ -57464,7 +57464,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
           /** Format: uri */
@@ -57511,7 +57511,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         body: OneOf<[string, null]>;
@@ -57641,7 +57641,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
           /** Format: uri */
@@ -57688,7 +57688,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         body: OneOf<[string, null]>;
@@ -57804,7 +57804,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
           /** Format: uri */
@@ -57851,7 +57851,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         body: OneOf<[string, null]>;
@@ -58009,7 +58009,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
           /** Format: uri */
@@ -58056,7 +58056,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         body: OneOf<[string, null]>;
@@ -58215,7 +58215,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
           /** Format: uri */
@@ -58262,7 +58262,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         body: OneOf<[string, null]>;
@@ -58378,7 +58378,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
           /** Format: uri */
@@ -58425,7 +58425,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         body: OneOf<[string, null]>;
@@ -58569,7 +58569,7 @@ export interface components {
           {
             [key: string]: unknown;
           },
-          null
+          null,
         ]
       >;
       enterprise?: components["schemas"]["enterprise"];
@@ -58710,7 +58710,7 @@ export interface components {
                   /** Format: uri */
                   url?: string;
                 },
-                null
+                null,
               ]
             >;
           };
@@ -58781,7 +58781,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         external_identifier: string;
@@ -58869,7 +58869,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         external_identifier: string;
@@ -58932,7 +58932,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         external_identifier?: string;
@@ -59001,7 +59001,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         external_identifier: string;
@@ -59088,7 +59088,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         external_identifier: string;
@@ -59356,7 +59356,7 @@ export interface components {
               {
                 identifier: string;
               },
-              null
+              null,
             ]
           >;
           package: {
@@ -59408,7 +59408,7 @@ export interface components {
               {
                 identifier: string;
               },
-              null
+              null,
             ]
           >;
           package: {
@@ -59460,7 +59460,7 @@ export interface components {
               {
                 identifier: string;
               },
-              null
+              null,
             ]
           >;
           package: {
@@ -59503,7 +59503,7 @@ export interface components {
             status?: "enabled" | "disabled";
           };
         },
-        null
+        null,
       ]
     >;
     /**
@@ -59762,7 +59762,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         /** User */
@@ -59804,7 +59804,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         /**
@@ -59896,7 +59896,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         /** User */
@@ -59938,7 +59938,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         /**
@@ -60036,7 +60036,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         /** User */
@@ -60078,7 +60078,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         /**
@@ -60172,7 +60172,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         /** User */
@@ -60214,7 +60214,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         /**
@@ -60327,7 +60327,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         /** User */
@@ -60369,7 +60369,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         /**
@@ -60480,7 +60480,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         /** User */
@@ -60522,7 +60522,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         /**
@@ -60620,7 +60620,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         /** Format: uri */
@@ -60723,7 +60723,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         /** Format: uri */
@@ -60814,7 +60814,7 @@ export interface components {
                */
               url: string;
             },
-            null
+            null,
           ]
         >;
         /** @description Permission that the team will have for its repositories */
@@ -60977,7 +60977,7 @@ export interface components {
               /** Format: uri */
               url: OneOf<[string, null]>;
             },
-            null
+            null,
           ]
         >;
         master_branch?: string;
@@ -61034,7 +61034,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         permissions?: {
@@ -61128,7 +61128,7 @@ export interface components {
                */
               url: string;
             },
-            null
+            null,
           ]
         >;
         /** @description Permission that the team will have for its repositories */
@@ -61291,7 +61291,7 @@ export interface components {
               /** Format: uri */
               url: OneOf<[string, null]>;
             },
-            null
+            null,
           ]
         >;
         master_branch?: string;
@@ -61348,7 +61348,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         permissions?: {
@@ -61442,7 +61442,7 @@ export interface components {
                */
               url: string;
             },
-            null
+            null,
           ]
         >;
         /** @description Permission that the team will have for its repositories */
@@ -61605,7 +61605,7 @@ export interface components {
               /** Format: uri */
               url: OneOf<[string, null]>;
             },
-            null
+            null,
           ]
         >;
         master_branch?: string;
@@ -61662,7 +61662,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         permissions?: {
@@ -61756,7 +61756,7 @@ export interface components {
                */
               url: string;
             },
-            null
+            null,
           ]
         >;
         /** @description Permission that the team will have for its repositories */
@@ -61946,7 +61946,7 @@ export interface components {
               /** Format: uri */
               url: OneOf<[string, null]>;
             },
-            null
+            null,
           ]
         >;
         master_branch?: string;
@@ -62003,7 +62003,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         permissions?: {
@@ -62097,7 +62097,7 @@ export interface components {
                */
               url: string;
             },
-            null
+            null,
           ]
         >;
         /** @description Permission that the team will have for its repositories */
@@ -62260,7 +62260,7 @@ export interface components {
               /** Format: uri */
               url: OneOf<[string, null]>;
             },
-            null
+            null,
           ]
         >;
         master_branch?: string;
@@ -62317,7 +62317,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         permissions?: {
@@ -62411,7 +62411,7 @@ export interface components {
                */
               url: string;
             },
-            null
+            null,
           ]
         >;
         /** @description Permission that the team will have for its repositories */
@@ -62475,7 +62475,7 @@ export interface components {
             /** Format: uri */
             url?: string;
           },
-          null
+          null,
         ]
       >;
     };
@@ -62526,7 +62526,7 @@ export interface components {
             /** Format: uri */
             url?: string;
           },
-          null
+          null,
         ]
       >;
     };
@@ -62548,7 +62548,7 @@ export interface components {
           {
             [key: string]: unknown;
           },
-          null
+          null,
         ]
       >;
       installation?: components["schemas"]["simple-installation"];
@@ -62860,7 +62860,7 @@ export interface components {
             /** Format: uri */
             url: string;
           },
-          null
+          null,
         ]
       >;
       workflow_run: {
@@ -62903,7 +62903,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         /** Format: uri */
@@ -63068,7 +63068,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
           /** @description Whether the repository is private or public. */
@@ -63142,7 +63142,7 @@ export interface components {
               ref?: string;
               sha: string;
             }[],
-            null
+            null,
           ]
         >;
         /** Repository Lite */
@@ -63250,7 +63250,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
           /** @description Whether the repository is private or public. */
@@ -63329,7 +63329,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         /** Format: date-time */
@@ -63476,7 +63476,7 @@ export interface components {
               ref?: string;
               sha: string;
             }[],
-            null
+            null,
           ]
         >;
         repository?: {
@@ -63573,7 +63573,7 @@ export interface components {
               type?: string;
               url?: string;
             },
-            null
+            null,
           ]
         >;
         updated_at?: string;
@@ -63611,7 +63611,7 @@ export interface components {
             /** Format: uri */
             url: string;
           },
-          null
+          null,
         ]
       >;
       workflow_run: {
@@ -63654,7 +63654,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         /** Format: uri */
@@ -63819,7 +63819,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
           /** @description Whether the repository is private or public. */
@@ -63893,7 +63893,7 @@ export interface components {
               ref?: string;
               sha: string;
             }[],
-            null
+            null,
           ]
         >;
         /** Repository Lite */
@@ -64001,7 +64001,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
           /** @description Whether the repository is private or public. */
@@ -64079,7 +64079,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         /** Format: date-time */
@@ -64228,7 +64228,7 @@ export interface components {
               ref?: string;
               sha: string;
             }[],
-            null
+            null,
           ]
         >;
         repository?: {
@@ -64358,7 +64358,7 @@ export interface components {
             /** Format: uri */
             url: string;
           },
-          null
+          null,
         ]
       >;
       /** Workflow Run */
@@ -64402,7 +64402,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         /** Format: uri */
@@ -64568,7 +64568,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
           /** @description Whether the repository is private or public. */
@@ -64642,7 +64642,7 @@ export interface components {
               ref?: string;
               sha: string;
             }[],
-            null
+            null,
           ]
         >;
         /** Repository Lite */
@@ -64750,7 +64750,7 @@ export interface components {
                 /** Format: uri */
                 url?: string;
               },
-              null
+              null,
             ]
           >;
           /** @description Whether the repository is private or public. */
@@ -64829,7 +64829,7 @@ export interface components {
               /** Format: uri */
               url?: string;
             },
-            null
+            null,
           ]
         >;
         /** Format: date-time */
