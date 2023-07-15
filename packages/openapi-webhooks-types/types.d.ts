@@ -711,7 +711,7 @@ export interface webhooks {
      *
      * For activity relating to an issue as opposed to comments on an issue, use the `issue` event. For activity related to pull request reviews or pull request review comments, use the `pull_request_review` or `pull_request_review_comment` events. For more information about the different types of pull request comments, see "[Working with comments](https://docs.github.com/rest/guides/working-with-comments)."
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" or "Pull requests" repository permissions.
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
      * @description A comment on an issue or pull request was created.
      */
     post: operations["issue-comment/created"];
@@ -722,7 +722,7 @@ export interface webhooks {
      *
      * For activity relating to an issue as opposed to comments on an issue, use the `issue` event. For activity related to pull request reviews or pull request review comments, use the `pull_request_review` or `pull_request_review_comment` events. For more information about the different types of pull request comments, see "[Working with comments](https://docs.github.com/rest/guides/working-with-comments)."
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" or "Pull requests" repository permissions.
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
      * @description A comment on an issue or pull request was deleted.
      */
     post: operations["issue-comment/deleted"];
@@ -733,7 +733,7 @@ export interface webhooks {
      *
      * For activity relating to an issue as opposed to comments on an issue, use the `issue` event. For activity related to pull request reviews or pull request review comments, use the `pull_request_review` or `pull_request_review_comment` events. For more information about the different types of pull request comments, see "[Working with comments](https://docs.github.com/rest/guides/working-with-comments)."
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" or "Pull requests" repository permissions.
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
      * @description A comment on an issue or pull request was edited.
      */
     post: operations["issue-comment/edited"];
@@ -71363,7 +71363,7 @@ export interface operations {
    *
    * For activity relating to an issue as opposed to comments on an issue, use the `issue` event. For activity related to pull request reviews or pull request review comments, use the `pull_request_review` or `pull_request_review_comment` events. For more information about the different types of pull request comments, see "[Working with comments](https://docs.github.com/rest/guides/working-with-comments)."
    *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" or "Pull requests" repository permissions.
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
    * @description A comment on an issue or pull request was created.
    */
   "issue-comment/created": {
@@ -71400,7 +71400,7 @@ export interface operations {
    *
    * For activity relating to an issue as opposed to comments on an issue, use the `issue` event. For activity related to pull request reviews or pull request review comments, use the `pull_request_review` or `pull_request_review_comment` events. For more information about the different types of pull request comments, see "[Working with comments](https://docs.github.com/rest/guides/working-with-comments)."
    *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" or "Pull requests" repository permissions.
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
    * @description A comment on an issue or pull request was deleted.
    */
   "issue-comment/deleted": {
@@ -71437,7 +71437,7 @@ export interface operations {
    *
    * For activity relating to an issue as opposed to comments on an issue, use the `issue` event. For activity related to pull request reviews or pull request review comments, use the `pull_request_review` or `pull_request_review_comment` events. For more information about the different types of pull request comments, see "[Working with comments](https://docs.github.com/rest/guides/working-with-comments)."
    *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" or "Pull requests" repository permissions.
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
    * @description A comment on an issue or pull request was edited.
    */
   "issue-comment/edited": {
