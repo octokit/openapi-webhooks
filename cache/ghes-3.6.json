@@ -17787,7 +17787,7 @@
             "url": "https://enterprise.octocat.com/api/v3/authorizations/2",
             "app": {
               "name": "My personal access token",
-              "url": "https://docs.github.com/enterprise/rest/reference/enterprise-admin#list-personal-access-tokens",
+              "url": "https://docs.github.com/enterprise/rest/enterprise-admin/users#list-personal-access-tokens",
               "client_id": "00000000000000000000"
             },
             "token": "ghp_16C7e42F292c6912E7710c838347Ae178B4a",
@@ -39856,7 +39856,7 @@
       },
       "thread-id": {
         "name": "thread_id",
-        "description": "The unique identifier of the notification thread. This corresponds to the value returned in the `id` field when you retrieve notifications (for example with the [`GET /notifications` operation](https://docs.github.com/enterprise-server@3.6/rest/reference/activity#list-notifications-for-the-authenticated-user)).",
+        "description": "The unique identifier of the notification thread. This corresponds to the value returned in the `id` field when you retrieve notifications (for example with the [`GET /notifications` operation](https://docs.github.com/enterprise-server@3.6/rest/activity/notifications#list-notifications-for-the-authenticated-user)).",
         "in": "path",
         "required": true,
         "schema": { "type": "integer" }

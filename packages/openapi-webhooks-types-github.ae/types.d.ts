@@ -4908,7 +4908,7 @@ export interface components {
       organization?: components["schemas"]["organization-simple"];
       /** @description The pusher type for the event. Can be either `user` or a deploy key. */
       pusher_type: string;
-      /** @description The [`git ref`](https://docs.github.com/github-ae@latest/rest/reference/git#get-a-reference) resource. */
+      /** @description The [`git ref`](https://docs.github.com/github-ae@latest/rest/git/refs#get-a-reference) resource. */
       ref: string;
       /**
        * @description The type of Git ref object created in the repository.
@@ -4925,7 +4925,7 @@ export interface components {
       organization?: components["schemas"]["organization-simple"];
       /** @description The pusher type for the event. Can be either `user` or a deploy key. */
       pusher_type: string;
-      /** @description The [`git ref`](https://docs.github.com/github-ae@latest/rest/reference/git#get-a-reference) resource. */
+      /** @description The [`git ref`](https://docs.github.com/github-ae@latest/rest/git/refs#get-a-reference) resource. */
       ref: string;
       /**
        * @description The type of Git ref object deleted in the repository.
