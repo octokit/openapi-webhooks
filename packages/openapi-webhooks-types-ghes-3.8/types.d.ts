@@ -7774,7 +7774,7 @@ export interface components {
      */
     "webhook-fork": {
       enterprise?: components["schemas"]["enterprise"];
-      /** @description The created [`repository`](https://docs.github.com/enterprise-server@3.8/rest/reference/repos#get-a-repository) resource. */
+      /** @description The created [`repository`](https://docs.github.com/enterprise-server@3.8/rest/repos/repos#get-a-repository) resource. */
       forkee: {
         /**
          * @description Whether to allow auto-merge for pull requests.
