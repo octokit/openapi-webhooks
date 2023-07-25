@@ -40599,6 +40599,14 @@
         }
       },
       "found": { "description": "Found" },
+      "dependency_review_forbidden": {
+        "description": "Response if GitHub Advanced Security is not enabled for this repository",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/basic-error" }
+          }
+        }
+      },
       "no_content": { "description": "A header with no content is returned." },
       "scim_bad_request": {
         "description": "Bad request",
