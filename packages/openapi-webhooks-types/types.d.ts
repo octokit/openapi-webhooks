@@ -59506,14 +59506,14 @@ export interface components {
     "webhook-secret-scanning-alert-created": {
       /** @enum {string} */
       action: "created";
-      alert: components["schemas"]["secret-scanning-alert"];
+      alert: components["schemas"]["secret-scanning-alert-webhook"];
       enterprise?: components["schemas"]["enterprise"];
       installation?: components["schemas"]["simple-installation"];
       organization?: components["schemas"]["organization-simple"];
       repository: components["schemas"]["repository"];
       sender?: components["schemas"]["simple-user"];
     };
-    "secret-scanning-alert": {
+    "secret-scanning-alert-webhook": {
       number?: components["schemas"]["alert-number"];
       created_at?: components["schemas"]["alert-created-at"];
       updated_at?: null | components["schemas"]["alert-updated-at"];
@@ -59524,8 +59524,7 @@ export interface components {
        * @description The REST API URL of the code locations for this alert.
        */
       locations_url?: string;
-      state?: components["schemas"]["secret-scanning-alert-state"];
-      resolution?: components["schemas"]["secret-scanning-alert-resolution"];
+      resolution?: components["schemas"]["secret-scanning-alert-resolution-webhook"];
       /**
        * Format: date-time
        * @description The time that the alert was resolved in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
@@ -59536,13 +59535,6 @@ export interface components {
       resolution_comment?: string | null;
       /** @description The type of secret that secret scanning detected. */
       secret_type?: string;
-      /**
-       * @description User-friendly name for the detected secret, matching the `secret_type`.
-       * For a list of built-in patterns, see "[Secret scanning patterns](https://docs.github.com/code-security/secret-scanning/secret-scanning-patterns#supported-secrets-for-advanced-security)."
-       */
-      secret_type_display_name?: string;
-      /** @description The secret that was detected. */
-      secret?: string;
       /** @description Whether push protection was bypassed for the detected secret. */
       push_protection_bypassed?: boolean | null;
       push_protection_bypassed_by?: null | components["schemas"]["simple-user"];
@@ -59553,25 +59545,22 @@ export interface components {
       push_protection_bypassed_at?: string | null;
     };
     /**
-     * @description Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`.
-     * @enum {string}
-     */
-    "secret-scanning-alert-state": "open" | "resolved";
-    /**
-     * @description **Required when the `state` is `resolved`.** The reason for resolving the alert.
+     * @description The reason for resolving the alert.
      * @enum {string|null}
      */
-    "secret-scanning-alert-resolution":
+    "secret-scanning-alert-resolution-webhook":
       | "false_positive"
       | "wont_fix"
       | "revoked"
       | "used_in_tests"
+      | "pattern_deleted"
+      | "pattern_edited"
       | null;
     /** Secret Scanning Alert Location Created Event */
     "webhook-secret-scanning-alert-location-created": {
       /** @enum {string} */
       action?: "created";
-      alert: components["schemas"]["secret-scanning-alert"];
+      alert: components["schemas"]["secret-scanning-alert-webhook"];
       installation?: components["schemas"]["simple-installation"];
       location: components["schemas"]["secret-scanning-location"];
       organization?: components["schemas"]["organization-simple"];
@@ -59639,7 +59628,7 @@ export interface components {
     "webhook-secret-scanning-alert-reopened": {
       /** @enum {string} */
       action: "reopened";
-      alert: components["schemas"]["secret-scanning-alert"];
+      alert: components["schemas"]["secret-scanning-alert-webhook"];
       enterprise?: components["schemas"]["enterprise"];
       installation?: components["schemas"]["simple-installation"];
       organization?: components["schemas"]["organization-simple"];
@@ -59650,58 +59639,7 @@ export interface components {
     "webhook-secret-scanning-alert-resolved": {
       /** @enum {string} */
       action: "resolved";
-      alert: {
-        created_at?: components["schemas"]["alert-created-at"];
-        html_url?: components["schemas"]["alert-html-url"];
-        /**
-         * Format: uri
-         * @description The REST API URL of the code locations for this alert.
-         */
-        locations_url?: string;
-        number?: components["schemas"]["alert-number"];
-        /** @description Whether push protection was bypassed for the detected secret. */
-        push_protection_bypassed?: boolean | null;
-        /**
-         * Format: date-time
-         * @description The time that push protection was bypassed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
-         */
-        push_protection_bypassed_at?: string | null;
-        push_protection_bypassed_by?:
-          | null
-          | components["schemas"]["simple-user"];
-        /**
-         * @description **Required when the `state` is `resolved`.** The reason for resolving the alert.
-         * @enum {string|null}
-         */
-        resolution?:
-          | null
-          | "false_positive"
-          | "wont_fix"
-          | "revoked"
-          | "used_in_tests"
-          | "pattern_deleted"
-          | "pattern_edited";
-        /**
-         * Format: date-time
-         * @description The time that the alert was resolved in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
-         */
-        resolved_at?: string | null;
-        resolved_by?: null | components["schemas"]["simple-user"];
-        /** @description An optional comment to resolve an alert. */
-        resolution_comment?: string | null;
-        /** @description The secret that was detected. */
-        secret?: string;
-        /** @description The type of secret that secret scanning detected. */
-        secret_type?: string;
-        /**
-         * @description User-friendly name for the detected secret, matching the `secret_type`.
-         * For a list of built-in patterns, see "[Secret scanning patterns](https://docs.github.com/code-security/secret-scanning/secret-scanning-patterns#supported-secrets-for-advanced-security)."
-         */
-        secret_type_display_name?: string;
-        state?: components["schemas"]["secret-scanning-alert-state"];
-        updated_at?: components["schemas"]["alert-updated-at"];
-        url?: components["schemas"]["alert-url"];
-      };
+      alert: components["schemas"]["secret-scanning-alert-webhook"];
       enterprise?: components["schemas"]["enterprise"];
       installation?: components["schemas"]["simple-installation"];
       organization?: components["schemas"]["organization-simple"];
@@ -59712,7 +59650,7 @@ export interface components {
     "webhook-secret-scanning-alert-revoked": {
       /** @enum {string} */
       action: "revoked";
-      alert: components["schemas"]["secret-scanning-alert"];
+      alert: components["schemas"]["secret-scanning-alert-webhook"];
       enterprise?: components["schemas"]["enterprise"];
       installation?: components["schemas"]["simple-installation"];
       organization?: components["schemas"]["organization-simple"];

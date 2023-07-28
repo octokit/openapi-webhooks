@@ -15098,6 +15098,98 @@ export interface components {
           type?: "Bot" | "User" | "Organization";
           /** Format: uri */
           url?: string;
+        };
+      };
+      organization?: components["schemas"]["organization-simple"];
+      repository: components["schemas"]["repository"];
+      sender: components["schemas"]["simple-user"];
+    };
+    /** issues milestoned event */
+    "webhook-issues-milestoned": {
+      /** @enum {string} */
+      action: "milestoned";
+      enterprise?: components["schemas"]["enterprise"];
+      installation?: components["schemas"]["simple-installation"];
+      issue: {
+        /** @enum {string|null} */
+        active_lock_reason:
+          | "resolved"
+          | "off-topic"
+          | "too heated"
+          | "spam"
+          | null;
+        /** User */
+        assignee?: {
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization";
+          /** Format: uri */
+          url?: string;
+        } | null;
+        assignees: ({
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization";
+          /** Format: uri */
+          url?: string;
         } | null)[];
         /**
          * AuthorAssociation
@@ -19249,13 +19341,22 @@ export interface components {
           default: boolean;
           description: string | null;
           id: number;
-          /** @description The name of the label. */
-          name: string;
+          /** Format: uri */
+          labels_url: string;
           node_id: string;
+          /** @description The number of the milestone. */
+          number: number;
+          open_issues: number;
           /**
-           * Format: uri
-           * @description URL for the label
+           * @description The state of the milestone.
+           * @enum {string}
            */
+          state: "open" | "closed";
+          /** @description The title of the milestone. */
+          title: string;
+          /** Format: date-time */
+          updated_at: string;
+          /** Format: uri */
           url: string;
         }[];
         /** Format: uri-template */
@@ -21615,12 +21716,9 @@ export interface components {
         description?: string | null;
         /** Format: uri */
         html_url?: string;
-        /** @description Unique identifier of the team */
         id: number;
-        /** Format: uri-template */
-        members_url?: string;
-        /** @description Name of the team */
-        name: string;
+        login: string;
+        name?: string;
         node_id?: string;
         parent?: {
           /** @description Description of the team */
@@ -37837,13 +37935,22 @@ export interface components {
           default: boolean;
           description: string | null;
           id: number;
-          /** @description The name of the label. */
-          name: string;
+          /** Format: uri */
+          labels_url: string;
           node_id: string;
+          /** @description The number of the milestone. */
+          number: number;
+          open_issues: number;
           /**
-           * Format: uri
-           * @description URL for the label
+           * @description The state of the milestone.
+           * @enum {string}
            */
+          state: "open" | "closed";
+          /** @description The title of the milestone. */
+          title: string;
+          /** Format: date-time */
+          updated_at: string;
+          /** Format: uri */
           url: string;
         }[];
         locked: boolean;
@@ -39205,6 +39312,55 @@ export interface components {
            * Format: uri
            * @description URL for the team
            */
+          url?: string;
+        }[];
+        /** Format: uri-template */
+        review_comment_url: string;
+        /** Format: uri */
+        review_comments_url: string;
+        /** @enum {string} */
+        state: "open" | "closed";
+        /** Format: uri */
+        statuses_url: string;
+        title: string;
+        updated_at: string;
+        /** Format: uri */
+        url: string;
+        /** User */
+        user: {
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization" | "Mannequin";
+          /** Format: uri */
           url?: string;
         }[];
         /** Format: uri-template */
@@ -42743,6 +42899,169 @@ export interface components {
                * Format: uri
                * @description URL for the label
                */
+              url: string;
+            }[];
+            locked: boolean;
+            /** @description Indicates whether maintainers can modify the pull request. */
+            maintainer_can_modify?: boolean;
+            merge_commit_sha: string | null;
+            mergeable?: boolean | null;
+            mergeable_state?: string;
+            merged?: boolean | null;
+            /** Format: date-time */
+            merged_at: string | null;
+            /** User */
+            merged_by?: {
+              /** Format: uri */
+              avatar_url?: string;
+              deleted?: boolean;
+              email?: string | null;
+              /** Format: uri-template */
+              events_url?: string;
+              /** Format: uri */
+              followers_url?: string;
+              /** Format: uri-template */
+              following_url?: string;
+              /** Format: uri-template */
+              gists_url?: string;
+              gravatar_id?: string;
+              /** Format: uri */
+              html_url?: string;
+              id: number;
+              login: string;
+              name?: string;
+              node_id?: string;
+              /** Format: uri */
+              organizations_url?: string;
+              /** Format: uri */
+              received_events_url?: string;
+              /** Format: uri */
+              repos_url?: string;
+              site_admin?: boolean;
+              /** Format: uri-template */
+              starred_url?: string;
+              /** Format: uri */
+              subscriptions_url?: string;
+              /** @enum {string} */
+              type?: "Bot" | "User" | "Organization";
+              /** Format: uri */
+              url?: string;
+            } | null;
+            /**
+             * Milestone
+             * @description A collection of related issues and pull requests.
+             */
+            milestone: {
+              /** Format: date-time */
+              closed_at: string | null;
+              closed_issues: number;
+              /** Format: date-time */
+              created_at: string;
+              /** User */
+              creator: {
+                /** Format: uri */
+                avatar_url?: string;
+                deleted?: boolean;
+                email?: string | null;
+                /** Format: uri-template */
+                events_url?: string;
+                /** Format: uri */
+                followers_url?: string;
+                /** Format: uri-template */
+                following_url?: string;
+                /** Format: uri-template */
+                gists_url?: string;
+                gravatar_id?: string;
+                /** Format: uri */
+                html_url?: string;
+                id: number;
+                login: string;
+                name?: string;
+                node_id?: string;
+                /** Format: uri */
+                organizations_url?: string;
+                /** Format: uri */
+                received_events_url?: string;
+                /** Format: uri */
+                repos_url?: string;
+                site_admin?: boolean;
+                /** Format: uri-template */
+                starred_url?: string;
+                /** Format: uri */
+                subscriptions_url?: string;
+                /** @enum {string} */
+                visibility: "public" | "private" | "internal";
+                watchers: number;
+                watchers_count: number;
+                /** @description Whether to require contributors to sign off on web-based commits */
+                web_commit_signoff_required?: boolean;
+              };
+              sha: string;
+              /** User */
+              user: {
+                /** Format: uri */
+                avatar_url?: string;
+                deleted?: boolean;
+                email?: string | null;
+                /** Format: uri-template */
+                events_url?: string;
+                /** Format: uri */
+                followers_url?: string;
+                /** Format: uri-template */
+                following_url?: string;
+                /** Format: uri-template */
+                gists_url?: string;
+                gravatar_id?: string;
+                /** Format: uri */
+                html_url?: string;
+                id: number;
+                login: string;
+                name?: string;
+                node_id?: string;
+                /** Format: uri */
+                organizations_url?: string;
+                /** Format: uri */
+                received_events_url?: string;
+                /** Format: uri */
+                repos_url?: string;
+                site_admin?: boolean;
+                /** Format: uri-template */
+                starred_url?: string;
+                /** Format: uri */
+                subscriptions_url?: string;
+                /** @enum {string} */
+                type?: "Bot" | "User" | "Organization";
+                /** Format: uri */
+                url?: string;
+              } | null;
+            };
+            /** Format: uri */
+            html_url: string;
+            id: number;
+            /** Format: uri */
+            issue_url: string;
+            labels: {
+              /** @description 6-character hex code, without the leading #, identifying the color */
+              color: string;
+              default: boolean;
+              description: string | null;
+              id: number;
+              /** Format: uri */
+              labels_url: string;
+              node_id: string;
+              /** @description The number of the milestone. */
+              number: number;
+              open_issues: number;
+              /**
+               * @description The state of the milestone.
+               * @enum {string}
+               */
+              state: "open" | "closed";
+              /** @description The title of the milestone. */
+              title: string;
+              /** Format: date-time */
+              updated_at: string;
+              /** Format: uri */
               url: string;
             }[];
             locked: boolean;
@@ -50869,18 +51188,11 @@ export interface components {
             master_branch?: string;
             /**
              * @description The default value for a merge commit message.
-             *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `PR_BODY` - default to the pull request's body.
-             * - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
             /**
-             * @description The default value for a merge commit title.
-             *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
+             * @description The default value for a merge commit message title.
              * @enum {string}
              */
             merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
@@ -55086,14 +55398,14 @@ export interface components {
     "webhook-secret-scanning-alert-created": {
       /** @enum {string} */
       action: "created";
-      alert: components["schemas"]["secret-scanning-alert"];
+      alert: components["schemas"]["secret-scanning-alert-webhook"];
       enterprise?: components["schemas"]["enterprise"];
       installation?: components["schemas"]["simple-installation"];
       organization?: components["schemas"]["organization-simple"];
       repository: components["schemas"]["repository"];
       sender?: components["schemas"]["simple-user"];
     };
-    "secret-scanning-alert": {
+    "secret-scanning-alert-webhook": {
       number?: components["schemas"]["alert-number"];
       created_at?: components["schemas"]["alert-created-at"];
       updated_at?: null | components["schemas"]["alert-updated-at"];
@@ -55104,8 +55416,7 @@ export interface components {
        * @description The REST API URL of the code locations for this alert.
        */
       locations_url?: string;
-      state?: components["schemas"]["secret-scanning-alert-state"];
-      resolution?: components["schemas"]["secret-scanning-alert-resolution"];
+      resolution?: components["schemas"]["secret-scanning-alert-resolution-webhook"];
       /**
        * Format: date-time
        * @description The time that the alert was resolved in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
@@ -55116,29 +55427,24 @@ export interface components {
       resolution_comment?: string | null;
       /** @description The type of secret that secret scanning detected. */
       secret_type?: string;
-      /** @description The secret that was detected. */
-      secret?: string;
     };
     /**
-     * @description Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`.
-     * @enum {string}
-     */
-    "secret-scanning-alert-state": "open" | "resolved";
-    /**
-     * @description **Required when the `state` is `resolved`.** The reason for resolving the alert.
+     * @description The reason for resolving the alert.
      * @enum {string|null}
      */
-    "secret-scanning-alert-resolution":
+    "secret-scanning-alert-resolution-webhook":
       | "false_positive"
       | "wont_fix"
       | "revoked"
       | "used_in_tests"
+      | "pattern_deleted"
+      | "pattern_edited"
       | null;
     /** Secret Scanning Alert Location Created Event */
     "webhook-secret-scanning-alert-location-created": {
       /** @enum {string} */
       action?: "created";
-      alert: components["schemas"]["secret-scanning-alert"];
+      alert: components["schemas"]["secret-scanning-alert-webhook"];
       installation?: components["schemas"]["simple-installation"];
       location: components["schemas"]["secret-scanning-location"];
       organization?: components["schemas"]["organization-simple"];
@@ -55206,7 +55512,7 @@ export interface components {
     "webhook-secret-scanning-alert-reopened": {
       /** @enum {string} */
       action: "reopened";
-      alert: components["schemas"]["secret-scanning-alert"];
+      alert: components["schemas"]["secret-scanning-alert-webhook"];
       enterprise?: components["schemas"]["enterprise"];
       installation?: components["schemas"]["simple-installation"];
       organization?: components["schemas"]["organization-simple"];
@@ -55217,58 +55523,7 @@ export interface components {
     "webhook-secret-scanning-alert-resolved": {
       /** @enum {string} */
       action: "resolved";
-      alert: {
-        created_at?: components["schemas"]["alert-created-at"];
-        html_url?: components["schemas"]["alert-html-url"];
-        /**
-         * Format: uri
-         * @description The REST API URL of the code locations for this alert.
-         */
-        locations_url?: string;
-        number?: components["schemas"]["alert-number"];
-        /** @description Whether push protection was bypassed for the detected secret. */
-        push_protection_bypassed?: boolean | null;
-        /**
-         * Format: date-time
-         * @description The time that push protection was bypassed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
-         */
-        push_protection_bypassed_at?: string | null;
-        push_protection_bypassed_by?:
-          | null
-          | components["schemas"]["simple-user"];
-        /**
-         * @description **Required when the `state` is `resolved`.** The reason for resolving the alert.
-         * @enum {string|null}
-         */
-        resolution?:
-          | null
-          | "false_positive"
-          | "wont_fix"
-          | "revoked"
-          | "used_in_tests"
-          | "pattern_deleted"
-          | "pattern_edited";
-        /**
-         * Format: date-time
-         * @description The time that the alert was resolved in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
-         */
-        resolved_at?: string | null;
-        resolved_by?: null | components["schemas"]["simple-user"];
-        /** @description An optional comment to resolve an alert. */
-        resolution_comment?: string | null;
-        /** @description The secret that was detected. */
-        secret?: string;
-        /** @description The type of secret that secret scanning detected. */
-        secret_type?: string;
-        /**
-         * @description User-friendly name for the detected secret, matching the `secret_type`.
-         * For a list of built-in patterns, see "[Secret scanning patterns](https://docs.github.com/github-ae@latest/code-security/secret-scanning/secret-scanning-patterns#supported-secrets-for-advanced-security)."
-         */
-        secret_type_display_name?: string;
-        state?: components["schemas"]["secret-scanning-alert-state"];
-        updated_at?: components["schemas"]["alert-updated-at"];
-        url?: components["schemas"]["alert-url"];
-      };
+      alert: components["schemas"]["secret-scanning-alert-webhook"];
       enterprise?: components["schemas"]["enterprise"];
       installation?: components["schemas"]["simple-installation"];
       organization?: components["schemas"]["organization-simple"];
@@ -55279,7 +55534,7 @@ export interface components {
     "webhook-secret-scanning-alert-revoked": {
       /** @enum {string} */
       action: "revoked";
-      alert: components["schemas"]["secret-scanning-alert"];
+      alert: components["schemas"]["secret-scanning-alert-webhook"];
       enterprise?: components["schemas"]["enterprise"];
       installation?: components["schemas"]["simple-installation"];
       organization?: components["schemas"]["organization-simple"];
