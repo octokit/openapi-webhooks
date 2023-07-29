@@ -13606,13 +13606,22 @@ export interface components {
           default: boolean;
           description: string | null;
           id: number;
-          /** @description The name of the label. */
-          name: string;
+          /** Format: uri */
+          labels_url: string;
           node_id: string;
+          /** @description The number of the milestone. */
+          number: number;
+          open_issues: number;
           /**
-           * Format: uri
-           * @description URL for the label
+           * @description The state of the milestone.
+           * @enum {string}
            */
+          state: "open" | "closed";
+          /** @description The title of the milestone. */
+          title: string;
+          /** Format: date-time */
+          updated_at: string;
+          /** Format: uri */
           url: string;
         }[];
         /** Format: uri-template */
@@ -19729,13 +19738,22 @@ export interface components {
           default: boolean;
           description: string | null;
           id: number;
-          /** @description The name of the label. */
-          name: string;
+          /** Format: uri */
+          labels_url: string;
           node_id: string;
+          /** @description The number of the milestone. */
+          number: number;
+          open_issues: number;
           /**
-           * Format: uri
-           * @description URL for the label
+           * @description The state of the milestone.
+           * @enum {string}
            */
+          state: "open" | "closed";
+          /** @description The title of the milestone. */
+          title: string;
+          /** Format: date-time */
+          updated_at: string;
+          /** Format: uri */
           url: string;
         }[];
         /** Format: uri-template */
@@ -28876,13 +28894,22 @@ export interface components {
           default: boolean;
           description: string | null;
           id: number;
-          /** @description The name of the label. */
-          name: string;
+          /** Format: uri */
+          labels_url: string;
           node_id: string;
+          /** @description The number of the milestone. */
+          number: number;
+          open_issues: number;
           /**
-           * Format: uri
-           * @description URL for the label
+           * @description The state of the milestone.
+           * @enum {string}
            */
+          state: "open" | "closed";
+          /** @description The title of the milestone. */
+          title: string;
+          /** Format: date-time */
+          updated_at: string;
+          /** Format: uri */
           url: string;
         }[];
         locked: boolean;
@@ -32611,13 +32638,22 @@ export interface components {
           default: boolean;
           description: string | null;
           id: number;
-          /** @description The name of the label. */
-          name: string;
+          /** Format: uri */
+          labels_url: string;
           node_id: string;
+          /** @description The number of the milestone. */
+          number: number;
+          open_issues: number;
           /**
-           * Format: uri
-           * @description URL for the label
+           * @description The state of the milestone.
+           * @enum {string}
            */
+          state: "open" | "closed";
+          /** @description The title of the milestone. */
+          title: string;
+          /** Format: date-time */
+          updated_at: string;
+          /** Format: uri */
           url: string;
         }[];
         locked: boolean;
