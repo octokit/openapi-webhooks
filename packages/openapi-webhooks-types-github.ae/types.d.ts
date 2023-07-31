@@ -6503,7 +6503,7 @@ export interface components {
         id: number;
         node_id: string;
         original_environment: string;
-        payload: string | Record<string, never>;
+        payload: string | Record<string, never> | null;
         /**
          * App
          * @description GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
@@ -8452,7 +8452,7 @@ export interface components {
         public?: boolean;
         /** Format: uri-template */
         pulls_url: string;
-        pushed_at: number | string;
+        pushed_at: number | string | null;
         /** Format: uri-template */
         releases_url: string;
         role_name?: string | null;
@@ -11238,6 +11238,139 @@ export interface components {
           received_events_url?: string;
           repos_url?: string;
           site_admin?: boolean;
+          starred_url?: string;
+          subscriptions_url?: string;
+          type?: string;
+          url?: string;
+        };
+      };
+      organization?: components["schemas"]["organization-simple"];
+      repository: components["schemas"]["repository"];
+      sender: components["schemas"]["simple-user"];
+    };
+    /** issues assigned event */
+    "webhook-issues-assigned": {
+      /**
+       * @description The action that was performed.
+       * @enum {string}
+       */
+      action: "assigned";
+      /** User */
+      assignee?: {
+        /** Format: uri */
+        avatar_url?: string;
+        deleted?: boolean;
+        email?: string | null;
+        /** Format: uri-template */
+        events_url?: string;
+        /** Format: uri */
+        followers_url?: string;
+        /** Format: uri-template */
+        following_url?: string;
+        /** Format: uri-template */
+        gists_url?: string;
+        gravatar_id?: string;
+        /** Format: uri */
+        html_url?: string;
+        id: number;
+        login: string;
+        name?: string;
+        node_id?: string;
+        /** Format: uri */
+        organizations_url?: string;
+        /** Format: uri */
+        received_events_url?: string;
+        /** Format: uri */
+        repos_url?: string;
+        site_admin?: boolean;
+        /** Format: uri-template */
+        starred_url?: string;
+        /** Format: uri */
+        subscriptions_url?: string;
+        /** @enum {string} */
+        type?: "Bot" | "User" | "Organization";
+        /** Format: uri */
+        url?: string;
+      } | null;
+      enterprise?: components["schemas"]["enterprise"];
+      installation?: components["schemas"]["simple-installation"];
+      /**
+       * Issue
+       * @description The [issue](https://docs.github.com/github-ae@latest/rest/reference/issues) itself.
+       */
+      issue: {
+        /** @enum {string|null} */
+        active_lock_reason:
+          | "resolved"
+          | "off-topic"
+          | "too heated"
+          | "spam"
+          | null;
+        /** User */
+        assignee?: {
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization" | "Mannequin";
+          /** Format: uri */
+          url?: string;
+        } | null;
+        assignees: ({
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
           starred_url?: string;
           subscriptions_url?: string;
           type?: string;
@@ -16380,7 +16513,7 @@ export interface components {
           public?: boolean;
           /** Format: uri-template */
           pulls_url: string;
-          pushed_at: number | string;
+          pushed_at: number | string | null;
           /** Format: uri-template */
           releases_url: string;
           role_name?: string | null;
@@ -16409,6 +16542,94 @@ export interface components {
           updated_at: string;
           /** Format: uri */
           url: string;
+          /** @enum {string} */
+          visibility: "public" | "private" | "internal";
+          watchers: number;
+          watchers_count: number;
+        };
+      };
+      enterprise?: components["schemas"]["enterprise"];
+      installation?: components["schemas"]["simple-installation"];
+      /**
+       * Issue
+       * @description The [issue](https://docs.github.com/github-ae@latest/rest/reference/issues) itself.
+       */
+      issue: {
+        /** @enum {string|null} */
+        active_lock_reason:
+          | "resolved"
+          | "off-topic"
+          | "too heated"
+          | "spam"
+          | null;
+        /** User */
+        assignee?: {
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization";
+          /** Format: uri */
+          url?: string;
+        } | null;
+        assignees: ({
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
           /** @enum {string} */
           visibility: "public" | "private" | "internal";
           watchers: number;
@@ -18764,7 +18985,7 @@ export interface components {
           public?: boolean;
           /** Format: uri-template */
           pulls_url: string;
-          pushed_at: number | string;
+          pushed_at: number | string | null;
           /** Format: uri-template */
           releases_url: string;
           role_name?: string | null;
@@ -20426,13 +20647,22 @@ export interface components {
           default: boolean;
           description: string | null;
           id: number;
-          /** @description The name of the label. */
-          name: string;
+          /** Format: uri */
+          labels_url: string;
           node_id: string;
+          /** @description The number of the milestone. */
+          number: number;
+          open_issues: number;
           /**
-           * Format: uri
-           * @description URL for the label
+           * @description The state of the milestone.
+           * @enum {string}
            */
+          state: "open" | "closed";
+          /** @description The title of the milestone. */
+          title: string;
+          /** Format: date-time */
+          updated_at: string;
+          /** Format: uri */
           url: string;
         }[];
         /** Format: uri-template */
@@ -24371,40 +24601,26 @@ export interface components {
           /** Link */
           comments: {
             /** Format: uri-template */
-            href: string;
-          };
-          /** Link */
-          commits: {
+            archive_url: string;
+            /**
+             * @description Whether the repository is archived.
+             * @default false
+             */
+            archived: boolean;
             /** Format: uri-template */
-            href: string;
-          };
-          /** Link */
-          html: {
+            assignees_url: string;
             /** Format: uri-template */
-            href: string;
-          };
-          /** Link */
-          issue: {
+            blobs_url: string;
             /** Format: uri-template */
-            href: string;
-          };
-          /** Link */
-          review_comment: {
+            branches_url: string;
+            /** Format: uri */
+            clone_url: string;
             /** Format: uri-template */
-            href: string;
-          };
-          /** Link */
-          review_comments: {
+            collaborators_url: string;
             /** Format: uri-template */
-            href: string;
-          };
-          /** Link */
-          self: {
+            comments_url: string;
             /** Format: uri-template */
-            href: string;
-          };
-          /** Link */
-          statuses: {
+            commits_url: string;
             /** Format: uri-template */
             href: string;
           };
@@ -24782,7 +24998,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string;
+            pushed_at: number | string | null;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -25125,7 +25341,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string;
+            pushed_at: number | string | null;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -25236,13 +25452,22 @@ export interface components {
           default: boolean;
           description: string | null;
           id: number;
-          /** @description The name of the label. */
-          name: string;
+          /** Format: uri */
+          labels_url: string;
           node_id: string;
+          /** @description The number of the milestone. */
+          number: number;
+          open_issues: number;
           /**
-           * Format: uri
-           * @description URL for the label
+           * @description The state of the milestone.
+           * @enum {string}
            */
+          state: "open" | "closed";
+          /** @description The title of the milestone. */
+          title: string;
+          /** Format: date-time */
+          updated_at: string;
+          /** Format: uri */
           url: string;
         }[];
         locked: boolean;
@@ -25994,7 +26219,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string;
+            pushed_at: number | string | null;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -26337,7 +26562,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string;
+            pushed_at: number | string | null;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -26391,6 +26616,46 @@ export interface components {
              * @default false
              */
             use_squash_pr_title_as_default?: boolean;
+            /** @enum {string} */
+            visibility: "public" | "private" | "internal";
+            watchers: number;
+            watchers_count: number;
+            /** @description Whether to require contributors to sign off on web-based commits */
+            web_commit_signoff_required?: boolean;
+          };
+          sha: string;
+          /** User */
+          user: {
+            /** Format: uri */
+            avatar_url?: string;
+            deleted?: boolean;
+            email?: string | null;
+            /** Format: uri-template */
+            events_url?: string;
+            /** Format: uri */
+            followers_url?: string;
+            /** Format: uri-template */
+            following_url?: string;
+            /** Format: uri-template */
+            gists_url?: string;
+            gravatar_id?: string;
+            /** Format: uri */
+            html_url?: string;
+            id: number;
+            login: string;
+            name?: string;
+            node_id?: string;
+            /** Format: uri */
+            organizations_url?: string;
+            /** Format: uri */
+            received_events_url?: string;
+            /** Format: uri */
+            repos_url?: string;
+            site_admin?: boolean;
+            /** Format: uri-template */
+            starred_url?: string;
+            /** Format: uri */
+            subscriptions_url?: string;
             /** @enum {string} */
             visibility: "public" | "private" | "internal";
             watchers: number;
@@ -27207,7 +27472,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string;
+            pushed_at: number | string | null;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -27550,7 +27815,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string;
+            pushed_at: number | string | null;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -28543,7 +28808,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string;
+            pushed_at: number | string | null;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -28886,7 +29151,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string;
+            pushed_at: number | string | null;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -29852,7 +30117,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string;
+            pushed_at: number | string | null;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -30195,7 +30460,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string;
+            pushed_at: number | string | null;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -31065,7 +31330,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string;
+            pushed_at: number | string | null;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -31408,7 +31673,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string;
+            pushed_at: number | string | null;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -32278,7 +32543,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string;
+            pushed_at: number | string | null;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -32621,7 +32886,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string;
+            pushed_at: number | string | null;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -33823,7 +34088,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string;
+            pushed_at: number | string | null;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -34159,7 +34424,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string;
+            pushed_at: number | string | null;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -35127,7 +35392,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string;
+            pushed_at: number | string | null;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -35463,7 +35728,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string;
+            pushed_at: number | string | null;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -36438,7 +36703,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string;
+            pushed_at: number | string | null;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -36774,7 +37039,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string;
+            pushed_at: number | string | null;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -37590,7 +37855,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string;
+            pushed_at: number | string | null;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -37926,7 +38191,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string;
+            pushed_at: number | string | null;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -38273,6 +38538,55 @@ export interface components {
            * Format: uri
            * @description URL for the team
            */
+          url?: string;
+        }[];
+        /** Format: uri-template */
+        review_comment_url: string;
+        /** Format: uri */
+        review_comments_url: string;
+        /** @enum {string} */
+        state: "open" | "closed";
+        /** Format: uri */
+        statuses_url: string;
+        title: string;
+        updated_at: string;
+        /** Format: uri */
+        url: string;
+        /** User */
+        user: {
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization" | "Mannequin";
+          /** Format: uri */
           url?: string;
         }[];
         /** Format: uri-template */
@@ -38816,7 +39130,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string;
+            pushed_at: number | string | null;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -39103,7 +39417,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string;
+            pushed_at: number | string | null;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -39187,13 +39501,22 @@ export interface components {
           default: boolean;
           description: string | null;
           id: number;
-          /** @description The name of the label. */
-          name: string;
+          /** Format: uri */
+          labels_url: string;
           node_id: string;
+          /** @description The number of the milestone. */
+          number: number;
+          open_issues: number;
           /**
-           * Format: uri
-           * @description URL for the label
+           * @description The state of the milestone.
+           * @enum {string}
            */
+          state: "open" | "closed";
+          /** @description The title of the milestone. */
+          title: string;
+          /** Format: date-time */
+          updated_at: string;
+          /** Format: uri */
           url: string;
         }[];
         locked: boolean;
@@ -39977,7 +40300,7 @@ export interface components {
                 public?: boolean;
                 /** Format: uri-template */
                 pulls_url: string;
-                pushed_at: number | string;
+                pushed_at: number | string | null;
                 /** Format: uri-template */
                 releases_url: string;
                 role_name?: string | null;
@@ -40313,7 +40636,7 @@ export interface components {
                 public?: boolean;
                 /** Format: uri-template */
                 pulls_url: string;
-                pushed_at: number | string;
+                pushed_at: number | string | null;
                 /** Format: uri-template */
                 releases_url: string;
                 role_name?: string | null;
@@ -41219,7 +41542,7 @@ export interface components {
                 public?: boolean;
                 /** Format: uri-template */
                 pulls_url: string;
-                pushed_at: number | string;
+                pushed_at: number | string | null;
                 /** Format: uri-template */
                 releases_url: string;
                 role_name?: string | null;
@@ -41562,7 +41885,7 @@ export interface components {
                 public?: boolean;
                 /** Format: uri-template */
                 pulls_url: string;
-                pushed_at: number | string;
+                pushed_at: number | string | null;
                 /** Format: uri-template */
                 releases_url: string;
                 role_name?: string | null;
@@ -42491,7 +42814,7 @@ export interface components {
                 public?: boolean;
                 /** Format: uri-template */
                 pulls_url: string;
-                pushed_at: number | string;
+                pushed_at: number | string | null;
                 /** Format: uri-template */
                 releases_url: string;
                 role_name?: string | null;
@@ -42834,7 +43157,7 @@ export interface components {
                 public?: boolean;
                 /** Format: uri-template */
                 pulls_url: string;
-                pushed_at: number | string;
+                pushed_at: number | string | null;
                 /** Format: uri-template */
                 releases_url: string;
                 role_name?: string | null;
@@ -42898,6 +43221,169 @@ export interface components {
               sha: string;
               /** User */
               user: {
+                /** Format: uri */
+                avatar_url?: string;
+                deleted?: boolean;
+                email?: string | null;
+                /** Format: uri-template */
+                events_url?: string;
+                /** Format: uri */
+                followers_url?: string;
+                /** Format: uri-template */
+                following_url?: string;
+                /** Format: uri-template */
+                gists_url?: string;
+                gravatar_id?: string;
+                /** Format: uri */
+                html_url?: string;
+                id: number;
+                login: string;
+                name?: string;
+                node_id?: string;
+                /** Format: uri */
+                organizations_url?: string;
+                /** Format: uri */
+                received_events_url?: string;
+                /** Format: uri */
+                repos_url?: string;
+                site_admin?: boolean;
+                /** Format: uri-template */
+                starred_url?: string;
+                /** Format: uri */
+                subscriptions_url?: string;
+                /** @enum {string} */
+                visibility: "public" | "private" | "internal";
+                watchers: number;
+                watchers_count: number;
+                /** @description Whether to require contributors to sign off on web-based commits */
+                web_commit_signoff_required?: boolean;
+              };
+              sha: string;
+              /** User */
+              user: {
+                /** Format: uri */
+                avatar_url?: string;
+                deleted?: boolean;
+                email?: string | null;
+                /** Format: uri-template */
+                events_url?: string;
+                /** Format: uri */
+                followers_url?: string;
+                /** Format: uri-template */
+                following_url?: string;
+                /** Format: uri-template */
+                gists_url?: string;
+                gravatar_id?: string;
+                /** Format: uri */
+                html_url?: string;
+                id: number;
+                login: string;
+                name?: string;
+                node_id?: string;
+                /** Format: uri */
+                organizations_url?: string;
+                /** Format: uri */
+                received_events_url?: string;
+                /** Format: uri */
+                repos_url?: string;
+                site_admin?: boolean;
+                /** Format: uri-template */
+                starred_url?: string;
+                /** Format: uri */
+                subscriptions_url?: string;
+                /** @enum {string} */
+                type?: "Bot" | "User" | "Organization";
+                /** Format: uri */
+                url?: string;
+              } | null;
+            };
+            /** Format: uri */
+            html_url: string;
+            id: number;
+            /** Format: uri */
+            issue_url: string;
+            labels: {
+              /** @description 6-character hex code, without the leading #, identifying the color */
+              color: string;
+              default: boolean;
+              description: string | null;
+              id: number;
+              /** Format: uri */
+              labels_url: string;
+              node_id: string;
+              /** @description The number of the milestone. */
+              number: number;
+              open_issues: number;
+              /**
+               * @description The state of the milestone.
+               * @enum {string}
+               */
+              state: "open" | "closed";
+              /** @description The title of the milestone. */
+              title: string;
+              /** Format: date-time */
+              updated_at: string;
+              /** Format: uri */
+              url: string;
+            }[];
+            locked: boolean;
+            /** @description Indicates whether maintainers can modify the pull request. */
+            maintainer_can_modify?: boolean;
+            merge_commit_sha: string | null;
+            mergeable?: boolean | null;
+            mergeable_state?: string;
+            merged?: boolean | null;
+            /** Format: date-time */
+            merged_at: string | null;
+            /** User */
+            merged_by?: {
+              /** Format: uri */
+              avatar_url?: string;
+              deleted?: boolean;
+              email?: string | null;
+              /** Format: uri-template */
+              events_url?: string;
+              /** Format: uri */
+              followers_url?: string;
+              /** Format: uri-template */
+              following_url?: string;
+              /** Format: uri-template */
+              gists_url?: string;
+              gravatar_id?: string;
+              /** Format: uri */
+              html_url?: string;
+              id: number;
+              login: string;
+              name?: string;
+              node_id?: string;
+              /** Format: uri */
+              organizations_url?: string;
+              /** Format: uri */
+              received_events_url?: string;
+              /** Format: uri */
+              repos_url?: string;
+              site_admin?: boolean;
+              /** Format: uri-template */
+              starred_url?: string;
+              /** Format: uri */
+              subscriptions_url?: string;
+              /** @enum {string} */
+              type?: "Bot" | "User" | "Organization";
+              /** Format: uri */
+              url?: string;
+            } | null;
+            /**
+             * Milestone
+             * @description A collection of related issues and pull requests.
+             */
+            milestone: {
+              /** Format: date-time */
+              closed_at: string | null;
+              closed_issues: number;
+              /** Format: date-time */
+              created_at: string;
+              /** User */
+              creator: {
                 /** Format: uri */
                 avatar_url?: string;
                 deleted?: boolean;
@@ -43789,7 +44275,7 @@ export interface components {
                 public?: boolean;
                 /** Format: uri-template */
                 pulls_url: string;
-                pushed_at: number | string;
+                pushed_at: number | string | null;
                 /** Format: uri-template */
                 releases_url: string;
                 role_name?: string | null;
@@ -44132,7 +44618,7 @@ export interface components {
                 public?: boolean;
                 /** Format: uri-template */
                 pulls_url: string;
-                pushed_at: number | string;
+                pushed_at: number | string | null;
                 /** Format: uri-template */
                 releases_url: string;
                 role_name?: string | null;
@@ -44515,61 +45001,6 @@ export interface components {
                * Format: uri
                * @description URL for the team
                */
-              url?: string;
-            }[];
-            /** Format: uri-template */
-            review_comment_url: string;
-            review_comments?: number;
-            /** Format: uri */
-            review_comments_url: string;
-            /**
-             * @description State of this Pull Request. Either `open` or `closed`.
-             * @enum {string}
-             */
-            state: "open" | "closed";
-            /** Format: uri */
-            statuses_url: string;
-            /** @description The title of the pull request. */
-            title: string;
-            /** Format: date-time */
-            updated_at: string;
-            /** Format: uri */
-            url: string;
-            /** User */
-            user: {
-              /** Format: uri */
-              avatar_url?: string;
-              deleted?: boolean;
-              email?: string | null;
-              /** Format: uri-template */
-              events_url?: string;
-              /** Format: uri */
-              followers_url?: string;
-              /** Format: uri-template */
-              following_url?: string;
-              /** Format: uri-template */
-              gists_url?: string;
-              gravatar_id?: string;
-              /** Format: uri */
-              html_url?: string;
-              id: number;
-              login: string;
-              name?: string;
-              node_id?: string;
-              /** Format: uri */
-              organizations_url?: string;
-              /** Format: uri */
-              received_events_url?: string;
-              /** Format: uri */
-              repos_url?: string;
-              site_admin?: boolean;
-              /** Format: uri-template */
-              starred_url?: string;
-              /** Format: uri */
-              subscriptions_url?: string;
-              /** @enum {string} */
-              type?: "Bot" | "User" | "Organization" | "Mannequin";
-              /** Format: uri */
               url?: string;
             }[];
             /** Format: uri-template */
@@ -45111,7 +45542,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string;
+            pushed_at: number | string | null;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -45447,7 +45878,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string;
+            pushed_at: number | string | null;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -45558,13 +45989,22 @@ export interface components {
           default: boolean;
           description: string | null;
           id: number;
-          /** @description The name of the label. */
-          name: string;
+          /** Format: uri */
+          labels_url: string;
           node_id: string;
+          /** @description The number of the milestone. */
+          number: number;
+          open_issues: number;
           /**
-           * Format: uri
-           * @description URL for the label
+           * @description The state of the milestone.
+           * @enum {string}
            */
+          state: "open" | "closed";
+          /** @description The title of the milestone. */
+          title: string;
+          /** Format: date-time */
+          updated_at: string;
+          /** Format: uri */
           url: string;
         }[];
         locked: boolean;
@@ -46326,7 +46766,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string;
+            pushed_at: number | string | null;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -46620,7 +47060,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string;
+            pushed_at: number | string | null;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -47546,7 +47986,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string;
+            pushed_at: number | string | null;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -47657,6 +48097,46 @@ export interface components {
             trees_url: string;
             /** Format: date-time */
             updated_at: string;
+            /** Format: uri */
+            url: string;
+            /** @enum {string} */
+            visibility: "public" | "private" | "internal";
+            watchers: number;
+            watchers_count: number;
+            /** @description Whether to require contributors to sign off on web-based commits */
+            web_commit_signoff_required?: boolean;
+          };
+          sha: string;
+          /** User */
+          user: {
+            /** Format: uri */
+            avatar_url?: string;
+            deleted?: boolean;
+            email?: string | null;
+            /** Format: uri-template */
+            events_url?: string;
+            /** Format: uri */
+            followers_url?: string;
+            /** Format: uri-template */
+            following_url?: string;
+            /** Format: uri-template */
+            gists_url?: string;
+            gravatar_id?: string;
+            /** Format: uri */
+            html_url?: string;
+            id: number;
+            login: string;
+            name?: string;
+            node_id?: string;
+            /** Format: uri */
+            organizations_url?: string;
+            /** Format: uri */
+            received_events_url?: string;
+            /** Format: uri */
+            repos_url?: string;
+            site_admin?: boolean;
+            /** Format: uri-template */
+            starred_url?: string;
             /** Format: uri */
             url: string;
             /** @enum {string} */
@@ -47924,7 +48404,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string;
+            pushed_at: number | string | null;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -48872,7 +49352,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string;
+            pushed_at: number | string | null;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -49208,7 +49688,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string;
+            pushed_at: number | string | null;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -50115,7 +50595,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string;
+            pushed_at: number | string | null;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -50458,7 +50938,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string;
+            pushed_at: number | string | null;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -51337,7 +51817,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string;
+            pushed_at: number | string | null;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -51673,7 +52153,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string;
+            pushed_at: number | string | null;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -52543,7 +53023,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string;
+            pushed_at: number | string | null;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -52886,7 +53366,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string;
+            pushed_at: number | string | null;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -53671,7 +54151,7 @@ export interface components {
         public?: boolean;
         /** Format: uri-template */
         pulls_url: string;
-        pushed_at: number | string;
+        pushed_at: number | string | null;
         /** Format: uri-template */
         releases_url: string;
         role_name?: string | null;
@@ -53793,19 +54273,19 @@ export interface components {
             name?: string;
             version?: string;
             npm_user?: string;
-            author?: string | Record<string, never>;
-            bugs?: string | Record<string, never>;
+            author?: string | Record<string, never> | null;
+            bugs?: string | Record<string, never> | null;
             dependencies?: Record<string, never>;
             dev_dependencies?: Record<string, never>;
             peer_dependencies?: Record<string, never>;
             optional_dependencies?: Record<string, never>;
             description?: string;
-            dist?: string | Record<string, never>;
+            dist?: string | Record<string, never> | null;
             git_head?: string;
             homepage?: string;
             license?: string;
             main?: string;
-            repository?: string | Record<string, never>;
+            repository?: string | Record<string, never> | null;
             scripts?: Record<string, never>;
             id?: string;
             node_version?: string;
@@ -53818,7 +54298,7 @@ export interface components {
             files?: string[];
             bin?: Record<string, never>;
             man?: Record<string, never>;
-            directories?: string | Record<string, never>;
+            directories?: string | Record<string, never> | null;
             os?: string[];
             cpu?: string[];
             readme?: string;
@@ -53830,7 +54310,7 @@ export interface components {
           } | null;
           nuget_metadata?:
             | {
-                id?: string | Record<string, never> | number;
+                id?: string | Record<string, never> | number | null;
                 name?: string;
                 value?: OneOf<
                   [
@@ -57070,7 +57550,7 @@ export interface components {
         public?: boolean;
         /** Format: uri-template */
         pulls_url: string;
-        pushed_at: number | string;
+        pushed_at: number | string | null;
         /** Format: uri-template */
         releases_url: string;
         role_name?: string | null;
@@ -57383,7 +57863,7 @@ export interface components {
         public?: boolean;
         /** Format: uri-template */
         pulls_url: string;
-        pushed_at: number | string;
+        pushed_at: number | string | null;
         /** Format: uri-template */
         releases_url: string;
         role_name?: string | null;
@@ -57696,7 +58176,7 @@ export interface components {
         public?: boolean;
         /** Format: uri-template */
         pulls_url: string;
-        pushed_at: number | string;
+        pushed_at: number | string | null;
         /** Format: uri-template */
         releases_url: string;
         role_name?: string | null;
@@ -58040,7 +58520,7 @@ export interface components {
         public?: boolean;
         /** Format: uri-template */
         pulls_url: string;
-        pushed_at: number | string;
+        pushed_at: number | string | null;
         /** Format: uri-template */
         releases_url: string;
         role_name?: string | null;
@@ -58353,7 +58833,7 @@ export interface components {
         public?: boolean;
         /** Format: uri-template */
         pulls_url: string;
-        pushed_at: number | string;
+        pushed_at: number | string | null;
         /** Format: uri-template */
         releases_url: string;
         role_name?: string | null;
