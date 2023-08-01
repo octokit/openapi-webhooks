@@ -6002,8 +6002,8 @@ export interface components {
         original_environment: string;
         payload: string | Record<string, never> | null;
         /**
-         * App
-         * @description GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
+         * @description The result of the completed check run. Can be one of `success`, `failure`, `neutral`, `cancelled`, `timed_out`, `action_required` or `stale`. This value will be `null` until the check run has completed.
+         * @enum {string|null}
          */
         performed_via_github_app?: {
           /** Format: date-time */
@@ -6189,18 +6189,32 @@ export interface components {
         production_environment?: boolean;
         ref: string;
         /** Format: uri */
-        repository_url: string;
-        sha: string;
+        details_url: string;
+        external_id: string;
+        /** @description The SHA of the commit that is being checked. */
+        head_sha: string;
         /** Format: uri */
-        statuses_url: string;
-        task: string;
-        transient_environment?: boolean;
-        updated_at: string;
+        html_url: string;
+        /** @description The id of the check. */
+        id: number;
+        /** @description The name of the check run. */
+        name: string;
+        node_id: string;
+        /** Format: date-time */
+        started_at: string;
+        /**
+         * @description The current status of the check run. Can be `queued`, `in_progress`, or `completed`.
+         * @enum {string}
+         */
+        status: "queued" | "in_progress" | "completed" | "waiting" | "pending";
         /** Format: uri */
         url: string;
-      };
-      /** @description The [deployment status](https://docs.github.com/enterprise-server@3.7/rest/reference/deployments#list-deployment-statuses). */
-      deployment_status: {
+      } | null;
+      /**
+       * Deployment
+       * @description The [deployment](https://docs.github.com/enterprise-server@3.7/rest/reference/deployments#list-deployments).
+       */
+      deployment: {
         created_at: string;
         /** User */
         creator: {
@@ -6244,12 +6258,10 @@ export interface components {
         /** @description The optional human-readable description added to the status. */
         description: string;
         environment: string;
-        /** Format: uri */
-        environment_url?: string;
         id: number;
-        /** Format: uri */
-        log_url?: string;
         node_id: string;
+        original_environment: string;
+        payload: string | Record<string, never> | null;
         /**
          * App
          * @description GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
@@ -6766,11 +6778,16 @@ export interface components {
         workflow_url?: string;
       } | null;
     };
-    /** discussion answered event */
-    "webhook-discussion-answered": {
+    /** discussion_comment edited event */
+    "webhook-discussion-comment-edited": {
       /** @enum {string} */
-      action: "answered";
-      answer: {
+      action: "edited";
+      changes: {
+        body: {
+          from: string;
+        };
+      };
+      comment: {
         /**
          * AuthorAssociation
          * @description How the author is associated with the repository.
@@ -6787,15 +6804,14 @@ export interface components {
           | "OWNER";
         body: string;
         child_comment_count: number;
-        /** Format: date-time */
         created_at: string;
         discussion_id: number;
         html_url: string;
         id: number;
         node_id: string;
-        parent_id: null;
+        parent_id: number | null;
         /** Reactions */
-        reactions?: {
+        reactions: {
           "+1": number;
           "-1": number;
           confused: number;
@@ -6809,7 +6825,6 @@ export interface components {
           url: string;
         };
         repository_url: string;
-        /** Format: date-time */
         updated_at: string;
         /** User */
         user: {
@@ -6917,466 +6932,6 @@ export interface components {
         | "OWNER";
       body: string;
       category: {
-        /** Format: date-time */
-        created_at: string;
-        description: string;
-        emoji: string;
-        id: number;
-        is_answerable: boolean;
-        name: string;
-        node_id?: string;
-        repository_id: number;
-        slug: string;
-        updated_at: string;
-      };
-      comments: number;
-      /** Format: date-time */
-      created_at: string;
-      html_url: string;
-      id: number;
-      locked: boolean;
-      node_id: string;
-      number: number;
-      /** Reactions */
-      reactions?: {
-        "+1": number;
-        "-1": number;
-        confused: number;
-        eyes: number;
-        heart: number;
-        hooray: number;
-        laugh: number;
-        rocket: number;
-        total_count: number;
-        /** Format: uri */
-        url: string;
-      };
-      repository_url: string;
-      /**
-       * @description The current state of the discussion.
-       * `converting` means that the discussion is being converted from an issue.
-       * `transferring` means that the discussion is being transferred from another repository.
-       * @enum {string}
-       */
-      state: "open" | "closed" | "locked" | "converting" | "transferring";
-      /**
-       * @description The reason for the current state
-       * @enum {string|null}
-       */
-      state_reason: "resolved" | "outdated" | "duplicate" | "reopened" | null;
-      timeline_url?: string;
-      title: string;
-      /** Format: date-time */
-      updated_at: string;
-      /** User */
-      user: {
-        /** Format: uri */
-        avatar_url?: string;
-        deleted?: boolean;
-        email?: string | null;
-        /** Format: uri-template */
-        events_url?: string;
-        /** Format: uri */
-        followers_url?: string;
-        /** Format: uri-template */
-        following_url?: string;
-        /** Format: uri-template */
-        gists_url?: string;
-        gravatar_id?: string;
-        /** Format: uri */
-        html_url?: string;
-        id: number;
-        login: string;
-        name?: string;
-        node_id?: string;
-        /** Format: uri */
-        organizations_url?: string;
-        /** Format: uri */
-        received_events_url?: string;
-        /** Format: uri */
-        repos_url?: string;
-        site_admin?: boolean;
-        /** Format: uri-template */
-        starred_url?: string;
-        /** Format: uri */
-        subscriptions_url?: string;
-        /** @enum {string} */
-        type?: "Bot" | "User" | "Organization";
-        /** Format: uri */
-        url?: string;
-      } | null;
-    };
-    /** discussion category changed event */
-    "webhook-discussion-category-changed": {
-      /** @enum {string} */
-      action: "category_changed";
-      changes: {
-        category: {
-          from: {
-            /** Format: date-time */
-            created_at: string;
-            description: string;
-            emoji: string;
-            id: number;
-            is_answerable: boolean;
-            name: string;
-            node_id?: string;
-            repository_id: number;
-            slug: string;
-            updated_at: string;
-          };
-        };
-      };
-      discussion: components["schemas"]["discussion"];
-      enterprise?: components["schemas"]["enterprise"];
-      installation?: components["schemas"]["simple-installation"];
-      organization?: components["schemas"]["organization-simple"];
-      repository: components["schemas"]["repository"];
-      sender: components["schemas"]["simple-user"];
-    };
-    /** discussion_comment created event */
-    "webhook-discussion-comment-created": {
-      /** @enum {string} */
-      action: "created";
-      comment: {
-        /**
-         * AuthorAssociation
-         * @description How the author is associated with the repository.
-         * @enum {string}
-         */
-        author_association:
-          | "COLLABORATOR"
-          | "CONTRIBUTOR"
-          | "FIRST_TIMER"
-          | "FIRST_TIME_CONTRIBUTOR"
-          | "MANNEQUIN"
-          | "MEMBER"
-          | "NONE"
-          | "OWNER";
-        body: string;
-        child_comment_count: number;
-        created_at: string;
-        discussion_id: number;
-        html_url: string;
-        id: number;
-        node_id: string;
-        parent_id: number | null;
-        /** Reactions */
-        reactions: {
-          "+1": number;
-          "-1": number;
-          confused: number;
-          eyes: number;
-          heart: number;
-          hooray: number;
-          laugh: number;
-          rocket: number;
-          total_count: number;
-          /** Format: uri */
-          url: string;
-        };
-        repository_url: string;
-        updated_at: string;
-        /** User */
-        user: {
-          /** Format: uri */
-          avatar_url?: string;
-          deleted?: boolean;
-          email?: string | null;
-          /** Format: uri-template */
-          events_url?: string;
-          /** Format: uri */
-          followers_url?: string;
-          /** Format: uri-template */
-          following_url?: string;
-          /** Format: uri-template */
-          gists_url?: string;
-          gravatar_id?: string;
-          /** Format: uri */
-          html_url?: string;
-          id: number;
-          login: string;
-          name?: string;
-          node_id?: string;
-          /** Format: uri */
-          organizations_url?: string;
-          /** Format: uri */
-          received_events_url?: string;
-          /** Format: uri */
-          repos_url?: string;
-          site_admin?: boolean;
-          /** Format: uri-template */
-          starred_url?: string;
-          /** Format: uri */
-          subscriptions_url?: string;
-          /** @enum {string} */
-          type?: "Bot" | "User" | "Organization";
-          /** Format: uri */
-          url?: string;
-        } | null;
-      };
-      discussion: components["schemas"]["discussion"];
-      enterprise?: components["schemas"]["enterprise"];
-      installation?: components["schemas"]["simple-installation"];
-      organization?: components["schemas"]["organization-simple"];
-      repository: components["schemas"]["repository"];
-      sender: components["schemas"]["simple-user"];
-    };
-    /** discussion_comment deleted event */
-    "webhook-discussion-comment-deleted": {
-      /** @enum {string} */
-      action: "deleted";
-      comment: {
-        /**
-         * AuthorAssociation
-         * @description How the author is associated with the repository.
-         * @enum {string}
-         */
-        author_association:
-          | "COLLABORATOR"
-          | "CONTRIBUTOR"
-          | "FIRST_TIMER"
-          | "FIRST_TIME_CONTRIBUTOR"
-          | "MANNEQUIN"
-          | "MEMBER"
-          | "NONE"
-          | "OWNER";
-        body: string;
-        child_comment_count: number;
-        created_at: string;
-        discussion_id: number;
-        html_url: string;
-        id: number;
-        node_id: string;
-        parent_id: number | null;
-        /** Reactions */
-        reactions: {
-          "+1": number;
-          "-1": number;
-          confused: number;
-          eyes: number;
-          heart: number;
-          hooray: number;
-          laugh: number;
-          rocket: number;
-          total_count: number;
-          /** Format: uri */
-          url: string;
-        };
-        repository_url: string;
-        updated_at: string;
-        /** User */
-        user: {
-          /** Format: uri */
-          avatar_url?: string;
-          deleted?: boolean;
-          email?: string | null;
-          /** Format: uri-template */
-          events_url?: string;
-          /** Format: uri */
-          followers_url?: string;
-          /** Format: uri-template */
-          following_url?: string;
-          /** Format: uri-template */
-          gists_url?: string;
-          gravatar_id?: string;
-          /** Format: uri */
-          html_url?: string;
-          id: number;
-          login: string;
-          name?: string;
-          node_id?: string;
-          /** Format: uri */
-          organizations_url?: string;
-          /** Format: uri */
-          received_events_url?: string;
-          /** Format: uri */
-          repos_url?: string;
-          site_admin?: boolean;
-          /** Format: uri-template */
-          starred_url?: string;
-          /** Format: uri */
-          subscriptions_url?: string;
-          /** @enum {string} */
-          type?: "Bot" | "User" | "Organization";
-          /** Format: uri */
-          url?: string;
-        } | null;
-      };
-      discussion: components["schemas"]["discussion"];
-      enterprise?: components["schemas"]["enterprise"];
-      installation?: components["schemas"]["simple-installation"];
-      organization?: components["schemas"]["organization-simple"];
-      repository: components["schemas"]["repository"];
-      sender: components["schemas"]["simple-user"];
-    };
-    /** discussion_comment edited event */
-    "webhook-discussion-comment-edited": {
-      /** @enum {string} */
-      action: "edited";
-      changes: {
-        body: {
-          from: string;
-        };
-      };
-      comment: {
-        /**
-         * AuthorAssociation
-         * @description How the author is associated with the repository.
-         * @enum {string}
-         */
-        author_association:
-          | "COLLABORATOR"
-          | "CONTRIBUTOR"
-          | "FIRST_TIMER"
-          | "FIRST_TIME_CONTRIBUTOR"
-          | "MANNEQUIN"
-          | "MEMBER"
-          | "NONE"
-          | "OWNER";
-        body: string;
-        child_comment_count: number;
-        created_at: string;
-        discussion_id: number;
-        html_url: string;
-        id: number;
-        node_id: string;
-        parent_id: number | null;
-        /** Reactions */
-        reactions: {
-          "+1": number;
-          "-1": number;
-          confused: number;
-          eyes: number;
-          heart: number;
-          hooray: number;
-          laugh: number;
-          rocket: number;
-          total_count: number;
-          /** Format: uri */
-          url: string;
-        };
-        repository_url: string;
-        updated_at: string;
-        /** User */
-        user: {
-          /** Format: uri */
-          avatar_url?: string;
-          deleted?: boolean;
-          email?: string | null;
-          /** Format: uri-template */
-          events_url?: string;
-          /** Format: uri */
-          followers_url?: string;
-          /** Format: uri-template */
-          following_url?: string;
-          /** Format: uri-template */
-          gists_url?: string;
-          gravatar_id?: string;
-          /** Format: uri */
-          html_url?: string;
-          id: number;
-          login: string;
-          name?: string;
-          node_id?: string;
-          /** Format: uri */
-          organizations_url?: string;
-          /** Format: uri */
-          received_events_url?: string;
-          /** Format: uri */
-          repos_url?: string;
-          site_admin?: boolean;
-          /** Format: uri-template */
-          starred_url?: string;
-          /** Format: uri */
-          subscriptions_url?: string;
-          /** @enum {string} */
-          type?: "Bot" | "User" | "Organization";
-          /** Format: uri */
-          url?: string;
-        } | null;
-      };
-      discussion: components["schemas"]["discussion"];
-      enterprise?: components["schemas"]["enterprise"];
-      installation?: components["schemas"]["simple-installation"];
-      organization?: components["schemas"]["organization-simple"];
-      repository: components["schemas"]["repository"];
-      sender: components["schemas"]["simple-user"];
-    };
-    /** discussion created event */
-    "webhook-discussion-created": {
-      /** @enum {string} */
-      action: "created";
-      discussion: {
-        active_lock_reason: string | null;
-        answer_chosen_at: string | null;
-        /** User */
-        answer_chosen_by: {
-          /** Format: uri */
-          avatar_url?: string;
-          deleted?: boolean;
-          email?: string | null;
-          /** Format: uri-template */
-          events_url?: string;
-          /** Format: uri */
-          followers_url?: string;
-          /** Format: uri-template */
-          following_url?: string;
-          /** Format: uri-template */
-          gists_url?: string;
-          gravatar_id?: string;
-          /** Format: uri */
-          html_url?: string;
-          id: number;
-          login: string;
-          name?: string;
-          node_id?: string;
-          /** Format: uri */
-          organizations_url?: string;
-          /** Format: uri */
-          received_events_url?: string;
-          /** Format: uri */
-          repos_url?: string;
-          site_admin?: boolean;
-          /** Format: uri-template */
-          starred_url?: string;
-          /** Format: uri */
-          subscriptions_url?: string;
-          /** @enum {string} */
-          type?: "Bot" | "User" | "Organization";
-          /** Format: uri */
-          url?: string;
-        } | null;
-        answer_html_url: string | null;
-        /**
-         * AuthorAssociation
-         * @description How the author is associated with the repository.
-         * @enum {string}
-         */
-        author_association:
-          | "COLLABORATOR"
-          | "CONTRIBUTOR"
-          | "FIRST_TIMER"
-          | "FIRST_TIME_CONTRIBUTOR"
-          | "MANNEQUIN"
-          | "MEMBER"
-          | "NONE"
-          | "OWNER";
-        body: string | null;
-        category: {
-          /** Format: date-time */
-          created_at: string;
-          description: string;
-          emoji: string;
-          id: number;
-          is_answerable: boolean;
-          name: string;
-          node_id?: string;
-          repository_id: number;
-          slug: string;
-          updated_at: string;
-        };
-        comments: number;
         /** Format: date-time */
         created_at: string;
         html_url: string;
@@ -7508,11 +7063,82 @@ export interface components {
           url?: string;
         };
       };
-      enterprise?: components["schemas"]["enterprise"];
-      installation?: components["schemas"]["simple-installation"];
-      organization?: components["schemas"]["organization-simple"];
-      repository: components["schemas"]["repository"];
-      sender: components["schemas"]["simple-user"];
+      comments: number;
+      /** Format: date-time */
+      created_at: string;
+      html_url: string;
+      id: number;
+      locked: boolean;
+      node_id: string;
+      number: number;
+      /** Reactions */
+      reactions?: {
+        "+1": number;
+        "-1": number;
+        confused: number;
+        eyes: number;
+        heart: number;
+        hooray: number;
+        laugh: number;
+        rocket: number;
+        total_count: number;
+        /** Format: uri */
+        url: string;
+      };
+      repository_url: string;
+      /**
+       * @description The current state of the discussion.
+       * `converting` means that the discussion is being converted from an issue.
+       * `transferring` means that the discussion is being transferred from another repository.
+       * @enum {string}
+       */
+      state: "open" | "closed" | "locked" | "converting" | "transferring";
+      /**
+       * @description The reason for the current state
+       * @enum {string|null}
+       */
+      state_reason: "resolved" | "outdated" | "duplicate" | "reopened" | null;
+      timeline_url?: string;
+      title: string;
+      /** Format: date-time */
+      updated_at: string;
+      /** User */
+      user: {
+        /** Format: uri */
+        avatar_url?: string;
+        deleted?: boolean;
+        email?: string | null;
+        /** Format: uri-template */
+        events_url?: string;
+        /** Format: uri */
+        followers_url?: string;
+        /** Format: uri-template */
+        following_url?: string;
+        /** Format: uri-template */
+        gists_url?: string;
+        gravatar_id?: string;
+        /** Format: uri */
+        html_url?: string;
+        id: number;
+        login: string;
+        name?: string;
+        node_id?: string;
+        /** Format: uri */
+        organizations_url?: string;
+        /** Format: uri */
+        received_events_url?: string;
+        /** Format: uri */
+        repos_url?: string;
+        site_admin?: boolean;
+        /** Format: uri-template */
+        starred_url?: string;
+        /** Format: uri */
+        subscriptions_url?: string;
+        /** @enum {string} */
+        type?: "Bot" | "User" | "Organization";
+        /** Format: uri */
+        url?: string;
+      } | null;
     };
     /** discussion deleted event */
     "webhook-discussion-deleted": {
@@ -7561,11 +7187,60 @@ export interface components {
         /** @description The name of the label. */
         name: string;
         node_id: string;
-        /**
-         * Format: uri
-         * @description URL for the label
-         */
-        url: string;
+        parent_id: number | null;
+        /** Reactions */
+        reactions: {
+          "+1": number;
+          "-1": number;
+          confused: number;
+          eyes: number;
+          heart: number;
+          hooray: number;
+          laugh: number;
+          rocket: number;
+          total_count: number;
+          /** Format: uri */
+          url: string;
+        };
+        repository_url: string;
+        updated_at: string;
+        /** User */
+        user: {
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization";
+          /** Format: uri */
+          url?: string;
+        } | null;
       };
       organization?: components["schemas"]["organization-simple"];
       repository: components["schemas"]["repository"];
@@ -7585,7 +7260,84 @@ export interface components {
     /** discussion pinned event */
     "webhook-discussion-pinned": {
       /** @enum {string} */
-      action: "pinned";
+      action: "deleted";
+      comment: {
+        /**
+         * AuthorAssociation
+         * @description How the author is associated with the repository.
+         * @enum {string}
+         */
+        author_association:
+          | "COLLABORATOR"
+          | "CONTRIBUTOR"
+          | "FIRST_TIMER"
+          | "FIRST_TIME_CONTRIBUTOR"
+          | "MANNEQUIN"
+          | "MEMBER"
+          | "NONE"
+          | "OWNER";
+        body: string;
+        child_comment_count: number;
+        created_at: string;
+        discussion_id: number;
+        html_url: string;
+        id: number;
+        node_id: string;
+        parent_id: number | null;
+        /** Reactions */
+        reactions: {
+          "+1": number;
+          "-1": number;
+          confused: number;
+          eyes: number;
+          heart: number;
+          hooray: number;
+          laugh: number;
+          rocket: number;
+          total_count: number;
+          /** Format: uri */
+          url: string;
+        };
+        repository_url: string;
+        updated_at: string;
+        /** User */
+        user: {
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization";
+          /** Format: uri */
+          url?: string;
+        } | null;
+      };
       discussion: components["schemas"]["discussion"];
       enterprise?: components["schemas"]["enterprise"];
       installation?: components["schemas"]["simple-installation"];
@@ -7636,7 +7388,7 @@ export interface components {
         html_url: string;
         id: number;
         node_id: string;
-        parent_id: null;
+        parent_id: number | null;
         /** Reactions */
         reactions?: {
           "+1": number;
@@ -7726,149 +7478,78 @@ export interface components {
     /** discussion unlocked event */
     "webhook-discussion-unlocked": {
       /** @enum {string} */
-      action: "unlocked";
-      discussion: components["schemas"]["discussion"];
-      enterprise?: components["schemas"]["enterprise"];
-      installation?: components["schemas"]["simple-installation"];
-      organization?: components["schemas"]["organization-simple"];
-      repository: components["schemas"]["repository"];
-      sender: components["schemas"]["simple-user"];
-    };
-    /** discussion unpinned event */
-    "webhook-discussion-unpinned": {
-      /** @enum {string} */
-      action: "unpinned";
-      discussion: components["schemas"]["discussion"];
-      enterprise?: components["schemas"]["enterprise"];
-      installation?: components["schemas"]["simple-installation"];
-      organization?: components["schemas"]["organization-simple"];
-      repository: components["schemas"]["repository"];
-      sender: components["schemas"]["simple-user"];
-    };
-    "webhook-enterprise-anonymous-access-disabled": {
-      /** @enum {string} */
-      action: "anonymous_access_disabled";
-      sender?: components["schemas"]["simple-user"];
-    };
-    "webhook-enterprise-anonymous-access-enabled": {
-      /** @enum {string} */
-      action: "anonymous_access_enabled";
-      sender?: components["schemas"]["simple-user"];
-    };
-    /**
-     * fork event
-     * @description A user forks a repository.
-     */
-    "webhook-fork": {
-      enterprise?: components["schemas"]["enterprise"];
-      /** @description The created [`repository`](https://docs.github.com/enterprise-server@3.7/rest/repos/repos#get-a-repository) resource. */
-      forkee: {
+      action: "created";
+      discussion: {
+        active_lock_reason: string | null;
+        answer_chosen_at: string | null;
+        /** User */
+        answer_chosen_by: {
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization";
+          /** Format: uri */
+          url?: string;
+        } | null;
+        answer_html_url: string | null;
         /**
          * @description Whether to allow auto-merge for pull requests.
          * @default false
          */
-        allow_auto_merge?: boolean;
-        /** @description Whether to allow private forks */
-        allow_forking?: boolean;
-        /**
-         * @description Whether to allow merge commits for pull requests.
-         * @default true
-         */
-        allow_merge_commit?: boolean;
-        /**
-         * @description Whether to allow rebase merges for pull requests.
-         * @default true
-         */
-        allow_rebase_merge?: boolean;
-        /**
-         * @description Whether to allow squash merges for pull requests.
-         * @default true
-         */
-        allow_squash_merge?: boolean;
-        allow_update_branch?: boolean;
-        /** Format: uri-template */
-        archive_url: string;
-        /**
-         * @description Whether the repository is archived.
-         * @default false
-         */
-        archived: boolean;
-        /** Format: uri-template */
-        assignees_url: string;
-        /** Format: uri-template */
-        blobs_url: string;
-        /** Format: uri-template */
-        branches_url: string;
-        /** Format: uri */
-        clone_url: string;
-        /** Format: uri-template */
-        collaborators_url: string;
-        /** Format: uri-template */
-        comments_url: string;
-        /** Format: uri-template */
-        commits_url: string;
-        /** Format: uri-template */
-        compare_url: string;
-        /** Format: uri-template */
-        contents_url: string;
-        /** Format: uri */
-        contributors_url: string;
-        created_at: number | string;
-        /** @description The default branch of the repository. */
-        default_branch: string;
-        /**
-         * @description Whether to delete head branches when pull requests are merged
-         * @default false
-         */
-        delete_branch_on_merge?: boolean;
-        /** Format: uri */
-        deployments_url: string;
-        description: string | null;
-        /** @description Returns whether or not this repository is disabled. */
-        disabled?: boolean;
-        /** Format: uri */
-        downloads_url: string;
-        /** Format: uri */
-        events_url: string;
-        fork: boolean;
-        forks: number;
-        forks_count: number;
-        /** Format: uri */
-        forks_url: string;
-        full_name: string;
-        /** Format: uri-template */
-        git_commits_url: string;
-        /** Format: uri-template */
-        git_refs_url: string;
-        /** Format: uri-template */
-        git_tags_url: string;
-        /** Format: uri */
-        git_url: string;
-        /**
-         * @description Whether downloads are enabled.
-         * @default true
-         */
-        has_downloads: boolean;
-        /**
-         * @description Whether issues are enabled.
-         * @default true
-         */
-        has_issues: boolean;
-        has_pages: boolean;
-        /**
-         * @description Whether projects are enabled.
-         * @default true
-         */
-        has_projects: boolean;
-        /**
-         * @description Whether the wiki is enabled.
-         * @default true
-         */
-        has_wiki: boolean;
-        homepage: string | null;
-        /** Format: uri */
-        hooks_url: string;
-        /** Format: uri */
+        author_association:
+          | "COLLABORATOR"
+          | "CONTRIBUTOR"
+          | "FIRST_TIMER"
+          | "FIRST_TIME_CONTRIBUTOR"
+          | "MANNEQUIN"
+          | "MEMBER"
+          | "NONE"
+          | "OWNER";
+        body: string | null;
+        category: {
+          /** Format: date-time */
+          created_at: string;
+          description: string;
+          emoji: string;
+          id: number;
+          is_answerable: boolean;
+          name: string;
+          node_id?: string;
+          repository_id: number;
+          slug: string;
+          updated_at: string;
+        };
+        comments: number;
+        /** Format: date-time */
+        created_at: string;
         html_url: string;
         /** @description Unique identifier of the repository */
         id: number;
@@ -7986,28 +7667,63 @@ export interface components {
         trees_url: string;
         /** Format: date-time */
         updated_at: string;
-        /** Format: uri */
-        url: string;
-        /** @enum {string} */
-        visibility: "public" | "private" | "internal";
-        watchers: number;
-        watchers_count: number;
-        /** @description Whether to require contributors to sign off on web-based commits */
-        web_commit_signoff_required?: boolean;
+        /** User */
+        user: {
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization";
+          /** Format: uri */
+          url?: string;
+        } | null;
       } & {
-        allow_forking?: boolean;
-        archive_url?: string;
-        archived?: boolean;
-        assignees_url?: string;
-        blobs_url?: string;
-        branches_url?: string;
-        clone_url?: string;
-        collaborators_url?: string;
-        comments_url?: string;
-        commits_url?: string;
-        compare_url?: string;
-        contents_url?: string;
-        contributors_url?: string;
+        active_lock_reason?: null;
+        answer_chosen_at: null;
+        answer_chosen_by: null;
+        answer_html_url: string | null;
+        author_association?: string;
+        body?: string | null;
+        category?: {
+          created_at?: string;
+          description?: string;
+          emoji?: string;
+          id?: number;
+          is_answerable?: boolean;
+          name?: string;
+          node_id?: string;
+          repository_id?: number;
+          slug?: string;
+          updated_at?: string;
+        };
+        comments?: number;
         created_at?: string;
         default_branch?: string;
         deployments_url?: string;
@@ -8417,10 +8133,22 @@ export interface components {
       enterprise?: components["schemas"]["enterprise"];
       installation: components["schemas"]["installation"];
       organization?: components["schemas"]["organization-simple"];
-      /** @description An array of repository objects that the installation can access. */
-      repositories?: {
-        full_name: string;
-        /** @description Unique identifier of the repository */
+      repository: components["schemas"]["repository"];
+      sender: components["schemas"]["simple-user"];
+    };
+    /** discussion labeled event */
+    "webhook-discussion-labeled": {
+      /** @enum {string} */
+      action: "labeled";
+      discussion: components["schemas"]["discussion"];
+      enterprise?: components["schemas"]["enterprise"];
+      installation?: components["schemas"]["simple-installation"];
+      /** Label */
+      label: {
+        /** @description 6-character hex code, without the leading #, identifying the color */
+        color: string;
+        default: boolean;
+        description: string | null;
         id: number;
         /** @description The name of the repository. */
         name: string;
@@ -8437,12 +8165,112 @@ export interface components {
       /** @enum {string} */
       action: "new_permissions_accepted";
       enterprise?: components["schemas"]["enterprise"];
-      installation: components["schemas"]["installation"];
+      installation?: components["schemas"]["simple-installation"];
       organization?: components["schemas"]["organization-simple"];
-      /** @description An array of repository objects that the installation can access. */
-      repositories?: {
-        full_name: string;
-        /** @description Unique identifier of the repository */
+      repository: components["schemas"]["repository"];
+      sender: components["schemas"]["simple-user"];
+    };
+    /** discussion unanswered event */
+    "webhook-discussion-unanswered": {
+      /** @enum {string} */
+      action: "unanswered";
+      discussion: components["schemas"]["discussion"];
+      old_answer: {
+        /**
+         * AuthorAssociation
+         * @description How the author is associated with the repository.
+         * @enum {string}
+         */
+        author_association:
+          | "COLLABORATOR"
+          | "CONTRIBUTOR"
+          | "FIRST_TIMER"
+          | "FIRST_TIME_CONTRIBUTOR"
+          | "MANNEQUIN"
+          | "MEMBER"
+          | "NONE"
+          | "OWNER";
+        body: string;
+        child_comment_count: number;
+        /** Format: date-time */
+        created_at: string;
+        discussion_id: number;
+        html_url: string;
+        id: number;
+        node_id: string;
+        parent_id: null;
+        /** Reactions */
+        reactions?: {
+          "+1": number;
+          "-1": number;
+          confused: number;
+          eyes: number;
+          heart: number;
+          hooray: number;
+          laugh: number;
+          rocket: number;
+          total_count: number;
+          /** Format: uri */
+          url: string;
+        };
+        repository_url: string;
+        /** Format: date-time */
+        updated_at: string;
+        /** User */
+        user: {
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization";
+          /** Format: uri */
+          url?: string;
+        } | null;
+      };
+      organization?: components["schemas"]["organization-simple"];
+      repository: components["schemas"]["repository"];
+      sender?: components["schemas"]["simple-user"];
+    };
+    /** discussion unlabeled event */
+    "webhook-discussion-unlabeled": {
+      /** @enum {string} */
+      action: "unlabeled";
+      discussion: components["schemas"]["discussion"];
+      enterprise?: components["schemas"]["enterprise"];
+      installation?: components["schemas"]["simple-installation"];
+      /** Label */
+      label: {
+        /** @description 6-character hex code, without the leading #, identifying the color */
+        color: string;
+        default: boolean;
+        description: string | null;
         id: number;
         /** @description The name of the repository. */
         name: string;
@@ -8461,10 +8289,1160 @@ export interface components {
       enterprise?: components["schemas"]["enterprise"];
       installation: components["schemas"]["installation"];
       organization?: components["schemas"]["organization-simple"];
-      /** @description An array of repository objects, which were added to the installation. */
-      repositories_added: {
+      repository: components["schemas"]["repository"];
+      sender: components["schemas"]["simple-user"];
+    };
+    "webhook-enterprise-anonymous-access-disabled": {
+      /** @enum {string} */
+      action: "anonymous_access_disabled";
+      sender?: components["schemas"]["simple-user"];
+    };
+    "webhook-enterprise-anonymous-access-enabled": {
+      /** @enum {string} */
+      action: "anonymous_access_enabled";
+      sender?: components["schemas"]["simple-user"];
+    };
+    /**
+     * fork event
+     * @description A user forks a repository.
+     */
+    "webhook-fork": {
+      enterprise?: components["schemas"]["enterprise"];
+      /** @description The created [`repository`](https://docs.github.com/enterprise-server@3.7/rest/repos/repos#get-a-repository) resource. */
+      forkee: {
+        /**
+         * @description Whether to allow auto-merge for pull requests.
+         * @default false
+         */
+        allow_auto_merge?: boolean;
+        /** @description Whether to allow private forks */
+        allow_forking?: boolean;
+        /**
+         * @description Whether to allow merge commits for pull requests.
+         * @default true
+         */
+        allow_merge_commit?: boolean;
+        /**
+         * @description Whether to allow rebase merges for pull requests.
+         * @default true
+         */
+        allow_rebase_merge?: boolean;
+        /**
+         * @description Whether to allow squash merges for pull requests.
+         * @default true
+         */
+        allow_squash_merge?: boolean;
+        allow_update_branch?: boolean;
+        /** Format: uri-template */
+        archive_url: string;
+        /**
+         * @description Whether the repository is archived.
+         * @default false
+         */
+        archived: boolean;
+        /** Format: uri-template */
+        assignees_url: string;
+        /** Format: uri-template */
+        blobs_url: string;
+        /** Format: uri-template */
+        branches_url: string;
+        /** Format: uri */
+        avatar_url?: string;
+        deleted?: boolean;
+        email?: string | null;
+        /** Format: uri-template */
+        contents_url: string;
+        /** Format: uri */
+        contributors_url: string;
+        created_at: number | string;
+        /** @description The default branch of the repository. */
+        default_branch: string;
+        /**
+         * @description Whether to delete head branches when pull requests are merged
+         * @default false
+         */
+        delete_branch_on_merge?: boolean;
+        /** Format: uri */
+        deployments_url: string;
+        description: string | null;
+        /** @description Returns whether or not this repository is disabled. */
+        disabled?: boolean;
+        /** Format: uri */
+        downloads_url: string;
+        /** Format: uri */
+        events_url: string;
+        fork: boolean;
+        forks: number;
+        forks_count: number;
+        /** Format: uri */
+        followers_url?: string;
+        /** Format: uri-template */
+        following_url?: string;
+        /** Format: uri-template */
+        git_tags_url: string;
+        /** Format: uri */
+        git_url: string;
+        /**
+         * @description Whether downloads are enabled.
+         * @default true
+         */
+        has_downloads: boolean;
+        /**
+         * @description Whether issues are enabled.
+         * @default true
+         */
+        has_issues: boolean;
+        has_pages: boolean;
+        /**
+         * @description Whether projects are enabled.
+         * @default true
+         */
+        has_projects: boolean;
+        /**
+         * @description Whether the wiki is enabled.
+         * @default true
+         */
+        has_wiki: boolean;
+        homepage: string | null;
+        /** Format: uri */
+        hooks_url: string;
+        /** Format: uri */
+        html_url?: string;
+        id: number;
+        is_template?: boolean;
+        /** Format: uri-template */
+        issue_comment_url: string;
+        /** Format: uri-template */
+        issue_events_url: string;
+        /** Format: uri-template */
+        issues_url: string;
+        /** Format: uri-template */
+        keys_url: string;
+        /** Format: uri-template */
+        labels_url: string;
+        language: string | null;
+        /** Format: uri */
+        languages_url: string;
+        /** License */
+        license: {
+          key: string;
+          name: string;
+          node_id: string;
+          spdx_id: string;
+          /** Format: uri */
+          url: string | null;
+        } | null;
+        master_branch?: string;
+        /** Format: uri */
+        received_events_url?: string;
+        /** Format: uri */
+        repos_url?: string;
+        site_admin?: boolean;
+        /** Format: uri-template */
+        starred_url?: string;
+        /** Format: uri */
+        mirror_url: string | null;
+        /** @description The name of the repository. */
+        name: string;
+        node_id: string;
+        /** Format: uri-template */
+        notifications_url: string;
+        open_issues: number;
+        open_issues_count: number;
+        organization?: string;
+        /** User */
+        owner: {
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization";
+          /** Format: uri */
+          url?: string;
+        } | null;
+        permissions?: {
+          admin: boolean;
+          maintain?: boolean;
+          pull: boolean;
+          push: boolean;
+          triage?: boolean;
+        };
+        /** @description Whether the repository is private or public. */
+        private: boolean;
+        public?: boolean;
+        /** Format: uri-template */
+        pulls_url: string;
+        pushed_at: number | string | null;
+        /** Format: uri-template */
+        releases_url: string;
+        role_name?: string | null;
+        size: number;
+        ssh_url: string;
+        stargazers?: number;
+        stargazers_count: number;
+        /** Format: uri */
+        avatar_url?: string;
+        deleted?: boolean;
+        email?: string | null;
+        /** Format: uri-template */
+        events_url?: string;
+        /** Format: uri */
+        followers_url?: string;
+        /** Format: uri-template */
+        following_url?: string;
+        /** Format: uri-template */
+        gists_url?: string;
+        gravatar_id?: string;
+        /** Format: uri */
+        html_url?: string;
+        id: number;
+        login: string;
+        name?: string;
+        node_id?: string;
+        /** Format: uri */
+        organizations_url?: string;
+        /** Format: uri */
+        received_events_url?: string;
+        /** Format: uri */
+        repos_url?: string;
+        site_admin?: boolean;
+        /** Format: uri-template */
+        starred_url?: string;
+        /** Format: uri */
+        subscriptions_url?: string;
+        /** @enum {string} */
+        type?: "Bot" | "User" | "Organization";
+        /** Format: uri */
+        url?: string;
+      } | null;
+      sender: components["schemas"]["simple-user"];
+    };
+    /** installation suspend event */
+    "webhook-installation-suspend": {
+      /** @enum {string} */
+      action: "suspend";
+      enterprise?: components["schemas"]["enterprise"];
+      installation: components["schemas"]["installation"];
+      organization?: components["schemas"]["organization-simple"];
+      /** @description An array of repository objects that the installation can access. */
+      repositories?: {
         full_name: string;
         /** @description Unique identifier of the repository */
+        id: number;
+        /** @description The name of the repository. */
+        name: string;
+        node_id: string;
+        /** @description Whether the repository is private or public. */
+        private: boolean;
+      }[];
+      repository?: components["schemas"]["repository"];
+      requester?: null;
+      sender: components["schemas"]["simple-user"];
+    };
+    "webhook-installation-target-renamed": {
+      account: {
+        avatar_url: string;
+        created_at?: string;
+        default_branch?: string;
+        deployments_url?: string;
+        description?: string | null;
+        disabled?: boolean;
+        downloads_url?: string;
+        events_url?: string;
+        /** @enum {boolean} */
+        fork?: true;
+        forks?: number;
+        forks_count?: number;
+        forks_url?: string;
+        full_name?: string;
+        git_commits_url?: string;
+        git_refs_url?: string;
+        git_tags_url?: string;
+        git_url?: string;
+        has_downloads?: boolean;
+        has_issues?: boolean;
+        has_pages?: boolean;
+        has_projects?: boolean;
+        has_wiki?: boolean;
+        homepage?: string | null;
+        hooks_url?: string;
+        html_url: string;
+        id: number;
+        is_verified?: boolean;
+        issues_url?: string;
+        keys_url?: string;
+        labels_url?: string;
+        language?: null;
+        languages_url?: string;
+        license?: Record<string, never> | null;
+        merges_url?: string;
+        milestones_url?: string;
+        mirror_url?: null;
+        name?: string;
+        node_id: string;
+        organizations_url?: string;
+        public_gists?: number;
+        public_members_url?: string;
+        public_repos?: number;
+        received_events_url?: string;
+        repos_url?: string;
+        site_admin?: boolean;
+        slug?: string;
+        starred_url?: string;
+        subscriptions_url?: string;
+        type?: string;
+        updated_at?: string;
+        url?: string;
+        website_url?: null;
+      };
+      action: string;
+      changes: {
+        login?: {
+          from: string;
+        };
+        slug?: {
+          from: string;
+        };
+      };
+      enterprise?: components["schemas"]["enterprise"];
+      installation: components["schemas"]["simple-installation"];
+      organization?: components["schemas"]["organization-simple"];
+      repository?: components["schemas"]["repository"];
+      sender?: components["schemas"]["simple-user"];
+      target_type: string;
+    };
+    /** installation unsuspend event */
+    "webhook-installation-unsuspend": {
+      /** @enum {string} */
+      action: "unsuspend";
+      enterprise?: components["schemas"]["enterprise"];
+      installation: components["schemas"]["installation"];
+      organization?: components["schemas"]["organization-simple"];
+      /** @description An array of repository objects that the installation can access. */
+      repositories?: {
+        full_name: string;
+        /** @description Unique identifier of the repository */
+        id: number;
+        /** @description The name of the repository. */
+        name: string;
+        node_id: string;
+        /** @description Whether the repository is private or public. */
+        private: boolean;
+      }[];
+      repository?: components["schemas"]["repository"];
+      requester?: null;
+      sender: components["schemas"]["simple-user"];
+    };
+    /** issue_comment created event */
+    "webhook-issue-comment-created": {
+      /** @enum {string} */
+      action: "created";
+      /**
+       * issue comment
+       * @description The [comment](https://docs.github.com/enterprise-server@3.7/rest/reference/issues#comments) itself.
+       */
+      comment: {
+        /**
+         * AuthorAssociation
+         * @description How the author is associated with the repository.
+         * @enum {string}
+         */
+        author_association:
+          | "COLLABORATOR"
+          | "CONTRIBUTOR"
+          | "FIRST_TIMER"
+          | "FIRST_TIME_CONTRIBUTOR"
+          | "MANNEQUIN"
+          | "MEMBER"
+          | "NONE"
+          | "OWNER";
+        /** @description Contents of the issue comment */
+        body: string;
+        /** Format: date-time */
+        created_at: string;
+        /** Format: uri */
+        html_url: string;
+        /**
+         * Format: int64
+         * @description Unique identifier of the issue comment
+         */
+        id: number;
+        /** Format: uri */
+        issue_url: string;
+        node_id: string;
+        performed_via_github_app: null | components["schemas"]["integration"];
+        /** Reactions */
+        reactions: {
+          "+1": number;
+          "-1": number;
+          confused: number;
+          eyes: number;
+          heart: number;
+          hooray: number;
+          laugh: number;
+          rocket: number;
+          total_count: number;
+          /** Format: uri */
+          url: string;
+        };
+        /** Format: date-time */
+        updated_at: string;
+        /**
+         * Format: uri
+         * @description URL for the issue comment
+         */
+        url: string;
+        /** User */
+        user: {
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization";
+          /** Format: uri */
+          url?: string;
+        } | null;
+      };
+      enterprise?: components["schemas"]["enterprise"];
+      installation?: components["schemas"]["simple-installation"];
+      /** @description The [issue](https://docs.github.com/enterprise-server@3.7/rest/reference/issues) the comment belongs to. */
+      issue: {
+        /** @enum {string|null} */
+        active_lock_reason:
+          | "resolved"
+          | "off-topic"
+          | "too heated"
+          | "spam"
+          | null;
+        /** User */
+        assignee?: {
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization" | "Mannequin";
+          /** Format: uri */
+          url?: string;
+        } | null;
+        assignees: ({
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization" | "Mannequin";
+          /** Format: uri */
+          url?: string;
+        } | null)[];
+        /**
+         * AuthorAssociation
+         * @description How the author is associated with the repository.
+         * @enum {string}
+         */
+        action: "created" | "edited";
+        /**
+         * Format: uri
+         * @description Points to the HTML wiki page.
+         */
+        html_url: string;
+        /** @description The name of the page. */
+        page_name: string;
+        /** @description The latest commit SHA of the page. */
+        sha: string;
+        summary: string | null;
+        /** @description The current page title. */
+        title: string;
+      }[];
+      repository: components["schemas"]["repository"];
+      sender: components["schemas"]["simple-user"];
+    };
+    /** installation created event */
+    "webhook-installation-created": {
+      /** @enum {string} */
+      action: "created";
+      enterprise?: components["schemas"]["enterprise"];
+      installation: components["schemas"]["installation"];
+      organization?: components["schemas"]["organization-simple"];
+      /** @description An array of repository objects that the installation can access. */
+      repositories?: {
+        full_name: string;
+        /** @description Unique identifier of the repository */
+        id: number;
+        labels?: {
+          /** @description 6-character hex code, without the leading #, identifying the color */
+          color: string;
+          default: boolean;
+          description: string | null;
+          id: number;
+          /** @description The name of the label. */
+          name: string;
+          node_id: string;
+          /**
+           * Format: uri
+           * @description URL for the label
+           */
+          url: string;
+        }[];
+        /** Format: uri-template */
+        labels_url: string;
+        locked?: boolean;
+        /**
+         * Milestone
+         * @description A collection of related issues and pull requests.
+         */
+        milestone: {
+          /** Format: date-time */
+          closed_at: string | null;
+          closed_issues: number;
+          /** Format: date-time */
+          created_at: string;
+          /** User */
+          creator: {
+            /** Format: uri */
+            avatar_url?: string;
+            deleted?: boolean;
+            email?: string | null;
+            /** Format: uri-template */
+            events_url?: string;
+            /** Format: uri */
+            followers_url?: string;
+            /** Format: uri-template */
+            following_url?: string;
+            /** Format: uri-template */
+            gists_url?: string;
+            gravatar_id?: string;
+            /** Format: uri */
+            html_url?: string;
+            id: number;
+            login: string;
+            name?: string;
+            node_id?: string;
+            /** Format: uri */
+            organizations_url?: string;
+            /** Format: uri */
+            received_events_url?: string;
+            /** Format: uri */
+            repos_url?: string;
+            site_admin?: boolean;
+            /** Format: uri-template */
+            starred_url?: string;
+            /** Format: uri */
+            subscriptions_url?: string;
+            /** @enum {string} */
+            type?: "Bot" | "User" | "Organization" | "Mannequin";
+            /** Format: uri */
+            url?: string;
+          } | null;
+          description: string | null;
+          /** Format: date-time */
+          due_on: string | null;
+          /** Format: uri */
+          html_url: string;
+          id: number;
+          /** Format: uri */
+          labels_url: string;
+          node_id: string;
+          /** @description The number of the milestone. */
+          number: number;
+          open_issues: number;
+          /**
+           * @description The state of the milestone.
+           * @enum {string}
+           */
+          state: "open" | "closed";
+          /** @description The title of the milestone. */
+          title: string;
+          /** Format: date-time */
+          updated_at: string;
+          /** Format: uri */
+          url: string;
+        } | null;
+        node_id: string;
+        /** @description Whether the repository is private or public. */
+        private: boolean;
+      }[];
+      repository?: components["schemas"]["repository"];
+      /** User */
+      requester?: {
+        /** Format: uri */
+        avatar_url?: string;
+        deleted?: boolean;
+        email?: string | null;
+        /** Format: uri-template */
+        events_url?: string;
+        /** Format: uri */
+        followers_url?: string;
+        /** Format: uri-template */
+        following_url?: string;
+        /** Format: uri-template */
+        gists_url?: string;
+        gravatar_id?: string;
+        /** Format: uri */
+        html_url?: string;
+        id: number;
+        login: string;
+        name?: string;
+        node_id?: string;
+        /** Format: uri */
+        organizations_url?: string;
+        /** Format: uri */
+        received_events_url?: string;
+        /** Format: uri */
+        repos_url?: string;
+        site_admin?: boolean;
+        /** Format: uri-template */
+        starred_url?: string;
+        /** Format: uri */
+        subscriptions_url?: string;
+        /** @enum {string} */
+        type?: "Bot" | "User" | "Organization";
+        /** Format: uri */
+        url?: string;
+      } | null;
+      sender: components["schemas"]["simple-user"];
+    };
+    /**
+     * Installation
+     * @description Installation
+     */
+    installation: {
+      /** @description The ID of the installation. */
+      id: number;
+      account:
+        | null
+        | (
+            | components["schemas"]["simple-user"]
+            | components["schemas"]["enterprise"]
+          );
+      /**
+       * @description Describe whether all repositories have been selected or there's a selection involved
+       * @enum {string}
+       */
+      repository_selection: "all" | "selected";
+      /** Format: uri */
+      access_tokens_url: string;
+      /** Format: uri */
+      repositories_url: string;
+      /** Format: uri */
+      html_url: string;
+      app_id: number;
+      /** @description The ID of the user or organization this token is being scoped to. */
+      target_id: number;
+      target_type: string;
+      permissions: components["schemas"]["app-permissions"];
+      events: string[];
+      /** Format: date-time */
+      created_at: string;
+      /** Format: date-time */
+      updated_at: string;
+      single_file_name: string | null;
+      has_multiple_single_files?: boolean;
+      single_file_paths?: string[];
+      app_slug: string;
+      suspended_by: null | components["schemas"]["simple-user"];
+      /** Format: date-time */
+      suspended_at: string | null;
+      contact_email?: string | null;
+    };
+    /**
+     * App Permissions
+     * @description The permissions granted to the user access token.
+     * @example {
+     *   "contents": "read",
+     *   "issues": "read",
+     *   "deployments": "write",
+     *   "single_file": "read"
+     * }
+     */
+    "app-permissions": {
+      /**
+       * @description The level of permission to grant the access token for GitHub Actions workflows, workflow runs, and artifacts.
+       * @enum {string}
+       */
+      actions?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token for repository creation, deletion, settings, teams, and collaborators creation.
+       * @enum {string}
+       */
+      administration?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token for checks on code.
+       * @enum {string}
+       */
+      checks?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token for repository contents, commits, branches, downloads, releases, and merges.
+       * @enum {string}
+       */
+      contents?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token for deployments and deployment statuses.
+       * @enum {string}
+       */
+      deployments?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token for managing repository environments.
+       * @enum {string}
+       */
+      environments?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token for issues and related comments, assignees, labels, and milestones.
+       * @enum {string}
+       */
+      issues?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token to search repositories, list collaborators, and access repository metadata.
+       * @enum {string}
+       */
+      metadata?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token for packages published to GitHub Packages.
+       * @enum {string}
+       */
+      packages?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token to retrieve Pages statuses, configuration, and builds, as well as create new builds.
+       * @enum {string}
+       */
+      pages?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token for pull requests and related comments, assignees, labels, milestones, and merges.
+       * @enum {string}
+       */
+      pull_requests?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token to manage the post-receive hooks for a repository.
+       * @enum {string}
+       */
+      repository_hooks?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token to manage repository projects, columns, and cards.
+       * @enum {string}
+       */
+      repository_projects?: "read" | "write" | "admin";
+      /**
+       * @description The level of permission to grant the access token to view and manage secret scanning alerts.
+       * @enum {string}
+       */
+      secret_scanning_alerts?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token to manage repository secrets.
+       * @enum {string}
+       */
+      secrets?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token to view and manage security events like code scanning alerts.
+       * @enum {string}
+       */
+      security_events?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token to manage just a single file.
+       * @enum {string}
+       */
+      single_file?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token for commit statuses.
+       * @enum {string}
+       */
+      statuses?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token to manage Dependabot alerts.
+       * @enum {string}
+       */
+      vulnerability_alerts?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token to update GitHub Actions workflow files.
+       * @enum {string}
+       */
+      workflows?: "write";
+      /**
+       * @description The level of permission to grant the access token for organization teams and members.
+       * @enum {string}
+       */
+      members?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token to manage access to an organization.
+       * @enum {string}
+       */
+      organization_administration?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token to manage the post-receive hooks for an organization.
+       * @enum {string}
+       */
+      organization_hooks?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token for viewing and managing fine-grained personal access token requests to an organization.
+       * @enum {string}
+       */
+      organization_personal_access_tokens?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token for viewing and managing fine-grained personal access tokens that have been approved by an organization.
+       * @enum {string}
+       */
+      organization_personal_access_token_requests?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token for viewing an organization's plan.
+       * @enum {string}
+       */
+      organization_plan?: "read";
+      /**
+       * @description The level of permission to grant the access token to manage organization projects and projects beta (where available).
+       * @enum {string}
+       */
+      organization_projects?: "read" | "write" | "admin";
+      /**
+       * @description The level of permission to grant the access token for organization packages published to GitHub Packages.
+       * @enum {string}
+       */
+      organization_packages?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token to manage organization secrets.
+       * @enum {string}
+       */
+      organization_secrets?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token to view and manage GitHub Actions self-hosted runners available to an organization.
+       * @enum {string}
+       */
+      organization_self_hosted_runners?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token to view and manage users blocked by the organization.
+       * @enum {string}
+       */
+      organization_user_blocking?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token to manage team discussions and related comments.
+       * @enum {string}
+       */
+      team_discussions?: "read" | "write";
+    };
+    /** installation deleted event */
+    "webhook-installation-deleted": {
+      /** @enum {string} */
+      action: "deleted";
+      enterprise?: components["schemas"]["enterprise"];
+      installation: components["schemas"]["installation"];
+      organization?: components["schemas"]["organization-simple"];
+      repository: components["schemas"]["repository"];
+      sender: components["schemas"]["simple-user"];
+    };
+    /** issue_comment deleted event */
+    "webhook-issue-comment-deleted": {
+      /** @enum {string} */
+      action: "deleted";
+      /**
+       * issue comment
+       * @description The [comment](https://docs.github.com/enterprise-server@3.7/rest/reference/issues#comments) itself.
+       */
+      comment: {
+        /**
+         * AuthorAssociation
+         * @description How the author is associated with the repository.
+         * @enum {string}
+         */
+        author_association:
+          | "COLLABORATOR"
+          | "CONTRIBUTOR"
+          | "FIRST_TIMER"
+          | "FIRST_TIME_CONTRIBUTOR"
+          | "MANNEQUIN"
+          | "MEMBER"
+          | "NONE"
+          | "OWNER";
+        /** @description Contents of the issue comment */
+        body: string;
+        /** Format: date-time */
+        created_at: string;
+        /** Format: uri */
+        html_url: string;
+        /**
+         * Format: int64
+         * @description Unique identifier of the issue comment
+         */
+        id: number;
+        /** Format: uri */
+        issue_url: string;
+        node_id: string;
+        performed_via_github_app: null | components["schemas"]["integration"];
+        /** Reactions */
+        reactions: {
+          "+1": number;
+          "-1": number;
+          confused: number;
+          eyes: number;
+          heart: number;
+          hooray: number;
+          laugh: number;
+          rocket: number;
+          total_count: number;
+          /** Format: uri */
+          url: string;
+        };
+        /** Format: date-time */
+        updated_at: string;
+        /**
+         * Format: uri
+         * @description URL for the issue comment
+         */
+        url: string;
+        /** User */
+        user: {
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization" | "Mannequin";
+          /** Format: uri */
+          url?: string;
+        } | null;
+      };
+      enterprise?: components["schemas"]["enterprise"];
+      installation?: components["schemas"]["simple-installation"];
+      /** @description The [issue](https://docs.github.com/enterprise-server@3.7/rest/reference/issues) the comment belongs to. */
+      issue: {
+        /** @enum {string|null} */
+        active_lock_reason:
+          | "resolved"
+          | "off-topic"
+          | "too heated"
+          | "spam"
+          | null;
+        /** User */
+        assignee?: {
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization" | "Mannequin";
+          /** Format: uri */
+          url?: string;
+        } | null;
+        assignees: ({
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization" | "Mannequin";
+          /** Format: uri */
+          url?: string;
+        } | null)[];
+        /**
+         * AuthorAssociation
+         * @description How the author is associated with the repository.
+         * @enum {string}
+         */
+        author_association:
+          | "COLLABORATOR"
+          | "CONTRIBUTOR"
+          | "FIRST_TIMER"
+          | "FIRST_TIME_CONTRIBUTOR"
+          | "MANNEQUIN"
+          | "MEMBER"
+          | "NONE"
+          | "OWNER";
+        /** @description Contents of the issue */
+        body: string | null;
+        /** Format: date-time */
+        closed_at: string | null;
+        comments: number;
+        /** Format: uri */
+        comments_url: string;
+        /** Format: date-time */
+        created_at: string;
+        draft?: boolean;
+        /** Format: uri */
+        events_url: string;
+        /** Format: uri */
+        html_url: string;
+        /** Format: int64 */
         id: number;
         /** @description The name of the repository. */
         name: string;
@@ -8628,82 +9606,88 @@ export interface components {
       account: {
         avatar_url: string;
         created_at?: string;
-        description?: null;
         events_url?: string;
-        followers?: number;
-        followers_url?: string;
-        following?: number;
-        following_url?: string;
-        gists_url?: string;
-        gravatar_id?: string;
-        has_organization_projects?: boolean;
-        has_repository_projects?: boolean;
-        hooks_url?: string;
-        html_url: string;
-        id: number;
-        is_verified?: boolean;
-        issues_url?: string;
-        login?: string;
-        members_url?: string;
-        name?: string;
-        node_id: string;
-        organizations_url?: string;
-        public_gists?: number;
-        public_members_url?: string;
-        public_repos?: number;
-        received_events_url?: string;
-        repos_url?: string;
-        site_admin?: boolean;
-        slug?: string;
-        starred_url?: string;
-        subscriptions_url?: string;
-        type?: string;
+        html_url?: string;
+        id?: number;
+        labels: {
+          /** @description 6-character hex code, without the leading #, identifying the color */
+          color: string;
+          default: boolean;
+          description: string | null;
+          id: number;
+          /** @description The name of the label. */
+          name: string;
+          node_id: string;
+          /**
+           * Format: uri
+           * @description URL for the label
+           */
+          url: string;
+        }[];
+        labels_url?: string;
+        locked: boolean;
+        milestone?: Record<string, never> | null;
+        node_id?: string;
+        number?: number;
+        performed_via_github_app?: Record<string, never> | null;
+        reactions?: {
+          "+1"?: number;
+          "-1"?: number;
+          confused?: number;
+          eyes?: number;
+          heart?: number;
+          hooray?: number;
+          laugh?: number;
+          rocket?: number;
+          total_count?: number;
+          url?: string;
+        };
+        repository_url?: string;
+        /**
+         * @description State of the issue; either 'open' or 'closed'
+         * @enum {string}
+         */
+        state: "open" | "closed";
+        timeline_url?: string;
+        title?: string;
         updated_at?: string;
         url?: string;
-        website_url?: null;
-      };
-      action: string;
-      changes: {
-        login?: {
-          from: string;
+        user?: {
+          avatar_url?: string;
+          events_url?: string;
+          followers_url?: string;
+          following_url?: string;
+          gists_url?: string;
+          gravatar_id?: string;
+          html_url?: string;
+          id?: number;
+          login?: string;
+          node_id?: string;
+          organizations_url?: string;
+          received_events_url?: string;
+          repos_url?: string;
+          site_admin?: boolean;
+          starred_url?: string;
+          subscriptions_url?: string;
+          type?: string;
+          url?: string;
         };
-        slug?: {
-          from: string;
-        };
       };
-      enterprise?: components["schemas"]["enterprise"];
-      installation: components["schemas"]["simple-installation"];
       organization?: components["schemas"]["organization-simple"];
-      repository?: components["schemas"]["repository"];
-      sender?: components["schemas"]["simple-user"];
-      target_type: string;
-    };
-    /** installation unsuspend event */
-    "webhook-installation-unsuspend": {
-      /** @enum {string} */
-      action: "unsuspend";
-      enterprise?: components["schemas"]["enterprise"];
-      installation: components["schemas"]["installation"];
-      organization?: components["schemas"]["organization-simple"];
-      /** @description An array of repository objects that the installation can access. */
-      repositories?: {
-        full_name: string;
-        /** @description Unique identifier of the repository */
-        id: number;
-        /** @description The name of the repository. */
-        name: string;
-        node_id: string;
-        /** @description Whether the repository is private or public. */
-        private: boolean;
-      }[];
-      repository?: components["schemas"]["repository"];
-      requester?: null;
+      repository: components["schemas"]["repository"];
       sender: components["schemas"]["simple-user"];
     };
-    /** issue_comment created event */
-    "webhook-issue-comment-created": {
+    /** issue_comment edited event */
+    "webhook-issue-comment-edited": {
       /** @enum {string} */
-      action: "created";
+      action: "edited";
+      /** @description The changes to the comment. */
+      changes: {
+        body?: {
+          /** @description The previous version of the body. */
+          from: string;
+        };
+      };
       /**
        * issue comment
        * @description The [comment](https://docs.github.com/enterprise-server@3.7/rest/reference/issues#comments) itself.
@@ -9383,40 +10367,34 @@ export interface components {
       repository: components["schemas"]["repository"];
       sender: components["schemas"]["simple-user"];
     };
-    /** issue_comment deleted event */
-    "webhook-issue-comment-deleted": {
-      /** @enum {string} */
-      action: "deleted";
+    /** issues assigned event */
+    "webhook-issues-assigned": {
       /**
-       * issue comment
-       * @description The [comment](https://docs.github.com/enterprise-server@3.7/rest/reference/issues#comments) itself.
+       * @description The action that was performed.
+       * @enum {string}
        */
-      comment: {
-        /**
-         * AuthorAssociation
-         * @description How the author is associated with the repository.
-         * @enum {string}
-         */
-        author_association:
-          | "COLLABORATOR"
-          | "CONTRIBUTOR"
-          | "FIRST_TIMER"
-          | "FIRST_TIME_CONTRIBUTOR"
-          | "MANNEQUIN"
-          | "MEMBER"
-          | "NONE"
-          | "OWNER";
-        /** @description Contents of the issue comment */
-        body: string;
-        /** Format: date-time */
-        created_at: string;
+      action: "assigned";
+      /** User */
+      assignee?: {
         /** Format: uri */
-        html_url: string;
-        /**
-         * Format: int64
-         * @description Unique identifier of the issue comment
-         */
+        avatar_url?: string;
+        deleted?: boolean;
+        email?: string | null;
+        /** Format: uri-template */
+        events_url?: string;
+        /** Format: uri */
+        followers_url?: string;
+        /** Format: uri-template */
+        following_url?: string;
+        /** Format: uri-template */
+        gists_url?: string;
+        gravatar_id?: string;
+        /** Format: uri */
+        html_url?: string;
         id: number;
+        login: string;
+        name?: string;
+        node_id?: string;
         /** Format: uri */
         issue_url: string;
         node_id: string;
@@ -9482,7 +10460,10 @@ export interface components {
       };
       enterprise?: components["schemas"]["enterprise"];
       installation?: components["schemas"]["simple-installation"];
-      /** @description The [issue](https://docs.github.com/enterprise-server@3.7/rest/reference/issues) the comment belongs to. */
+      /**
+       * Issue
+       * @description The [issue](https://docs.github.com/enterprise-server@3.7/rest/reference/issues) itself.
+       */
       issue: {
         /** @enum {string|null} */
         active_lock_reason:
@@ -10041,85 +11022,36 @@ export interface components {
         url?: string;
         user?: {
           avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
           events_url?: string;
+          /** Format: uri */
           followers_url?: string;
+          /** Format: uri-template */
           following_url?: string;
+          /** Format: uri-template */
           gists_url?: string;
           gravatar_id?: string;
+          /** Format: uri */
           html_url?: string;
-          id?: number;
-          login?: string;
+          id: number;
+          login: string;
+          name?: string;
           node_id?: string;
+          /** Format: uri */
           organizations_url?: string;
+          /** Format: uri */
           received_events_url?: string;
+          /** Format: uri */
           repos_url?: string;
           site_admin?: boolean;
+          /** Format: uri-template */
           starred_url?: string;
+          /** Format: uri */
           subscriptions_url?: string;
-          type?: string;
-          url?: string;
-        };
-      };
-      organization?: components["schemas"]["organization-simple"];
-      repository: components["schemas"]["repository"];
-      sender: components["schemas"]["simple-user"];
-    };
-    /** issue_comment edited event */
-    "webhook-issue-comment-edited": {
-      /** @enum {string} */
-      action: "edited";
-      /** @description The changes to the comment. */
-      changes: {
-        body?: {
-          /** @description The previous version of the body. */
-          from: string;
-        };
-      };
-      /**
-       * issue comment
-       * @description The [comment](https://docs.github.com/enterprise-server@3.7/rest/reference/issues#comments) itself.
-       */
-      comment: {
-        /**
-         * AuthorAssociation
-         * @description How the author is associated with the repository.
-         * @enum {string}
-         */
-        author_association:
-          | "COLLABORATOR"
-          | "CONTRIBUTOR"
-          | "FIRST_TIMER"
-          | "FIRST_TIME_CONTRIBUTOR"
-          | "MANNEQUIN"
-          | "MEMBER"
-          | "NONE"
-          | "OWNER";
-        /** @description Contents of the issue comment */
-        body: string;
-        /** Format: date-time */
-        created_at: string;
-        /** Format: uri */
-        html_url: string;
-        /**
-         * Format: int64
-         * @description Unique identifier of the issue comment
-         */
-        id: number;
-        /** Format: uri */
-        issue_url: string;
-        node_id: string;
-        performed_via_github_app: null | components["schemas"]["integration"];
-        /** Reactions */
-        reactions: {
-          "+1": number;
-          "-1": number;
-          confused: number;
-          eyes: number;
-          heart: number;
-          hooray: number;
-          laugh: number;
-          rocket: number;
-          total_count: number;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization" | "Mannequin";
           /** Format: uri */
           url: string;
         };
@@ -10720,11 +11652,8 @@ export interface components {
           url?: string;
         };
         repository_url?: string;
-        /**
-         * @description State of the issue; either 'open' or 'closed'
-         * @enum {string}
-         */
-        state: "open" | "closed";
+        /** @enum {string} */
+        state: "closed" | "open";
         timeline_url?: string;
         title?: string;
         updated_at?: string;
@@ -11275,16 +12204,12 @@ export interface components {
       repository: components["schemas"]["repository"];
       sender: components["schemas"]["simple-user"];
     };
-    /** issues closed event */
-    "webhook-issues-closed": {
-      /**
-       * @description The action that was performed.
-       * @enum {string}
-       */
-      action: "closed";
+    /** issues demilestoned event */
+    "webhook-issues-demilestoned": {
+      /** @enum {string} */
+      action: "demilestoned";
       enterprise?: components["schemas"]["enterprise"];
       installation?: components["schemas"]["simple-installation"];
-      /** @description The [issue](https://docs.github.com/enterprise-server@3.7/rest/reference/issues) itself. */
       issue: {
         /** @enum {string|null} */
         active_lock_reason:
@@ -11785,8 +12710,7 @@ export interface components {
           url?: string;
         };
         repository_url?: string;
-        /** @enum {string} */
-        state: "closed" | "open";
+        state?: string;
         timeline_url?: string;
         title?: string;
         updated_at?: string;
@@ -11812,19 +12736,9 @@ export interface components {
           url?: string;
         };
       };
-      organization?: components["schemas"]["organization-simple"];
-      repository: components["schemas"]["repository"];
-      sender: components["schemas"]["simple-user"];
-    };
-    /** issues deleted event */
-    "webhook-issues-deleted": {
-      /** @enum {string} */
-      action: "deleted";
-      enterprise?: components["schemas"]["enterprise"];
-      installation?: components["schemas"]["simple-installation"];
       /**
-       * Issue
-       * @description The [issue](https://docs.github.com/enterprise-server@3.7/rest/reference/issues) itself.
+       * Milestone
+       * @description A collection of related issues and pull requests.
        */
       issue: {
         /** @enum {string|null} */
@@ -12211,34 +13125,43 @@ export interface components {
         } | null;
         pull_request?: {
           /** Format: uri */
-          diff_url?: string;
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
           /** Format: date-time */
           merged_at?: string | null;
           /** Format: uri */
-          patch_url?: string;
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization" | "Mannequin";
           /** Format: uri */
           url?: string;
-        };
-        /** Reactions */
-        reactions: {
-          "+1": number;
-          "-1": number;
-          confused: number;
-          eyes: number;
-          heart: number;
-          hooray: number;
-          laugh: number;
-          rocket: number;
-          total_count: number;
-          /** Format: uri */
-          url: string;
-        };
+        } | null;
+        description: string | null;
+        /** Format: date-time */
+        due_on: string | null;
         /** Format: uri */
-        repository_url: string;
+        html_url: string;
+        id: number;
+        /** Format: uri */
+        labels_url: string;
+        node_id: string;
+        /** @description The number of the milestone. */
+        number: number;
+        open_issues: number;
         /**
-         * @description State of the issue; either 'open' or 'closed'
+         * @description The state of the milestone.
          * @enum {string}
          */
         state?: "open" | "closed";
@@ -12249,10 +13172,7 @@ export interface components {
         title: string;
         /** Format: date-time */
         updated_at: string;
-        /**
-         * Format: uri
-         * @description URL for the issue
-         */
+        /** Format: uri */
         url: string;
         /** User */
         user: {
@@ -12296,12 +13216,27 @@ export interface components {
       repository: components["schemas"]["repository"];
       sender: components["schemas"]["simple-user"];
     };
-    /** issues demilestoned event */
-    "webhook-issues-demilestoned": {
+    /** issues edited event */
+    "webhook-issues-edited": {
       /** @enum {string} */
-      action: "demilestoned";
+      action: "edited";
+      /** @description The changes to the issue. */
+      changes: {
+        body?: {
+          /** @description The previous version of the body. */
+          from: string;
+        };
+        title?: {
+          /** @description The previous version of the title. */
+          from: string;
+        };
+      };
       enterprise?: components["schemas"]["enterprise"];
       installation?: components["schemas"]["simple-installation"];
+      /**
+       * Issue
+       * @description The [issue](https://docs.github.com/enterprise-server@3.7/rest/reference/issues) itself.
+       */
       issue: {
         /** @enum {string|null} */
         active_lock_reason:
@@ -12876,24 +13811,39 @@ export interface components {
         url?: string;
         user?: {
           avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
           events_url?: string;
+          /** Format: uri */
           followers_url?: string;
+          /** Format: uri-template */
           following_url?: string;
+          /** Format: uri-template */
           gists_url?: string;
           gravatar_id?: string;
+          /** Format: uri */
           html_url?: string;
-          id?: number;
-          login?: string;
+          id: number;
+          login: string;
+          name?: string;
           node_id?: string;
+          /** Format: uri */
           organizations_url?: string;
+          /** Format: uri */
           received_events_url?: string;
+          /** Format: uri */
           repos_url?: string;
           site_admin?: boolean;
+          /** Format: uri-template */
           starred_url?: string;
+          /** Format: uri */
           subscriptions_url?: string;
-          type?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization" | "Mannequin";
+          /** Format: uri */
           url?: string;
-        };
+        } | null;
       };
       /**
        * Milestone
@@ -12948,43 +13898,23 @@ export interface components {
         /** Format: uri */
         html_url: string;
         id: number;
-        /** Format: uri */
-        labels_url: string;
+        /** @description The name of the label. */
+        name: string;
         node_id: string;
-        /** @description The number of the milestone. */
-        number: number;
-        open_issues: number;
         /**
-         * @description The state of the milestone.
-         * @enum {string}
+         * Format: uri
+         * @description URL for the label
          */
-        state: "open" | "closed";
-        /** @description The title of the milestone. */
-        title: string;
-        /** Format: date-time */
-        updated_at: string;
-        /** Format: uri */
         url: string;
       };
       organization?: components["schemas"]["organization-simple"];
       repository: components["schemas"]["repository"];
       sender: components["schemas"]["simple-user"];
     };
-    /** issues edited event */
-    "webhook-issues-edited": {
+    /** issues labeled event */
+    "webhook-issues-labeled": {
       /** @enum {string} */
-      action: "edited";
-      /** @description The changes to the issue. */
-      changes: {
-        body?: {
-          /** @description The previous version of the body. */
-          from: string;
-        };
-        title?: {
-          /** @description The previous version of the title. */
-          from: string;
-        };
-      };
+      action: "labeled";
       enterprise?: components["schemas"]["enterprise"];
       installation?: components["schemas"]["simple-installation"];
       /**
@@ -13479,16 +14409,12 @@ export interface components {
       repository: components["schemas"]["repository"];
       sender: components["schemas"]["simple-user"];
     };
-    /** issues labeled event */
-    "webhook-issues-labeled": {
+    /** issues locked event */
+    "webhook-issues-locked": {
       /** @enum {string} */
-      action: "labeled";
+      action: "locked";
       enterprise?: components["schemas"]["enterprise"];
       installation?: components["schemas"]["simple-installation"];
-      /**
-       * Issue
-       * @description The [issue](https://docs.github.com/enterprise-server@3.7/rest/reference/issues) itself.
-       */
       issue: {
         /** @enum {string|null} */
         active_lock_reason:
@@ -14918,34 +15844,52 @@ export interface components {
         } | null;
         pull_request?: {
           /** Format: uri */
-          diff_url?: string;
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
           /** Format: date-time */
           merged_at?: string | null;
           /** Format: uri */
-          patch_url?: string;
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization" | "Mannequin";
           /** Format: uri */
           url?: string;
-        };
-        /** Reactions */
-        reactions: {
-          "+1": number;
-          "-1": number;
-          confused: number;
-          eyes: number;
-          heart: number;
-          hooray: number;
-          laugh: number;
-          rocket: number;
-          total_count: number;
-          /** Format: uri */
-          url: string;
-        };
+        } | null;
+        description: string | null;
+        /** Format: date-time */
+        due_on: string | null;
         /** Format: uri */
-        repository_url: string;
+        html_url: string;
+        id: number;
+        /** Format: uri */
+        labels_url: string;
+        node_id: string;
+        /** @description The number of the milestone. */
+        number: number;
+        open_issues: number;
         /**
-         * @description State of the issue; either 'open' or 'closed'
+         * @description The state of the milestone.
          * @enum {string}
          */
         state?: "open" | "closed";
@@ -14956,9 +15900,21 @@ export interface components {
         title: string;
         /** Format: date-time */
         updated_at: string;
+        /** Format: uri */
+        url: string;
+      };
+      organization?: components["schemas"]["organization-simple"];
+      repository: components["schemas"]["repository"];
+      sender: components["schemas"]["simple-user"];
+    };
+    /** issues opened event */
+    "webhook-issues-opened": {
+      /** @enum {string} */
+      action: "opened";
+      changes?: {
         /**
-         * Format: uri
-         * @description URL for the issue
+         * Issue
+         * @description The [issue](https://docs.github.com/enterprise-server@3.7/rest/reference/issues) itself.
          */
         url: string;
         /** User */
@@ -15070,12 +16026,10 @@ export interface components {
           /** Format: uri */
           labels_url: string;
           node_id: string;
-          /** @description The number of the milestone. */
           number: number;
-          open_issues: number;
           /**
-           * @description The state of the milestone.
-           * @enum {string}
+           * App
+           * @description GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
            */
           state: "open" | "closed";
           /** @description The title of the milestone. */
@@ -36800,13 +37754,22 @@ export interface components {
           default: boolean;
           description: string | null;
           id: number;
-          /** @description The name of the label. */
-          name: string;
+          /** Format: uri */
+          labels_url: string;
           node_id: string;
+          /** @description The number of the milestone. */
+          number: number;
+          open_issues: number;
           /**
-           * Format: uri
-           * @description URL for the label
+           * @description The state of the milestone.
+           * @enum {string}
            */
+          state: "open" | "closed";
+          /** @description The title of the milestone. */
+          title: string;
+          /** Format: date-time */
+          updated_at: string;
+          /** Format: uri */
           url: string;
         }[];
         locked: boolean;
@@ -40337,6 +41300,169 @@ export interface components {
                * Format: uri
                * @description URL for the label
                */
+              url: string;
+            }[];
+            locked: boolean;
+            /** @description Indicates whether maintainers can modify the pull request. */
+            maintainer_can_modify?: boolean;
+            merge_commit_sha: string | null;
+            mergeable?: boolean | null;
+            mergeable_state?: string;
+            merged?: boolean | null;
+            /** Format: date-time */
+            merged_at: string | null;
+            /** User */
+            merged_by?: {
+              /** Format: uri */
+              avatar_url?: string;
+              deleted?: boolean;
+              email?: string | null;
+              /** Format: uri-template */
+              events_url?: string;
+              /** Format: uri */
+              followers_url?: string;
+              /** Format: uri-template */
+              following_url?: string;
+              /** Format: uri-template */
+              gists_url?: string;
+              gravatar_id?: string;
+              /** Format: uri */
+              html_url?: string;
+              id: number;
+              login: string;
+              name?: string;
+              node_id?: string;
+              /** Format: uri */
+              organizations_url?: string;
+              /** Format: uri */
+              received_events_url?: string;
+              /** Format: uri */
+              repos_url?: string;
+              site_admin?: boolean;
+              /** Format: uri-template */
+              starred_url?: string;
+              /** Format: uri */
+              subscriptions_url?: string;
+              /** @enum {string} */
+              type?: "Bot" | "User" | "Organization";
+              /** Format: uri */
+              url?: string;
+            } | null;
+            /**
+             * Milestone
+             * @description A collection of related issues and pull requests.
+             */
+            milestone: {
+              /** Format: date-time */
+              closed_at: string | null;
+              closed_issues: number;
+              /** Format: date-time */
+              created_at: string;
+              /** User */
+              creator: {
+                /** Format: uri */
+                avatar_url?: string;
+                deleted?: boolean;
+                email?: string | null;
+                /** Format: uri-template */
+                events_url?: string;
+                /** Format: uri */
+                followers_url?: string;
+                /** Format: uri-template */
+                following_url?: string;
+                /** Format: uri-template */
+                gists_url?: string;
+                gravatar_id?: string;
+                /** Format: uri */
+                html_url?: string;
+                id: number;
+                login: string;
+                name?: string;
+                node_id?: string;
+                /** Format: uri */
+                organizations_url?: string;
+                /** Format: uri */
+                received_events_url?: string;
+                /** Format: uri */
+                repos_url?: string;
+                site_admin?: boolean;
+                /** Format: uri-template */
+                starred_url?: string;
+                /** Format: uri */
+                subscriptions_url?: string;
+                /** @enum {string} */
+                visibility: "public" | "private" | "internal";
+                watchers: number;
+                watchers_count: number;
+                /** @description Whether to require contributors to sign off on web-based commits */
+                web_commit_signoff_required?: boolean;
+              };
+              sha: string;
+              /** User */
+              user: {
+                /** Format: uri */
+                avatar_url?: string;
+                deleted?: boolean;
+                email?: string | null;
+                /** Format: uri-template */
+                events_url?: string;
+                /** Format: uri */
+                followers_url?: string;
+                /** Format: uri-template */
+                following_url?: string;
+                /** Format: uri-template */
+                gists_url?: string;
+                gravatar_id?: string;
+                /** Format: uri */
+                html_url?: string;
+                id: number;
+                login: string;
+                name?: string;
+                node_id?: string;
+                /** Format: uri */
+                organizations_url?: string;
+                /** Format: uri */
+                received_events_url?: string;
+                /** Format: uri */
+                repos_url?: string;
+                site_admin?: boolean;
+                /** Format: uri-template */
+                starred_url?: string;
+                /** Format: uri */
+                subscriptions_url?: string;
+                /** @enum {string} */
+                type?: "Bot" | "User" | "Organization";
+                /** Format: uri */
+                url?: string;
+              } | null;
+            };
+            /** Format: uri */
+            html_url: string;
+            id: number;
+            /** Format: uri */
+            issue_url: string;
+            labels: {
+              /** @description 6-character hex code, without the leading #, identifying the color */
+              color: string;
+              default: boolean;
+              description: string | null;
+              id: number;
+              /** Format: uri */
+              labels_url: string;
+              node_id: string;
+              /** @description The number of the milestone. */
+              number: number;
+              open_issues: number;
+              /**
+               * @description The state of the milestone.
+               * @enum {string}
+               */
+              state: "open" | "closed";
+              /** @description The title of the milestone. */
+              title: string;
+              /** Format: date-time */
+              updated_at: string;
+              /** Format: uri */
               url: string;
             }[];
             locked: boolean;
