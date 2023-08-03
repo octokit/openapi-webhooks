@@ -17787,7 +17787,7 @@
             "url": "https://enterprise.octocat.com/api/v3/authorizations/2",
             "app": {
               "name": "My personal access token",
-              "url": "https://docs.github.com/enterprise/rest/reference/enterprise-admin#list-personal-access-tokens",
+              "url": "https://docs.github.com/enterprise/rest/enterprise-admin/users#list-personal-access-tokens",
               "client_id": "00000000000000000000"
             },
             "token": "ghp_16C7e42F292c6912E7710c838347Ae178B4a",
@@ -39626,7 +39626,7 @@
       },
       "since": {
         "name": "since",
-        "description": "Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        "description": "Only show results that were last updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
         "in": "query",
         "required": false,
         "schema": { "type": "string", "format": "date-time" }
@@ -39856,7 +39856,7 @@
       },
       "thread-id": {
         "name": "thread_id",
-        "description": "The unique identifier of the notification thread. This corresponds to the value returned in the `id` field when you retrieve notifications (for example with the [`GET /notifications` operation](https://docs.github.com/enterprise-server@3.6/rest/reference/activity#list-notifications-for-the-authenticated-user)).",
+        "description": "The unique identifier of the notification thread. This corresponds to the value returned in the `id` field when you retrieve notifications (for example with the [`GET /notifications` operation](https://docs.github.com/enterprise-server@3.6/rest/activity/notifications#list-notifications-for-the-authenticated-user)).",
         "in": "path",
         "required": true,
         "schema": { "type": "integer" }
@@ -40599,6 +40599,14 @@
         }
       },
       "found": { "description": "Found" },
+      "dependency_review_forbidden": {
+        "description": "Response if GitHub Advanced Security is not enabled for this repository",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/basic-error" }
+          }
+        }
+      },
       "no_content": { "description": "A header with no content is returned." },
       "scim_bad_request": {
         "description": "Bad request",
