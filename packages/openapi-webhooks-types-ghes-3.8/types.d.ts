@@ -2112,7 +2112,7 @@ export interface webhooks {
   };
   status: {
     /**
-     * This event occurs when the status of a Git commit changes. For example, commits can be marked as `error`, `failure`, `pending`, or `success`. For more information, see "[About status checks](https://docs.github.com/enterprise-server@3.8/pull-requests/collaborating-with-pull-requests/collaborating-on-repositories-with-code-quality-features/about-status-checks)." For information about the APIs to manage commit statuses, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.8/graphql/reference/objects#status) or "[Statuses](https://docs.github.com/enterprise-server@3.8/rest/reference/commits#commit-statuses)" in the REST API documentation.
+     * This event occurs when the status of a Git commit changes. For example, commits can be marked as `error`, `failure`, `pending`, or `success`. For more information, see "[About status checks](https://docs.github.com/enterprise-server@3.8/pull-requests/collaborating-with-pull-requests/collaborating-on-repositories-with-code-quality-features/about-status-checks)." For information about the APIs to manage commit statuses, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.8/graphql/reference/objects#status) or "[Commit statuses](https://docs.github.com/enterprise-server@3.8/rest/commits/statuses)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Commit statuses" repository permission.
      */
@@ -3400,7 +3400,7 @@ export interface components {
     "webhook-check-suite-completed": {
       /** @enum {string} */
       action: "completed";
-      /** @description The [check_suite](https://docs.github.com/enterprise-server@3.8/rest/reference/checks#suites). */
+      /** @description The [check_suite](https://docs.github.com/enterprise-server@3.8/rest/checks/suites#get-a-check-suite). */
       check_suite: {
         after: string | null;
         /**
@@ -3710,7 +3710,7 @@ export interface components {
     "webhook-check-suite-requested": {
       /** @enum {string} */
       action: "requested";
-      /** @description The [check_suite](https://docs.github.com/enterprise-server@3.8/rest/reference/checks#suites). */
+      /** @description The [check_suite](https://docs.github.com/enterprise-server@3.8/rest/checks/suites#get-a-check-suite). */
       check_suite: {
         after: string | null;
         /**
@@ -4014,7 +4014,7 @@ export interface components {
     "webhook-check-suite-rerequested": {
       /** @enum {string} */
       action: "rerequested";
-      /** @description The [check_suite](https://docs.github.com/enterprise-server@3.8/rest/reference/checks#suites). */
+      /** @description The [check_suite](https://docs.github.com/enterprise-server@3.8/rest/checks/suites#get-a-check-suite). */
       check_suite: {
         after: string | null;
         /**
@@ -5005,7 +5005,7 @@ export interface components {
        * @enum {string}
        */
       action: "created";
-      /** @description The [commit comment](https://docs.github.com/enterprise-server@3.8/rest/reference/repos#get-a-commit-comment) resource. */
+      /** @description The [commit comment](https://docs.github.com/enterprise-server@3.8/rest/commits/comments#get-a-commit-comment) resource. */
       comment: {
         /**
          * AuthorAssociation
@@ -5366,7 +5366,7 @@ export interface components {
       action: "created";
       enterprise?: components["schemas"]["enterprise"];
       installation?: components["schemas"]["simple-installation"];
-      /** @description The [`deploy key`](https://docs.github.com/enterprise-server@3.8/rest/reference/deployments#get-a-deploy-key) resource. */
+      /** @description The [`deploy key`](https://docs.github.com/enterprise-server@3.8/rest/deploy-keys/deploy-keys#get-a-deploy-key) resource. */
       key: {
         added_by?: string | null;
         created_at: string;
@@ -5389,7 +5389,7 @@ export interface components {
       action: "deleted";
       enterprise?: components["schemas"]["enterprise"];
       installation?: components["schemas"]["simple-installation"];
-      /** @description The [`deploy key`](https://docs.github.com/enterprise-server@3.8/rest/reference/deployments#get-a-deploy-key) resource. */
+      /** @description The [`deploy key`](https://docs.github.com/enterprise-server@3.8/rest/deploy-keys/deploy-keys#get-a-deploy-key) resource. */
       key: {
         added_by?: string | null;
         created_at: string;
@@ -5412,7 +5412,7 @@ export interface components {
       action: "created";
       /**
        * Deployment
-       * @description The [deployment](https://docs.github.com/enterprise-server@3.8/rest/reference/deployments#list-deployments).
+       * @description The [deployment](https://docs.github.com/enterprise-server@3.8/rest/deployments/deployments#list-deployments).
        */
       deployment: {
         created_at: string;
@@ -7192,7 +7192,7 @@ export interface components {
       } | null;
       /**
        * Deployment
-       * @description The [deployment](https://docs.github.com/enterprise-server@3.8/rest/reference/deployments#list-deployments).
+       * @description The [deployment](https://docs.github.com/enterprise-server@3.8/rest/deployments/deployments#list-deployments).
        */
       deployment: {
         created_at: string;
@@ -7437,7 +7437,7 @@ export interface components {
         /** Format: uri */
         url: string;
       };
-      /** @description The [deployment status](https://docs.github.com/enterprise-server@3.8/rest/reference/deployments#list-deployment-statuses). */
+      /** @description The [deployment status](https://docs.github.com/enterprise-server@3.8/rest/deployments/statuses#list-deployment-statuses). */
       deployment_status: {
         created_at: string;
         /** User */
@@ -9949,7 +9949,7 @@ export interface components {
       action: "created";
       /**
        * issue comment
-       * @description The [comment](https://docs.github.com/enterprise-server@3.8/rest/reference/issues#comments) itself.
+       * @description The [comment](https://docs.github.com/enterprise-server@3.8/rest/issues/comments#get-an-issue-comment) itself.
        */
       comment: {
         /**
@@ -10042,7 +10042,7 @@ export interface components {
       };
       enterprise?: components["schemas"]["enterprise"];
       installation?: components["schemas"]["simple-installation"];
-      /** @description The [issue](https://docs.github.com/enterprise-server@3.8/rest/reference/issues) the comment belongs to. */
+      /** @description The [issue](https://docs.github.com/enterprise-server@3.8/rest/issues/issues#get-an-issue) the comment belongs to. */
       issue: {
         /** @enum {string|null} */
         active_lock_reason:
@@ -10632,7 +10632,7 @@ export interface components {
       action: "deleted";
       /**
        * issue comment
-       * @description The [comment](https://docs.github.com/enterprise-server@3.8/rest/reference/issues#comments) itself.
+       * @description The [comment](https://docs.github.com/enterprise-server@3.8/rest/issues/comments#get-an-issue-comment) itself.
        */
       comment: {
         /**
@@ -10725,7 +10725,7 @@ export interface components {
       };
       enterprise?: components["schemas"]["enterprise"];
       installation?: components["schemas"]["simple-installation"];
-      /** @description The [issue](https://docs.github.com/enterprise-server@3.8/rest/reference/issues) the comment belongs to. */
+      /** @description The [issue](https://docs.github.com/enterprise-server@3.8/rest/issues/issues#get-an-issue) the comment belongs to. */
       issue: {
         /** @enum {string|null} */
         active_lock_reason:
@@ -11320,7 +11320,7 @@ export interface components {
       };
       /**
        * issue comment
-       * @description The [comment](https://docs.github.com/enterprise-server@3.8/rest/reference/issues#comments) itself.
+       * @description The [comment](https://docs.github.com/enterprise-server@3.8/rest/issues/comments#get-an-issue-comment) itself.
        */
       comment: {
         /**
@@ -11413,7 +11413,7 @@ export interface components {
       };
       enterprise?: components["schemas"]["enterprise"];
       installation?: components["schemas"]["simple-installation"];
-      /** @description The [issue](https://docs.github.com/enterprise-server@3.8/rest/reference/issues) the comment belongs to. */
+      /** @description The [issue](https://docs.github.com/enterprise-server@3.8/rest/issues/issues#get-an-issue) the comment belongs to. */
       issue: {
         /** @enum {string|null} */
         active_lock_reason:
@@ -12045,7 +12045,7 @@ export interface components {
       installation?: components["schemas"]["simple-installation"];
       /**
        * Issue
-       * @description The [issue](https://docs.github.com/enterprise-server@3.8/rest/reference/issues) itself.
+       * @description The [issue](https://docs.github.com/enterprise-server@3.8/rest/issues/issues#get-an-issue) itself.
        */
       issue: {
         /** @enum {string|null} */
@@ -12527,7 +12527,7 @@ export interface components {
       action: "closed";
       enterprise?: components["schemas"]["enterprise"];
       installation?: components["schemas"]["simple-installation"];
-      /** @description The [issue](https://docs.github.com/enterprise-server@3.8/rest/reference/issues) itself. */
+      /** @description The [issue](https://docs.github.com/enterprise-server@3.8/rest/issues/issues#get-an-issue) itself. */
       issue: {
         /** @enum {string|null} */
         active_lock_reason:
@@ -13067,7 +13067,7 @@ export interface components {
       installation?: components["schemas"]["simple-installation"];
       /**
        * Issue
-       * @description The [issue](https://docs.github.com/enterprise-server@3.8/rest/reference/issues) itself.
+       * @description The [issue](https://docs.github.com/enterprise-server@3.8/rest/issues/issues#get-an-issue) itself.
        */
       issue: {
         /** @enum {string|null} */
@@ -14232,7 +14232,7 @@ export interface components {
       installation?: components["schemas"]["simple-installation"];
       /**
        * Issue
-       * @description The [issue](https://docs.github.com/enterprise-server@3.8/rest/reference/issues) itself.
+       * @description The [issue](https://docs.github.com/enterprise-server@3.8/rest/issues/issues#get-an-issue) itself.
        */
       issue: {
         /** @enum {string|null} */
@@ -14730,7 +14730,7 @@ export interface components {
       installation?: components["schemas"]["simple-installation"];
       /**
        * Issue
-       * @description The [issue](https://docs.github.com/enterprise-server@3.8/rest/reference/issues) itself.
+       * @description The [issue](https://docs.github.com/enterprise-server@3.8/rest/issues/issues#get-an-issue) itself.
        */
       issue: {
         /** @enum {string|null} */
@@ -16443,7 +16443,7 @@ export interface components {
       changes?: {
         /**
          * Issue
-         * @description The [issue](https://docs.github.com/enterprise-server@3.8/rest/reference/issues) itself.
+         * @description The [issue](https://docs.github.com/enterprise-server@3.8/rest/issues/issues#get-an-issue) itself.
          */
         old_issue: {
           /** @enum {string|null} */
@@ -17150,7 +17150,7 @@ export interface components {
       installation?: components["schemas"]["simple-installation"];
       /**
        * Issue
-       * @description The [issue](https://docs.github.com/enterprise-server@3.8/rest/reference/issues) itself.
+       * @description The [issue](https://docs.github.com/enterprise-server@3.8/rest/issues/issues#get-an-issue) itself.
        */
       issue: {
         /** @enum {string|null} */
@@ -17632,7 +17632,7 @@ export interface components {
       installation?: components["schemas"]["simple-installation"];
       /**
        * Issue
-       * @description The [issue](https://docs.github.com/enterprise-server@3.8/rest/reference/issues) itself.
+       * @description The [issue](https://docs.github.com/enterprise-server@3.8/rest/issues/issues#get-an-issue) itself.
        */
       issue: {
         /** @enum {string|null} */
@@ -18646,7 +18646,7 @@ export interface components {
       changes: {
         /**
          * Issue
-         * @description The [issue](https://docs.github.com/enterprise-server@3.8/rest/reference/issues) itself.
+         * @description The [issue](https://docs.github.com/enterprise-server@3.8/rest/issues/issues#get-an-issue) itself.
          */
         new_issue: {
           /** @enum {string|null} */
@@ -19360,7 +19360,7 @@ export interface components {
       installation?: components["schemas"]["simple-installation"];
       /**
        * Issue
-       * @description The [issue](https://docs.github.com/enterprise-server@3.8/rest/reference/issues) itself.
+       * @description The [issue](https://docs.github.com/enterprise-server@3.8/rest/issues/issues#get-an-issue) itself.
        */
       issue: {
         /** @enum {string|null} */
@@ -19879,7 +19879,7 @@ export interface components {
       installation?: components["schemas"]["simple-installation"];
       /**
        * Issue
-       * @description The [issue](https://docs.github.com/enterprise-server@3.8/rest/reference/issues) itself.
+       * @description The [issue](https://docs.github.com/enterprise-server@3.8/rest/issues/issues#get-an-issue) itself.
        */
       issue: {
         /** @enum {string|null} */
@@ -20360,7 +20360,7 @@ export interface components {
       installation?: components["schemas"]["simple-installation"];
       /**
        * Issue
-       * @description The [issue](https://docs.github.com/enterprise-server@3.8/rest/reference/issues) itself.
+       * @description The [issue](https://docs.github.com/enterprise-server@3.8/rest/issues/issues#get-an-issue) itself.
        */
       issue: {
         /** @enum {string|null} */
@@ -21391,7 +21391,7 @@ export interface components {
       installation?: components["schemas"]["simple-installation"];
       /**
        * Issue
-       * @description The [issue](https://docs.github.com/enterprise-server@3.8/rest/reference/issues) itself.
+       * @description The [issue](https://docs.github.com/enterprise-server@3.8/rest/issues/issues#get-an-issue) itself.
        */
       issue: {
         /** @enum {string|null} */
@@ -26002,7 +26002,7 @@ export interface components {
     };
     /** page_build event */
     "webhook-page-build": {
-      /** @description The [List GitHub Pages builds](https://docs.github.com/enterprise-server@3.8/rest/reference/repos#list-github-pages-builds) itself. */
+      /** @description The [List GitHub Pages builds](https://docs.github.com/enterprise-server@3.8/rest/pages/pages#list-github-pages-builds) itself. */
       build: {
         commit: string | null;
         created_at: string;
@@ -36646,7 +36646,7 @@ export interface components {
       action: "created";
       /**
        * Pull Request Review Comment
-       * @description The [comment](https://docs.github.com/enterprise-server@3.8/rest/reference/pulls#comments) itself.
+       * @description The [comment](https://docs.github.com/enterprise-server@3.8/rest/pulls/comments#get-a-review-comment-for-a-pull-request) itself.
        */
       comment: {
         _links: {
@@ -37950,7 +37950,7 @@ export interface components {
       action: "deleted";
       /**
        * Pull Request Review Comment
-       * @description The [comment](https://docs.github.com/enterprise-server@3.8/rest/reference/pulls#comments) itself.
+       * @description The [comment](https://docs.github.com/enterprise-server@3.8/rest/pulls/comments#get-a-review-comment-for-a-pull-request) itself.
        */
       comment: {
         _links: {
@@ -39261,7 +39261,7 @@ export interface components {
       };
       /**
        * Pull Request Review Comment
-       * @description The [comment](https://docs.github.com/enterprise-server@3.8/rest/reference/pulls#comments) itself.
+       * @description The [comment](https://docs.github.com/enterprise-server@3.8/rest/pulls/comments#get-a-review-comment-for-a-pull-request) itself.
        */
       comment: {
         _links: {
@@ -56539,7 +56539,7 @@ export interface components {
       base_ref: string | null;
       /** @description The SHA of the most recent commit on `ref` before the push. */
       before: string;
-      /** @description An array of commit objects describing the pushed commits. (Pushed commits are all commits that are included in the `compare` between the `before` commit and the `after` commit.) The array includes a maximum of 20 commits. If necessary, you can use the [Commits API](https://docs.github.com/enterprise-server@3.8/rest/reference/repos#commits) to fetch additional commits. This limit is applied to timeline events only and isn't applied to webhook deliveries. */
+      /** @description An array of commit objects describing the pushed commits. (Pushed commits are all commits that are included in the `compare` between the `before` commit and the `after` commit.) The array includes a maximum of 20 commits. If necessary, you can use the [Commits API](https://docs.github.com/enterprise-server@3.8/rest/commits) to fetch additional commits. This limit is applied to timeline events only and isn't applied to webhook deliveries. */
       commits: {
         /** @description An array of files added in the commit. */
         added?: string[];
@@ -57257,7 +57257,7 @@ export interface components {
       organization?: components["schemas"]["organization-simple"];
       /**
        * Release
-       * @description The [release](https://docs.github.com/enterprise-server@3.8/rest/reference/repos/#get-a-release) object.
+       * @description The [release](https://docs.github.com/enterprise-server@3.8/rest/releases/releases/#get-a-release) object.
        */
       release: {
         assets: {
@@ -57414,7 +57414,7 @@ export interface components {
       organization?: components["schemas"]["organization-simple"];
       /**
        * Release
-       * @description The [release](https://docs.github.com/enterprise-server@3.8/rest/reference/repos/#get-a-release) object.
+       * @description The [release](https://docs.github.com/enterprise-server@3.8/rest/releases/releases/#get-a-release) object.
        */
       release: {
         assets: {
@@ -57581,7 +57581,7 @@ export interface components {
       organization?: components["schemas"]["organization-simple"];
       /**
        * Release
-       * @description The [release](https://docs.github.com/enterprise-server@3.8/rest/reference/repos/#get-a-release) object.
+       * @description The [release](https://docs.github.com/enterprise-server@3.8/rest/releases/releases/#get-a-release) object.
        */
       release: {
         assets: {
@@ -58125,7 +58125,7 @@ export interface components {
       organization?: components["schemas"]["organization-simple"];
       /**
        * Release
-       * @description The [release](https://docs.github.com/enterprise-server@3.8/rest/reference/repos/#get-a-release) object.
+       * @description The [release](https://docs.github.com/enterprise-server@3.8/rest/releases/releases/#get-a-release) object.
        */
       release: {
         assets: {
@@ -72541,7 +72541,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when the status of a Git commit changes. For example, commits can be marked as `error`, `failure`, `pending`, or `success`. For more information, see "[About status checks](https://docs.github.com/enterprise-server@3.8/pull-requests/collaborating-with-pull-requests/collaborating-on-repositories-with-code-quality-features/about-status-checks)." For information about the APIs to manage commit statuses, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.8/graphql/reference/objects#status) or "[Statuses](https://docs.github.com/enterprise-server@3.8/rest/reference/commits#commit-statuses)" in the REST API documentation.
+   * This event occurs when the status of a Git commit changes. For example, commits can be marked as `error`, `failure`, `pending`, or `success`. For more information, see "[About status checks](https://docs.github.com/enterprise-server@3.8/pull-requests/collaborating-with-pull-requests/collaborating-on-repositories-with-code-quality-features/about-status-checks)." For information about the APIs to manage commit statuses, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.8/graphql/reference/objects#status) or "[Commit statuses](https://docs.github.com/enterprise-server@3.8/rest/commits/statuses)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Commit statuses" repository permission.
    */
