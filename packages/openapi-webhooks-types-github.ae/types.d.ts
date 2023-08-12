@@ -21,7 +21,7 @@ export interface webhooks {
     /**
      * This event occurs when there is activity relating to branch protection rules. For more information, see "[About protected branches](https://docs.github.com/github-ae@latest/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches)." For information about the APIs to manage branch protection rules, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#branchprotectionrule) or "[Branch protection](https://docs.github.com/github-ae@latest/rest/branches/branch-protection)" in the REST API documentation.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
      * @description A branch protection rule was created.
      */
     post: operations["branch-protection-rule/created"];
@@ -992,7 +992,7 @@ export interface webhooks {
   };
   "membership-removed": {
     /**
-     * This event occurs when there is activity relating to team membership. For more information, see "[About teams](https://docs.github.com/github-ae@latest/organizations/organizing-members-into-teams/about-teams)." For more information about the API to manage team memberships, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#team) or "[Team members](https://docs.github.com/github-ae@latest/rest/teams/members)" in the REST API documentation.
+     * This event occurs when there is activity relating to team membership. For more information, see "[About teams](https://docs.github.com/github-ae@latest/organizations/organizing-members-into-teams/about-teams)." For more information about the APIs to manage team memberships, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#team) or "[Team members](https://docs.github.com/github-ae@latest/rest/teams/members)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
      * @description An organization member was removed from a team.
@@ -1533,7 +1533,7 @@ export interface webhooks {
     /**
      * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/github-ae@latest/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/github-ae@latest/rest/pulls/pulls)" in the REST API documentation.
      *
-     * For activity related to pull request reviews, pull request review comments, pull request comments,or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
+     * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
      * @description A previously closed pull request was reopened.
@@ -1630,7 +1630,7 @@ export interface webhooks {
   };
   "pull-request-review-thread-resolved": {
     /**
-     * This event occurs when there is activity relating to a comment thread on a pull request. For more information, see "[About pull request reviews](https://docs.github.com/github-ae@latest/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request review comment threads, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#pullrequestreviewthread) or "[Pull request reviews](https://docs.github.com/github-ae@latest/rest/pulls/reviews)" in the REST API documentation.
+     * This event occurs when there is activity relating to a comment thread on a pull request. For more information, see "[About pull request reviews](https://docs.github.com/github-ae@latest/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request reviews, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#pullrequestreviewthread) or "[Pull request review comments](https://docs.github.com/github-ae@latest/rest/pulls/comments)" in the REST API documentation.
      *
      * For activity related to pull request review comments, pull request comments, or pull request reviews, use the `pull_request_review_comment`, `issue_comment`, or `pull_request_review` events instead.
      *
@@ -1721,7 +1721,7 @@ export interface webhooks {
      *
      * To install this event on a GitHub App, the app must have at least read-level access for the "Packages" repository permission.
      *
-     * **Note**: GitHub recommends that you use the newer `package` event instead
+     * **Note**: GitHub recommends that you use the newer `package` event instead.
      * @description A package that was previously published to a registry was updated.
      */
     post: operations["registry-package/updated"];
@@ -1737,7 +1737,7 @@ export interface webhooks {
   };
   "release-deleted": {
     /**
-     * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/github-ae@latest/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#release) or "[Releases](https://docs.github.com/github-ae@latest/rest/packages)" in the REST API documentation.
+     * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/github-ae@latest/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#release) or "[Releases](https://docs.github.com/github-ae@latest/rest/releases)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
      * @description A release, pre-release, or draft release was deleted.
@@ -1746,7 +1746,7 @@ export interface webhooks {
   };
   "release-edited": {
     /**
-     * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/github-ae@latest/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#release) or "[Releases](https://docs.github.com/github-ae@latest/rest/packages)" in the REST API documentation.
+     * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/github-ae@latest/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#release) or "[Releases](https://docs.github.com/github-ae@latest/rest/releases)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
      * @description The details of a release, pre-release, or draft release were edited. For more information, see "[Managing releases in a repository](https://docs.github.com/github-ae@latest/repositories/releasing-projects-on-github/managing-releases-in-a-repository#editing-a-release)."
@@ -1755,7 +1755,7 @@ export interface webhooks {
   };
   "release-prereleased": {
     /**
-     * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/github-ae@latest/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#release) or "[Releases](https://docs.github.com/github-ae@latest/rest/packages)" in the REST API documentation.
+     * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/github-ae@latest/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#release) or "[Releases](https://docs.github.com/github-ae@latest/rest/releases)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
      * @description A release was created and identified as a pre-release. A pre-release is a release that is not ready for production and may be unstable.
@@ -1764,7 +1764,7 @@ export interface webhooks {
   };
   "release-published": {
     /**
-     * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/github-ae@latest/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#release) or "[Releases](https://docs.github.com/github-ae@latest/rest/packages)" in the REST API documentation.
+     * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/github-ae@latest/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#release) or "[Releases](https://docs.github.com/github-ae@latest/rest/releases)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
      * @description A release, pre-release, or draft of a release was published.
@@ -1773,7 +1773,7 @@ export interface webhooks {
   };
   "release-released": {
     /**
-     * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/github-ae@latest/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#release) or "[Releases](https://docs.github.com/github-ae@latest/rest/packages)" in the REST API documentation.
+     * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/github-ae@latest/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#release) or "[Releases](https://docs.github.com/github-ae@latest/rest/releases)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
      * @description A release was published, or a pre-release was changed to a release.
@@ -1782,7 +1782,7 @@ export interface webhooks {
   };
   "release-unpublished": {
     /**
-     * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/github-ae@latest/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#release) or "[Releases](https://docs.github.com/github-ae@latest/rest/packages)" in the REST API documentation.
+     * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/github-ae@latest/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#release) or "[Releases](https://docs.github.com/github-ae@latest/rest/releases)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
      * @description A release or pre-release was unpublished.
@@ -10381,7 +10381,8 @@ export interface components {
         url?: string;
         website_url?: null;
       };
-      action: string;
+      /** @enum {string} */
+      action: "renamed";
       changes: {
         login?: {
           from: string;
@@ -11798,7 +11799,87 @@ export interface components {
        * issue comment
        * @description The [comment](https://docs.github.com/github-ae@latest/rest/issues/comments#get-an-issue-comment) itself.
        */
-      comment: {
+      issue: {
+        /** @enum {string|null} */
+        active_lock_reason:
+          | "resolved"
+          | "off-topic"
+          | "too heated"
+          | "spam"
+          | null;
+        /** User */
+        assignee?: {
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization" | "Mannequin";
+          /** Format: uri */
+          url?: string;
+        } | null;
+        assignees: ({
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization" | "Mannequin";
+          /** Format: uri */
+          url?: string;
+        } | null)[];
         /**
          * AuthorAssociation
          * @description How the author is associated with the repository.
@@ -12780,6 +12861,7 @@ export interface components {
             | "watch"
             | "workflow_dispatch"
             | "workflow_run"
+            | "security_and_analysis"
             | "reminder"
             | "pull_request_review_thread"
           )[];
@@ -16880,7 +16962,7 @@ export interface components {
           /** Format: uri */
           subscriptions_url?: string;
           /** @enum {string} */
-          type?: "Bot" | "User" | "Organization" | "Mannequin";
+          type?: "Bot" | "User" | "Organization";
           /** Format: uri */
           url?: string;
         } | null;
@@ -20296,12 +20378,14 @@ export interface components {
           /** Format: uri-template */
           starred_url?: string;
           /** Format: uri */
-          subscriptions_url?: string;
+          url: string;
           /** @enum {string} */
-          type?: "Bot" | "User" | "Organization";
-          /** Format: uri */
-          url?: string;
-        } | null;
+          visibility: "public" | "private" | "internal";
+          watchers: number;
+          watchers_count: number;
+          /** @description Whether to require contributors to sign off on web-based commits */
+          web_commit_signoff_required?: boolean;
+        };
       };
       organization?: components["schemas"]["organization-simple"];
       repository: components["schemas"]["repository"];
@@ -21631,7 +21715,7 @@ export interface components {
             /** Format: uri */
             subscriptions_url?: string;
             /** @enum {string} */
-            type?: "Bot" | "User" | "Organization";
+            type?: "Bot" | "User" | "Organization" | "Mannequin";
             /** Format: uri */
             url?: string;
           } | null;
@@ -22647,18 +22731,13 @@ export interface components {
         email?: string | null;
         /** Format: uri-template */
         events_url?: string;
-        /** Format: uri */
-        followers_url?: string;
-        /** Format: uri-template */
-        following_url?: string;
-        /** Format: uri-template */
-        gists_url?: string;
-        gravatar_id?: string;
-        /** Format: uri */
         html_url?: string;
-        id: number;
-        login: string;
-        name?: string;
+        id?: number;
+        labels?: (Record<string, never> | null)[];
+        labels_url?: string;
+        /** @enum {boolean} */
+        locked: false;
+        milestone?: Record<string, never> | null;
         node_id?: string;
         /** Format: uri */
         organizations_url?: string;
@@ -22898,7 +22977,8 @@ export interface components {
       };
     };
     "webhook-merge-queue-entry-created": {
-      action: string;
+      /** @enum {string} */
+      action: "created";
       enterprise?: components["schemas"]["enterprise"];
       installation?: components["schemas"]["simple-installation"];
       merge_queue: {
@@ -24033,7 +24113,8 @@ export interface components {
       sender?: components["schemas"]["simple-user"];
     };
     "webhook-merge-queue-entry-deleted": {
-      action: string;
+      /** @enum {string} */
+      action: "deleted";
       enterprise?: components["schemas"]["enterprise"];
       installation?: components["schemas"]["simple-installation"];
       merge_queue: {
@@ -24788,37 +24869,182 @@ export interface components {
           /** User */
           user: {
             /** Format: uri */
-            avatar_url?: string;
-            deleted?: boolean;
-            email?: string | null;
+            clone_url: string;
             /** Format: uri-template */
-            events_url?: string;
+            collaborators_url: string;
+            /** Format: uri-template */
+            comments_url: string;
+            /** Format: uri-template */
+            commits_url: string;
+            /** Format: uri-template */
+            compare_url: string;
+            /** Format: uri-template */
+            contents_url: string;
             /** Format: uri */
-            followers_url?: string;
-            /** Format: uri-template */
-            following_url?: string;
-            /** Format: uri-template */
-            gists_url?: string;
-            gravatar_id?: string;
+            contributors_url: string;
+            created_at: number | string;
+            /** @description The default branch of the repository. */
+            default_branch: string;
+            /**
+             * @description Whether to delete head branches when pull requests are merged
+             * @default false
+             */
+            delete_branch_on_merge?: boolean;
             /** Format: uri */
-            html_url?: string;
+            deployments_url: string;
+            description: string | null;
+            /** @description Returns whether or not this repository is disabled. */
+            disabled?: boolean;
+            /** Format: uri */
+            downloads_url: string;
+            /** Format: uri */
+            events_url: string;
+            fork: boolean;
+            forks: number;
+            forks_count: number;
+            /** Format: uri */
+            forks_url: string;
+            full_name: string;
+            /** Format: uri-template */
+            git_commits_url: string;
+            /** Format: uri-template */
+            git_refs_url: string;
+            /** Format: uri-template */
+            git_tags_url: string;
+            /** Format: uri */
+            git_url: string;
+            /**
+             * @description Whether downloads are enabled.
+             * @default true
+             */
+            has_downloads: boolean;
+            /**
+             * @description Whether issues are enabled.
+             * @default true
+             */
+            has_issues: boolean;
+            has_pages: boolean;
+            /**
+             * @description Whether projects are enabled.
+             * @default true
+             */
+            has_projects: boolean;
+            /**
+             * @description Whether the wiki is enabled.
+             * @default true
+             */
+            has_wiki: boolean;
+            /**
+             * @description Whether discussions are enabled.
+             * @default false
+             */
+            has_discussions: boolean;
+            homepage: string | null;
+            /** Format: uri */
+            hooks_url: string;
+            /** Format: uri */
+            html_url: string;
+            /** @description Unique identifier of the repository */
             id: number;
-            login: string;
-            name?: string;
-            node_id?: string;
-            /** Format: uri */
-            organizations_url?: string;
-            /** Format: uri */
-            received_events_url?: string;
-            /** Format: uri */
-            repos_url?: string;
-            site_admin?: boolean;
+            is_template?: boolean;
             /** Format: uri-template */
-            starred_url?: string;
+            issue_comment_url: string;
+            /** Format: uri-template */
+            issue_events_url: string;
+            /** Format: uri-template */
+            issues_url: string;
+            /** Format: uri-template */
+            keys_url: string;
+            /** Format: uri-template */
+            labels_url: string;
+            language: string | null;
             /** Format: uri */
-            subscriptions_url?: string;
-            /** @enum {string} */
-            type?: "Bot" | "User" | "Organization";
+            languages_url: string;
+            /** License */
+            license: {
+              key: string;
+              name: string;
+              node_id: string;
+              spdx_id: string;
+              /** Format: uri */
+              url: string | null;
+            } | null;
+            master_branch?: string;
+            /** Format: uri */
+            merges_url: string;
+            /** Format: uri-template */
+            milestones_url: string;
+            /** Format: uri */
+            mirror_url: string | null;
+            /** @description The name of the repository. */
+            name: string;
+            node_id: string;
+            /** Format: uri-template */
+            notifications_url: string;
+            open_issues: number;
+            open_issues_count: number;
+            organization?: string;
+            /** User */
+            owner: {
+              /** Format: uri */
+              avatar_url?: string;
+              deleted?: boolean;
+              email?: string | null;
+              /** Format: uri-template */
+              events_url?: string;
+              /** Format: uri */
+              followers_url?: string;
+              /** Format: uri-template */
+              following_url?: string;
+              /** Format: uri-template */
+              gists_url?: string;
+              gravatar_id?: string;
+              /** Format: uri */
+              html_url?: string;
+              id: number;
+              login: string;
+              name?: string;
+              node_id?: string;
+              /** Format: uri */
+              organizations_url?: string;
+              /** Format: uri */
+              received_events_url?: string;
+              /** Format: uri */
+              repos_url?: string;
+              site_admin?: boolean;
+              /** Format: uri-template */
+              starred_url?: string;
+              /** Format: uri */
+              subscriptions_url?: string;
+              /** @enum {string} */
+              type?: "Bot" | "User" | "Organization";
+              /** Format: uri */
+              url?: string;
+            } | null;
+            permissions?: {
+              admin: boolean;
+              maintain?: boolean;
+              pull: boolean;
+              push: boolean;
+              triage?: boolean;
+            };
+            /** @description Whether the repository is private or public. */
+            private: boolean;
+            public?: boolean;
+            /** Format: uri-template */
+            pulls_url: string;
+            pushed_at: number | string | null;
+            /** Format: uri-template */
+            releases_url: string;
+            role_name?: string | null;
+            size: number;
+            ssh_url: string;
+            stargazers?: number;
+            stargazers_count: number;
+            /** Format: uri */
+            stargazers_url: string;
+            /** Format: uri-template */
+            statuses_url: string;
             /** Format: uri */
             url?: string;
           } | null;
@@ -57020,7 +57246,8 @@ export interface components {
       sender: components["schemas"]["simple-user"];
     };
     "webhook-registry-package-updated": {
-      action: string;
+      /** @enum {string} */
+      action: "updated";
       enterprise?: components["schemas"]["enterprise"];
       installation?: components["schemas"]["simple-installation"];
       organization?: components["schemas"]["organization-simple"];
@@ -58417,7 +58644,8 @@ export interface components {
     };
     /** repository_dispatch event */
     "webhook-repository-dispatch-sample": {
-      action: string;
+      /** @enum {string} */
+      action: "sample.collected";
       branch: string;
       client_payload: {
         [key: string]: unknown;
@@ -63861,7 +64089,7 @@ export interface operations {
   /**
    * This event occurs when there is activity relating to branch protection rules. For more information, see "[About protected branches](https://docs.github.com/github-ae@latest/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches)." For information about the APIs to manage branch protection rules, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#branchprotectionrule) or "[Branch protection](https://docs.github.com/github-ae@latest/rest/branches/branch-protection)" in the REST API documentation.
    *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
    * @description A branch protection rule was created.
    */
   "branch-protection-rule/created": {
@@ -64432,6 +64660,115 @@ export interface operations {
    * @description Someone reopened a code scanning alert.
    */
   "code-scanning-alert/reopened-by-user": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-code-scanning-alert-reopened-by-user"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: never;
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to commit comments. For more information about commit comments, see "[Commenting on a pull request](https://docs.github.com/github-ae@latest/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request)." For information about the APIs to manage commit comments, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#commitcomment) or "[Commit comments](https://docs.github.com/github-ae@latest/rest/commits/comments)" in the REST API documentation.
+   *
+   * For activity relating to comments on pull request reviews, use the `pull_request_review_comment` event. For activity relating to issue comments, use the `issue_comment` event. For activity relating to discussion comments, use the `discussion_comment` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
+   * @description Someone commented on a commit.
+   */
+  "commit-comment/created": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-commit-comment-created"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: never;
+    };
+  };
+  /**
+   * This event occurs when a Git branch or tag is created.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
+   *
+   * **Note**: This event will not occur when more than three tags are created at once.
+   */
+  create: {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-create"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: never;
+    };
+  };
+  /**
+   * This event occurs when a Git branch or tag is deleted.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
+   *
+   * **Note**: This event will not occur when more than three tags are deleted at once.
+   */
+  delete: {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
@@ -67094,7 +67431,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to team membership. For more information, see "[About teams](https://docs.github.com/github-ae@latest/organizations/organizing-members-into-teams/about-teams)." For more information about the API to manage team memberships, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#team) or "[Team members](https://docs.github.com/github-ae@latest/rest/teams/members)" in the REST API documentation.
+   * This event occurs when there is activity relating to team membership. For more information, see "[About teams](https://docs.github.com/github-ae@latest/organizations/organizing-members-into-teams/about-teams)." For more information about the APIs to manage team memberships, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#team) or "[Team members](https://docs.github.com/github-ae@latest/rest/teams/members)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
    * @description An organization member was removed from a team.
@@ -68935,7 +69272,7 @@ export interface operations {
   /**
    * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/github-ae@latest/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/github-ae@latest/rest/pulls/pulls)" in the REST API documentation.
    *
-   * For activity related to pull request reviews, pull request review comments, pull request comments,or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
+   * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
    * @description A previously closed pull request was reopened.
@@ -69266,7 +69603,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a comment thread on a pull request. For more information, see "[About pull request reviews](https://docs.github.com/github-ae@latest/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request review comment threads, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#pullrequestreviewthread) or "[Pull request reviews](https://docs.github.com/github-ae@latest/rest/pulls/reviews)" in the REST API documentation.
+   * This event occurs when there is activity relating to a comment thread on a pull request. For more information, see "[About pull request reviews](https://docs.github.com/github-ae@latest/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request reviews, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#pullrequestreviewthread) or "[Pull request review comments](https://docs.github.com/github-ae@latest/rest/pulls/comments)" in the REST API documentation.
    *
    * For activity related to pull request review comments, pull request comments, or pull request reviews, use the `pull_request_review_comment`, `issue_comment`, or `pull_request_review` events instead.
    *
@@ -69565,7 +69902,7 @@ export interface operations {
    *
    * To install this event on a GitHub App, the app must have at least read-level access for the "Packages" repository permission.
    *
-   * **Note**: GitHub recommends that you use the newer `package` event instead
+   * **Note**: GitHub recommends that you use the newer `package` event instead.
    * @description A package that was previously published to a registry was updated.
    */
   "registry-package/updated": {
@@ -69633,7 +69970,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/github-ae@latest/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#release) or "[Releases](https://docs.github.com/github-ae@latest/rest/packages)" in the REST API documentation.
+   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/github-ae@latest/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#release) or "[Releases](https://docs.github.com/github-ae@latest/rest/releases)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
    * @description A release, pre-release, or draft release was deleted.
@@ -69668,7 +70005,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/github-ae@latest/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#release) or "[Releases](https://docs.github.com/github-ae@latest/rest/packages)" in the REST API documentation.
+   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/github-ae@latest/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#release) or "[Releases](https://docs.github.com/github-ae@latest/rest/releases)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
    * @description The details of a release, pre-release, or draft release were edited. For more information, see "[Managing releases in a repository](https://docs.github.com/github-ae@latest/repositories/releasing-projects-on-github/managing-releases-in-a-repository#editing-a-release)."
@@ -69703,7 +70040,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/github-ae@latest/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#release) or "[Releases](https://docs.github.com/github-ae@latest/rest/packages)" in the REST API documentation.
+   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/github-ae@latest/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#release) or "[Releases](https://docs.github.com/github-ae@latest/rest/releases)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
    * @description A release was created and identified as a pre-release. A pre-release is a release that is not ready for production and may be unstable.
@@ -69738,7 +70075,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/github-ae@latest/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#release) or "[Releases](https://docs.github.com/github-ae@latest/rest/packages)" in the REST API documentation.
+   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/github-ae@latest/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#release) or "[Releases](https://docs.github.com/github-ae@latest/rest/releases)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
    * @description A release, pre-release, or draft of a release was published.
@@ -69773,7 +70110,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/github-ae@latest/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#release) or "[Releases](https://docs.github.com/github-ae@latest/rest/packages)" in the REST API documentation.
+   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/github-ae@latest/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#release) or "[Releases](https://docs.github.com/github-ae@latest/rest/releases)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
    * @description A release was published, or a pre-release was changed to a release.
@@ -69808,7 +70145,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/github-ae@latest/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#release) or "[Releases](https://docs.github.com/github-ae@latest/rest/packages)" in the REST API documentation.
+   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/github-ae@latest/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#release) or "[Releases](https://docs.github.com/github-ae@latest/rest/releases)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
    * @description A release or pre-release was unpublished.
