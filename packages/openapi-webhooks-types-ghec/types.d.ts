@@ -26036,6 +26036,16 @@ export interface components {
           html_url?: string;
           /** @description Unique identifier of the team */
           id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
           /** Format: uri-template */
           members_url?: string;
           /** @description Name of the team */
@@ -62677,13 +62687,11 @@ export interface components {
      * Organization ruleset conditions
      * @description Conditions for an organization ruleset
      */
-    "org-ruleset-conditions": Record<string, never> &
-      (
-        | (components["schemas"]["repository-ruleset-conditions"] &
-            components["schemas"]["repository-ruleset-conditions-repository-name-target"])
-        | (components["schemas"]["repository-ruleset-conditions"] &
-            components["schemas"]["repository-ruleset-conditions-repository-id-target"])
-      );
+    "org-ruleset-conditions":
+      | (components["schemas"]["repository-ruleset-conditions"] &
+          components["schemas"]["repository-ruleset-conditions-repository-name-target"])
+      | (components["schemas"]["repository-ruleset-conditions"] &
+          components["schemas"]["repository-ruleset-conditions-repository-id-target"]);
     /**
      * Repository ruleset conditions for repository names
      * @description Parameters for a repository name condition
@@ -62712,23 +62720,21 @@ export interface components {
      * Repository Rule
      * @description A repository rule.
      */
-    "repository-rule": Record<string, never> &
-      (
-        | components["schemas"]["repository-rule-creation"]
-        | components["schemas"]["repository-rule-update"]
-        | components["schemas"]["repository-rule-deletion"]
-        | components["schemas"]["repository-rule-required-linear-history"]
-        | components["schemas"]["repository-rule-required-deployments"]
-        | components["schemas"]["repository-rule-required-signatures"]
-        | components["schemas"]["repository-rule-pull-request"]
-        | components["schemas"]["repository-rule-required-status-checks"]
-        | components["schemas"]["repository-rule-non-fast-forward"]
-        | components["schemas"]["repository-rule-commit-message-pattern"]
-        | components["schemas"]["repository-rule-commit-author-email-pattern"]
-        | components["schemas"]["repository-rule-committer-email-pattern"]
-        | components["schemas"]["repository-rule-branch-name-pattern"]
-        | components["schemas"]["repository-rule-tag-name-pattern"]
-      );
+    "repository-rule":
+      | components["schemas"]["repository-rule-creation"]
+      | components["schemas"]["repository-rule-update"]
+      | components["schemas"]["repository-rule-deletion"]
+      | components["schemas"]["repository-rule-required-linear-history"]
+      | components["schemas"]["repository-rule-required-deployments"]
+      | components["schemas"]["repository-rule-required-signatures"]
+      | components["schemas"]["repository-rule-pull-request"]
+      | components["schemas"]["repository-rule-required-status-checks"]
+      | components["schemas"]["repository-rule-non-fast-forward"]
+      | components["schemas"]["repository-rule-commit-message-pattern"]
+      | components["schemas"]["repository-rule-commit-author-email-pattern"]
+      | components["schemas"]["repository-rule-committer-email-pattern"]
+      | components["schemas"]["repository-rule-branch-name-pattern"]
+      | components["schemas"]["repository-rule-tag-name-pattern"];
     /**
      * creation
      * @description Only allow users with bypass permission to create matching refs.
@@ -69291,7 +69297,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -69326,7 +69334,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -69361,7 +69371,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -69396,7 +69408,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -69431,7 +69445,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -69466,7 +69482,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -69538,7 +69556,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -69610,7 +69630,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -69649,7 +69671,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -69688,7 +69712,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -69727,7 +69753,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -69766,7 +69794,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -69805,7 +69835,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -69839,18 +69871,449 @@ export interface operations {
     };
     requestBody: {
       content: {
-        "application/json": components["schemas"]["webhook-dependabot-alert-reintroduced"];
+        "application/json": components["schemas"]["webhook-code-scanning-alert-fixed"];
       };
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/enterprise-cloud@latest//code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/enterprise-cloud@latest//code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/enterprise-cloud@latest//rest/code-scanning)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Code scanning alerts" repository permission.
+   * @description A previously fixed code scanning alert reappeared in a branch.
+   */
+  "code-scanning-alert/reopened": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-code-scanning-alert-reopened"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/enterprise-cloud@latest//code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/enterprise-cloud@latest//code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/enterprise-cloud@latest//rest/code-scanning)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Code scanning alerts" repository permission.
+   * @description Someone reopened a code scanning alert.
+   */
+  "code-scanning-alert/reopened-by-user": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-code-scanning-alert-reopened-by-user"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to commit comments. For more information about commit comments, see "[Commenting on a pull request](https://docs.github.com/enterprise-cloud@latest//pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request)." For information about the APIs to manage commit comments, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#commitcomment) or "[Commit comments](https://docs.github.com/enterprise-cloud@latest//rest/commits/comments)" in the REST API documentation.
+   *
+   * For activity relating to comments on pull request reviews, use the `pull_request_review_comment` event. For activity relating to issue comments, use the `issue_comment` event. For activity relating to discussion comments, use the `discussion_comment` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
+   * @description Someone commented on a commit.
+   */
+  "commit-comment/created": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-commit-comment-created"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when a Git branch or tag is created.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
+   *
+   * **Note**: This event will not occur when more than three tags are created at once.
+   */
+  create: {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-create"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when a Git branch or tag is deleted.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
+   *
+   * **Note**: This event will not occur when more than three tags are deleted at once.
+   */
+  delete: {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-delete"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
     };
   };
   /**
    * This event occurs when there is activity relating to Dependabot alerts.
    *
    * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-cloud@latest//code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alerts)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
+   *
+   * **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
+   * @description A Dependabot alert was automatically closed.
+   */
+  "dependabot-alert/auto-dismissed": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-dependabot-alert-auto-dismissed"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to Dependabot alerts.
+   *
+   * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-cloud@latest//code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alerts)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
+   *
+   * **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
+   * @description A Dependabot alert was automatically reopened.
+   */
+  "dependabot-alert/auto-reopened": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-dependabot-alert-auto-reopened"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to Dependabot alerts.
+   *
+   * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-cloud@latest//code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alerts)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
+   *
+   * **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
+   * @description A manifest file change introduced a vulnerable dependency, or a GitHub Security Advisory was published and an existing dependency was found to be vulnerable.
+   */
+  "dependabot-alert/created": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-dependabot-alert-created"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to deployment protection rules. For more information, see "[Using environments for deployment](https://docs.github.com/enterprise-cloud@latest//actions/deployment/targeting-different-environments/using-environments-for-deployment#environment-protection-rules)." For information about the API to manage deployment protection rules, see [the REST API documentation](https://docs.github.com/enterprise-cloud@latest//rest/deployments/environments).
+   *
+   * **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
+   * @description A Dependabot alert was manually closed.
+   */
+  "dependabot-alert/dismissed": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-dependabot-alert-dismissed"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to deployment reviews. For more information, see "[About deployments](https://docs.github.com/enterprise-cloud@latest//actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/enterprise-cloud@latest//rest/deployments/deployments)" in the REST API documentation.
+   *
+   * For activity relating to deployment creation or deployment status, use the `deployment` or `deployment_status` event.
+   *
+   * **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
+   * @description A manifest file change removed a vulnerability.
+   */
+  "dependabot-alert/fixed": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-dependabot-alert-fixed"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to deployment reviews. For more information, see "[About deployments](https://docs.github.com/enterprise-cloud@latest//actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/enterprise-cloud@latest//rest/deployments/deployments)" in the REST API documentation.
+   *
+   * For activity relating to deployment creation or deployment status, use the `deployment` or `deployment_status` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
+   *
+   * **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
+   * @description A manifest file change introduced a vulnerable dependency that had previously been fixed.
+   */
+  "dependabot-alert/reintroduced": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-dependabot-alert-reintroduced"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to deployment reviews. For more information, see "[About deployments](https://docs.github.com/enterprise-cloud@latest//actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/enterprise-cloud@latest//rest/deployments/deployments)" in the REST API documentation.
+   *
+   * For activity relating to deployment creation or deployment status, use the `deployment` or `deployment_status` event.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
    *
@@ -69883,7 +70346,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -69918,7 +70383,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -69953,7 +70420,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -69990,7 +70459,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -70025,7 +70496,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -70062,7 +70535,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -70099,7 +70574,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -70136,229 +70613,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
-    };
-  };
-  /**
-   * This event occurs when there is activity relating to deployment reviews. For more information, see "[About deployments](https://docs.github.com/enterprise-cloud@latest//actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/enterprise-cloud@latest//rest/deployments/deployments)" in the REST API documentation.
-   *
-   * For activity relating to deployment creation or deployment status, use the `deployment` or `deployment_status` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
-   * @description A deployment review was approved.
-   */
-  "deployment-review/approved": {
-    parameters: {
-      header: {
-        /** @example GitHub-Hookshot/123abc */
-        "User-Agent": string;
-        /** @example 12312312 */
-        "X-Github-Hook-Id": string;
-        /** @example issues */
-        "X-Github-Event": string;
-        /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id": string;
-        /** @example repository */
-        "X-Github-Hook-Installation-Target-Type": string;
-        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery": string;
-        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256": string;
+      200: {
+        content: never;
       };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["webhook-deployment-review-approved"];
-      };
-    };
-    responses: {
-      /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
-    };
-  };
-  /**
-   * This event occurs when there is activity relating to deployment reviews. For more information, see "[About deployments](https://docs.github.com/enterprise-cloud@latest//actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/enterprise-cloud@latest//rest/deployments/deployments)" in the REST API documentation.
-   *
-   * For activity relating to deployment creation or deployment status, use the `deployment` or `deployment_status` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
-   * @description A deployment review was rejected.
-   */
-  "deployment-review/rejected": {
-    parameters: {
-      header: {
-        /** @example GitHub-Hookshot/123abc */
-        "User-Agent": string;
-        /** @example 12312312 */
-        "X-Github-Hook-Id": string;
-        /** @example issues */
-        "X-Github-Event": string;
-        /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id": string;
-        /** @example repository */
-        "X-Github-Hook-Installation-Target-Type": string;
-        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery": string;
-        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256": string;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["webhook-deployment-review-rejected"];
-      };
-    };
-    responses: {
-      /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
-    };
-  };
-  /**
-   * This event occurs when there is activity relating to deployment reviews. For more information, see "[About deployments](https://docs.github.com/enterprise-cloud@latest//actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/enterprise-cloud@latest//rest/deployments/deployments)" in the REST API documentation.
-   *
-   * For activity relating to deployment creation or deployment status, use the `deployment` or `deployment_status` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
-   * @description A deployment review was requested.
-   */
-  "deployment-review/requested": {
-    parameters: {
-      header: {
-        /** @example GitHub-Hookshot/123abc */
-        "User-Agent": string;
-        /** @example 12312312 */
-        "X-Github-Hook-Id": string;
-        /** @example issues */
-        "X-Github-Event": string;
-        /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id": string;
-        /** @example repository */
-        "X-Github-Hook-Installation-Target-Type": string;
-        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery": string;
-        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256": string;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["webhook-deployment-review-requested"];
-      };
-    };
-    responses: {
-      /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
-    };
-  };
-  /**
-   * This event occurs when there is activity relating to deployment reviews. For more information, see "[About deployments](https://docs.github.com/enterprise-cloud@latest//actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/enterprise-cloud@latest//rest/deployments/deployments)" in the REST API documentation.
-   *
-   * For activity relating to deployment creation or deployment status, use the `deployment` or `deployment_status` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
-   * @description A deployment review was approved.
-   */
-  "deployment-review/approved": {
-    parameters: {
-      header: {
-        /** @example GitHub-Hookshot/123abc */
-        "User-Agent": string;
-        /** @example 12312312 */
-        "X-Github-Hook-Id": string;
-        /** @example issues */
-        "X-Github-Event": string;
-        /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id": string;
-        /** @example repository */
-        "X-Github-Hook-Installation-Target-Type": string;
-        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery": string;
-        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256": string;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["webhook-deployment-review-approved"];
-      };
-    };
-    responses: {
-      /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
-    };
-  };
-  /**
-   * This event occurs when there is activity relating to deployment reviews. For more information, see "[About deployments](https://docs.github.com/enterprise-cloud@latest//actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/enterprise-cloud@latest//rest/deployments/deployments)" in the REST API documentation.
-   *
-   * For activity relating to deployment creation or deployment status, use the `deployment` or `deployment_status` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
-   * @description A deployment review was rejected.
-   */
-  "deployment-review/rejected": {
-    parameters: {
-      header: {
-        /** @example GitHub-Hookshot/123abc */
-        "User-Agent": string;
-        /** @example 12312312 */
-        "X-Github-Hook-Id": string;
-        /** @example issues */
-        "X-Github-Event": string;
-        /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id": string;
-        /** @example repository */
-        "X-Github-Hook-Installation-Target-Type": string;
-        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery": string;
-        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256": string;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["webhook-deployment-review-rejected"];
-      };
-    };
-    responses: {
-      /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
-    };
-  };
-  /**
-   * This event occurs when there is activity relating to deployment reviews. For more information, see "[About deployments](https://docs.github.com/enterprise-cloud@latest//actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/enterprise-cloud@latest//rest/deployments/deployments)" in the REST API documentation.
-   *
-   * For activity relating to deployment creation or deployment status, use the `deployment` or `deployment_status` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
-   * @description A deployment review was requested.
-   */
-  "deployment-review/requested": {
-    parameters: {
-      header: {
-        /** @example GitHub-Hookshot/123abc */
-        "User-Agent": string;
-        /** @example 12312312 */
-        "X-Github-Hook-Id": string;
-        /** @example issues */
-        "X-Github-Event": string;
-        /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id": string;
-        /** @example repository */
-        "X-Github-Hook-Installation-Target-Type": string;
-        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery": string;
-        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256": string;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["webhook-deployment-review-requested"];
-      };
-    };
-    responses: {
-      /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
     };
   };
   /**
@@ -70395,7 +70652,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -70434,7 +70693,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -70473,7 +70734,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -70512,7 +70775,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -70551,7 +70816,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -70590,7 +70857,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -70629,7 +70898,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -70668,7 +70939,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -70707,7 +70980,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -70746,7 +71021,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -70785,7 +71062,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -70824,7 +71103,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -70863,7 +71144,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -70902,7 +71185,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -70941,7 +71226,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -70980,7 +71267,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -71019,7 +71308,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -71058,7 +71349,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -71097,7 +71390,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -71131,7 +71426,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -71168,7 +71465,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -71202,7 +71501,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -71237,7 +71538,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -71272,7 +71575,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -71307,7 +71612,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -71342,7 +71649,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -71377,7 +71686,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -71412,7 +71723,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -71445,7 +71758,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -71480,7 +71795,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -71517,7 +71834,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -71554,7 +71873,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -71591,7 +71912,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -71628,7 +71951,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -71665,7 +71990,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -71702,7 +72029,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -71739,7 +72068,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -71776,7 +72107,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -71813,7 +72146,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -71850,7 +72185,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -71887,7 +72224,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -71924,7 +72263,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -71961,7 +72302,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -71998,7 +72341,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -72035,7 +72380,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -72072,7 +72419,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -72109,7 +72458,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -72146,7 +72497,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -72183,7 +72536,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -72220,7 +72575,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -72257,7 +72614,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -72294,7 +72653,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -72426,7 +72787,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -72459,7 +72822,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -72494,7 +72859,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -72529,7 +72896,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -72564,7 +72933,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -72599,7 +72970,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -72634,7 +73007,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -72671,7 +73046,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -72708,7 +73085,87 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to team membership. For more information, see "[About teams](https://docs.github.com/enterprise-cloud@latest//organizations/organizing-members-into-teams/about-teams)." For more information about the APIs to manage team memberships, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#team) or "[Team members](https://docs.github.com/enterprise-cloud@latest//rest/teams/members)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+   *
+   * **Note**: The pull request merge queue feature is currently in limited private beta and subject to change.
+   * @description A pull request was added to a merge queue.
+   */
+  "merge-queue-entry/created": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-merge-queue-entry-created"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to a pull requests in a merge queue. For more information, see "[Automatically merging a pull request](https://docs.github.com/enterprise-cloud@latest//pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/automatically-merging-a-pull-request)."
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+   *
+   * **Note**: The pull request merge queue feature is currently in limited private beta and subject to change.
+   * @description A pull request was removed from a merge queue.
+   */
+  "merge-queue-entry/deleted": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-merge-queue-entry-deleted"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -72782,7 +73239,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -72819,7 +73278,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -72856,7 +73317,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -72891,7 +73354,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -72928,7 +73393,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -72965,7 +73432,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -73002,7 +73471,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -73039,7 +73510,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -73076,7 +73549,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -73113,7 +73588,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -73150,7 +73627,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -73187,7 +73666,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -73224,7 +73705,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -73261,7 +73744,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -73298,7 +73783,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -73335,7 +73822,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -73370,7 +73859,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -73405,7 +73896,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -73439,7 +73932,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -73476,7 +73971,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -73513,7 +74010,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -73550,7 +74049,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -73587,7 +74088,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /** This event occurs when you create a new webhook. The ping event is a confirmation from GitHub that you configured the webhook correctly. */
@@ -73617,7 +74120,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -73654,7 +74159,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -73691,7 +74198,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -73728,7 +74237,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -73765,7 +74276,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -73802,7 +74315,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -73839,7 +74354,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -73876,7 +74393,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -73913,7 +74432,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -73950,7 +74471,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -73987,7 +74510,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -74024,7 +74549,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -74061,7 +74588,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -74098,7 +74627,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -74135,7 +74666,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -74174,7 +74707,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -74213,7 +74748,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -74252,7 +74789,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -74291,7 +74830,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -74330,7 +74871,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -74369,7 +74912,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -74408,7 +74953,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -74447,7 +74994,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -74486,7 +75035,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -74525,7 +75076,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -74564,7 +75117,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -74603,7 +75158,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -74637,7 +75194,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -74674,7 +75233,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -74711,7 +75272,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -74748,7 +75311,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -74785,7 +75350,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -74822,7 +75389,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -74859,7 +75428,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -74896,7 +75467,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -74933,7 +75506,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -74970,7 +75545,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -75007,7 +75584,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -75044,7 +75623,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -75081,7 +75662,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -75118,7 +75701,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -75155,7 +75740,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -75192,7 +75779,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -75229,7 +75818,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -75266,7 +75857,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -75303,7 +75896,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -75340,7 +75935,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -75377,7 +75974,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -75414,7 +76013,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -75451,7 +76052,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -75488,7 +76091,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -75525,7 +76130,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -75562,7 +76169,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -75599,7 +76208,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -75636,7 +76247,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -75673,7 +76286,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -75710,7 +76325,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -75746,7 +76363,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -75783,7 +76402,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -75820,7 +76441,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -75855,7 +76478,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -75890,7 +76515,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -75925,7 +76552,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -75960,7 +76589,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -75995,7 +76626,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -76030,7 +76663,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -76065,7 +76700,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -76100,7 +76737,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -76135,7 +76774,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -76170,7 +76811,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -76205,7 +76848,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -76240,7 +76885,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -76275,7 +76922,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -76310,7 +76959,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /** This event occurs when a repository is imported to GitHub Enterprise Cloud. For more information, see "[Importing a repository with GitHub Importer](https://docs.github.com/enterprise-cloud@latest//get-started/importing-your-projects-to-github/importing-source-code-to-github/importing-a-repository-with-github-importer)." For more information about the API to manage imports, see [the REST API documentation](https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports). */
@@ -76340,7 +76991,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -76375,7 +77028,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -76410,7 +77065,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -76445,7 +77102,126 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to repository rulesets.
+   * For more information about repository rulesets, see "[Managing rulesets](https://docs.github.com/enterprise-cloud@latest//repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets)."
+   * For more information on managing rulesets via the APIs, see [Repository ruleset](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#repositoryruleset) in the GraphQL documentation or "[Repository rules](https://docs.github.com/enterprise-cloud@latest//rest/repos/rules)" and "[Organization rules](https://docs.github.com/enterprise-cloud@latest//rest/orgs/rules) in the REST API documentation."
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+   * @description A repository ruleset was created.
+   */
+  "repository-ruleset/created": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-repository-ruleset-created"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to repository rulesets.
+   * For more information about repository rulesets, see "[Managing rulesets](https://docs.github.com/enterprise-cloud@latest//repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets)."
+   * For more information on managing rulesets via the APIs, see [Repository ruleset](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#repositoryruleset) in the GraphQL documentation or "[Repository rules](https://docs.github.com/enterprise-cloud@latest//rest/repos/rules)" and "[Organization rules](https://docs.github.com/enterprise-cloud@latest//rest/orgs/rules) in the REST API documentation."
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+   * @description A repository ruleset was deleted.
+   */
+  "repository-ruleset/deleted": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-repository-ruleset-deleted"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to repository rulesets.
+   * For more information about repository rulesets, see "[Managing rulesets](https://docs.github.com/enterprise-cloud@latest//repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets)."
+   * For more information on managing rulesets via the APIs, see [Repository ruleset](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#repositoryruleset) in the GraphQL documentation or "[Repository rules](https://docs.github.com/enterprise-cloud@latest//rest/repos/rules)" and "[Organization rules](https://docs.github.com/enterprise-cloud@latest//rest/orgs/rules) in the REST API documentation."
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+   * @description A repository ruleset was edited.
+   */
+  "repository-ruleset/edited": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-repository-ruleset-edited"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -76702,7 +77478,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -76737,7 +77515,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -76772,7 +77552,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -76807,7 +77589,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -76842,7 +77626,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -76877,7 +77663,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -76914,7 +77702,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -76953,7 +77743,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -76990,7 +77782,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -77027,7 +77821,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -77064,7 +77860,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -77099,7 +77897,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -77134,7 +77934,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -77169,7 +77971,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -77203,7 +78007,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -77240,7 +78046,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -77275,7 +78083,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -77310,7 +78120,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -77347,7 +78159,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -77382,7 +78196,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -77417,7 +78233,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -77452,7 +78270,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -77487,7 +78307,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -77521,7 +78343,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -77558,7 +78382,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -77594,7 +78420,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -77630,7 +78458,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -77666,7 +78496,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -77702,7 +78534,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -77738,7 +78572,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -77773,7 +78609,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -77809,7 +78647,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -77846,7 +78686,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -77883,7 +78725,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -77920,7 +78764,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -77957,7 +78803,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -77994,7 +78842,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -78031,7 +78881,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -78068,7 +78920,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
 }
