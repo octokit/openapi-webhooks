@@ -43,14 +43,6 @@
       "description": "Insight into codes of conduct for your communities."
     },
     {
-      "name": "codespaces",
-      "description": "Endpoints to manage Codespaces using the REST API."
-    },
-    {
-      "name": "copilot",
-      "description": "Endpoints to manage Copilot using the REST API."
-    },
-    {
       "name": "emojis",
       "description": "List emojis available to use on GitHub."
     },
@@ -62,10 +54,6 @@
     { "name": "gists", "description": "View, modify your gists." },
     { "name": "git", "description": "Raw Git functionality." },
     { "name": "gitignore", "description": "View gitignore templates" },
-    {
-      "name": "interactions",
-      "description": "Owner or admin management of users interactions."
-    },
     { "name": "issues", "description": "Interact with GitHub Issues." },
     { "name": "licenses", "description": "View various OSS licenses." },
     { "name": "markdown", "description": "Render GitHub flavored markdown" },
@@ -102,10 +90,6 @@
     {
       "name": "secret-scanning",
       "description": "Retrieve secret scanning alerts from a repository."
-    },
-    {
-      "name": "security-advisories",
-      "description": "Manage security advisories."
     },
     { "name": "teams", "description": "Interact with GitHub Teams." },
     {

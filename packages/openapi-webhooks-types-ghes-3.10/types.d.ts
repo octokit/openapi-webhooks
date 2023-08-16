@@ -664,7 +664,7 @@ export interface webhooks {
     /**
      * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
      *
-     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/reference/apps)" in the REST API documentation.
+     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/apps)" in the REST API documentation.
      * @description Someone installed a GitHub App on a user or organization account.
      */
     post: operations["installation/created"];
@@ -673,7 +673,7 @@ export interface webhooks {
     /**
      * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
      *
-     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/reference/apps)" in the REST API documentation.
+     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/apps)" in the REST API documentation.
      * @description Someone uninstalled a GitHub App from their user or organization account.
      */
     post: operations["installation/deleted"];
@@ -682,7 +682,7 @@ export interface webhooks {
     /**
      * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
      *
-     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/reference/apps)" in the REST API documentation.
+     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/apps)" in the REST API documentation.
      * @description Someone granted new permissions to a GitHub App.
      */
     post: operations["installation/new-permissions-accepted"];
@@ -691,7 +691,7 @@ export interface webhooks {
     /**
      * This event occurs when there is activity relating to which repositories a GitHub App installation can access. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
      *
-     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/reference/apps)" in the REST API documentation.
+     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/apps)" in the REST API documentation.
      * @description A GitHub App installation was granted access to one or more repositories.
      */
     post: operations["installation-repositories/added"];
@@ -700,7 +700,7 @@ export interface webhooks {
     /**
      * This event occurs when there is activity relating to which repositories a GitHub App installation can access. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
      *
-     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/reference/apps)" in the REST API documentation.
+     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/apps)" in the REST API documentation.
      * @description Access to one or more repositories was revoked for a GitHub App installation.
      */
     post: operations["installation-repositories/removed"];
@@ -709,14 +709,14 @@ export interface webhooks {
     /**
      * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
      *
-     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/reference/apps)" in the REST API documentation.
+     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/apps)" in the REST API documentation.
      * @description Someone blocked access by a GitHub App to their user or organization account.
      */
     post: operations["installation/suspend"];
   };
   "installation-target-renamed": {
     /**
-     * This event occurs when there is activity relating to the user or organization account that a GitHub App is installed on. For more information, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/reference/apps)" in the REST API documentation.
+     * This event occurs when there is activity relating to the user or organization account that a GitHub App is installed on. For more information, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/apps)" in the REST API documentation.
      * @description Somebody renamed the user or organization account that a GitHub App is installed on.
      */
     post: operations["installation-target/renamed"];
@@ -725,7 +725,7 @@ export interface webhooks {
     /**
      * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
      *
-     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/reference/apps)" in the REST API documentation.
+     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/apps)" in the REST API documentation.
      * @description A GitHub App that was blocked from accessing a user or organization account was given access the account again.
      */
     post: operations["installation/unsuspend"];
@@ -1849,7 +1849,7 @@ export interface webhooks {
   };
   push: {
     /**
-     * This event occurs when a commit or tag is pushed.
+     * This event occurs when a commit or tag is pushed, or when a repository is cloned.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
      *
@@ -67496,7 +67496,7 @@ export interface operations {
   /**
    * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
    *
-   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/reference/apps)" in the REST API documentation.
+   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/apps)" in the REST API documentation.
    * @description Someone installed a GitHub App on a user or organization account.
    */
   "installation/created": {
@@ -67537,7 +67537,7 @@ export interface operations {
   /**
    * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
    *
-   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/reference/apps)" in the REST API documentation.
+   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/apps)" in the REST API documentation.
    * @description Someone uninstalled a GitHub App from their user or organization account.
    */
   "installation/deleted": {
@@ -67578,7 +67578,7 @@ export interface operations {
   /**
    * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
    *
-   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/reference/apps)" in the REST API documentation.
+   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/apps)" in the REST API documentation.
    * @description Someone granted new permissions to a GitHub App.
    */
   "installation/new-permissions-accepted": {
@@ -67619,7 +67619,7 @@ export interface operations {
   /**
    * This event occurs when there is activity relating to which repositories a GitHub App installation can access. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
    *
-   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/reference/apps)" in the REST API documentation.
+   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/apps)" in the REST API documentation.
    * @description A GitHub App installation was granted access to one or more repositories.
    */
   "installation-repositories/added": {
@@ -67660,7 +67660,7 @@ export interface operations {
   /**
    * This event occurs when there is activity relating to which repositories a GitHub App installation can access. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
    *
-   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/reference/apps)" in the REST API documentation.
+   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/apps)" in the REST API documentation.
    * @description Access to one or more repositories was revoked for a GitHub App installation.
    */
   "installation-repositories/removed": {
@@ -67701,7 +67701,7 @@ export interface operations {
   /**
    * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
    *
-   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/reference/apps)" in the REST API documentation.
+   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/apps)" in the REST API documentation.
    * @description Someone blocked access by a GitHub App to their user or organization account.
    */
   "installation/suspend": {
@@ -67740,7 +67740,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to the user or organization account that a GitHub App is installed on. For more information, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/reference/apps)" in the REST API documentation.
+   * This event occurs when there is activity relating to the user or organization account that a GitHub App is installed on. For more information, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/apps)" in the REST API documentation.
    * @description Somebody renamed the user or organization account that a GitHub App is installed on.
    */
   "installation-target/renamed": {
@@ -67781,7 +67781,7 @@ export interface operations {
   /**
    * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
    *
-   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/reference/apps)" in the REST API documentation.
+   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/apps)" in the REST API documentation.
    * @description A GitHub App that was blocked from accessing a user or organization account was given access the account again.
    */
   "installation/unsuspend": {
@@ -72185,7 +72185,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when a commit or tag is pushed.
+   * This event occurs when a commit or tag is pushed, or when a repository is cloned.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
    *

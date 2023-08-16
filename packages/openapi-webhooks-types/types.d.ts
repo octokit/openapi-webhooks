@@ -672,7 +672,7 @@ export interface webhooks {
     /**
      * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
      *
-     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#app) or "[Apps](https://docs.github.com/rest/reference/apps)" in the REST API documentation.
+     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#app) or "[Apps](https://docs.github.com/rest/apps)" in the REST API documentation.
      * @description Someone installed a GitHub App on a user or organization account.
      */
     post: operations["installation/created"];
@@ -681,7 +681,7 @@ export interface webhooks {
     /**
      * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
      *
-     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#app) or "[Apps](https://docs.github.com/rest/reference/apps)" in the REST API documentation.
+     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#app) or "[Apps](https://docs.github.com/rest/apps)" in the REST API documentation.
      * @description Someone uninstalled a GitHub App from their user or organization account.
      */
     post: operations["installation/deleted"];
@@ -690,7 +690,7 @@ export interface webhooks {
     /**
      * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
      *
-     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#app) or "[Apps](https://docs.github.com/rest/reference/apps)" in the REST API documentation.
+     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#app) or "[Apps](https://docs.github.com/rest/apps)" in the REST API documentation.
      * @description Someone granted new permissions to a GitHub App.
      */
     post: operations["installation/new-permissions-accepted"];
@@ -699,7 +699,7 @@ export interface webhooks {
     /**
      * This event occurs when there is activity relating to which repositories a GitHub App installation can access. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
      *
-     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#app) or "[Apps](https://docs.github.com/rest/reference/apps)" in the REST API documentation.
+     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#app) or "[Apps](https://docs.github.com/rest/apps)" in the REST API documentation.
      * @description A GitHub App installation was granted access to one or more repositories.
      */
     post: operations["installation-repositories/added"];
@@ -708,7 +708,7 @@ export interface webhooks {
     /**
      * This event occurs when there is activity relating to which repositories a GitHub App installation can access. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
      *
-     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#app) or "[Apps](https://docs.github.com/rest/reference/apps)" in the REST API documentation.
+     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#app) or "[Apps](https://docs.github.com/rest/apps)" in the REST API documentation.
      * @description Access to one or more repositories was revoked for a GitHub App installation.
      */
     post: operations["installation-repositories/removed"];
@@ -717,14 +717,14 @@ export interface webhooks {
     /**
      * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
      *
-     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#app) or "[Apps](https://docs.github.com/rest/reference/apps)" in the REST API documentation.
+     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#app) or "[Apps](https://docs.github.com/rest/apps)" in the REST API documentation.
      * @description Someone blocked access by a GitHub App to their user or organization account.
      */
     post: operations["installation/suspend"];
   };
   "installation-target-renamed": {
     /**
-     * This event occurs when there is activity relating to the user or organization account that a GitHub App is installed on. For more information, see "[About apps](https://docs.github.com/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#app) or "[Apps](https://docs.github.com/rest/reference/apps)" in the REST API documentation.
+     * This event occurs when there is activity relating to the user or organization account that a GitHub App is installed on. For more information, see "[About apps](https://docs.github.com/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#app) or "[Apps](https://docs.github.com/rest/apps)" in the REST API documentation.
      * @description Somebody renamed the user or organization account that a GitHub App is installed on.
      */
     post: operations["installation-target/renamed"];
@@ -733,7 +733,7 @@ export interface webhooks {
     /**
      * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
      *
-     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#app) or "[Apps](https://docs.github.com/rest/reference/apps)" in the REST API documentation.
+     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#app) or "[Apps](https://docs.github.com/rest/apps)" in the REST API documentation.
      * @description A GitHub App that was blocked from accessing a user or organization account was given access the account again.
      */
     post: operations["installation/unsuspend"];
@@ -1958,7 +1958,7 @@ export interface webhooks {
   };
   push: {
     /**
-     * This event occurs when a commit or tag is pushed.
+     * This event occurs when a commit or tag is pushed, or when a repository is cloned.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
      *
@@ -69342,8 +69342,8 @@ export interface operations {
   /**
    * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/rest/code-scanning)" in the REST API documentation.
    *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Code scanning alerts" repository permission.
-   * @description Someone closed a code scanning alert.
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+   * @description A branch protection rule was created.
    */
   "code-scanning-alert/closed-by-user": {
     parameters: {
@@ -70586,7 +70586,11 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to deployment protection rules. For more information, see "[Using environments for deployment](https://docs.github.com/actions/deployment/targeting-different-environments/using-environments-for-deployment#environment-protection-rules)." For information about the API to manage deployment protection rules, see [the REST API documentation](https://docs.github.com/rest/deployments/environments).
+   * This event occurs when there is activity relating to Dependabot alerts.
+   *
+   * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/rest/dependabot/alerts)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
    *
    * **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
    * @description A Dependabot alert was manually closed.
@@ -70623,9 +70627,11 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to deployment reviews. For more information, see "[About deployments](https://docs.github.com/actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/rest/deployments/deployments)" in the REST API documentation.
+   * This event occurs when there is activity relating to Dependabot alerts.
    *
-   * For activity relating to deployment creation or deployment status, use the `deployment` or `deployment_status` event.
+   * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/rest/dependabot/alerts)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
    *
    * **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
    * @description A manifest file change removed a vulnerability.
@@ -70662,9 +70668,11 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to deployment reviews. For more information, see "[About deployments](https://docs.github.com/actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/rest/deployments/deployments)" in the REST API documentation.
+   * This event occurs when there is activity relating to Dependabot alerts.
    *
-   * For activity relating to deployment creation or deployment status, use the `deployment` or `deployment_status` event.
+   * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/rest/dependabot/alerts)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
    *
    * **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
    * @description A manifest file change introduced a vulnerable dependency that had previously been fixed.
@@ -70701,9 +70709,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to deployment reviews. For more information, see "[About deployments](https://docs.github.com/actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/rest/deployments/deployments)" in the REST API documentation.
-   *
-   * For activity relating to deployment creation or deployment status, use the `deployment` or `deployment_status` event.
+   * This event occurs when there is activity relating to deployment protection rules. For more information, see "[Using environments for deployment](https://docs.github.com/actions/deployment/targeting-different-environments/using-environments-for-deployment#environment-protection-rules)." For information about the API to manage deployment protection rules, see [the REST API documentation](https://docs.github.com/rest/deployments/environments).
    *
    * **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
    * @description A Dependabot alert was manually reopened.
@@ -70904,7 +70910,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example discussions */
+        /** @example issues */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -70997,6 +71003,246 @@ export interface operations {
     requestBody: {
       content: {
         "application/json": components["schemas"]["webhook-deployment-review-requested"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to deployment reviews. For more information, see "[About deployments](https://docs.github.com/actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/rest/deployments/deployments)" in the REST API documentation.
+   *
+   * For activity relating to deployment creation or deployment status, use the `deployment` or `deployment_status` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
+   * @description A deployment review was approved.
+   */
+  "deployment-review/approved": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example discussions */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-deployment-review-approved"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/graphql/reference/objects#discussion).
+   *
+   * For activity relating to a comment on a discussion, use the `discussion_comment` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
+   *
+   * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+   * @description A comment on the discussion was marked as the answer.
+   */
+  "discussion/answered": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-discussion-answered"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to deployment reviews. For more information, see "[About deployments](https://docs.github.com/actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/rest/deployments/deployments)" in the REST API documentation.
+   *
+   * For activity relating to deployment creation or deployment status, use the `deployment` or `deployment_status` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
+   * @description A deployment review was rejected.
+   */
+  "deployment-review/rejected": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-deployment-review-rejected"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/graphql/reference/objects#discussion).
+   *
+   * For activity relating to a comment on a discussion, use the `discussion_comment` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
+   *
+   * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+   * @description A discussion was closed.
+   */
+  "discussion/closed": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example discussions */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-discussion-closed"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to deployment reviews. For more information, see "[About deployments](https://docs.github.com/actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/rest/deployments/deployments)" in the REST API documentation.
+   *
+   * For activity relating to deployment creation or deployment status, use the `deployment` or `deployment_status` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
+   * @description A deployment review was requested.
+   */
+  "deployment-review/requested": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-deployment-review-requested"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to a comment on a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/graphql/reference/objects#discussion).
+   *
+   * For activity relating to a discussion as opposed to comments on a discussion, use the `discussion` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
+   *
+   * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+   * @description A comment on a discussion was deleted.
+   */
+  "discussion-comment/deleted": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-discussion-comment-deleted"];
       };
     };
     responses: {
@@ -71653,7 +71899,7 @@ export interface operations {
   /**
    * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
    *
-   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#app) or "[Apps](https://docs.github.com/rest/reference/apps)" in the REST API documentation.
+   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#app) or "[Apps](https://docs.github.com/rest/apps)" in the REST API documentation.
    * @description Someone installed a GitHub App on a user or organization account.
    */
   "installation/created": {
@@ -71690,7 +71936,7 @@ export interface operations {
   /**
    * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
    *
-   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#app) or "[Apps](https://docs.github.com/rest/reference/apps)" in the REST API documentation.
+   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#app) or "[Apps](https://docs.github.com/rest/apps)" in the REST API documentation.
    * @description Someone uninstalled a GitHub App from their user or organization account.
    */
   "installation/deleted": {
@@ -71727,7 +71973,7 @@ export interface operations {
   /**
    * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
    *
-   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#app) or "[Apps](https://docs.github.com/rest/reference/apps)" in the REST API documentation.
+   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#app) or "[Apps](https://docs.github.com/rest/apps)" in the REST API documentation.
    * @description Someone granted new permissions to a GitHub App.
    */
   "installation/new-permissions-accepted": {
@@ -71764,7 +72010,7 @@ export interface operations {
   /**
    * This event occurs when there is activity relating to which repositories a GitHub App installation can access. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
    *
-   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#app) or "[Apps](https://docs.github.com/rest/reference/apps)" in the REST API documentation.
+   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#app) or "[Apps](https://docs.github.com/rest/apps)" in the REST API documentation.
    * @description A GitHub App installation was granted access to one or more repositories.
    */
   "installation-repositories/added": {
@@ -71801,7 +72047,7 @@ export interface operations {
   /**
    * This event occurs when there is activity relating to which repositories a GitHub App installation can access. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
    *
-   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#app) or "[Apps](https://docs.github.com/rest/reference/apps)" in the REST API documentation.
+   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#app) or "[Apps](https://docs.github.com/rest/apps)" in the REST API documentation.
    * @description Access to one or more repositories was revoked for a GitHub App installation.
    */
   "installation-repositories/removed": {
@@ -71838,7 +72084,7 @@ export interface operations {
   /**
    * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
    *
-   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#app) or "[Apps](https://docs.github.com/rest/reference/apps)" in the REST API documentation.
+   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#app) or "[Apps](https://docs.github.com/rest/apps)" in the REST API documentation.
    * @description Someone blocked access by a GitHub App to their user or organization account.
    */
   "installation/suspend": {
@@ -71873,9 +72119,44 @@ export interface operations {
     };
   };
   /**
+   * This event occurs when there is activity relating to the user or organization account that a GitHub App is installed on. For more information, see "[About apps](https://docs.github.com/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#app) or "[Apps](https://docs.github.com/rest/apps)" in the REST API documentation.
+   * @description Somebody renamed the user or organization account that a GitHub App is installed on.
+   */
+  "installation-target/renamed": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-installation-target-renamed"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
    * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
    *
-   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#app) or "[Apps](https://docs.github.com/rest/reference/apps)" in the REST API documentation.
+   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#app) or "[Apps](https://docs.github.com/rest/apps)" in the REST API documentation.
    * @description A GitHub App that was blocked from accessing a user or organization account was given access the account again.
    */
   "installation/unsuspend": {
@@ -72134,41 +72415,6 @@ export interface operations {
     requestBody: {
       content: {
         "application/json": components["schemas"]["webhook-issues-deleted"];
-      };
-    };
-    responses: {
-      /** @description Return a 200 status to indicate that the data was received successfully */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /**
-   * This event occurs when there is activity relating to the user or organization account that a GitHub App is installed on. For more information, see "[About apps](https://docs.github.com/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#app) or "[Apps](https://docs.github.com/rest/reference/apps)" in the REST API documentation.
-   * @description Somebody renamed the user or organization account that a GitHub App is installed on.
-   */
-  "installation-target/renamed": {
-    parameters: {
-      header: {
-        /** @example GitHub-Hookshot/123abc */
-        "User-Agent": string;
-        /** @example 12312312 */
-        "X-Github-Hook-Id": string;
-        /** @example issues */
-        "X-Github-Event": string;
-        /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id": string;
-        /** @example repository */
-        "X-Github-Hook-Installation-Target-Type": string;
-        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery": string;
-        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256": string;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["webhook-installation-target-renamed"];
       };
     };
     responses: {
@@ -73052,41 +73298,6 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a GitHub Marketplace purchase. For more information, see "[GitHub Marketplace](https://docs.github.com/marketplace)." For information about the APIs to manage GitHub Marketplace listings, see [the GraphQL documentation](https://docs.github.com/graphql/reference/objects#marketplacelisting) or "[GitHub Marketplace](https://docs.github.com/rest/apps/marketplace)" in the REST API documentation.
-   * @description Someone cancelled a GitHub Marketplace plan, and the last billing cycle has ended. The change will take effect on the account immediately.
-   */
-  "marketplace-purchase/cancelled": {
-    parameters: {
-      header: {
-        /** @example GitHub-Hookshot/123abc */
-        "User-Agent": string;
-        /** @example 12312312 */
-        "X-Github-Hook-Id": string;
-        /** @example issues */
-        "X-Github-Event": string;
-        /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id": string;
-        /** @example repository */
-        "X-Github-Hook-Installation-Target-Type": string;
-        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery": string;
-        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256": string;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["webhook-marketplace-purchase-cancelled"];
-      };
-    };
-    responses: {
-      /** @description Return a 200 status to indicate that the data was received successfully */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /**
    * This event occurs when there is activity relating to collaborators in a repository. For more information, see "[Adding outside collaborators to repositories in your organization](https://docs.github.com/organizations/managing-user-access-to-your-organizations-repositories/adding-outside-collaborators-to-repositories-in-your-organization)." For more information about the API to manage repository collaborators, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#repositorycollaboratorconnection) or "[Collaborators](https://docs.github.com/rest/collaborators/collaborators)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
@@ -73277,162 +73488,6 @@ export interface operations {
   };
   /**
    * This event occurs when there is activity relating to team membership. For more information, see "[About teams](https://docs.github.com/organizations/organizing-members-into-teams/about-teams)." For more information about the APIs to manage team memberships, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#team) or "[Team members](https://docs.github.com/rest/teams/members)" in the REST API documentation.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-   *
-   * **Note**: The pull request merge queue feature is currently in limited private beta and subject to change.
-   * @description A pull request was added to a merge queue.
-   */
-  "merge-queue-entry/created": {
-    parameters: {
-      header: {
-        /** @example GitHub-Hookshot/123abc */
-        "User-Agent": string;
-        /** @example 12312312 */
-        "X-Github-Hook-Id": string;
-        /** @example issues */
-        "X-Github-Event": string;
-        /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id": string;
-        /** @example repository */
-        "X-Github-Hook-Installation-Target-Type": string;
-        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery": string;
-        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256": string;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["webhook-merge-queue-entry-created"];
-      };
-    };
-    responses: {
-      /** @description Return a 200 status to indicate that the data was received successfully */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /**
-   * This event occurs when there is activity relating to a pull requests in a merge queue. For more information, see "[Automatically merging a pull request](https://docs.github.com/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/automatically-merging-a-pull-request)."
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-   *
-   * **Note**: The pull request merge queue feature is currently in limited private beta and subject to change.
-   * @description A pull request was removed from a merge queue.
-   */
-  "merge-queue-entry/deleted": {
-    parameters: {
-      header: {
-        /** @example GitHub-Hookshot/123abc */
-        "User-Agent": string;
-        /** @example 12312312 */
-        "X-Github-Hook-Id": string;
-        /** @example issues */
-        "X-Github-Event": string;
-        /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id": string;
-        /** @example repository */
-        "X-Github-Hook-Installation-Target-Type": string;
-        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery": string;
-        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256": string;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["webhook-merge-queue-entry-deleted"];
-      };
-    };
-    responses: {
-      /** @description Return a 200 status to indicate that the data was received successfully */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /**
-   * This event occurs when there is activity relating to a pull requests in a merge queue. For more information, see "[Automatically merging a pull request](https://docs.github.com/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/automatically-merging-a-pull-request)."
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-   *
-   * **Note**: The pull request merge queue feature is currently in limited private beta and subject to change.
-   * @description A pull request was added to a merge queue.
-   */
-  "merge-queue-entry/created": {
-    parameters: {
-      header: {
-        /** @example GitHub-Hookshot/123abc */
-        "User-Agent": string;
-        /** @example 12312312 */
-        "X-Github-Hook-Id": string;
-        /** @example issues */
-        "X-Github-Event": string;
-        /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id": string;
-        /** @example repository */
-        "X-Github-Hook-Installation-Target-Type": string;
-        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery": string;
-        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256": string;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["webhook-merge-queue-entry-created"];
-      };
-    };
-    responses: {
-      /** @description Return a 200 status to indicate that the data was received successfully */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /**
-   * This event occurs when there is activity relating to team membership. For more information, see "[About teams](https://docs.github.com/organizations/organizing-members-into-teams/about-teams)." For more information about the APIs to manage team memberships, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#team) or "[Team members](https://docs.github.com/rest/teams/members)" in the REST API documentation.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-   *
-   * **Note**: The pull request merge queue feature is currently in limited private beta and subject to change.
-   * @description A pull request was removed from a merge queue.
-   */
-  "merge-queue-entry/deleted": {
-    parameters: {
-      header: {
-        /** @example GitHub-Hookshot/123abc */
-        "User-Agent": string;
-        /** @example 12312312 */
-        "X-Github-Hook-Id": string;
-        /** @example issues */
-        "X-Github-Event": string;
-        /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id": string;
-        /** @example repository */
-        "X-Github-Hook-Installation-Target-Type": string;
-        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery": string;
-        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256": string;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["webhook-merge-queue-entry-deleted"];
-      };
-    };
-    responses: {
-      /** @description Return a 200 status to indicate that the data was received successfully */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /**
-   * This event occurs when there is activity relating to a pull requests in a merge queue. For more information, see "[Automatically merging a pull request](https://docs.github.com/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/automatically-merging-a-pull-request)."
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
    *
@@ -76323,123 +76378,6 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a pull request review. A pull request review is a group of pull request review comments in addition to a body comment and a state. For more information, see "[About pull request reviews](https://docs.github.com/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request reviews, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#pullrequestreview) or "[Pull request reviews](https://docs.github.com/rest/pulls/reviews)" in the REST API documentation.
-   *
-   * For activity related to pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-   * @description A review on a pull request was submitted.
-   */
-  "pull-request-review/submitted": {
-    parameters: {
-      header: {
-        /** @example GitHub-Hookshot/123abc */
-        "User-Agent": string;
-        /** @example 12312312 */
-        "X-Github-Hook-Id": string;
-        /** @example issues */
-        "X-Github-Event": string;
-        /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id": string;
-        /** @example repository */
-        "X-Github-Hook-Installation-Target-Type": string;
-        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery": string;
-        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256": string;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["webhook-pull-request-review-submitted"];
-      };
-    };
-    responses: {
-      /** @description Return a 200 status to indicate that the data was received successfully */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /**
-   * This event occurs when there is activity relating to a comment thread on a pull request. For more information, see "[About pull request reviews](https://docs.github.com/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request reviews, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#pullrequestreviewthread) or "[Pull request review comments](https://docs.github.com/rest/pulls/comments)" in the REST API documentation.
-   *
-   * For activity related to pull request review comments, pull request comments, or pull request reviews, use the `pull_request_review_comment`, `issue_comment`, or `pull_request_review` events instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-   * @description A comment thread on a pull request was marked as resolved.
-   */
-  "pull-request-review-thread/resolved": {
-    parameters: {
-      header: {
-        /** @example GitHub-Hookshot/123abc */
-        "User-Agent": string;
-        /** @example 12312312 */
-        "X-Github-Hook-Id": string;
-        /** @example issues */
-        "X-Github-Event": string;
-        /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id": string;
-        /** @example repository */
-        "X-Github-Hook-Installation-Target-Type": string;
-        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery": string;
-        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256": string;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["webhook-pull-request-review-thread-resolved"];
-      };
-    };
-    responses: {
-      /** @description Return a 200 status to indicate that the data was received successfully */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /**
-   * This event occurs when there is activity relating to a comment thread on a pull request. For more information, see "[About pull request reviews](https://docs.github.com/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request reviews, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#pullrequestreviewthread) or "[Pull request review comments](https://docs.github.com/rest/pulls/comments)" in the REST API documentation.
-   *
-   * For activity related to pull request review comments, pull request comments, or pull request reviews, use the `pull_request_review_comment`, `issue_comment`, or `pull_request_review` events instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-   * @description A previously resolved comment thread on a pull request was marked as unresolved.
-   */
-  "pull-request-review-thread/unresolved": {
-    parameters: {
-      header: {
-        /** @example GitHub-Hookshot/123abc */
-        "User-Agent": string;
-        /** @example 12312312 */
-        "X-Github-Hook-Id": string;
-        /** @example issues */
-        "X-Github-Event": string;
-        /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id": string;
-        /** @example repository */
-        "X-Github-Hook-Installation-Target-Type": string;
-        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery": string;
-        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256": string;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["webhook-pull-request-review-thread-unresolved"];
-      };
-    };
-    responses: {
-      /** @description Return a 200 status to indicate that the data was received successfully */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /**
    * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/rest/pulls/pulls)" in the REST API documentation.
    *
    * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
@@ -76557,6 +76495,45 @@ export interface operations {
     };
   };
   /**
+   * This event occurs when there is activity relating to a pull request review comment. A pull request review comment is a comment on a pull request's diff. For more information, see "[Commenting on a pull request](https://docs.github.com/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request)." For information about the APIs to manage pull request review comments, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#pullrequestreviewcomment) or "[Pull request review comments](https://docs.github.com/rest/pulls/comments)" in the REST API documentation.
+   *
+   * For activity related to pull request reviews, pull request comments, or pull request review threads, use the `pull_request_review`, `issue_comment`, or `pull_request_review_thread` events instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+   * @description The content of a comment on a pull request diff was changed.
+   */
+  "pull-request-review-comment/edited": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-pull-request-review-comment-edited"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
    * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/rest/pulls/pulls)" in the REST API documentation.
    *
    * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
@@ -76586,6 +76563,45 @@ export interface operations {
     requestBody: {
       content: {
         "application/json": components["schemas"]["webhook-pull-request-unlocked"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to a pull request review. A pull request review is a group of pull request review comments in addition to a body comment and a state. For more information, see "[About pull request reviews](https://docs.github.com/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request reviews, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#pullrequestreview) or "[Pull request reviews](https://docs.github.com/rest/pulls/reviews)" in the REST API documentation.
+   *
+   * For activity related to pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+   * @description The body comment on a pull request review was edited.
+   */
+  "pull-request-review/edited": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-pull-request-review-edited"];
       };
     };
     responses: {
@@ -76712,7 +76728,9 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#release) or "[Releases](https://docs.github.com/rest/releases)" in the REST API documentation.
+   * This event occurs when there is activity relating to a comment thread on a pull request. For more information, see "[About pull request reviews](https://docs.github.com/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request reviews, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#pullrequestreviewthread) or "[Pull request review comments](https://docs.github.com/rest/pulls/comments)" in the REST API documentation.
+   *
+   * For activity related to pull request review comments, pull request comments, or pull request reviews, use the `pull_request_review_comment`, `issue_comment`, or `pull_request_review` events instead.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
    * @description A draft was saved, or a release or pre-release was published without previously being saved as a draft.
@@ -76934,7 +76952,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#release) or "[Releases](https://docs.github.com/rest/releases)" in the REST API documentation.
+   * This event occurs when a commit or tag is pushed, or when a repository is cloned.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
    * @description A release or pre-release was unpublished.
@@ -77010,8 +77028,8 @@ export interface operations {
   /**
    * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#release) or "[Releases](https://docs.github.com/rest/releases)" in the REST API documentation.
    *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Repository security advisories" permission.
-   * @description A private vulnerability report was submitted.
+   * **Note**: GitHub recommends that you use the newer `package` event instead.
+   * @description A package that was previously published to a registry was updated.
    */
   "repository-advisory/reported": {
     parameters: {
@@ -77156,7 +77174,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when a GitHub App sends a `POST` request to `/repos/{owner}/{repo}/dispatches`. For more information, see [the REST API documentation for creating a repository dispatch event](https://docs.github.com/rest/repos/repos#create-a-repository-dispatch-event).
+   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#release) or "[Releases](https://docs.github.com/rest/releases)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
    * @description The `event_type` that was specified in the `POST /repos/{owner}/{repo}/dispatches` request body.
@@ -77193,7 +77211,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/rest/repos)" in the REST API documentation.
+   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#release) or "[Releases](https://docs.github.com/rest/releases)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
    * @description The topics, default branch, description, or homepage of a repository was changed.
@@ -77230,7 +77248,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/rest/repos)" in the REST API documentation.
+   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#release) or "[Releases](https://docs.github.com/rest/releases)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
    * @description The visibility of a repository was changed to `private`.
@@ -77267,7 +77285,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/rest/repos)" in the REST API documentation.
+   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#release) or "[Releases](https://docs.github.com/rest/releases)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
    * @description The visibility of a repository was changed to `public`.
@@ -77682,6 +77700,45 @@ export interface operations {
     requestBody: {
       content: {
         "application/json": components["schemas"]["webhook-repository-ruleset-edited"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to repository rulesets.
+   * For more information about repository rulesets, see "[Managing rulesets](https://docs.github.com/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets)."
+   * For more information on managing rulesets via the APIs, see [Repository ruleset](https://docs.github.com/graphql/reference/objects#repositoryruleset) in the GraphQL documentation or "[Repository rules](https://docs.github.com/rest/repos/rules)" and "[Organization rules](https://docs.github.com/rest/orgs/rules) in the REST API documentation."
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+   * @description A repository ruleset was created.
+   */
+  "repository-ruleset/created": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-repository-ruleset-created"];
       };
     };
     responses: {

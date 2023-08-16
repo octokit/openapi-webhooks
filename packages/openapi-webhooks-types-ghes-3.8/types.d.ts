@@ -629,7 +629,7 @@ export interface webhooks {
     /**
      * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
      *
-     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.8/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.8/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.8/rest/reference/apps)" in the REST API documentation.
+     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.8/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.8/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.8/rest/apps)" in the REST API documentation.
      * @description Someone installed a GitHub App on a user or organization account.
      */
     post: operations["installation/created"];
@@ -638,7 +638,7 @@ export interface webhooks {
     /**
      * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
      *
-     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.8/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.8/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.8/rest/reference/apps)" in the REST API documentation.
+     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.8/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.8/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.8/rest/apps)" in the REST API documentation.
      * @description Someone uninstalled a GitHub App from their user or organization account.
      */
     post: operations["installation/deleted"];
@@ -647,7 +647,7 @@ export interface webhooks {
     /**
      * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
      *
-     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.8/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.8/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.8/rest/reference/apps)" in the REST API documentation.
+     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.8/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.8/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.8/rest/apps)" in the REST API documentation.
      * @description Someone granted new permissions to a GitHub App.
      */
     post: operations["installation/new-permissions-accepted"];
@@ -656,7 +656,7 @@ export interface webhooks {
     /**
      * This event occurs when there is activity relating to which repositories a GitHub App installation can access. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
      *
-     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.8/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.8/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.8/rest/reference/apps)" in the REST API documentation.
+     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.8/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.8/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.8/rest/apps)" in the REST API documentation.
      * @description A GitHub App installation was granted access to one or more repositories.
      */
     post: operations["installation-repositories/added"];
@@ -665,7 +665,7 @@ export interface webhooks {
     /**
      * This event occurs when there is activity relating to which repositories a GitHub App installation can access. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
      *
-     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.8/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.8/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.8/rest/reference/apps)" in the REST API documentation.
+     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.8/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.8/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.8/rest/apps)" in the REST API documentation.
      * @description Access to one or more repositories was revoked for a GitHub App installation.
      */
     post: operations["installation-repositories/removed"];
@@ -674,14 +674,14 @@ export interface webhooks {
     /**
      * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
      *
-     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.8/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.8/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.8/rest/reference/apps)" in the REST API documentation.
+     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.8/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.8/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.8/rest/apps)" in the REST API documentation.
      * @description Someone blocked access by a GitHub App to their user or organization account.
      */
     post: operations["installation/suspend"];
   };
   "installation-target-renamed": {
     /**
-     * This event occurs when there is activity relating to the user or organization account that a GitHub App is installed on. For more information, see "[About apps](https://docs.github.com/enterprise-server@3.8/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.8/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.8/rest/reference/apps)" in the REST API documentation.
+     * This event occurs when there is activity relating to the user or organization account that a GitHub App is installed on. For more information, see "[About apps](https://docs.github.com/enterprise-server@3.8/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.8/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.8/rest/apps)" in the REST API documentation.
      * @description Somebody renamed the user or organization account that a GitHub App is installed on.
      */
     post: operations["installation-target/renamed"];
@@ -690,7 +690,7 @@ export interface webhooks {
     /**
      * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
      *
-     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.8/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.8/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.8/rest/reference/apps)" in the REST API documentation.
+     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.8/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.8/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.8/rest/apps)" in the REST API documentation.
      * @description A GitHub App that was blocked from accessing a user or organization account was given access the account again.
      */
     post: operations["installation/unsuspend"];
@@ -1705,7 +1705,7 @@ export interface webhooks {
   };
   push: {
     /**
-     * This event occurs when a commit or tag is pushed.
+     * This event occurs when a commit or tag is pushed, or when a repository is cloned.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
      *
@@ -11321,94 +11321,9 @@ export interface components {
        * issue comment
        * @description The [comment](https://docs.github.com/enterprise-server@3.8/rest/issues/comments#get-an-issue-comment) itself.
        */
-      action: "closed";
-      enterprise?: components["schemas"]["enterprise"];
-      installation?: components["schemas"]["simple-installation"];
-      /** @description The [issue](https://docs.github.com/enterprise-server@3.8/rest/issues/issues#get-an-issue) itself. */
-      issue: {
-        /** @enum {string|null} */
-        active_lock_reason:
-          | "resolved"
-          | "off-topic"
-          | "too heated"
-          | "spam"
-          | null;
-        /** User */
-        assignee?: {
-          /** Format: uri */
-          avatar_url?: string;
-          deleted?: boolean;
-          email?: string | null;
-          /** Format: uri-template */
-          events_url?: string;
-          /** Format: uri */
-          followers_url?: string;
-          /** Format: uri-template */
-          following_url?: string;
-          /** Format: uri-template */
-          gists_url?: string;
-          gravatar_id?: string;
-          /** Format: uri */
-          html_url?: string;
-          id: number;
-          login: string;
-          name?: string;
-          node_id?: string;
-          /** Format: uri */
-          organizations_url?: string;
-          /** Format: uri */
-          received_events_url?: string;
-          /** Format: uri */
-          repos_url?: string;
-          site_admin?: boolean;
-          /** Format: uri-template */
-          starred_url?: string;
-          /** Format: uri */
-          subscriptions_url?: string;
-          /** @enum {string} */
-          type?: "Bot" | "User" | "Organization" | "Mannequin";
-          /** Format: uri */
-          url?: string;
-        } | null;
-        assignees: ({
-          /** Format: uri */
-          avatar_url?: string;
-          deleted?: boolean;
-          email?: string | null;
-          /** Format: uri-template */
-          events_url?: string;
-          /** Format: uri */
-          followers_url?: string;
-          /** Format: uri-template */
-          following_url?: string;
-          /** Format: uri-template */
-          gists_url?: string;
-          gravatar_id?: string;
-          /** Format: uri */
-          html_url?: string;
-          id: number;
-          login: string;
-          name?: string;
-          node_id?: string;
-          /** Format: uri */
-          organizations_url?: string;
-          /** Format: uri */
-          received_events_url?: string;
-          /** Format: uri */
-          repos_url?: string;
-          site_admin?: boolean;
-          /** Format: uri-template */
-          starred_url?: string;
-          /** Format: uri */
-          subscriptions_url?: string;
-          /** @enum {string} */
-          type?: "Bot" | "User" | "Organization" | "Mannequin";
-          /** Format: uri */
-          url?: string;
-        } | null)[];
+      comment: {
         /**
-         * AuthorAssociation
-         * @description How the author is associated with the repository.
+         * @description The action that was performed on the page. Can be `created` or `edited`.
          * @enum {string}
          */
         author_association:
@@ -11894,7 +11809,7 @@ export interface components {
           url?: string;
         };
         /** Reactions */
-        reactions?: {
+        reactions: {
           "+1": number;
           "-1": number;
           confused: number;
@@ -12171,27 +12086,11 @@ export interface components {
           /** Format: uri */
           subscriptions_url?: string;
           /** @enum {string} */
-          type?: "Bot" | "User" | "Organization";
+          type?: "Bot" | "User" | "Organization" | "Mannequin";
           /** Format: uri */
-          url: string | null;
+          url?: string;
         } | null;
-        master_branch?: string;
-        /** Format: uri */
-        merges_url: string;
-        /** Format: uri-template */
-        milestones_url: string;
-        /** Format: uri */
-        mirror_url: string | null;
-        /** @description The name of the repository. */
-        name: string;
-        node_id: string;
-        /** Format: uri-template */
-        notifications_url: string;
-        open_issues: number;
-        open_issues_count: number;
-        organization?: string;
-        /** User */
-        owner: {
+        assignees: ({
           /** Format: uri */
           avatar_url?: string;
           deleted?: boolean;
@@ -12223,182 +12122,61 @@ export interface components {
           /** Format: uri */
           subscriptions_url?: string;
           /** @enum {string} */
-          type?: "Bot" | "User" | "Organization";
+          type?: "Bot" | "User" | "Organization" | "Mannequin";
           /** Format: uri */
           url?: string;
-        } | null;
-        permissions?: {
-          admin: boolean;
-          maintain?: boolean;
-          pull: boolean;
-          push: boolean;
-          triage?: boolean;
-        };
-        /** @description Whether the repository is private or public. */
-        private: boolean;
-        public?: boolean;
-        /** Format: uri-template */
-        pulls_url: string;
-        pushed_at: number | string | null;
-        /** Format: uri-template */
-        releases_url: string;
-        role_name?: string | null;
-        size: number;
-        ssh_url: string;
-        stargazers?: number;
-        stargazers_count: number;
-        /** Format: uri */
-        stargazers_url: string;
-        /** Format: uri-template */
-        statuses_url: string;
-        /** Format: uri */
-        subscribers_url: string;
-        /** Format: uri */
-        subscription_url: string;
-        /** Format: uri */
-        svn_url: string;
-        /** Format: uri */
-        tags_url: string;
-        /** Format: uri */
-        teams_url: string;
-        topics: string[];
-        /** Format: uri-template */
-        trees_url: string;
-        /** Format: date-time */
-        updated_at: string;
-        /** Format: uri */
-        url: string;
-        /** @enum {string} */
-        visibility: "public" | "private" | "internal";
-        watchers: number;
-        watchers_count: number;
-        /** @description Whether to require contributors to sign off on web-based commits */
-        web_commit_signoff_required?: boolean;
-      } & {
-        allow_forking?: boolean;
-        archive_url?: string;
-        archived?: boolean;
-        assignees_url?: string;
-        blobs_url?: string;
-        branches_url?: string;
-        clone_url?: string;
-        collaborators_url?: string;
-        comments_url?: string;
-        commits_url?: string;
-        compare_url?: string;
-        contents_url?: string;
-        contributors_url?: string;
-        created_at?: string;
-        default_branch?: string;
-        deployments_url?: string;
-        description?: string | null;
-        disabled?: boolean;
-        downloads_url?: string;
-        events_url?: string;
-        /** @enum {boolean} */
-        fork?: true;
-        forks?: number;
-        forks_count?: number;
-        forks_url?: string;
-        full_name?: string;
-        git_commits_url?: string;
-        git_refs_url?: string;
-        git_tags_url?: string;
-        git_url?: string;
-        has_downloads?: boolean;
-        has_issues?: boolean;
-        has_pages?: boolean;
-        has_projects?: boolean;
-        has_wiki?: boolean;
-        homepage?: string | null;
-        hooks_url?: string;
-        html_url?: string;
-        id?: number;
-        is_template?: boolean;
-        issue_comment_url?: string;
-        issue_events_url?: string;
-        issues_url?: string;
-        keys_url?: string;
-        labels_url?: string;
-        language?: null;
-        languages_url?: string;
-        license?: Record<string, never> | null;
-        merges_url?: string;
-        milestones_url?: string;
-        mirror_url?: null;
-        name?: string;
-        node_id?: string;
-        notifications_url?: string;
-        open_issues?: number;
-        open_issues_count?: number;
-        owner?: {
-          avatar_url?: string;
-          events_url?: string;
-          followers_url?: string;
-          following_url?: string;
-          gists_url?: string;
-          gravatar_id?: string;
-          html_url?: string;
-          id?: number;
-          login?: string;
-          node_id?: string;
-          organizations_url?: string;
-          received_events_url?: string;
-          repos_url?: string;
-          site_admin?: boolean;
-          starred_url?: string;
-          subscriptions_url?: string;
-          type?: string;
-          url?: string;
-        };
-        private?: boolean;
-        public?: boolean;
-        pulls_url?: string;
-        pushed_at?: string;
-        releases_url?: string;
-        size?: number;
-        ssh_url?: string;
-        stargazers_count?: number;
-        stargazers_url?: string;
-        statuses_url?: string;
-        subscribers_url?: string;
-        subscription_url?: string;
-        svn_url?: string;
-        tags_url?: string;
-        teams_url?: string;
-        topics?: null[];
-        trees_url?: string;
-        updated_at?: string;
-        url?: string;
-        visibility?: string;
-        watchers?: number;
-        watchers_count?: number;
-      };
-      installation?: components["schemas"]["simple-installation"];
-      organization?: components["schemas"]["organization-simple"];
-      repository: components["schemas"]["repository"];
-      sender: components["schemas"]["simple-user"];
-    };
-    /** github_app_authorization revoked event */
-    "webhook-github-app-authorization-revoked": {
-      /** @enum {string} */
-      action: "revoked";
-      enterprise?: components["schemas"]["enterprise"];
-      installation?: components["schemas"]["simple-installation"];
-      organization?: components["schemas"]["organization-simple"];
-      repository?: components["schemas"]["repository"];
-      sender: components["schemas"]["simple-user"];
-    };
-    /** gollum event */
-    "webhook-gollum": {
-      enterprise?: components["schemas"]["enterprise"];
-      installation?: components["schemas"]["simple-installation"];
-      organization?: components["schemas"]["organization-simple"];
-      /** @description The pages that were updated. */
-      pages: {
+        } | null)[];
         /**
-         * @description The action that was performed on the page. Can be `created` or `edited`.
+         * AuthorAssociation
+         * @description How the author is associated with the repository.
          * @enum {string}
+         */
+        author_association:
+          | "COLLABORATOR"
+          | "CONTRIBUTOR"
+          | "FIRST_TIMER"
+          | "FIRST_TIME_CONTRIBUTOR"
+          | "MANNEQUIN"
+          | "MEMBER"
+          | "NONE"
+          | "OWNER";
+        /** @description Contents of the issue */
+        body: string | null;
+        /** Format: date-time */
+        closed_at: string | null;
+        comments: number;
+        /** Format: uri */
+        comments_url: string;
+        /** Format: date-time */
+        created_at: string;
+        draft?: boolean;
+        /** Format: uri */
+        events_url: string;
+        /** Format: uri */
+        html_url: string;
+        /** Format: int64 */
+        id: number;
+        labels?: {
+          /** @description 6-character hex code, without the leading #, identifying the color */
+          color: string;
+          default: boolean;
+          description: string | null;
+          id: number;
+          /** @description The name of the label. */
+          name: string;
+          node_id: string;
+          /**
+           * Format: uri
+           * @description URL for the label
+           */
+          url: string;
+        }[];
+        /** Format: uri-template */
+        labels_url: string;
+        locked?: boolean;
+        /**
+         * Milestone
+         * @description A collection of related issues and pull requests.
          */
         milestone: {
           /** Format: date-time */
@@ -12439,7 +12217,7 @@ export interface components {
             /** Format: uri */
             subscriptions_url?: string;
             /** @enum {string} */
-            type?: "Bot" | "User" | "Organization";
+            type?: "Bot" | "User" | "Organization" | "Mannequin";
             /** Format: uri */
             url?: string;
           } | null;
@@ -12470,8 +12248,8 @@ export interface components {
         node_id: string;
         number: number;
         /**
-         * Format: uri
-         * @description Points to the HTML wiki page.
+         * App
+         * @description GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
          */
         performed_via_github_app?: {
           /** Format: date-time */
@@ -12524,7 +12302,9 @@ export interface components {
             | "watch"
             | "workflow_dispatch"
             | "workflow_run"
+            | "security_and_analysis"
             | "reminder"
+            | "pull_request_review_thread"
           )[];
           /** Format: uri */
           external_url: string | null;
@@ -12609,7 +12389,7 @@ export interface components {
             /** @enum {string} */
             organization_plan?: "read" | "write";
             /** @enum {string} */
-            organization_projects?: "read" | "write";
+            organization_projects?: "read" | "write" | "admin";
             /** @enum {string} */
             organization_secrets?: "read" | "write";
             /** @enum {string} */
@@ -13210,7 +12990,7 @@ export interface components {
           /** Format: uri */
           subscriptions_url?: string;
           /** @enum {string} */
-          type?: "Bot" | "User" | "Organization";
+          type?: "Bot" | "User" | "Organization" | "Mannequin";
           /** Format: uri */
           url?: string;
         } | null;
@@ -15911,108 +15691,6 @@ export interface components {
           url?: string;
         } | null;
       } & {
-        active_lock_reason?: string | null;
-        assignee?: Record<string, never> | null;
-        assignees?: (Record<string, never> | null)[];
-        author_association?: string;
-        body?: string | null;
-        closed_at?: string | null;
-        comments?: number;
-        comments_url?: string;
-        created_at?: string;
-        events_url?: string;
-        html_url?: string;
-        id?: number;
-        labels?: (Record<string, never> | null)[];
-        labels_url?: string;
-        locked?: boolean;
-        /**
-         * Milestone
-         * @description A collection of related issues and pull requests.
-         */
-        milestone: {
-          /** Format: date-time */
-          closed_at: string | null;
-          closed_issues: number;
-          /** Format: date-time */
-          created_at: string;
-          /** User */
-          creator: {
-            /** Format: uri */
-            avatar_url?: string;
-            deleted?: boolean;
-            email?: string | null;
-            /** Format: uri-template */
-            events_url?: string;
-            /** Format: uri */
-            followers_url?: string;
-            /** Format: uri-template */
-            following_url?: string;
-            /** Format: uri-template */
-            gists_url?: string;
-            gravatar_id?: string;
-            /** Format: uri */
-            html_url?: string;
-            id: number;
-            login: string;
-            name?: string;
-            node_id?: string;
-            /** Format: uri */
-            organizations_url?: string;
-            /** Format: uri */
-            received_events_url?: string;
-            /** Format: uri */
-            repos_url?: string;
-            site_admin?: boolean;
-            /** Format: uri-template */
-            starred_url?: string;
-            /** Format: uri */
-            subscriptions_url?: string;
-            /** @enum {string} */
-            type?: "Bot" | "User" | "Organization" | "Mannequin";
-            /** Format: uri */
-            url?: string;
-          } | null;
-          description: string | null;
-          /** Format: date-time */
-          due_on: string | null;
-          /** Format: uri */
-          html_url: string;
-          id: number;
-          /** Format: uri */
-          labels_url: string;
-          node_id: string;
-          /** @description The number of the milestone. */
-          number: number;
-          open_issues: number;
-          /**
-           * @description The state of the milestone.
-           * @enum {string}
-           */
-          state: "open" | "closed";
-          /** @description The title of the milestone. */
-          title: string;
-          /** Format: date-time */
-          updated_at: string;
-          /** Format: uri */
-          url: string;
-        };
-        node_id?: string;
-        number?: number;
-        performed_via_github_app?: Record<string, never> | null;
-        reactions?: {
-          "+1"?: number;
-          "-1"?: number;
-          confused?: number;
-          eyes?: number;
-          heart?: number;
-          hooray?: number;
-          laugh?: number;
-          rocket?: number;
-          total_count?: number;
-          url?: string;
-        } | null;
-      } & {
         /** @enum {string|null} */
         active_lock_reason:
           | "resolved"
@@ -17010,68 +16688,37 @@ export interface components {
         /** User */
         creator: {
           /** Format: uri */
-          forks_url: string;
-          full_name: string;
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
           /** Format: uri-template */
-          git_commits_url: string;
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
           /** Format: uri-template */
-          git_refs_url: string;
+          following_url?: string;
           /** Format: uri-template */
-          git_tags_url: string;
+          gists_url?: string;
+          gravatar_id?: string;
           /** Format: uri */
-          git_url: string;
-          /**
-           * @description Whether downloads are enabled.
-           * @default true
-           */
-          has_downloads: boolean;
-          /**
-           * @description Whether issues are enabled.
-           * @default true
-           */
-          has_issues: boolean;
-          has_pages: boolean;
-          /**
-           * @description Whether projects are enabled.
-           * @default true
-           */
-          has_projects: boolean;
-          /**
-           * @description Whether the wiki is enabled.
-           * @default true
-           */
-          has_wiki: boolean;
-          homepage: string | null;
-          /** Format: uri */
-          hooks_url: string;
-          /** Format: uri */
-          html_url: string;
-          /** @description Unique identifier of the repository */
+          html_url?: string;
           id: number;
-          is_template?: boolean;
-          /** Format: uri-template */
-          issue_comment_url: string;
-          /** Format: uri-template */
-          issue_events_url: string;
-          /** Format: uri-template */
-          issues_url: string;
-          /** Format: uri-template */
-          keys_url: string;
-          /** Format: uri-template */
-          labels_url: string;
-          language: string | null;
+          login: string;
+          name?: string;
+          node_id?: string;
           /** Format: uri */
-          languages_url: string;
-          /** License */
-          license: {
-            key: string;
-            name: string;
-            node_id: string;
-            spdx_id: string;
-            /** Format: uri */
-            url: string | null;
-          } | null;
-          master_branch?: string;
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization";
           /** Format: uri */
           url?: string;
         } | null;
@@ -19682,6 +19329,284 @@ export interface components {
             | "spam"
             | null;
           /** User */
+          owner: {
+            /** Format: uri */
+            avatar_url?: string;
+            deleted?: boolean;
+            email?: string | null;
+            /** Format: uri-template */
+            events_url?: string;
+            /** Format: uri */
+            followers_url?: string;
+            /** Format: uri-template */
+            following_url?: string;
+            /** Format: uri-template */
+            gists_url?: string;
+            gravatar_id?: string;
+            /** Format: uri */
+            html_url?: string;
+            id: number;
+            login: string;
+            name?: string;
+            node_id?: string;
+            /** Format: uri */
+            organizations_url?: string;
+            /** Format: uri */
+            received_events_url?: string;
+            /** Format: uri */
+            repos_url?: string;
+            site_admin?: boolean;
+            /** Format: uri-template */
+            starred_url?: string;
+            /** Format: uri */
+            subscriptions_url?: string;
+            /** @enum {string} */
+            type?: "Bot" | "User" | "Organization";
+            /** Format: uri */
+            url?: string;
+          } | null;
+          /** @description The set of permissions for the GitHub app */
+          permissions?: {
+            /** @enum {string} */
+            actions?: "read" | "write";
+            /** @enum {string} */
+            administration?: "read" | "write";
+            /** @enum {string} */
+            checks?: "read" | "write";
+            /** @enum {string} */
+            content_references?: "read" | "write";
+            /** @enum {string} */
+            contents?: "read" | "write";
+            /** @enum {string} */
+            deployments?: "read" | "write";
+            /** @enum {string} */
+            discussions?: "read" | "write";
+            /** @enum {string} */
+            emails?: "read" | "write";
+            /** @enum {string} */
+            environments?: "read" | "write";
+            /** @enum {string} */
+            issues?: "read" | "write";
+            /** @enum {string} */
+            keys?: "read" | "write";
+            /** @enum {string} */
+            members?: "read" | "write";
+            /** @enum {string} */
+            metadata?: "read" | "write";
+            /** @enum {string} */
+            organization_administration?: "read" | "write";
+            /** @enum {string} */
+            organization_hooks?: "read" | "write";
+            /** @enum {string} */
+            organization_packages?: "read" | "write";
+            /** @enum {string} */
+            organization_plan?: "read" | "write";
+            /** @enum {string} */
+            organization_projects?: "read" | "write" | "admin";
+            /** @enum {string} */
+            organization_secrets?: "read" | "write";
+            /** @enum {string} */
+            organization_self_hosted_runners?: "read" | "write";
+            /** @enum {string} */
+            organization_user_blocking?: "read" | "write";
+            /** @enum {string} */
+            packages?: "read" | "write";
+            /** @enum {string} */
+            pages?: "read" | "write";
+            /** @enum {string} */
+            pull_requests?: "read" | "write";
+            /** @enum {string} */
+            repository_hooks?: "read" | "write";
+            /** @enum {string} */
+            repository_projects?: "read" | "write" | "admin";
+            /** @enum {string} */
+            secret_scanning_alerts?: "read" | "write";
+            /** @enum {string} */
+            secrets?: "read" | "write";
+            /** @enum {string} */
+            security_events?: "read" | "write";
+            /** @enum {string} */
+            security_scanning_alert?: "read" | "write";
+            /** @enum {string} */
+            single_file?: "read" | "write";
+            /** @enum {string} */
+            statuses?: "read" | "write";
+            /** @enum {string} */
+            team_discussions?: "read" | "write";
+            /** @enum {string} */
+            vulnerability_alerts?: "read" | "write";
+            /** @enum {string} */
+            workflows?: "read" | "write";
+          };
+          /** @description The slug name of the GitHub app */
+          slug?: string;
+          /** Format: date-time */
+          updated_at: string | null;
+        } | null;
+        pull_request?: {
+          /** Format: uri */
+          diff_url?: string;
+          /** Format: uri */
+          html_url?: string;
+          /** Format: date-time */
+          merged_at?: string | null;
+          /** Format: uri */
+          patch_url?: string;
+          /** Format: uri */
+          url?: string;
+        };
+        /** Reactions */
+        reactions: {
+          "+1": number;
+          "-1": number;
+          confused: number;
+          eyes: number;
+          heart: number;
+          hooray: number;
+          laugh: number;
+          rocket: number;
+          total_count: number;
+          /** Format: uri */
+          url: string;
+        };
+        /** Format: uri */
+        repository_url: string;
+        /**
+         * @description State of the issue; either 'open' or 'closed'
+         * @enum {string}
+         */
+        state?: "open" | "closed";
+        state_reason?: string | null;
+        /** Format: uri */
+        timeline_url?: string;
+        /** @description Title of the issue */
+        title: string;
+        /** Format: date-time */
+        updated_at: string;
+        /**
+         * Format: uri
+         * @description URL for the issue
+         */
+        url: string;
+        /** User */
+        user: {
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization" | "Mannequin";
+          /** Format: uri */
+          url?: string;
+        } | null;
+      } & {
+        active_lock_reason?: string | null;
+        assignee?: Record<string, never> | null;
+        assignees?: (Record<string, never> | null)[];
+        author_association?: string;
+        body?: string | null;
+        closed_at?: string | null;
+        comments?: number;
+        comments_url?: string;
+        created_at?: string;
+        events_url?: string;
+        html_url?: string;
+        id?: number;
+        labels?: (Record<string, never> | null)[];
+        labels_url?: string;
+        locked?: boolean;
+        milestone?: Record<string, never> | null;
+        node_id?: string;
+        number?: number;
+        performed_via_github_app?: Record<string, never> | null;
+        reactions?: {
+          "+1"?: number;
+          "-1"?: number;
+          confused?: number;
+          eyes?: number;
+          heart?: number;
+          hooray?: number;
+          laugh?: number;
+          rocket?: number;
+          total_count?: number;
+          url?: string;
+        };
+        repository_url?: string;
+        /** @enum {string} */
+        state: "open" | "closed";
+        timeline_url?: string;
+        title?: string;
+        updated_at?: string;
+        url?: string;
+        user?: {
+          avatar_url?: string;
+          events_url?: string;
+          followers_url?: string;
+          following_url?: string;
+          gists_url?: string;
+          gravatar_id?: string;
+          html_url?: string;
+          id?: number;
+          login?: string;
+          node_id?: string;
+          organizations_url?: string;
+          received_events_url?: string;
+          repos_url?: string;
+          site_admin?: boolean;
+          starred_url?: string;
+          subscriptions_url?: string;
+          type?: string;
+          url?: string;
+        };
+      };
+      organization?: components["schemas"]["organization-simple"];
+      repository: components["schemas"]["repository"];
+      sender: components["schemas"]["simple-user"];
+    };
+    /** issues transferred event */
+    "webhook-issues-transferred": {
+      /** @enum {string} */
+      action: "transferred";
+      changes: {
+        /**
+         * Issue
+         * @description The [issue](https://docs.github.com/enterprise-server@3.8/rest/issues/issues#get-an-issue) itself.
+         */
+        new_issue: {
+          /** @enum {string|null} */
+          active_lock_reason:
+            | "resolved"
+            | "off-topic"
+            | "too heated"
+            | "spam"
+            | null;
+          /** User */
           assignee?: {
             /** Format: uri */
             avatar_url?: string;
@@ -20171,450 +20096,6 @@ export interface components {
           /** Format: uri */
           subscriptions_url?: string;
           /** @enum {string} */
-          type?: "Bot" | "User" | "Organization";
-          /** Format: uri */
-          url?: string;
-        } | null;
-        assignees: ({
-          /** Format: uri */
-          avatar_url?: string;
-          deleted?: boolean;
-          email?: string | null;
-          /** Format: uri-template */
-          events_url?: string;
-          /** Format: uri */
-          followers_url?: string;
-          /** Format: uri-template */
-          following_url?: string;
-          /** Format: uri-template */
-          gists_url?: string;
-          gravatar_id?: string;
-          /** Format: uri */
-          html_url?: string;
-          id: number;
-          login: string;
-          name?: string;
-          node_id?: string;
-          /** Format: uri */
-          organizations_url?: string;
-          /** Format: uri */
-          received_events_url?: string;
-          /** Format: uri */
-          repos_url?: string;
-          site_admin?: boolean;
-          /** Format: uri-template */
-          starred_url?: string;
-          /** Format: uri */
-          subscriptions_url?: string;
-          /** @enum {string} */
-          type?: "Bot" | "User" | "Organization";
-          /** Format: uri */
-          url?: string;
-        } | null)[];
-        /**
-         * AuthorAssociation
-         * @description How the author is associated with the repository.
-         * @enum {string}
-         */
-        author_association:
-          | "COLLABORATOR"
-          | "CONTRIBUTOR"
-          | "FIRST_TIMER"
-          | "FIRST_TIME_CONTRIBUTOR"
-          | "MANNEQUIN"
-          | "MEMBER"
-          | "NONE"
-          | "OWNER";
-        /** @description Contents of the issue */
-        body: string | null;
-        /** Format: date-time */
-        closed_at: string | null;
-        comments: number;
-        /** Format: uri */
-        comments_url: string;
-        /** Format: date-time */
-        created_at: string;
-        draft?: boolean;
-        /** Format: uri */
-        events_url: string;
-        /** Format: uri */
-        html_url: string;
-        /** Format: int64 */
-        id: number;
-        labels?: {
-          /** @description 6-character hex code, without the leading #, identifying the color */
-          color: string;
-          default: boolean;
-          description: string | null;
-          id: number;
-          /** @description The name of the label. */
-          name: string;
-          node_id: string;
-          /**
-           * Format: uri
-           * @description URL for the label
-           */
-          url: string;
-        }[];
-        /** Format: uri-template */
-        labels_url: string;
-        locked?: boolean;
-        /**
-         * Milestone
-         * @description A collection of related issues and pull requests.
-         */
-        milestone: {
-          /** Format: date-time */
-          closed_at: string | null;
-          closed_issues: number;
-          /** Format: date-time */
-          created_at: string;
-          /** User */
-          creator: {
-            /** Format: uri */
-            avatar_url?: string;
-            deleted?: boolean;
-            email?: string | null;
-            /** Format: uri-template */
-            events_url?: string;
-            /** Format: uri */
-            followers_url?: string;
-            /** Format: uri-template */
-            following_url?: string;
-            /** Format: uri-template */
-            gists_url?: string;
-            gravatar_id?: string;
-            /** Format: uri */
-            html_url?: string;
-            id: number;
-            login: string;
-            name?: string;
-            node_id?: string;
-            /** Format: uri */
-            organizations_url?: string;
-            /** Format: uri */
-            received_events_url?: string;
-            /** Format: uri */
-            repos_url?: string;
-            site_admin?: boolean;
-            /** Format: uri-template */
-            starred_url?: string;
-            /** Format: uri */
-            subscriptions_url?: string;
-            /** @enum {string} */
-            type?: "Bot" | "User" | "Organization";
-            /** Format: uri */
-            url?: string;
-          } | null;
-        };
-        /**
-         * Repository
-         * @description A git repository
-         */
-        new_repository: {
-          /**
-           * @description Whether to allow auto-merge for pull requests.
-           * @default false
-           */
-          allow_auto_merge?: boolean;
-          /** @description Whether to allow private forks */
-          allow_forking?: boolean;
-          /**
-           * @description Whether to allow merge commits for pull requests.
-           * @default true
-           */
-          allow_merge_commit?: boolean;
-          /**
-           * @description Whether to allow rebase merges for pull requests.
-           * @default true
-           */
-          allow_rebase_merge?: boolean;
-          /**
-           * @description Whether to allow squash merges for pull requests.
-           * @default true
-           */
-          allow_squash_merge?: boolean;
-          allow_update_branch?: boolean;
-          /** Format: uri-template */
-          archive_url: string;
-          /**
-           * @description Whether the repository is archived.
-           * @default false
-           */
-          archived: boolean;
-          /** Format: uri-template */
-          assignees_url: string;
-          /** Format: uri-template */
-          blobs_url: string;
-          /** Format: uri-template */
-          branches_url: string;
-          /** Format: uri */
-          html_url: string;
-          id: number;
-          /** Format: uri */
-          labels_url: string;
-          node_id: string;
-          /** @description The number of the milestone. */
-          number: number;
-          open_issues: number;
-          /**
-           * @description The state of the milestone.
-           * @enum {string}
-           */
-          state: "open" | "closed";
-          /** @description The title of the milestone. */
-          title: string;
-          /** Format: date-time */
-          updated_at: string;
-          /** Format: uri */
-          url: string;
-        } | null;
-        node_id: string;
-        number: number;
-        /**
-         * App
-         * @description GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
-         */
-        performed_via_github_app?: {
-          /** Format: date-time */
-          created_at: string | null;
-          description: string | null;
-          /** @description Returns whether or not this repository is disabled. */
-          disabled?: boolean;
-          /** Format: uri */
-          downloads_url: string;
-          /** Format: uri */
-          events_url: string;
-          fork: boolean;
-          forks: number;
-          forks_count: number;
-          /** Format: uri */
-          forks_url: string;
-          full_name: string;
-          /** Format: uri-template */
-          git_commits_url: string;
-          /** Format: uri-template */
-          git_refs_url: string;
-          /** Format: uri-template */
-          git_tags_url: string;
-          /** Format: uri */
-          git_url: string;
-          /**
-           * @description Whether downloads are enabled.
-           * @default true
-           */
-          has_downloads: boolean;
-          /**
-           * @description Whether issues are enabled.
-           * @default true
-           */
-          has_issues: boolean;
-          has_pages: boolean;
-          /**
-           * @description Whether projects are enabled.
-           * @default true
-           */
-          has_projects: boolean;
-          /**
-           * @description Whether the wiki is enabled.
-           * @default true
-           */
-          has_wiki: boolean;
-          /**
-           * @description Whether discussions are enabled.
-           * @default false
-           */
-          has_discussions: boolean;
-          homepage: string | null;
-          /** Format: uri */
-          external_url: string | null;
-          /** Format: uri */
-          html_url: string;
-          /** @description Unique identifier of the GitHub app */
-          id: number | null;
-          /** @description The name of the GitHub app */
-          name: string;
-          node_id: string;
-          /** User */
-          owner: {
-            /** Format: uri */
-            avatar_url?: string;
-            deleted?: boolean;
-            email?: string | null;
-            /** Format: uri-template */
-            events_url?: string;
-            /** Format: uri */
-            followers_url?: string;
-            /** Format: uri-template */
-            following_url?: string;
-            /** Format: uri-template */
-            gists_url?: string;
-            gravatar_id?: string;
-            /** Format: uri */
-            html_url?: string;
-            id: number;
-            login: string;
-            name?: string;
-            node_id?: string;
-            /** Format: uri */
-            organizations_url?: string;
-            /** Format: uri */
-            received_events_url?: string;
-            /** Format: uri */
-            repos_url?: string;
-            site_admin?: boolean;
-            /** Format: uri-template */
-            starred_url?: string;
-            /** Format: uri */
-            subscriptions_url?: string;
-            /** @enum {string} */
-            type?: "Bot" | "User" | "Organization";
-            /** Format: uri */
-            url?: string;
-          } | null;
-          /** @description The set of permissions for the GitHub app */
-          permissions?: {
-            admin: boolean;
-            maintain?: boolean;
-            pull: boolean;
-            push: boolean;
-            triage?: boolean;
-          };
-          /** @description Whether the repository is private or public. */
-          private: boolean;
-          public?: boolean;
-          /** Format: uri-template */
-          pulls_url: string;
-          pushed_at: number | string | null;
-          /** Format: uri-template */
-          releases_url: string;
-          role_name?: string | null;
-          size: number;
-          ssh_url: string;
-          stargazers?: number;
-          stargazers_count: number;
-          /** Format: uri */
-          stargazers_url: string;
-          /** Format: uri-template */
-          statuses_url: string;
-          /** Format: uri */
-          subscribers_url: string;
-          /** Format: uri */
-          subscription_url: string;
-          /** Format: uri */
-          svn_url: string;
-          /** Format: uri */
-          tags_url: string;
-          /** Format: uri */
-          teams_url: string;
-          topics: string[];
-          /** Format: uri-template */
-          trees_url: string;
-          /** Format: date-time */
-          updated_at: string;
-          /** Format: uri */
-          url: string;
-          /** @enum {string} */
-          type?: "Bot" | "User" | "Organization";
-          /** Format: uri */
-          url?: string;
-        } | null;
-      };
-      organization?: components["schemas"]["organization-simple"];
-      repository: components["schemas"]["repository"];
-      sender: components["schemas"]["simple-user"];
-    };
-    /** issues unassigned event */
-    "webhook-issues-unassigned": {
-      /**
-       * @description The action that was performed.
-       * @enum {string}
-       */
-      action: "unassigned";
-      /** User */
-      assignee?: {
-        /** Format: uri */
-        avatar_url?: string;
-        deleted?: boolean;
-        email?: string | null;
-        /** Format: uri-template */
-        events_url?: string;
-        /** Format: uri */
-        followers_url?: string;
-        /** Format: uri-template */
-        following_url?: string;
-        /** Format: uri-template */
-        gists_url?: string;
-        gravatar_id?: string;
-        /** Format: uri */
-        html_url?: string;
-        id: number;
-        login: string;
-        name?: string;
-        node_id?: string;
-        /** Format: uri */
-        organizations_url?: string;
-        /** Format: uri */
-        received_events_url?: string;
-        /** Format: uri */
-        repos_url?: string;
-        site_admin?: boolean;
-        /** Format: uri-template */
-        starred_url?: string;
-        /** Format: uri */
-        subscriptions_url?: string;
-        /** @enum {string} */
-        type?: "Bot" | "User" | "Organization" | "Mannequin";
-        /** Format: uri */
-        url?: string;
-      } | null;
-      enterprise?: components["schemas"]["enterprise"];
-      installation?: components["schemas"]["simple-installation"];
-      /**
-       * Issue
-       * @description The [issue](https://docs.github.com/enterprise-server@3.8/rest/issues/issues#get-an-issue) itself.
-       */
-      issue: {
-        /** @enum {string|null} */
-        active_lock_reason:
-          | "resolved"
-          | "off-topic"
-          | "too heated"
-          | "spam"
-          | null;
-        /** User */
-        assignee?: {
-          /** Format: uri */
-          avatar_url?: string;
-          deleted?: boolean;
-          email?: string | null;
-          /** Format: uri-template */
-          events_url?: string;
-          /** Format: uri */
-          followers_url?: string;
-          /** Format: uri-template */
-          following_url?: string;
-          /** Format: uri-template */
-          gists_url?: string;
-          gravatar_id?: string;
-          /** Format: uri */
-          html_url?: string;
-          id: number;
-          login: string;
-          name?: string;
-          node_id?: string;
-          /** Format: uri */
-          organizations_url?: string;
-          /** Format: uri */
-          received_events_url?: string;
-          /** Format: uri */
-          repos_url?: string;
-          site_admin?: boolean;
-          /** Format: uri-template */
-          starred_url?: string;
-          /** Format: uri */
-          subscriptions_url?: string;
-          /** @enum {string} */
           type?: "Bot" | "User" | "Organization" | "Mannequin";
           /** Format: uri */
           url?: string;
@@ -21045,10 +20526,50 @@ export interface components {
       repository: components["schemas"]["repository"];
       sender: components["schemas"]["simple-user"];
     };
-    /** issues unlabeled event */
-    "webhook-issues-unlabeled": {
-      /** @enum {string} */
-      action: "unlabeled";
+    /** issues unassigned event */
+    "webhook-issues-unassigned": {
+      /**
+       * @description The action that was performed.
+       * @enum {string}
+       */
+      action: "unassigned";
+      /** User */
+      assignee?: {
+        /** Format: uri */
+        avatar_url?: string;
+        deleted?: boolean;
+        email?: string | null;
+        /** Format: uri-template */
+        events_url?: string;
+        /** Format: uri */
+        followers_url?: string;
+        /** Format: uri-template */
+        following_url?: string;
+        /** Format: uri-template */
+        gists_url?: string;
+        gravatar_id?: string;
+        /** Format: uri */
+        html_url?: string;
+        id: number;
+        login: string;
+        name?: string;
+        node_id?: string;
+        /** Format: uri */
+        organizations_url?: string;
+        /** Format: uri */
+        received_events_url?: string;
+        /** Format: uri */
+        repos_url?: string;
+        site_admin?: boolean;
+        /** Format: uri-template */
+        starred_url?: string;
+        /** Format: uri */
+        subscriptions_url?: string;
+        /** @enum {string} */
+        type?: "Bot" | "User" | "Organization" | "Mannequin";
+        /** Format: uri */
+        url?: string;
+      } | null;
       enterprise?: components["schemas"]["enterprise"];
       installation?: components["schemas"]["simple-installation"];
       /**
@@ -22075,193 +21596,26 @@ export interface components {
           /** Format: uri */
           subscriptions_url?: string;
           /** @enum {string} */
-          type?: "Bot" | "User" | "Organization";
+          type?: "Bot" | "User" | "Organization" | "Mannequin";
           /** Format: uri */
           url?: string;
         } | null;
-      } & {
-        active_lock_reason: null;
-        assignee?: Record<string, never> | null;
-        assignees?: (Record<string, never> | null)[];
-        author_association?: string;
-        body?: string | null;
-        closed_at?: string | null;
-        comments?: number;
-        comments_url?: string;
-        created_at?: string;
-        events_url?: string;
-        html_url?: string;
-        id?: number;
-        labels?: (Record<string, never> | null)[];
-        labels_url?: string;
-        /** @enum {boolean} */
-        locked: false;
-        milestone?: Record<string, never> | null;
-        node_id?: string;
-        number?: number;
-        performed_via_github_app?: null;
-        reactions?: {
-          "+1"?: number;
-          "-1"?: number;
-          confused?: number;
-          eyes?: number;
-          heart?: number;
-          hooray?: number;
-          laugh?: number;
-          rocket?: number;
-          total_count?: number;
-          url?: string;
-        };
-        repository_url?: string;
-        state?: string;
-        timeline_url?: string;
-        title?: string;
-        updated_at?: string;
-        url?: string;
-        user?: {
-          avatar_url?: string;
-          events_url?: string;
-          followers_url?: string;
-          following_url?: string;
-          gists_url?: string;
-          gravatar_id?: string;
-          html_url?: string;
-          id?: number;
-          login?: string;
-          node_id?: string;
-          organizations_url?: string;
-          received_events_url?: string;
-          repos_url?: string;
-          site_admin?: boolean;
-          starred_url?: string;
-          subscriptions_url?: string;
-          type?: string;
-          url?: string;
-        };
       };
+      organization?: components["schemas"]["organization-simple"];
+      repository: components["schemas"]["repository"];
+      sender: components["schemas"]["simple-user"];
     };
-    /** issues unpinned event */
-    "webhook-issues-unpinned": {
+    /** issues unlabeled event */
+    "webhook-issues-unlabeled": {
       /** @enum {string} */
-      action: "unpinned";
+      action: "unlabeled";
       enterprise?: components["schemas"]["enterprise"];
       installation?: components["schemas"]["simple-installation"];
       /**
        * Issue
        * @description The [issue](https://docs.github.com/enterprise-server@3.8/rest/issues/issues#get-an-issue) itself.
        */
-      team: {
-        deleted?: boolean;
-        /** @description Description of the team */
-        description?: string | null;
-        /** Format: uri */
-        html_url?: string;
-        /** @description Unique identifier of the team */
-        id: number;
-        /** Format: uri-template */
-        members_url?: string;
-        /** @description Name of the team */
-        name: string;
-        node_id?: string;
-        parent?: {
-          /** @description Description of the team */
-          description: string | null;
-          /** Format: uri */
-          html_url: string;
-          /** @description Unique identifier of the team */
-          id: number;
-          /** Format: uri-template */
-          members_url: string;
-          /** @description Name of the team */
-          name: string;
-          node_id: string;
-          /** @description Permission that the team will have for its repositories */
-          permission: string;
-          /** @enum {string} */
-          privacy: "open" | "closed" | "secret";
-          /** Format: uri */
-          repositories_url: string;
-          slug: string;
-          /**
-           * Format: uri
-           * @description URL for the team
-           */
-          url: string;
-        } | null;
-        /** @description Permission that the team will have for its repositories */
-        permission?: string;
-        /** @enum {string} */
-        privacy?: "open" | "closed" | "secret";
-        /** Format: uri */
-        repositories_url?: string;
-        slug?: string;
-        /**
-         * Format: uri
-         * @description URL for the team
-         */
-        url?: string;
-      };
-    };
-    "webhook-merge-queue-entry-created": {
-      /** @enum {string} */
-      action: "created";
-      enterprise?: components["schemas"]["enterprise"];
-      installation?: components["schemas"]["simple-installation"];
-      merge_queue: {
-        id: number;
-        node_id: string;
-      };
-      merge_queue_entry: {
-        id: number;
-        is_solo: boolean;
-        node_id: string;
-      } | null;
-      message: string | null;
-      organization?: components["schemas"]["organization-simple"];
-      /** Pull Request */
-      pull_request: {
-        _links: {
-          /** Link */
-          comments: {
-            /** Format: uri-template */
-            href: string;
-          };
-          /** Link */
-          commits: {
-            /** Format: uri-template */
-            href: string;
-          };
-          /** Link */
-          html: {
-            /** Format: uri-template */
-            href: string;
-          };
-          /** Link */
-          issue: {
-            /** Format: uri-template */
-            href: string;
-          };
-          /** Link */
-          review_comment: {
-            /** Format: uri-template */
-            href: string;
-          };
-          /** Link */
-          review_comments: {
-            /** Format: uri-template */
-            href: string;
-          };
-          /** Link */
-          self: {
-            /** Format: uri-template */
-            href: string;
-          };
-          /** Link */
-          statuses: {
-            /** Format: uri-template */
-            href: string;
-          };
-        };
+      issue: {
         /** @enum {string|null} */
         active_lock_reason:
           | "resolved"
@@ -22269,9 +21623,501 @@ export interface components {
           | "too heated"
           | "spam"
           | null;
-        additions?: number;
         /** User */
-        assignee: {
+        assignee?: {
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization" | "Mannequin";
+          /** Format: uri */
+          url?: string;
+        } | null;
+        assignees: ({
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization" | "Mannequin";
+          /** Format: uri */
+          url?: string;
+        } | null)[];
+        /**
+         * AuthorAssociation
+         * @description How the author is associated with the repository.
+         * @enum {string}
+         */
+        author_association:
+          | "COLLABORATOR"
+          | "CONTRIBUTOR"
+          | "FIRST_TIMER"
+          | "FIRST_TIME_CONTRIBUTOR"
+          | "MANNEQUIN"
+          | "MEMBER"
+          | "NONE"
+          | "OWNER";
+        /** @description Contents of the issue */
+        body: string | null;
+        /** Format: date-time */
+        closed_at: string | null;
+        comments: number;
+        /** Format: uri */
+        comments_url: string;
+        /** Format: date-time */
+        created_at: string;
+        draft?: boolean;
+        /** Format: uri */
+        events_url: string;
+        /** Format: uri */
+        html_url: string;
+        /** Format: int64 */
+        id: number;
+        labels?: {
+          /** @description 6-character hex code, without the leading #, identifying the color */
+          color: string;
+          default: boolean;
+          description: string | null;
+          id: number;
+          /** @description The name of the label. */
+          name: string;
+          node_id: string;
+          /**
+           * Format: uri
+           * @description URL for the label
+           */
+          url: string;
+        }[];
+        /** Format: uri-template */
+        labels_url: string;
+        locked?: boolean;
+        /**
+         * Milestone
+         * @description A collection of related issues and pull requests.
+         */
+        milestone: {
+          /** Format: date-time */
+          closed_at: string | null;
+          closed_issues: number;
+          /** Format: date-time */
+          created_at: string;
+          /** User */
+          creator: {
+            /** Format: uri */
+            avatar_url?: string;
+            deleted?: boolean;
+            email?: string | null;
+            /** Format: uri-template */
+            events_url?: string;
+            /** Format: uri */
+            followers_url?: string;
+            /** Format: uri-template */
+            following_url?: string;
+            /** Format: uri-template */
+            gists_url?: string;
+            gravatar_id?: string;
+            /** Format: uri */
+            html_url?: string;
+            id: number;
+            login: string;
+            name?: string;
+            node_id?: string;
+            /** Format: uri */
+            organizations_url?: string;
+            /** Format: uri */
+            received_events_url?: string;
+            /** Format: uri */
+            repos_url?: string;
+            site_admin?: boolean;
+            /** Format: uri-template */
+            starred_url?: string;
+            /** Format: uri */
+            subscriptions_url?: string;
+            /** @enum {string} */
+            type?: "Bot" | "User" | "Organization" | "Mannequin";
+            /** Format: uri */
+            url?: string;
+          } | null;
+          description: string | null;
+          /** Format: date-time */
+          due_on: string | null;
+          /** Format: uri */
+          html_url: string;
+          id: number;
+          /** Format: uri */
+          labels_url: string;
+          node_id: string;
+          /** @description The number of the milestone. */
+          number: number;
+          open_issues: number;
+          /**
+           * @description The state of the milestone.
+           * @enum {string}
+           */
+          state: "open" | "closed";
+          /** @description The title of the milestone. */
+          title: string;
+          /** Format: date-time */
+          updated_at: string;
+          /** Format: uri */
+          url: string;
+        } | null;
+        node_id: string;
+        number: number;
+        /**
+         * App
+         * @description GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
+         */
+        performed_via_github_app?: {
+          /** Format: date-time */
+          created_at: string | null;
+          description: string | null;
+          /** @description The list of events for the GitHub app */
+          events?: (
+            | "branch_protection_rule"
+            | "check_run"
+            | "check_suite"
+            | "code_scanning_alert"
+            | "commit_comment"
+            | "content_reference"
+            | "create"
+            | "delete"
+            | "deployment"
+            | "deployment_review"
+            | "deployment_status"
+            | "deploy_key"
+            | "discussion"
+            | "discussion_comment"
+            | "fork"
+            | "gollum"
+            | "issues"
+            | "issue_comment"
+            | "label"
+            | "member"
+            | "membership"
+            | "milestone"
+            | "organization"
+            | "org_block"
+            | "page_build"
+            | "project"
+            | "project_card"
+            | "project_column"
+            | "public"
+            | "pull_request"
+            | "pull_request_review"
+            | "pull_request_review_comment"
+            | "push"
+            | "registry_package"
+            | "release"
+            | "repository"
+            | "repository_dispatch"
+            | "secret_scanning_alert"
+            | "star"
+            | "status"
+            | "team"
+            | "team_add"
+            | "watch"
+            | "workflow_dispatch"
+            | "workflow_run"
+            | "reminder"
+            | "pull_request_review_thread"
+          )[];
+          /** Format: uri */
+          external_url: string | null;
+          /** Format: uri */
+          html_url: string;
+          /** @description Unique identifier of the GitHub app */
+          id: number | null;
+          /** @description The name of the GitHub app */
+          name: string;
+          node_id: string;
+          /** User */
+          user: {
+            /** Format: uri */
+            avatar_url?: string;
+            deleted?: boolean;
+            email?: string | null;
+            /** Format: uri-template */
+            events_url?: string;
+            /** Format: uri */
+            followers_url?: string;
+            /** Format: uri-template */
+            following_url?: string;
+            /** Format: uri-template */
+            gists_url?: string;
+            gravatar_id?: string;
+            /** Format: uri */
+            html_url?: string;
+            id: number;
+            login: string;
+            name?: string;
+            node_id?: string;
+            /** Format: uri */
+            organizations_url?: string;
+            /** Format: uri */
+            received_events_url?: string;
+            /** Format: uri */
+            repos_url?: string;
+            site_admin?: boolean;
+            /** Format: uri-template */
+            starred_url?: string;
+            /** Format: uri */
+            subscriptions_url?: string;
+            /** @enum {string} */
+            type?: "Bot" | "User" | "Organization";
+            /** Format: uri */
+            url?: string;
+          } | null;
+          /** @description The set of permissions for the GitHub app */
+          permissions?: {
+            /** @enum {string} */
+            actions?: "read" | "write";
+            /** @enum {string} */
+            administration?: "read" | "write";
+            /** @enum {string} */
+            checks?: "read" | "write";
+            /** @enum {string} */
+            content_references?: "read" | "write";
+            /** @enum {string} */
+            contents?: "read" | "write";
+            /** @enum {string} */
+            deployments?: "read" | "write";
+            /** @enum {string} */
+            discussions?: "read" | "write";
+            /** @enum {string} */
+            emails?: "read" | "write";
+            /** @enum {string} */
+            environments?: "read" | "write";
+            /** @enum {string} */
+            issues?: "read" | "write";
+            /** @enum {string} */
+            keys?: "read" | "write";
+            /** @enum {string} */
+            members?: "read" | "write";
+            /** @enum {string} */
+            metadata?: "read" | "write";
+            /** @enum {string} */
+            organization_administration?: "read" | "write";
+            /** @enum {string} */
+            organization_hooks?: "read" | "write";
+            /** @enum {string} */
+            organization_packages?: "read" | "write";
+            /** @enum {string} */
+            organization_plan?: "read" | "write";
+            /** @enum {string} */
+            organization_projects?: "read" | "write" | "admin";
+            /** @enum {string} */
+            organization_secrets?: "read" | "write";
+            /** @enum {string} */
+            organization_self_hosted_runners?: "read" | "write";
+            /** @enum {string} */
+            organization_user_blocking?: "read" | "write";
+            /** @enum {string} */
+            packages?: "read" | "write";
+            /** @enum {string} */
+            pages?: "read" | "write";
+            /** @enum {string} */
+            pull_requests?: "read" | "write";
+            /** @enum {string} */
+            repository_hooks?: "read" | "write";
+            /** @enum {string} */
+            repository_projects?: "read" | "write";
+            /** @enum {string} */
+            secret_scanning_alerts?: "read" | "write";
+            /** @enum {string} */
+            secrets?: "read" | "write";
+            /** @enum {string} */
+            security_events?: "read" | "write";
+            /** @enum {string} */
+            security_scanning_alert?: "read" | "write";
+            /** @enum {string} */
+            single_file?: "read" | "write";
+            /** @enum {string} */
+            statuses?: "read" | "write";
+            /** @enum {string} */
+            team_discussions?: "read" | "write";
+            /** @enum {string} */
+            vulnerability_alerts?: "read" | "write";
+            /** @enum {string} */
+            workflows?: "read" | "write";
+          };
+          /** @description The slug name of the GitHub app */
+          slug?: string;
+          /** Format: date-time */
+          updated_at: string | null;
+        } | null;
+        pull_request?: {
+          /** Format: uri */
+          diff_url?: string;
+          /** Format: uri */
+          html_url?: string;
+          /** Format: date-time */
+          merged_at?: string | null;
+          /** Format: uri */
+          patch_url?: string;
+          /** Format: uri */
+          url?: string;
+        };
+        /** Reactions */
+        reactions: {
+          "+1": number;
+          "-1": number;
+          confused: number;
+          eyes: number;
+          heart: number;
+          hooray: number;
+          laugh: number;
+          rocket: number;
+          total_count: number;
+          /** Format: uri */
+          url: string;
+        };
+        /** Format: uri */
+        repository_url: string;
+        /**
+         * @description State of the issue; either 'open' or 'closed'
+         * @enum {string}
+         */
+        state?: "open" | "closed";
+        state_reason?: string | null;
+        /** Format: uri */
+        timeline_url?: string;
+        /** @description Title of the issue */
+        title: string;
+        /** Format: date-time */
+        updated_at: string;
+        /**
+         * Format: uri
+         * @description URL for the issue
+         */
+        url: string;
+        /** User */
+        user: {
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization" | "Mannequin";
+          /** Format: uri */
+          url?: string;
+        } | null;
+      };
+      /** Label */
+      label?: {
+        /** @description 6-character hex code, without the leading #, identifying the color */
+        color: string;
+        default: boolean;
+        description: string | null;
+        id: number;
+        /** @description The name of the label. */
+        name: string;
+        node_id: string;
+        /**
+         * Format: uri
+         * @description URL for the label
+         */
+        url: string;
+      };
+      organization?: components["schemas"]["organization-simple"];
+      repository: components["schemas"]["repository"];
+      sender: components["schemas"]["simple-user"];
+    };
+    /** issues unlocked event */
+    "webhook-issues-unlocked": {
+      /** @enum {string} */
+      action: "unlocked";
+      enterprise?: components["schemas"]["enterprise"];
+      installation?: components["schemas"]["simple-installation"];
+      issue: {
+        /** @enum {string|null} */
+        active_lock_reason:
+          | "resolved"
+          | "off-topic"
+          | "too heated"
+          | "spam"
+          | null;
+        /** User */
+        assignee?: {
           /** Format: uri */
           avatar_url?: string;
           deleted?: boolean;
@@ -22357,342 +22203,7 @@ export interface components {
           | "MEMBER"
           | "NONE"
           | "OWNER";
-        /**
-         * PullRequestAutoMerge
-         * @description The status of auto merging a pull request.
-         */
-        auto_merge: {
-          /** @description Commit message for the merge commit. */
-          commit_message: string | null;
-          /** @description Title for the merge commit message. */
-          commit_title: string;
-          /** User */
-          enabled_by: {
-            /** Format: uri */
-            avatar_url?: string;
-            deleted?: boolean;
-            email?: string | null;
-            /** Format: uri-template */
-            events_url?: string;
-            /** Format: uri */
-            followers_url?: string;
-            /** Format: uri-template */
-            following_url?: string;
-            /** Format: uri-template */
-            gists_url?: string;
-            gravatar_id?: string;
-            /** Format: uri */
-            html_url?: string;
-            id: number;
-            login: string;
-            name?: string;
-            node_id?: string;
-            /** Format: uri */
-            organizations_url?: string;
-            /** Format: uri */
-            received_events_url?: string;
-            /** Format: uri */
-            repos_url?: string;
-            site_admin?: boolean;
-            /** Format: uri-template */
-            starred_url?: string;
-            /** Format: uri */
-            subscriptions_url?: string;
-            /** @enum {string} */
-            type?: "Bot" | "User" | "Organization";
-            /** Format: uri */
-            url?: string;
-          } | null;
-          /**
-           * @description The merge method to use.
-           * @enum {string}
-           */
-          merge_method: "merge" | "squash" | "rebase";
-        } | null;
-        base: {
-          label: string;
-          ref: string;
-          /**
-           * Repository
-           * @description A git repository
-           */
-          repo: {
-            /**
-             * @description Whether to allow auto-merge for pull requests.
-             * @default false
-             */
-            allow_auto_merge?: boolean;
-            /** @description Whether to allow private forks */
-            allow_forking?: boolean;
-            /**
-             * @description Whether to allow merge commits for pull requests.
-             * @default true
-             */
-            allow_merge_commit?: boolean;
-            /**
-             * @description Whether to allow rebase merges for pull requests.
-             * @default true
-             */
-            allow_rebase_merge?: boolean;
-            /**
-             * @description Whether to allow squash merges for pull requests.
-             * @default true
-             */
-            allow_squash_merge?: boolean;
-            allow_update_branch?: boolean;
-            /** Format: uri-template */
-            archive_url: string;
-            /**
-             * @description Whether the repository is archived.
-             * @default false
-             */
-            archived: boolean;
-            /** Format: uri-template */
-            assignees_url: string;
-            /** Format: uri-template */
-            blobs_url: string;
-            /** Format: uri-template */
-            branches_url: string;
-            /** Format: uri */
-            clone_url: string;
-            /** Format: uri-template */
-            collaborators_url: string;
-            /** Format: uri-template */
-            comments_url: string;
-            /** Format: uri-template */
-            commits_url: string;
-            /** Format: uri-template */
-            compare_url: string;
-            /** Format: uri-template */
-            contents_url: string;
-            /** Format: uri */
-            contributors_url: string;
-            created_at: number | string;
-            /** @description The default branch of the repository. */
-            default_branch: string;
-            /**
-             * @description Whether to delete head branches when pull requests are merged
-             * @default false
-             */
-            delete_branch_on_merge?: boolean;
-            /** Format: uri */
-            deployments_url: string;
-            description: string | null;
-            /** @description Returns whether or not this repository is disabled. */
-            disabled?: boolean;
-            /** Format: uri */
-            downloads_url: string;
-            /** Format: uri */
-            events_url: string;
-            fork: boolean;
-            forks: number;
-            forks_count: number;
-            /** Format: uri */
-            forks_url: string;
-            full_name: string;
-            /** Format: uri-template */
-            git_commits_url: string;
-            /** Format: uri-template */
-            git_refs_url: string;
-            /** Format: uri-template */
-            git_tags_url: string;
-            /** Format: uri */
-            git_url: string;
-            /**
-             * @description Whether downloads are enabled.
-             * @default true
-             */
-            has_downloads: boolean;
-            /**
-             * @description Whether issues are enabled.
-             * @default true
-             */
-            has_issues: boolean;
-            has_pages: boolean;
-            /**
-             * @description Whether projects are enabled.
-             * @default true
-             */
-            has_projects: boolean;
-            /**
-             * @description Whether the wiki is enabled.
-             * @default true
-             */
-            has_wiki: boolean;
-            /**
-             * @description Whether discussions are enabled.
-             * @default false
-             */
-            has_discussions: boolean;
-            homepage: string | null;
-            /** Format: uri */
-            hooks_url: string;
-            /** Format: uri */
-            html_url: string;
-            /** @description Unique identifier of the repository */
-            id: number;
-            is_template?: boolean;
-            /** Format: uri-template */
-            issue_comment_url: string;
-            /** Format: uri-template */
-            issue_events_url: string;
-            /** Format: uri-template */
-            issues_url: string;
-            /** Format: uri-template */
-            keys_url: string;
-            /** Format: uri-template */
-            labels_url: string;
-            language: string | null;
-            /** Format: uri */
-            languages_url: string;
-            /** License */
-            license: {
-              key: string;
-              name: string;
-              node_id: string;
-              spdx_id: string;
-              /** Format: uri */
-              url: string | null;
-            } | null;
-            master_branch?: string;
-            /** Format: uri */
-            merges_url: string;
-            /** Format: uri-template */
-            milestones_url: string;
-            /** Format: uri */
-            mirror_url: string | null;
-            /** @description The name of the repository. */
-            name: string;
-            node_id: string;
-            /** Format: uri-template */
-            notifications_url: string;
-            open_issues: number;
-            open_issues_count: number;
-            organization?: string;
-            /** User */
-            owner: {
-              /** Format: uri */
-              avatar_url?: string;
-              deleted?: boolean;
-              email?: string | null;
-              /** Format: uri-template */
-              events_url?: string;
-              /** Format: uri */
-              followers_url?: string;
-              /** Format: uri-template */
-              following_url?: string;
-              /** Format: uri-template */
-              gists_url?: string;
-              gravatar_id?: string;
-              /** Format: uri */
-              html_url?: string;
-              id: number;
-              login: string;
-              name?: string;
-              node_id?: string;
-              /** Format: uri */
-              organizations_url?: string;
-              /** Format: uri */
-              received_events_url?: string;
-              /** Format: uri */
-              repos_url?: string;
-              site_admin?: boolean;
-              /** Format: uri-template */
-              starred_url?: string;
-              /** Format: uri */
-              subscriptions_url?: string;
-              /** @enum {string} */
-              type?: "Bot" | "User" | "Organization";
-              /** Format: uri */
-              url?: string;
-            } | null;
-            permissions?: {
-              admin: boolean;
-              maintain?: boolean;
-              pull: boolean;
-              push: boolean;
-              triage?: boolean;
-            };
-            /** @description Whether the repository is private or public. */
-            private: boolean;
-            public?: boolean;
-            /** Format: uri-template */
-            pulls_url: string;
-            pushed_at: number | string | null;
-            /** Format: uri-template */
-            releases_url: string;
-            role_name?: string | null;
-            size: number;
-            ssh_url: string;
-            stargazers?: number;
-            stargazers_count: number;
-            /** Format: uri */
-            stargazers_url: string;
-            /** Format: uri-template */
-            statuses_url: string;
-            /** Format: uri */
-            subscribers_url: string;
-            /** Format: uri */
-            subscription_url: string;
-            /** Format: uri */
-            svn_url: string;
-            /** Format: uri */
-            tags_url: string;
-            /** Format: uri */
-            teams_url: string;
-            topics: string[];
-            /** Format: uri-template */
-            trees_url: string;
-            /** Format: date-time */
-            updated_at: string;
-            /** Format: uri */
-            url: string;
-            /** @enum {string} */
-            visibility: "public" | "private" | "internal";
-            watchers: number;
-            watchers_count: number;
-            /** @description Whether to require contributors to sign off on web-based commits */
-            web_commit_signoff_required?: boolean;
-          };
-          sha: string;
-          /** User */
-          user: {
-            /** Format: uri */
-            avatar_url?: string;
-            deleted?: boolean;
-            email?: string | null;
-            /** Format: uri-template */
-            events_url?: string;
-            /** Format: uri */
-            followers_url?: string;
-            /** Format: uri-template */
-            following_url?: string;
-            /** Format: uri-template */
-            gists_url?: string;
-            gravatar_id?: string;
-            /** Format: uri */
-            html_url?: string;
-            id: number;
-            login: string;
-            name?: string;
-            node_id?: string;
-            /** Format: uri */
-            organizations_url?: string;
-            /** Format: uri */
-            received_events_url?: string;
-            /** Format: uri */
-            repos_url?: string;
-            site_admin?: boolean;
-            /** Format: uri-template */
-            starred_url?: string;
-            /** Format: uri */
-            subscriptions_url?: string;
-            /** @enum {string} */
-            type?: "Bot" | "User" | "Organization";
-            /** Format: uri */
-            url?: string;
-          } | null;
-        };
+        /** @description Contents of the issue */
         body: string | null;
         changed_files?: number;
         /** Format: date-time */
@@ -22976,6 +22487,603 @@ export interface components {
           updated_at: string;
           /** Format: uri */
           url: string;
+        } | null;
+        node_id: string;
+        number: number;
+        /**
+         * App
+         * @description GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
+         */
+        performed_via_github_app?: {
+          /** Format: date-time */
+          created_at: string | null;
+          description: string | null;
+          /** @description The list of events for the GitHub app */
+          events?: (
+            | "branch_protection_rule"
+            | "check_run"
+            | "check_suite"
+            | "code_scanning_alert"
+            | "commit_comment"
+            | "content_reference"
+            | "create"
+            | "delete"
+            | "deployment"
+            | "deployment_review"
+            | "deployment_status"
+            | "deploy_key"
+            | "discussion"
+            | "discussion_comment"
+            | "fork"
+            | "gollum"
+            | "issues"
+            | "issue_comment"
+            | "label"
+            | "member"
+            | "membership"
+            | "milestone"
+            | "organization"
+            | "org_block"
+            | "page_build"
+            | "project"
+            | "project_card"
+            | "project_column"
+            | "public"
+            | "pull_request"
+            | "pull_request_review"
+            | "pull_request_review_comment"
+            | "push"
+            | "registry_package"
+            | "release"
+            | "repository"
+            | "repository_dispatch"
+            | "secret_scanning_alert"
+            | "star"
+            | "status"
+            | "team"
+            | "team_add"
+            | "watch"
+            | "workflow_dispatch"
+            | "workflow_run"
+          )[];
+          /** Format: uri */
+          external_url: string | null;
+          /** Format: uri */
+          html_url: string;
+          /** @description Unique identifier of the GitHub app */
+          id: number | null;
+          /** @description The name of the GitHub app */
+          name: string;
+          node_id: string;
+          /** User */
+          user: {
+            /** Format: uri */
+            avatar_url?: string;
+            deleted?: boolean;
+            email?: string | null;
+            /** Format: uri-template */
+            events_url?: string;
+            /** Format: uri */
+            followers_url?: string;
+            /** Format: uri-template */
+            following_url?: string;
+            /** Format: uri-template */
+            gists_url?: string;
+            gravatar_id?: string;
+            /** Format: uri */
+            html_url?: string;
+            id: number;
+            login: string;
+            name?: string;
+            node_id?: string;
+            /** Format: uri */
+            organizations_url?: string;
+            /** Format: uri */
+            received_events_url?: string;
+            /** Format: uri */
+            repos_url?: string;
+            site_admin?: boolean;
+            /** Format: uri-template */
+            starred_url?: string;
+            /** Format: uri */
+            subscriptions_url?: string;
+            /** @enum {string} */
+            type?: "Bot" | "User" | "Organization";
+            /** Format: uri */
+            url?: string;
+          } | null;
+          /** @description The set of permissions for the GitHub app */
+          permissions?: {
+            /** @enum {string} */
+            actions?: "read" | "write";
+            /** @enum {string} */
+            administration?: "read" | "write";
+            /** @enum {string} */
+            checks?: "read" | "write";
+            /** @enum {string} */
+            content_references?: "read" | "write";
+            /** @enum {string} */
+            contents?: "read" | "write";
+            /** @enum {string} */
+            deployments?: "read" | "write";
+            /** @enum {string} */
+            discussions?: "read" | "write";
+            /** @enum {string} */
+            emails?: "read" | "write";
+            /** @enum {string} */
+            environments?: "read" | "write";
+            /** @enum {string} */
+            issues?: "read" | "write";
+            /** @enum {string} */
+            keys?: "read" | "write";
+            /** @enum {string} */
+            members?: "read" | "write";
+            /** @enum {string} */
+            metadata?: "read" | "write";
+            /** @enum {string} */
+            organization_administration?: "read" | "write";
+            /** @enum {string} */
+            organization_hooks?: "read" | "write";
+            /** @enum {string} */
+            organization_packages?: "read" | "write";
+            /** @enum {string} */
+            organization_plan?: "read" | "write";
+            /** @enum {string} */
+            organization_projects?: "read" | "write";
+            /** @enum {string} */
+            organization_secrets?: "read" | "write";
+            /** @enum {string} */
+            organization_self_hosted_runners?: "read" | "write";
+            /** @enum {string} */
+            organization_user_blocking?: "read" | "write";
+            /** @enum {string} */
+            packages?: "read" | "write";
+            /** @enum {string} */
+            pages?: "read" | "write";
+            /** @enum {string} */
+            pull_requests?: "read" | "write";
+            /** @enum {string} */
+            repository_hooks?: "read" | "write";
+            /** @enum {string} */
+            repository_projects?: "read" | "write";
+            /** @enum {string} */
+            secret_scanning_alerts?: "read" | "write";
+            /** @enum {string} */
+            secrets?: "read" | "write";
+            /** @enum {string} */
+            security_events?: "read" | "write";
+            /** @enum {string} */
+            security_scanning_alert?: "read" | "write";
+            /** @enum {string} */
+            single_file?: "read" | "write";
+            /** @enum {string} */
+            statuses?: "read" | "write";
+            /** @enum {string} */
+            team_discussions?: "read" | "write";
+            /** @enum {string} */
+            vulnerability_alerts?: "read" | "write";
+            /** @enum {string} */
+            workflows?: "read" | "write";
+          };
+          /** @description The slug name of the GitHub app */
+          slug?: string;
+          /** Format: date-time */
+          updated_at: string | null;
+        } | null;
+        pull_request?: {
+          /** Format: uri */
+          diff_url?: string;
+          /** Format: uri */
+          html_url?: string;
+          /** Format: date-time */
+          merged_at?: string | null;
+          /** Format: uri */
+          patch_url?: string;
+          /** Format: uri */
+          url?: string;
+        };
+        /** Reactions */
+        reactions: {
+          "+1": number;
+          "-1": number;
+          confused: number;
+          eyes: number;
+          heart: number;
+          hooray: number;
+          laugh: number;
+          rocket: number;
+          total_count: number;
+          /** Format: uri */
+          url: string;
+        };
+        /** Format: uri */
+        repository_url: string;
+        /**
+         * @description State of the issue; either 'open' or 'closed'
+         * @enum {string}
+         */
+        state?: "open" | "closed";
+        state_reason?: string | null;
+        /** Format: uri */
+        timeline_url?: string;
+        /** @description Title of the issue */
+        title: string;
+        /** Format: date-time */
+        updated_at: string;
+        /**
+         * Format: uri
+         * @description URL for the issue
+         */
+        url: string;
+        /** User */
+        user: {
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization";
+          /** Format: uri */
+          url?: string;
+        } | null;
+      } & {
+        active_lock_reason: null;
+        assignee?: Record<string, never> | null;
+        assignees?: (Record<string, never> | null)[];
+        author_association?: string;
+        body?: string | null;
+        closed_at?: string | null;
+        comments?: number;
+        comments_url?: string;
+        created_at?: string;
+        events_url?: string;
+        html_url?: string;
+        id?: number;
+        labels?: (Record<string, never> | null)[];
+        labels_url?: string;
+        /** @enum {boolean} */
+        locked: false;
+        milestone?: Record<string, never> | null;
+        node_id?: string;
+        number?: number;
+        performed_via_github_app?: null;
+        reactions?: {
+          "+1"?: number;
+          "-1"?: number;
+          confused?: number;
+          eyes?: number;
+          heart?: number;
+          hooray?: number;
+          laugh?: number;
+          rocket?: number;
+          total_count?: number;
+          url?: string;
+        };
+        repository_url?: string;
+        state?: string;
+        timeline_url?: string;
+        title?: string;
+        updated_at?: string;
+        url?: string;
+        user?: {
+          avatar_url?: string;
+          events_url?: string;
+          followers_url?: string;
+          following_url?: string;
+          gists_url?: string;
+          gravatar_id?: string;
+          html_url?: string;
+          id?: number;
+          login?: string;
+          node_id?: string;
+          organizations_url?: string;
+          received_events_url?: string;
+          repos_url?: string;
+          site_admin?: boolean;
+          starred_url?: string;
+          subscriptions_url?: string;
+          type?: string;
+          url?: string;
+        };
+      };
+      organization?: components["schemas"]["organization-simple"];
+      repository: components["schemas"]["repository"];
+      sender: components["schemas"]["simple-user"];
+    };
+    /** issues unpinned event */
+    "webhook-issues-unpinned": {
+      /** @enum {string} */
+      action: "unpinned";
+      enterprise?: components["schemas"]["enterprise"];
+      installation?: components["schemas"]["simple-installation"];
+      /**
+       * Issue
+       * @description The [issue](https://docs.github.com/enterprise-server@3.8/rest/issues/issues#get-an-issue) itself.
+       */
+      team: {
+        deleted?: boolean;
+        /** @description Description of the team */
+        description?: string | null;
+        /** Format: uri */
+        html_url?: string;
+        /** @description Unique identifier of the team */
+        id: number;
+        /** Format: uri-template */
+        members_url?: string;
+        /** @description Name of the team */
+        name: string;
+        node_id?: string;
+        parent?: {
+          /** @description Description of the team */
+          description: string | null;
+          /** Format: uri */
+          html_url: string;
+          /** @description Unique identifier of the team */
+          id: number;
+          /** Format: uri-template */
+          members_url: string;
+          /** @description Name of the team */
+          name: string;
+          node_id: string;
+          /** @description Permission that the team will have for its repositories */
+          permission: string;
+          /** @enum {string} */
+          privacy: "open" | "closed" | "secret";
+          /** Format: uri */
+          repositories_url: string;
+          slug: string;
+          /**
+           * Format: uri
+           * @description URL for the team
+           */
+          url: string;
+        } | null;
+        /** @description Permission that the team will have for its repositories */
+        permission?: string;
+        /** @enum {string} */
+        privacy?: "open" | "closed" | "secret";
+        /** Format: uri */
+        repositories_url?: string;
+        slug?: string;
+        /**
+         * Format: uri
+         * @description URL for the team
+         */
+        url?: string;
+      };
+    };
+    "webhook-merge-queue-entry-created": {
+      /** @enum {string} */
+      action: "created";
+      enterprise?: components["schemas"]["enterprise"];
+      installation?: components["schemas"]["simple-installation"];
+      merge_queue: {
+        id: number;
+        node_id: string;
+      };
+      merge_queue_entry: {
+        id: number;
+        is_solo: boolean;
+        node_id: string;
+      } | null;
+      message: string | null;
+      organization?: components["schemas"]["organization-simple"];
+      /** Pull Request */
+      pull_request: {
+        _links: {
+          /** Link */
+          comments: {
+            /** Format: uri-template */
+            href: string;
+          };
+          /** Link */
+          commits: {
+            /** Format: uri-template */
+            href: string;
+          };
+          /** Link */
+          html: {
+            /** Format: uri-template */
+            href: string;
+          };
+          /** Link */
+          issue: {
+            /** Format: uri-template */
+            href: string;
+          };
+          /** Link */
+          review_comment: {
+            /** Format: uri-template */
+            href: string;
+          };
+          /** Link */
+          review_comments: {
+            /** Format: uri-template */
+            href: string;
+          };
+          /** Link */
+          self: {
+            /** Format: uri-template */
+            href: string;
+          };
+          /** Link */
+          statuses: {
+            /** Format: uri-template */
+            href: string;
+          };
+        };
+        /** @enum {string|null} */
+        active_lock_reason:
+          | "resolved"
+          | "off-topic"
+          | "too heated"
+          | "spam"
+          | null;
+        additions?: number;
+        /** User */
+        assignee: {
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization";
+          /** Format: uri */
+          url?: string;
+        } | null;
+        assignees: ({
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization";
+          /** Format: uri */
+          url?: string;
+        } | null)[];
+        /**
+         * AuthorAssociation
+         * @description How the author is associated with the repository.
+         * @enum {string}
+         */
+        author_association:
+          | "COLLABORATOR"
+          | "CONTRIBUTOR"
+          | "FIRST_TIMER"
+          | "FIRST_TIME_CONTRIBUTOR"
+          | "MANNEQUIN"
+          | "MEMBER"
+          | "NONE"
+          | "OWNER";
+        /**
+         * PullRequestAutoMerge
+         * @description The status of auto merging a pull request.
+         */
+        auto_merge: {
+          /** @description Commit message for the merge commit. */
+          commit_message: string | null;
+          /** @description Title for the merge commit message. */
+          commit_title: string;
+          /** User */
+          enabled_by: {
+            /** Format: uri */
+            avatar_url?: string;
+            deleted?: boolean;
+            email?: string | null;
+            /** Format: uri-template */
+            events_url?: string;
+            /** Format: uri */
+            followers_url?: string;
+            /** Format: uri-template */
+            following_url?: string;
+            /** Format: uri-template */
+            gists_url?: string;
+            gravatar_id?: string;
+            /** Format: uri */
+            html_url?: string;
+            id: number;
+            login: string;
+            name?: string;
+            node_id?: string;
+            /** Format: uri */
+            organizations_url?: string;
+            /** Format: uri */
+            received_events_url?: string;
+            /** Format: uri */
+            repos_url?: string;
+            site_admin?: boolean;
+            /** Format: uri-template */
+            starred_url?: string;
+            /** Format: uri */
+            subscriptions_url?: string;
+            /** @enum {string} */
+            type?: "Bot" | "User" | "Organization";
+            /** Format: uri */
+            url?: string;
+          } | null;
+          /**
+           * @description The merge method to use.
+           * @enum {string}
+           */
+          merge_method: "merge" | "squash" | "rebase";
         } | null;
         node_id: string;
         number: number;
@@ -24239,35 +24347,199 @@ export interface components {
           /** User */
           user: {
             /** Format: uri */
-            avatar_url?: string;
-            deleted?: boolean;
-            email?: string | null;
+            clone_url: string;
             /** Format: uri-template */
-            events_url?: string;
+            collaborators_url: string;
+            /** Format: uri-template */
+            comments_url: string;
+            /** Format: uri-template */
+            commits_url: string;
+            /** Format: uri-template */
+            compare_url: string;
+            /** Format: uri-template */
+            contents_url: string;
             /** Format: uri */
-            followers_url?: string;
-            /** Format: uri-template */
-            following_url?: string;
-            /** Format: uri-template */
-            gists_url?: string;
-            gravatar_id?: string;
+            contributors_url: string;
+            created_at: number | string;
+            /** @description The default branch of the repository. */
+            default_branch: string;
+            /**
+             * @description Whether to delete head branches when pull requests are merged
+             * @default false
+             */
+            delete_branch_on_merge?: boolean;
             /** Format: uri */
-            html_url?: string;
+            deployments_url: string;
+            description: string | null;
+            /** @description Returns whether or not this repository is disabled. */
+            disabled?: boolean;
+            /** Format: uri */
+            downloads_url: string;
+            /** Format: uri */
+            events_url: string;
+            fork: boolean;
+            forks: number;
+            forks_count: number;
+            /** Format: uri */
+            forks_url: string;
+            full_name: string;
+            /** Format: uri-template */
+            git_commits_url: string;
+            /** Format: uri-template */
+            git_refs_url: string;
+            /** Format: uri-template */
+            git_tags_url: string;
+            /** Format: uri */
+            git_url: string;
+            /**
+             * @description Whether downloads are enabled.
+             * @default true
+             */
+            has_downloads: boolean;
+            /**
+             * @description Whether issues are enabled.
+             * @default true
+             */
+            has_issues: boolean;
+            has_pages: boolean;
+            /**
+             * @description Whether projects are enabled.
+             * @default true
+             */
+            has_projects: boolean;
+            /**
+             * @description Whether the wiki is enabled.
+             * @default true
+             */
+            has_wiki: boolean;
+            /**
+             * @description Whether discussions are enabled.
+             * @default false
+             */
+            has_discussions: boolean;
+            homepage: string | null;
+            /** Format: uri */
+            hooks_url: string;
+            /** Format: uri */
+            html_url: string;
+            /** @description Unique identifier of the repository */
             id: number;
-            login: string;
-            name?: string;
-            node_id?: string;
-            /** Format: uri */
-            organizations_url?: string;
-            /** Format: uri */
-            received_events_url?: string;
-            /** Format: uri */
-            repos_url?: string;
-            site_admin?: boolean;
+            is_template?: boolean;
             /** Format: uri-template */
-            starred_url?: string;
+            issue_comment_url: string;
+            /** Format: uri-template */
+            issue_events_url: string;
+            /** Format: uri-template */
+            issues_url: string;
+            /** Format: uri-template */
+            keys_url: string;
+            /** Format: uri-template */
+            labels_url: string;
+            language: string | null;
             /** Format: uri */
-            subscriptions_url?: string;
+            languages_url: string;
+            /** License */
+            license: {
+              key: string;
+              name: string;
+              node_id: string;
+              spdx_id: string;
+              /** Format: uri */
+              url: string | null;
+            } | null;
+            master_branch?: string;
+            /** Format: uri */
+            merges_url: string;
+            /** Format: uri-template */
+            milestones_url: string;
+            /** Format: uri */
+            mirror_url: string | null;
+            /** @description The name of the repository. */
+            name: string;
+            node_id: string;
+            /** Format: uri-template */
+            notifications_url: string;
+            open_issues: number;
+            open_issues_count: number;
+            organization?: string;
+            /** User */
+            owner: {
+              /** Format: uri */
+              avatar_url?: string;
+              deleted?: boolean;
+              email?: string | null;
+              /** Format: uri-template */
+              events_url?: string;
+              /** Format: uri */
+              followers_url?: string;
+              /** Format: uri-template */
+              following_url?: string;
+              /** Format: uri-template */
+              gists_url?: string;
+              gravatar_id?: string;
+              /** Format: uri */
+              html_url?: string;
+              id: number;
+              login: string;
+              name?: string;
+              node_id?: string;
+              /** Format: uri */
+              organizations_url?: string;
+              /** Format: uri */
+              received_events_url?: string;
+              /** Format: uri */
+              repos_url?: string;
+              site_admin?: boolean;
+              /** Format: uri-template */
+              starred_url?: string;
+              /** Format: uri */
+              subscriptions_url?: string;
+              /** @enum {string} */
+              type?: "Bot" | "User" | "Organization";
+              /** Format: uri */
+              url?: string;
+            } | null;
+            permissions?: {
+              admin: boolean;
+              maintain?: boolean;
+              pull: boolean;
+              push: boolean;
+              triage?: boolean;
+            };
+            /** @description Whether the repository is private or public. */
+            private: boolean;
+            public?: boolean;
+            /** Format: uri-template */
+            pulls_url: string;
+            pushed_at: number | string | null;
+            /** Format: uri-template */
+            releases_url: string;
+            role_name?: string | null;
+            size: number;
+            ssh_url: string;
+            stargazers?: number;
+            stargazers_count: number;
+            /** Format: uri */
+            stargazers_url: string;
+            /** Format: uri-template */
+            statuses_url: string;
+            /** Format: uri */
+            subscribers_url: string;
+            /** Format: uri */
+            subscription_url: string;
+            /** Format: uri */
+            svn_url: string;
+            /** Format: uri */
+            tags_url: string;
+            /** Format: uri */
+            teams_url: string;
+            topics: string[];
+            /** Format: uri-template */
+            trees_url: string;
+            /** Format: date-time */
+            updated_at: string;
+            /** Format: uri */
+            url: string;
             /** @enum {string} */
             type?: "Bot" | "User" | "Organization";
             /** Format: uri */
@@ -24692,322 +24964,6 @@ export interface components {
            * @enum {string}
            */
           merge_method: "merge" | "squash" | "rebase";
-        } | null;
-        base: {
-          label: string;
-          ref: string;
-          /**
-           * Repository
-           * @description A git repository
-           */
-          repo: {
-            /**
-             * @description Whether to allow auto-merge for pull requests.
-             * @default false
-             */
-            allow_auto_merge?: boolean;
-            /** @description Whether to allow private forks */
-            allow_forking?: boolean;
-            /**
-             * @description Whether to allow merge commits for pull requests.
-             * @default true
-             */
-            allow_merge_commit?: boolean;
-            /**
-             * @description Whether to allow rebase merges for pull requests.
-             * @default true
-             */
-            allow_rebase_merge?: boolean;
-            /**
-             * @description Whether to allow squash merges for pull requests.
-             * @default true
-             */
-            allow_squash_merge?: boolean;
-            allow_update_branch?: boolean;
-            /** Format: uri-template */
-            archive_url: string;
-            /**
-             * @description Whether the repository is archived.
-             * @default false
-             */
-            archived: boolean;
-            /** Format: uri-template */
-            assignees_url: string;
-            /** Format: uri-template */
-            blobs_url: string;
-            /** Format: uri-template */
-            branches_url: string;
-            /** Format: uri */
-            clone_url: string;
-            /** Format: uri-template */
-            collaborators_url: string;
-            /** Format: uri-template */
-            comments_url: string;
-            /** Format: uri-template */
-            commits_url: string;
-            /** Format: uri-template */
-            compare_url: string;
-            /** Format: uri-template */
-            contents_url: string;
-            /** Format: uri */
-            contributors_url: string;
-            created_at: number | string;
-            /** @description The default branch of the repository. */
-            default_branch: string;
-            /**
-             * @description Whether to delete head branches when pull requests are merged
-             * @default false
-             */
-            delete_branch_on_merge?: boolean;
-            /** Format: uri */
-            deployments_url: string;
-            description: string | null;
-            /** @description Returns whether or not this repository is disabled. */
-            disabled?: boolean;
-            /** Format: uri */
-            downloads_url: string;
-            /** Format: uri */
-            events_url: string;
-            fork: boolean;
-            forks: number;
-            forks_count: number;
-            /** Format: uri */
-            forks_url: string;
-            full_name: string;
-            /** Format: uri-template */
-            git_commits_url: string;
-            /** Format: uri-template */
-            git_refs_url: string;
-            /** Format: uri-template */
-            git_tags_url: string;
-            /** Format: uri */
-            git_url: string;
-            /**
-             * @description Whether downloads are enabled.
-             * @default true
-             */
-            has_downloads: boolean;
-            /**
-             * @description Whether issues are enabled.
-             * @default true
-             */
-            has_issues: boolean;
-            has_pages: boolean;
-            /**
-             * @description Whether projects are enabled.
-             * @default true
-             */
-            has_projects: boolean;
-            /**
-             * @description Whether the wiki is enabled.
-             * @default true
-             */
-            has_wiki: boolean;
-            /**
-             * @description Whether discussions are enabled.
-             * @default false
-             */
-            has_discussions: boolean;
-            homepage: string | null;
-            /** Format: uri */
-            hooks_url: string;
-            /** Format: uri */
-            html_url: string;
-            /** @description Unique identifier of the repository */
-            id: number;
-            is_template?: boolean;
-            /** Format: uri-template */
-            issue_comment_url: string;
-            /** Format: uri-template */
-            issue_events_url: string;
-            /** Format: uri-template */
-            issues_url: string;
-            /** Format: uri-template */
-            keys_url: string;
-            /** Format: uri-template */
-            labels_url: string;
-            language: string | null;
-            /** Format: uri */
-            languages_url: string;
-            /** License */
-            license: {
-              key: string;
-              name: string;
-              node_id: string;
-              spdx_id: string;
-              /** Format: uri */
-              url: string | null;
-            } | null;
-            master_branch?: string;
-            /** Format: uri */
-            merges_url: string;
-            /** Format: uri-template */
-            milestones_url: string;
-            /** Format: uri */
-            mirror_url: string | null;
-            /** @description The name of the repository. */
-            name: string;
-            node_id: string;
-            /** Format: uri-template */
-            notifications_url: string;
-            open_issues: number;
-            open_issues_count: number;
-            organization?: string;
-            /** User */
-            owner: {
-              /** Format: uri */
-              avatar_url?: string;
-              deleted?: boolean;
-              email?: string | null;
-              /** Format: uri-template */
-              events_url?: string;
-              /** Format: uri */
-              followers_url?: string;
-              /** Format: uri-template */
-              following_url?: string;
-              /** Format: uri-template */
-              gists_url?: string;
-              gravatar_id?: string;
-              /** Format: uri */
-              html_url?: string;
-              id: number;
-              login: string;
-              name?: string;
-              node_id?: string;
-              /** Format: uri */
-              organizations_url?: string;
-              /** Format: uri */
-              received_events_url?: string;
-              /** Format: uri */
-              repos_url?: string;
-              site_admin?: boolean;
-              /** Format: uri-template */
-              starred_url?: string;
-              /** Format: uri */
-              subscriptions_url?: string;
-              /** @enum {string} */
-              type?: "Bot" | "User" | "Organization";
-              /** Format: uri */
-              url?: string;
-            } | null;
-            permissions?: {
-              admin: boolean;
-              maintain?: boolean;
-              pull: boolean;
-              push: boolean;
-              triage?: boolean;
-            };
-            /** @description Whether the repository is private or public. */
-            private: boolean;
-            public?: boolean;
-            /** Format: uri-template */
-            pulls_url: string;
-            pushed_at: number | string | null;
-            /** Format: uri-template */
-            releases_url: string;
-            role_name?: string | null;
-            size: number;
-            ssh_url: string;
-            stargazers?: number;
-            stargazers_count: number;
-            /** Format: uri */
-            stargazers_url: string;
-            /** Format: uri-template */
-            statuses_url: string;
-            /** Format: uri */
-            subscribers_url: string;
-            /** Format: uri */
-            subscription_url: string;
-            /** Format: uri */
-            svn_url: string;
-            /** Format: uri */
-            tags_url: string;
-            /** Format: uri */
-            teams_url: string;
-            topics: string[];
-            /** Format: uri-template */
-            trees_url: string;
-            /** Format: date-time */
-            updated_at: string;
-            /** Format: uri */
-            url: string;
-            /** @enum {string} */
-            visibility: "public" | "private" | "internal";
-            watchers: number;
-            watchers_count: number;
-            /** @description Whether to require contributors to sign off on web-based commits */
-            web_commit_signoff_required?: boolean;
-          };
-          sha: string;
-          /** User */
-          user: {
-            /** Format: uri */
-            avatar_url?: string;
-            deleted?: boolean;
-            email?: string | null;
-            /** Format: uri-template */
-            events_url?: string;
-            /** Format: uri */
-            followers_url?: string;
-            /** Format: uri-template */
-            following_url?: string;
-            /** Format: uri-template */
-            gists_url?: string;
-            gravatar_id?: string;
-            /** Format: uri */
-            html_url?: string;
-            id: number;
-            login: string;
-            name?: string;
-            node_id?: string;
-            /** Format: uri */
-            organizations_url?: string;
-            /** Format: uri */
-            received_events_url?: string;
-            /** Format: uri */
-            repos_url?: string;
-            site_admin?: boolean;
-            /** Format: uri-template */
-            starred_url?: string;
-            /** Format: uri */
-            subscriptions_url?: string;
-            /** @enum {string} */
-            type?: "Bot" | "User" | "Organization";
-            /** Format: uri */
-            url?: string;
-          } | null;
-        };
-        body: string | null;
-        changed_files?: number;
-        /** Format: date-time */
-        closed_at: string | null;
-        comments?: number;
-        /** Format: uri */
-        comments_url: string;
-        commits?: number;
-        /** Format: uri */
-        commits_url: string;
-        /** Format: date-time */
-        created_at: string;
-        deletions?: number;
-        /** Format: uri */
-        diff_url: string;
-        /** @description Indicates whether or not the pull request is a draft. */
-        draft: boolean;
-        head: {
-          label: string;
-          ref: string;
-          /**
-           * Repository
-           * @description A git repository
-           */
-          state: "open" | "closed";
-          /** @description The title of the milestone. */
-          title: string;
-          /** Format: date-time */
-          updated_at: string;
-          /** Format: uri */
-          url: string;
         } | null;
         node_id: string;
         /** @description Number uniquely identifying the pull request within its repository. */
@@ -68531,7 +68487,7 @@ export interface operations {
   /**
    * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
    *
-   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.8/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.8/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.8/rest/reference/apps)" in the REST API documentation.
+   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.8/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.8/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.8/rest/apps)" in the REST API documentation.
    * @description Someone installed a GitHub App on a user or organization account.
    */
   "installation/created": {
@@ -68572,7 +68528,7 @@ export interface operations {
   /**
    * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
    *
-   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.8/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.8/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.8/rest/reference/apps)" in the REST API documentation.
+   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.8/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.8/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.8/rest/apps)" in the REST API documentation.
    * @description Someone uninstalled a GitHub App from their user or organization account.
    */
   "installation/deleted": {
@@ -68613,7 +68569,7 @@ export interface operations {
   /**
    * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
    *
-   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.8/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.8/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.8/rest/reference/apps)" in the REST API documentation.
+   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.8/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.8/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.8/rest/apps)" in the REST API documentation.
    * @description Someone granted new permissions to a GitHub App.
    */
   "installation/new-permissions-accepted": {
@@ -68654,7 +68610,7 @@ export interface operations {
   /**
    * This event occurs when there is activity relating to which repositories a GitHub App installation can access. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
    *
-   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.8/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.8/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.8/rest/reference/apps)" in the REST API documentation.
+   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.8/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.8/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.8/rest/apps)" in the REST API documentation.
    * @description A GitHub App installation was granted access to one or more repositories.
    */
   "installation-repositories/added": {
@@ -68695,7 +68651,7 @@ export interface operations {
   /**
    * This event occurs when there is activity relating to which repositories a GitHub App installation can access. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
    *
-   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.8/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.8/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.8/rest/reference/apps)" in the REST API documentation.
+   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.8/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.8/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.8/rest/apps)" in the REST API documentation.
    * @description Access to one or more repositories was revoked for a GitHub App installation.
    */
   "installation-repositories/removed": {
@@ -68736,7 +68692,7 @@ export interface operations {
   /**
    * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
    *
-   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.8/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.8/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.8/rest/reference/apps)" in the REST API documentation.
+   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.8/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.8/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.8/rest/apps)" in the REST API documentation.
    * @description Someone blocked access by a GitHub App to their user or organization account.
    */
   "installation/suspend": {
@@ -68775,7 +68731,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to the user or organization account that a GitHub App is installed on. For more information, see "[About apps](https://docs.github.com/enterprise-server@3.8/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.8/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.8/rest/reference/apps)" in the REST API documentation.
+   * This event occurs when there is activity relating to the user or organization account that a GitHub App is installed on. For more information, see "[About apps](https://docs.github.com/enterprise-server@3.8/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.8/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.8/rest/apps)" in the REST API documentation.
    * @description Somebody renamed the user or organization account that a GitHub App is installed on.
    */
   "installation-target/renamed": {
@@ -68816,7 +68772,7 @@ export interface operations {
   /**
    * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
    *
-   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.8/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.8/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.8/rest/reference/apps)" in the REST API documentation.
+   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.8/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.8/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.8/rest/apps)" in the REST API documentation.
    * @description A GitHub App that was blocked from accessing a user or organization account was given access the account again.
    */
   "installation/unsuspend": {
@@ -72839,7 +72795,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when a commit or tag is pushed.
+   * This event occurs when a commit or tag is pushed, or when a repository is cloned.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
    *
