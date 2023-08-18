@@ -7145,6 +7145,1186 @@ export interface components {
         display_title: string;
       } | null;
     };
+    "webhook-deployment-review-approved": {
+      /** @enum {string} */
+      action: "created";
+      check_run?: {
+        /** Format: date-time */
+        completed_at: string | null;
+        /**
+         * @description The result of the completed check run. Can be one of `success`, `failure`, `neutral`, `cancelled`, `timed_out`, `action_required` or `stale`. This value will be `null` until the check run has completed.
+         * @enum {string|null}
+         */
+        conclusion:
+          | "success"
+          | "failure"
+          | "neutral"
+          | "cancelled"
+          | "timed_out"
+          | "action_required"
+          | "stale"
+          | "skipped"
+          | null;
+        /** Format: uri */
+        details_url: string;
+        external_id: string;
+        /** @description The SHA of the commit that is being checked. */
+        head_sha: string;
+        /** Format: uri */
+        html_url: string;
+        /** @description The id of the check. */
+        id: number;
+        /** @description The name of the check run. */
+        name: string;
+        node_id: string;
+        /** Format: date-time */
+        started_at: string;
+        /**
+         * @description The current status of the check run. Can be `queued`, `in_progress`, or `completed`.
+         * @enum {string}
+         */
+        status: "queued" | "in_progress" | "completed" | "waiting" | "pending";
+        /** Format: uri */
+        url: string;
+      } | null;
+      /**
+       * Deployment
+       * @description The [deployment](https://docs.github.com/enterprise-server@3.8/rest/deployments/deployments#list-deployments).
+       */
+      deployment: {
+        created_at: string;
+        /** User */
+        reviewer?: {
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization";
+          /** Format: uri */
+          url?: string;
+        } | null;
+        /** @enum {string} */
+        type?: "User";
+      }[];
+      sender: components["schemas"]["simple-user"];
+      since: string;
+      workflow_job_run?: {
+        conclusion: null;
+        created_at: string;
+        environment: string;
+        html_url: string;
+        id: number;
+        name: null;
+        status: string;
+        updated_at: string;
+      };
+      /** @description The [deployment status](https://docs.github.com/enterprise-server@3.8/rest/deployments/statuses#list-deployment-statuses). */
+      deployment_status: {
+        created_at: string;
+        /** User */
+        actor: {
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization";
+          /** Format: uri */
+          url?: string;
+        } | null;
+        artifacts_url?: string;
+        cancel_url?: string;
+        check_suite_id: number;
+        check_suite_node_id: string;
+        check_suite_url?: string;
+        /** @enum {string|null} */
+        conclusion:
+          | "success"
+          | "failure"
+          | "neutral"
+          | "cancelled"
+          | "timed_out"
+          | "action_required"
+          | "stale"
+          | null;
+        /** Format: date-time */
+        created_at: string;
+        display_title: string;
+        event: string;
+        head_branch: string;
+        head_commit?: Record<string, never> | null;
+        head_repository?: {
+          archive_url?: string;
+          assignees_url?: string;
+          blobs_url?: string;
+          branches_url?: string;
+          collaborators_url?: string;
+          comments_url?: string;
+          commits_url?: string;
+          compare_url?: string;
+          contents_url?: string;
+          contributors_url?: string;
+          deployments_url?: string;
+          description?: string | null;
+          downloads_url?: string;
+          events_url?: string;
+          fork?: boolean;
+          forks_url?: string;
+          full_name?: string;
+          git_commits_url?: string;
+          git_refs_url?: string;
+          git_tags_url?: string;
+          hooks_url?: string;
+          html_url?: string;
+          id?: number;
+          issue_comment_url?: string;
+          issue_events_url?: string;
+          issues_url?: string;
+          keys_url?: string;
+          labels_url?: string;
+          languages_url?: string;
+          merges_url?: string;
+          milestones_url?: string;
+          name?: string;
+          node_id?: string;
+          notifications_url?: string;
+          owner?: {
+            avatar_url?: string;
+            events_url?: string;
+            followers_url?: string;
+            following_url?: string;
+            gists_url?: string;
+            gravatar_id?: string;
+            html_url?: string;
+            id?: number;
+            login?: string;
+            node_id?: string;
+            organizations_url?: string;
+            received_events_url?: string;
+            repos_url?: string;
+            site_admin?: boolean;
+            starred_url?: string;
+            subscriptions_url?: string;
+            type?: string;
+            url?: string;
+          };
+          private?: boolean;
+          pulls_url?: string;
+          releases_url?: string;
+          stargazers_url?: string;
+          statuses_url?: string;
+          subscribers_url?: string;
+          subscription_url?: string;
+          tags_url?: string;
+          teams_url?: string;
+          trees_url?: string;
+          url?: string;
+        };
+        head_sha: string;
+        /** Format: uri */
+        html_url: string;
+        id: number;
+        jobs_url?: string;
+        logs_url?: string;
+        name: string;
+        node_id: string;
+        path: string;
+        previous_attempt_url?: string | null;
+        pull_requests: {
+          base: {
+            ref: string;
+            /** Repo Ref */
+            repo: {
+              id: number;
+              name: string;
+              /** Format: uri */
+              url: string;
+            };
+            sha: string;
+          };
+          head: {
+            ref: string;
+            /** Repo Ref */
+            repo: {
+              id: number;
+              name: string;
+              /** Format: uri */
+              url: string;
+            };
+            sha: string;
+          };
+          id: number;
+          number: number;
+          /** Format: uri */
+          url: string;
+        }[];
+        referenced_workflows?:
+          | {
+              path: string;
+              ref?: string;
+              sha: string;
+            }[]
+          | null;
+        repository?: {
+          archive_url?: string;
+          assignees_url?: string;
+          blobs_url?: string;
+          branches_url?: string;
+          collaborators_url?: string;
+          comments_url?: string;
+          commits_url?: string;
+          compare_url?: string;
+          contents_url?: string;
+          contributors_url?: string;
+          deployments_url?: string;
+          description?: string | null;
+          downloads_url?: string;
+          events_url?: string;
+          fork?: boolean;
+          forks_url?: string;
+          full_name?: string;
+          git_commits_url?: string;
+          git_refs_url?: string;
+          git_tags_url?: string;
+          hooks_url?: string;
+          html_url?: string;
+          id?: number;
+          issue_comment_url?: string;
+          issue_events_url?: string;
+          issues_url?: string;
+          keys_url?: string;
+          labels_url?: string;
+          languages_url?: string;
+          merges_url?: string;
+          milestones_url?: string;
+          name?: string;
+          node_id?: string;
+          notifications_url?: string;
+          owner?: {
+            avatar_url?: string;
+            events_url?: string;
+            followers_url?: string;
+            following_url?: string;
+            gists_url?: string;
+            gravatar_id?: string;
+            html_url?: string;
+            id?: number;
+            login?: string;
+            node_id?: string;
+            organizations_url?: string;
+            received_events_url?: string;
+            repos_url?: string;
+            site_admin?: boolean;
+            starred_url?: string;
+            subscriptions_url?: string;
+            type?: string;
+            url?: string;
+          };
+          private?: boolean;
+          pulls_url?: string;
+          releases_url?: string;
+          stargazers_url?: string;
+          statuses_url?: string;
+          subscribers_url?: string;
+          subscription_url?: string;
+          tags_url?: string;
+          teams_url?: string;
+          trees_url?: string;
+          url?: string;
+        };
+        rerun_url?: string;
+        run_attempt: number;
+        run_number: number;
+        /** Format: date-time */
+        run_started_at: string;
+        /** @enum {string} */
+        status:
+          | "requested"
+          | "in_progress"
+          | "completed"
+          | "queued"
+          | "waiting"
+          | "pending";
+        /** User */
+        triggering_actor: {
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization";
+          /** Format: uri */
+          url?: string;
+        } | null;
+        /** Format: date-time */
+        updated_at: string;
+        /** Format: uri */
+        url: string;
+        workflow_id: number;
+        workflow_url?: string;
+      } | null;
+    };
+    "webhook-deployment-review-rejected": {
+      /** @enum {string} */
+      action: "rejected";
+      approver?: {
+        avatar_url?: string;
+        events_url?: string;
+        followers_url?: string;
+        following_url?: string;
+        gists_url?: string;
+        gravatar_id?: string;
+        html_url?: string;
+        id?: number;
+        login?: string;
+        node_id?: string;
+        organizations_url?: string;
+        received_events_url?: string;
+        repos_url?: string;
+        site_admin?: boolean;
+        starred_url?: string;
+        subscriptions_url?: string;
+        type?: string;
+        url?: string;
+      };
+      comment?: string;
+      enterprise?: components["schemas"]["enterprise"];
+      installation?: components["schemas"]["simple-installation"];
+      organization: components["schemas"]["organization-simple"];
+      repository: components["schemas"]["repository"];
+      reviewers?: {
+        /** User */
+        reviewer?: {
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization";
+          /** Format: uri */
+          url?: string;
+        } | null;
+        /** @enum {string} */
+        type?: "User";
+      }[];
+      sender: components["schemas"]["simple-user"];
+      since: string;
+      workflow_job_run?: {
+        conclusion: null;
+        created_at: string;
+        environment: string;
+        html_url: string;
+        id: number;
+        name: null;
+        status: string;
+        updated_at: string;
+      };
+      workflow_job_runs?: {
+        conclusion?: string | null;
+        created_at?: string;
+        environment?: string;
+        html_url?: string;
+        id?: number;
+        name?: string | null;
+        status?: string;
+        updated_at?: string;
+      }[];
+      /** Deployment Workflow Run */
+      workflow_run: {
+        /** User */
+        actor: {
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization";
+          /** Format: uri */
+          url?: string;
+        } | null;
+        artifacts_url?: string;
+        cancel_url?: string;
+        check_suite_id: number;
+        check_suite_node_id: string;
+        check_suite_url?: string;
+        /** @enum {string|null} */
+        conclusion:
+          | "success"
+          | "failure"
+          | "neutral"
+          | "cancelled"
+          | "timed_out"
+          | "action_required"
+          | "stale"
+          | null;
+        /** Format: date-time */
+        created_at: string;
+        event: string;
+        head_branch: string;
+        head_commit?: Record<string, never> | null;
+        head_repository?: {
+          archive_url?: string;
+          assignees_url?: string;
+          blobs_url?: string;
+          branches_url?: string;
+          collaborators_url?: string;
+          comments_url?: string;
+          commits_url?: string;
+          compare_url?: string;
+          contents_url?: string;
+          contributors_url?: string;
+          deployments_url?: string;
+          description?: string | null;
+          downloads_url?: string;
+          events_url?: string;
+          fork?: boolean;
+          forks_url?: string;
+          full_name?: string;
+          git_commits_url?: string;
+          git_refs_url?: string;
+          git_tags_url?: string;
+          hooks_url?: string;
+          html_url?: string;
+          id?: number;
+          issue_comment_url?: string;
+          issue_events_url?: string;
+          issues_url?: string;
+          keys_url?: string;
+          labels_url?: string;
+          languages_url?: string;
+          merges_url?: string;
+          milestones_url?: string;
+          name?: string;
+          node_id?: string;
+          notifications_url?: string;
+          owner?: {
+            avatar_url?: string;
+            events_url?: string;
+            followers_url?: string;
+            following_url?: string;
+            gists_url?: string;
+            gravatar_id?: string;
+            html_url?: string;
+            id?: number;
+            login?: string;
+            node_id?: string;
+            organizations_url?: string;
+            received_events_url?: string;
+            repos_url?: string;
+            site_admin?: boolean;
+            starred_url?: string;
+            subscriptions_url?: string;
+            type?: string;
+            url?: string;
+          };
+          private?: boolean;
+          pulls_url?: string;
+          releases_url?: string;
+          stargazers_url?: string;
+          statuses_url?: string;
+          subscribers_url?: string;
+          subscription_url?: string;
+          tags_url?: string;
+          teams_url?: string;
+          trees_url?: string;
+          url?: string;
+        };
+        head_sha: string;
+        /** Format: uri */
+        html_url: string;
+        id: number;
+        jobs_url?: string;
+        logs_url?: string;
+        name: string;
+        node_id: string;
+        path: string;
+        previous_attempt_url?: string | null;
+        pull_requests: {
+          base: {
+            ref: string;
+            /** Repo Ref */
+            repo: {
+              id: number;
+              name: string;
+              /** Format: uri */
+              url: string;
+            };
+            sha: string;
+          };
+          head: {
+            ref: string;
+            /** Repo Ref */
+            repo: {
+              id: number;
+              name: string;
+              /** Format: uri */
+              url: string;
+            };
+            sha: string;
+          };
+          id: number;
+          number: number;
+          /** Format: uri */
+          url: string;
+        }[];
+        referenced_workflows?:
+          | {
+              path: string;
+              ref?: string;
+              sha: string;
+            }[]
+          | null;
+        repository?: {
+          archive_url?: string;
+          assignees_url?: string;
+          blobs_url?: string;
+          branches_url?: string;
+          collaborators_url?: string;
+          comments_url?: string;
+          commits_url?: string;
+          compare_url?: string;
+          contents_url?: string;
+          contributors_url?: string;
+          deployments_url?: string;
+          description?: string | null;
+          downloads_url?: string;
+          events_url?: string;
+          fork?: boolean;
+          forks_url?: string;
+          full_name?: string;
+          git_commits_url?: string;
+          git_refs_url?: string;
+          git_tags_url?: string;
+          hooks_url?: string;
+          html_url?: string;
+          id?: number;
+          issue_comment_url?: string;
+          issue_events_url?: string;
+          issues_url?: string;
+          keys_url?: string;
+          labels_url?: string;
+          languages_url?: string;
+          merges_url?: string;
+          milestones_url?: string;
+          name?: string;
+          node_id?: string;
+          notifications_url?: string;
+          owner?: {
+            avatar_url?: string;
+            events_url?: string;
+            followers_url?: string;
+            following_url?: string;
+            gists_url?: string;
+            gravatar_id?: string;
+            html_url?: string;
+            id?: number;
+            login?: string;
+            node_id?: string;
+            organizations_url?: string;
+            received_events_url?: string;
+            repos_url?: string;
+            site_admin?: boolean;
+            starred_url?: string;
+            subscriptions_url?: string;
+            type?: string;
+            url?: string;
+          };
+          private?: boolean;
+          pulls_url?: string;
+          releases_url?: string;
+          stargazers_url?: string;
+          statuses_url?: string;
+          subscribers_url?: string;
+          subscription_url?: string;
+          tags_url?: string;
+          teams_url?: string;
+          trees_url?: string;
+          url?: string;
+        };
+        rerun_url?: string;
+        run_attempt: number;
+        run_number: number;
+        /** Format: date-time */
+        run_started_at: string;
+        /** @enum {string} */
+        status:
+          | "requested"
+          | "in_progress"
+          | "completed"
+          | "queued"
+          | "waiting";
+        /** User */
+        triggering_actor: {
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization";
+          /** Format: uri */
+          url?: string;
+        } | null;
+        /** Format: date-time */
+        updated_at: string;
+        /** Format: uri */
+        url: string;
+        workflow_id: number;
+        workflow_url?: string;
+        display_title: string;
+      } | null;
+    };
+    "webhook-deployment-review-requested": {
+      /** @enum {string} */
+      action: "requested";
+      enterprise?: components["schemas"]["enterprise"];
+      environment: string;
+      installation?: components["schemas"]["simple-installation"];
+      organization: components["schemas"]["organization-simple"];
+      repository: components["schemas"]["repository"];
+      /** User */
+      requestor: {
+        /** Format: uri */
+        avatar_url?: string;
+        deleted?: boolean;
+        email?: string | null;
+        /** Format: uri-template */
+        events_url?: string;
+        /** Format: uri */
+        followers_url?: string;
+        /** Format: uri-template */
+        following_url?: string;
+        /** Format: uri-template */
+        gists_url?: string;
+        gravatar_id?: string;
+        /** Format: uri */
+        html_url?: string;
+        id: number;
+        login: string;
+        name?: string;
+        node_id?: string;
+        /** Format: uri */
+        organizations_url?: string;
+        /** Format: uri */
+        received_events_url?: string;
+        /** Format: uri */
+        repos_url?: string;
+        site_admin?: boolean;
+        /** Format: uri-template */
+        starred_url?: string;
+        /** Format: uri */
+        subscriptions_url?: string;
+        /** @enum {string} */
+        type?: "Bot" | "User" | "Organization";
+        /** Format: uri */
+        url?: string;
+      } | null;
+      reviewers: {
+        /** User */
+        reviewer?: {
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login?: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization";
+          /** Format: uri */
+          url?: string;
+        } | null;
+        /** @enum {string} */
+        type?: "User" | "Team";
+      }[];
+      sender: components["schemas"]["simple-user"];
+      since: string;
+      workflow_job_run: {
+        conclusion: null;
+        created_at: string;
+        environment: string;
+        html_url: string;
+        id: number;
+        name: string | null;
+        status: string;
+        updated_at: string;
+      };
+      /** Deployment Workflow Run */
+      workflow_run: {
+        /** User */
+        actor: {
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization";
+          /** Format: uri */
+          url?: string;
+        } | null;
+        artifacts_url?: string;
+        cancel_url?: string;
+        check_suite_id: number;
+        check_suite_node_id: string;
+        check_suite_url?: string;
+        /** @enum {string|null} */
+        conclusion:
+          | "success"
+          | "failure"
+          | "neutral"
+          | "cancelled"
+          | "timed_out"
+          | "action_required"
+          | "stale"
+          | null;
+        /** Format: date-time */
+        created_at: string;
+        event: string;
+        head_branch: string;
+        head_commit?: Record<string, never> | null;
+        head_repository?: {
+          archive_url?: string;
+          assignees_url?: string;
+          blobs_url?: string;
+          branches_url?: string;
+          collaborators_url?: string;
+          comments_url?: string;
+          commits_url?: string;
+          compare_url?: string;
+          contents_url?: string;
+          contributors_url?: string;
+          deployments_url?: string;
+          description?: string | null;
+          downloads_url?: string;
+          events_url?: string;
+          fork?: boolean;
+          forks_url?: string;
+          full_name?: string;
+          git_commits_url?: string;
+          git_refs_url?: string;
+          git_tags_url?: string;
+          hooks_url?: string;
+          html_url?: string;
+          id?: number;
+          issue_comment_url?: string;
+          issue_events_url?: string;
+          issues_url?: string;
+          keys_url?: string;
+          labels_url?: string;
+          languages_url?: string;
+          merges_url?: string;
+          milestones_url?: string;
+          name?: string;
+          node_id?: string;
+          notifications_url?: string;
+          owner?: {
+            avatar_url?: string;
+            events_url?: string;
+            followers_url?: string;
+            following_url?: string;
+            gists_url?: string;
+            gravatar_id?: string;
+            html_url?: string;
+            id?: number;
+            login?: string;
+            node_id?: string;
+            organizations_url?: string;
+            received_events_url?: string;
+            repos_url?: string;
+            site_admin?: boolean;
+            starred_url?: string;
+            subscriptions_url?: string;
+            type?: string;
+            url?: string;
+          };
+          private?: boolean;
+          pulls_url?: string;
+          releases_url?: string;
+          stargazers_url?: string;
+          statuses_url?: string;
+          subscribers_url?: string;
+          subscription_url?: string;
+          tags_url?: string;
+          teams_url?: string;
+          trees_url?: string;
+          url?: string;
+        };
+        head_sha: string;
+        /** Format: uri */
+        html_url: string;
+        id: number;
+        jobs_url?: string;
+        logs_url?: string;
+        name: string;
+        node_id: string;
+        path: string;
+        previous_attempt_url?: string | null;
+        pull_requests: {
+          base: {
+            ref: string;
+            /** Repo Ref */
+            repo: {
+              id: number;
+              name: string;
+              /** Format: uri */
+              url: string;
+            };
+            sha: string;
+          };
+          head: {
+            ref: string;
+            /** Repo Ref */
+            repo: {
+              id: number;
+              name: string;
+              /** Format: uri */
+              url: string;
+            };
+            sha: string;
+          };
+          id: number;
+          number: number;
+          /** Format: uri */
+          url: string;
+        }[];
+        referenced_workflows?:
+          | {
+              path: string;
+              ref?: string;
+              sha: string;
+            }[]
+          | null;
+        repository?: {
+          archive_url?: string;
+          assignees_url?: string;
+          blobs_url?: string;
+          branches_url?: string;
+          collaborators_url?: string;
+          comments_url?: string;
+          commits_url?: string;
+          compare_url?: string;
+          contents_url?: string;
+          contributors_url?: string;
+          deployments_url?: string;
+          description?: string | null;
+          downloads_url?: string;
+          events_url?: string;
+          fork?: boolean;
+          forks_url?: string;
+          full_name?: string;
+          git_commits_url?: string;
+          git_refs_url?: string;
+          git_tags_url?: string;
+          hooks_url?: string;
+          html_url?: string;
+          id?: number;
+          issue_comment_url?: string;
+          issue_events_url?: string;
+          issues_url?: string;
+          keys_url?: string;
+          labels_url?: string;
+          languages_url?: string;
+          merges_url?: string;
+          milestones_url?: string;
+          name?: string;
+          node_id?: string;
+          notifications_url?: string;
+          owner?: {
+            avatar_url?: string;
+            events_url?: string;
+            followers_url?: string;
+            following_url?: string;
+            gists_url?: string;
+            gravatar_id?: string;
+            html_url?: string;
+            id?: number;
+            login?: string;
+            node_id?: string;
+            organizations_url?: string;
+            received_events_url?: string;
+            repos_url?: string;
+            site_admin?: boolean;
+            starred_url?: string;
+            subscriptions_url?: string;
+            type?: string;
+            url?: string;
+          };
+          private?: boolean;
+          pulls_url?: string;
+          releases_url?: string;
+          stargazers_url?: string;
+          statuses_url?: string;
+          subscribers_url?: string;
+          subscription_url?: string;
+          tags_url?: string;
+          teams_url?: string;
+          trees_url?: string;
+          url?: string;
+        };
+        rerun_url?: string;
+        run_attempt: number;
+        run_number: number;
+        /** Format: date-time */
+        run_started_at: string;
+        /** @enum {string} */
+        status:
+          | "requested"
+          | "in_progress"
+          | "completed"
+          | "queued"
+          | "waiting"
+          | "pending";
+        /** User */
+        triggering_actor: {
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization";
+          /** Format: uri */
+          url?: string;
+        } | null;
+        /** Format: date-time */
+        updated_at: string;
+        /** Format: uri */
+        url: string;
+        workflow_id: number;
+        workflow_url?: string;
+        display_title: string;
+      } | null;
+    };
     /** deployment_status created event */
     "webhook-deployment-status-created": {
       /** @enum {string} */
@@ -11521,20 +12701,29 @@ export interface components {
         /** Format: uri */
         issue_url: string;
         node_id: string;
-        performed_via_github_app: null | components["schemas"]["integration"];
-        /** Reactions */
-        reactions: {
-          "+1": number;
-          "-1": number;
-          confused: number;
-          eyes: number;
-          heart: number;
-          hooray: number;
-          laugh: number;
-          rocket: number;
-          total_count: number;
-          /** Format: uri */
-          url: string;
+        organizations_url?: string;
+        public_gists?: number;
+        public_members_url?: string;
+        public_repos?: number;
+        received_events_url?: string;
+        repos_url?: string;
+        site_admin?: boolean;
+        slug?: string;
+        starred_url?: string;
+        subscriptions_url?: string;
+        type?: string;
+        updated_at?: string;
+        url?: string;
+        website_url?: null;
+      };
+      /** @enum {string} */
+      action: "renamed";
+      changes: {
+        login?: {
+          from: string;
+        };
+        slug?: {
+          from: string;
         };
         /** Format: date-time */
         updated_at: string;
@@ -11582,89 +12771,43 @@ export interface components {
         } | null;
       };
       enterprise?: components["schemas"]["enterprise"];
-      installation?: components["schemas"]["simple-installation"];
-      /** @description The [issue](https://docs.github.com/enterprise-server@3.8/rest/issues/issues#get-an-issue) the comment belongs to. */
-      issue: {
-        /** @enum {string|null} */
-        active_lock_reason:
-          | "resolved"
-          | "off-topic"
-          | "too heated"
-          | "spam"
-          | null;
-        /** User */
-        assignee?: {
-          /** Format: uri */
-          avatar_url?: string;
-          deleted?: boolean;
-          email?: string | null;
-          /** Format: uri-template */
-          events_url?: string;
-          /** Format: uri */
-          followers_url?: string;
-          /** Format: uri-template */
-          following_url?: string;
-          /** Format: uri-template */
-          gists_url?: string;
-          gravatar_id?: string;
-          /** Format: uri */
-          html_url?: string;
-          id: number;
-          login: string;
-          name?: string;
-          node_id?: string;
-          /** Format: uri */
-          organizations_url?: string;
-          /** Format: uri */
-          received_events_url?: string;
-          /** Format: uri */
-          repos_url?: string;
-          site_admin?: boolean;
-          /** Format: uri-template */
-          starred_url?: string;
-          /** Format: uri */
-          subscriptions_url?: string;
-          /** @enum {string} */
-          type?: "Bot" | "User" | "Organization" | "Mannequin";
-          /** Format: uri */
-          url?: string;
-        } | null;
-        assignees: ({
-          /** Format: uri */
-          avatar_url?: string;
-          deleted?: boolean;
-          email?: string | null;
-          /** Format: uri-template */
-          events_url?: string;
-          /** Format: uri */
-          followers_url?: string;
-          /** Format: uri-template */
-          following_url?: string;
-          /** Format: uri-template */
-          gists_url?: string;
-          gravatar_id?: string;
-          /** Format: uri */
-          html_url?: string;
-          id: number;
-          login: string;
-          name?: string;
-          node_id?: string;
-          /** Format: uri */
-          organizations_url?: string;
-          /** Format: uri */
-          received_events_url?: string;
-          /** Format: uri */
-          repos_url?: string;
-          site_admin?: boolean;
-          /** Format: uri-template */
-          starred_url?: string;
-          /** Format: uri */
-          subscriptions_url?: string;
-          /** @enum {string} */
-          type?: "Bot" | "User" | "Organization" | "Mannequin";
-          /** Format: uri */
-          url?: string;
-        } | null)[];
+      installation: components["schemas"]["simple-installation"];
+      organization?: components["schemas"]["organization-simple"];
+      repository?: components["schemas"]["repository"];
+      sender?: components["schemas"]["simple-user"];
+      target_type: string;
+    };
+    /** installation unsuspend event */
+    "webhook-installation-unsuspend": {
+      /** @enum {string} */
+      action: "unsuspend";
+      enterprise?: components["schemas"]["enterprise"];
+      installation: components["schemas"]["installation"];
+      organization?: components["schemas"]["organization-simple"];
+      /** @description An array of repository objects that the installation can access. */
+      repositories?: {
+        full_name: string;
+        /** @description Unique identifier of the repository */
+        id: number;
+        /** @description The name of the repository. */
+        name: string;
+        node_id: string;
+        /** @description Whether the repository is private or public. */
+        private: boolean;
+      }[];
+      repository?: components["schemas"]["repository"];
+      requester?: null;
+      sender: components["schemas"]["simple-user"];
+    };
+    /** issue_comment created event */
+    "webhook-issue-comment-created": {
+      /** @enum {string} */
+      action: "created";
+      /**
+       * issue comment
+       * @description The [comment](https://docs.github.com/enterprise-server@3.8/rest/issues/comments#get-an-issue-comment) itself.
+       */
+      comment: {
         /**
          * AuthorAssociation
          * @description How the author is associated with the repository.
@@ -12213,10 +13356,7 @@ export interface components {
       } | null;
       enterprise?: components["schemas"]["enterprise"];
       installation?: components["schemas"]["simple-installation"];
-      /**
-       * Issue
-       * @description The [issue](https://docs.github.com/enterprise-server@3.8/rest/issues/issues#get-an-issue) itself.
-       */
+      /** @description The [issue](https://docs.github.com/enterprise-server@3.8/rest/issues/issues#get-an-issue) the comment belongs to. */
       issue: {
         /** @enum {string|null} */
         active_lock_reason:
@@ -12779,7 +13919,21 @@ export interface components {
           type?: "Bot" | "User" | "Organization" | "Mannequin";
           /** Format: uri */
           url?: string;
-        } | null)[];
+        };
+      };
+      organization?: components["schemas"]["organization-simple"];
+      repository: components["schemas"]["repository"];
+      sender: components["schemas"]["simple-user"];
+    };
+    /** issue_comment deleted event */
+    "webhook-issue-comment-deleted": {
+      /** @enum {string} */
+      action: "deleted";
+      /**
+       * issue comment
+       * @description The [comment](https://docs.github.com/enterprise-server@3.8/rest/issues/comments#get-an-issue-comment) itself.
+       */
+      comment: {
         /**
          * AuthorAssociation
          * @description How the author is associated with the repository.
@@ -13236,10 +14390,7 @@ export interface components {
       action: "deleted";
       enterprise?: components["schemas"]["enterprise"];
       installation?: components["schemas"]["simple-installation"];
-      /**
-       * Issue
-       * @description The [issue](https://docs.github.com/enterprise-server@3.8/rest/issues/issues#get-an-issue) itself.
-       */
+      /** @description The [issue](https://docs.github.com/enterprise-server@3.8/rest/issues/issues#get-an-issue) the comment belongs to. */
       issue: {
         /** @enum {string|null} */
         active_lock_reason:
@@ -13713,9 +14864,110 @@ export interface components {
     /** issues demilestoned event */
     "webhook-issues-demilestoned": {
       /** @enum {string} */
-      action: "demilestoned";
+      action: "edited";
+      /** @description The changes to the comment. */
+      changes: {
+        body?: {
+          /** @description The previous version of the body. */
+          from: string;
+        };
+      };
+      /**
+       * issue comment
+       * @description The [comment](https://docs.github.com/enterprise-server@3.8/rest/issues/comments#get-an-issue-comment) itself.
+       */
+      comment: {
+        /**
+         * AuthorAssociation
+         * @description How the author is associated with the repository.
+         * @enum {string}
+         */
+        author_association:
+          | "COLLABORATOR"
+          | "CONTRIBUTOR"
+          | "FIRST_TIMER"
+          | "FIRST_TIME_CONTRIBUTOR"
+          | "MANNEQUIN"
+          | "MEMBER"
+          | "NONE"
+          | "OWNER";
+        /** @description Contents of the issue comment */
+        body: string;
+        /** Format: date-time */
+        created_at: string;
+        /** Format: uri */
+        html_url: string;
+        /**
+         * Format: int64
+         * @description Unique identifier of the issue comment
+         */
+        id: number;
+        /** Format: uri */
+        issue_url: string;
+        node_id: string;
+        performed_via_github_app: null | components["schemas"]["integration"];
+        /** Reactions */
+        reactions: {
+          "+1": number;
+          "-1": number;
+          confused: number;
+          eyes: number;
+          heart: number;
+          hooray: number;
+          laugh: number;
+          rocket: number;
+          total_count: number;
+          /** Format: uri */
+          url: string;
+        };
+        /** Format: date-time */
+        updated_at: string;
+        /**
+         * Format: uri
+         * @description URL for the issue comment
+         */
+        url: string;
+        /** User */
+        user: {
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization" | "Mannequin";
+          /** Format: uri */
+          url?: string;
+        } | null;
+      };
       enterprise?: components["schemas"]["enterprise"];
       installation?: components["schemas"]["simple-installation"];
+      /** @description The [issue](https://docs.github.com/enterprise-server@3.8/rest/issues/issues#get-an-issue) the comment belongs to. */
       issue: {
         /** @enum {string|null} */
         active_lock_reason:
@@ -14899,10 +16151,7 @@ export interface components {
       action: "labeled";
       enterprise?: components["schemas"]["enterprise"];
       installation?: components["schemas"]["simple-installation"];
-      /**
-       * Issue
-       * @description The [issue](https://docs.github.com/enterprise-server@3.8/rest/issues/issues#get-an-issue) itself.
-       */
+      /** @description The [issue](https://docs.github.com/enterprise-server@3.8/rest/issues/issues#get-an-issue) itself. */
       issue: {
         /** @enum {string|null} */
         active_lock_reason:
@@ -15396,6 +16645,10 @@ export interface components {
       action: "locked";
       enterprise?: components["schemas"]["enterprise"];
       installation?: components["schemas"]["simple-installation"];
+      /**
+       * Issue
+       * @description The [issue](https://docs.github.com/enterprise-server@3.8/rest/issues/issues#get-an-issue) itself.
+       */
       issue: {
         /** @enum {string|null} */
         active_lock_reason:
@@ -16925,112 +18178,70 @@ export interface components {
     /** issues opened event */
     "webhook-issues-opened": {
       /** @enum {string} */
-      action: "opened";
-      changes?: {
-        /**
-         * Issue
-         * @description The [issue](https://docs.github.com/enterprise-server@3.8/rest/issues/issues#get-an-issue) itself.
-         */
-        old_issue: {
-          /** @enum {string|null} */
-          active_lock_reason:
-            | "resolved"
-            | "off-topic"
-            | "too heated"
-            | "spam"
-            | null;
-          /** User */
-          assignee?: {
-            /** Format: uri */
-            avatar_url?: string;
-            deleted?: boolean;
-            email?: string | null;
-            /** Format: uri-template */
-            events_url?: string;
-            /** Format: uri */
-            followers_url?: string;
-            /** Format: uri-template */
-            following_url?: string;
-            /** Format: uri-template */
-            gists_url?: string;
-            gravatar_id?: string;
-            /** Format: uri */
-            html_url?: string;
-            id: number;
-            login: string;
-            name?: string;
-            node_id?: string;
-            /** Format: uri */
-            organizations_url?: string;
-            /** Format: uri */
-            received_events_url?: string;
-            /** Format: uri */
-            repos_url?: string;
-            site_admin?: boolean;
-            /** Format: uri-template */
-            starred_url?: string;
-            /** Format: uri */
-            subscriptions_url?: string;
-            /** @enum {string} */
-            type?: "Bot" | "User" | "Organization";
-            /** Format: uri */
-            url?: string;
-          } | null;
-          assignees: ({
-            /** Format: uri */
-            avatar_url?: string;
-            deleted?: boolean;
-            email?: string | null;
-            /** Format: uri-template */
-            events_url?: string;
-            /** Format: uri */
-            followers_url?: string;
-            /** Format: uri-template */
-            following_url?: string;
-            /** Format: uri-template */
-            gists_url?: string;
-            gravatar_id?: string;
-            /** Format: uri */
-            html_url?: string;
-            id: number;
-            login: string;
-            name?: string;
-            node_id?: string;
-            /** Format: uri */
-            organizations_url?: string;
-            /** Format: uri */
-            received_events_url?: string;
-            /** Format: uri */
-            repos_url?: string;
-            site_admin?: boolean;
-            /** Format: uri-template */
-            starred_url?: string;
-            /** Format: uri */
-            subscriptions_url?: string;
-            /** @enum {string} */
-            type?: "Bot" | "User" | "Organization";
-            /** Format: uri */
-            url?: string;
-          } | null)[];
-          /**
-           * AuthorAssociation
-           * @description How the author is associated with the repository.
-           * @enum {string}
-           */
-          author_association:
-            | "COLLABORATOR"
-            | "CONTRIBUTOR"
-            | "FIRST_TIMER"
-            | "FIRST_TIME_CONTRIBUTOR"
-            | "MANNEQUIN"
-            | "MEMBER"
-            | "NONE"
-            | "OWNER";
-          /** @description Contents of the issue */
-          body: string | null;
-          /** Format: date-time */
-          closed_at: string | null;
-          comments: number;
+      action: "edited";
+      /** @description The changes to the issue. */
+      changes: {
+        body?: {
+          /** @description The previous version of the body. */
+          from: string;
+        };
+        title?: {
+          /** @description The previous version of the title. */
+          from: string;
+        };
+      };
+      enterprise?: components["schemas"]["enterprise"];
+      installation?: components["schemas"]["simple-installation"];
+      /**
+       * Issue
+       * @description The [issue](https://docs.github.com/enterprise-server@3.8/rest/issues/issues#get-an-issue) itself.
+       */
+      issue: {
+        /** @enum {string|null} */
+        active_lock_reason:
+          | "resolved"
+          | "off-topic"
+          | "too heated"
+          | "spam"
+          | null;
+        /** User */
+        assignee?: {
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization" | "Mannequin";
+          /** Format: uri */
+          url?: string;
+        } | null;
+        assignees: ({
           /** Format: uri */
           comments_url: string;
           /** Format: date-time */
@@ -20841,8 +22052,8 @@ export interface components {
       organization: components["schemas"]["organization-simple"];
       repository?: components["schemas"]["repository"];
       /**
-       * @description The scope of the membership. Currently, can only be `team`.
-       * @enum {string}
+       * Issue
+       * @description The [issue](https://docs.github.com/enterprise-server@3.8/rest/issues/issues#get-an-issue) itself.
        */
       scope: "team";
       /** User */
@@ -21110,9 +22321,8 @@ export interface components {
           url?: string;
         } | null)[];
         /**
-         * AuthorAssociation
-         * @description How the author is associated with the repository.
-         * @enum {string}
+         * Issue
+         * @description The [issue](https://docs.github.com/enterprise-server@3.8/rest/issues/issues#get-an-issue) itself.
          */
         author_association:
           | "COLLABORATOR"
@@ -22002,6 +23212,10 @@ export interface components {
       action: "unlocked";
       enterprise?: components["schemas"]["enterprise"];
       installation?: components["schemas"]["simple-installation"];
+      /**
+       * Issue
+       * @description The [issue](https://docs.github.com/enterprise-server@3.8/rest/issues/issues#get-an-issue) itself.
+       */
       issue: {
         /** @enum {string|null} */
         active_lock_reason:
@@ -23661,61 +24875,11 @@ export interface components {
       action: "created";
       enterprise?: components["schemas"]["enterprise"];
       installation?: components["schemas"]["simple-installation"];
-      merge_queue: {
-        id: number;
-        node_id: string;
-      };
-      merge_queue_entry: {
-        id: number;
-        is_solo: boolean;
-        node_id: string;
-      } | null;
-      message: string | null;
-      organization?: components["schemas"]["organization-simple"];
-      /** Pull Request */
-      pull_request: {
-        _links: {
-          /** Link */
-          comments: {
-            /** Format: uri-template */
-            href: string;
-          };
-          /** Link */
-          commits: {
-            /** Format: uri-template */
-            href: string;
-          };
-          /** Link */
-          html: {
-            /** Format: uri-template */
-            href: string;
-          };
-          /** Link */
-          issue: {
-            /** Format: uri-template */
-            href: string;
-          };
-          /** Link */
-          review_comment: {
-            /** Format: uri-template */
-            href: string;
-          };
-          /** Link */
-          review_comments: {
-            /** Format: uri-template */
-            href: string;
-          };
-          /** Link */
-          self: {
-            /** Format: uri-template */
-            href: string;
-          };
-          /** Link */
-          statuses: {
-            /** Format: uri-template */
-            href: string;
-          };
-        };
+      /**
+       * Issue
+       * @description The [issue](https://docs.github.com/enterprise-server@3.8/rest/issues/issues#get-an-issue) itself.
+       */
+      issue: {
         /** @enum {string|null} */
         active_lock_reason:
           | "resolved"
@@ -24810,61 +25974,11 @@ export interface components {
       action: "deleted";
       enterprise?: components["schemas"]["enterprise"];
       installation?: components["schemas"]["simple-installation"];
-      merge_queue: {
-        id: number;
-        node_id: string;
-      };
-      merge_queue_entry: {
-        id: number;
-        is_solo: boolean;
-        node_id: string;
-      } | null;
-      message: string | null;
-      organization?: components["schemas"]["organization-simple"];
-      /** Pull Request */
-      pull_request: {
-        _links: {
-          /** Link */
-          comments: {
-            /** Format: uri-template */
-            href: string;
-          };
-          /** Link */
-          commits: {
-            /** Format: uri-template */
-            href: string;
-          };
-          /** Link */
-          html: {
-            /** Format: uri-template */
-            href: string;
-          };
-          /** Link */
-          issue: {
-            /** Format: uri-template */
-            href: string;
-          };
-          /** Link */
-          review_comment: {
-            /** Format: uri-template */
-            href: string;
-          };
-          /** Link */
-          review_comments: {
-            /** Format: uri-template */
-            href: string;
-          };
-          /** Link */
-          self: {
-            /** Format: uri-template */
-            href: string;
-          };
-          /** Link */
-          statuses: {
-            /** Format: uri-template */
-            href: string;
-          };
-        };
+      /**
+       * Issue
+       * @description The [issue](https://docs.github.com/enterprise-server@3.8/rest/issues/issues#get-an-issue) itself.
+       */
+      issue: {
         /** @enum {string|null} */
         active_lock_reason:
           | "resolved"
@@ -66515,7 +67629,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to commit comments. For more information about commit comments, see "[Commenting on a pull request](https://docs.github.com/enterprise-server@3.8/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request)." For information about the APIs to manage commit comments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.8/graphql/reference/objects#commitcomment) or "[Commit comments](https://docs.github.com/enterprise-server@3.8/rest/commits/comments)" in the REST API documentation.
+   * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/enterprise-server@3.8/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/enterprise-server@3.8/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/enterprise-server@3.8/rest/code-scanning)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Code scanning alerts" repository permission.
    * @description Someone reopened a code scanning alert.
@@ -66818,7 +67932,11 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to deploy keys. For more information, see "[Managing deploy keys](https://docs.github.com/enterprise-server@3.8/developers/overview/managing-deploy-keys)." For information about the APIs to manage deploy keys, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.8/graphql/reference/objects#deploykey) or "[Deploy keys](https://docs.github.com/enterprise-server@3.8/rest/deploy-keys)" in the REST API documentation.
+   * This event occurs when there is activity relating to Dependabot alerts.
+   *
+   * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.8/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.8/rest/dependabot/alerts)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
    *
    * **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
    * @description A manifest file change introduced a vulnerable dependency that had previously been fixed.
@@ -69585,92 +70703,6 @@ export interface operations {
     requestBody: {
       content: {
         "application/json": components["schemas"]["webhook-membership-removed"];
-      };
-    };
-    responses: {
-      /** @description Return a 200 status to indicate that the data was received successfully */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /**
-   * This event occurs when there is activity relating to a pull requests in a merge queue. For more information, see "[Automatically merging a pull request](https://docs.github.com/enterprise-server@3.8/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/automatically-merging-a-pull-request)."
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-   *
-   * **Note**: The pull request merge queue feature is currently in limited private beta and subject to change.
-   * @description A pull request was added to a merge queue.
-   */
-  "merge-queue-entry/created": {
-    parameters: {
-      header: {
-        /** @example GitHub-Hookshot/123abc */
-        "User-Agent": string;
-        /** @example 12312312 */
-        "X-Github-Hook-Id": string;
-        /** @example issues */
-        "X-Github-Event": string;
-        /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id": string;
-        /** @example repository */
-        "X-Github-Hook-Installation-Target-Type": string;
-        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery": string;
-        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256": string;
-        /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version": string;
-        /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host": string;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["webhook-merge-queue-entry-created"];
-      };
-    };
-    responses: {
-      /** @description Return a 200 status to indicate that the data was received successfully */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /**
-   * This event occurs when there is activity relating to a pull requests in a merge queue. For more information, see "[Automatically merging a pull request](https://docs.github.com/enterprise-server@3.8/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/automatically-merging-a-pull-request)."
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-   *
-   * **Note**: The pull request merge queue feature is currently in limited private beta and subject to change.
-   * @description A pull request was removed from a merge queue.
-   */
-  "merge-queue-entry/deleted": {
-    parameters: {
-      header: {
-        /** @example GitHub-Hookshot/123abc */
-        "User-Agent": string;
-        /** @example 12312312 */
-        "X-Github-Hook-Id": string;
-        /** @example issues */
-        "X-Github-Event": string;
-        /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id": string;
-        /** @example repository */
-        "X-Github-Hook-Installation-Target-Type": string;
-        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery": string;
-        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256": string;
-        /** @example 3.1.9 */
-        "X-GitHub-Enterprise-Version": string;
-        /** @example ghes.github.com */
-        "X-GitHub-Enterprise-Host": string;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["webhook-merge-queue-entry-deleted"];
       };
     };
     responses: {
