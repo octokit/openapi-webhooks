@@ -24335,11 +24335,11 @@ export interface components {
       };
       platform?: string;
       metadata?: {
-        [key: string]: string | undefined;
+        [key: string]: string;
       };
       repo?: string;
       dependencies?: {
-        [key: string]: string | undefined;
+        [key: string]: string;
       }[];
       commit_oid?: string;
     };
@@ -24623,37 +24623,37 @@ export interface components {
       /** @description New requested permissions, categorized by type of permission. */
       permissions_added: {
         organization?: {
-          [key: string]: string | undefined;
+          [key: string]: string;
         };
         repository?: {
-          [key: string]: string | undefined;
+          [key: string]: string;
         };
         other?: {
-          [key: string]: string | undefined;
+          [key: string]: string;
         };
       };
       /** @description Requested permissions that elevate access for a previously approved request for access, categorized by type of permission. */
       permissions_upgraded: {
         organization?: {
-          [key: string]: string | undefined;
+          [key: string]: string;
         };
         repository?: {
-          [key: string]: string | undefined;
+          [key: string]: string;
         };
         other?: {
-          [key: string]: string | undefined;
+          [key: string]: string;
         };
       };
       /** @description Permissions requested, categorized by type of permission. This field incorporates `permissions_added` and `permissions_upgraded`. */
       permissions_result: {
         organization?: {
-          [key: string]: string | undefined;
+          [key: string]: string;
         };
         repository?: {
-          [key: string]: string | undefined;
+          [key: string]: string;
         };
         other?: {
-          [key: string]: string | undefined;
+          [key: string]: string;
         };
       };
       /**
@@ -62760,6 +62760,8 @@ export interface components {
   headers: never;
   pathItems: never;
 }
+
+export type $defs = Record<string, never>;
 
 export type external = Record<string, never>;
 
