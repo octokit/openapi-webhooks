@@ -71,7 +71,7 @@ async function run() {
 
     if (
       name.startsWith("ghes-") &&
-      !currentGhesVersions.includes(parseFloat(name.substring("ghes-".length)))
+      !currentGhesVersions.includes(name.substring("ghes-".length))
     ) {
       console.log(`Skipping ${name} because it is not a current GHES version`);
       continue;
