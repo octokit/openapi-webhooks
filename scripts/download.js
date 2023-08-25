@@ -63,7 +63,7 @@ async function run() {
   }
 
   // temporarily hardcode versions until we unblock automated updates
-  const currentGhesVersions = [...await getCurrentVersions(), 3.9];
+  const currentGhesVersions = [...await getCurrentVersions()];
 
   for (const folder of data) {
     const { name } = folder;
@@ -71,7 +71,7 @@ async function run() {
 
     if (
       name.startsWith("ghes-") &&
-      !currentGhesVersions.includes(parseFloat(name.substring("ghes-".length)))
+      !currentGhesVersions.includes(name.substring("ghes-".length))
     ) {
       console.log(`Skipping ${name} because it is not a current GHES version`);
       continue;
