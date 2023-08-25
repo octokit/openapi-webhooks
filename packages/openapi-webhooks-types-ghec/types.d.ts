@@ -17,11 +17,33 @@ type OneOf<T extends any[]> = T extends [infer Only]
 export type paths = Record<string, never>;
 
 export interface webhooks {
+  "branch-protection-configuration-disabled": {
+    /**
+     * This event occurs when there is a change to branch protection configurations for a repository.
+     * For more information, see "[About protected branches](https://docs.github.com/enterprise-cloud@latest//repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches)."
+     * For information about using the APIs to manage branch protection rules, see "[Branch protection rule](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#branchprotectionrule)" in the GraphQL documentation or "[Branch protection](https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection)" in the REST API documentation.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+     * @description All branch protections were disabled for a repository.
+     */
+    post: operations["branch-protection-configuration/disabled"];
+  };
+  "branch-protection-configuration-enabled": {
+    /**
+     * This event occurs when there is a change to branch protection configurations for a repository.
+     * For more information, see "[About protected branches](https://docs.github.com/enterprise-cloud@latest//repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches)."
+     * For information about using the APIs to manage branch protection rules, see "[Branch protection rule](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#branchprotectionrule)" in the GraphQL documentation or "[Branch protection](https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection)" in the REST API documentation.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+     * @description All branch protections were enabled for a repository.
+     */
+    post: operations["branch-protection-configuration/enabled"];
+  };
   "branch-protection-rule-created": {
     /**
      * This event occurs when there is activity relating to branch protection rules. For more information, see "[About protected branches](https://docs.github.com/enterprise-cloud@latest//repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches)." For information about the APIs to manage branch protection rules, see [the GraphQL documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#branchprotectionrule) or "[Branch protection](https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection)" in the REST API documentation.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
      * @description A branch protection rule was created.
      */
     post: operations["branch-protection-rule/created"];
@@ -363,6 +385,39 @@ export interface webhooks {
      */
     post: operations["deployment-protection-rule/requested"];
   };
+  "deployment-review-approved": {
+    /**
+     * This event occurs when there is activity relating to deployment reviews. For more information, see "[About deployments](https://docs.github.com/enterprise-cloud@latest//actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/enterprise-cloud@latest//rest/deployments/deployments)" in the REST API documentation.
+     *
+     * For activity relating to deployment creation or deployment status, use the `deployment` or `deployment_status` event.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
+     * @description A deployment review was approved.
+     */
+    post: operations["deployment-review/approved"];
+  };
+  "deployment-review-rejected": {
+    /**
+     * This event occurs when there is activity relating to deployment reviews. For more information, see "[About deployments](https://docs.github.com/enterprise-cloud@latest//actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/enterprise-cloud@latest//rest/deployments/deployments)" in the REST API documentation.
+     *
+     * For activity relating to deployment creation or deployment status, use the `deployment` or `deployment_status` event.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
+     * @description A deployment review was rejected.
+     */
+    post: operations["deployment-review/rejected"];
+  };
+  "deployment-review-requested": {
+    /**
+     * This event occurs when there is activity relating to deployment reviews. For more information, see "[About deployments](https://docs.github.com/enterprise-cloud@latest//actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/enterprise-cloud@latest//rest/deployments/deployments)" in the REST API documentation.
+     *
+     * For activity relating to deployment creation or deployment status, use the `deployment` or `deployment_status` event.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
+     * @description A deployment review was requested.
+     */
+    post: operations["deployment-review/requested"];
+  };
   "deployment-status-created": {
     /**
      * This event occurs when there is activity relating to deployment statuses. For more information, see "[About deployments](https://docs.github.com/enterprise-cloud@latest//actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/enterprise-cloud@latest//rest/deployments/deployments)" in the REST API documentation.
@@ -639,7 +694,7 @@ export interface webhooks {
     /**
      * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
      *
-     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-cloud@latest//developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-cloud@latest//rest/reference/apps)" in the REST API documentation.
+     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-cloud@latest//developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-cloud@latest//rest/apps)" in the REST API documentation.
      * @description Someone installed a GitHub App on a user or organization account.
      */
     post: operations["installation/created"];
@@ -648,7 +703,7 @@ export interface webhooks {
     /**
      * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
      *
-     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-cloud@latest//developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-cloud@latest//rest/reference/apps)" in the REST API documentation.
+     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-cloud@latest//developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-cloud@latest//rest/apps)" in the REST API documentation.
      * @description Someone uninstalled a GitHub App from their user or organization account.
      */
     post: operations["installation/deleted"];
@@ -657,7 +712,7 @@ export interface webhooks {
     /**
      * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
      *
-     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-cloud@latest//developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-cloud@latest//rest/reference/apps)" in the REST API documentation.
+     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-cloud@latest//developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-cloud@latest//rest/apps)" in the REST API documentation.
      * @description Someone granted new permissions to a GitHub App.
      */
     post: operations["installation/new-permissions-accepted"];
@@ -666,7 +721,7 @@ export interface webhooks {
     /**
      * This event occurs when there is activity relating to which repositories a GitHub App installation can access. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
      *
-     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-cloud@latest//developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-cloud@latest//rest/reference/apps)" in the REST API documentation.
+     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-cloud@latest//developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-cloud@latest//rest/apps)" in the REST API documentation.
      * @description A GitHub App installation was granted access to one or more repositories.
      */
     post: operations["installation-repositories/added"];
@@ -675,7 +730,7 @@ export interface webhooks {
     /**
      * This event occurs when there is activity relating to which repositories a GitHub App installation can access. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
      *
-     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-cloud@latest//developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-cloud@latest//rest/reference/apps)" in the REST API documentation.
+     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-cloud@latest//developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-cloud@latest//rest/apps)" in the REST API documentation.
      * @description Access to one or more repositories was revoked for a GitHub App installation.
      */
     post: operations["installation-repositories/removed"];
@@ -684,14 +739,14 @@ export interface webhooks {
     /**
      * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
      *
-     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-cloud@latest//developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-cloud@latest//rest/reference/apps)" in the REST API documentation.
+     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-cloud@latest//developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-cloud@latest//rest/apps)" in the REST API documentation.
      * @description Someone blocked access by a GitHub App to their user or organization account.
      */
     post: operations["installation/suspend"];
   };
   "installation-target-renamed": {
     /**
-     * This event occurs when there is activity relating to the user or organization account that a GitHub App is installed on. For more information, see "[About apps](https://docs.github.com/enterprise-cloud@latest//developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-cloud@latest//rest/reference/apps)" in the REST API documentation.
+     * This event occurs when there is activity relating to the user or organization account that a GitHub App is installed on. For more information, see "[About apps](https://docs.github.com/enterprise-cloud@latest//developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-cloud@latest//rest/apps)" in the REST API documentation.
      * @description Somebody renamed the user or organization account that a GitHub App is installed on.
      */
     post: operations["installation-target/renamed"];
@@ -700,7 +755,7 @@ export interface webhooks {
     /**
      * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
      *
-     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-cloud@latest//developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-cloud@latest//rest/reference/apps)" in the REST API documentation.
+     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-cloud@latest//developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-cloud@latest//rest/apps)" in the REST API documentation.
      * @description A GitHub App that was blocked from accessing a user or organization account was given access the account again.
      */
     post: operations["installation/unsuspend"];
@@ -1020,7 +1075,7 @@ export interface webhooks {
   };
   "membership-removed": {
     /**
-     * This event occurs when there is activity relating to team membership. For more information, see "[About teams](https://docs.github.com/enterprise-cloud@latest//organizations/organizing-members-into-teams/about-teams)." For more information about the API to manage team memberships, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#team) or "[Team members](https://docs.github.com/enterprise-cloud@latest//rest/teams/members)" in the REST API documentation.
+     * This event occurs when there is activity relating to team membership. For more information, see "[About teams](https://docs.github.com/enterprise-cloud@latest//organizations/organizing-members-into-teams/about-teams)." For more information about the APIs to manage team memberships, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#team) or "[Team members](https://docs.github.com/enterprise-cloud@latest//rest/teams/members)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
      * @description An organization member was removed from a team.
@@ -1422,7 +1477,7 @@ export interface webhooks {
     /**
      * This event occurs when there is activity relating to an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-cloud@latest//issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#projectv2).
      *
-     * For activity relating to a item on a project, use the `projects_v2_item` event. For activity relating to Projects (classic), use the `project`, project_card`, and `project_column` events instead.
+     * For activity relating to a item on a project, use the `projects_v2_item` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
      *
@@ -1435,7 +1490,7 @@ export interface webhooks {
     /**
      * This event occurs when there is activity relating to an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-cloud@latest//issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#projectv2).
      *
-     * For activity relating to a item on a project, use the `projects_v2_item` event. For activity relating to Projects (classic), use the `project`, project_card`, and `project_column` events instead.
+     * For activity relating to a item on a project, use the `projects_v2_item` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
      *
@@ -1448,7 +1503,7 @@ export interface webhooks {
     /**
      * This event occurs when there is activity relating to an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-cloud@latest//issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#projectv2).
      *
-     * For activity relating to a item on a project, use the `projects_v2_item` event. For activity relating to Projects (classic), use the `project`, project_card`, and `project_column` events instead.
+     * For activity relating to a item on a project, use the `projects_v2_item` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
      *
@@ -1461,7 +1516,7 @@ export interface webhooks {
     /**
      * This event occurs when there is activity relating to an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-cloud@latest//issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#projectv2).
      *
-     * For activity relating to a item on a project, use the `projects_v2_item` event. For activity relating to Projects (classic), use the `project`, project_card`, and `project_column` events instead.
+     * For activity relating to a item on a project, use the `projects_v2_item` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
      *
@@ -1565,7 +1620,7 @@ export interface webhooks {
     /**
      * This event occurs when there is activity relating to an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-cloud@latest//issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#projectv2).
      *
-     * For activity relating to a item on a project, use the `projects_v2_item` event. For activity relating to Projects (classic), use the `project`, project_card`, and `project_column` events instead.
+     * For activity relating to a item on a project, use the `projects_v2_item` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
      *
@@ -1740,7 +1795,7 @@ export interface webhooks {
     /**
      * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-cloud@latest//pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls)" in the REST API documentation.
      *
-     * For activity related to pull request reviews, pull request review comments, pull request comments,or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
+     * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
      * @description A previously closed pull request was reopened.
@@ -1837,7 +1892,7 @@ export interface webhooks {
   };
   "pull-request-review-thread-resolved": {
     /**
-     * This event occurs when there is activity relating to a comment thread on a pull request. For more information, see "[About pull request reviews](https://docs.github.com/enterprise-cloud@latest//pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request review comment threads, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#pullrequestreviewthread) or "[Pull request reviews](https://docs.github.com/enterprise-cloud@latest//rest/pulls/reviews)" in the REST API documentation.
+     * This event occurs when there is activity relating to a comment thread on a pull request. For more information, see "[About pull request reviews](https://docs.github.com/enterprise-cloud@latest//pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request reviews, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#pullrequestreviewthread) or "[Pull request review comments](https://docs.github.com/enterprise-cloud@latest//rest/pulls/comments)" in the REST API documentation.
      *
      * For activity related to pull request review comments, pull request comments, or pull request reviews, use the `pull_request_review_comment`, `issue_comment`, or `pull_request_review` events instead.
      *
@@ -1903,7 +1958,7 @@ export interface webhooks {
   };
   push: {
     /**
-     * This event occurs when a commit or tag is pushed.
+     * This event occurs when a commit or tag is pushed, or when a repository is cloned.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
      *
@@ -1928,7 +1983,7 @@ export interface webhooks {
      *
      * To install this event on a GitHub App, the app must have at least read-level access for the "Packages" repository permission.
      *
-     * **Note**: GitHub recommends that you use the newer `package` event instead
+     * **Note**: GitHub recommends that you use the newer `package` event instead.
      * @description A package that was previously published to a registry was updated.
      */
     post: operations["registry-package/updated"];
@@ -1944,7 +1999,7 @@ export interface webhooks {
   };
   "release-deleted": {
     /**
-     * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-cloud@latest//repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-cloud@latest//rest/packages)" in the REST API documentation.
+     * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-cloud@latest//repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-cloud@latest//rest/releases)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
      * @description A release, pre-release, or draft release was deleted.
@@ -1953,7 +2008,7 @@ export interface webhooks {
   };
   "release-edited": {
     /**
-     * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-cloud@latest//repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-cloud@latest//rest/packages)" in the REST API documentation.
+     * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-cloud@latest//repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-cloud@latest//rest/releases)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
      * @description The details of a release, pre-release, or draft release were edited. For more information, see "[Managing releases in a repository](https://docs.github.com/enterprise-cloud@latest//repositories/releasing-projects-on-github/managing-releases-in-a-repository#editing-a-release)."
@@ -1962,7 +2017,7 @@ export interface webhooks {
   };
   "release-prereleased": {
     /**
-     * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-cloud@latest//repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-cloud@latest//rest/packages)" in the REST API documentation.
+     * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-cloud@latest//repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-cloud@latest//rest/releases)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
      * @description A release was created and identified as a pre-release. A pre-release is a release that is not ready for production and may be unstable.
@@ -1971,7 +2026,7 @@ export interface webhooks {
   };
   "release-published": {
     /**
-     * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-cloud@latest//repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-cloud@latest//rest/packages)" in the REST API documentation.
+     * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-cloud@latest//repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-cloud@latest//rest/releases)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
      * @description A release, pre-release, or draft of a release was published.
@@ -1980,7 +2035,7 @@ export interface webhooks {
   };
   "release-released": {
     /**
-     * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-cloud@latest//repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-cloud@latest//rest/packages)" in the REST API documentation.
+     * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-cloud@latest//repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-cloud@latest//rest/releases)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
      * @description A release was published, or a pre-release was changed to a release.
@@ -1989,7 +2044,7 @@ export interface webhooks {
   };
   "release-unpublished": {
     /**
-     * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-cloud@latest//repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-cloud@latest//rest/packages)" in the REST API documentation.
+     * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-cloud@latest//repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-cloud@latest//rest/releases)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
      * @description A release or pre-release was unpublished.
@@ -2089,6 +2144,39 @@ export interface webhooks {
      * @description The name of a repository was changed.
      */
     post: operations["repository/renamed"];
+  };
+  "repository-ruleset-created": {
+    /**
+     * This event occurs when there is activity relating to repository rulesets.
+     * For more information about repository rulesets, see "[Managing rulesets](https://docs.github.com/enterprise-cloud@latest//repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets)."
+     * For more information on managing rulesets via the APIs, see [Repository ruleset](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#repositoryruleset) in the GraphQL documentation or "[Repository rules](https://docs.github.com/enterprise-cloud@latest//rest/repos/rules)" and "[Organization rules](https://docs.github.com/enterprise-cloud@latest//rest/orgs/rules) in the REST API documentation."
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+     * @description A repository ruleset was created.
+     */
+    post: operations["repository-ruleset/created"];
+  };
+  "repository-ruleset-deleted": {
+    /**
+     * This event occurs when there is activity relating to repository rulesets.
+     * For more information about repository rulesets, see "[Managing rulesets](https://docs.github.com/enterprise-cloud@latest//repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets)."
+     * For more information on managing rulesets via the APIs, see [Repository ruleset](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#repositoryruleset) in the GraphQL documentation or "[Repository rules](https://docs.github.com/enterprise-cloud@latest//rest/repos/rules)" and "[Organization rules](https://docs.github.com/enterprise-cloud@latest//rest/orgs/rules) in the REST API documentation."
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+     * @description A repository ruleset was deleted.
+     */
+    post: operations["repository-ruleset/deleted"];
+  };
+  "repository-ruleset-edited": {
+    /**
+     * This event occurs when there is activity relating to repository rulesets.
+     * For more information about repository rulesets, see "[Managing rulesets](https://docs.github.com/enterprise-cloud@latest//repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets)."
+     * For more information on managing rulesets via the APIs, see [Repository ruleset](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#repositoryruleset) in the GraphQL documentation or "[Repository rules](https://docs.github.com/enterprise-cloud@latest//rest/repos/rules)" and "[Organization rules](https://docs.github.com/enterprise-cloud@latest//rest/orgs/rules) in the REST API documentation."
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+     * @description A repository ruleset was edited.
+     */
+    post: operations["repository-ruleset/edited"];
   };
   "repository-transferred": {
     /**
@@ -2314,7 +2402,7 @@ export interface webhooks {
   };
   status: {
     /**
-     * This event occurs when the status of a Git commit changes. For example, commits can be marked as `error`, `failure`, `pending`, or `success`. For more information, see "[About status checks](https://docs.github.com/enterprise-cloud@latest//pull-requests/collaborating-with-pull-requests/collaborating-on-repositories-with-code-quality-features/about-status-checks)." For information about the APIs to manage commit statuses, see [the GraphQL documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#status) or "[Statuses](https://docs.github.com/enterprise-cloud@latest//rest/reference/commits#commit-statuses)" in the REST API documentation.
+     * This event occurs when the status of a Git commit changes. For example, commits can be marked as `error`, `failure`, `pending`, or `success`. For more information, see "[About status checks](https://docs.github.com/enterprise-cloud@latest//pull-requests/collaborating-with-pull-requests/collaborating-on-repositories-with-code-quality-features/about-status-checks)." For information about the APIs to manage commit statuses, see [the GraphQL documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#status) or "[Commit statuses](https://docs.github.com/enterprise-cloud@latest//rest/commits/statuses)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Commit statuses" repository permission.
      */
@@ -2435,13 +2523,11 @@ export interface webhooks {
   };
   "workflow-job-waiting": {
     /**
-     * This event occurs when there is activity relating to a job in a GitHub Actions workflow.
+     * This event occurs when there is activity relating to a job in a GitHub Actions workflow. For more information, see "[Using jobs in a workflow](https://docs.github.com/enterprise-cloud@latest//actions/using-jobs/using-jobs-in-a-workflow)." For information about the API to manage workflow jobs, see "[Workflow jobs](https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-jobs)" in the REST API documentation.
      *
-     * For more information, see "[Using jobs in a workflow](https://docs.github.com/enterprise-cloud@latest//actions/using-jobs/using-jobs-in-a-workflow)." For information about the API to manage workflow jobs, see [the REST API documentation](https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-jobs).
+     * For activity relating to a workflow run instead of a job in a workflow run, use the `workflow_run` event.
      *
-     * For activity relating to a workflow run instead of a job in a workflow run, see the `workflow_run` event.
-     *
-     * To install this event on a GitHub App, the app must have at least read-level access for the Actions metadata permission.
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Actions" repository permission.
      * @description A job in a workflow run was created and is waiting for approvals.
      */
     post: operations["workflow-job/waiting"];
@@ -2483,76 +2569,14 @@ export interface webhooks {
 
 export interface components {
   schemas: {
-    /** branch protection rule created event */
-    "webhook-branch-protection-rule-created": {
+    /** branch protection configuration disabled event */
+    "webhook-branch-protection-configuration-disabled": {
       /** @enum {string} */
-      action: "created";
+      action: "disabled";
       enterprise?: components["schemas"]["enterprise"];
       installation?: components["schemas"]["simple-installation"];
       organization?: components["schemas"]["organization-simple"];
       repository: components["schemas"]["repository"];
-      /**
-       * branch protection rule
-       * @description The branch protection rule. Includes a `name` and all the [branch protection settings](https://docs.github.com/enterprise-cloud@latest//github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#about-branch-protection-settings) applied to branches that match the name. Binary settings are boolean. Multi-level configurations are one of `off`, `non_admins`, or `everyone`. Actor and build lists are arrays of strings.
-       */
-      rule: {
-        admin_enforced: boolean;
-        /** @enum {string} */
-        allow_deletions_enforcement_level: "off" | "non_admins" | "everyone";
-        /** @enum {string} */
-        allow_force_pushes_enforcement_level: "off" | "non_admins" | "everyone";
-        authorized_actor_names: string[];
-        authorized_actors_only: boolean;
-        authorized_dismissal_actors_only: boolean;
-        create_protected?: boolean;
-        /** Format: date-time */
-        created_at: string;
-        dismiss_stale_reviews_on_push: boolean;
-        id: number;
-        ignore_approvals_from_contributors: boolean;
-        /** @enum {string} */
-        linear_history_requirement_enforcement_level:
-          | "off"
-          | "non_admins"
-          | "everyone";
-        /** @enum {string} */
-        merge_queue_enforcement_level: "off" | "non_admins" | "everyone";
-        name: string;
-        /** @enum {string} */
-        pull_request_reviews_enforcement_level:
-          | "off"
-          | "non_admins"
-          | "everyone";
-        repository_id: number;
-        require_code_owner_review: boolean;
-        /** @description Whether the most recent push must be approved by someone other than the person who pushed it */
-        require_last_push_approval?: boolean;
-        required_approving_review_count: number;
-        /** @enum {string} */
-        required_conversation_resolution_level:
-          | "off"
-          | "non_admins"
-          | "everyone";
-        /** @enum {string} */
-        required_deployments_enforcement_level:
-          | "off"
-          | "non_admins"
-          | "everyone";
-        required_status_checks: string[];
-        /** @enum {string} */
-        required_status_checks_enforcement_level:
-          | "off"
-          | "non_admins"
-          | "everyone";
-        /** @enum {string} */
-        signature_requirement_enforcement_level:
-          | "off"
-          | "non_admins"
-          | "everyone";
-        strict_required_status_checks_policy: boolean;
-        /** Format: date-time */
-        updated_at: string;
-      };
       sender: components["schemas"]["simple-user"];
     };
     /**
@@ -3043,6 +3067,88 @@ export interface components {
       type: string;
       site_admin: boolean;
       starred_at?: string;
+    };
+    /** branch protection configuration enabled event */
+    "webhook-branch-protection-configuration-enabled": {
+      /** @enum {string} */
+      action: "enabled";
+      enterprise?: components["schemas"]["enterprise"];
+      installation?: components["schemas"]["simple-installation"];
+      organization?: components["schemas"]["organization-simple"];
+      repository: components["schemas"]["repository"];
+      sender: components["schemas"]["simple-user"];
+    };
+    /** branch protection rule created event */
+    "webhook-branch-protection-rule-created": {
+      /** @enum {string} */
+      action: "created";
+      enterprise?: components["schemas"]["enterprise"];
+      installation?: components["schemas"]["simple-installation"];
+      organization?: components["schemas"]["organization-simple"];
+      repository: components["schemas"]["repository"];
+      /**
+       * branch protection rule
+       * @description The branch protection rule. Includes a `name` and all the [branch protection settings](https://docs.github.com/enterprise-cloud@latest//github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#about-branch-protection-settings) applied to branches that match the name. Binary settings are boolean. Multi-level configurations are one of `off`, `non_admins`, or `everyone`. Actor and build lists are arrays of strings.
+       */
+      rule: {
+        admin_enforced: boolean;
+        /** @enum {string} */
+        allow_deletions_enforcement_level: "off" | "non_admins" | "everyone";
+        /** @enum {string} */
+        allow_force_pushes_enforcement_level: "off" | "non_admins" | "everyone";
+        authorized_actor_names: string[];
+        authorized_actors_only: boolean;
+        authorized_dismissal_actors_only: boolean;
+        create_protected?: boolean;
+        /** Format: date-time */
+        created_at: string;
+        dismiss_stale_reviews_on_push: boolean;
+        id: number;
+        ignore_approvals_from_contributors: boolean;
+        /** @enum {string} */
+        linear_history_requirement_enforcement_level:
+          | "off"
+          | "non_admins"
+          | "everyone";
+        /** @enum {string} */
+        merge_queue_enforcement_level: "off" | "non_admins" | "everyone";
+        name: string;
+        /** @enum {string} */
+        pull_request_reviews_enforcement_level:
+          | "off"
+          | "non_admins"
+          | "everyone";
+        repository_id: number;
+        require_code_owner_review: boolean;
+        /** @description Whether the most recent push must be approved by someone other than the person who pushed it */
+        require_last_push_approval?: boolean;
+        required_approving_review_count: number;
+        /** @enum {string} */
+        required_conversation_resolution_level:
+          | "off"
+          | "non_admins"
+          | "everyone";
+        /** @enum {string} */
+        required_deployments_enforcement_level:
+          | "off"
+          | "non_admins"
+          | "everyone";
+        required_status_checks: string[];
+        /** @enum {string} */
+        required_status_checks_enforcement_level:
+          | "off"
+          | "non_admins"
+          | "everyone";
+        /** @enum {string} */
+        signature_requirement_enforcement_level:
+          | "off"
+          | "non_admins"
+          | "everyone";
+        strict_required_status_checks_policy: boolean;
+        /** Format: date-time */
+        updated_at: string;
+      };
+      sender: components["schemas"]["simple-user"];
     };
     /** branch protection rule deleted event */
     "webhook-branch-protection-rule-deleted": {
@@ -3606,7 +3712,7 @@ export interface components {
     "webhook-check-suite-completed": {
       /** @enum {string} */
       action: "completed";
-      /** @description The [check_suite](https://docs.github.com/enterprise-cloud@latest//rest/reference/checks#suites). */
+      /** @description The [check_suite](https://docs.github.com/enterprise-cloud@latest//rest/checks/suites#get-a-check-suite). */
       check_suite: {
         after: string | null;
         /**
@@ -3916,7 +4022,7 @@ export interface components {
     "webhook-check-suite-requested": {
       /** @enum {string} */
       action: "requested";
-      /** @description The [check_suite](https://docs.github.com/enterprise-cloud@latest//rest/reference/checks#suites). */
+      /** @description The [check_suite](https://docs.github.com/enterprise-cloud@latest//rest/checks/suites#get-a-check-suite). */
       check_suite: {
         after: string | null;
         /**
@@ -4220,7 +4326,7 @@ export interface components {
     "webhook-check-suite-rerequested": {
       /** @enum {string} */
       action: "rerequested";
-      /** @description The [check_suite](https://docs.github.com/enterprise-cloud@latest//rest/reference/checks#suites). */
+      /** @description The [check_suite](https://docs.github.com/enterprise-cloud@latest//rest/checks/suites#get-a-check-suite). */
       check_suite: {
         after: string | null;
         /**
@@ -5211,7 +5317,7 @@ export interface components {
        * @enum {string}
        */
       action: "created";
-      /** @description The [commit comment](https://docs.github.com/enterprise-cloud@latest//rest/reference/repos#get-a-commit-comment) resource. */
+      /** @description The [commit comment](https://docs.github.com/enterprise-cloud@latest//rest/commits/comments#get-a-commit-comment) resource. */
       comment: {
         /**
          * AuthorAssociation
@@ -5594,7 +5700,7 @@ export interface components {
       action: "created";
       enterprise?: components["schemas"]["enterprise"];
       installation?: components["schemas"]["simple-installation"];
-      /** @description The [`deploy key`](https://docs.github.com/enterprise-cloud@latest//rest/reference/deployments#get-a-deploy-key) resource. */
+      /** @description The [`deploy key`](https://docs.github.com/enterprise-cloud@latest//rest/deploy-keys/deploy-keys#get-a-deploy-key) resource. */
       key: {
         added_by?: string | null;
         created_at: string;
@@ -5617,7 +5723,7 @@ export interface components {
       action: "deleted";
       enterprise?: components["schemas"]["enterprise"];
       installation?: components["schemas"]["simple-installation"];
-      /** @description The [`deploy key`](https://docs.github.com/enterprise-cloud@latest//rest/reference/deployments#get-a-deploy-key) resource. */
+      /** @description The [`deploy key`](https://docs.github.com/enterprise-cloud@latest//rest/deploy-keys/deploy-keys#get-a-deploy-key) resource. */
       key: {
         added_by?: string | null;
         created_at: string;
@@ -5640,7 +5746,7 @@ export interface components {
       action: "created";
       /**
        * Deployment
-       * @description The [deployment](https://docs.github.com/enterprise-cloud@latest//rest/reference/deployments#list-deployments).
+       * @description The [deployment](https://docs.github.com/enterprise-cloud@latest//rest/deployments/deployments#list-deployments).
        */
       deployment: {
         created_at: string;
@@ -6820,6 +6926,1176 @@ export interface components {
       /** @description Commit message for the merge commit. */
       commit_message: string;
     } | null;
+    "webhook-deployment-review-approved": {
+      /** @enum {string} */
+      action: "approved";
+      approver?: {
+        avatar_url?: string;
+        events_url?: string;
+        followers_url?: string;
+        following_url?: string;
+        gists_url?: string;
+        gravatar_id?: string;
+        html_url?: string;
+        id?: number;
+        login?: string;
+        node_id?: string;
+        organizations_url?: string;
+        received_events_url?: string;
+        repos_url?: string;
+        site_admin?: boolean;
+        starred_url?: string;
+        subscriptions_url?: string;
+        type?: string;
+        url?: string;
+      };
+      comment?: string;
+      enterprise?: components["schemas"]["enterprise"];
+      installation?: components["schemas"]["simple-installation"];
+      organization: components["schemas"]["organization-simple"];
+      repository: components["schemas"]["repository"];
+      reviewers?: {
+        /** User */
+        reviewer?: {
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization";
+          /** Format: uri */
+          url?: string;
+        } | null;
+        /** @enum {string} */
+        type?: "User";
+      }[];
+      sender: components["schemas"]["simple-user"];
+      since: string;
+      workflow_job_run?: {
+        conclusion: null;
+        created_at: string;
+        environment: string;
+        html_url: string;
+        id: number;
+        name: null;
+        status: string;
+        updated_at: string;
+      };
+      workflow_job_runs?: {
+        conclusion?: null;
+        created_at?: string;
+        environment?: string;
+        html_url?: string;
+        id?: number;
+        name?: string | null;
+        status?: string;
+        updated_at?: string;
+      }[];
+      /** Deployment Workflow Run */
+      workflow_run: {
+        /** User */
+        actor: {
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization";
+          /** Format: uri */
+          url?: string;
+        } | null;
+        artifacts_url?: string;
+        cancel_url?: string;
+        check_suite_id: number;
+        check_suite_node_id: string;
+        check_suite_url?: string;
+        /** @enum {string|null} */
+        conclusion:
+          | "success"
+          | "failure"
+          | "neutral"
+          | "cancelled"
+          | "timed_out"
+          | "action_required"
+          | "stale"
+          | null;
+        /** Format: date-time */
+        created_at: string;
+        display_title: string;
+        event: string;
+        head_branch: string;
+        head_commit?: Record<string, never> | null;
+        head_repository?: {
+          archive_url?: string;
+          assignees_url?: string;
+          blobs_url?: string;
+          branches_url?: string;
+          collaborators_url?: string;
+          comments_url?: string;
+          commits_url?: string;
+          compare_url?: string;
+          contents_url?: string;
+          contributors_url?: string;
+          deployments_url?: string;
+          description?: string | null;
+          downloads_url?: string;
+          events_url?: string;
+          fork?: boolean;
+          forks_url?: string;
+          full_name?: string;
+          git_commits_url?: string;
+          git_refs_url?: string;
+          git_tags_url?: string;
+          hooks_url?: string;
+          html_url?: string;
+          id?: number;
+          issue_comment_url?: string;
+          issue_events_url?: string;
+          issues_url?: string;
+          keys_url?: string;
+          labels_url?: string;
+          languages_url?: string;
+          merges_url?: string;
+          milestones_url?: string;
+          name?: string;
+          node_id?: string;
+          notifications_url?: string;
+          owner?: {
+            avatar_url?: string;
+            events_url?: string;
+            followers_url?: string;
+            following_url?: string;
+            gists_url?: string;
+            gravatar_id?: string;
+            html_url?: string;
+            id?: number;
+            login?: string;
+            node_id?: string;
+            organizations_url?: string;
+            received_events_url?: string;
+            repos_url?: string;
+            site_admin?: boolean;
+            starred_url?: string;
+            subscriptions_url?: string;
+            type?: string;
+            url?: string;
+          };
+          private?: boolean;
+          pulls_url?: string;
+          releases_url?: string;
+          stargazers_url?: string;
+          statuses_url?: string;
+          subscribers_url?: string;
+          subscription_url?: string;
+          tags_url?: string;
+          teams_url?: string;
+          trees_url?: string;
+          url?: string;
+        };
+        head_sha: string;
+        /** Format: uri */
+        html_url: string;
+        id: number;
+        jobs_url?: string;
+        logs_url?: string;
+        name: string;
+        node_id: string;
+        path: string;
+        previous_attempt_url?: string | null;
+        pull_requests: {
+          base: {
+            ref: string;
+            /** Repo Ref */
+            repo: {
+              id: number;
+              name: string;
+              /** Format: uri */
+              url: string;
+            };
+            sha: string;
+          };
+          head: {
+            ref: string;
+            /** Repo Ref */
+            repo: {
+              id: number;
+              name: string;
+              /** Format: uri */
+              url: string;
+            };
+            sha: string;
+          };
+          id: number;
+          number: number;
+          /** Format: uri */
+          url: string;
+        }[];
+        referenced_workflows?:
+          | {
+              path: string;
+              ref?: string;
+              sha: string;
+            }[]
+          | null;
+        repository?: {
+          archive_url?: string;
+          assignees_url?: string;
+          blobs_url?: string;
+          branches_url?: string;
+          collaborators_url?: string;
+          comments_url?: string;
+          commits_url?: string;
+          compare_url?: string;
+          contents_url?: string;
+          contributors_url?: string;
+          deployments_url?: string;
+          description?: string | null;
+          downloads_url?: string;
+          events_url?: string;
+          fork?: boolean;
+          forks_url?: string;
+          full_name?: string;
+          git_commits_url?: string;
+          git_refs_url?: string;
+          git_tags_url?: string;
+          hooks_url?: string;
+          html_url?: string;
+          id?: number;
+          issue_comment_url?: string;
+          issue_events_url?: string;
+          issues_url?: string;
+          keys_url?: string;
+          labels_url?: string;
+          languages_url?: string;
+          merges_url?: string;
+          milestones_url?: string;
+          name?: string;
+          node_id?: string;
+          notifications_url?: string;
+          owner?: {
+            avatar_url?: string;
+            events_url?: string;
+            followers_url?: string;
+            following_url?: string;
+            gists_url?: string;
+            gravatar_id?: string;
+            html_url?: string;
+            id?: number;
+            login?: string;
+            node_id?: string;
+            organizations_url?: string;
+            received_events_url?: string;
+            repos_url?: string;
+            site_admin?: boolean;
+            starred_url?: string;
+            subscriptions_url?: string;
+            type?: string;
+            url?: string;
+          };
+          private?: boolean;
+          pulls_url?: string;
+          releases_url?: string;
+          stargazers_url?: string;
+          statuses_url?: string;
+          subscribers_url?: string;
+          subscription_url?: string;
+          tags_url?: string;
+          teams_url?: string;
+          trees_url?: string;
+          url?: string;
+        };
+        rerun_url?: string;
+        run_attempt: number;
+        run_number: number;
+        /** Format: date-time */
+        run_started_at: string;
+        /** @enum {string} */
+        status:
+          | "requested"
+          | "in_progress"
+          | "completed"
+          | "queued"
+          | "waiting"
+          | "pending";
+        /** User */
+        triggering_actor: {
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization";
+          /** Format: uri */
+          url?: string;
+        } | null;
+        /** Format: date-time */
+        updated_at: string;
+        /** Format: uri */
+        url: string;
+        workflow_id: number;
+        workflow_url?: string;
+      } | null;
+    };
+    "webhook-deployment-review-rejected": {
+      /** @enum {string} */
+      action: "rejected";
+      approver?: {
+        avatar_url?: string;
+        events_url?: string;
+        followers_url?: string;
+        following_url?: string;
+        gists_url?: string;
+        gravatar_id?: string;
+        html_url?: string;
+        id?: number;
+        login?: string;
+        node_id?: string;
+        organizations_url?: string;
+        received_events_url?: string;
+        repos_url?: string;
+        site_admin?: boolean;
+        starred_url?: string;
+        subscriptions_url?: string;
+        type?: string;
+        url?: string;
+      };
+      comment?: string;
+      enterprise?: components["schemas"]["enterprise"];
+      installation?: components["schemas"]["simple-installation"];
+      organization: components["schemas"]["organization-simple"];
+      repository: components["schemas"]["repository"];
+      reviewers?: {
+        /** User */
+        reviewer?: {
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization";
+          /** Format: uri */
+          url?: string;
+        } | null;
+        /** @enum {string} */
+        type?: "User";
+      }[];
+      sender: components["schemas"]["simple-user"];
+      since: string;
+      workflow_job_run?: {
+        conclusion: null;
+        created_at: string;
+        environment: string;
+        html_url: string;
+        id: number;
+        name: null;
+        status: string;
+        updated_at: string;
+      };
+      workflow_job_runs?: {
+        conclusion?: string | null;
+        created_at?: string;
+        environment?: string;
+        html_url?: string;
+        id?: number;
+        name?: string | null;
+        status?: string;
+        updated_at?: string;
+      }[];
+      /** Deployment Workflow Run */
+      workflow_run: {
+        /** User */
+        actor: {
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization";
+          /** Format: uri */
+          url?: string;
+        } | null;
+        artifacts_url?: string;
+        cancel_url?: string;
+        check_suite_id: number;
+        check_suite_node_id: string;
+        check_suite_url?: string;
+        /** @enum {string|null} */
+        conclusion:
+          | "success"
+          | "failure"
+          | "neutral"
+          | "cancelled"
+          | "timed_out"
+          | "action_required"
+          | "stale"
+          | null;
+        /** Format: date-time */
+        created_at: string;
+        event: string;
+        head_branch: string;
+        head_commit?: Record<string, never> | null;
+        head_repository?: {
+          archive_url?: string;
+          assignees_url?: string;
+          blobs_url?: string;
+          branches_url?: string;
+          collaborators_url?: string;
+          comments_url?: string;
+          commits_url?: string;
+          compare_url?: string;
+          contents_url?: string;
+          contributors_url?: string;
+          deployments_url?: string;
+          description?: string | null;
+          downloads_url?: string;
+          events_url?: string;
+          fork?: boolean;
+          forks_url?: string;
+          full_name?: string;
+          git_commits_url?: string;
+          git_refs_url?: string;
+          git_tags_url?: string;
+          hooks_url?: string;
+          html_url?: string;
+          id?: number;
+          issue_comment_url?: string;
+          issue_events_url?: string;
+          issues_url?: string;
+          keys_url?: string;
+          labels_url?: string;
+          languages_url?: string;
+          merges_url?: string;
+          milestones_url?: string;
+          name?: string;
+          node_id?: string;
+          notifications_url?: string;
+          owner?: {
+            avatar_url?: string;
+            events_url?: string;
+            followers_url?: string;
+            following_url?: string;
+            gists_url?: string;
+            gravatar_id?: string;
+            html_url?: string;
+            id?: number;
+            login?: string;
+            node_id?: string;
+            organizations_url?: string;
+            received_events_url?: string;
+            repos_url?: string;
+            site_admin?: boolean;
+            starred_url?: string;
+            subscriptions_url?: string;
+            type?: string;
+            url?: string;
+          };
+          private?: boolean;
+          pulls_url?: string;
+          releases_url?: string;
+          stargazers_url?: string;
+          statuses_url?: string;
+          subscribers_url?: string;
+          subscription_url?: string;
+          tags_url?: string;
+          teams_url?: string;
+          trees_url?: string;
+          url?: string;
+        };
+        head_sha: string;
+        /** Format: uri */
+        html_url: string;
+        id: number;
+        jobs_url?: string;
+        logs_url?: string;
+        name: string;
+        node_id: string;
+        path: string;
+        previous_attempt_url?: string | null;
+        pull_requests: {
+          base: {
+            ref: string;
+            /** Repo Ref */
+            repo: {
+              id: number;
+              name: string;
+              /** Format: uri */
+              url: string;
+            };
+            sha: string;
+          };
+          head: {
+            ref: string;
+            /** Repo Ref */
+            repo: {
+              id: number;
+              name: string;
+              /** Format: uri */
+              url: string;
+            };
+            sha: string;
+          };
+          id: number;
+          number: number;
+          /** Format: uri */
+          url: string;
+        }[];
+        referenced_workflows?:
+          | {
+              path: string;
+              ref?: string;
+              sha: string;
+            }[]
+          | null;
+        repository?: {
+          archive_url?: string;
+          assignees_url?: string;
+          blobs_url?: string;
+          branches_url?: string;
+          collaborators_url?: string;
+          comments_url?: string;
+          commits_url?: string;
+          compare_url?: string;
+          contents_url?: string;
+          contributors_url?: string;
+          deployments_url?: string;
+          description?: string | null;
+          downloads_url?: string;
+          events_url?: string;
+          fork?: boolean;
+          forks_url?: string;
+          full_name?: string;
+          git_commits_url?: string;
+          git_refs_url?: string;
+          git_tags_url?: string;
+          hooks_url?: string;
+          html_url?: string;
+          id?: number;
+          issue_comment_url?: string;
+          issue_events_url?: string;
+          issues_url?: string;
+          keys_url?: string;
+          labels_url?: string;
+          languages_url?: string;
+          merges_url?: string;
+          milestones_url?: string;
+          name?: string;
+          node_id?: string;
+          notifications_url?: string;
+          owner?: {
+            avatar_url?: string;
+            events_url?: string;
+            followers_url?: string;
+            following_url?: string;
+            gists_url?: string;
+            gravatar_id?: string;
+            html_url?: string;
+            id?: number;
+            login?: string;
+            node_id?: string;
+            organizations_url?: string;
+            received_events_url?: string;
+            repos_url?: string;
+            site_admin?: boolean;
+            starred_url?: string;
+            subscriptions_url?: string;
+            type?: string;
+            url?: string;
+          };
+          private?: boolean;
+          pulls_url?: string;
+          releases_url?: string;
+          stargazers_url?: string;
+          statuses_url?: string;
+          subscribers_url?: string;
+          subscription_url?: string;
+          tags_url?: string;
+          teams_url?: string;
+          trees_url?: string;
+          url?: string;
+        };
+        rerun_url?: string;
+        run_attempt: number;
+        run_number: number;
+        /** Format: date-time */
+        run_started_at: string;
+        /** @enum {string} */
+        status:
+          | "requested"
+          | "in_progress"
+          | "completed"
+          | "queued"
+          | "waiting";
+        /** User */
+        triggering_actor: {
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization";
+          /** Format: uri */
+          url?: string;
+        } | null;
+        /** Format: date-time */
+        updated_at: string;
+        /** Format: uri */
+        url: string;
+        workflow_id: number;
+        workflow_url?: string;
+        display_title: string;
+      } | null;
+    };
+    "webhook-deployment-review-requested": {
+      /** @enum {string} */
+      action: "requested";
+      enterprise?: components["schemas"]["enterprise"];
+      environment: string;
+      installation?: components["schemas"]["simple-installation"];
+      organization: components["schemas"]["organization-simple"];
+      repository: components["schemas"]["repository"];
+      /** User */
+      requestor: {
+        /** Format: uri */
+        avatar_url?: string;
+        deleted?: boolean;
+        email?: string | null;
+        /** Format: uri-template */
+        events_url?: string;
+        /** Format: uri */
+        followers_url?: string;
+        /** Format: uri-template */
+        following_url?: string;
+        /** Format: uri-template */
+        gists_url?: string;
+        gravatar_id?: string;
+        /** Format: uri */
+        html_url?: string;
+        id: number;
+        login: string;
+        name?: string;
+        node_id?: string;
+        /** Format: uri */
+        organizations_url?: string;
+        /** Format: uri */
+        received_events_url?: string;
+        /** Format: uri */
+        repos_url?: string;
+        site_admin?: boolean;
+        /** Format: uri-template */
+        starred_url?: string;
+        /** Format: uri */
+        subscriptions_url?: string;
+        /** @enum {string} */
+        type?: "Bot" | "User" | "Organization";
+        /** Format: uri */
+        url?: string;
+      } | null;
+      reviewers: {
+        /** User */
+        reviewer?: {
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login?: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization";
+          /** Format: uri */
+          url?: string;
+        } | null;
+        /** @enum {string} */
+        type?: "User" | "Team";
+      }[];
+      sender: components["schemas"]["simple-user"];
+      since: string;
+      workflow_job_run: {
+        conclusion: null;
+        created_at: string;
+        environment: string;
+        html_url: string;
+        id: number;
+        name: string | null;
+        status: string;
+        updated_at: string;
+      };
+      /** Deployment Workflow Run */
+      workflow_run: {
+        /** User */
+        actor: {
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization";
+          /** Format: uri */
+          url?: string;
+        } | null;
+        artifacts_url?: string;
+        cancel_url?: string;
+        check_suite_id: number;
+        check_suite_node_id: string;
+        check_suite_url?: string;
+        /** @enum {string|null} */
+        conclusion:
+          | "success"
+          | "failure"
+          | "neutral"
+          | "cancelled"
+          | "timed_out"
+          | "action_required"
+          | "stale"
+          | null;
+        /** Format: date-time */
+        created_at: string;
+        event: string;
+        head_branch: string;
+        head_commit?: Record<string, never> | null;
+        head_repository?: {
+          archive_url?: string;
+          assignees_url?: string;
+          blobs_url?: string;
+          branches_url?: string;
+          collaborators_url?: string;
+          comments_url?: string;
+          commits_url?: string;
+          compare_url?: string;
+          contents_url?: string;
+          contributors_url?: string;
+          deployments_url?: string;
+          description?: string | null;
+          downloads_url?: string;
+          events_url?: string;
+          fork?: boolean;
+          forks_url?: string;
+          full_name?: string;
+          git_commits_url?: string;
+          git_refs_url?: string;
+          git_tags_url?: string;
+          hooks_url?: string;
+          html_url?: string;
+          id?: number;
+          issue_comment_url?: string;
+          issue_events_url?: string;
+          issues_url?: string;
+          keys_url?: string;
+          labels_url?: string;
+          languages_url?: string;
+          merges_url?: string;
+          milestones_url?: string;
+          name?: string;
+          node_id?: string;
+          notifications_url?: string;
+          owner?: {
+            avatar_url?: string;
+            events_url?: string;
+            followers_url?: string;
+            following_url?: string;
+            gists_url?: string;
+            gravatar_id?: string;
+            html_url?: string;
+            id?: number;
+            login?: string;
+            node_id?: string;
+            organizations_url?: string;
+            received_events_url?: string;
+            repos_url?: string;
+            site_admin?: boolean;
+            starred_url?: string;
+            subscriptions_url?: string;
+            type?: string;
+            url?: string;
+          };
+          private?: boolean;
+          pulls_url?: string;
+          releases_url?: string;
+          stargazers_url?: string;
+          statuses_url?: string;
+          subscribers_url?: string;
+          subscription_url?: string;
+          tags_url?: string;
+          teams_url?: string;
+          trees_url?: string;
+          url?: string;
+        };
+        head_sha: string;
+        /** Format: uri */
+        html_url: string;
+        id: number;
+        jobs_url?: string;
+        logs_url?: string;
+        name: string;
+        node_id: string;
+        path: string;
+        previous_attempt_url?: string | null;
+        pull_requests: {
+          base: {
+            ref: string;
+            /** Repo Ref */
+            repo: {
+              id: number;
+              name: string;
+              /** Format: uri */
+              url: string;
+            };
+            sha: string;
+          };
+          head: {
+            ref: string;
+            /** Repo Ref */
+            repo: {
+              id: number;
+              name: string;
+              /** Format: uri */
+              url: string;
+            };
+            sha: string;
+          };
+          id: number;
+          number: number;
+          /** Format: uri */
+          url: string;
+        }[];
+        referenced_workflows?:
+          | {
+              path: string;
+              ref?: string;
+              sha: string;
+            }[]
+          | null;
+        repository?: {
+          archive_url?: string;
+          assignees_url?: string;
+          blobs_url?: string;
+          branches_url?: string;
+          collaborators_url?: string;
+          comments_url?: string;
+          commits_url?: string;
+          compare_url?: string;
+          contents_url?: string;
+          contributors_url?: string;
+          deployments_url?: string;
+          description?: string | null;
+          downloads_url?: string;
+          events_url?: string;
+          fork?: boolean;
+          forks_url?: string;
+          full_name?: string;
+          git_commits_url?: string;
+          git_refs_url?: string;
+          git_tags_url?: string;
+          hooks_url?: string;
+          html_url?: string;
+          id?: number;
+          issue_comment_url?: string;
+          issue_events_url?: string;
+          issues_url?: string;
+          keys_url?: string;
+          labels_url?: string;
+          languages_url?: string;
+          merges_url?: string;
+          milestones_url?: string;
+          name?: string;
+          node_id?: string;
+          notifications_url?: string;
+          owner?: {
+            avatar_url?: string;
+            events_url?: string;
+            followers_url?: string;
+            following_url?: string;
+            gists_url?: string;
+            gravatar_id?: string;
+            html_url?: string;
+            id?: number;
+            login?: string;
+            node_id?: string;
+            organizations_url?: string;
+            received_events_url?: string;
+            repos_url?: string;
+            site_admin?: boolean;
+            starred_url?: string;
+            subscriptions_url?: string;
+            type?: string;
+            url?: string;
+          };
+          private?: boolean;
+          pulls_url?: string;
+          releases_url?: string;
+          stargazers_url?: string;
+          statuses_url?: string;
+          subscribers_url?: string;
+          subscription_url?: string;
+          tags_url?: string;
+          teams_url?: string;
+          trees_url?: string;
+          url?: string;
+        };
+        rerun_url?: string;
+        run_attempt: number;
+        run_number: number;
+        /** Format: date-time */
+        run_started_at: string;
+        /** @enum {string} */
+        status:
+          | "requested"
+          | "in_progress"
+          | "completed"
+          | "queued"
+          | "waiting"
+          | "pending";
+        /** User */
+        triggering_actor: {
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization";
+          /** Format: uri */
+          url?: string;
+        } | null;
+        /** Format: date-time */
+        updated_at: string;
+        /** Format: uri */
+        url: string;
+        workflow_id: number;
+        workflow_url?: string;
+        display_title: string;
+      } | null;
+    };
     /** deployment_status created event */
     "webhook-deployment-status-created": {
       /** @enum {string} */
@@ -6865,7 +8141,7 @@ export interface components {
       } | null;
       /**
        * Deployment
-       * @description The [deployment](https://docs.github.com/enterprise-cloud@latest//rest/reference/deployments#list-deployments).
+       * @description The [deployment](https://docs.github.com/enterprise-cloud@latest//rest/deployments/deployments#list-deployments).
        */
       deployment: {
         created_at: string;
@@ -7110,7 +8386,7 @@ export interface components {
         /** Format: uri */
         url: string;
       };
-      /** @description The [deployment status](https://docs.github.com/enterprise-cloud@latest//rest/reference/deployments#list-deployment-statuses). */
+      /** @description The [deployment status](https://docs.github.com/enterprise-cloud@latest//rest/deployments/statuses#list-deployment-statuses). */
       deployment_status: {
         created_at: string;
         /** User */
@@ -9596,7 +10872,8 @@ export interface components {
         url?: string;
         website_url?: null;
       };
-      action: string;
+      /** @enum {string} */
+      action: "renamed";
       changes: {
         login?: {
           from: string;
@@ -9640,7 +10917,7 @@ export interface components {
       action: "created";
       /**
        * issue comment
-       * @description The [comment](https://docs.github.com/enterprise-cloud@latest//rest/reference/issues#comments) itself.
+       * @description The [comment](https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#get-an-issue-comment) itself.
        */
       comment: {
         /**
@@ -9733,7 +11010,7 @@ export interface components {
       };
       enterprise?: components["schemas"]["enterprise"];
       installation?: components["schemas"]["simple-installation"];
-      /** @description The [issue](https://docs.github.com/enterprise-cloud@latest//rest/reference/issues) the comment belongs to. */
+      /** @description The [issue](https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#get-an-issue) the comment belongs to. */
       issue: {
         /** @enum {string|null} */
         active_lock_reason:
@@ -10323,7 +11600,7 @@ export interface components {
       action: "deleted";
       /**
        * issue comment
-       * @description The [comment](https://docs.github.com/enterprise-cloud@latest//rest/reference/issues#comments) itself.
+       * @description The [comment](https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#get-an-issue-comment) itself.
        */
       comment: {
         /**
@@ -10416,7 +11693,7 @@ export interface components {
       };
       enterprise?: components["schemas"]["enterprise"];
       installation?: components["schemas"]["simple-installation"];
-      /** @description The [issue](https://docs.github.com/enterprise-cloud@latest//rest/reference/issues) the comment belongs to. */
+      /** @description The [issue](https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#get-an-issue) the comment belongs to. */
       issue: {
         /** @enum {string|null} */
         active_lock_reason:
@@ -11011,7 +12288,7 @@ export interface components {
       };
       /**
        * issue comment
-       * @description The [comment](https://docs.github.com/enterprise-cloud@latest//rest/reference/issues#comments) itself.
+       * @description The [comment](https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#get-an-issue-comment) itself.
        */
       comment: {
         /**
@@ -11104,7 +12381,7 @@ export interface components {
       };
       enterprise?: components["schemas"]["enterprise"];
       installation?: components["schemas"]["simple-installation"];
-      /** @description The [issue](https://docs.github.com/enterprise-cloud@latest//rest/reference/issues) the comment belongs to. */
+      /** @description The [issue](https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#get-an-issue) the comment belongs to. */
       issue: {
         /** @enum {string|null} */
         active_lock_reason:
@@ -11736,7 +13013,7 @@ export interface components {
       installation?: components["schemas"]["simple-installation"];
       /**
        * Issue
-       * @description The [issue](https://docs.github.com/enterprise-cloud@latest//rest/reference/issues) itself.
+       * @description The [issue](https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#get-an-issue) itself.
        */
       issue: {
         /** @enum {string|null} */
@@ -12218,7 +13495,7 @@ export interface components {
       action: "closed";
       enterprise?: components["schemas"]["enterprise"];
       installation?: components["schemas"]["simple-installation"];
-      /** @description The [issue](https://docs.github.com/enterprise-cloud@latest//rest/reference/issues) itself. */
+      /** @description The [issue](https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#get-an-issue) itself. */
       issue: {
         /** @enum {string|null} */
         active_lock_reason:
@@ -12758,7 +14035,7 @@ export interface components {
       installation?: components["schemas"]["simple-installation"];
       /**
        * Issue
-       * @description The [issue](https://docs.github.com/enterprise-cloud@latest//rest/reference/issues) itself.
+       * @description The [issue](https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#get-an-issue) itself.
        */
       issue: {
         /** @enum {string|null} */
@@ -13923,7 +15200,7 @@ export interface components {
       installation?: components["schemas"]["simple-installation"];
       /**
        * Issue
-       * @description The [issue](https://docs.github.com/enterprise-cloud@latest//rest/reference/issues) itself.
+       * @description The [issue](https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#get-an-issue) itself.
        */
       issue: {
         /** @enum {string|null} */
@@ -14421,7 +15698,7 @@ export interface components {
       installation?: components["schemas"]["simple-installation"];
       /**
        * Issue
-       * @description The [issue](https://docs.github.com/enterprise-cloud@latest//rest/reference/issues) itself.
+       * @description The [issue](https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#get-an-issue) itself.
        */
       issue: {
         /** @enum {string|null} */
@@ -16134,7 +17411,7 @@ export interface components {
       changes?: {
         /**
          * Issue
-         * @description The [issue](https://docs.github.com/enterprise-cloud@latest//rest/reference/issues) itself.
+         * @description The [issue](https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#get-an-issue) itself.
          */
         old_issue: {
           /** @enum {string|null} */
@@ -16841,7 +18118,7 @@ export interface components {
       installation?: components["schemas"]["simple-installation"];
       /**
        * Issue
-       * @description The [issue](https://docs.github.com/enterprise-cloud@latest//rest/reference/issues) itself.
+       * @description The [issue](https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#get-an-issue) itself.
        */
       issue: {
         /** @enum {string|null} */
@@ -17323,7 +18600,7 @@ export interface components {
       installation?: components["schemas"]["simple-installation"];
       /**
        * Issue
-       * @description The [issue](https://docs.github.com/enterprise-cloud@latest//rest/reference/issues) itself.
+       * @description The [issue](https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#get-an-issue) itself.
        */
       issue: {
         /** @enum {string|null} */
@@ -18337,7 +19614,7 @@ export interface components {
       changes: {
         /**
          * Issue
-         * @description The [issue](https://docs.github.com/enterprise-cloud@latest//rest/reference/issues) itself.
+         * @description The [issue](https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#get-an-issue) itself.
          */
         new_issue: {
           /** @enum {string|null} */
@@ -19051,7 +20328,7 @@ export interface components {
       installation?: components["schemas"]["simple-installation"];
       /**
        * Issue
-       * @description The [issue](https://docs.github.com/enterprise-cloud@latest//rest/reference/issues) itself.
+       * @description The [issue](https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#get-an-issue) itself.
        */
       issue: {
         /** @enum {string|null} */
@@ -19570,7 +20847,7 @@ export interface components {
       installation?: components["schemas"]["simple-installation"];
       /**
        * Issue
-       * @description The [issue](https://docs.github.com/enterprise-cloud@latest//rest/reference/issues) itself.
+       * @description The [issue](https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#get-an-issue) itself.
        */
       issue: {
         /** @enum {string|null} */
@@ -20051,7 +21328,7 @@ export interface components {
       installation?: components["schemas"]["simple-installation"];
       /**
        * Issue
-       * @description The [issue](https://docs.github.com/enterprise-cloud@latest//rest/reference/issues) itself.
+       * @description The [issue](https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#get-an-issue) itself.
        */
       issue: {
         /** @enum {string|null} */
@@ -21082,7 +22359,7 @@ export interface components {
       installation?: components["schemas"]["simple-installation"];
       /**
        * Issue
-       * @description The [issue](https://docs.github.com/enterprise-cloud@latest//rest/reference/issues) itself.
+       * @description The [issue](https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#get-an-issue) itself.
        */
       issue: {
         /** @enum {string|null} */
@@ -23825,11 +25102,11 @@ export interface components {
       };
       platform?: string;
       metadata?: {
-        [key: string]: string | undefined;
+        [key: string]: string;
       };
       repo?: string;
       dependencies?: {
-        [key: string]: string | undefined;
+        [key: string]: string;
       }[];
       commit_oid?: string;
     };
@@ -24036,7 +25313,7 @@ export interface components {
     };
     /** page_build event */
     "webhook-page-build": {
-      /** @description The [List GitHub Pages builds](https://docs.github.com/enterprise-cloud@latest//rest/reference/repos#list-github-pages-builds) itself. */
+      /** @description The [List GitHub Pages builds](https://docs.github.com/enterprise-cloud@latest//rest/pages/pages#list-github-pages-builds) itself. */
       build: {
         commit: string | null;
         created_at: string;
@@ -24113,37 +25390,37 @@ export interface components {
       /** @description New requested permissions, categorized by type of permission. */
       permissions_added: {
         organization?: {
-          [key: string]: string | undefined;
+          [key: string]: string;
         };
         repository?: {
-          [key: string]: string | undefined;
+          [key: string]: string;
         };
         other?: {
-          [key: string]: string | undefined;
+          [key: string]: string;
         };
       };
       /** @description Requested permissions that elevate access for a previously approved request for access, categorized by type of permission. */
       permissions_upgraded: {
         organization?: {
-          [key: string]: string | undefined;
+          [key: string]: string;
         };
         repository?: {
-          [key: string]: string | undefined;
+          [key: string]: string;
         };
         other?: {
-          [key: string]: string | undefined;
+          [key: string]: string;
         };
       };
       /** @description Permissions requested, categorized by type of permission. This field incorporates `permissions_added` and `permissions_upgraded`. */
       permissions_result: {
         organization?: {
-          [key: string]: string | undefined;
+          [key: string]: string;
         };
         repository?: {
-          [key: string]: string | undefined;
+          [key: string]: string;
         };
         other?: {
-          [key: string]: string | undefined;
+          [key: string]: string;
         };
       };
       /**
@@ -36750,7 +38027,7 @@ export interface components {
       action: "created";
       /**
        * Pull Request Review Comment
-       * @description The [comment](https://docs.github.com/enterprise-cloud@latest//rest/reference/pulls#comments) itself.
+       * @description The [comment](https://docs.github.com/enterprise-cloud@latest//rest/pulls/comments#get-a-review-comment-for-a-pull-request) itself.
        */
       comment: {
         _links: {
@@ -38054,7 +39331,7 @@ export interface components {
       action: "deleted";
       /**
        * Pull Request Review Comment
-       * @description The [comment](https://docs.github.com/enterprise-cloud@latest//rest/reference/pulls#comments) itself.
+       * @description The [comment](https://docs.github.com/enterprise-cloud@latest//rest/pulls/comments#get-a-review-comment-for-a-pull-request) itself.
        */
       comment: {
         _links: {
@@ -39365,7 +40642,7 @@ export interface components {
       };
       /**
        * Pull Request Review Comment
-       * @description The [comment](https://docs.github.com/enterprise-cloud@latest//rest/reference/pulls#comments) itself.
+       * @description The [comment](https://docs.github.com/enterprise-cloud@latest//rest/pulls/comments#get-a-review-comment-for-a-pull-request) itself.
        */
       comment: {
         _links: {
@@ -56643,7 +57920,7 @@ export interface components {
       base_ref: string | null;
       /** @description The SHA of the most recent commit on `ref` before the push. */
       before: string;
-      /** @description An array of commit objects describing the pushed commits. (Pushed commits are all commits that are included in the `compare` between the `before` commit and the `after` commit.) The array includes a maximum of 20 commits. If necessary, you can use the [Commits API](https://docs.github.com/enterprise-cloud@latest//rest/reference/repos#commits) to fetch additional commits. This limit is applied to timeline events only and isn't applied to webhook deliveries. */
+      /** @description An array of commit objects describing the pushed commits. (Pushed commits are all commits that are included in the `compare` between the `before` commit and the `after` commit.) The array includes a maximum of 20 commits. If necessary, you can use the [Commits API](https://docs.github.com/enterprise-cloud@latest//rest/commits) to fetch additional commits. This limit is applied to timeline events only and isn't applied to webhook deliveries. */
       commits: {
         /** @description An array of files added in the commit. */
         added?: string[];
@@ -57221,7 +58498,8 @@ export interface components {
       sender: components["schemas"]["simple-user"];
     };
     "webhook-registry-package-updated": {
-      action: string;
+      /** @enum {string} */
+      action: "updated";
       enterprise?: components["schemas"]["enterprise"];
       installation?: components["schemas"]["simple-installation"];
       organization?: components["schemas"]["organization-simple"];
@@ -57361,7 +58639,7 @@ export interface components {
       organization?: components["schemas"]["organization-simple"];
       /**
        * Release
-       * @description The [release](https://docs.github.com/enterprise-cloud@latest//rest/reference/repos/#get-a-release) object.
+       * @description The [release](https://docs.github.com/enterprise-cloud@latest//rest/releases/releases/#get-a-release) object.
        */
       release: {
         assets: {
@@ -57518,7 +58796,7 @@ export interface components {
       organization?: components["schemas"]["organization-simple"];
       /**
        * Release
-       * @description The [release](https://docs.github.com/enterprise-cloud@latest//rest/reference/repos/#get-a-release) object.
+       * @description The [release](https://docs.github.com/enterprise-cloud@latest//rest/releases/releases/#get-a-release) object.
        */
       release: {
         assets: {
@@ -57689,7 +58967,7 @@ export interface components {
       organization?: components["schemas"]["organization-simple"];
       /**
        * Release
-       * @description The [release](https://docs.github.com/enterprise-cloud@latest//rest/reference/repos/#get-a-release) object.
+       * @description The [release](https://docs.github.com/enterprise-cloud@latest//rest/releases/releases/#get-a-release) object.
        */
       release: {
         assets: {
@@ -58233,7 +59511,7 @@ export interface components {
       organization?: components["schemas"]["organization-simple"];
       /**
        * Release
-       * @description The [release](https://docs.github.com/enterprise-cloud@latest//rest/reference/repos/#get-a-release) object.
+       * @description The [release](https://docs.github.com/enterprise-cloud@latest//rest/releases/releases/#get-a-release) object.
        */
       release: {
         assets: {
@@ -58960,7 +60238,8 @@ export interface components {
     };
     /** repository_dispatch event */
     "webhook-repository-dispatch-sample": {
-      action: string;
+      /** @enum {string} */
+      action: "sample.collected";
       branch: string;
       client_payload: {
         [key: string]: unknown;
@@ -59040,6 +60319,440 @@ export interface components {
       installation?: components["schemas"]["simple-installation"];
       organization?: components["schemas"]["organization-simple"];
       repository: components["schemas"]["repository"];
+      sender: components["schemas"]["simple-user"];
+    };
+    /** repository ruleset created event */
+    "webhook-repository-ruleset-created": {
+      /** @enum {string} */
+      action: "created";
+      enterprise?: components["schemas"]["enterprise"];
+      installation?: components["schemas"]["simple-installation"];
+      organization?: components["schemas"]["organization-simple"];
+      repository?: components["schemas"]["repository"];
+      repository_ruleset: components["schemas"]["repository-ruleset"];
+      sender: components["schemas"]["simple-user"];
+    };
+    /**
+     * Repository ruleset
+     * @description A set of rules to apply when specified conditions are met.
+     */
+    "repository-ruleset": {
+      /** @description The ID of the ruleset */
+      id: number;
+      /** @description The name of the ruleset */
+      name: string;
+      /**
+       * @description The target of the ruleset
+       * @enum {string}
+       */
+      target?: "branch" | "tag";
+      /**
+       * @description The type of the source of the ruleset
+       * @enum {string}
+       */
+      source_type?: "Repository" | "Organization";
+      /** @description The name of the source */
+      source: string;
+      enforcement: components["schemas"]["repository-rule-enforcement"];
+      /** @description The actors that can bypass the rules in this ruleset */
+      bypass_actors?: components["schemas"]["repository-ruleset-bypass-actor"][];
+      /**
+       * @description The bypass type of the user making the API request for this ruleset. This field is only returned when
+       * querying the repository-level endpoint.
+       * @enum {string}
+       */
+      current_user_can_bypass?: "always" | "pull_requests_only" | "never";
+      node_id?: string;
+      _links?: {
+        self?: {
+          /** @description The URL of the ruleset */
+          href?: string;
+        };
+        html?: {
+          /** @description The html URL of the ruleset */
+          href?: string;
+        };
+      };
+      conditions?:
+        | components["schemas"]["repository-ruleset-conditions"]
+        | components["schemas"]["org-ruleset-conditions"];
+      rules?: components["schemas"]["repository-rule"][];
+      /** Format: date-time */
+      created_at?: string;
+      /** Format: date-time */
+      updated_at?: string;
+    };
+    /**
+     * @description The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page.
+     * @enum {string}
+     */
+    "repository-rule-enforcement": "disabled" | "active" | "evaluate";
+    /**
+     * Repository Ruleset Bypass Actor
+     * @description An actor that can bypass rules in a ruleset
+     */
+    "repository-ruleset-bypass-actor": {
+      /** @description The ID of the actor that can bypass a ruleset */
+      actor_id: number;
+      /**
+       * @description The type of actor that can bypass a ruleset
+       * @enum {string}
+       */
+      actor_type:
+        | "RepositoryRole"
+        | "Team"
+        | "Integration"
+        | "OrganizationAdmin";
+      /**
+       * @description When the specified actor can bypass the ruleset. `pull_request` means that an actor can only bypass rules on pull requests.
+       * @enum {string}
+       */
+      bypass_mode: "always" | "pull_request";
+    };
+    /**
+     * Repository ruleset conditions for ref names
+     * @description Parameters for a repository ruleset ref name condition
+     */
+    "repository-ruleset-conditions": {
+      ref_name?: {
+        /** @description Array of ref names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~DEFAULT_BRANCH` to include the default branch or `~ALL` to include all branches. */
+        include?: string[];
+        /** @description Array of ref names or patterns to exclude. The condition will not pass if any of these patterns match. */
+        exclude?: string[];
+      };
+    };
+    /**
+     * Organization ruleset conditions
+     * @description Conditions for an organization ruleset. The conditions object should contain both `repository_name` and `ref_name` properties or both `repository_id` and `ref_name` properties.
+     */
+    "org-ruleset-conditions":
+      | (components["schemas"]["repository-ruleset-conditions"] &
+          components["schemas"]["repository-ruleset-conditions-repository-name-target"])
+      | (components["schemas"]["repository-ruleset-conditions"] &
+          components["schemas"]["repository-ruleset-conditions-repository-id-target"]);
+    /**
+     * Repository ruleset conditions for repository names
+     * @description Parameters for a repository name condition
+     */
+    "repository-ruleset-conditions-repository-name-target": {
+      repository_name: {
+        /** @description Array of repository names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~ALL` to include all repositories. */
+        include?: string[];
+        /** @description Array of repository names or patterns to exclude. The condition will not pass if any of these patterns match. */
+        exclude?: string[];
+        /** @description Whether renaming of target repositories is prevented. */
+        protected?: boolean;
+      };
+    };
+    /**
+     * Repository ruleset conditions for repository IDs
+     * @description Parameters for a repository ID condition
+     */
+    "repository-ruleset-conditions-repository-id-target": {
+      repository_id: {
+        /** @description The repository IDs that the ruleset applies to. One of these IDs must match for the condition to pass. */
+        repository_ids?: number[];
+      };
+    };
+    /**
+     * Repository Rule
+     * @description A repository rule.
+     */
+    "repository-rule":
+      | components["schemas"]["repository-rule-creation"]
+      | components["schemas"]["repository-rule-update"]
+      | components["schemas"]["repository-rule-deletion"]
+      | components["schemas"]["repository-rule-required-linear-history"]
+      | components["schemas"]["repository-rule-required-deployments"]
+      | components["schemas"]["repository-rule-required-signatures"]
+      | components["schemas"]["repository-rule-pull-request"]
+      | components["schemas"]["repository-rule-required-status-checks"]
+      | components["schemas"]["repository-rule-non-fast-forward"]
+      | components["schemas"]["repository-rule-commit-message-pattern"]
+      | components["schemas"]["repository-rule-commit-author-email-pattern"]
+      | components["schemas"]["repository-rule-committer-email-pattern"]
+      | components["schemas"]["repository-rule-branch-name-pattern"]
+      | components["schemas"]["repository-rule-tag-name-pattern"];
+    /**
+     * creation
+     * @description Only allow users with bypass permission to create matching refs.
+     */
+    "repository-rule-creation": {
+      /** @enum {string} */
+      type: "creation";
+    };
+    /**
+     * update
+     * @description Only allow users with bypass permission to update matching refs.
+     */
+    "repository-rule-update": {
+      /** @enum {string} */
+      type: "update";
+      parameters?: {
+        /** @description Branch can pull changes from its upstream repository */
+        update_allows_fetch_and_merge: boolean;
+      };
+    };
+    /**
+     * deletion
+     * @description Only allow users with bypass permissions to delete matching refs.
+     */
+    "repository-rule-deletion": {
+      /** @enum {string} */
+      type: "deletion";
+    };
+    /**
+     * required_linear_history
+     * @description Prevent merge commits from being pushed to matching branches.
+     */
+    "repository-rule-required-linear-history": {
+      /** @enum {string} */
+      type: "required_linear_history";
+    };
+    /**
+     * required_deployments
+     * @description Choose which environments must be successfully deployed to before branches can be merged into a branch that matches this rule.
+     */
+    "repository-rule-required-deployments": {
+      /** @enum {string} */
+      type: "required_deployments";
+      parameters?: {
+        /** @description The environments that must be successfully deployed to before branches can be merged. */
+        required_deployment_environments: string[];
+      };
+    };
+    /**
+     * required_signatures
+     * @description Commits pushed to matching branches must have verified signatures.
+     */
+    "repository-rule-required-signatures": {
+      /** @enum {string} */
+      type: "required_signatures";
+    };
+    /**
+     * pull_request
+     * @description Require all commits be made to a non-target branch and submitted via a pull request before they can be merged.
+     */
+    "repository-rule-pull-request": {
+      /** @enum {string} */
+      type: "pull_request";
+      parameters?: {
+        /** @description New, reviewable commits pushed will dismiss previous pull request review approvals. */
+        dismiss_stale_reviews_on_push: boolean;
+        /** @description Require an approving review in pull requests that modify files that have a designated code owner. */
+        require_code_owner_review: boolean;
+        /** @description Whether the most recent reviewable push must be approved by someone other than the person who pushed it. */
+        require_last_push_approval: boolean;
+        /** @description The number of approving reviews that are required before a pull request can be merged. */
+        required_approving_review_count: number;
+        /** @description All conversations on code must be resolved before a pull request can be merged. */
+        required_review_thread_resolution: boolean;
+      };
+    };
+    /**
+     * required_status_checks
+     * @description Choose which status checks must pass before branches can be merged into a branch that matches this rule. When enabled, commits must first be pushed to another branch, then merged or pushed directly to a branch that matches this rule after status checks have passed.
+     */
+    "repository-rule-required-status-checks": {
+      /** @enum {string} */
+      type: "required_status_checks";
+      parameters?: {
+        /** @description Status checks that are required. */
+        required_status_checks: components["schemas"]["repository-rule-params-status-check-configuration"][];
+        /** @description Whether pull requests targeting a matching branch must be tested with the latest code. This setting will not take effect unless at least one status check is enabled. */
+        strict_required_status_checks_policy: boolean;
+      };
+    };
+    /**
+     * StatusCheckConfiguration
+     * @description Required status check
+     */
+    "repository-rule-params-status-check-configuration": {
+      /** @description The status check context name that must be present on the commit. */
+      context: string;
+      /** @description The optional integration ID that this status check must originate from. */
+      integration_id?: number;
+    };
+    /**
+     * non_fast_forward
+     * @description Prevent users with push access from force pushing to branches.
+     */
+    "repository-rule-non-fast-forward": {
+      /** @enum {string} */
+      type: "non_fast_forward";
+    };
+    /**
+     * commit_message_pattern
+     * @description Parameters to be used for the commit_message_pattern rule
+     */
+    "repository-rule-commit-message-pattern": {
+      /** @enum {string} */
+      type: "commit_message_pattern";
+      parameters?: {
+        /** @description How this rule will appear to users. */
+        name?: string;
+        /** @description If true, the rule will fail if the pattern matches. */
+        negate?: boolean;
+        /**
+         * @description The operator to use for matching.
+         * @enum {string}
+         */
+        operator: "starts_with" | "ends_with" | "contains" | "regex";
+        /** @description The pattern to match with. */
+        pattern: string;
+      };
+    };
+    /**
+     * commit_author_email_pattern
+     * @description Parameters to be used for the commit_author_email_pattern rule
+     */
+    "repository-rule-commit-author-email-pattern": {
+      /** @enum {string} */
+      type: "commit_author_email_pattern";
+      parameters?: {
+        /** @description How this rule will appear to users. */
+        name?: string;
+        /** @description If true, the rule will fail if the pattern matches. */
+        negate?: boolean;
+        /**
+         * @description The operator to use for matching.
+         * @enum {string}
+         */
+        operator: "starts_with" | "ends_with" | "contains" | "regex";
+        /** @description The pattern to match with. */
+        pattern: string;
+      };
+    };
+    /**
+     * committer_email_pattern
+     * @description Parameters to be used for the committer_email_pattern rule
+     */
+    "repository-rule-committer-email-pattern": {
+      /** @enum {string} */
+      type: "committer_email_pattern";
+      parameters?: {
+        /** @description How this rule will appear to users. */
+        name?: string;
+        /** @description If true, the rule will fail if the pattern matches. */
+        negate?: boolean;
+        /**
+         * @description The operator to use for matching.
+         * @enum {string}
+         */
+        operator: "starts_with" | "ends_with" | "contains" | "regex";
+        /** @description The pattern to match with. */
+        pattern: string;
+      };
+    };
+    /**
+     * branch_name_pattern
+     * @description Parameters to be used for the branch_name_pattern rule
+     */
+    "repository-rule-branch-name-pattern": {
+      /** @enum {string} */
+      type: "branch_name_pattern";
+      parameters?: {
+        /** @description How this rule will appear to users. */
+        name?: string;
+        /** @description If true, the rule will fail if the pattern matches. */
+        negate?: boolean;
+        /**
+         * @description The operator to use for matching.
+         * @enum {string}
+         */
+        operator: "starts_with" | "ends_with" | "contains" | "regex";
+        /** @description The pattern to match with. */
+        pattern: string;
+      };
+    };
+    /**
+     * tag_name_pattern
+     * @description Parameters to be used for the tag_name_pattern rule
+     */
+    "repository-rule-tag-name-pattern": {
+      /** @enum {string} */
+      type: "tag_name_pattern";
+      parameters?: {
+        /** @description How this rule will appear to users. */
+        name?: string;
+        /** @description If true, the rule will fail if the pattern matches. */
+        negate?: boolean;
+        /**
+         * @description The operator to use for matching.
+         * @enum {string}
+         */
+        operator: "starts_with" | "ends_with" | "contains" | "regex";
+        /** @description The pattern to match with. */
+        pattern: string;
+      };
+    };
+    /** repository ruleset deleted event */
+    "webhook-repository-ruleset-deleted": {
+      /** @enum {string} */
+      action: "deleted";
+      enterprise?: components["schemas"]["enterprise"];
+      installation?: components["schemas"]["simple-installation"];
+      organization?: components["schemas"]["organization-simple"];
+      repository?: components["schemas"]["repository"];
+      repository_ruleset: components["schemas"]["repository-ruleset"];
+      sender: components["schemas"]["simple-user"];
+    };
+    /** repository ruleset edited event */
+    "webhook-repository-ruleset-edited": {
+      /** @enum {string} */
+      action: "edited";
+      enterprise?: components["schemas"]["enterprise"];
+      installation?: components["schemas"]["simple-installation"];
+      organization?: components["schemas"]["organization-simple"];
+      repository?: components["schemas"]["repository"];
+      repository_ruleset: components["schemas"]["repository-ruleset"];
+      changes?: {
+        name?: {
+          from?: string;
+        };
+        enforcement?: {
+          from?: string;
+        };
+        conditions?: {
+          added?: components["schemas"]["repository-ruleset-conditions"][];
+          deleted?: components["schemas"]["repository-ruleset-conditions"][];
+          updated?: {
+            condition?: components["schemas"]["repository-ruleset-conditions"];
+            changes?: {
+              condition_type?: {
+                from?: string;
+              };
+              target?: {
+                from?: string;
+              };
+              include?: {
+                from?: string[];
+              };
+              exclude?: {
+                from?: string[];
+              };
+            };
+          }[];
+        };
+        rules?: {
+          added?: components["schemas"]["repository-rule"][];
+          deleted?: components["schemas"]["repository-rule"][];
+          updated?: {
+            rule?: components["schemas"]["repository-rule"];
+            changes?: {
+              configuration?: {
+                from?: string;
+              };
+              rule_type?: {
+                from?: string;
+              };
+              pattern?: {
+                from?: string;
+              };
+            };
+          }[];
+        };
+      };
       sender: components["schemas"]["simple-user"];
     };
     /** repository transferred event */
@@ -64930,13 +66643,93 @@ export interface components {
   pathItems: never;
 }
 
+export type $defs = Record<string, never>;
+
 export type external = Record<string, never>;
 
 export interface operations {
   /**
+   * This event occurs when there is a change to branch protection configurations for a repository.
+   * For more information, see "[About protected branches](https://docs.github.com/enterprise-cloud@latest//repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches)."
+   * For information about using the APIs to manage branch protection rules, see "[Branch protection rule](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#branchprotectionrule)" in the GraphQL documentation or "[Branch protection](https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+   * @description All branch protections were disabled for a repository.
+   */
+  "branch-protection-configuration/disabled": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-branch-protection-configuration-disabled"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is a change to branch protection configurations for a repository.
+   * For more information, see "[About protected branches](https://docs.github.com/enterprise-cloud@latest//repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches)."
+   * For information about using the APIs to manage branch protection rules, see "[Branch protection rule](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#branchprotectionrule)" in the GraphQL documentation or "[Branch protection](https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+   * @description All branch protections were enabled for a repository.
+   */
+  "branch-protection-configuration/enabled": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-branch-protection-configuration-enabled"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
    * This event occurs when there is activity relating to branch protection rules. For more information, see "[About protected branches](https://docs.github.com/enterprise-cloud@latest//repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches)." For information about the APIs to manage branch protection rules, see [the GraphQL documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#branchprotectionrule) or "[Branch protection](https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection)" in the REST API documentation.
    *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
    * @description A branch protection rule was created.
    */
   "branch-protection-rule/created": {
@@ -64965,7 +66758,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -65000,7 +66795,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -65035,7 +66832,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -65076,7 +66875,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -65117,7 +66918,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -65158,7 +66961,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -65199,7 +67004,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -65240,7 +67047,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -65281,7 +67090,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -65322,7 +67133,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -65357,7 +67170,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -65392,7 +67207,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -65427,7 +67244,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -65462,7 +67281,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -65497,7 +67318,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -65532,7 +67355,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -65569,7 +67394,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -65605,7 +67432,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -65641,7 +67470,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -65680,7 +67511,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -65719,7 +67552,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -65758,7 +67593,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -65797,7 +67634,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -65836,7 +67675,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -65875,7 +67716,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -65914,7 +67757,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -65949,7 +67794,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -65984,7 +67831,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -66021,7 +67870,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -66056,7 +67907,126 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to deployment reviews. For more information, see "[About deployments](https://docs.github.com/enterprise-cloud@latest//actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/enterprise-cloud@latest//rest/deployments/deployments)" in the REST API documentation.
+   *
+   * For activity relating to deployment creation or deployment status, use the `deployment` or `deployment_status` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
+   * @description A deployment review was approved.
+   */
+  "deployment-review/approved": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-deployment-review-approved"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to deployment reviews. For more information, see "[About deployments](https://docs.github.com/enterprise-cloud@latest//actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/enterprise-cloud@latest//rest/deployments/deployments)" in the REST API documentation.
+   *
+   * For activity relating to deployment creation or deployment status, use the `deployment` or `deployment_status` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
+   * @description A deployment review was rejected.
+   */
+  "deployment-review/rejected": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-deployment-review-rejected"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to deployment reviews. For more information, see "[About deployments](https://docs.github.com/enterprise-cloud@latest//actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/enterprise-cloud@latest//rest/deployments/deployments)" in the REST API documentation.
+   *
+   * For activity relating to deployment creation or deployment status, use the `deployment` or `deployment_status` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
+   * @description A deployment review was requested.
+   */
+  "deployment-review/requested": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-deployment-review-requested"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -66093,7 +68063,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -66132,7 +68104,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -66171,7 +68145,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -66210,7 +68186,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -66249,7 +68227,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -66288,7 +68268,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -66327,7 +68309,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -66366,7 +68350,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -66405,7 +68391,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -66444,7 +68432,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -66483,7 +68473,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -66522,7 +68514,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -66561,7 +68555,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -66600,7 +68596,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -66639,7 +68637,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -66678,7 +68678,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -66717,7 +68719,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -66756,7 +68760,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -66795,7 +68801,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -66829,7 +68837,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -66866,7 +68876,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -66900,13 +68912,15 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
    * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
    *
-   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-cloud@latest//developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-cloud@latest//rest/reference/apps)" in the REST API documentation.
+   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-cloud@latest//developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-cloud@latest//rest/apps)" in the REST API documentation.
    * @description Someone installed a GitHub App on a user or organization account.
    */
   "installation/created": {
@@ -66935,13 +68949,15 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
    * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
    *
-   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-cloud@latest//developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-cloud@latest//rest/reference/apps)" in the REST API documentation.
+   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-cloud@latest//developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-cloud@latest//rest/apps)" in the REST API documentation.
    * @description Someone uninstalled a GitHub App from their user or organization account.
    */
   "installation/deleted": {
@@ -66970,13 +68986,15 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
    * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
    *
-   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-cloud@latest//developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-cloud@latest//rest/reference/apps)" in the REST API documentation.
+   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-cloud@latest//developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-cloud@latest//rest/apps)" in the REST API documentation.
    * @description Someone granted new permissions to a GitHub App.
    */
   "installation/new-permissions-accepted": {
@@ -67005,13 +69023,15 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
    * This event occurs when there is activity relating to which repositories a GitHub App installation can access. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
    *
-   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-cloud@latest//developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-cloud@latest//rest/reference/apps)" in the REST API documentation.
+   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-cloud@latest//developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-cloud@latest//rest/apps)" in the REST API documentation.
    * @description A GitHub App installation was granted access to one or more repositories.
    */
   "installation-repositories/added": {
@@ -67040,13 +69060,15 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
    * This event occurs when there is activity relating to which repositories a GitHub App installation can access. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
    *
-   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-cloud@latest//developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-cloud@latest//rest/reference/apps)" in the REST API documentation.
+   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-cloud@latest//developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-cloud@latest//rest/apps)" in the REST API documentation.
    * @description Access to one or more repositories was revoked for a GitHub App installation.
    */
   "installation-repositories/removed": {
@@ -67075,13 +69097,15 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
    * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
    *
-   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-cloud@latest//developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-cloud@latest//rest/reference/apps)" in the REST API documentation.
+   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-cloud@latest//developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-cloud@latest//rest/apps)" in the REST API documentation.
    * @description Someone blocked access by a GitHub App to their user or organization account.
    */
   "installation/suspend": {
@@ -67110,11 +69134,13 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
-   * This event occurs when there is activity relating to the user or organization account that a GitHub App is installed on. For more information, see "[About apps](https://docs.github.com/enterprise-cloud@latest//developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-cloud@latest//rest/reference/apps)" in the REST API documentation.
+   * This event occurs when there is activity relating to the user or organization account that a GitHub App is installed on. For more information, see "[About apps](https://docs.github.com/enterprise-cloud@latest//developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-cloud@latest//rest/apps)" in the REST API documentation.
    * @description Somebody renamed the user or organization account that a GitHub App is installed on.
    */
   "installation-target/renamed": {
@@ -67143,13 +69169,15 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
    * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
    *
-   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-cloud@latest//developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-cloud@latest//rest/reference/apps)" in the REST API documentation.
+   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-cloud@latest//developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-cloud@latest//rest/apps)" in the REST API documentation.
    * @description A GitHub App that was blocked from accessing a user or organization account was given access the account again.
    */
   "installation/unsuspend": {
@@ -67178,7 +69206,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -67215,7 +69245,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -67252,7 +69284,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -67289,7 +69323,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -67326,7 +69362,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -67363,7 +69401,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -67400,7 +69440,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -67437,7 +69479,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -67474,7 +69518,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -67511,7 +69557,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -67548,7 +69596,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -67585,7 +69635,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -67622,7 +69674,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -67659,7 +69713,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -67696,7 +69752,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -67733,7 +69791,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -67770,7 +69830,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -67807,7 +69869,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -67844,7 +69908,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -67881,7 +69947,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -67918,7 +69986,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -67955,7 +70025,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -67992,7 +70064,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -68025,7 +70099,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -68058,7 +70134,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -68091,7 +70169,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -68124,7 +70204,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -68157,7 +70239,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -68192,7 +70276,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -68227,7 +70313,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -68262,7 +70350,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -68297,11 +70387,13 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
-   * This event occurs when there is activity relating to team membership. For more information, see "[About teams](https://docs.github.com/enterprise-cloud@latest//organizations/organizing-members-into-teams/about-teams)." For more information about the API to manage team memberships, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#team) or "[Team members](https://docs.github.com/enterprise-cloud@latest//rest/teams/members)" in the REST API documentation.
+   * This event occurs when there is activity relating to team membership. For more information, see "[About teams](https://docs.github.com/enterprise-cloud@latest//organizations/organizing-members-into-teams/about-teams)." For more information about the APIs to manage team memberships, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#team) or "[Team members](https://docs.github.com/enterprise-cloud@latest//rest/teams/members)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
    * @description An organization member was removed from a team.
@@ -68332,7 +70424,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -68369,7 +70463,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -68406,7 +70502,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -68441,7 +70539,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -68478,7 +70578,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -68515,7 +70617,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -68552,7 +70656,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -68589,7 +70695,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -68626,7 +70734,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -68663,7 +70773,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -68700,7 +70812,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -68737,7 +70851,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -68774,7 +70890,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -68811,7 +70929,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -68848,7 +70968,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -68885,7 +71007,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -68920,7 +71044,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -68955,7 +71081,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -68989,7 +71117,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -69026,7 +71156,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -69063,7 +71195,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -69100,7 +71234,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -69137,7 +71273,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /** This event occurs when you create a new webhook. The ping event is a confirmation from GitHub that you configured the webhook correctly. */
@@ -69167,7 +71305,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -69204,7 +71344,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -69241,7 +71383,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -69278,7 +71422,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -69315,7 +71461,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -69352,7 +71500,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -69389,7 +71539,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -69426,7 +71578,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -69463,7 +71617,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -69500,7 +71656,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -69537,7 +71695,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -69574,7 +71734,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -69611,7 +71773,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -69648,7 +71812,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -69685,13 +71851,15 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
    * This event occurs when there is activity relating to an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-cloud@latest//issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#projectv2).
    *
-   * For activity relating to a item on a project, use the `projects_v2_item` event. For activity relating to Projects (classic), use the `project`, project_card`, and `project_column` events instead.
+   * For activity relating to a item on a project, use the `projects_v2_item` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
    *
@@ -69724,13 +71892,15 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
    * This event occurs when there is activity relating to an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-cloud@latest//issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#projectv2).
    *
-   * For activity relating to a item on a project, use the `projects_v2_item` event. For activity relating to Projects (classic), use the `project`, project_card`, and `project_column` events instead.
+   * For activity relating to a item on a project, use the `projects_v2_item` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
    *
@@ -69763,13 +71933,15 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
    * This event occurs when there is activity relating to an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-cloud@latest//issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#projectv2).
    *
-   * For activity relating to a item on a project, use the `projects_v2_item` event. For activity relating to Projects (classic), use the `project`, project_card`, and `project_column` events instead.
+   * For activity relating to a item on a project, use the `projects_v2_item` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
    *
@@ -69802,13 +71974,15 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
    * This event occurs when there is activity relating to an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-cloud@latest//issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#projectv2).
    *
-   * For activity relating to a item on a project, use the `projects_v2_item` event. For activity relating to Projects (classic), use the `project`, project_card`, and `project_column` events instead.
+   * For activity relating to a item on a project, use the `projects_v2_item` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
    *
@@ -69841,7 +72015,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -69880,7 +72056,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -69919,7 +72097,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -69958,7 +72138,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -69997,7 +72179,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -70036,7 +72220,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -70075,7 +72261,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -70114,13 +72302,15 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
    * This event occurs when there is activity relating to an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-cloud@latest//issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#projectv2).
    *
-   * For activity relating to a item on a project, use the `projects_v2_item` event. For activity relating to Projects (classic), use the `project`, project_card`, and `project_column` events instead.
+   * For activity relating to a item on a project, use the `projects_v2_item` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
    *
@@ -70153,7 +72343,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -70187,7 +72379,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -70224,7 +72418,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -70261,7 +72457,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -70298,7 +72496,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -70335,7 +72535,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -70372,7 +72574,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -70409,7 +72613,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -70446,7 +72652,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -70483,7 +72691,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -70520,7 +72730,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -70557,7 +72769,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -70594,7 +72808,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -70631,7 +72847,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -70668,7 +72886,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -70705,13 +72925,15 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
    * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-cloud@latest//pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls)" in the REST API documentation.
    *
-   * For activity related to pull request reviews, pull request review comments, pull request comments,or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
+   * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
    * @description A previously closed pull request was reopened.
@@ -70742,7 +72964,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -70779,7 +73003,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -70816,7 +73042,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -70853,7 +73081,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -70890,7 +73120,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -70927,7 +73159,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -70964,7 +73198,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -71001,7 +73237,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -71038,11 +73276,13 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
-   * This event occurs when there is activity relating to a comment thread on a pull request. For more information, see "[About pull request reviews](https://docs.github.com/enterprise-cloud@latest//pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request review comment threads, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#pullrequestreviewthread) or "[Pull request reviews](https://docs.github.com/enterprise-cloud@latest//rest/pulls/reviews)" in the REST API documentation.
+   * This event occurs when there is activity relating to a comment thread on a pull request. For more information, see "[About pull request reviews](https://docs.github.com/enterprise-cloud@latest//pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request reviews, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#pullrequestreviewthread) or "[Pull request review comments](https://docs.github.com/enterprise-cloud@latest//rest/pulls/comments)" in the REST API documentation.
    *
    * For activity related to pull request review comments, pull request comments, or pull request reviews, use the `pull_request_review_comment`, `issue_comment`, or `pull_request_review` events instead.
    *
@@ -71075,7 +73315,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -71112,7 +73354,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -71149,7 +73393,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -71186,7 +73432,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -71223,7 +73471,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -71260,11 +73510,13 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
-   * This event occurs when a commit or tag is pushed.
+   * This event occurs when a commit or tag is pushed, or when a repository is cloned.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
    *
@@ -71296,7 +73548,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -71333,7 +73587,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -71341,7 +73597,7 @@ export interface operations {
    *
    * To install this event on a GitHub App, the app must have at least read-level access for the "Packages" repository permission.
    *
-   * **Note**: GitHub recommends that you use the newer `package` event instead
+   * **Note**: GitHub recommends that you use the newer `package` event instead.
    * @description A package that was previously published to a registry was updated.
    */
   "registry-package/updated": {
@@ -71370,7 +73626,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -71405,11 +73663,13 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
-   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-cloud@latest//repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-cloud@latest//rest/packages)" in the REST API documentation.
+   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-cloud@latest//repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-cloud@latest//rest/releases)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
    * @description A release, pre-release, or draft release was deleted.
@@ -71440,11 +73700,13 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
-   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-cloud@latest//repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-cloud@latest//rest/packages)" in the REST API documentation.
+   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-cloud@latest//repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-cloud@latest//rest/releases)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
    * @description The details of a release, pre-release, or draft release were edited. For more information, see "[Managing releases in a repository](https://docs.github.com/enterprise-cloud@latest//repositories/releasing-projects-on-github/managing-releases-in-a-repository#editing-a-release)."
@@ -71475,11 +73737,13 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
-   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-cloud@latest//repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-cloud@latest//rest/packages)" in the REST API documentation.
+   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-cloud@latest//repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-cloud@latest//rest/releases)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
    * @description A release was created and identified as a pre-release. A pre-release is a release that is not ready for production and may be unstable.
@@ -71510,11 +73774,13 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
-   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-cloud@latest//repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-cloud@latest//rest/packages)" in the REST API documentation.
+   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-cloud@latest//repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-cloud@latest//rest/releases)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
    * @description A release, pre-release, or draft of a release was published.
@@ -71545,11 +73811,13 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
-   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-cloud@latest//repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-cloud@latest//rest/packages)" in the REST API documentation.
+   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-cloud@latest//repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-cloud@latest//rest/releases)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
    * @description A release was published, or a pre-release was changed to a release.
@@ -71580,11 +73848,13 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
-   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-cloud@latest//repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-cloud@latest//rest/packages)" in the REST API documentation.
+   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-cloud@latest//repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-cloud@latest//rest/releases)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
    * @description A release or pre-release was unpublished.
@@ -71615,7 +73885,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -71650,7 +73922,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -71685,7 +73959,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -71720,7 +73996,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -71755,7 +74033,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -71790,7 +74070,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -71825,7 +74107,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -71860,7 +74144,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /** This event occurs when a repository is imported to GitHub Enterprise Cloud. For more information, see "[Importing a repository with GitHub Importer](https://docs.github.com/enterprise-cloud@latest//get-started/importing-your-projects-to-github/importing-source-code-to-github/importing-a-repository-with-github-importer)." For more information about the API to manage imports, see [the REST API documentation](https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports). */
@@ -71890,7 +74176,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -71925,7 +74213,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -71960,7 +74250,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -71995,7 +74287,126 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to repository rulesets.
+   * For more information about repository rulesets, see "[Managing rulesets](https://docs.github.com/enterprise-cloud@latest//repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets)."
+   * For more information on managing rulesets via the APIs, see [Repository ruleset](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#repositoryruleset) in the GraphQL documentation or "[Repository rules](https://docs.github.com/enterprise-cloud@latest//rest/repos/rules)" and "[Organization rules](https://docs.github.com/enterprise-cloud@latest//rest/orgs/rules) in the REST API documentation."
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+   * @description A repository ruleset was created.
+   */
+  "repository-ruleset/created": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-repository-ruleset-created"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to repository rulesets.
+   * For more information about repository rulesets, see "[Managing rulesets](https://docs.github.com/enterprise-cloud@latest//repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets)."
+   * For more information on managing rulesets via the APIs, see [Repository ruleset](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#repositoryruleset) in the GraphQL documentation or "[Repository rules](https://docs.github.com/enterprise-cloud@latest//rest/repos/rules)" and "[Organization rules](https://docs.github.com/enterprise-cloud@latest//rest/orgs/rules) in the REST API documentation."
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+   * @description A repository ruleset was deleted.
+   */
+  "repository-ruleset/deleted": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-repository-ruleset-deleted"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to repository rulesets.
+   * For more information about repository rulesets, see "[Managing rulesets](https://docs.github.com/enterprise-cloud@latest//repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets)."
+   * For more information on managing rulesets via the APIs, see [Repository ruleset](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#repositoryruleset) in the GraphQL documentation or "[Repository rules](https://docs.github.com/enterprise-cloud@latest//rest/repos/rules)" and "[Organization rules](https://docs.github.com/enterprise-cloud@latest//rest/orgs/rules) in the REST API documentation."
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+   * @description A repository ruleset was edited.
+   */
+  "repository-ruleset/edited": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-repository-ruleset-edited"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -72030,7 +74441,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -72065,7 +74478,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -72100,7 +74515,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -72135,7 +74552,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -72170,7 +74589,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -72205,7 +74626,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -72242,7 +74665,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -72281,7 +74706,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -72318,7 +74745,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -72355,7 +74784,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -72392,7 +74823,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -72427,7 +74860,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -72462,7 +74897,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -72497,7 +74934,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -72531,7 +74970,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -72568,7 +75009,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -72603,7 +75046,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -72638,7 +75083,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -72675,7 +75122,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -72710,7 +75159,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -72745,7 +75196,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -72780,7 +75233,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -72815,11 +75270,13 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
-   * This event occurs when the status of a Git commit changes. For example, commits can be marked as `error`, `failure`, `pending`, or `success`. For more information, see "[About status checks](https://docs.github.com/enterprise-cloud@latest//pull-requests/collaborating-with-pull-requests/collaborating-on-repositories-with-code-quality-features/about-status-checks)." For information about the APIs to manage commit statuses, see [the GraphQL documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#status) or "[Statuses](https://docs.github.com/enterprise-cloud@latest//rest/reference/commits#commit-statuses)" in the REST API documentation.
+   * This event occurs when the status of a Git commit changes. For example, commits can be marked as `error`, `failure`, `pending`, or `success`. For more information, see "[About status checks](https://docs.github.com/enterprise-cloud@latest//pull-requests/collaborating-with-pull-requests/collaborating-on-repositories-with-code-quality-features/about-status-checks)." For information about the APIs to manage commit statuses, see [the GraphQL documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#status) or "[Commit statuses](https://docs.github.com/enterprise-cloud@latest//rest/commits/statuses)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Commit statuses" repository permission.
    */
@@ -72849,7 +75306,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -72886,7 +75345,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -72922,7 +75383,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -72958,7 +75421,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -72994,7 +75459,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -73030,7 +75497,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -73066,7 +75535,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -73101,7 +75572,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -73137,7 +75610,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -73174,7 +75649,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -73211,7 +75688,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -73248,17 +75727,17 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
-   * This event occurs when there is activity relating to a job in a GitHub Actions workflow.
+   * This event occurs when there is activity relating to a job in a GitHub Actions workflow. For more information, see "[Using jobs in a workflow](https://docs.github.com/enterprise-cloud@latest//actions/using-jobs/using-jobs-in-a-workflow)." For information about the API to manage workflow jobs, see "[Workflow jobs](https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-jobs)" in the REST API documentation.
    *
-   * For more information, see "[Using jobs in a workflow](https://docs.github.com/enterprise-cloud@latest//actions/using-jobs/using-jobs-in-a-workflow)." For information about the API to manage workflow jobs, see [the REST API documentation](https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-jobs).
+   * For activity relating to a workflow run instead of a job in a workflow run, use the `workflow_run` event.
    *
-   * For activity relating to a workflow run instead of a job in a workflow run, see the `workflow_run` event.
-   *
-   * To install this event on a GitHub App, the app must have at least read-level access for the Actions metadata permission.
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Actions" repository permission.
    * @description A job in a workflow run was created and is waiting for approvals.
    */
   "workflow-job/waiting": {
@@ -73287,7 +75766,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -73324,7 +75805,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -73361,7 +75844,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
   /**
@@ -73398,7 +75883,9 @@ export interface operations {
     };
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
-      200: never;
+      200: {
+        content: never;
+      };
     };
   };
 }
