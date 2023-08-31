@@ -230,7 +230,8 @@ export interface webhooks {
   };
   delete: {
     /**
-     * This event occurs when a Git branch or tag is deleted.
+     * This event occurs when a Git branch or tag is deleted. To subscribe to all pushes to a repository, including
+     * branch and tag deletions, use the [`push`](#push) webhook event.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
      *
@@ -1683,7 +1684,9 @@ export interface webhooks {
   };
   push: {
     /**
-     * This event occurs when a commit or tag is pushed, or when a repository is cloned.
+     * This event occurs when there is a push to a repository branch. This includes when a commit is pushed, when a commit tag is pushed,
+     * when a branch is deleted, when a tag is deleted, or when a repository is cloned. To subscribe to only branch
+     * and tag deletions, use the [`delete`](#delete) webhook event.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
      *
@@ -62918,7 +62921,8 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when a Git branch or tag is deleted.
+   * This event occurs when a Git branch or tag is deleted. To subscribe to all pushes to a repository, including
+   * branch and tag deletions, use the [`push`](#push) webhook event.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
    *
@@ -68627,7 +68631,9 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when a commit or tag is pushed, or when a repository is cloned.
+   * This event occurs when there is a push to a repository branch. This includes when a commit is pushed, when a commit tag is pushed,
+   * when a branch is deleted, when a tag is deleted, or when a repository is cloned. To subscribe to only branch
+   * and tag deletions, use the [`delete`](#delete) webhook event.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
    *
