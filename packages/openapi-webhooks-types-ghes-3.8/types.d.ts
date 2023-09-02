@@ -2526,6 +2526,7 @@ export interface components {
       has_wiki: boolean;
       has_pages: boolean;
       /**
+       * @deprecated
        * @description Whether downloads are enabled.
        * @default true
        */
