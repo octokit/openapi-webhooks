@@ -1676,7 +1676,7 @@ export interface webhooks {
   push: {
     /**
      * This event occurs when there is a push to a repository branch. This includes when a commit is pushed, when a commit tag is pushed,
-     * when a branch is deleted, when a tag is deleted, or when a repository is cloned. To subscribe to only branch
+     * when a branch is deleted, when a tag is deleted, or when a repository is created from a template. To subscribe to only branch
      * and tag deletions, use the [`delete`](#delete) webhook event.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
@@ -2449,7 +2449,6 @@ export interface components {
       has_wiki: boolean;
       has_pages: boolean;
       /**
-       * @deprecated
        * @description Whether downloads are enabled.
        * @default true
        */
@@ -67774,7 +67773,7 @@ export interface operations {
   };
   /**
    * This event occurs when there is a push to a repository branch. This includes when a commit is pushed, when a commit tag is pushed,
-   * when a branch is deleted, when a tag is deleted, or when a repository is cloned. To subscribe to only branch
+   * when a branch is deleted, when a tag is deleted, or when a repository is created from a template. To subscribe to only branch
    * and tag deletions, use the [`delete`](#delete) webhook event.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
