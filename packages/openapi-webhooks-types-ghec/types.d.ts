@@ -2474,6 +2474,20 @@ export interface webhooks {
      */
     post: operations["team/removed-from-repository"];
   };
+  "user-created": {
+    /**
+     * This event occurs when there is activity relating to user accounts in an enterprise.
+     * @description A user account was added to the enterprise.
+     */
+    post: operations["user/created"];
+  };
+  "user-deleted": {
+    /**
+     * This event occurs when there is activity relating to user accounts in an enterprise.
+     * @description A user account was removed from the enterprise.
+     */
+    post: operations["user/deleted"];
+  };
   "watch-started": {
     /**
      * This event occurs when there is activity relating to watching, or subscribing to, a repository. For more information about watching, see "[Managing your subscriptions](https://docs.github.com/enterprise-cloud@latest//account-and-profile/managing-subscriptions-and-notifications-on-github/managing-subscriptions-for-activity-on-github/managing-your-subscriptions)." For information about the APIs to manage watching, see "[Watching](https://docs.github.com/enterprise-cloud@latest//rest/activity/watching)" in the REST API documentation.
@@ -64840,6 +64854,98 @@ export interface components {
         url?: string;
       };
     };
+    "webhook-user-created": {
+      /** @enum {string} */
+      action: "created";
+      enterprise?: components["schemas"]["enterprise-webhooks"];
+      installation?: components["schemas"]["simple-installation"];
+      organization?: components["schemas"]["organization-simple-webhooks"];
+      repository?: components["schemas"]["repository-webhooks"];
+      sender?: components["schemas"]["simple-user-webhooks"];
+      /** User */
+      user?: {
+        /** Format: uri */
+        avatar_url?: string;
+        deleted?: boolean;
+        email?: string | null;
+        /** Format: uri-template */
+        events_url?: string;
+        /** Format: uri */
+        followers_url?: string;
+        /** Format: uri-template */
+        following_url?: string;
+        /** Format: uri-template */
+        gists_url?: string;
+        gravatar_id?: string;
+        /** Format: uri */
+        html_url?: string;
+        id: number;
+        login: string;
+        name?: string;
+        node_id?: string;
+        /** Format: uri */
+        organizations_url?: string;
+        /** Format: uri */
+        received_events_url?: string;
+        /** Format: uri */
+        repos_url?: string;
+        site_admin?: boolean;
+        /** Format: uri-template */
+        starred_url?: string;
+        /** Format: uri */
+        subscriptions_url?: string;
+        /** @enum {string} */
+        type?: "Bot" | "User" | "Organization";
+        /** Format: uri */
+        url?: string;
+      } | null;
+    };
+    "webhook-user-deleted": {
+      /** @enum {string} */
+      action: "deleted";
+      enterprise?: components["schemas"]["enterprise-webhooks"];
+      installation?: components["schemas"]["simple-installation"];
+      organization?: components["schemas"]["organization-simple-webhooks"];
+      repository?: components["schemas"]["repository-webhooks"];
+      sender?: components["schemas"]["simple-user-webhooks"];
+      /** User */
+      user?: {
+        /** Format: uri */
+        avatar_url?: string;
+        deleted?: boolean;
+        email?: string | null;
+        /** Format: uri-template */
+        events_url?: string;
+        /** Format: uri */
+        followers_url?: string;
+        /** Format: uri-template */
+        following_url?: string;
+        /** Format: uri-template */
+        gists_url?: string;
+        gravatar_id?: string;
+        /** Format: uri */
+        html_url?: string;
+        id: number;
+        login: string;
+        name?: string;
+        node_id?: string;
+        /** Format: uri */
+        organizations_url?: string;
+        /** Format: uri */
+        received_events_url?: string;
+        /** Format: uri */
+        repos_url?: string;
+        site_admin?: boolean;
+        /** Format: uri-template */
+        starred_url?: string;
+        /** Format: uri */
+        subscriptions_url?: string;
+        /** @enum {string} */
+        type?: "Bot" | "User" | "Organization";
+        /** Format: uri */
+        url?: string;
+      } | null;
+    };
     /** watch started event */
     "webhook-watch-started": {
       /** @enum {string} */
@@ -75992,6 +76098,76 @@ export interface operations {
     requestBody: {
       content: {
         "application/json": components["schemas"]["webhook-team-removed-from-repository"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to user accounts in an enterprise.
+   * @description A user account was added to the enterprise.
+   */
+  "user/created": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-user-created"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to user accounts in an enterprise.
+   * @description A user account was removed from the enterprise.
+   */
+  "user/deleted": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-user-deleted"];
       };
     };
     responses: {
