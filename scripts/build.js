@@ -46,7 +46,7 @@ async function run() {
     const handleRefs = (obj) => {
       if (typeof obj !== "object" || obj === null) return obj;
 
-      for (let key in obj) {
+      for (let key of Object.keys(obj)) {
         if (key === "$ref" && typeof obj[key] === "string") {
           const ref = obj[key].split("/").at(-1);
           tempSchema.components.schemas[ref] = schema.components.schemas[ref];
