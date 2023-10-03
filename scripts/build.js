@@ -43,10 +43,14 @@ async function run() {
     };
 
     // Check all instances of `$ref` in the OpenAPI spec, and add them to the definitions
+    // Remove all instances of `enterprise` in the OpenAPI spec for GitHub.com
     const handleRefs = (obj) => {
       if (typeof obj !== "object" || obj === null) return obj;
 
       for (let key of Object.keys(obj)) {
+        if (key === "enterprise" && file === "api.github.com.json") {
+          delete obj[key];
+        }
         if (key === "$ref" && typeof obj[key] === "string") {
           const ref = obj[key].split("/").at(-1);
           tempSchema.components.schemas[ref] = schema.components.schemas[ref];
