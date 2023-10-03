@@ -17031,6 +17031,8 @@ export interface components {
           git_tags_url: string;
           /** Format: uri */
           git_url: string;
+          /** @description Whether the repository has discussions enabled. */
+          has_discussions?: boolean;
           /**
            * @description Whether downloads are enabled.
            * @default true
@@ -17179,6 +17181,8 @@ export interface components {
           visibility: "public" | "private" | "internal";
           watchers: number;
           watchers_count: number;
+          /** @description Whether to require commit signoff. */
+          web_commit_signoff_required?: boolean;
         };
       };
       enterprise?: components["schemas"]["enterprise-webhooks"];
