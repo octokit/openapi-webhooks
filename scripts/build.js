@@ -6,7 +6,6 @@ import {
   copyFileSync,
 } from "node:fs";
 import * as prettier from "prettier";
-import _ from "lodash";
 
 /* if (!process.env.GITHUB_ACTIONS && !process.env.ANICCA_REPOSITORY_PATH) {
   throw new Error("Please set ANICCA_REPOSITORY_PATH");
@@ -35,16 +34,21 @@ async function run() {
     delete schema.components.responses;
     delete schema.components.parameters;
     delete schema.components.headers;
-    delete schema.components.examples;
 
     const tempSchema = { ...schema };
     tempSchema.components = {
       schemas: {},
+      examples: {}
     };
 
-    // Check all instances of `$ref` in the OpenAPI spec, and add them to the definitions
-    // Remove all instances of `enterprise` in the OpenAPI spec for GitHub.com
-    const handleRefs = (obj) => {
+    /**
+     *  Function to handle special cases:
+      * Check all instances of `$ref` in the OpenAPI spec, and add them to the definitions
+      * Remove all instances of `enterprise` in the OpenAPI spec for GitHub.com
+     * @param {object} obj - The object to check for special cases
+     * @returns {object} - The object with any special cases handled
+    */
+    const specialHandling = (obj) => {
       if (typeof obj !== "object" || obj === null) return obj;
 
       for (let key of Object.keys(obj)) {
@@ -54,10 +58,10 @@ async function run() {
         if (key === "$ref" && typeof obj[key] === "string") {
           const ref = obj[key].split("/").at(-1);
           tempSchema.components.schemas[ref] = schema.components.schemas[ref];
-          // Call the function with the new definition to handle any of it's $refs
-          handleRefs(tempSchema.components.schemas[ref]);
+          // Call the function with the new definition to handle any of it's `$ref`s, and `enterprise` keys
+          specialHandling(tempSchema.components.schemas[ref]);
         } else {
-          obj[key] = handleRefs(obj[key]);
+          obj[key] = specialHandling(obj[key]);
         }
       }
       return obj;
@@ -68,6 +72,7 @@ async function run() {
       const webhook = webhooks[webhookId].post;
       const requestBody = webhook.requestBody;
       const ref = requestBody.content["application/json"].schema.$ref;
+      const examples = requestBody.content["application/json"].examples;
       const refName = ref.split("/").at(-1);
       if (
         typeof requestBody.content["application/x-www-form-urlencoded"] !==
@@ -81,7 +86,13 @@ async function run() {
       }
       tempSchema.components.schemas[refName] =
         schema.components.schemas[refName];
-      handleRefs(schema.components.schemas[refName]);
+      specialHandling(schema.components.schemas[refName]);
+      if (typeof examples !== "undefined") {
+        for (let key of Object.keys(examples)) {
+          const example$ref = examples[key].$ref.split("/").at(-1);
+          tempSchema.components.examples[example$ref] = schema.components.examples[example$ref];
+        }
+      }
     }
 
     writeFileSync(
