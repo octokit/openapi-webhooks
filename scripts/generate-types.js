@@ -53,8 +53,8 @@ async function run() {
           },
           ...packageDefaults,
         }),
-        { parser: "json-stringify" }
-      )
+        { parser: "json-stringify" },
+      ),
     );
     await writeFile(
       `packages/${packageName}/README.md`,
@@ -80,8 +80,8 @@ type Repository = components["schemas"]["full-repository"]
 
 [MIT](LICENSE)
 `,
-        { parser: "markdown" }
-      )
+        { parser: "markdown" },
+      ),
     );
 
     await copyFile("LICENSE", `packages/${packageName}/LICENSE`);
@@ -103,8 +103,8 @@ type Repository = components["schemas"]["full-repository"]
         outputFile,
         {
           parser: "typescript",
-        }
-      )
+        },
+      ),
     );
     console.log(`packages/${packageName}/types.d.ts written`);
   }

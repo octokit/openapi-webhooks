@@ -13,7 +13,7 @@ async function updatePackage() {
   // set semantic-release configuration of npm packages
   const items = await readdir("packages");
   const typePackages = items.filter((item) =>
-    item.startsWith("openapi-webhooks-types")
+    item.startsWith("openapi-webhooks-types"),
   );
 
   pkg.release.plugins = [
@@ -40,11 +40,11 @@ async function updatePackage() {
           pkgRoot: `packages/${packageName}`,
         },
       ];
-    })
+    }),
   );
 
   await writeFile(
     "package.json",
-    await prettier.format(JSON.stringify(pkg), { parser: "json-stringify" })
+    await prettier.format(JSON.stringify(pkg), { parser: "json-stringify" }),
   );
 }
