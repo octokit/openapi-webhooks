@@ -2,9 +2,8 @@ import { readdir, mkdir, rm, writeFile, copyFile } from "node:fs/promises";
 import { basename } from "node:path";
 
 import * as prettier from "prettier";
-import openapiTS from "openapi-typescript";
-import { pathToFileURL } from "node:url"
-import ts from "typescript";
+import openapiTS, { astToString } from "openapi-typescript";
+import { pathToFileURL } from "node:url";
 
 /* (!process.env.OCTOKIT_OPENAPI_VERSION) {
   throw new Error("OCTOKIT_OPENAPI_VERSION is not set");
@@ -86,21 +85,14 @@ type Repository = components["schemas"]["full-repository"]
 
     await copyFile("LICENSE", `packages/${packageName}/LICENSE`);
 
-    const generated = await openapiTS(pathToFileURL(`packages/openapi-webhooks/generated/${name}.json`));
-    const sourceFile = ts.createSourceFile(
-      'placeholder.ts',
-      '',
-      ts.ScriptTarget.ESNext,
-      true,
-      ts.ScriptKind.TS
-    )
-    const printer = ts.createPrinter()
-
-    const outputFile = printer.printList(ts.ListFormat.MultiLine, generated, sourceFile)
     await writeFile(
       `packages/${packageName}/types.d.ts`,
       await prettier.format(
-        outputFile,
+        astToString(
+          await openapiTS(
+            pathToFileURL(`packages/openapi-webhooks/generated/${name}.json`),
+          ),
+        ),
         {
           parser: "typescript",
         },
