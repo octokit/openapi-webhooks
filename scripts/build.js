@@ -38,16 +38,16 @@ async function run() {
     const tempSchema = { ...schema };
     tempSchema.components = {
       schemas: {},
-      examples: {}
+      examples: {},
     };
 
     /**
      *  Function to handle special cases:
-      * Check all instances of `$ref` in the OpenAPI spec, and add them to the definitions
-      * Remove all instances of `enterprise` in the OpenAPI spec for GitHub.com
+     * Check all instances of `$ref` in the OpenAPI spec, and add them to the definitions
+     * Remove all instances of `enterprise` in the OpenAPI spec for GitHub.com
      * @param {object} obj - The object to check for special cases
      * @returns {object} - The object with any special cases handled
-    */
+     */
     const specialHandling = (obj) => {
       if (typeof obj !== "object" || obj === null) return obj;
 
@@ -90,14 +90,15 @@ async function run() {
       if (typeof examples !== "undefined") {
         for (let key of Object.keys(examples)) {
           const example$ref = examples[key].$ref.split("/").at(-1);
-          tempSchema.components.examples[example$ref] = schema.components.examples[example$ref];
+          tempSchema.components.examples[example$ref] =
+            schema.components.examples[example$ref];
         }
       }
     }
 
     writeFileSync(
       `packages/openapi-webhooks/generated/${file}`,
-      await prettier.format(JSON.stringify(tempSchema), { parser: "json" })
+      await prettier.format(JSON.stringify(tempSchema), { parser: "json" }),
     );
     console.log(`packages/openapi-webhooks/generated/${file} written`);
   }
@@ -107,7 +108,7 @@ async function run() {
   for (const name of schemaFileNames) {
     schemasCode += `["${name.replace(
       ".json",
-      ""
+      "",
     )}"]: require("./generated/${name}"),`;
   }
 
@@ -117,8 +118,8 @@ async function run() {
       `# Please do not edit files in this folder
 
 They are all generated, your changes would be overwritten with the next update. If you found a problem with GitHub's OpenAPI schema, file an issue at https://github.com/github/rest-api-description/. If you found a problem specific to the \`x-octokit\` extension or usage of the \`@octokit/openapi\` module, please file an issue at https://github.com/octokit/openapi.`,
-      { parser: "markdown" }
-    )
+      { parser: "markdown" },
+    ),
   );
   writeFileSync(
     "packages/openapi-webhooks/index.js",
@@ -132,8 +133,8 @@ They are all generated, your changes would be overwritten with the next update. 
     `,
       {
         parser: "babel",
-      }
-    )
+      },
+    ),
   );
   writeFileSync(
     `packages/openapi-webhooks/package.json`,
@@ -158,15 +159,15 @@ They are all generated, your changes would be overwritten with the next update. 
           access: "public",
         },
       }),
-      { parser: "json-stringify" }
-    )
+      { parser: "json-stringify" },
+    ),
   );
 
   writeFileSync(
     `packages/openapi-webhooks/README.md`,
     readFileSync("README.md", "utf8")
       .toString()
-      .replace("(CONTRIBUTING.md)", "(../../CONTRIBUTING.md)")
+      .replace("(CONTRIBUTING.md)", "(../../CONTRIBUTING.md)"),
   );
   copyFileSync("LICENSE", `packages/openapi-webhooks/LICENSE`);
 }
