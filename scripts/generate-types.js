@@ -88,12 +88,13 @@ type Repository = components["schemas"]["full-repository"]
     await writeFile(
       `packages/${packageName}/types.d.ts`,
       await prettier.format(
-        COMMENT_HEADER + astToString(
-          await openapiTS(
-            pathToFileURL(`packages/openapi-webhooks/generated/${name}.json`),
-            { defaultNonNullable: false,  }
+        COMMENT_HEADER +
+          astToString(
+            await openapiTS(
+              pathToFileURL(`packages/openapi-webhooks/generated/${name}.json`),
+              { defaultNonNullable: false },
+            ),
           ),
-        ),
         {
           parser: "typescript",
         },
