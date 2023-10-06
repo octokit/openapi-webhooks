@@ -12,8 +12,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to branch protection rules. For more information, see "[About protected branches](https://docs.github.com/github-ae@latest/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches)." For information about the APIs to manage branch protection rules, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#branchprotectionrule) or "[Branch protection](https://docs.github.com/github-ae@latest/rest/branches/branch-protection)" in the REST API documentation.
      *
@@ -21,11 +21,11 @@ export interface webhooks {
      * @description A branch protection rule was created.
      */
     post: operations["branch-protection-rule/created"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "branch-protection-rule-deleted": {
     parameters: {
@@ -34,8 +34,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to branch protection rules. For more information, see "[About protected branches](https://docs.github.com/github-ae@latest/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches)." For information about the APIs to manage branch protection rules, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#branchprotectionrule) or "[Branch protection](https://docs.github.com/github-ae@latest/rest/branches/branch-protection)" in the REST API documentation.
      *
@@ -43,11 +43,11 @@ export interface webhooks {
      * @description A branch protection rule was deleted.
      */
     post: operations["branch-protection-rule/deleted"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "branch-protection-rule-edited": {
     parameters: {
@@ -56,8 +56,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to branch protection rules. For more information, see "[About protected branches](https://docs.github.com/github-ae@latest/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches)." For information about the APIs to manage branch protection rules, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#branchprotectionrule) or "[Branch protection](https://docs.github.com/github-ae@latest/rest/branches/branch-protection)" in the REST API documentation.
      *
@@ -65,11 +65,11 @@ export interface webhooks {
      * @description A branch protection rule was edited.
      */
     post: operations["branch-protection-rule/edited"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "check-run-completed": {
     parameters: {
@@ -78,8 +78,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a check run. For information about check runs, see "[Getting started with the Checks API](https://docs.github.com/github-ae@latest/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check runs, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#checkrun) or "[Check Runs](https://docs.github.com/github-ae@latest/rest/checks/runs)" in the REST API documentation.
      *
@@ -93,11 +93,11 @@ export interface webhooks {
      * @description A check run was completed, and a conclusion is available.
      */
     post: operations["check-run/completed"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "check-run-created": {
     parameters: {
@@ -106,8 +106,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a check run. For information about check runs, see "[Getting started with the Checks API](https://docs.github.com/github-ae@latest/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check runs, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#checkrun) or "[Check Runs](https://docs.github.com/github-ae@latest/rest/checks/runs)" in the REST API documentation.
      *
@@ -121,11 +121,11 @@ export interface webhooks {
      * @description A new check run was created.
      */
     post: operations["check-run/created"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "check-run-requested-action": {
     parameters: {
@@ -134,8 +134,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a check run. For information about check runs, see "[Getting started with the Checks API](https://docs.github.com/github-ae@latest/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check runs, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#checkrun) or "[Check Runs](https://docs.github.com/github-ae@latest/rest/checks/runs)" in the REST API documentation.
      *
@@ -149,11 +149,11 @@ export interface webhooks {
      * @description A check run completed, and someone requested a followup action that your app provides. Only the GitHub App someone requests to perform an action will receive the `requested_action` payload. For more information, see "[Creating CI tests with the Checks API](https://docs.github.com/github-ae@latest/developers/apps/guides/creating-ci-tests-with-the-checks-api)."
      */
     post: operations["check-run/requested-action"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "check-run-rerequested": {
     parameters: {
@@ -162,8 +162,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a check run. For information about check runs, see "[Getting started with the Checks API](https://docs.github.com/github-ae@latest/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check runs, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#checkrun) or "[Check Runs](https://docs.github.com/github-ae@latest/rest/checks/runs)" in the REST API documentation.
      *
@@ -177,11 +177,11 @@ export interface webhooks {
      * @description Someone requested to re-run a check run. Only the GitHub App that someone requests to re-run the check will receive the `rerequested` payload.
      */
     post: operations["check-run/rerequested"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "check-suite-completed": {
     parameters: {
@@ -190,8 +190,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a check suite. For information about check suites, see "[Getting started with the Checks API](https://docs.github.com/github-ae@latest/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check suites, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#checksuite) or "[Check Suites](https://docs.github.com/github-ae@latest/rest/checks/suites)" in the REST API documentation.
      *
@@ -205,11 +205,11 @@ export interface webhooks {
      * @description All check runs in a check suite have completed, and a conclusion is available.
      */
     post: operations["check-suite/completed"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "check-suite-requested": {
     parameters: {
@@ -218,8 +218,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a check suite. For information about check suites, see "[Getting started with the Checks API](https://docs.github.com/github-ae@latest/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check suites, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#checksuite) or "[Check Suites](https://docs.github.com/github-ae@latest/rest/checks/suites)" in the REST API documentation.
      *
@@ -233,11 +233,11 @@ export interface webhooks {
      * @description Someone requested to run a check suite. By default, check suites are automatically created when you create a check run. For more information, see [the GraphQL API documentation for creating a check run](https://docs.github.com/github-ae@latest/graphql/reference/mutations#createcheckrun) or "[Create a check run](https://docs.github.com/github-ae@latest/rest/checks/runs#create-a-check-run)" in the REST API documentation.
      */
     post: operations["check-suite/requested"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "check-suite-rerequested": {
     parameters: {
@@ -246,8 +246,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a check suite. For information about check suites, see "[Getting started with the Checks API](https://docs.github.com/github-ae@latest/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check suites, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#checksuite) or "[Check Suites](https://docs.github.com/github-ae@latest/rest/checks/suites)" in the REST API documentation.
      *
@@ -261,11 +261,11 @@ export interface webhooks {
      * @description Someone requested to re-run the check runs in a check suite. For more information, see [the GraphQL API documentation for creating a check suite](https://docs.github.com/github-ae@latest/graphql/reference/mutations#createchecksuite) or "[Create a check suite](https://docs.github.com/github-ae@latest/rest/checks/suites#create-a-check-suite)" in the REST API documentation.
      */
     post: operations["check-suite/rerequested"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "code-scanning-alert-appeared-in-branch": {
     parameters: {
@@ -274,8 +274,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/github-ae@latest/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/github-ae@latest/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/github-ae@latest/rest/code-scanning)" in the REST API documentation.
      *
@@ -283,11 +283,11 @@ export interface webhooks {
      * @description A previously created code scanning alert appeared in another branch. This can happen when a branch is merged into or created from a branch with a pre-existing code scanning alert.
      */
     post: operations["code-scanning-alert/appeared-in-branch"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "code-scanning-alert-closed-by-user": {
     parameters: {
@@ -296,8 +296,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/github-ae@latest/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/github-ae@latest/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/github-ae@latest/rest/code-scanning)" in the REST API documentation.
      *
@@ -305,11 +305,11 @@ export interface webhooks {
      * @description Someone closed a code scanning alert.
      */
     post: operations["code-scanning-alert/closed-by-user"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "code-scanning-alert-created": {
     parameters: {
@@ -318,8 +318,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/github-ae@latest/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/github-ae@latest/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/github-ae@latest/rest/code-scanning)" in the REST API documentation.
      *
@@ -327,11 +327,11 @@ export interface webhooks {
      * @description A code scanning alert was created in a repository.
      */
     post: operations["code-scanning-alert/created"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "code-scanning-alert-fixed": {
     parameters: {
@@ -340,8 +340,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/github-ae@latest/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/github-ae@latest/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/github-ae@latest/rest/code-scanning)" in the REST API documentation.
      *
@@ -349,11 +349,11 @@ export interface webhooks {
      * @description A code scanning alert was fixed in a branch by a commit.
      */
     post: operations["code-scanning-alert/fixed"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "code-scanning-alert-reopened": {
     parameters: {
@@ -362,8 +362,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/github-ae@latest/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/github-ae@latest/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/github-ae@latest/rest/code-scanning)" in the REST API documentation.
      *
@@ -371,11 +371,11 @@ export interface webhooks {
      * @description A previously fixed code scanning alert reappeared in a branch.
      */
     post: operations["code-scanning-alert/reopened"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "code-scanning-alert-reopened-by-user": {
     parameters: {
@@ -384,8 +384,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/github-ae@latest/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/github-ae@latest/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/github-ae@latest/rest/code-scanning)" in the REST API documentation.
      *
@@ -393,11 +393,11 @@ export interface webhooks {
      * @description Someone reopened a code scanning alert.
      */
     post: operations["code-scanning-alert/reopened-by-user"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "commit-comment-created": {
     parameters: {
@@ -406,8 +406,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to commit comments. For more information about commit comments, see "[Commenting on a pull request](https://docs.github.com/github-ae@latest/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request)." For information about the APIs to manage commit comments, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#commitcomment) or "[Commit comments](https://docs.github.com/github-ae@latest/rest/commits/comments)" in the REST API documentation.
      *
@@ -417,11 +417,11 @@ export interface webhooks {
      * @description Someone commented on a commit.
      */
     post: operations["commit-comment/created"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   create: {
     parameters: {
@@ -430,8 +430,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /** This event occurs when a Git branch or tag is created.
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
@@ -440,11 +440,11 @@ export interface webhooks {
      *     - This event will not occur when more than three tags are created at once.
      *     - Payloads are capped at 25 MB. If an event generates a larger payload, GitHub will not deliver a payload for that webhook event. This may happen, for example, if many branches or tags are pushed at once. We suggest monitoring your payload size to ensure delivery. */
     post: operations["create"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   delete: {
     parameters: {
@@ -453,8 +453,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /** This event occurs when a Git branch or tag is deleted. To subscribe to all pushes to a repository, including
      *     branch and tag deletions, use the [`push`](#push) webhook event.
      *
@@ -462,11 +462,11 @@ export interface webhooks {
      *
      *     **Note**: This event will not occur when more than three tags are deleted at once. */
     post: operations["delete"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "dependabot-alert-auto-dismissed": {
     parameters: {
@@ -475,8 +475,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to Dependabot alerts.
      *
@@ -488,11 +488,11 @@ export interface webhooks {
      * @description A Dependabot alert was automatically closed.
      */
     post: operations["dependabot-alert/auto-dismissed"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "dependabot-alert-auto-reopened": {
     parameters: {
@@ -501,8 +501,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to Dependabot alerts.
      *
@@ -514,11 +514,11 @@ export interface webhooks {
      * @description A Dependabot alert was automatically reopened.
      */
     post: operations["dependabot-alert/auto-reopened"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "dependabot-alert-created": {
     parameters: {
@@ -527,8 +527,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to Dependabot alerts.
      *
@@ -540,11 +540,11 @@ export interface webhooks {
      * @description A manifest file change introduced a vulnerable dependency, or a GitHub Security Advisory was published and an existing dependency was found to be vulnerable.
      */
     post: operations["dependabot-alert/created"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "dependabot-alert-dismissed": {
     parameters: {
@@ -553,8 +553,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to Dependabot alerts.
      *
@@ -566,11 +566,11 @@ export interface webhooks {
      * @description A Dependabot alert was manually closed.
      */
     post: operations["dependabot-alert/dismissed"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "dependabot-alert-fixed": {
     parameters: {
@@ -579,8 +579,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to Dependabot alerts.
      *
@@ -592,11 +592,11 @@ export interface webhooks {
      * @description A manifest file change removed a vulnerability.
      */
     post: operations["dependabot-alert/fixed"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "dependabot-alert-reintroduced": {
     parameters: {
@@ -605,8 +605,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to Dependabot alerts.
      *
@@ -618,11 +618,11 @@ export interface webhooks {
      * @description A manifest file change introduced a vulnerable dependency that had previously been fixed.
      */
     post: operations["dependabot-alert/reintroduced"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "dependabot-alert-reopened": {
     parameters: {
@@ -631,8 +631,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to Dependabot alerts.
      *
@@ -644,11 +644,11 @@ export interface webhooks {
      * @description A Dependabot alert was manually reopened.
      */
     post: operations["dependabot-alert/reopened"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "deploy-key-created": {
     parameters: {
@@ -657,8 +657,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to deploy keys. For more information, see "[Managing deploy keys](https://docs.github.com/github-ae@latest/developers/overview/managing-deploy-keys)." For information about the APIs to manage deploy keys, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#deploykey) or "[Deploy keys](https://docs.github.com/github-ae@latest/rest/deploy-keys)" in the REST API documentation.
      *
@@ -666,11 +666,11 @@ export interface webhooks {
      * @description A deploy key was created.
      */
     post: operations["deploy-key/created"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "deploy-key-deleted": {
     parameters: {
@@ -679,8 +679,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to deploy keys. For more information, see "[Managing deploy keys](https://docs.github.com/github-ae@latest/developers/overview/managing-deploy-keys)." For information about the APIs to manage deploy keys, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#deploykey) or "[Deploy keys](https://docs.github.com/github-ae@latest/rest/deploy-keys)" in the REST API documentation.
      *
@@ -688,11 +688,11 @@ export interface webhooks {
      * @description A deploy key was deleted.
      */
     post: operations["deploy-key/deleted"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "deployment-created": {
     parameters: {
@@ -701,8 +701,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to deployments. For more information, see "[About deployments](https://docs.github.com/github-ae@latest/actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/github-ae@latest/rest/deployments/deployments)" in the REST API documentation.
      *
@@ -712,11 +712,11 @@ export interface webhooks {
      * @description A deployment was created.
      */
     post: operations["deployment/created"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "deployment-protection-rule-requested": {
     parameters: {
@@ -725,8 +725,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to deployment protection rules. For more information, see "[Using environments for deployment](https://docs.github.com/github-ae@latest/actions/deployment/targeting-different-environments/using-environments-for-deployment#environment-protection-rules)." For information about the API to manage deployment protection rules, see [the REST API documentation](https://docs.github.com/github-ae@latest/rest/deployments/environments).
      *
@@ -734,11 +734,11 @@ export interface webhooks {
      * @description A deployment protection rule was requested for an environment.
      */
     post: operations["deployment-protection-rule/requested"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "deployment-review-approved": {
     parameters: {
@@ -747,8 +747,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to deployment reviews. For more information, see "[About deployments](https://docs.github.com/github-ae@latest/actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/github-ae@latest/rest/deployments/deployments)" in the REST API documentation.
      *
@@ -758,11 +758,11 @@ export interface webhooks {
      * @description A deployment review was approved.
      */
     post: operations["deployment-review/approved"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "deployment-review-rejected": {
     parameters: {
@@ -771,8 +771,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to deployment reviews. For more information, see "[About deployments](https://docs.github.com/github-ae@latest/actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/github-ae@latest/rest/deployments/deployments)" in the REST API documentation.
      *
@@ -782,11 +782,11 @@ export interface webhooks {
      * @description A deployment review was rejected.
      */
     post: operations["deployment-review/rejected"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "deployment-review-requested": {
     parameters: {
@@ -795,8 +795,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to deployment reviews. For more information, see "[About deployments](https://docs.github.com/github-ae@latest/actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/github-ae@latest/rest/deployments/deployments)" in the REST API documentation.
      *
@@ -806,11 +806,11 @@ export interface webhooks {
      * @description A deployment review was requested.
      */
     post: operations["deployment-review/requested"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "deployment-status-created": {
     parameters: {
@@ -819,8 +819,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to deployment statuses. For more information, see "[About deployments](https://docs.github.com/github-ae@latest/actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/github-ae@latest/rest/deployments/deployments)" in the REST API documentation.
      *
@@ -830,11 +830,11 @@ export interface webhooks {
      * @description A new deployment status was created.
      */
     post: operations["deployment-status/created"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "discussion-answered": {
     parameters: {
@@ -843,8 +843,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/github-ae@latest/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#discussion).
      *
@@ -856,11 +856,11 @@ export interface webhooks {
      * @description A comment on the discussion was marked as the answer.
      */
     post: operations["discussion/answered"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "discussion-category-changed": {
     parameters: {
@@ -869,8 +869,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/github-ae@latest/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#discussion).
      *
@@ -882,11 +882,11 @@ export interface webhooks {
      * @description The category of a discussion was changed.
      */
     post: operations["discussion/category-changed"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "discussion-comment-created": {
     parameters: {
@@ -895,8 +895,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a comment on a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/github-ae@latest/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#discussion).
      *
@@ -908,11 +908,11 @@ export interface webhooks {
      * @description A comment on a discussion was created.
      */
     post: operations["discussion-comment/created"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "discussion-comment-deleted": {
     parameters: {
@@ -921,8 +921,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a comment on a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/github-ae@latest/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#discussion).
      *
@@ -934,11 +934,11 @@ export interface webhooks {
      * @description A comment on a discussion was deleted.
      */
     post: operations["discussion-comment/deleted"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "discussion-comment-edited": {
     parameters: {
@@ -947,8 +947,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a comment on a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/github-ae@latest/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#discussion).
      *
@@ -960,11 +960,11 @@ export interface webhooks {
      * @description A comment on a discussion was edited.
      */
     post: operations["discussion-comment/edited"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "discussion-created": {
     parameters: {
@@ -973,8 +973,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/github-ae@latest/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#discussion).
      *
@@ -986,11 +986,11 @@ export interface webhooks {
      * @description A discussion was created.
      */
     post: operations["discussion/created"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "discussion-deleted": {
     parameters: {
@@ -999,8 +999,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/github-ae@latest/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#discussion).
      *
@@ -1012,11 +1012,11 @@ export interface webhooks {
      * @description A discussion was deleted.
      */
     post: operations["discussion/deleted"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "discussion-edited": {
     parameters: {
@@ -1025,8 +1025,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/github-ae@latest/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#discussion).
      *
@@ -1038,11 +1038,11 @@ export interface webhooks {
      * @description The title or body on a discussion was edited, or the category of the discussion was changed.
      */
     post: operations["discussion/edited"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "discussion-labeled": {
     parameters: {
@@ -1051,8 +1051,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/github-ae@latest/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#discussion).
      *
@@ -1064,11 +1064,11 @@ export interface webhooks {
      * @description A label was added to a discussion.
      */
     post: operations["discussion/labeled"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "discussion-locked": {
     parameters: {
@@ -1077,8 +1077,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/github-ae@latest/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#discussion).
      *
@@ -1090,11 +1090,11 @@ export interface webhooks {
      * @description A discussion was locked.
      */
     post: operations["discussion/locked"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "discussion-pinned": {
     parameters: {
@@ -1103,8 +1103,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/github-ae@latest/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#discussion).
      *
@@ -1116,11 +1116,11 @@ export interface webhooks {
      * @description A discussion was pinned.
      */
     post: operations["discussion/pinned"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "discussion-transferred": {
     parameters: {
@@ -1129,8 +1129,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/github-ae@latest/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#discussion).
      *
@@ -1142,11 +1142,11 @@ export interface webhooks {
      * @description A discussion was transferred to another repository.
      */
     post: operations["discussion/transferred"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "discussion-unanswered": {
     parameters: {
@@ -1155,8 +1155,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/github-ae@latest/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#discussion).
      *
@@ -1168,11 +1168,11 @@ export interface webhooks {
      * @description A comment on the discussion was unmarked as the answer.
      */
     post: operations["discussion/unanswered"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "discussion-unlabeled": {
     parameters: {
@@ -1181,8 +1181,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/github-ae@latest/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#discussion).
      *
@@ -1194,11 +1194,11 @@ export interface webhooks {
      * @description A label was removed from a discussion.
      */
     post: operations["discussion/unlabeled"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "discussion-unlocked": {
     parameters: {
@@ -1207,8 +1207,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/github-ae@latest/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#discussion).
      *
@@ -1220,11 +1220,11 @@ export interface webhooks {
      * @description A discussion was unlocked.
      */
     post: operations["discussion/unlocked"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "discussion-unpinned": {
     parameters: {
@@ -1233,8 +1233,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/github-ae@latest/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#discussion).
      *
@@ -1246,11 +1246,11 @@ export interface webhooks {
      * @description A discussion was unpinned.
      */
     post: operations["discussion/unpinned"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   fork: {
     parameters: {
@@ -1259,17 +1259,17 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /** This event occurs when someone forks a repository. For more information, see "[Fork a repo](https://docs.github.com/github-ae@latest/get-started/quickstart/fork-a-repo)." For information about the API to manage forks, see "[Forks](https://docs.github.com/github-ae@latest/rest/repos/forks)" in the REST API documentation.
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission. */
     post: operations["fork"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "github-app-authorization-revoked": {
     parameters: {
@@ -1278,8 +1278,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when a user revokes their authorization of a GitHub App. For more information, see "[About apps](https://docs.github.com/github-ae@latest/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the API to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#app) or "[Apps](https://docs.github.com/github-ae@latest/rest/apps)" in the REST API documentation.
      *
@@ -1289,11 +1289,11 @@ export interface webhooks {
      * @description Someone revoked their authorization of a GitHub App.
      */
     post: operations["github-app-authorization/revoked"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   gollum: {
     parameters: {
@@ -1302,17 +1302,17 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /** This event occurs when someone creates or updates a wiki page. For more information, see "[About wikis](https://docs.github.com/github-ae@latest/communities/documenting-your-project-with-wikis/about-wikis)."
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission. */
     post: operations["gollum"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "installation-created": {
     parameters: {
@@ -1321,8 +1321,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
      *
@@ -1330,11 +1330,11 @@ export interface webhooks {
      * @description Someone installed a GitHub App on a user or organization account.
      */
     post: operations["installation/created"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "installation-deleted": {
     parameters: {
@@ -1343,8 +1343,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
      *
@@ -1352,11 +1352,11 @@ export interface webhooks {
      * @description Someone uninstalled a GitHub App from their user or organization account.
      */
     post: operations["installation/deleted"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "installation-new-permissions-accepted": {
     parameters: {
@@ -1365,8 +1365,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
      *
@@ -1374,11 +1374,11 @@ export interface webhooks {
      * @description Someone granted new permissions to a GitHub App.
      */
     post: operations["installation/new-permissions-accepted"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "installation-repositories-added": {
     parameters: {
@@ -1387,8 +1387,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to which repositories a GitHub App installation can access. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
      *
@@ -1396,11 +1396,11 @@ export interface webhooks {
      * @description A GitHub App installation was granted access to one or more repositories.
      */
     post: operations["installation-repositories/added"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "installation-repositories-removed": {
     parameters: {
@@ -1409,8 +1409,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to which repositories a GitHub App installation can access. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
      *
@@ -1418,11 +1418,11 @@ export interface webhooks {
      * @description Access to one or more repositories was revoked for a GitHub App installation.
      */
     post: operations["installation-repositories/removed"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "installation-suspend": {
     parameters: {
@@ -1431,8 +1431,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
      *
@@ -1440,11 +1440,11 @@ export interface webhooks {
      * @description Someone blocked access by a GitHub App to their user or organization account.
      */
     post: operations["installation/suspend"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "installation-target-renamed": {
     parameters: {
@@ -1453,18 +1453,18 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to the user or organization account that a GitHub App is installed on. For more information, see "[About apps](https://docs.github.com/github-ae@latest/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#app) or "[Apps](https://docs.github.com/github-ae@latest/rest/apps)" in the REST API documentation.
      * @description Somebody renamed the user or organization account that a GitHub App is installed on.
      */
     post: operations["installation-target/renamed"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "installation-unsuspend": {
     parameters: {
@@ -1473,8 +1473,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
      *
@@ -1482,11 +1482,11 @@ export interface webhooks {
      * @description A GitHub App that was blocked from accessing a user or organization account was given access the account again.
      */
     post: operations["installation/unsuspend"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "issue-comment-created": {
     parameters: {
@@ -1495,8 +1495,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a comment on an issue or pull request. For more information about issues and pull requests, see "[About issues](https://docs.github.com/github-ae@latest/issues/tracking-your-work-with-issues/about-issues)" and "[About pull requests](https://docs.github.com/github-ae@latest/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage issue comments, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#issuecomment) or "[Issue comments](https://docs.github.com/github-ae@latest/rest/issues/comments)" in the REST API documentation.
      *
@@ -1506,11 +1506,11 @@ export interface webhooks {
      * @description A comment on an issue or pull request was created.
      */
     post: operations["issue-comment/created"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "issue-comment-deleted": {
     parameters: {
@@ -1519,8 +1519,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a comment on an issue or pull request. For more information about issues and pull requests, see "[About issues](https://docs.github.com/github-ae@latest/issues/tracking-your-work-with-issues/about-issues)" and "[About pull requests](https://docs.github.com/github-ae@latest/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage issue comments, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#issuecomment) or "[Issue comments](https://docs.github.com/github-ae@latest/rest/issues/comments)" in the REST API documentation.
      *
@@ -1530,11 +1530,11 @@ export interface webhooks {
      * @description A comment on an issue or pull request was deleted.
      */
     post: operations["issue-comment/deleted"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "issue-comment-edited": {
     parameters: {
@@ -1543,8 +1543,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a comment on an issue or pull request. For more information about issues and pull requests, see "[About issues](https://docs.github.com/github-ae@latest/issues/tracking-your-work-with-issues/about-issues)" and "[About pull requests](https://docs.github.com/github-ae@latest/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage issue comments, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#issuecomment) or "[Issue comments](https://docs.github.com/github-ae@latest/rest/issues/comments)" in the REST API documentation.
      *
@@ -1554,11 +1554,11 @@ export interface webhooks {
      * @description A comment on an issue or pull request was edited.
      */
     post: operations["issue-comment/edited"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "issues-assigned": {
     parameters: {
@@ -1567,8 +1567,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/github-ae@latest/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/github-ae@latest/rest/issues)" in the REST API documentation.
      *
@@ -1578,11 +1578,11 @@ export interface webhooks {
      * @description An issue was assigned to a user.
      */
     post: operations["issues/assigned"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "issues-closed": {
     parameters: {
@@ -1591,8 +1591,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/github-ae@latest/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/github-ae@latest/rest/issues)" in the REST API documentation.
      *
@@ -1602,11 +1602,11 @@ export interface webhooks {
      * @description An issue was closed.
      */
     post: operations["issues/closed"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "issues-deleted": {
     parameters: {
@@ -1615,8 +1615,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/github-ae@latest/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/github-ae@latest/rest/issues)" in the REST API documentation.
      *
@@ -1626,11 +1626,11 @@ export interface webhooks {
      * @description An issue was deleted.
      */
     post: operations["issues/deleted"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "issues-demilestoned": {
     parameters: {
@@ -1639,8 +1639,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/github-ae@latest/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/github-ae@latest/rest/issues)" in the REST API documentation.
      *
@@ -1650,11 +1650,11 @@ export interface webhooks {
      * @description An issue was removed from a milestone.
      */
     post: operations["issues/demilestoned"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "issues-edited": {
     parameters: {
@@ -1663,8 +1663,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/github-ae@latest/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/github-ae@latest/rest/issues)" in the REST API documentation.
      *
@@ -1674,11 +1674,11 @@ export interface webhooks {
      * @description The title or body on an issue was edited.
      */
     post: operations["issues/edited"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "issues-labeled": {
     parameters: {
@@ -1687,8 +1687,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/github-ae@latest/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/github-ae@latest/rest/issues)" in the REST API documentation.
      *
@@ -1698,11 +1698,11 @@ export interface webhooks {
      * @description A label was added to an issue.
      */
     post: operations["issues/labeled"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "issues-locked": {
     parameters: {
@@ -1711,8 +1711,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/github-ae@latest/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/github-ae@latest/rest/issues)" in the REST API documentation.
      *
@@ -1722,11 +1722,11 @@ export interface webhooks {
      * @description Conversation on an issue was locked. For more information, see "[Locking conversations](https://docs.github.com/github-ae@latest/communities/moderating-comments-and-conversations/locking-conversations)."
      */
     post: operations["issues/locked"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "issues-milestoned": {
     parameters: {
@@ -1735,8 +1735,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/github-ae@latest/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/github-ae@latest/rest/issues)" in the REST API documentation.
      *
@@ -1746,11 +1746,11 @@ export interface webhooks {
      * @description An issue was added to a milestone.
      */
     post: operations["issues/milestoned"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "issues-opened": {
     parameters: {
@@ -1759,8 +1759,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/github-ae@latest/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/github-ae@latest/rest/issues)" in the REST API documentation.
      *
@@ -1770,11 +1770,11 @@ export interface webhooks {
      * @description An issue was created. When a closed issue is reopened, the action will be `reopened` instead.
      */
     post: operations["issues/opened"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "issues-pinned": {
     parameters: {
@@ -1783,8 +1783,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/github-ae@latest/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/github-ae@latest/rest/issues)" in the REST API documentation.
      *
@@ -1794,11 +1794,11 @@ export interface webhooks {
      * @description An issue was pinned to a repository. For more information, see "[Pinning an issue to your repository](https://docs.github.com/github-ae@latest/issues/tracking-your-work-with-issues/pinning-an-issue-to-your-repository)."
      */
     post: operations["issues/pinned"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "issues-reopened": {
     parameters: {
@@ -1807,8 +1807,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/github-ae@latest/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/github-ae@latest/rest/issues)" in the REST API documentation.
      *
@@ -1818,11 +1818,11 @@ export interface webhooks {
      * @description A closed issue was reopened.
      */
     post: operations["issues/reopened"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "issues-transferred": {
     parameters: {
@@ -1831,8 +1831,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/github-ae@latest/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/github-ae@latest/rest/issues)" in the REST API documentation.
      *
@@ -1842,11 +1842,11 @@ export interface webhooks {
      * @description An issue was transferred to another repository. For more information, see "[Transferring an issue to another repository](https://docs.github.com/github-ae@latest/issues/tracking-your-work-with-issues/transferring-an-issue-to-another-repository)."
      */
     post: operations["issues/transferred"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "issues-unassigned": {
     parameters: {
@@ -1855,8 +1855,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/github-ae@latest/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/github-ae@latest/rest/issues)" in the REST API documentation.
      *
@@ -1866,11 +1866,11 @@ export interface webhooks {
      * @description A user was unassigned from an issue.
      */
     post: operations["issues/unassigned"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "issues-unlabeled": {
     parameters: {
@@ -1879,8 +1879,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/github-ae@latest/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/github-ae@latest/rest/issues)" in the REST API documentation.
      *
@@ -1890,11 +1890,11 @@ export interface webhooks {
      * @description A label was removed from an issue.
      */
     post: operations["issues/unlabeled"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "issues-unlocked": {
     parameters: {
@@ -1903,8 +1903,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/github-ae@latest/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/github-ae@latest/rest/issues)" in the REST API documentation.
      *
@@ -1914,11 +1914,11 @@ export interface webhooks {
      * @description Conversation on an issue was locked. For more information, see "[Locking conversations](https://docs.github.com/github-ae@latest/communities/moderating-comments-and-conversations/locking-conversations)."
      */
     post: operations["issues/unlocked"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "issues-unpinned": {
     parameters: {
@@ -1927,8 +1927,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/github-ae@latest/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/github-ae@latest/rest/issues)" in the REST API documentation.
      *
@@ -1938,11 +1938,11 @@ export interface webhooks {
      * @description An issue was unpinned from a repository. For more information, see "[Pinning an issue to your repository](https://docs.github.com/github-ae@latest/issues/tracking-your-work-with-issues/pinning-an-issue-to-your-repository)."
      */
     post: operations["issues/unpinned"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "label-created": {
     parameters: {
@@ -1951,8 +1951,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to labels. For more information, see "[Managing labels](https://docs.github.com/github-ae@latest/issues/using-labels-and-milestones-to-track-work/managing-labels)." For information about the APIs to manage labels, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#label) or "[Labels](https://docs.github.com/github-ae@latest/rest/issues/labels)" in the REST API documentation.
      *
@@ -1962,11 +1962,11 @@ export interface webhooks {
      * @description A label was created.
      */
     post: operations["label/created"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "label-deleted": {
     parameters: {
@@ -1975,8 +1975,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to labels. For more information, see "[Managing labels](https://docs.github.com/github-ae@latest/issues/using-labels-and-milestones-to-track-work/managing-labels)." For information about the APIs to manage labels, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#label) or "[Labels](https://docs.github.com/github-ae@latest/rest/issues/labels)" in the REST API documentation.
      *
@@ -1986,11 +1986,11 @@ export interface webhooks {
      * @description A label was deleted.
      */
     post: operations["label/deleted"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "label-edited": {
     parameters: {
@@ -1999,8 +1999,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to labels. For more information, see "[Managing labels](https://docs.github.com/github-ae@latest/issues/using-labels-and-milestones-to-track-work/managing-labels)." For information about the APIs to manage labels, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#label) or "[Labels](https://docs.github.com/github-ae@latest/rest/issues/labels)" in the REST API documentation.
      *
@@ -2010,11 +2010,11 @@ export interface webhooks {
      * @description A label's name, description, or color was changed.
      */
     post: operations["label/edited"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "member-added": {
     parameters: {
@@ -2023,8 +2023,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to collaborators in a repository. For more information, see "[Adding outside collaborators to repositories in your organization](https://docs.github.com/github-ae@latest/organizations/managing-user-access-to-your-organizations-repositories/adding-outside-collaborators-to-repositories-in-your-organization)." For more information about the API to manage repository collaborators, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#repositorycollaboratorconnection) or "[Collaborators](https://docs.github.com/github-ae@latest/rest/collaborators/collaborators)" in the REST API documentation.
      *
@@ -2032,11 +2032,11 @@ export interface webhooks {
      * @description A GitHub user accepted an invitation to a repository.
      */
     post: operations["member/added"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "member-edited": {
     parameters: {
@@ -2045,8 +2045,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to collaborators in a repository. For more information, see "[Adding outside collaborators to repositories in your organization](https://docs.github.com/github-ae@latest/organizations/managing-user-access-to-your-organizations-repositories/adding-outside-collaborators-to-repositories-in-your-organization)." For more information about the API to manage repository collaborators, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#repositorycollaboratorconnection) or "[Collaborators](https://docs.github.com/github-ae@latest/rest/collaborators/collaborators)" in the REST API documentation.
      *
@@ -2054,11 +2054,11 @@ export interface webhooks {
      * @description Permissions were changed for a collaborator on a repository.
      */
     post: operations["member/edited"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "member-removed": {
     parameters: {
@@ -2067,8 +2067,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to collaborators in a repository. For more information, see "[Adding outside collaborators to repositories in your organization](https://docs.github.com/github-ae@latest/organizations/managing-user-access-to-your-organizations-repositories/adding-outside-collaborators-to-repositories-in-your-organization)." For more information about the API to manage repository collaborators, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#repositorycollaboratorconnection) or "[Collaborators](https://docs.github.com/github-ae@latest/rest/collaborators/collaborators)" in the REST API documentation.
      *
@@ -2076,11 +2076,11 @@ export interface webhooks {
      * @description A collaborator was removed from a repository.
      */
     post: operations["member/removed"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "membership-added": {
     parameters: {
@@ -2089,8 +2089,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to team membership. For more information, see "[About teams](https://docs.github.com/github-ae@latest/organizations/organizing-members-into-teams/about-teams)." For more information about the APIs to manage team memberships, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#team) or "[Team members](https://docs.github.com/github-ae@latest/rest/teams/members)" in the REST API documentation.
      *
@@ -2098,11 +2098,11 @@ export interface webhooks {
      * @description An organization member was added to a team.
      */
     post: operations["membership/added"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "membership-removed": {
     parameters: {
@@ -2111,8 +2111,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to team membership. For more information, see "[About teams](https://docs.github.com/github-ae@latest/organizations/organizing-members-into-teams/about-teams)." For more information about the APIs to manage team memberships, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#team) or "[Team members](https://docs.github.com/github-ae@latest/rest/teams/members)" in the REST API documentation.
      *
@@ -2120,11 +2120,11 @@ export interface webhooks {
      * @description An organization member was removed from a team.
      */
     post: operations["membership/removed"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "meta-deleted": {
     parameters: {
@@ -2133,8 +2133,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a webhook itself.
      *
@@ -2142,11 +2142,11 @@ export interface webhooks {
      * @description The webhook was deleted.
      */
     post: operations["meta/deleted"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "milestone-closed": {
     parameters: {
@@ -2155,8 +2155,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to milestones. For more information, see "[About milestones](https://docs.github.com/github-ae@latest/issues/using-labels-and-milestones-to-track-work/about-milestones)." For information about the APIs to manage milestones, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#milestone) or "[Milestones](https://docs.github.com/github-ae@latest/rest/issues/milestones)" in the REST API documentation.
      *
@@ -2166,11 +2166,11 @@ export interface webhooks {
      * @description A milestone was closed.
      */
     post: operations["milestone/closed"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "milestone-created": {
     parameters: {
@@ -2179,8 +2179,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to milestones. For more information, see "[About milestones](https://docs.github.com/github-ae@latest/issues/using-labels-and-milestones-to-track-work/about-milestones)." For information about the APIs to manage milestones, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#milestone) or "[Milestones](https://docs.github.com/github-ae@latest/rest/issues/milestones)" in the REST API documentation.
      *
@@ -2190,11 +2190,11 @@ export interface webhooks {
      * @description A milestone was created.
      */
     post: operations["milestone/created"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "milestone-deleted": {
     parameters: {
@@ -2203,8 +2203,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to milestones. For more information, see "[About milestones](https://docs.github.com/github-ae@latest/issues/using-labels-and-milestones-to-track-work/about-milestones)." For information about the APIs to manage milestones, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#milestone) or "[Milestones](https://docs.github.com/github-ae@latest/rest/issues/milestones)" in the REST API documentation.
      *
@@ -2214,11 +2214,11 @@ export interface webhooks {
      * @description A milestone was deleted.
      */
     post: operations["milestone/deleted"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "milestone-edited": {
     parameters: {
@@ -2227,8 +2227,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to milestones. For more information, see "[About milestones](https://docs.github.com/github-ae@latest/issues/using-labels-and-milestones-to-track-work/about-milestones)." For information about the APIs to manage milestones, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#milestone) or "[Milestones](https://docs.github.com/github-ae@latest/rest/issues/milestones)" in the REST API documentation.
      *
@@ -2238,11 +2238,11 @@ export interface webhooks {
      * @description A milestone was edited.
      */
     post: operations["milestone/edited"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "milestone-opened": {
     parameters: {
@@ -2251,8 +2251,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to milestones. For more information, see "[About milestones](https://docs.github.com/github-ae@latest/issues/using-labels-and-milestones-to-track-work/about-milestones)." For information about the APIs to manage milestones, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#milestone) or "[Milestones](https://docs.github.com/github-ae@latest/rest/issues/milestones)" in the REST API documentation.
      *
@@ -2262,11 +2262,11 @@ export interface webhooks {
      * @description A milestone was opened.
      */
     post: operations["milestone/opened"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "organization-deleted": {
     parameters: {
@@ -2275,8 +2275,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an organization and its members. For more information, see "[About organizations](https://docs.github.com/github-ae@latest/organizations/collaborating-with-groups-in-organizations/about-organizations)." For information about the APIs to manage organizations, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#organization) or "[Organizations](https://docs.github.com/github-ae@latest/rest/orgs)" in the REST API documentation.
      *
@@ -2286,11 +2286,11 @@ export interface webhooks {
      * @description An organization was deleted.
      */
     post: operations["organization/deleted"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "organization-member-added": {
     parameters: {
@@ -2299,8 +2299,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an organization and its members. For more information, see "[About organizations](https://docs.github.com/github-ae@latest/organizations/collaborating-with-groups-in-organizations/about-organizations)." For information about the APIs to manage organizations, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#organization) or "[Organizations](https://docs.github.com/github-ae@latest/rest/orgs)" in the REST API documentation.
      *
@@ -2310,11 +2310,11 @@ export interface webhooks {
      * @description A member accepted an invitation to join an organization.
      */
     post: operations["organization/member-added"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "organization-member-invited": {
     parameters: {
@@ -2323,8 +2323,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an organization and its members. For more information, see "[About organizations](https://docs.github.com/github-ae@latest/organizations/collaborating-with-groups-in-organizations/about-organizations)." For information about the APIs to manage organizations, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#organization) or "[Organizations](https://docs.github.com/github-ae@latest/rest/orgs)" in the REST API documentation.
      *
@@ -2334,11 +2334,11 @@ export interface webhooks {
      * @description A member was invited to join the organization.
      */
     post: operations["organization/member-invited"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "organization-member-removed": {
     parameters: {
@@ -2347,8 +2347,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an organization and its members. For more information, see "[About organizations](https://docs.github.com/github-ae@latest/organizations/collaborating-with-groups-in-organizations/about-organizations)." For information about the APIs to manage organizations, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#organization) or "[Organizations](https://docs.github.com/github-ae@latest/rest/orgs)" in the REST API documentation.
      *
@@ -2358,11 +2358,11 @@ export interface webhooks {
      * @description A member was removed from the organization.
      */
     post: operations["organization/member-removed"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "organization-renamed": {
     parameters: {
@@ -2371,8 +2371,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an organization and its members. For more information, see "[About organizations](https://docs.github.com/github-ae@latest/organizations/collaborating-with-groups-in-organizations/about-organizations)." For information about the APIs to manage organizations, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#organization) or "[Organizations](https://docs.github.com/github-ae@latest/rest/orgs)" in the REST API documentation.
      *
@@ -2382,11 +2382,11 @@ export interface webhooks {
      * @description The name of an organization was changed.
      */
     post: operations["organization/renamed"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "package-published": {
     parameters: {
@@ -2395,8 +2395,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to GitHub Packages. For more information, see "[Introduction to GitHub Packages](https://docs.github.com/github-ae@latest/packages/learn-github-packages/introduction-to-github-packages)." For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#package) or "[Packages](https://docs.github.com/github-ae@latest/rest/packages)" in the REST API documentation.
      *
@@ -2404,11 +2404,11 @@ export interface webhooks {
      * @description A package was published to a registry.
      */
     post: operations["package/published"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "package-updated": {
     parameters: {
@@ -2417,8 +2417,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to GitHub Packages. For more information, see "[Introduction to GitHub Packages](https://docs.github.com/github-ae@latest/packages/learn-github-packages/introduction-to-github-packages)." For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#package) or "[Packages](https://docs.github.com/github-ae@latest/rest/packages)" in the REST API documentation.
      *
@@ -2426,11 +2426,11 @@ export interface webhooks {
      * @description A previously published package was updated.
      */
     post: operations["package/updated"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "page-build": {
     parameters: {
@@ -2439,17 +2439,17 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /** This event occurs when there is an attempted build of a GitHub Pages site. This event occurs regardless of whether the build is successful. For more information, see "[Configuring a publishing source for your GitHub Pages site](https://docs.github.com/github-ae@latest/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)." For information about the API to manage GitHub Pages, see "[Pages](https://docs.github.com/github-ae@latest/rest/pages)" in the REST API documentation.
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Pages" repository permission. */
     post: operations["page-build"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   ping: {
     parameters: {
@@ -2458,15 +2458,15 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /** This event occurs when you create a new webhook. The ping event is a confirmation from GitHub that you configured the webhook correctly. */
     post: operations["ping"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "project-card-converted": {
     parameters: {
@@ -2475,8 +2475,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a card on a classic project. For more information, see "[About projects (classic)](https://docs.github.com/github-ae@latest/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/github-ae@latest/rest/projects)" in the REST API documentation.
      *
@@ -2486,11 +2486,11 @@ export interface webhooks {
      * @description A note in a classic project was converted to an issue.
      */
     post: operations["project-card/converted"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "project-card-created": {
     parameters: {
@@ -2499,8 +2499,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a card on a classic project. For more information, see "[About projects (classic)](https://docs.github.com/github-ae@latest/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/github-ae@latest/rest/projects)" in the REST API documentation.
      *
@@ -2510,11 +2510,11 @@ export interface webhooks {
      * @description A card was added to a classic project.
      */
     post: operations["project-card/created"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "project-card-deleted": {
     parameters: {
@@ -2523,8 +2523,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a card on a classic project. For more information, see "[About projects (classic)](https://docs.github.com/github-ae@latest/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/github-ae@latest/rest/projects)" in the REST API documentation.
      *
@@ -2534,11 +2534,11 @@ export interface webhooks {
      * @description A card on a classic project was deleted.
      */
     post: operations["project-card/deleted"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "project-card-edited": {
     parameters: {
@@ -2547,8 +2547,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a card on a classic project. For more information, see "[About projects (classic)](https://docs.github.com/github-ae@latest/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/github-ae@latest/rest/projects)" in the REST API documentation.
      *
@@ -2558,11 +2558,11 @@ export interface webhooks {
      * @description A note on a classic project was edited.
      */
     post: operations["project-card/edited"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "project-card-moved": {
     parameters: {
@@ -2571,8 +2571,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a card on a classic project. For more information, see "[About projects (classic)](https://docs.github.com/github-ae@latest/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/github-ae@latest/rest/projects)" in the REST API documentation.
      *
@@ -2582,11 +2582,11 @@ export interface webhooks {
      * @description A card on a classic project was moved to another column or to another position in its column.
      */
     post: operations["project-card/moved"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "project-closed": {
     parameters: {
@@ -2595,8 +2595,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a classic project. For more information, see "[About projects (classic)](https://docs.github.com/github-ae@latest/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/github-ae@latest/rest/projects)" in the REST API documentation.
      *
@@ -2606,11 +2606,11 @@ export interface webhooks {
      * @description A classic project was closed.
      */
     post: operations["project/closed"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "project-column-created": {
     parameters: {
@@ -2619,8 +2619,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a column on a classic project. For more information, see "[About projects (classic)](https://docs.github.com/github-ae@latest/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/github-ae@latest/rest/projects)" in the REST API documentation.
      *
@@ -2630,11 +2630,11 @@ export interface webhooks {
      * @description A column was added to a classic project.
      */
     post: operations["project-column/created"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "project-column-deleted": {
     parameters: {
@@ -2643,8 +2643,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a column on a classic project. For more information, see "[About projects (classic)](https://docs.github.com/github-ae@latest/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/github-ae@latest/rest/projects)" in the REST API documentation.
      *
@@ -2654,11 +2654,11 @@ export interface webhooks {
      * @description A column was deleted from a classic project.
      */
     post: operations["project-column/deleted"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "project-column-edited": {
     parameters: {
@@ -2667,8 +2667,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a column on a classic project. For more information, see "[About projects (classic)](https://docs.github.com/github-ae@latest/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/github-ae@latest/rest/projects)" in the REST API documentation.
      *
@@ -2678,11 +2678,11 @@ export interface webhooks {
      * @description The name of a column on a classic project was changed.
      */
     post: operations["project-column/edited"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "project-column-moved": {
     parameters: {
@@ -2691,8 +2691,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a column on a classic project. For more information, see "[About projects (classic)](https://docs.github.com/github-ae@latest/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/github-ae@latest/rest/projects)" in the REST API documentation.
      *
@@ -2702,11 +2702,11 @@ export interface webhooks {
      * @description A column was moved to a new position on a classic project.
      */
     post: operations["project-column/moved"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "project-created": {
     parameters: {
@@ -2715,8 +2715,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a classic project. For more information, see "[About projects (classic)](https://docs.github.com/github-ae@latest/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/github-ae@latest/rest/projects)" in the REST API documentation.
      *
@@ -2726,11 +2726,11 @@ export interface webhooks {
      * @description A classic project was created.
      */
     post: operations["project/created"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "project-deleted": {
     parameters: {
@@ -2739,8 +2739,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a classic project. For more information, see "[About projects (classic)](https://docs.github.com/github-ae@latest/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/github-ae@latest/rest/projects)" in the REST API documentation.
      *
@@ -2750,11 +2750,11 @@ export interface webhooks {
      * @description A classic project was deleted.
      */
     post: operations["project/deleted"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "project-edited": {
     parameters: {
@@ -2763,8 +2763,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a classic project. For more information, see "[About projects (classic)](https://docs.github.com/github-ae@latest/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/github-ae@latest/rest/projects)" in the REST API documentation.
      *
@@ -2774,11 +2774,11 @@ export interface webhooks {
      * @description The name or description of a classic project was changed.
      */
     post: operations["project/edited"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "project-reopened": {
     parameters: {
@@ -2787,8 +2787,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a classic project. For more information, see "[About projects (classic)](https://docs.github.com/github-ae@latest/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/github-ae@latest/rest/projects)" in the REST API documentation.
      *
@@ -2798,11 +2798,11 @@ export interface webhooks {
      * @description A classic project was closed.
      */
     post: operations["project/reopened"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "projects-v2-closed": {
     parameters: {
@@ -2811,8 +2811,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an organization-level project. For more information, see "[About Projects](https://docs.github.com/github-ae@latest/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#projectv2).
      *
@@ -2824,11 +2824,11 @@ export interface webhooks {
      * @description A project in the organization was closed.
      */
     post: operations["projects-v2/closed"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "projects-v2-created": {
     parameters: {
@@ -2837,8 +2837,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an organization-level project. For more information, see "[About Projects](https://docs.github.com/github-ae@latest/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#projectv2).
      *
@@ -2850,11 +2850,11 @@ export interface webhooks {
      * @description A project in the organization was created.
      */
     post: operations["projects-v2/created"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "projects-v2-deleted": {
     parameters: {
@@ -2863,8 +2863,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an organization-level project. For more information, see "[About Projects](https://docs.github.com/github-ae@latest/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#projectv2).
      *
@@ -2876,11 +2876,11 @@ export interface webhooks {
      * @description A project in the organization was deleted.
      */
     post: operations["projects-v2/deleted"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "projects-v2-edited": {
     parameters: {
@@ -2889,8 +2889,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an organization-level project. For more information, see "[About Projects](https://docs.github.com/github-ae@latest/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#projectv2).
      *
@@ -2902,11 +2902,11 @@ export interface webhooks {
      * @description The title, description, or README of a project in the organization was changed.
      */
     post: operations["projects-v2/edited"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "projects-v2-reopened": {
     parameters: {
@@ -2915,8 +2915,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an organization-level project. For more information, see "[About Projects](https://docs.github.com/github-ae@latest/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#projectv2).
      *
@@ -2928,11 +2928,11 @@ export interface webhooks {
      * @description A project in the organization was reopened.
      */
     post: operations["projects-v2/reopened"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   public: {
     parameters: {
@@ -2941,17 +2941,17 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /** This event occurs when repository visibility changes from private to public. For more information, see "[Setting repository visibility](https://docs.github.com/github-ae@latest/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/setting-repository-visibility)."
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission. */
     post: operations["public"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "pull-request-assigned": {
     parameters: {
@@ -2960,8 +2960,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/github-ae@latest/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/github-ae@latest/rest/pulls/pulls)" in the REST API documentation.
      *
@@ -2971,11 +2971,11 @@ export interface webhooks {
      * @description A pull request was assigned to a user.
      */
     post: operations["pull-request/assigned"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "pull-request-auto-merge-disabled": {
     parameters: {
@@ -2984,8 +2984,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/github-ae@latest/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/github-ae@latest/rest/pulls/pulls)" in the REST API documentation.
      *
@@ -2995,11 +2995,11 @@ export interface webhooks {
      * @description Auto merge was disabled for a pull request. For more information, see "[Automatically merging a pull request](https://docs.github.com/github-ae@latest/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/automatically-merging-a-pull-request)."
      */
     post: operations["pull-request/auto-merge-disabled"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "pull-request-auto-merge-enabled": {
     parameters: {
@@ -3008,8 +3008,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/github-ae@latest/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/github-ae@latest/rest/pulls/pulls)" in the REST API documentation.
      *
@@ -3019,11 +3019,11 @@ export interface webhooks {
      * @description Auto merge was enabled for a pull request. For more information, see "[Automatically merging a pull request](https://docs.github.com/github-ae@latest/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/automatically-merging-a-pull-request)."
      */
     post: operations["pull-request/auto-merge-enabled"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "pull-request-closed": {
     parameters: {
@@ -3032,8 +3032,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/github-ae@latest/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/github-ae@latest/rest/pulls/pulls)" in the REST API documentation.
      *
@@ -3043,11 +3043,11 @@ export interface webhooks {
      * @description A pull request was closed. If `merged` is false in the webhook payload, the pull request was closed with unmerged commits. If `merged` is true in the webhook payload, the pull request was merged.
      */
     post: operations["pull-request/closed"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "pull-request-converted-to-draft": {
     parameters: {
@@ -3056,8 +3056,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/github-ae@latest/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/github-ae@latest/rest/pulls/pulls)" in the REST API documentation.
      *
@@ -3067,11 +3067,11 @@ export interface webhooks {
      * @description A pull request was converted to a draft. For more information, see "[Changing the stage of a pull request](https://docs.github.com/github-ae@latest/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/changing-the-stage-of-a-pull-request)."
      */
     post: operations["pull-request/converted-to-draft"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "pull-request-demilestoned": {
     parameters: {
@@ -3080,8 +3080,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/github-ae@latest/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/github-ae@latest/rest/pulls/pulls)" in the REST API documentation.
      *
@@ -3091,11 +3091,11 @@ export interface webhooks {
      * @description A pull request was removed from a milestone.
      */
     post: operations["pull-request/demilestoned"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "pull-request-edited": {
     parameters: {
@@ -3104,8 +3104,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/github-ae@latest/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/github-ae@latest/rest/pulls/pulls)" in the REST API documentation.
      *
@@ -3115,11 +3115,11 @@ export interface webhooks {
      * @description The title or body of a pull request was edited.
      */
     post: operations["pull-request/edited"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "pull-request-labeled": {
     parameters: {
@@ -3128,8 +3128,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/github-ae@latest/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/github-ae@latest/rest/pulls/pulls)" in the REST API documentation.
      *
@@ -3139,11 +3139,11 @@ export interface webhooks {
      * @description A label was added to a pull request.
      */
     post: operations["pull-request/labeled"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "pull-request-locked": {
     parameters: {
@@ -3152,8 +3152,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/github-ae@latest/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/github-ae@latest/rest/pulls/pulls)" in the REST API documentation.
      *
@@ -3163,11 +3163,11 @@ export interface webhooks {
      * @description Conversation on a pull request was locked. For more information, see "[Locking conversations](https://docs.github.com/github-ae@latest/communities/moderating-comments-and-conversations/locking-conversations)."
      */
     post: operations["pull-request/locked"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "pull-request-milestoned": {
     parameters: {
@@ -3176,8 +3176,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/github-ae@latest/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/github-ae@latest/rest/pulls/pulls)" in the REST API documentation.
      *
@@ -3187,11 +3187,11 @@ export interface webhooks {
      * @description A pull request was added to a milestone.
      */
     post: operations["pull-request/milestoned"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "pull-request-opened": {
     parameters: {
@@ -3200,8 +3200,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/github-ae@latest/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/github-ae@latest/rest/pulls/pulls)" in the REST API documentation.
      *
@@ -3211,11 +3211,11 @@ export interface webhooks {
      * @description A pull request was created
      */
     post: operations["pull-request/opened"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "pull-request-ready-for-review": {
     parameters: {
@@ -3224,8 +3224,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/github-ae@latest/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/github-ae@latest/rest/pulls/pulls)" in the REST API documentation.
      *
@@ -3235,11 +3235,11 @@ export interface webhooks {
      * @description A draft pull request was marked as ready for review. For more information, see "[Changing the stage of a pull request](https://docs.github.com/github-ae@latest/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/changing-the-stage-of-a-pull-request)."
      */
     post: operations["pull-request/ready-for-review"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "pull-request-reopened": {
     parameters: {
@@ -3248,8 +3248,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/github-ae@latest/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/github-ae@latest/rest/pulls/pulls)" in the REST API documentation.
      *
@@ -3259,11 +3259,11 @@ export interface webhooks {
      * @description A previously closed pull request was reopened.
      */
     post: operations["pull-request/reopened"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "pull-request-review-comment-created": {
     parameters: {
@@ -3272,8 +3272,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a pull request review comment. A pull request review comment is a comment on a pull request's diff. For more information, see "[Commenting on a pull request](https://docs.github.com/github-ae@latest/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request)." For information about the APIs to manage pull request review comments, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#pullrequestreviewcomment) or "[Pull request review comments](https://docs.github.com/github-ae@latest/rest/pulls/comments)" in the REST API documentation.
      *
@@ -3283,11 +3283,11 @@ export interface webhooks {
      * @description A comment on a pull request diff was created.
      */
     post: operations["pull-request-review-comment/created"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "pull-request-review-comment-deleted": {
     parameters: {
@@ -3296,8 +3296,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a pull request review comment. A pull request review comment is a comment on a pull request's diff. For more information, see "[Commenting on a pull request](https://docs.github.com/github-ae@latest/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request)." For information about the APIs to manage pull request review comments, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#pullrequestreviewcomment) or "[Pull request review comments](https://docs.github.com/github-ae@latest/rest/pulls/comments)" in the REST API documentation.
      *
@@ -3307,11 +3307,11 @@ export interface webhooks {
      * @description A comment on a pull request diff was deleted.
      */
     post: operations["pull-request-review-comment/deleted"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "pull-request-review-comment-edited": {
     parameters: {
@@ -3320,8 +3320,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a pull request review comment. A pull request review comment is a comment on a pull request's diff. For more information, see "[Commenting on a pull request](https://docs.github.com/github-ae@latest/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request)." For information about the APIs to manage pull request review comments, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#pullrequestreviewcomment) or "[Pull request review comments](https://docs.github.com/github-ae@latest/rest/pulls/comments)" in the REST API documentation.
      *
@@ -3331,11 +3331,11 @@ export interface webhooks {
      * @description The content of a comment on a pull request diff was changed.
      */
     post: operations["pull-request-review-comment/edited"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "pull-request-review-dismissed": {
     parameters: {
@@ -3344,8 +3344,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a pull request review. A pull request review is a group of pull request review comments in addition to a body comment and a state. For more information, see "[About pull request reviews](https://docs.github.com/github-ae@latest/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request reviews, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#pullrequestreview) or "[Pull request reviews](https://docs.github.com/github-ae@latest/rest/pulls/reviews)" in the REST API documentation.
      *
@@ -3355,11 +3355,11 @@ export interface webhooks {
      * @description A review on a pull request was dismissed.
      */
     post: operations["pull-request-review/dismissed"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "pull-request-review-edited": {
     parameters: {
@@ -3368,8 +3368,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a pull request review. A pull request review is a group of pull request review comments in addition to a body comment and a state. For more information, see "[About pull request reviews](https://docs.github.com/github-ae@latest/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request reviews, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#pullrequestreview) or "[Pull request reviews](https://docs.github.com/github-ae@latest/rest/pulls/reviews)" in the REST API documentation.
      *
@@ -3379,11 +3379,11 @@ export interface webhooks {
      * @description The body comment on a pull request review was edited.
      */
     post: operations["pull-request-review/edited"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "pull-request-review-request-removed": {
     parameters: {
@@ -3392,8 +3392,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/github-ae@latest/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/github-ae@latest/rest/pulls/pulls)" in the REST API documentation.
      *
@@ -3403,11 +3403,11 @@ export interface webhooks {
      * @description A request for review by a person or team was removed from a pull request.
      */
     post: operations["pull-request/review-request-removed"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "pull-request-review-requested": {
     parameters: {
@@ -3416,8 +3416,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/github-ae@latest/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/github-ae@latest/rest/pulls/pulls)" in the REST API documentation.
      *
@@ -3427,11 +3427,11 @@ export interface webhooks {
      * @description Review by a person or team was requested for a pull request. For more information, see "[Requesting a pull request review](https://docs.github.com/github-ae@latest/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/requesting-a-pull-request-review)."
      */
     post: operations["pull-request/review-requested"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "pull-request-review-submitted": {
     parameters: {
@@ -3440,8 +3440,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a pull request review. A pull request review is a group of pull request review comments in addition to a body comment and a state. For more information, see "[About pull request reviews](https://docs.github.com/github-ae@latest/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request reviews, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#pullrequestreview) or "[Pull request reviews](https://docs.github.com/github-ae@latest/rest/pulls/reviews)" in the REST API documentation.
      *
@@ -3451,11 +3451,11 @@ export interface webhooks {
      * @description A review on a pull request was submitted.
      */
     post: operations["pull-request-review/submitted"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "pull-request-review-thread-resolved": {
     parameters: {
@@ -3464,8 +3464,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a comment thread on a pull request. For more information, see "[About pull request reviews](https://docs.github.com/github-ae@latest/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request reviews, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#pullrequestreviewthread) or "[Pull request review comments](https://docs.github.com/github-ae@latest/rest/pulls/comments)" in the REST API documentation.
      *
@@ -3475,11 +3475,11 @@ export interface webhooks {
      * @description A comment thread on a pull request was marked as resolved.
      */
     post: operations["pull-request-review-thread/resolved"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "pull-request-review-thread-unresolved": {
     parameters: {
@@ -3488,8 +3488,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a comment thread on a pull request. For more information, see "[About pull request reviews](https://docs.github.com/github-ae@latest/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request reviews, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#pullrequestreviewthread) or "[Pull request review comments](https://docs.github.com/github-ae@latest/rest/pulls/comments)" in the REST API documentation.
      *
@@ -3499,11 +3499,11 @@ export interface webhooks {
      * @description A previously resolved comment thread on a pull request was marked as unresolved.
      */
     post: operations["pull-request-review-thread/unresolved"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "pull-request-synchronize": {
     parameters: {
@@ -3512,8 +3512,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/github-ae@latest/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/github-ae@latest/rest/pulls/pulls)" in the REST API documentation.
      *
@@ -3523,11 +3523,11 @@ export interface webhooks {
      * @description A pull request's head branch was updated. For example, the head branch was updated from the base branch or new commits were pushed to the head branch.
      */
     post: operations["pull-request/synchronize"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "pull-request-unassigned": {
     parameters: {
@@ -3536,8 +3536,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/github-ae@latest/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/github-ae@latest/rest/pulls/pulls)" in the REST API documentation.
      *
@@ -3547,11 +3547,11 @@ export interface webhooks {
      * @description A user was unassigned from a pull request.
      */
     post: operations["pull-request/unassigned"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "pull-request-unlabeled": {
     parameters: {
@@ -3560,8 +3560,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/github-ae@latest/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/github-ae@latest/rest/pulls/pulls)" in the REST API documentation.
      *
@@ -3571,11 +3571,11 @@ export interface webhooks {
      * @description A label was removed from a pull request.
      */
     post: operations["pull-request/unlabeled"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "pull-request-unlocked": {
     parameters: {
@@ -3584,8 +3584,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/github-ae@latest/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/github-ae@latest/rest/pulls/pulls)" in the REST API documentation.
      *
@@ -3595,11 +3595,11 @@ export interface webhooks {
      * @description Conversation on a pull request was unlocked. For more information, see "[Locking conversations](https://docs.github.com/github-ae@latest/communities/moderating-comments-and-conversations/locking-conversations)."
      */
     post: operations["pull-request/unlocked"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   push: {
     parameters: {
@@ -3608,8 +3608,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /** This event occurs when there is a push to a repository branch. This includes when a commit is pushed, when a commit tag is pushed,
      *     when a branch is deleted, when a tag is deleted, or when a repository is created from a template. To subscribe to only branch
      *     and tag deletions, use the [`delete`](#delete) webhook event.
@@ -3618,11 +3618,11 @@ export interface webhooks {
      *
      *     **Note**: An event will not be created when more than three tags are pushed at once. */
     post: operations["push"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "registry-package-published": {
     parameters: {
@@ -3631,8 +3631,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to GitHub Packages. For more information, see "[Introduction to GitHub Packages](https://docs.github.com/github-ae@latest/packages/learn-github-packages/introduction-to-github-packages)." For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#package) or "[Packages](https://docs.github.com/github-ae@latest/rest/packages)" in the REST API documentation.
      *
@@ -3642,11 +3642,11 @@ export interface webhooks {
      * @description A package was published to a registry.
      */
     post: operations["registry-package/published"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "registry-package-updated": {
     parameters: {
@@ -3655,8 +3655,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to GitHub Packages. For more information, see "[Introduction to GitHub Packages](https://docs.github.com/github-ae@latest/packages/learn-github-packages/introduction-to-github-packages)." For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#package) or "[Packages](https://docs.github.com/github-ae@latest/rest/packages)" in the REST API documentation.
      *
@@ -3666,11 +3666,11 @@ export interface webhooks {
      * @description A package that was previously published to a registry was updated.
      */
     post: operations["registry-package/updated"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "release-created": {
     parameters: {
@@ -3679,8 +3679,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/github-ae@latest/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#release) or "[Releases](https://docs.github.com/github-ae@latest/rest/releases)" in the REST API documentation.
      *
@@ -3688,11 +3688,11 @@ export interface webhooks {
      * @description A draft was saved, or a release or pre-release was published without previously being saved as a draft.
      */
     post: operations["release/created"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "release-deleted": {
     parameters: {
@@ -3701,8 +3701,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/github-ae@latest/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#release) or "[Releases](https://docs.github.com/github-ae@latest/rest/releases)" in the REST API documentation.
      *
@@ -3710,11 +3710,11 @@ export interface webhooks {
      * @description A release, pre-release, or draft release was deleted.
      */
     post: operations["release/deleted"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "release-edited": {
     parameters: {
@@ -3723,8 +3723,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/github-ae@latest/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#release) or "[Releases](https://docs.github.com/github-ae@latest/rest/releases)" in the REST API documentation.
      *
@@ -3732,11 +3732,11 @@ export interface webhooks {
      * @description The details of a release, pre-release, or draft release were edited. For more information, see "[Managing releases in a repository](https://docs.github.com/github-ae@latest/repositories/releasing-projects-on-github/managing-releases-in-a-repository#editing-a-release)."
      */
     post: operations["release/edited"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "release-prereleased": {
     parameters: {
@@ -3745,8 +3745,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/github-ae@latest/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#release) or "[Releases](https://docs.github.com/github-ae@latest/rest/releases)" in the REST API documentation.
      *
@@ -3754,11 +3754,11 @@ export interface webhooks {
      * @description A release was created and identified as a pre-release. A pre-release is a release that is not ready for production and may be unstable.
      */
     post: operations["release/prereleased"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "release-published": {
     parameters: {
@@ -3767,8 +3767,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/github-ae@latest/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#release) or "[Releases](https://docs.github.com/github-ae@latest/rest/releases)" in the REST API documentation.
      *
@@ -3776,11 +3776,11 @@ export interface webhooks {
      * @description A release, pre-release, or draft of a release was published.
      */
     post: operations["release/published"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "release-released": {
     parameters: {
@@ -3789,8 +3789,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/github-ae@latest/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#release) or "[Releases](https://docs.github.com/github-ae@latest/rest/releases)" in the REST API documentation.
      *
@@ -3798,11 +3798,11 @@ export interface webhooks {
      * @description A release was published, or a pre-release was changed to a release.
      */
     post: operations["release/released"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "release-unpublished": {
     parameters: {
@@ -3811,8 +3811,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/github-ae@latest/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#release) or "[Releases](https://docs.github.com/github-ae@latest/rest/releases)" in the REST API documentation.
      *
@@ -3820,11 +3820,11 @@ export interface webhooks {
      * @description A release or pre-release was unpublished.
      */
     post: operations["release/unpublished"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "repository-anonymous-access-disabled": {
     parameters: {
@@ -3833,8 +3833,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/github-ae@latest/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/github-ae@latest/rest/repos)" in the REST API documentation.
      *
@@ -3842,11 +3842,11 @@ export interface webhooks {
      * @description Someone disabled anonymous Git read access to the repository. For more information, see "[Enabling anonymous Git read access for a repository](/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/enabling-anonymous-git-read-access-for-a-repository)."
      */
     post: operations["repository/anonymous-access-disabled"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "repository-anonymous-access-enabled": {
     parameters: {
@@ -3855,8 +3855,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/github-ae@latest/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/github-ae@latest/rest/repos)" in the REST API documentation.
      *
@@ -3864,11 +3864,11 @@ export interface webhooks {
      * @description Someone enabled anonymous Git read access to the repository. For more information, see "[Enabling anonymous Git read access for a repository](/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/enabling-anonymous-git-read-access-for-a-repository)."
      */
     post: operations["repository/anonymous-access-enabled"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "repository-archived": {
     parameters: {
@@ -3877,8 +3877,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/github-ae@latest/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/github-ae@latest/rest/repos)" in the REST API documentation.
      *
@@ -3886,11 +3886,11 @@ export interface webhooks {
      * @description A repository was archived.
      */
     post: operations["repository/archived"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "repository-created": {
     parameters: {
@@ -3899,8 +3899,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/github-ae@latest/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/github-ae@latest/rest/repos)" in the REST API documentation.
      *
@@ -3908,11 +3908,11 @@ export interface webhooks {
      * @description A repository was created.
      */
     post: operations["repository/created"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "repository-deleted": {
     parameters: {
@@ -3921,8 +3921,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/github-ae@latest/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/github-ae@latest/rest/repos)" in the REST API documentation.
      *
@@ -3930,11 +3930,11 @@ export interface webhooks {
      * @description A repository was deleted. GitHub Apps and repository webhooks will not receive this event.
      */
     post: operations["repository/deleted"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "repository-dispatch-sample.collected": {
     parameters: {
@@ -3943,8 +3943,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when a GitHub App sends a `POST` request to `/repos/{owner}/{repo}/dispatches`. For more information, see [the REST API documentation for creating a repository dispatch event](https://docs.github.com/github-ae@latest/rest/repos/repos#create-a-repository-dispatch-event).
      *
@@ -3952,11 +3952,11 @@ export interface webhooks {
      * @description The `event_type` that was specified in the `POST /repos/{owner}/{repo}/dispatches` request body.
      */
     post: operations["repository-dispatch/sample.collected"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "repository-edited": {
     parameters: {
@@ -3965,8 +3965,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/github-ae@latest/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/github-ae@latest/rest/repos)" in the REST API documentation.
      *
@@ -3974,11 +3974,11 @@ export interface webhooks {
      * @description The topics, default branch, description, or homepage of a repository was changed.
      */
     post: operations["repository/edited"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "repository-privatized": {
     parameters: {
@@ -3987,8 +3987,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/github-ae@latest/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/github-ae@latest/rest/repos)" in the REST API documentation.
      *
@@ -3996,11 +3996,11 @@ export interface webhooks {
      * @description The visibility of a repository was changed to `private`.
      */
     post: operations["repository/privatized"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "repository-publicized": {
     parameters: {
@@ -4009,8 +4009,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/github-ae@latest/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/github-ae@latest/rest/repos)" in the REST API documentation.
      *
@@ -4018,11 +4018,11 @@ export interface webhooks {
      * @description The visibility of a repository was changed to `public`.
      */
     post: operations["repository/publicized"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "repository-renamed": {
     parameters: {
@@ -4031,8 +4031,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/github-ae@latest/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/github-ae@latest/rest/repos)" in the REST API documentation.
      *
@@ -4040,11 +4040,11 @@ export interface webhooks {
      * @description The name of a repository was changed.
      */
     post: operations["repository/renamed"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "repository-transferred": {
     parameters: {
@@ -4053,8 +4053,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/github-ae@latest/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/github-ae@latest/rest/repos)" in the REST API documentation.
      *
@@ -4062,11 +4062,11 @@ export interface webhooks {
      * @description Ownership of the repository was transferred to a user or organization account. This event is only sent to the account where the ownership is transferred. To receive the `repository.transferred` event, the new owner account must have the GitHub App installed, and the App must be subscribed to "Repository" events.
      */
     post: operations["repository/transferred"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "repository-unarchived": {
     parameters: {
@@ -4075,8 +4075,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/github-ae@latest/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/github-ae@latest/rest/repos)" in the REST API documentation.
      *
@@ -4084,11 +4084,11 @@ export interface webhooks {
      * @description A previously archived repository was unarchived.
      */
     post: operations["repository/unarchived"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "secret-scanning-alert-created": {
     parameters: {
@@ -4097,8 +4097,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a secret scanning alert. For more information about secret scanning, see "[About secret scanning](https://docs.github.com/github-ae@latest/code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/github-ae@latest/rest/secret-scanning)" in the REST API documentation.
      *
@@ -4108,11 +4108,11 @@ export interface webhooks {
      * @description A secret scanning alert was created.
      */
     post: operations["secret-scanning-alert/created"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "secret-scanning-alert-location-created": {
     parameters: {
@@ -4121,8 +4121,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to the locations of a secret in a secret scanning alert.
      *
@@ -4134,11 +4134,11 @@ export interface webhooks {
      * @description A new instance of a previously detected secret was detected in a repository, and the location of the secret was added to the existing alert.
      */
     post: operations["secret-scanning-alert-location/created"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "secret-scanning-alert-reopened": {
     parameters: {
@@ -4147,8 +4147,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a secret scanning alert. For more information about secret scanning, see "[About secret scanning](https://docs.github.com/github-ae@latest/code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/github-ae@latest/rest/secret-scanning)" in the REST API documentation.
      *
@@ -4158,11 +4158,11 @@ export interface webhooks {
      * @description A previously closed secret scanning alert was reopened.
      */
     post: operations["secret-scanning-alert/reopened"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "secret-scanning-alert-resolved": {
     parameters: {
@@ -4171,8 +4171,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a secret scanning alert. For more information about secret scanning, see "[About secret scanning](https://docs.github.com/github-ae@latest/code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/github-ae@latest/rest/secret-scanning)" in the REST API documentation.
      *
@@ -4182,11 +4182,11 @@ export interface webhooks {
      * @description A secret scanning alert was closed.
      */
     post: operations["secret-scanning-alert/resolved"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "secret-scanning-alert-revoked": {
     parameters: {
@@ -4195,8 +4195,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a secret scanning alert. For more information about secret scanning, see "[About secret scanning](https://docs.github.com/github-ae@latest/code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/github-ae@latest/rest/secret-scanning)" in the REST API documentation.
      *
@@ -4206,11 +4206,11 @@ export interface webhooks {
      * @description A secret scanning alert was marked as revoked.
      */
     post: operations["secret-scanning-alert/revoked"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "security-and-analysis": {
     parameters: {
@@ -4219,17 +4219,17 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /** This event occurs when code security and analysis features are enabled or disabled for a repository. For more information, see "[GitHub security features](https://docs.github.com/github-ae@latest/code-security/getting-started/github-security-features)."
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission. */
     post: operations["security-and-analysis"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "sponsorship-cancelled": {
     parameters: {
@@ -4238,8 +4238,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a sponsorship listing. For more information, see "[About GitHub Sponsors](https://docs.github.com/github-ae@latest/sponsors/getting-started-with-github-sponsors/about-github-sponsors)." For information about the API to manage sponsors, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#sponsorship).
      *
@@ -4249,11 +4249,11 @@ export interface webhooks {
      *     This event is only sent when a recurring (monthly) sponsorship is cancelled; it is not sent for one-time sponsorships.
      */
     post: operations["sponsorship/cancelled"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "sponsorship-created": {
     parameters: {
@@ -4262,8 +4262,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a sponsorship listing. For more information, see "[About GitHub Sponsors](https://docs.github.com/github-ae@latest/sponsors/getting-started-with-github-sponsors/about-github-sponsors)." For information about the API to manage sponsors, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#sponsorship).
      *
@@ -4271,11 +4271,11 @@ export interface webhooks {
      * @description A sponsor created a sponsorship for a sponsored account. This event occurs once the payment is successfully processed.
      */
     post: operations["sponsorship/created"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "sponsorship-edited": {
     parameters: {
@@ -4284,8 +4284,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a sponsorship listing. For more information, see "[About GitHub Sponsors](https://docs.github.com/github-ae@latest/sponsors/getting-started-with-github-sponsors/about-github-sponsors)." For information about the API to manage sponsors, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#sponsorship).
      *
@@ -4293,11 +4293,11 @@ export interface webhooks {
      * @description A monthly sponsor changed who can see their sponsorship. If you recognize your sponsors publicly, you may want to update your sponsor recognition to reflect the change when this event occurs.
      */
     post: operations["sponsorship/edited"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "sponsorship-pending-cancellation": {
     parameters: {
@@ -4306,8 +4306,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a sponsorship listing. For more information, see "[About GitHub Sponsors](https://docs.github.com/github-ae@latest/sponsors/getting-started-with-github-sponsors/about-github-sponsors)." For information about the API to manage sponsors, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#sponsorship).
      *
@@ -4317,11 +4317,11 @@ export interface webhooks {
      *     This event is only sent when a recurring (monthly) sponsorship is cancelled; it is not sent for one-time sponsorships.
      */
     post: operations["sponsorship/pending-cancellation"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "sponsorship-pending-tier-change": {
     parameters: {
@@ -4330,8 +4330,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a sponsorship listing. For more information, see "[About GitHub Sponsors](https://docs.github.com/github-ae@latest/sponsors/getting-started-with-github-sponsors/about-github-sponsors)." For information about the API to manage sponsors, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#sponsorship).
      *
@@ -4339,11 +4339,11 @@ export interface webhooks {
      * @description A sponsor scheduled a downgrade to a lower sponsorship tier. The new tier will become effective on their next billing date.
      */
     post: operations["sponsorship/pending-tier-change"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "sponsorship-tier-changed": {
     parameters: {
@@ -4352,8 +4352,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a sponsorship listing. For more information, see "[About GitHub Sponsors](https://docs.github.com/github-ae@latest/sponsors/getting-started-with-github-sponsors/about-github-sponsors)." For information about the API to manage sponsors, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#sponsorship).
      *
@@ -4361,11 +4361,11 @@ export interface webhooks {
      * @description A sponsor changed the tier of their sponsorship and the change has taken effect. If a sponsor upgraded their tier, the change took effect immediately. If a sponsor downgraded their tier, the change took effect at the beginning of the sponsor's next billing cycle.
      */
     post: operations["sponsorship/tier-changed"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "star-created": {
     parameters: {
@@ -4374,8 +4374,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to repository stars. For more information about stars, see "[Saving repositories with stars](https://docs.github.com/github-ae@latest/get-started/exploring-projects-on-github/saving-repositories-with-stars)." For information about the APIs to manage stars, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#starredrepositoryconnection) or "[Starring](https://docs.github.com/github-ae@latest/rest/activity/starring)" in the REST API documentation.
      *
@@ -4383,11 +4383,11 @@ export interface webhooks {
      * @description Someone starred a repository.
      */
     post: operations["star/created"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "star-deleted": {
     parameters: {
@@ -4396,8 +4396,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to repository stars. For more information about stars, see "[Saving repositories with stars](https://docs.github.com/github-ae@latest/get-started/exploring-projects-on-github/saving-repositories-with-stars)." For information about the APIs to manage stars, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#starredrepositoryconnection) or "[Starring](https://docs.github.com/github-ae@latest/rest/activity/starring)" in the REST API documentation.
      *
@@ -4405,11 +4405,11 @@ export interface webhooks {
      * @description Someone unstarred the repository.
      */
     post: operations["star/deleted"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   status: {
     parameters: {
@@ -4418,17 +4418,17 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /** This event occurs when the status of a Git commit changes. For example, commits can be marked as `error`, `failure`, `pending`, or `success`. For more information, see "[About status checks](https://docs.github.com/github-ae@latest/pull-requests/collaborating-with-pull-requests/collaborating-on-repositories-with-code-quality-features/about-status-checks)." For information about the APIs to manage commit statuses, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#status) or "[Commit statuses](https://docs.github.com/github-ae@latest/rest/commits/statuses)" in the REST API documentation.
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Commit statuses" repository permission. */
     post: operations["status"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "team-add": {
     parameters: {
@@ -4437,8 +4437,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /** This event occurs when a team is added to a repository.
      *     For more information, see "[Managing teams and people with access to your repository](https://docs.github.com/github-ae@latest/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/managing-teams-and-people-with-access-to-your-repository)."
      *
@@ -4446,11 +4446,11 @@ export interface webhooks {
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission. */
     post: operations["team-add"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "team-added-to-repository": {
     parameters: {
@@ -4459,8 +4459,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to teams in an organization.
      *     For more information, see "[About teams](https://docs.github.com/github-ae@latest/organizations/organizing-members-into-teams/about-teams)."
@@ -4469,11 +4469,11 @@ export interface webhooks {
      * @description A team was granted access to a repository.
      */
     post: operations["team/added-to-repository"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "team-created": {
     parameters: {
@@ -4482,8 +4482,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to teams in an organization.
      *     For more information, see "[About teams](https://docs.github.com/github-ae@latest/organizations/organizing-members-into-teams/about-teams)."
@@ -4492,11 +4492,11 @@ export interface webhooks {
      * @description A team was created.
      */
     post: operations["team/created"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "team-deleted": {
     parameters: {
@@ -4505,8 +4505,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to teams in an organization.
      *     For more information, see "[About teams](https://docs.github.com/github-ae@latest/organizations/organizing-members-into-teams/about-teams)."
@@ -4515,11 +4515,11 @@ export interface webhooks {
      * @description A team was deleted.
      */
     post: operations["team/deleted"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "team-edited": {
     parameters: {
@@ -4528,8 +4528,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to teams in an organization.
      *     For more information, see "[About teams](https://docs.github.com/github-ae@latest/organizations/organizing-members-into-teams/about-teams)."
@@ -4538,11 +4538,11 @@ export interface webhooks {
      * @description The name, description, or visibility of a team was changed.
      */
     post: operations["team/edited"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "team-removed-from-repository": {
     parameters: {
@@ -4551,8 +4551,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to teams in an organization.
      *     For more information, see "[About teams](https://docs.github.com/github-ae@latest/organizations/organizing-members-into-teams/about-teams)."
@@ -4561,11 +4561,11 @@ export interface webhooks {
      * @description A team's access to a repository was removed.
      */
     post: operations["team/removed-from-repository"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "user-created": {
     parameters: {
@@ -4574,18 +4574,18 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to user accounts in an enterprise.
      * @description A user account was added to the enterprise.
      */
     post: operations["user/created"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "user-deleted": {
     parameters: {
@@ -4594,18 +4594,18 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to user accounts in an enterprise.
      * @description A user account was removed from the enterprise.
      */
     post: operations["user/deleted"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "watch-started": {
     parameters: {
@@ -4614,8 +4614,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to watching, or subscribing to, a repository. For more information about watching, see "[Managing your subscriptions](https://docs.github.com/github-ae@latest/account-and-profile/managing-subscriptions-and-notifications-on-github/managing-subscriptions-for-activity-on-github/managing-your-subscriptions)." For information about the APIs to manage watching, see "[Watching](https://docs.github.com/github-ae@latest/rest/activity/watching)" in the REST API documentation.
      *
@@ -4623,11 +4623,11 @@ export interface webhooks {
      * @description Someone started watching the repository.
      */
     post: operations["watch/started"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "workflow-dispatch": {
     parameters: {
@@ -4636,19 +4636,19 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /** This event occurs when a GitHub Actions workflow is manually triggered. For more information, see "[Manually running a workflow](https://docs.github.com/github-ae@latest/actions/managing-workflow-runs/manually-running-a-workflow)."
      *
      *     For activity relating to workflow runs, use the `workflow_run` event.
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission. */
     post: operations["workflow-dispatch"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "workflow-job-completed": {
     parameters: {
@@ -4657,8 +4657,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a job in a GitHub Actions workflow. For more information, see "[Using jobs in a workflow](https://docs.github.com/github-ae@latest/actions/using-jobs/using-jobs-in-a-workflow)." For information about the API to manage workflow jobs, see "[Workflow jobs](https://docs.github.com/github-ae@latest/rest/actions/workflow-jobs)" in the REST API documentation.
      *
@@ -4668,11 +4668,11 @@ export interface webhooks {
      * @description A job in a workflow run finished. This event occurs when a job in a workflow is completed, regardless of whether the job was successful or unsuccessful.
      */
     post: operations["workflow-job/completed"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "workflow-job-in-progress": {
     parameters: {
@@ -4681,8 +4681,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a job in a GitHub Actions workflow. For more information, see "[Using jobs in a workflow](https://docs.github.com/github-ae@latest/actions/using-jobs/using-jobs-in-a-workflow)." For information about the API to manage workflow jobs, see "[Workflow jobs](https://docs.github.com/github-ae@latest/rest/actions/workflow-jobs)" in the REST API documentation.
      *
@@ -4692,11 +4692,11 @@ export interface webhooks {
      * @description A job in a workflow run started processing on a runner.
      */
     post: operations["workflow-job/in-progress"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "workflow-job-queued": {
     parameters: {
@@ -4705,8 +4705,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a job in a GitHub Actions workflow. For more information, see "[Using jobs in a workflow](https://docs.github.com/github-ae@latest/actions/using-jobs/using-jobs-in-a-workflow)." For information about the API to manage workflow jobs, see "[Workflow jobs](https://docs.github.com/github-ae@latest/rest/actions/workflow-jobs)" in the REST API documentation.
      *
@@ -4716,11 +4716,11 @@ export interface webhooks {
      * @description A job in a workflow run was created.
      */
     post: operations["workflow-job/queued"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "workflow-run-completed": {
     parameters: {
@@ -4729,8 +4729,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a run of a GitHub Actions workflow. For more information, see "[About workflows](https://docs.github.com/github-ae@latest/actions/using-workflows/about-workflows)." For information about the APIs to manage workflow runs, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#workflowrun) or "[Workflow runs](https://docs.github.com/github-ae@latest/rest/actions/workflow-runs)" in the REST API documentation.
      *
@@ -4740,11 +4740,11 @@ export interface webhooks {
      * @description A workflow run finished. This event occurs when a workflow run is completed, regardless of whether the workflow was successful or unsuccessful.
      */
     post: operations["workflow-run/completed"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "workflow-run-in-progress": {
     parameters: {
@@ -4753,8 +4753,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a run of a GitHub Actions workflow. For more information, see "[About workflows](https://docs.github.com/github-ae@latest/actions/using-workflows/about-workflows)." For information about the APIs to manage workflow runs, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#workflowrun) or "[Workflow runs](https://docs.github.com/github-ae@latest/rest/actions/workflow-runs)" in the REST API documentation.
      *
@@ -4764,11 +4764,11 @@ export interface webhooks {
      * @description A workflow run started processing on a runner.
      */
     post: operations["workflow-run/in-progress"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "workflow-run-requested": {
     parameters: {
@@ -4777,8 +4777,8 @@ export interface webhooks {
       path?: never;
       cookie?: never;
     };
-    get: never;
-    put: never;
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a run of a GitHub Actions workflow. For more information, see "[About workflows](https://docs.github.com/github-ae@latest/actions/using-workflows/about-workflows)." For information about the APIs to manage workflow runs, see [the GraphQL documentation](https://docs.github.com/github-ae@latest/graphql/reference/objects#workflowrun) or "[Workflow runs](https://docs.github.com/github-ae@latest/rest/actions/workflow-runs)" in the REST API documentation.
      *
@@ -4788,11 +4788,11 @@ export interface webhooks {
      * @description A workflow run was triggered.
      */
     post: operations["workflow-run/requested"];
-    delete: never;
-    options: never;
-    head: never;
-    patch: never;
-    trace: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
 }
 export interface components {
@@ -5587,7 +5587,7 @@ export interface components {
         metadata?: string;
         contents?: string;
         deployments?: string;
-        [key: string]: string;
+        [key: string]: string | undefined;
       };
       /** @description The list of events for the GitHub app */
       events: string[];
@@ -26680,11 +26680,11 @@ export interface components {
       };
       platform?: string;
       metadata?: {
-        [key: string]: string;
+        [key: string]: string | undefined;
       };
       repo?: string;
       dependencies?: {
-        [key: string]: string;
+        [key: string]: string | undefined;
       }[];
       commit_oid?: string;
     };
