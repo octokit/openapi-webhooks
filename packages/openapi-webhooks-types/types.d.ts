@@ -60345,7 +60345,8 @@ export interface components {
       | components["schemas"]["repository-rule-commit-author-email-pattern"]
       | components["schemas"]["repository-rule-committer-email-pattern"]
       | components["schemas"]["repository-rule-branch-name-pattern"]
-      | components["schemas"]["repository-rule-tag-name-pattern"];
+      | components["schemas"]["repository-rule-tag-name-pattern"]
+      | components["schemas"]["repository-rule-workflows"];
     /**
      * creation
      * @description Only allow users with bypass permission to create matching refs.
@@ -60558,6 +60559,32 @@ export interface components {
         /** @description The pattern to match with. */
         pattern: string;
       };
+    };
+    /**
+     * workflows
+     * @description Require all changes made to a targeted branch to pass the specified workflows before they can be merged.
+     */
+    "repository-rule-workflows": {
+      /** @enum {string} */
+      type: "workflows";
+      parameters?: {
+        /** @description Workflows that must pass for this rule to pass. */
+        workflows: components["schemas"]["repository-rule-params-workflow-file-reference"][];
+      };
+    };
+    /**
+     * WorkflowFileReference
+     * @description A workflow that must run for this rule to pass
+     */
+    "repository-rule-params-workflow-file-reference": {
+      /** @description The path to the workflow file */
+      path: string;
+      /** @description The ref (branch or tag) of the workflow file to use */
+      ref?: string;
+      /** @description The ID of the repository where the workflow is defined */
+      repository_id: number;
+      /** @description The commit SHA of the workflow file to use */
+      sha?: string;
     };
     /** repository ruleset deleted event */
     "webhook-repository-ruleset-deleted": {
