@@ -2156,7 +2156,7 @@ export interface webhooks {
      * For more information about repository rulesets, see "[Managing rulesets](https://docs.github.com/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets)."
      * For more information on managing rulesets via the APIs, see [Repository ruleset](https://docs.github.com/graphql/reference/objects#repositoryruleset) in the GraphQL documentation or "[Repository rules](https://docs.github.com/rest/repos/rules)" and "[Organization rules](https://docs.github.com/rest/orgs/rules) in the REST API documentation."
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository or organization permission.
      * @description A repository ruleset was created.
      */
     post: operations["repository-ruleset/created"];
@@ -2167,7 +2167,7 @@ export interface webhooks {
      * For more information about repository rulesets, see "[Managing rulesets](https://docs.github.com/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets)."
      * For more information on managing rulesets via the APIs, see [Repository ruleset](https://docs.github.com/graphql/reference/objects#repositoryruleset) in the GraphQL documentation or "[Repository rules](https://docs.github.com/rest/repos/rules)" and "[Organization rules](https://docs.github.com/rest/orgs/rules) in the REST API documentation."
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository or organization permission.
      * @description A repository ruleset was deleted.
      */
     post: operations["repository-ruleset/deleted"];
@@ -2178,7 +2178,7 @@ export interface webhooks {
      * For more information about repository rulesets, see "[Managing rulesets](https://docs.github.com/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets)."
      * For more information on managing rulesets via the APIs, see [Repository ruleset](https://docs.github.com/graphql/reference/objects#repositoryruleset) in the GraphQL documentation or "[Repository rules](https://docs.github.com/rest/repos/rules)" and "[Organization rules](https://docs.github.com/rest/orgs/rules) in the REST API documentation."
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository or organization permission.
      * @description A repository ruleset was edited.
      */
     post: operations["repository-ruleset/edited"];
@@ -74544,7 +74544,7 @@ export interface operations {
    * For more information about repository rulesets, see "[Managing rulesets](https://docs.github.com/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets)."
    * For more information on managing rulesets via the APIs, see [Repository ruleset](https://docs.github.com/graphql/reference/objects#repositoryruleset) in the GraphQL documentation or "[Repository rules](https://docs.github.com/rest/repos/rules)" and "[Organization rules](https://docs.github.com/rest/orgs/rules) in the REST API documentation."
    *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository or organization permission.
    * @description A repository ruleset was created.
    */
   "repository-ruleset/created": {
@@ -74583,7 +74583,7 @@ export interface operations {
    * For more information about repository rulesets, see "[Managing rulesets](https://docs.github.com/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets)."
    * For more information on managing rulesets via the APIs, see [Repository ruleset](https://docs.github.com/graphql/reference/objects#repositoryruleset) in the GraphQL documentation or "[Repository rules](https://docs.github.com/rest/repos/rules)" and "[Organization rules](https://docs.github.com/rest/orgs/rules) in the REST API documentation."
    *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository or organization permission.
    * @description A repository ruleset was deleted.
    */
   "repository-ruleset/deleted": {
@@ -74622,7 +74622,7 @@ export interface operations {
    * For more information about repository rulesets, see "[Managing rulesets](https://docs.github.com/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets)."
    * For more information on managing rulesets via the APIs, see [Repository ruleset](https://docs.github.com/graphql/reference/objects#repositoryruleset) in the GraphQL documentation or "[Repository rules](https://docs.github.com/rest/repos/rules)" and "[Organization rules](https://docs.github.com/rest/orgs/rules) in the REST API documentation."
    *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository or organization permission.
    * @description A repository ruleset was edited.
    */
   "repository-ruleset/edited": {
