@@ -59959,7 +59959,10 @@ export interface components {
       ghsa_id: string;
       /** @description The Common Vulnerabilities and Exposures (CVE) ID. */
       cve_id: string | null;
-      /** @description The API URL for the advisory. */
+      /**
+       * Format: uri
+       * @description The API URL for the advisory.
+       */
       url: string;
       /**
        * Format: uri
