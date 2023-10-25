@@ -1724,7 +1724,7 @@ export interface webhooks {
      * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-     * @description The title or body of a pull request was edited.
+     * @description The title or body of a pull request was edited, or the base branch of a pull request was changed.
      */
     post: operations["pull-request/edited"];
   };
@@ -72911,7 +72911,7 @@ export interface operations {
    * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-   * @description The title or body of a pull request was edited.
+   * @description The title or body of a pull request was edited, or the base branch of a pull request was changed.
    */
   "pull-request/edited": {
     parameters: {
