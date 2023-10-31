@@ -10652,6 +10652,11 @@ export interface components {
        */
       organization_custom_roles?: "read" | "write";
       /**
+       * @description The level of permission to grant the access token for custom property management.
+       * @enum {string}
+       */
+      organization_custom_properties?: "read" | "write" | "admin";
+      /**
        * @description The level of permission to grant the access token to view and manage announcement banners for an organization.
        * @enum {string}
        */
