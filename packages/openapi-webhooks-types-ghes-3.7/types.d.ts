@@ -2506,6 +2506,10 @@ export interface components {
        */
       is_template?: boolean;
       topics?: string[];
+      /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+      custom_properties?: {
+        [key: string]: unknown;
+      };
       /**
        * @description Whether issues are enabled.
        * @default true
@@ -9063,6 +9067,10 @@ export interface components {
         /** Format: uri */
         contributors_url: string;
         created_at: number | string;
+        /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+        custom_properties?: {
+          [key: string]: unknown;
+        };
         /** @description The default branch of the repository. */
         default_branch: string;
         /**
@@ -17001,6 +17009,10 @@ export interface components {
           /** Format: uri */
           contributors_url: string;
           created_at: number | string;
+          /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+          custom_properties?: {
+            [key: string]: unknown;
+          };
           /** @description The default branch of the repository. */
           default_branch: string;
           /**
@@ -19208,6 +19220,10 @@ export interface components {
           /** Format: uri */
           contributors_url: string;
           created_at: number | string;
+          /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+          custom_properties?: {
+            [key: string]: unknown;
+          };
           /** @description The default branch of the repository. */
           default_branch: string;
           /**
@@ -54492,6 +54508,10 @@ export interface components {
         /** Format: uri */
         contributors_url: string;
         created_at: number | string;
+        /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+        custom_properties?: {
+          [key: string]: unknown;
+        };
         /** @description The default branch of the repository. */
         default_branch: string;
         /**
@@ -58805,6 +58825,10 @@ export interface components {
         /** Format: uri */
         contributors_url: string;
         created_at: number | string;
+        /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+        custom_properties?: {
+          [key: string]: unknown;
+        };
         /** @description The default branch of the repository. */
         default_branch: string;
         /**
@@ -59104,6 +59128,10 @@ export interface components {
         /** Format: uri */
         contributors_url: string;
         created_at: number | string;
+        /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+        custom_properties?: {
+          [key: string]: unknown;
+        };
         /** @description The default branch of the repository. */
         default_branch: string;
         /**
@@ -59403,6 +59431,10 @@ export interface components {
         /** Format: uri */
         contributors_url: string;
         created_at: number | string;
+        /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+        custom_properties?: {
+          [key: string]: unknown;
+        };
         /** @description The default branch of the repository. */
         default_branch: string;
         /**
@@ -59729,6 +59761,10 @@ export interface components {
         /** Format: uri */
         contributors_url: string;
         created_at: number | string;
+        /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+        custom_properties?: {
+          [key: string]: unknown;
+        };
         /** @description The default branch of the repository. */
         default_branch: string;
         /**
@@ -60028,6 +60064,10 @@ export interface components {
         /** Format: uri */
         contributors_url: string;
         created_at: number | string;
+        /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+        custom_properties?: {
+          [key: string]: unknown;
+        };
         /** @description The default branch of the repository. */
         default_branch: string;
         /**

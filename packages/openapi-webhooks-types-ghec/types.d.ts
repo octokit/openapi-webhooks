@@ -248,6 +248,50 @@ export interface webhooks {
      */
     post: operations["create"];
   };
+  "custom-property-created": {
+    /**
+     * This event occurs when there is activity relating to a custom property.
+     *
+     * For more information, see "[Managing custom properties for repositories in your organization](https://docs.github.com/enterprise-cloud@latest//organizations/managing-organization-settings/managing-custom-properties-for-repositories-in-your-organization)". For information about the APIs to manage custom properties, see "[Custom properties](https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties)" in the REST API documentation.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Custom properties" organization permission.
+     * @description A new custom property was created.
+     */
+    post: operations["custom-property/created"];
+  };
+  "custom-property-deleted": {
+    /**
+     * This event occurs when there is activity relating to a custom property.
+     *
+     * For more information, see "[Managing custom properties for repositories in your organization](https://docs.github.com/enterprise-cloud@latest//organizations/managing-organization-settings/managing-custom-properties-for-repositories-in-your-organization)". For information about the APIs to manage custom properties, see "[Custom properties](https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties)" in the REST API documentation.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Custom properties" organization permission.
+     * @description A custom property was deleted.
+     */
+    post: operations["custom-property/deleted"];
+  };
+  "custom-property-updated": {
+    /**
+     * This event occurs when there is activity relating to a custom property.
+     *
+     * For more information, see "[Managing custom properties for repositories in your organization](https://docs.github.com/enterprise-cloud@latest//organizations/managing-organization-settings/managing-custom-properties-for-repositories-in-your-organization)". For information about the APIs to manage custom properties, see "[Custom properties](https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties)" in the REST API documentation.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Custom properties" organization permission.
+     * @description A custom property was updated.
+     */
+    post: operations["custom-property/updated"];
+  };
+  "custom-property-values-updated": {
+    /**
+     * This event occurs when there is activity relating to custom property values for a repository.
+     *
+     * For more information, see "[Managing custom properties for repositories in your organization](https://docs.github.com/enterprise-cloud@latest//organizations/managing-organization-settings/managing-custom-properties-for-repositories-in-your-organization)". For information about the APIs to manage custom properties for a repository, see "[Custom properties](https://docs.github.com/enterprise-cloud@latest//rest/repos/custom-properties)" in the REST API documentation.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Custom properties" organization permission.
+     * @description The custom property values of a repository were updated.
+     */
+    post: operations["custom-property-values/updated"];
+  };
   delete: {
     /**
      * This event occurs when a Git branch or tag is deleted. To subscribe to all pushes to a repository, including
@@ -2769,6 +2813,10 @@ export interface components {
        */
       is_template?: boolean;
       topics?: string[];
+      /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+      custom_properties?: {
+        [key: string]: unknown;
+      };
       /**
        * @description Whether issues are enabled.
        * @default true
@@ -5491,6 +5539,84 @@ export interface components {
       ref_type: "tag" | "branch";
       repository: components["schemas"]["repository-webhooks"];
       sender: components["schemas"]["simple-user-webhooks"];
+    };
+    /** custom property created event */
+    "webhook-custom-property-created": {
+      /** @enum {string} */
+      action: "created";
+      definition: components["schemas"]["org-custom-property"];
+      enterprise?: components["schemas"]["enterprise-webhooks"];
+      installation?: components["schemas"]["simple-installation"];
+      organization: components["schemas"]["organization-simple-webhooks"];
+      sender?: components["schemas"]["simple-user-webhooks"];
+    };
+    /**
+     * Organization Custom Property
+     * @description Custom property defined on an organization
+     */
+    "org-custom-property": {
+      /** @description The name of the property */
+      property_name: string;
+      /**
+       * @description The type of the value for the property
+       * @enum {string}
+       */
+      value_type: "string" | "single_select";
+      /** @description Whether the property is required. */
+      required?: boolean;
+      /** @description Default value of the property */
+      default_value?: string | null;
+      /** @description Short description of the property */
+      description?: string | null;
+      /** @description Ordered list of allowed values of the property */
+      allowed_values?: string[] | null;
+    };
+    /** custom property deleted event */
+    "webhook-custom-property-deleted": {
+      /** @enum {string} */
+      action: "deleted";
+      definition: {
+        /** @description The name of the property that was deleted. */
+        property_name: string;
+      };
+      enterprise?: components["schemas"]["enterprise-webhooks"];
+      installation?: components["schemas"]["simple-installation"];
+      organization: components["schemas"]["organization-simple-webhooks"];
+      sender?: components["schemas"]["simple-user-webhooks"];
+    };
+    /** custom property updated event */
+    "webhook-custom-property-updated": {
+      /** @enum {string} */
+      action: "updated";
+      definition: components["schemas"]["org-custom-property"];
+      enterprise?: components["schemas"]["enterprise-webhooks"];
+      installation?: components["schemas"]["simple-installation"];
+      organization: components["schemas"]["organization-simple-webhooks"];
+      sender?: components["schemas"]["simple-user-webhooks"];
+    };
+    /** Custom property values updated event */
+    "webhook-custom-property-values-updated": {
+      /** @enum {string} */
+      action: "updated";
+      enterprise?: components["schemas"]["enterprise-webhooks"];
+      installation?: components["schemas"]["simple-installation"];
+      repository: components["schemas"]["repository-webhooks"];
+      organization: components["schemas"]["organization-simple-webhooks"];
+      sender?: components["schemas"]["simple-user-webhooks"];
+      /** @description The new custom property values for the repository. */
+      new_property_values: components["schemas"]["custom-property-value"][];
+      /** @description The old custom property values for the repository. */
+      old_property_values: components["schemas"]["custom-property-value"][];
+    };
+    /**
+     * Custom Property Value
+     * @description Custom property name and associated value
+     */
+    "custom-property-value": {
+      /** @description The name of the property */
+      property_name: string;
+      /** @description The value assigned to the property */
+      value: string | null;
     };
     /** delete event */
     "webhook-delete": {
@@ -10073,6 +10199,10 @@ export interface components {
         /** Format: uri */
         contributors_url: string;
         created_at: number | string;
+        /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+        custom_properties?: {
+          [key: string]: unknown;
+        };
         /** @description The default branch of the repository. */
         default_branch: string;
         /**
@@ -18027,6 +18157,10 @@ export interface components {
           /** Format: uri */
           contributors_url: string;
           created_at: number | string;
+          /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+          custom_properties?: {
+            [key: string]: unknown;
+          };
           /** @description The default branch of the repository. */
           default_branch: string;
           /**
@@ -20234,6 +20368,10 @@ export interface components {
           /** Format: uri */
           contributors_url: string;
           created_at: number | string;
+          /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+          custom_properties?: {
+            [key: string]: unknown;
+          };
           /** @description The default branch of the repository. */
           default_branch: string;
           /**
@@ -58201,6 +58339,10 @@ export interface components {
         /** Format: uri */
         contributors_url: string;
         created_at: number | string;
+        /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+        custom_properties?: {
+          [key: string]: unknown;
+        };
         /** @description The default branch of the repository. */
         default_branch: string;
         /**
@@ -63360,6 +63502,10 @@ export interface components {
         /** Format: uri */
         contributors_url: string;
         created_at: number | string;
+        /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+        custom_properties?: {
+          [key: string]: unknown;
+        };
         /** @description The default branch of the repository. */
         default_branch: string;
         /**
@@ -63673,6 +63819,10 @@ export interface components {
         /** Format: uri */
         contributors_url: string;
         created_at: number | string;
+        /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+        custom_properties?: {
+          [key: string]: unknown;
+        };
         /** @description The default branch of the repository. */
         default_branch: string;
         /**
@@ -63986,6 +64136,10 @@ export interface components {
         /** Format: uri */
         contributors_url: string;
         created_at: number | string;
+        /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+        custom_properties?: {
+          [key: string]: unknown;
+        };
         /** @description The default branch of the repository. */
         default_branch: string;
         /**
@@ -64330,6 +64484,10 @@ export interface components {
         /** Format: uri */
         contributors_url: string;
         created_at: number | string;
+        /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+        custom_properties?: {
+          [key: string]: unknown;
+        };
         /** @description The default branch of the repository. */
         default_branch: string;
         /**
@@ -64643,6 +64801,10 @@ export interface components {
         /** Format: uri */
         contributors_url: string;
         created_at: number | string;
+        /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+        custom_properties?: {
+          [key: string]: unknown;
+        };
         /** @description The default branch of the repository. */
         default_branch: string;
         /**
@@ -68031,6 +68193,162 @@ export interface operations {
     requestBody: {
       content: {
         "application/json": components["schemas"]["webhook-create"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to a custom property.
+   *
+   * For more information, see "[Managing custom properties for repositories in your organization](https://docs.github.com/enterprise-cloud@latest//organizations/managing-organization-settings/managing-custom-properties-for-repositories-in-your-organization)". For information about the APIs to manage custom properties, see "[Custom properties](https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Custom properties" organization permission.
+   * @description A new custom property was created.
+   */
+  "custom-property/created": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-custom-property-created"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to a custom property.
+   *
+   * For more information, see "[Managing custom properties for repositories in your organization](https://docs.github.com/enterprise-cloud@latest//organizations/managing-organization-settings/managing-custom-properties-for-repositories-in-your-organization)". For information about the APIs to manage custom properties, see "[Custom properties](https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Custom properties" organization permission.
+   * @description A custom property was deleted.
+   */
+  "custom-property/deleted": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-custom-property-deleted"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to a custom property.
+   *
+   * For more information, see "[Managing custom properties for repositories in your organization](https://docs.github.com/enterprise-cloud@latest//organizations/managing-organization-settings/managing-custom-properties-for-repositories-in-your-organization)". For information about the APIs to manage custom properties, see "[Custom properties](https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Custom properties" organization permission.
+   * @description A custom property was updated.
+   */
+  "custom-property/updated": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-custom-property-updated"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to custom property values for a repository.
+   *
+   * For more information, see "[Managing custom properties for repositories in your organization](https://docs.github.com/enterprise-cloud@latest//organizations/managing-organization-settings/managing-custom-properties-for-repositories-in-your-organization)". For information about the APIs to manage custom properties for a repository, see "[Custom properties](https://docs.github.com/enterprise-cloud@latest//rest/repos/custom-properties)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Custom properties" organization permission.
+   * @description The custom property values of a repository were updated.
+   */
+  "custom-property-values/updated": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-custom-property-values-updated"];
       };
     };
     responses: {
