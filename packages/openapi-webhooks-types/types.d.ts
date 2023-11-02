@@ -60531,7 +60531,7 @@ export interface components {
     };
     /**
      * required_deployments
-     * @description Choose which environments must be successfully deployed to before refs can be merged into a branch that matches this rule.
+     * @description Choose which environments must be successfully deployed to before refs can be pushed into a ref that matches this rule.
      */
     "repository-rule-required-deployments": {
       /** @enum {string} */
@@ -60571,7 +60571,7 @@ export interface components {
     };
     /**
      * required_status_checks
-     * @description Choose which status checks must pass before branches can be merged into a branch that matches this rule. When enabled, commits must first be pushed to another branch, then merged or pushed directly to a ref that matches this rule after status checks have passed.
+     * @description Choose which status checks must pass before the ref is updated. When enabled, commits must first be pushed to another ref where the checks pass.
      */
     "repository-rule-required-status-checks": {
       /** @enum {string} */
