@@ -248,6 +248,50 @@ export interface webhooks {
      */
     post: operations["create"];
   };
+  "custom-property-created": {
+    /**
+     * This event occurs when there is activity relating to a custom property.
+     *
+     * For more information, see "[Managing custom properties for repositories in your organization](https://docs.github.com/enterprise-cloud@latest//organizations/managing-organization-settings/managing-custom-properties-for-repositories-in-your-organization)". For information about the APIs to manage custom properties, see "[Custom properties](https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties)" in the REST API documentation.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Custom properties" organization permission.
+     * @description A new custom property was created.
+     */
+    post: operations["custom-property/created"];
+  };
+  "custom-property-deleted": {
+    /**
+     * This event occurs when there is activity relating to a custom property.
+     *
+     * For more information, see "[Managing custom properties for repositories in your organization](https://docs.github.com/enterprise-cloud@latest//organizations/managing-organization-settings/managing-custom-properties-for-repositories-in-your-organization)". For information about the APIs to manage custom properties, see "[Custom properties](https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties)" in the REST API documentation.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Custom properties" organization permission.
+     * @description A custom property was deleted.
+     */
+    post: operations["custom-property/deleted"];
+  };
+  "custom-property-updated": {
+    /**
+     * This event occurs when there is activity relating to a custom property.
+     *
+     * For more information, see "[Managing custom properties for repositories in your organization](https://docs.github.com/enterprise-cloud@latest//organizations/managing-organization-settings/managing-custom-properties-for-repositories-in-your-organization)". For information about the APIs to manage custom properties, see "[Custom properties](https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties)" in the REST API documentation.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Custom properties" organization permission.
+     * @description A custom property was updated.
+     */
+    post: operations["custom-property/updated"];
+  };
+  "custom-property-values-updated": {
+    /**
+     * This event occurs when there is activity relating to custom property values for a repository.
+     *
+     * For more information, see "[Managing custom properties for repositories in your organization](https://docs.github.com/enterprise-cloud@latest//organizations/managing-organization-settings/managing-custom-properties-for-repositories-in-your-organization)". For information about the APIs to manage custom properties for a repository, see "[Custom properties](https://docs.github.com/enterprise-cloud@latest//rest/repos/custom-properties)" in the REST API documentation.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Custom properties" organization permission.
+     * @description The custom property values of a repository were updated.
+     */
+    post: operations["custom-property-values/updated"];
+  };
   delete: {
     /**
      * This event occurs when a Git branch or tag is deleted. To subscribe to all pushes to a repository, including
@@ -1724,7 +1768,7 @@ export interface webhooks {
      * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-     * @description The title or body of a pull request was edited.
+     * @description The title or body of a pull request was edited, or the base branch of a pull request was changed.
      */
     post: operations["pull-request/edited"];
   };
@@ -2156,7 +2200,7 @@ export interface webhooks {
      * For more information about repository rulesets, see "[Managing rulesets](https://docs.github.com/enterprise-cloud@latest//repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets)."
      * For more information on managing rulesets via the APIs, see [Repository ruleset](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#repositoryruleset) in the GraphQL documentation or "[Repository rules](https://docs.github.com/enterprise-cloud@latest//rest/repos/rules)" and "[Organization rules](https://docs.github.com/enterprise-cloud@latest//rest/orgs/rules) in the REST API documentation."
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository or organization permission.
      * @description A repository ruleset was created.
      */
     post: operations["repository-ruleset/created"];
@@ -2167,7 +2211,7 @@ export interface webhooks {
      * For more information about repository rulesets, see "[Managing rulesets](https://docs.github.com/enterprise-cloud@latest//repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets)."
      * For more information on managing rulesets via the APIs, see [Repository ruleset](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#repositoryruleset) in the GraphQL documentation or "[Repository rules](https://docs.github.com/enterprise-cloud@latest//rest/repos/rules)" and "[Organization rules](https://docs.github.com/enterprise-cloud@latest//rest/orgs/rules) in the REST API documentation."
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository or organization permission.
      * @description A repository ruleset was deleted.
      */
     post: operations["repository-ruleset/deleted"];
@@ -2178,7 +2222,7 @@ export interface webhooks {
      * For more information about repository rulesets, see "[Managing rulesets](https://docs.github.com/enterprise-cloud@latest//repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets)."
      * For more information on managing rulesets via the APIs, see [Repository ruleset](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#repositoryruleset) in the GraphQL documentation or "[Repository rules](https://docs.github.com/enterprise-cloud@latest//rest/repos/rules)" and "[Organization rules](https://docs.github.com/enterprise-cloud@latest//rest/orgs/rules) in the REST API documentation."
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository or organization permission.
      * @description A repository ruleset was edited.
      */
     post: operations["repository-ruleset/edited"];
@@ -2769,6 +2813,10 @@ export interface components {
        */
       is_template?: boolean;
       topics?: string[];
+      /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+      custom_properties?: {
+        [key: string]: unknown;
+      };
       /**
        * @description Whether issues are enabled.
        * @default true
@@ -3966,7 +4014,7 @@ export interface components {
         /** Format: uri */
         check_runs_url: string;
         /**
-         * @description The summary conclusion for all check runs that are part of the check suite. Can be one of `success`, `failure`, `neutral`, `cancelled`, `timed_out`, `action_required` or `stale`. This value will be `null` until the check run has `completed`.
+         * @description The summary conclusion for all check runs that are part of the check suite. This value will be `null` until the check run has `completed`.
          * @enum {string|null}
          */
         conclusion:
@@ -4277,7 +4325,7 @@ export interface components {
         /** Format: uri */
         check_runs_url: string;
         /**
-         * @description The summary conclusion for all check runs that are part of the check suite. Can be one of `success`, `failure`,` neutral`, `cancelled`, `timed_out`, `action_required` or `stale`. This value will be `null` until the check run has completed.
+         * @description The summary conclusion for all check runs that are part of the check suite. This value will be `null` until the check run has completed.
          * @enum {string|null}
          */
         conclusion:
@@ -4576,7 +4624,7 @@ export interface components {
         /** Format: uri */
         check_runs_url: string;
         /**
-         * @description The summary conclusion for all check runs that are part of the check suite. Can be one of `success`, `failure`,` neutral`, `cancelled`, `timed_out`, `action_required` or `stale`. This value will be `null` until the check run has completed.
+         * @description The summary conclusion for all check runs that are part of the check suite. This value will be `null` until the check run has completed.
          * @enum {string|null}
          */
         conclusion:
@@ -4734,7 +4782,7 @@ export interface components {
           url?: string;
         } | null;
         /**
-         * @description The reason for dismissing or closing the alert. Can be one of: `false positive`, `won't fix`, and `used in tests`.
+         * @description The reason for dismissing or closing the alert.
          * @enum {string|null}
          */
         dismissed_reason:
@@ -4866,7 +4914,7 @@ export interface components {
           url?: string;
         } | null;
         /**
-         * @description The reason for dismissing or closing the alert. Can be one of: `false positive`, `won't fix`, and `used in tests`.
+         * @description The reason for dismissing or closing the alert.
          * @enum {string|null}
          */
         dismissed_reason:
@@ -5104,7 +5152,7 @@ export interface components {
           url?: string;
         } | null;
         /**
-         * @description The reason for dismissing or closing the alert. Can be one of: `false positive`, `won't fix`, and `used in tests`.
+         * @description The reason for dismissing or closing the alert.
          * @enum {string|null}
          */
         dismissed_reason:
@@ -5491,6 +5539,84 @@ export interface components {
       ref_type: "tag" | "branch";
       repository: components["schemas"]["repository-webhooks"];
       sender: components["schemas"]["simple-user-webhooks"];
+    };
+    /** custom property created event */
+    "webhook-custom-property-created": {
+      /** @enum {string} */
+      action: "created";
+      definition: components["schemas"]["org-custom-property"];
+      enterprise?: components["schemas"]["enterprise-webhooks"];
+      installation?: components["schemas"]["simple-installation"];
+      organization: components["schemas"]["organization-simple-webhooks"];
+      sender?: components["schemas"]["simple-user-webhooks"];
+    };
+    /**
+     * Organization Custom Property
+     * @description Custom property defined on an organization
+     */
+    "org-custom-property": {
+      /** @description The name of the property */
+      property_name: string;
+      /**
+       * @description The type of the value for the property
+       * @enum {string}
+       */
+      value_type: "string" | "single_select";
+      /** @description Whether the property is required. */
+      required?: boolean;
+      /** @description Default value of the property */
+      default_value?: string | null;
+      /** @description Short description of the property */
+      description?: string | null;
+      /** @description Ordered list of allowed values of the property */
+      allowed_values?: string[] | null;
+    };
+    /** custom property deleted event */
+    "webhook-custom-property-deleted": {
+      /** @enum {string} */
+      action: "deleted";
+      definition: {
+        /** @description The name of the property that was deleted. */
+        property_name: string;
+      };
+      enterprise?: components["schemas"]["enterprise-webhooks"];
+      installation?: components["schemas"]["simple-installation"];
+      organization: components["schemas"]["organization-simple-webhooks"];
+      sender?: components["schemas"]["simple-user-webhooks"];
+    };
+    /** custom property updated event */
+    "webhook-custom-property-updated": {
+      /** @enum {string} */
+      action: "updated";
+      definition: components["schemas"]["org-custom-property"];
+      enterprise?: components["schemas"]["enterprise-webhooks"];
+      installation?: components["schemas"]["simple-installation"];
+      organization: components["schemas"]["organization-simple-webhooks"];
+      sender?: components["schemas"]["simple-user-webhooks"];
+    };
+    /** Custom property values updated event */
+    "webhook-custom-property-values-updated": {
+      /** @enum {string} */
+      action: "updated";
+      enterprise?: components["schemas"]["enterprise-webhooks"];
+      installation?: components["schemas"]["simple-installation"];
+      repository: components["schemas"]["repository-webhooks"];
+      organization: components["schemas"]["organization-simple-webhooks"];
+      sender?: components["schemas"]["simple-user-webhooks"];
+      /** @description The new custom property values for the repository. */
+      new_property_values: components["schemas"]["custom-property-value"][];
+      /** @description The old custom property values for the repository. */
+      old_property_values: components["schemas"]["custom-property-value"][];
+    };
+    /**
+     * Custom Property Value
+     * @description Custom property name and associated value
+     */
+    "custom-property-value": {
+      /** @description The name of the property */
+      property_name: string;
+      /** @description The value assigned to the property */
+      value: string | null;
     };
     /** delete event */
     "webhook-delete": {
@@ -8164,7 +8290,7 @@ export interface components {
         /** Format: date-time */
         completed_at: string | null;
         /**
-         * @description The result of the completed check run. Can be one of `success`, `failure`, `neutral`, `cancelled`, `timed_out`, `action_required` or `stale`. This value will be `null` until the check run has completed.
+         * @description The result of the completed check run. This value will be `null` until the check run has completed.
          * @enum {string|null}
          */
         conclusion:
@@ -10073,6 +10199,10 @@ export interface components {
         /** Format: uri */
         contributors_url: string;
         created_at: number | string;
+        /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+        custom_properties?: {
+          [key: string]: unknown;
+        };
         /** @description The default branch of the repository. */
         default_branch: string;
         /**
@@ -10651,6 +10781,11 @@ export interface components {
        * @enum {string}
        */
       organization_custom_roles?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token for custom property management.
+       * @enum {string}
+       */
+      organization_custom_properties?: "read" | "write" | "admin";
       /**
        * @description The level of permission to grant the access token to view and manage announcement banners for an organization.
        * @enum {string}
@@ -18022,6 +18157,10 @@ export interface components {
           /** Format: uri */
           contributors_url: string;
           created_at: number | string;
+          /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+          custom_properties?: {
+            [key: string]: unknown;
+          };
           /** @description The default branch of the repository. */
           default_branch: string;
           /**
@@ -20229,6 +20368,10 @@ export interface components {
           /** Format: uri */
           contributors_url: string;
           created_at: number | string;
+          /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+          custom_properties?: {
+            [key: string]: unknown;
+          };
           /** @description The default branch of the repository. */
           default_branch: string;
           /**
@@ -58196,6 +58339,10 @@ export interface components {
         /** Format: uri */
         contributors_url: string;
         created_at: number | string;
+        /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+        custom_properties?: {
+          [key: string]: unknown;
+        };
         /** @description The default branch of the repository. */
         default_branch: string;
         /**
@@ -59959,7 +60106,10 @@ export interface components {
       ghsa_id: string;
       /** @description The Common Vulnerabilities and Exposures (CVE) ID. */
       cve_id: string | null;
-      /** @description The API URL for the advisory. */
+      /**
+       * Format: uri
+       * @description The API URL for the advisory.
+       */
       url: string;
       /**
        * Format: uri
@@ -60484,7 +60634,7 @@ export interface components {
      * @description An actor that can bypass rules in a ruleset
      */
     "repository-ruleset-bypass-actor": {
-      /** @description The ID of the actor that can bypass a ruleset */
+      /** @description The ID of the actor that can bypass a ruleset. If `actor_type` is `OrganizationAdmin`, this should be `1`. */
       actor_id: number;
       /**
        * @description The type of actor that can bypass a ruleset
@@ -60564,7 +60714,8 @@ export interface components {
       | components["schemas"]["repository-rule-commit-author-email-pattern"]
       | components["schemas"]["repository-rule-committer-email-pattern"]
       | components["schemas"]["repository-rule-branch-name-pattern"]
-      | components["schemas"]["repository-rule-tag-name-pattern"];
+      | components["schemas"]["repository-rule-tag-name-pattern"]
+      | components["schemas"]["repository-rule-workflows"];
     /**
      * creation
      * @description Only allow users with bypass permission to create matching refs.
@@ -60603,7 +60754,7 @@ export interface components {
     };
     /**
      * required_deployments
-     * @description Choose which environments must be successfully deployed to before refs can be merged into a branch that matches this rule.
+     * @description Choose which environments must be successfully deployed to before refs can be pushed into a ref that matches this rule.
      */
     "repository-rule-required-deployments": {
       /** @enum {string} */
@@ -60643,7 +60794,7 @@ export interface components {
     };
     /**
      * required_status_checks
-     * @description Choose which status checks must pass before branches can be merged into a branch that matches this rule. When enabled, commits must first be pushed to another branch, then merged or pushed directly to a ref that matches this rule after status checks have passed.
+     * @description Choose which status checks must pass before the ref is updated. When enabled, commits must first be pushed to another ref where the checks pass.
      */
     "repository-rule-required-status-checks": {
       /** @enum {string} */
@@ -60777,6 +60928,32 @@ export interface components {
         /** @description The pattern to match with. */
         pattern: string;
       };
+    };
+    /**
+     * workflows
+     * @description Require all changes made to a targeted branch to pass the specified workflows before they can be merged.
+     */
+    "repository-rule-workflows": {
+      /** @enum {string} */
+      type: "workflows";
+      parameters?: {
+        /** @description Workflows that must pass for this rule to pass. */
+        workflows: components["schemas"]["repository-rule-params-workflow-file-reference"][];
+      };
+    };
+    /**
+     * WorkflowFileReference
+     * @description A workflow that must run for this rule to pass
+     */
+    "repository-rule-params-workflow-file-reference": {
+      /** @description The path to the workflow file */
+      path: string;
+      /** @description The ref (branch or tag) of the workflow file to use */
+      ref?: string;
+      /** @description The ID of the repository where the workflow is defined */
+      repository_id: number;
+      /** @description The commit SHA of the workflow file to use */
+      sha?: string;
     };
     /** repository ruleset deleted event */
     "webhook-repository-ruleset-deleted": {
@@ -61705,7 +61882,7 @@ export interface components {
       has_projects: boolean;
       has_wiki: boolean;
       has_pages: boolean;
-      has_downloads: boolean;
+      has_downloads?: boolean;
       has_discussions: boolean;
       archived: boolean;
       /** @description Returns whether or not this repository disabled. */
@@ -63325,6 +63502,10 @@ export interface components {
         /** Format: uri */
         contributors_url: string;
         created_at: number | string;
+        /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+        custom_properties?: {
+          [key: string]: unknown;
+        };
         /** @description The default branch of the repository. */
         default_branch: string;
         /**
@@ -63638,6 +63819,10 @@ export interface components {
         /** Format: uri */
         contributors_url: string;
         created_at: number | string;
+        /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+        custom_properties?: {
+          [key: string]: unknown;
+        };
         /** @description The default branch of the repository. */
         default_branch: string;
         /**
@@ -63951,6 +64136,10 @@ export interface components {
         /** Format: uri */
         contributors_url: string;
         created_at: number | string;
+        /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+        custom_properties?: {
+          [key: string]: unknown;
+        };
         /** @description The default branch of the repository. */
         default_branch: string;
         /**
@@ -64295,6 +64484,10 @@ export interface components {
         /** Format: uri */
         contributors_url: string;
         created_at: number | string;
+        /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+        custom_properties?: {
+          [key: string]: unknown;
+        };
         /** @description The default branch of the repository. */
         default_branch: string;
         /**
@@ -64608,6 +64801,10 @@ export interface components {
         /** Format: uri */
         contributors_url: string;
         created_at: number | string;
+        /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+        custom_properties?: {
+          [key: string]: unknown;
+        };
         /** @description The default branch of the repository. */
         default_branch: string;
         /**
@@ -67996,6 +68193,162 @@ export interface operations {
     requestBody: {
       content: {
         "application/json": components["schemas"]["webhook-create"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to a custom property.
+   *
+   * For more information, see "[Managing custom properties for repositories in your organization](https://docs.github.com/enterprise-cloud@latest//organizations/managing-organization-settings/managing-custom-properties-for-repositories-in-your-organization)". For information about the APIs to manage custom properties, see "[Custom properties](https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Custom properties" organization permission.
+   * @description A new custom property was created.
+   */
+  "custom-property/created": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-custom-property-created"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to a custom property.
+   *
+   * For more information, see "[Managing custom properties for repositories in your organization](https://docs.github.com/enterprise-cloud@latest//organizations/managing-organization-settings/managing-custom-properties-for-repositories-in-your-organization)". For information about the APIs to manage custom properties, see "[Custom properties](https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Custom properties" organization permission.
+   * @description A custom property was deleted.
+   */
+  "custom-property/deleted": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-custom-property-deleted"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to a custom property.
+   *
+   * For more information, see "[Managing custom properties for repositories in your organization](https://docs.github.com/enterprise-cloud@latest//organizations/managing-organization-settings/managing-custom-properties-for-repositories-in-your-organization)". For information about the APIs to manage custom properties, see "[Custom properties](https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Custom properties" organization permission.
+   * @description A custom property was updated.
+   */
+  "custom-property/updated": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-custom-property-updated"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to custom property values for a repository.
+   *
+   * For more information, see "[Managing custom properties for repositories in your organization](https://docs.github.com/enterprise-cloud@latest//organizations/managing-organization-settings/managing-custom-properties-for-repositories-in-your-organization)". For information about the APIs to manage custom properties for a repository, see "[Custom properties](https://docs.github.com/enterprise-cloud@latest//rest/repos/custom-properties)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Custom properties" organization permission.
+   * @description The custom property values of a repository were updated.
+   */
+  "custom-property-values/updated": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-custom-property-values-updated"];
       };
     };
     responses: {
@@ -73232,7 +73585,7 @@ export interface operations {
    * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-   * @description The title or body of a pull request was edited.
+   * @description The title or body of a pull request was edited, or the base branch of a pull request was changed.
    */
   "pull-request/edited": {
     parameters: {
@@ -74868,7 +75221,7 @@ export interface operations {
    * For more information about repository rulesets, see "[Managing rulesets](https://docs.github.com/enterprise-cloud@latest//repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets)."
    * For more information on managing rulesets via the APIs, see [Repository ruleset](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#repositoryruleset) in the GraphQL documentation or "[Repository rules](https://docs.github.com/enterprise-cloud@latest//rest/repos/rules)" and "[Organization rules](https://docs.github.com/enterprise-cloud@latest//rest/orgs/rules) in the REST API documentation."
    *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository or organization permission.
    * @description A repository ruleset was created.
    */
   "repository-ruleset/created": {
@@ -74907,7 +75260,7 @@ export interface operations {
    * For more information about repository rulesets, see "[Managing rulesets](https://docs.github.com/enterprise-cloud@latest//repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets)."
    * For more information on managing rulesets via the APIs, see [Repository ruleset](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#repositoryruleset) in the GraphQL documentation or "[Repository rules](https://docs.github.com/enterprise-cloud@latest//rest/repos/rules)" and "[Organization rules](https://docs.github.com/enterprise-cloud@latest//rest/orgs/rules) in the REST API documentation."
    *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository or organization permission.
    * @description A repository ruleset was deleted.
    */
   "repository-ruleset/deleted": {
@@ -74946,7 +75299,7 @@ export interface operations {
    * For more information about repository rulesets, see "[Managing rulesets](https://docs.github.com/enterprise-cloud@latest//repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets)."
    * For more information on managing rulesets via the APIs, see [Repository ruleset](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#repositoryruleset) in the GraphQL documentation or "[Repository rules](https://docs.github.com/enterprise-cloud@latest//rest/repos/rules)" and "[Organization rules](https://docs.github.com/enterprise-cloud@latest//rest/orgs/rules) in the REST API documentation."
    *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository or organization permission.
    * @description A repository ruleset was edited.
    */
   "repository-ruleset/edited": {

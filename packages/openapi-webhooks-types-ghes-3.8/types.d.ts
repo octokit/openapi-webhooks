@@ -1460,7 +1460,7 @@ export interface webhooks {
      * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-     * @description The title or body of a pull request was edited.
+     * @description The title or body of a pull request was edited, or the base branch of a pull request was changed.
      */
     post: operations["pull-request/edited"];
   };
@@ -2517,6 +2517,10 @@ export interface components {
        */
       is_template?: boolean;
       topics?: string[];
+      /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+      custom_properties?: {
+        [key: string]: unknown;
+      };
       /**
        * @description Whether issues are enabled.
        * @default true
@@ -3616,7 +3620,7 @@ export interface components {
         /** Format: uri */
         check_runs_url: string;
         /**
-         * @description The summary conclusion for all check runs that are part of the check suite. Can be one of `success`, `failure`, `neutral`, `cancelled`, `timed_out`, `action_required` or `stale`. This value will be `null` until the check run has `completed`.
+         * @description The summary conclusion for all check runs that are part of the check suite. This value will be `null` until the check run has `completed`.
          * @enum {string|null}
          */
         conclusion:
@@ -3927,7 +3931,7 @@ export interface components {
         /** Format: uri */
         check_runs_url: string;
         /**
-         * @description The summary conclusion for all check runs that are part of the check suite. Can be one of `success`, `failure`,` neutral`, `cancelled`, `timed_out`, `action_required` or `stale`. This value will be `null` until the check run has completed.
+         * @description The summary conclusion for all check runs that are part of the check suite. This value will be `null` until the check run has completed.
          * @enum {string|null}
          */
         conclusion:
@@ -4226,7 +4230,7 @@ export interface components {
         /** Format: uri */
         check_runs_url: string;
         /**
-         * @description The summary conclusion for all check runs that are part of the check suite. Can be one of `success`, `failure`,` neutral`, `cancelled`, `timed_out`, `action_required` or `stale`. This value will be `null` until the check run has completed.
+         * @description The summary conclusion for all check runs that are part of the check suite. This value will be `null` until the check run has completed.
          * @enum {string|null}
          */
         conclusion:
@@ -4384,7 +4388,7 @@ export interface components {
           url?: string;
         } | null;
         /**
-         * @description The reason for dismissing or closing the alert. Can be one of: `false positive`, `won't fix`, and `used in tests`.
+         * @description The reason for dismissing or closing the alert.
          * @enum {string|null}
          */
         dismissed_reason:
@@ -4516,7 +4520,7 @@ export interface components {
           url?: string;
         } | null;
         /**
-         * @description The reason for dismissing or closing the alert. Can be one of: `false positive`, `won't fix`, and `used in tests`.
+         * @description The reason for dismissing or closing the alert.
          * @enum {string|null}
          */
         dismissed_reason:
@@ -4754,7 +4758,7 @@ export interface components {
           url?: string;
         } | null;
         /**
-         * @description The reason for dismissing or closing the alert. Can be one of: `false positive`, `won't fix`, and `used in tests`.
+         * @description The reason for dismissing or closing the alert.
          * @enum {string|null}
          */
         dismissed_reason:
@@ -7177,7 +7181,7 @@ export interface components {
         /** Format: date-time */
         completed_at: string | null;
         /**
-         * @description The result of the completed check run. Can be one of `success`, `failure`, `neutral`, `cancelled`, `timed_out`, `action_required` or `stale`. This value will be `null` until the check run has completed.
+         * @description The result of the completed check run. This value will be `null` until the check run has completed.
          * @enum {string|null}
          */
         conclusion:
@@ -9074,6 +9078,10 @@ export interface components {
         /** Format: uri */
         contributors_url: string;
         created_at: number | string;
+        /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+        custom_properties?: {
+          [key: string]: unknown;
+        };
         /** @description The default branch of the repository. */
         default_branch: string;
         /**
@@ -17017,6 +17025,10 @@ export interface components {
           /** Format: uri */
           contributors_url: string;
           created_at: number | string;
+          /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+          custom_properties?: {
+            [key: string]: unknown;
+          };
           /** @description The default branch of the repository. */
           default_branch: string;
           /**
@@ -19224,6 +19236,10 @@ export interface components {
           /** Format: uri */
           contributors_url: string;
           created_at: number | string;
+          /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+          custom_properties?: {
+            [key: string]: unknown;
+          };
           /** @description The default branch of the repository. */
           default_branch: string;
           /**
@@ -54508,6 +54524,10 @@ export interface components {
         /** Format: uri */
         contributors_url: string;
         created_at: number | string;
+        /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+        custom_properties?: {
+          [key: string]: unknown;
+        };
         /** @description The default branch of the repository. */
         default_branch: string;
         /**
@@ -57245,7 +57265,7 @@ export interface components {
       has_projects: boolean;
       has_wiki: boolean;
       has_pages: boolean;
-      has_downloads: boolean;
+      has_downloads?: boolean;
       has_discussions: boolean;
       archived: boolean;
       /** @description Returns whether or not this repository disabled. */
@@ -58851,6 +58871,10 @@ export interface components {
         /** Format: uri */
         contributors_url: string;
         created_at: number | string;
+        /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+        custom_properties?: {
+          [key: string]: unknown;
+        };
         /** @description The default branch of the repository. */
         default_branch: string;
         /**
@@ -59150,6 +59174,10 @@ export interface components {
         /** Format: uri */
         contributors_url: string;
         created_at: number | string;
+        /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+        custom_properties?: {
+          [key: string]: unknown;
+        };
         /** @description The default branch of the repository. */
         default_branch: string;
         /**
@@ -59449,6 +59477,10 @@ export interface components {
         /** Format: uri */
         contributors_url: string;
         created_at: number | string;
+        /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+        custom_properties?: {
+          [key: string]: unknown;
+        };
         /** @description The default branch of the repository. */
         default_branch: string;
         /**
@@ -59775,6 +59807,10 @@ export interface components {
         /** Format: uri */
         contributors_url: string;
         created_at: number | string;
+        /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+        custom_properties?: {
+          [key: string]: unknown;
+        };
         /** @description The default branch of the repository. */
         default_branch: string;
         /**
@@ -60074,6 +60110,10 @@ export interface components {
         /** Format: uri */
         contributors_url: string;
         created_at: number | string;
+        /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+        custom_properties?: {
+          [key: string]: unknown;
+        };
         /** @description The default branch of the repository. */
         default_branch: string;
         /**
@@ -68342,7 +68382,7 @@ export interface operations {
    * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-   * @description The title or body of a pull request was edited.
+   * @description The title or body of a pull request was edited, or the base branch of a pull request was changed.
    */
   "pull-request/edited": {
     parameters: {
