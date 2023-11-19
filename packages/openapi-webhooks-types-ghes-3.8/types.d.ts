@@ -22645,8 +22645,7 @@ export interface components {
        * @description A collection of related issues and pull requests.
        */
       milestone: {
-        /** Format: date-time */
-        closed_at: string | null;
+        closed_at: null;
         closed_issues: number;
         /** Format: date-time */
         created_at: string;
@@ -22703,7 +22702,7 @@ export interface components {
          * @description The state of the milestone.
          * @enum {string}
          */
-        state: "open" | "closed";
+        state: "open";
         /** @description The title of the milestone. */
         title: string;
         /** Format: date-time */
@@ -22903,8 +22902,7 @@ export interface components {
        * @description A collection of related issues and pull requests.
        */
       milestone: {
-        /** Format: date-time */
-        closed_at: string | null;
+        closed_at: null;
         closed_issues: number;
         /** Format: date-time */
         created_at: string;
@@ -22961,7 +22959,7 @@ export interface components {
          * @description The state of the milestone.
          * @enum {string}
          */
-        state: "open" | "closed";
+        state: "open";
         /** @description The title of the milestone. */
         title: string;
         /** Format: date-time */

@@ -91,11 +91,31 @@ export default function overrides(file, schema) {
       "webhook-milestone-closed",
       "./milestone-closed.json",
     );
+    replaceSchema(
+      schema,
+      "webhook-milestone-created",
+      "./milestone-created.json",
+    );
+    replaceSchema(
+      schema,
+      "webhook-milestone-opened",
+      "./milestone-opened.json",
+    );
   } else {
     replaceSchema(
       schema,
       "webhook-milestone-closed",
       "./milestone-closed-ghes.json",
+    );
+    replaceSchema(
+      schema,
+      "webhook-milestone-created",
+      "./milestone-created-ghes.json",
+    );
+    replaceSchema(
+      schema,
+      "webhook-milestone-opened",
+      "./milestone-opened-ghes.json",
     );
   }
 }
