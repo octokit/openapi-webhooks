@@ -6,6 +6,7 @@ import {
   copyFileSync,
 } from "node:fs";
 import * as prettier from "prettier";
+import overrides from "./overrides/index.js";
 
 /* if (!process.env.GITHUB_ACTIONS && !process.env.ANICCA_REPOSITORY_PATH) {
   throw new Error("Please set ANICCA_REPOSITORY_PATH");
@@ -41,6 +42,7 @@ async function run() {
       examples: {},
     };
 
+    overrides(file, schema);
     /**
      *  Function to handle special cases:
      * Check all instances of `$ref` in the OpenAPI spec, and add them to the definitions
@@ -149,7 +151,7 @@ They are all generated, your changes would be overwritten with the next update. 
         type: "commonjs",
         repository: {
           type: "git",
-          url: "https://github.com/wolfy1330/openapi-webhooks.git",
+          url: "https://github.com/wolfy1339/openapi-webhooks.git",
           directory: `packages/openapi-webhooks`,
         },
         keywords: ["github", "openapi", "octokit", "webhooks"],

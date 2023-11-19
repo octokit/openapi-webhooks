@@ -10,7 +10,7 @@
   "type": "commonjs",
   "repository": {
     "type": "git",
-    "url": "https://github.com/wolfy1330/openapi-webhooks.git",
+    "url": "https://github.com/wolfy1339/openapi-webhooks.git",
     "directory": "packages/openapi-webhooks"
   },
   "keywords": [

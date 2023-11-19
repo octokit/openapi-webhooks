@@ -5,10 +5,6 @@ import { fileURLToPath } from "url";
 const SUPPORTED_GHES_OPERATIONS = ["3.8", "3.9", "3.10", "3.11"];
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-function isDeferenced(filename) {
-  return /deref/.test(filename);
-}
-
 // Updates the operation ID for a specific operation. Useful if you want to maintain
 // the function name in `plugin-rest-endpoint-methods.js` when the operation ID has
 // been changed in the OpenAPI specification.
@@ -46,16 +42,30 @@ function addOperation(schema, path, httpMethod, overridePath) {
 // Replaces a given operation using JSON data stored in a file.
 //
 // Throws an error if an operation is not found for the specified path and HTTP method.
-function replaceOperation(schema, path, httpMethod, overridePath) {
-  if (!schema.paths[path]) {
+function replaceOperation(
+  schema,
+  path,
+  httpMethod,
+  overridePath,
+  isWebhook = false,
+) {
+  const type = isWebhook ? "webhook" : "paths";
+
+  if (!schema[type][path]) {
     throw `Path ${path} not found in schema`;
   }
 
-  if (!schema.paths[path][httpMethod]) {
+  if (!schema[type][path][httpMethod]) {
     throw `HTTP method ${httpMethod} not found for path ${path} in schema`;
   }
 
-  schema.paths[path][httpMethod] = JSON.parse(
+  schema[type][path][httpMethod] = JSON.parse(
+    readFileSync(resolve(join(__dirname, overridePath)), "utf8"),
+  );
+}
+
+function replaceSchema(schema, schemaName, overridePath) {
+  schema.components.schemas[schemaName] = JSON.parse(
     readFileSync(resolve(join(__dirname, overridePath)), "utf8"),
   );
 }
@@ -63,6 +73,7 @@ function replaceOperation(schema, path, httpMethod, overridePath) {
 export default function overrides(file, schema) {
   const isGHES = file.startsWith("ghes-");
   const isAE = file.startsWith("github.ae");
+  const isGHEC = file.startsWith("ghec");
   const isDotcom = file.startsWith("api.github.com");
   const ghesVersion = isGHES ? file.match(/(?<=^ghes-)\d+\.\d+/)[0] : null;
 
@@ -74,5 +85,17 @@ export default function overrides(file, schema) {
     );
   }
 
-
+  if (isDotcom) {
+    replaceSchema(
+      schema,
+      "webhook-milestone-closed",
+      "./milestone-closed.json",
+    );
+  } else {
+    replaceSchema(
+      schema,
+      "webhook-milestone-closed",
+      "./milestone-closed-ghes.json",
+    );
+  }
 }

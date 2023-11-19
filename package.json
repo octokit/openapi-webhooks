@@ -12,8 +12,8 @@
     "test": "node scripts/test.js",
     "generate-types": "node scripts/generate-types",
     "update-package": "node scripts/update-package",
-    "lint": "prettier --check '*.{md,json}' 'scripts/*.js' 'packages/**/*.{ts,md,json,d.ts}'",
-    "lint:fix": "prettier --write '*.{md,json}' 'scripts/*.js' 'packages/**/*.{ts,md,json,d.ts}'"
+    "lint": "prettier --check '*.{md,json}' 'scripts/**/*.{js,json}' 'packages/**/*.{ts,md,json,d.ts}'",
+    "lint:fix": "prettier --write '*.{md,json}' 'scripts/**/*.{js,json}' 'packages/**/*.{ts,md,json,d.ts}'"
   },
   "repository": "github:wolfy1339/openapi-webhooks",
   "keywords": [

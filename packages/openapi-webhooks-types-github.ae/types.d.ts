@@ -23065,7 +23065,7 @@ export interface components {
        */
       milestone: {
         /** Format: date-time */
-        closed_at: string | null;
+        closed_at: string;
         closed_issues: number;
         /** Format: date-time */
         created_at: string;
@@ -23122,7 +23122,7 @@ export interface components {
          * @description The state of the milestone.
          * @enum {string}
          */
-        state: "open" | "closed";
+        state: "closed";
         /** @description The title of the milestone. */
         title: string;
         /** Format: date-time */
