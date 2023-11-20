@@ -65,6 +65,10 @@ function replaceOperation(
 }
 
 function replaceSchema(schema, schemaName, overridePath) {
+  if (!schema.components.schemas[schemaName]) {
+    throw `Component schema ${schemaName} not found in schema`;
+  }
+
   schema.components.schemas[schemaName] = JSON.parse(
     readFileSync(resolve(join(__dirname, overridePath)), "utf8"),
   );
