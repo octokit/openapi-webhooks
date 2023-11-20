@@ -3060,7 +3060,7 @@ export interface components {
     /** Check Run Completed Event */
     "webhook-check-run-completed": {
       /** @enum {string} */
-      action?: "completed";
+      action: "completed";
       check_run: components["schemas"]["check-run-with-simple-check-suite"];
       installation?: components["schemas"]["simple-installation"];
       organization?: components["schemas"]["organization-simple-webhooks"];
@@ -3390,7 +3390,7 @@ export interface components {
     /** Check Run Created Event */
     "webhook-check-run-created": {
       /** @enum {string} */
-      action?: "created";
+      action: "created";
       check_run: components["schemas"]["check-run-with-simple-check-suite"];
       installation?: components["schemas"]["simple-installation"];
       organization?: components["schemas"]["organization-simple-webhooks"];
@@ -3415,7 +3415,7 @@ export interface components {
     /** Check Run Re-Requested Event */
     "webhook-check-run-rerequested": {
       /** @enum {string} */
-      action?: "rerequested";
+      action: "rerequested";
       check_run: components["schemas"]["check-run-with-simple-check-suite"];
       installation?: components["schemas"]["simple-installation"];
       organization?: components["schemas"]["organization-simple-webhooks"];
@@ -56908,7 +56908,7 @@ export interface components {
     /** Secret Scanning Alert Location Created Event */
     "webhook-secret-scanning-alert-location-created": {
       /** @enum {string} */
-      action?: "created";
+      action: "created";
       alert: components["schemas"]["secret-scanning-alert-webhook"];
       installation?: components["schemas"]["simple-installation"];
       location: components["schemas"]["secret-scanning-location"];

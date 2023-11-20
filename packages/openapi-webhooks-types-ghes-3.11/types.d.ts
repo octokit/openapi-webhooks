@@ -3285,7 +3285,7 @@ export interface components {
     /** Check Run Completed Event */
     "webhook-check-run-completed": {
       /** @enum {string} */
-      action?: "completed";
+      action: "completed";
       check_run: components["schemas"]["check-run-with-simple-check-suite"];
       installation?: components["schemas"]["simple-installation"];
       organization?: components["schemas"]["organization-simple-webhooks"];
@@ -3638,7 +3638,7 @@ export interface components {
     /** Check Run Created Event */
     "webhook-check-run-created": {
       /** @enum {string} */
-      action?: "created";
+      action: "created";
       check_run: components["schemas"]["check-run-with-simple-check-suite"];
       installation?: components["schemas"]["simple-installation"];
       organization?: components["schemas"]["organization-simple-webhooks"];
@@ -3663,7 +3663,7 @@ export interface components {
     /** Check Run Re-Requested Event */
     "webhook-check-run-rerequested": {
       /** @enum {string} */
-      action?: "rerequested";
+      action: "rerequested";
       check_run: components["schemas"]["check-run-with-simple-check-suite"];
       installation?: components["schemas"]["simple-installation"];
       organization?: components["schemas"]["organization-simple-webhooks"];
@@ -6254,7 +6254,7 @@ export interface components {
     /** deployment protection rule requested event */
     "webhook-deployment-protection-rule-requested": {
       /** @enum {string} */
-      action?: "requested";
+      action: "requested";
       /** @description The name of the environment that has the deployment protection rule. */
       environment?: string;
       /** @description The event that triggered the deployment protection rule. */
@@ -6266,10 +6266,10 @@ export interface components {
       deployment_callback_url?: string;
       deployment?: components["schemas"]["deployment"];
       pull_requests?: components["schemas"]["pull-request"][];
-      repository?: components["schemas"]["repository-webhooks"];
+      repository: components["schemas"]["repository-webhooks"];
       organization?: components["schemas"]["organization-simple-webhooks"];
       installation?: components["schemas"]["simple-installation"];
-      sender?: components["schemas"]["simple-user-webhooks"];
+      sender: components["schemas"]["simple-user-webhooks"];
     };
     /**
      * Deployment
@@ -57931,7 +57931,7 @@ export interface components {
     /** Secret Scanning Alert Location Created Event */
     "webhook-secret-scanning-alert-location-created": {
       /** @enum {string} */
-      action?: "created";
+      action: "created";
       alert: components["schemas"]["secret-scanning-alert-webhook"];
       installation?: components["schemas"]["simple-installation"];
       location: components["schemas"]["secret-scanning-location"];
