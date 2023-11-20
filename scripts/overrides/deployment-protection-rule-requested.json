@@ -1,0 +1,45 @@
+{
+  "title": "deployment protection rule requested event",
+  "type": "object",
+  "properties": {
+    "action": {
+      "type": "string",
+      "enum": ["requested"]
+    },
+    "environment": {
+      "description": "The name of the environment that has the deployment protection rule.",
+      "type": "string"
+    },
+    "event": {
+      "description": "The event that triggered the deployment protection rule.",
+      "type": "string"
+    },
+    "deployment_callback_url": {
+      "description": "The URL to review the deployment protection rule.",
+      "type": "string",
+      "format": "uri"
+    },
+    "deployment": {
+      "$ref": "#/components/schemas/deployment"
+    },
+    "pull_requests": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/pull-request"
+      }
+    },
+    "repository": {
+      "$ref": "#/components/schemas/repository-webhooks"
+    },
+    "organization": {
+      "$ref": "#/components/schemas/organization-simple-webhooks"
+    },
+    "installation": {
+      "$ref": "#/components/schemas/simple-installation"
+    },
+    "sender": {
+      "$ref": "#/components/schemas/simple-user-webhooks"
+    }
+  },
+  "required": ["action", "repository", "sender"]
+}

@@ -122,4 +122,13 @@ export default function overrides(file, schema) {
       "./milestone-opened-ghes.json",
     );
   }
+
+  if (!["3.8", "3.9"].includes(ghesVersion) || isDotcom || isAE || isGHEC) {
+    // Missing the `required` property in the schema, which makes all properties optional
+    replaceSchema(
+      schema,
+      "webhook-deployment-protection-rule-requested",
+      "./deployment-protection-rule-requested.json",
+    );
+  }
 }
