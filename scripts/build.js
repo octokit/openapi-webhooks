@@ -69,6 +69,11 @@ async function run() {
       return obj;
     };
 
+    function addActionToRequired(schema) {
+      if (schema.properties.action !== undefined) {
+        schema.required.push("action");
+      }
+    }
     const webhooks = schema.webhooks;
     for (const webhookId in webhooks) {
       const webhook = webhooks[webhookId].post;
@@ -89,6 +94,13 @@ async function run() {
       tempSchema.components.schemas[refName] =
         schema.components.schemas[refName];
       specialHandling(schema.components.schemas[refName]);
+      if (tempSchema.components.schemas[refName].oneOf !== undefined) {
+        for (let oneOf of tempSchema.components.schemas[refName].oneOf) {
+          addActionToRequired(oneOf);
+        }
+      } else {
+        addActionToRequired(tempSchema.components.schemas[refName]);
+      }
       if (typeof examples !== "undefined") {
         for (let key of Object.keys(examples)) {
           const example$ref = examples[key].$ref.split("/").at(-1);
