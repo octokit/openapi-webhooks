@@ -60487,8 +60487,11 @@ export interface components {
         };
       };
       conditions?:
-        | components["schemas"]["repository-ruleset-conditions"]
-        | components["schemas"]["org-ruleset-conditions"];
+        | null
+        | (
+            | components["schemas"]["repository-ruleset-conditions"]
+            | components["schemas"]["org-ruleset-conditions"]
+          );
       rules?: components["schemas"]["repository-rule"][];
       /** Format: date-time */
       created_at?: string;
