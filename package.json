@@ -30,7 +30,7 @@
     "lodash": "^4.17.21",
     "openapi-typescript": "^6.2.1",
     "prettier": "^3.0.0",
-    "semantic-release": "^22.0.0",
+    "semantic-release": "^23.0.0",
     "semantic-release-plugin-update-version-in-files": "^1.1.0"
   },
   "engines": {
