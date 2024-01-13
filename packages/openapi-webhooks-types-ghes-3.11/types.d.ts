@@ -57178,6 +57178,11 @@ export interface components {
       | components["schemas"]["repository-rule-committer-email-pattern"]
       | components["schemas"]["repository-rule-branch-name-pattern"]
       | components["schemas"]["repository-rule-tag-name-pattern"]
+      | components["schemas"]["repository-rule-file-path-restriction"]
+      | components["schemas"]["repository-rule-max-file-path-length"]
+      | components["schemas"]["repository-rule-file-extension-restriction"]
+      | components["schemas"]["repository-rule-max-file-size"]
+      | components["schemas"]["repository-rule-commit-oid"]
       | components["schemas"]["repository-rule-workflows"];
     /**
      * creation

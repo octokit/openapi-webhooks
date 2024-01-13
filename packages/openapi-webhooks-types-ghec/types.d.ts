@@ -5602,6 +5602,11 @@ export interface components {
       description?: string | null;
       /** @description Ordered list of allowed values of the property */
       allowed_values?: string[] | null;
+      /**
+       * @description Who can edit the values of the property
+       * @enum {string|null}
+       */
+      values_editable_by?: "org_actors" | "org_and_repo_actors" | null;
     };
     /** custom property deleted event */
     "webhook-custom-property-deleted": {
@@ -60816,6 +60821,11 @@ export interface components {
       | components["schemas"]["repository-rule-committer-email-pattern"]
       | components["schemas"]["repository-rule-branch-name-pattern"]
       | components["schemas"]["repository-rule-tag-name-pattern"]
+      | components["schemas"]["repository-rule-file-path-restriction"]
+      | components["schemas"]["repository-rule-max-file-path-length"]
+      | components["schemas"]["repository-rule-file-extension-restriction"]
+      | components["schemas"]["repository-rule-max-file-size"]
+      | components["schemas"]["repository-rule-commit-oid"]
       | components["schemas"]["repository-rule-workflows"];
     /**
      * creation
@@ -62149,6 +62159,10 @@ export interface components {
       anonymous_access_enabled?: boolean;
       code_of_conduct?: components["schemas"]["code-of-conduct-simple"];
       security_and_analysis?: components["schemas"]["security-and-analysis"];
+      /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+      custom_properties?: {
+        [key: string]: unknown;
+      };
     };
     /**
      * Repository
