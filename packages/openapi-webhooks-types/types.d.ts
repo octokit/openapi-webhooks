@@ -5585,7 +5585,7 @@ export interface components {
       /** @description The name of the property */
       property_name: string;
       /** @description The value assigned to the property */
-      value: string | null;
+      value: string | string[] | null | unknown[];
     };
     /** delete event */
     "webhook-delete": {
