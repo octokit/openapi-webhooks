@@ -5611,7 +5611,10 @@ export interface components {
       default_value?: string | null;
       /** @description Short description of the property */
       description?: string | null;
-      /** @description Ordered list of allowed values of the property */
+      /**
+       * @description An ordered list of the allowed values of the property.
+       * The property can have up to 200 allowed values.
+       */
       allowed_values?: string[] | null;
       /**
        * @description Who can edit the values of the property
