@@ -60561,7 +60561,9 @@ export interface components {
       | (components["schemas"]["repository-ruleset-conditions"] &
           components["schemas"]["repository-ruleset-conditions-repository-name-target"])
       | (components["schemas"]["repository-ruleset-conditions"] &
-          components["schemas"]["repository-ruleset-conditions-repository-id-target"]);
+          components["schemas"]["repository-ruleset-conditions-repository-id-target"])
+      | (components["schemas"]["repository-ruleset-conditions"] &
+          components["schemas"]["repository-ruleset-conditions-repository-property-target"]);
     /**
      * Repository ruleset conditions for repository names
      * @description Parameters for a repository name condition
@@ -60585,6 +60587,28 @@ export interface components {
         /** @description The repository IDs that the ruleset applies to. One of these IDs must match for the condition to pass. */
         repository_ids?: number[];
       };
+    };
+    /**
+     * Repository ruleset conditions for repository properties
+     * @description Parameters for a repository property condition
+     */
+    "repository-ruleset-conditions-repository-property-target": {
+      repository_property: {
+        /** @description The repository properties and values to include. All of these properties must match for the condition to pass. */
+        include?: components["schemas"]["repository-ruleset-conditions-repository-property-spec"][];
+        /** @description The repository properties and values to exclude. The condition will not pass if any of these properties match. */
+        exclude?: components["schemas"]["repository-ruleset-conditions-repository-property-spec"][];
+      };
+    };
+    /**
+     * Repository ruleset property targeting definition
+     * @description Parameters for a targeting a repository property
+     */
+    "repository-ruleset-conditions-repository-property-spec": {
+      /** @description The name of the repository property to target */
+      name: string;
+      /** @description The values to match for the repository property */
+      property_values: string[];
     };
     /**
      * Repository Rule
