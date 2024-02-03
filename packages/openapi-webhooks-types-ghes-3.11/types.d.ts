@@ -13976,7 +13976,6 @@ export interface components {
         timeline_url?: string;
         /** @description Title of the issue */
         title: string;
-        type?: components["schemas"]["issue-type"];
         /** Format: date-time */
         updated_at: string;
         /**
@@ -18605,7 +18604,6 @@ export interface components {
         timeline_url?: string;
         /** @description Title of the issue */
         title: string;
-        type?: components["schemas"]["issue-type"];
         /** Format: date-time */
         updated_at: string;
         /**
@@ -19643,7 +19641,6 @@ export interface components {
         state: "open" | "closed";
         timeline_url?: string;
         title?: string;
-        type?: components["schemas"]["issue-type"];
         updated_at?: string;
         url?: string;
         user?: {
@@ -57174,11 +57171,6 @@ export interface components {
       | components["schemas"]["repository-rule-committer-email-pattern"]
       | components["schemas"]["repository-rule-branch-name-pattern"]
       | components["schemas"]["repository-rule-tag-name-pattern"]
-      | components["schemas"]["repository-rule-file-path-restriction"]
-      | components["schemas"]["repository-rule-max-file-path-length"]
-      | components["schemas"]["repository-rule-file-extension-restriction"]
-      | components["schemas"]["repository-rule-max-file-size"]
-      | components["schemas"]["repository-rule-commit-oid"]
       | components["schemas"]["repository-rule-workflows"];
     /**
      * creation
