@@ -494,6 +494,102 @@ export interface webhooks {
     patch?: never;
     trace?: never;
   };
+  "custom-property-created": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * This event occurs when there is activity relating to a custom property.
+     *
+     *     For more information, see "[Managing custom properties for repositories in your organization](https://docs.github.com/enterprise-cloud@latest//organizations/managing-organization-settings/managing-custom-properties-for-repositories-in-your-organization)". For information about the APIs to manage custom properties, see "[Custom properties](https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties)" in the REST API documentation.
+     *
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Custom properties" organization permission.
+     * @description A new custom property was created.
+     */
+    post: operations["custom-property/created"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "custom-property-deleted": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * This event occurs when there is activity relating to a custom property.
+     *
+     *     For more information, see "[Managing custom properties for repositories in your organization](https://docs.github.com/enterprise-cloud@latest//organizations/managing-organization-settings/managing-custom-properties-for-repositories-in-your-organization)". For information about the APIs to manage custom properties, see "[Custom properties](https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties)" in the REST API documentation.
+     *
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Custom properties" organization permission.
+     * @description A custom property was deleted.
+     */
+    post: operations["custom-property/deleted"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "custom-property-updated": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * This event occurs when there is activity relating to a custom property.
+     *
+     *     For more information, see "[Managing custom properties for repositories in your organization](https://docs.github.com/enterprise-cloud@latest//organizations/managing-organization-settings/managing-custom-properties-for-repositories-in-your-organization)". For information about the APIs to manage custom properties, see "[Custom properties](https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties)" in the REST API documentation.
+     *
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Custom properties" organization permission.
+     * @description A custom property was updated.
+     */
+    post: operations["custom-property/updated"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "custom-property-values-updated": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * This event occurs when there is activity relating to custom property values for a repository.
+     *
+     *     For more information, see "[Managing custom properties for repositories in your organization](https://docs.github.com/enterprise-cloud@latest//organizations/managing-organization-settings/managing-custom-properties-for-repositories-in-your-organization)". For information about the APIs to manage custom properties for a repository, see "[Custom properties](https://docs.github.com/enterprise-cloud@latest//rest/repos/custom-properties)" in the REST API documentation.
+     *
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Custom properties" organization permission.
+     * @description The custom property values of a repository were updated.
+     */
+    post: operations["custom-property-values/updated"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   delete: {
     parameters: {
       query?: never;
@@ -533,7 +629,7 @@ export interface webhooks {
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
      *
      *     **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
-     * @description A Dependabot alert was automatically closed.
+     * @description A Dependabot alert was automatically closed by a Dependabot auto-triage rule.
      */
     post: operations["dependabot-alert/auto-dismissed"];
     delete?: never;
@@ -559,7 +655,7 @@ export interface webhooks {
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
      *
      *     **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
-     * @description A Dependabot alert was automatically reopened.
+     * @description A Dependabot alert, that had been automatically closed by a Dependabot auto-triage rule, was automatically reopened because the alert metadata or rule changed.
      */
     post: operations["dependabot-alert/auto-reopened"];
     delete?: never;
@@ -2870,12 +2966,14 @@ export interface webhooks {
     get?: never;
     put?: never;
     /**
-     * This event occurs when there is activity relating to a card on a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-cloud@latest//issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-cloud@latest//rest/projects)" in the REST API documentation.
+     * This event occurs when there is activity relating to a card on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-cloud@latest//issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-cloud@latest//rest/projects)" in the REST API documentation.
      *
-     *     For activity relating to a project or a column on a project, use the `project` and `project_column` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
+     *     For activity relating to a project (classic) or a column on a project (classic), use the `project` and `project_column` event.
+     *
+     *     This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-     * @description A note in a classic project was converted to an issue.
+     * @description A note in a project (classic) was converted to an issue.
      */
     post: operations["project-card/converted"];
     delete?: never;
@@ -2894,12 +2992,14 @@ export interface webhooks {
     get?: never;
     put?: never;
     /**
-     * This event occurs when there is activity relating to a card on a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-cloud@latest//issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-cloud@latest//rest/projects)" in the REST API documentation.
+     * This event occurs when there is activity relating to a card on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-cloud@latest//issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-cloud@latest//rest/projects)" in the REST API documentation.
      *
-     *     For activity relating to a project or a column on a project, use the `project` and `project_column` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
+     *     For activity relating to a project (classic) or a column on a project (classic), use the `project` and `project_column` event.
+     *
+     *     This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-     * @description A card was added to a classic project.
+     * @description A card was added to a project (classic).
      */
     post: operations["project-card/created"];
     delete?: never;
@@ -2918,12 +3018,14 @@ export interface webhooks {
     get?: never;
     put?: never;
     /**
-     * This event occurs when there is activity relating to a card on a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-cloud@latest//issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-cloud@latest//rest/projects)" in the REST API documentation.
+     * This event occurs when there is activity relating to a card on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-cloud@latest//issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-cloud@latest//rest/projects)" in the REST API documentation.
      *
-     *     For activity relating to a project or a column on a project, use the `project` and `project_column` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
+     *     For activity relating to a project (classic) or a column on a project (classic), use the `project` and `project_column` event.
+     *
+     *     This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-     * @description A card on a classic project was deleted.
+     * @description A card on a project (classic) was deleted.
      */
     post: operations["project-card/deleted"];
     delete?: never;
@@ -2942,12 +3044,14 @@ export interface webhooks {
     get?: never;
     put?: never;
     /**
-     * This event occurs when there is activity relating to a card on a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-cloud@latest//issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-cloud@latest//rest/projects)" in the REST API documentation.
+     * This event occurs when there is activity relating to a card on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-cloud@latest//issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-cloud@latest//rest/projects)" in the REST API documentation.
      *
-     *     For activity relating to a project or a column on a project, use the `project` and `project_column` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
+     *     For activity relating to a project (classic) or a column on a project (classic), use the `project` and `project_column` event.
+     *
+     *     This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-     * @description A note on a classic project was edited.
+     * @description A note on a project (classic) was edited.
      */
     post: operations["project-card/edited"];
     delete?: never;
@@ -2966,12 +3070,14 @@ export interface webhooks {
     get?: never;
     put?: never;
     /**
-     * This event occurs when there is activity relating to a card on a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-cloud@latest//issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-cloud@latest//rest/projects)" in the REST API documentation.
+     * This event occurs when there is activity relating to a card on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-cloud@latest//issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-cloud@latest//rest/projects)" in the REST API documentation.
      *
-     *     For activity relating to a project or a column on a project, use the `project` and `project_column` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
+     *     For activity relating to a project (classic) or a column on a project (classic), use the `project` and `project_column` event.
+     *
+     *     This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-     * @description A card on a classic project was moved to another column or to another position in its column.
+     * @description A card on a project (classic) was moved to another column or to another position in its column.
      */
     post: operations["project-card/moved"];
     delete?: never;
@@ -2990,12 +3096,14 @@ export interface webhooks {
     get?: never;
     put?: never;
     /**
-     * This event occurs when there is activity relating to a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-cloud@latest//issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-cloud@latest//rest/projects)" in the REST API documentation.
+     * This event occurs when there is activity relating to a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-cloud@latest//issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-cloud@latest//rest/projects)" in the REST API documentation.
      *
-     *     For activity relating to a card or column on a project, use the `project_card` and `project_column` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
+     *     For activity relating to a card or column on a project (classic), use the `project_card` and `project_column` event.
+     *
+     *     This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-     * @description A classic project was closed.
+     * @description A project (classic) was closed.
      */
     post: operations["project/closed"];
     delete?: never;
@@ -3014,12 +3122,14 @@ export interface webhooks {
     get?: never;
     put?: never;
     /**
-     * This event occurs when there is activity relating to a column on a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-cloud@latest//issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-cloud@latest//rest/projects)" in the REST API documentation.
+     * This event occurs when there is activity relating to a column on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-cloud@latest//issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-cloud@latest//rest/projects)" in the REST API documentation.
      *
-     *     For activity relating to a project or a card on a project, use the `project` and `project_card` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
+     *     For activity relating to a project (classic) or a card on a project (classic), use the `project` and `project_card` event.
+     *
+     *     This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-     * @description A column was added to a classic project.
+     * @description A column was added to a project (classic).
      */
     post: operations["project-column/created"];
     delete?: never;
@@ -3038,12 +3148,14 @@ export interface webhooks {
     get?: never;
     put?: never;
     /**
-     * This event occurs when there is activity relating to a column on a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-cloud@latest//issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-cloud@latest//rest/projects)" in the REST API documentation.
+     * This event occurs when there is activity relating to a column on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-cloud@latest//issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-cloud@latest//rest/projects)" in the REST API documentation.
      *
-     *     For activity relating to a project or a card on a project, use the `project` and `project_card` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
+     *     For activity relating to a project (classic) or a card on a project (classic), use the `project` and `project_card` event.
+     *
+     *     This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-     * @description A column was deleted from a classic project.
+     * @description A column was deleted from a project (classic).
      */
     post: operations["project-column/deleted"];
     delete?: never;
@@ -3062,12 +3174,14 @@ export interface webhooks {
     get?: never;
     put?: never;
     /**
-     * This event occurs when there is activity relating to a column on a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-cloud@latest//issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-cloud@latest//rest/projects)" in the REST API documentation.
+     * This event occurs when there is activity relating to a column on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-cloud@latest//issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-cloud@latest//rest/projects)" in the REST API documentation.
      *
-     *     For activity relating to a project or a card on a project, use the `project` and `project_card` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
+     *     For activity relating to a project (classic) or a card on a project (classic), use the `project` and `project_card` event.
+     *
+     *     This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-     * @description The name of a column on a classic project was changed.
+     * @description The name of a column on a project (classic) was changed.
      */
     post: operations["project-column/edited"];
     delete?: never;
@@ -3086,12 +3200,14 @@ export interface webhooks {
     get?: never;
     put?: never;
     /**
-     * This event occurs when there is activity relating to a column on a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-cloud@latest//issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-cloud@latest//rest/projects)" in the REST API documentation.
+     * This event occurs when there is activity relating to a column on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-cloud@latest//issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-cloud@latest//rest/projects)" in the REST API documentation.
      *
-     *     For activity relating to a project or a card on a project, use the `project` and `project_card` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
+     *     For activity relating to a project (classic) or a card on a project (classic), use the `project` and `project_card` event.
+     *
+     *     This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-     * @description A column was moved to a new position on a classic project.
+     * @description A column was moved to a new position on a project (classic).
      */
     post: operations["project-column/moved"];
     delete?: never;
@@ -3110,12 +3226,14 @@ export interface webhooks {
     get?: never;
     put?: never;
     /**
-     * This event occurs when there is activity relating to a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-cloud@latest//issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-cloud@latest//rest/projects)" in the REST API documentation.
+     * This event occurs when there is activity relating to a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-cloud@latest//issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-cloud@latest//rest/projects)" in the REST API documentation.
      *
-     *     For activity relating to a card or column on a project, use the `project_card` and `project_column` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
+     *     For activity relating to a card or column on a project (classic), use the `project_card` and `project_column` event.
+     *
+     *     This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-     * @description A classic project was created.
+     * @description A project (classic) was created.
      */
     post: operations["project/created"];
     delete?: never;
@@ -3134,12 +3252,14 @@ export interface webhooks {
     get?: never;
     put?: never;
     /**
-     * This event occurs when there is activity relating to a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-cloud@latest//issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-cloud@latest//rest/projects)" in the REST API documentation.
+     * This event occurs when there is activity relating to a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-cloud@latest//issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-cloud@latest//rest/projects)" in the REST API documentation.
      *
-     *     For activity relating to a card or column on a project, use the `project_card` and `project_column` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
+     *     For activity relating to a card or column on a project (classic), use the `project_card` and `project_column` event.
+     *
+     *     This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-     * @description A classic project was deleted.
+     * @description A project (classic) was deleted.
      */
     post: operations["project/deleted"];
     delete?: never;
@@ -3158,12 +3278,14 @@ export interface webhooks {
     get?: never;
     put?: never;
     /**
-     * This event occurs when there is activity relating to a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-cloud@latest//issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-cloud@latest//rest/projects)" in the REST API documentation.
+     * This event occurs when there is activity relating to a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-cloud@latest//issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-cloud@latest//rest/projects)" in the REST API documentation.
      *
-     *     For activity relating to a card or column on a project, use the `project_card` and `project_column` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
+     *     For activity relating to a card or column on a project (classic), use the `project_card` and `project_column` event.
+     *
+     *     This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-     * @description The name or description of a classic project was changed.
+     * @description The name or description of a project (classic) was changed.
      */
     post: operations["project/edited"];
     delete?: never;
@@ -3182,12 +3304,14 @@ export interface webhooks {
     get?: never;
     put?: never;
     /**
-     * This event occurs when there is activity relating to a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-cloud@latest//issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-cloud@latest//rest/projects)" in the REST API documentation.
+     * This event occurs when there is activity relating to a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-cloud@latest//issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-cloud@latest//rest/projects)" in the REST API documentation.
      *
-     *     For activity relating to a card or column on a project, use the `project_card` and `project_column` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
+     *     For activity relating to a card or column on a project (classic), use the `project_card` and `project_column` event.
+     *
+     *     This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-     * @description A classic project was closed.
+     * @description A project (classic) was closed.
      */
     post: operations["project/reopened"];
     delete?: never;
@@ -3710,7 +3834,7 @@ export interface webhooks {
      *     For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-     * @description The title or body of a pull request was edited.
+     * @description The title or body of a pull request was edited, or the base branch of a pull request was changed.
      */
     post: operations["pull-request/edited"];
     delete?: never;
@@ -4699,7 +4823,7 @@ export interface webhooks {
      *     For more information about repository rulesets, see "[Managing rulesets](https://docs.github.com/enterprise-cloud@latest//repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets)."
      *     For more information on managing rulesets via the APIs, see [Repository ruleset](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#repositoryruleset) in the GraphQL documentation or "[Repository rules](https://docs.github.com/enterprise-cloud@latest//rest/repos/rules)" and "[Organization rules](https://docs.github.com/enterprise-cloud@latest//rest/orgs/rules) in the REST API documentation."
      *
-     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository or organization permission.
      * @description A repository ruleset was created.
      */
     post: operations["repository-ruleset/created"];
@@ -4723,7 +4847,7 @@ export interface webhooks {
      *     For more information about repository rulesets, see "[Managing rulesets](https://docs.github.com/enterprise-cloud@latest//repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets)."
      *     For more information on managing rulesets via the APIs, see [Repository ruleset](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#repositoryruleset) in the GraphQL documentation or "[Repository rules](https://docs.github.com/enterprise-cloud@latest//rest/repos/rules)" and "[Organization rules](https://docs.github.com/enterprise-cloud@latest//rest/orgs/rules) in the REST API documentation."
      *
-     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository or organization permission.
      * @description A repository ruleset was deleted.
      */
     post: operations["repository-ruleset/deleted"];
@@ -4747,7 +4871,7 @@ export interface webhooks {
      *     For more information about repository rulesets, see "[Managing rulesets](https://docs.github.com/enterprise-cloud@latest//repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets)."
      *     For more information on managing rulesets via the APIs, see [Repository ruleset](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#repositoryruleset) in the GraphQL documentation or "[Repository rules](https://docs.github.com/enterprise-cloud@latest//rest/repos/rules)" and "[Organization rules](https://docs.github.com/enterprise-cloud@latest//rest/orgs/rules) in the REST API documentation."
      *
-     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository or organization permission.
      * @description A repository ruleset was edited.
      */
     post: operations["repository-ruleset/edited"];
@@ -5011,6 +5135,30 @@ export interface webhooks {
     patch?: never;
     trace?: never;
   };
+  "secret-scanning-alert-validated": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * This event occurs when there is activity relating to a secret scanning alert. For more information about secret scanning, see "[About secret scanning](https://docs.github.com/enterprise-cloud@latest//code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning)" in the REST API documentation.
+     *
+     *     For activity relating to secret scanning alert locations, use the `secret_scanning_alert_location` event.
+     *
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
+     * @description A secret scanning alert was validated.
+     */
+    post: operations["secret-scanning-alert/validated"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "security-advisory-published": {
     parameters: {
       query?: never;
@@ -5021,7 +5169,7 @@ export interface webhooks {
     get?: never;
     put?: never;
     /**
-     * This event occurs when there is activity relating to a security advisory that was reviewed by GitHub. A GitHub-reviewed security advisory provides information about security-related vulnerabilities in software on GitHub. For more information about security advisories, see "[About GitHub Security Advisories for repositories](https://docs.github.com/enterprise-cloud@latest//code-security/repository-security-advisories/about-github-security-advisories-for-repositories)." For information about the API to manage security advisories, see [the GraphQL documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#securityadvisory).
+     * This event occurs when there is activity relating to a global security advisory that was reviewed by GitHub. A GitHub-reviewed global security advisory provides information about security vulnerabilities or malware that have been mapped to packages in ecosystems we support. For more information about global security advisories, see "[About global security advisories](https://docs.github.com/enterprise-cloud@latest//code-security/security-advisories/working-with-global-security-advisories-from-the-github-advisory-database/about-global-security-advisories)." For information about the API to manage security advisories, see [the REST API documentation](https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/global-advisories) or [the GraphQL documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#securityadvisory).
      *
      *     GitHub Dependabot alerts are also powered by the security advisory dataset. For more information, see "[About Dependabot alerts](https://docs.github.com/enterprise-cloud@latest//code-security/dependabot/dependabot-alerts/about-dependabot-alerts)."
      * @description A security advisory was published to the GitHub community.
@@ -5043,10 +5191,10 @@ export interface webhooks {
     get?: never;
     put?: never;
     /**
-     * This event occurs when there is activity relating to a security advisory that was reviewed by GitHub. A GitHub-reviewed security advisory provides information about security-related vulnerabilities in software on GitHub. For more information about security advisories, see "[About GitHub Security Advisories for repositories](https://docs.github.com/enterprise-cloud@latest//code-security/repository-security-advisories/about-github-security-advisories-for-repositories)." For information about the API to manage security advisories, see [the GraphQL documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#securityadvisory).
+     * This event occurs when there is activity relating to a global security advisory that was reviewed by GitHub. A GitHub-reviewed global security advisory provides information about security vulnerabilities or malware that have been mapped to packages in ecosystems we support. For more information about global security advisories, see "[About global security advisories](https://docs.github.com/enterprise-cloud@latest//code-security/security-advisories/working-with-global-security-advisories-from-the-github-advisory-database/about-global-security-advisories)." For information about the API to manage security advisories, see [the REST API documentation](https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/global-advisories) or [the GraphQL documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#securityadvisory).
      *
      *     GitHub Dependabot alerts are also powered by the security advisory dataset. For more information, see "[About Dependabot alerts](https://docs.github.com/enterprise-cloud@latest//code-security/dependabot/dependabot-alerts/about-dependabot-alerts)."
-     * @description The metadata or description of a security advisory was changed, or the security advisory was withdrawn.
+     * @description The metadata or description of a security advisory was changed.
      */
     post: operations["security-advisory/updated"];
     delete?: never;
@@ -5065,7 +5213,7 @@ export interface webhooks {
     get?: never;
     put?: never;
     /**
-     * This event occurs when there is activity relating to a security advisory that was reviewed by GitHub. A GitHub-reviewed security advisory provides information about security-related vulnerabilities in software on GitHub. For more information about security advisories, see "[About GitHub Security Advisories for repositories](https://docs.github.com/enterprise-cloud@latest//code-security/repository-security-advisories/about-github-security-advisories-for-repositories)." For information about the API to manage security advisories, see [the GraphQL documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#securityadvisory).
+     * This event occurs when there is activity relating to a global security advisory that was reviewed by GitHub. A GitHub-reviewed global security advisory provides information about security vulnerabilities or malware that have been mapped to packages in ecosystems we support. For more information about global security advisories, see "[About global security advisories](https://docs.github.com/enterprise-cloud@latest//code-security/security-advisories/working-with-global-security-advisories-from-the-github-advisory-database/about-global-security-advisories)." For information about the API to manage security advisories, see [the REST API documentation](https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/global-advisories) or [the GraphQL documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#securityadvisory).
      *
      *     GitHub Dependabot alerts are also powered by the security advisory dataset. For more information, see "[About Dependabot alerts](https://docs.github.com/enterprise-cloud@latest//code-security/dependabot/dependabot-alerts/about-dependabot-alerts)."
      * @description A previously published security advisory was withdrawn.
@@ -5857,7 +6005,7 @@ export interface components {
       forks_count: number;
       stargazers_count: number;
       watchers_count: number;
-      /** @description The size of the repository. Size is calculated hourly. When a repository is initially created, the size is 0. */
+      /** @description The size of the repository, in kilobytes. Size is calculated hourly. When a repository is initially created, the size is 0. */
       size: number;
       /** @description The default branch of the repository. */
       default_branch: string;
@@ -5868,6 +6016,10 @@ export interface components {
        */
       is_template?: boolean;
       topics?: string[];
+      /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+      custom_properties?: {
+        [key: string]: unknown;
+      };
       /**
        * @description Whether issues are enabled.
        * @default true
@@ -6482,7 +6634,7 @@ export interface components {
     /** Check Run Completed Event */
     "webhook-check-run-completed": {
       /** @enum {string} */
-      action?: "completed";
+      action: "completed";
       check_run: components["schemas"]["check-run-with-simple-check-suite"];
       installation?: components["schemas"]["simple-installation"];
       organization?: components["schemas"]["organization-simple-webhooks"];
@@ -6719,7 +6871,7 @@ export interface components {
       forks_count?: number;
       stargazers_count?: number;
       watchers_count?: number;
-      /** @description The size of the repository. Size is calculated hourly. When a repository is initially created, the size is 0. */
+      /** @description The size of the repository, in kilobytes. Size is calculated hourly. When a repository is initially created, the size is 0. */
       size?: number;
       default_branch?: string;
       open_issues_count?: number;
@@ -6801,6 +6953,10 @@ export interface components {
         /** @enum {string} */
         status?: "enabled" | "disabled";
       };
+      secret_scanning_validity_checks?: {
+        /** @enum {string} */
+        status?: "enabled" | "disabled";
+      };
     } | null;
     /**
      * Deployment
@@ -6835,7 +6991,7 @@ export interface components {
     /** Check Run Created Event */
     "webhook-check-run-created": {
       /** @enum {string} */
-      action?: "created";
+      action: "created";
       check_run: components["schemas"]["check-run-with-simple-check-suite"];
       installation?: components["schemas"]["simple-installation"];
       organization?: components["schemas"]["organization-simple-webhooks"];
@@ -6860,7 +7016,7 @@ export interface components {
     /** Check Run Re-Requested Event */
     "webhook-check-run-rerequested": {
       /** @enum {string} */
-      action?: "rerequested";
+      action: "rerequested";
       check_run: components["schemas"]["check-run-with-simple-check-suite"];
       installation?: components["schemas"]["simple-installation"];
       organization?: components["schemas"]["organization-simple-webhooks"];
@@ -7065,7 +7221,7 @@ export interface components {
         /** Format: uri */
         check_runs_url: string;
         /**
-         * @description The summary conclusion for all check runs that are part of the check suite. Can be one of `success`, `failure`, `neutral`, `cancelled`, `timed_out`, `action_required` or `stale`. This value will be `null` until the check run has `completed`.
+         * @description The summary conclusion for all check runs that are part of the check suite. This value will be `null` until the check run has `completed`.
          * @enum {string|null}
          */
         conclusion:
@@ -7376,7 +7532,7 @@ export interface components {
         /** Format: uri */
         check_runs_url: string;
         /**
-         * @description The summary conclusion for all check runs that are part of the check suite. Can be one of `success`, `failure`,` neutral`, `cancelled`, `timed_out`, `action_required` or `stale`. This value will be `null` until the check run has completed.
+         * @description The summary conclusion for all check runs that are part of the check suite. This value will be `null` until the check run has completed.
          * @enum {string|null}
          */
         conclusion:
@@ -7675,7 +7831,7 @@ export interface components {
         /** Format: uri */
         check_runs_url: string;
         /**
-         * @description The summary conclusion for all check runs that are part of the check suite. Can be one of `success`, `failure`,` neutral`, `cancelled`, `timed_out`, `action_required` or `stale`. This value will be `null` until the check run has completed.
+         * @description The summary conclusion for all check runs that are part of the check suite. This value will be `null` until the check run has completed.
          * @enum {string|null}
          */
         conclusion:
@@ -7833,7 +7989,7 @@ export interface components {
           url?: string;
         } | null;
         /**
-         * @description The reason for dismissing or closing the alert. Can be one of: `false positive`, `won't fix`, and `used in tests`.
+         * @description The reason for dismissing or closing the alert.
          * @enum {string|null}
          */
         dismissed_reason:
@@ -7965,7 +8121,7 @@ export interface components {
           url?: string;
         } | null;
         /**
-         * @description The reason for dismissing or closing the alert. Can be one of: `false positive`, `won't fix`, and `used in tests`.
+         * @description The reason for dismissing or closing the alert.
          * @enum {string|null}
          */
         dismissed_reason:
@@ -8203,7 +8359,7 @@ export interface components {
           url?: string;
         } | null;
         /**
-         * @description The reason for dismissing or closing the alert. Can be one of: `false positive`, `won't fix`, and `used in tests`.
+         * @description The reason for dismissing or closing the alert.
          * @enum {string|null}
          */
         dismissed_reason:
@@ -8590,6 +8746,90 @@ export interface components {
       ref_type: "tag" | "branch";
       repository: components["schemas"]["repository-webhooks"];
       sender: components["schemas"]["simple-user-webhooks"];
+    };
+    /** custom property created event */
+    "webhook-custom-property-created": {
+      /** @enum {string} */
+      action: "created";
+      definition: components["schemas"]["org-custom-property"];
+      enterprise?: components["schemas"]["enterprise-webhooks"];
+      installation?: components["schemas"]["simple-installation"];
+      organization: components["schemas"]["organization-simple-webhooks"];
+      sender?: components["schemas"]["simple-user-webhooks"];
+    };
+    /**
+     * Organization Custom Property
+     * @description Custom property defined on an organization
+     */
+    "org-custom-property": {
+      /** @description The name of the property */
+      property_name: string;
+      /**
+       * @description The type of the value for the property
+       * @enum {string}
+       */
+      value_type: "string" | "single_select";
+      /** @description Whether the property is required. */
+      required?: boolean;
+      /** @description Default value of the property */
+      default_value?: string | null;
+      /** @description Short description of the property */
+      description?: string | null;
+      /** @description An ordered list of the allowed values of the property.
+       *     The property can have up to 200 allowed values. */
+      allowed_values?: string[] | null;
+      /**
+       * @description Who can edit the values of the property
+       * @enum {string|null}
+       */
+      values_editable_by?: "org_actors" | "org_and_repo_actors" | null;
+    };
+    /** custom property deleted event */
+    "webhook-custom-property-deleted": {
+      /** @enum {string} */
+      action: "deleted";
+      definition: {
+        /** @description The name of the property that was deleted. */
+        property_name: string;
+      };
+      enterprise?: components["schemas"]["enterprise-webhooks"];
+      installation?: components["schemas"]["simple-installation"];
+      organization: components["schemas"]["organization-simple-webhooks"];
+      sender?: components["schemas"]["simple-user-webhooks"];
+    };
+    /** custom property updated event */
+    "webhook-custom-property-updated": {
+      /** @enum {string} */
+      action: "updated";
+      definition: components["schemas"]["org-custom-property"];
+      enterprise?: components["schemas"]["enterprise-webhooks"];
+      installation?: components["schemas"]["simple-installation"];
+      organization: components["schemas"]["organization-simple-webhooks"];
+      sender?: components["schemas"]["simple-user-webhooks"];
+    };
+    /** Custom property values updated event */
+    "webhook-custom-property-values-updated": {
+      /** @enum {string} */
+      action: "updated";
+      enterprise?: components["schemas"]["enterprise-webhooks"];
+      installation?: components["schemas"]["simple-installation"];
+      repository: components["schemas"]["repository-webhooks"];
+      organization: components["schemas"]["organization-simple-webhooks"];
+      sender?: components["schemas"]["simple-user-webhooks"];
+      /** @description The new custom property values for the repository. */
+      new_property_values: components["schemas"]["custom-property-value"][];
+      /** @description The old custom property values for the repository. */
+      old_property_values: components["schemas"]["custom-property-value"][];
+    };
+    /**
+     * Custom Property Value
+     * @description Custom property name and associated value
+     */
+    "custom-property-value": {
+      /** @description The name of the property */
+      property_name: string;
+      /** @description The value assigned to the property */
+      value: (null | unknown[]) & (string | string[]);
     };
     /** delete event */
     "webhook-delete": {
@@ -9473,7 +9713,7 @@ export interface components {
     /** deployment protection rule requested event */
     "webhook-deployment-protection-rule-requested": {
       /** @enum {string} */
-      action?: "requested";
+      action: "requested";
       /** @description The name of the environment that has the deployment protection rule. */
       environment?: string;
       /** @description The event that triggered the deployment protection rule. */
@@ -9485,10 +9725,10 @@ export interface components {
       deployment_callback_url?: string;
       deployment?: components["schemas"]["deployment"];
       pull_requests?: components["schemas"]["pull-request"][];
-      repository?: components["schemas"]["repository-webhooks"];
+      repository: components["schemas"]["repository-webhooks"];
       organization?: components["schemas"]["organization-simple-webhooks"];
       installation?: components["schemas"]["simple-installation"];
-      sender?: components["schemas"]["simple-user-webhooks"];
+      sender: components["schemas"]["simple-user-webhooks"];
     };
     /**
      * Deployment
@@ -11260,7 +11500,7 @@ export interface components {
         /** Format: date-time */
         completed_at: string | null;
         /**
-         * @description The result of the completed check run. Can be one of `success`, `failure`, `neutral`, `cancelled`, `timed_out`, `action_required` or `stale`. This value will be `null` until the check run has completed.
+         * @description The result of the completed check run. This value will be `null` until the check run has completed.
          * @enum {string|null}
          */
         conclusion:
@@ -13170,6 +13410,10 @@ export interface components {
         /** Format: uri */
         contributors_url: string;
         created_at: number | string;
+        /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+        custom_properties?: {
+          [key: string]: unknown;
+        };
         /** @description The default branch of the repository. */
         default_branch: string;
         /**
@@ -13459,10 +13703,6 @@ export interface components {
     "webhook-github-app-authorization-revoked": {
       /** @enum {string} */
       action: "revoked";
-      enterprise?: components["schemas"]["enterprise-webhooks"];
-      installation?: components["schemas"]["simple-installation"];
-      organization?: components["schemas"]["organization-simple-webhooks"];
-      repository?: components["schemas"]["repository-webhooks"];
       sender: components["schemas"]["simple-user-webhooks"];
     };
     /** gollum event */
@@ -13653,10 +13893,20 @@ export interface components {
        */
       checks?: "read" | "write";
       /**
+       * @description The level of permission to grant the access token to create, edit, delete, and list Codespaces.
+       * @enum {string}
+       */
+      codespaces?: "read" | "write";
+      /**
        * @description The level of permission to grant the access token for repository contents, commits, branches, downloads, releases, and merges.
        * @enum {string}
        */
       contents?: "read" | "write";
+      /**
+       * @description The leve of permission to grant the access token to manage Dependabot secrets.
+       * @enum {string}
+       */
+      dependabot_secrets?: "read" | "write";
       /**
        * @description The level of permission to grant the access token for deployments and deployment statuses.
        * @enum {string}
@@ -13692,6 +13942,11 @@ export interface components {
        * @enum {string}
        */
       pull_requests?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token to view and edit custom properties for a repository, when allowed by the property.
+       * @enum {string}
+       */
+      repository_custom_properties?: "read" | "write";
       /**
        * @description The level of permission to grant the access token to manage the post-receive hooks for a repository.
        * @enum {string}
@@ -13748,15 +14003,35 @@ export interface components {
        */
       organization_administration?: "read" | "write";
       /**
-       * @description The level of permission to grant the access token for custom repository roles management. This property is in beta and is subject to change.
+       * @description The level of permission to grant the access token for custom repository roles management.
        * @enum {string}
        */
       organization_custom_roles?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token for custom organization roles management.
+       * @enum {string}
+       */
+      organization_custom_org_roles?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token for custom property management.
+       * @enum {string}
+       */
+      organization_custom_properties?: "read" | "write" | "admin";
+      /**
+       * @description The level of permission to grant the access token for managing access to GitHub Copilot for members of an organization with a Copilot Business subscription. This property is in beta and is subject to change.
+       * @enum {string}
+       */
+      organization_copilot_seat_management?: "write";
       /**
        * @description The level of permission to grant the access token to view and manage announcement banners for an organization.
        * @enum {string}
        */
       organization_announcement_banners?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token to view events triggered by an activity in an organization.
+       * @enum {string}
+       */
+      organization_events?: "read";
       /**
        * @description The level of permission to grant the access token to manage the post-receive hooks for an organization.
        * @enum {string}
@@ -13807,6 +14082,41 @@ export interface components {
        * @enum {string}
        */
       team_discussions?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token to manage the email addresses belonging to a user.
+       * @enum {string}
+       */
+      email_addresses?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token to manage the followers belonging to a user.
+       * @enum {string}
+       */
+      followers?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token to manage git SSH keys.
+       * @enum {string}
+       */
+      git_ssh_keys?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token to view and manage GPG keys belonging to a user.
+       * @enum {string}
+       */
+      gpg_keys?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token to view and manage interaction limits on a repository.
+       * @enum {string}
+       */
+      interaction_limits?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token to manage the profile settings belonging to a user.
+       * @enum {string}
+       */
+      profile?: "write";
+      /**
+       * @description The level of permission to grant the access token to list and manage repositories a user is starring.
+       * @enum {string}
+       */
+      starring?: "read" | "write";
     };
     /** installation deleted event */
     "webhook-installation-deleted": {
@@ -21123,6 +21433,10 @@ export interface components {
           /** Format: uri */
           contributors_url: string;
           created_at: number | string;
+          /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+          custom_properties?: {
+            [key: string]: unknown;
+          };
           /** @description The default branch of the repository. */
           default_branch: string;
           /**
@@ -23330,6 +23644,10 @@ export interface components {
           /** Format: uri */
           contributors_url: string;
           created_at: number | string;
+          /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+          custom_properties?: {
+            [key: string]: unknown;
+          };
           /** @description The default branch of the repository. */
           default_branch: string;
           /**
@@ -27175,7 +27493,7 @@ export interface components {
        */
       milestone: {
         /** Format: date-time */
-        closed_at: string | null;
+        closed_at: string;
         closed_issues: number;
         /** Format: date-time */
         created_at: string;
@@ -27232,7 +27550,7 @@ export interface components {
          * @description The state of the milestone.
          * @enum {string}
          */
-        state: "open" | "closed";
+        state: "closed";
         /** @description The title of the milestone. */
         title: string;
         /** Format: date-time */
@@ -27255,8 +27573,7 @@ export interface components {
        * @description A collection of related issues and pull requests.
        */
       milestone: {
-        /** Format: date-time */
-        closed_at: string | null;
+        closed_at: null;
         closed_issues: number;
         /** Format: date-time */
         created_at: string;
@@ -27313,7 +27630,7 @@ export interface components {
          * @description The state of the milestone.
          * @enum {string}
          */
-        state: "open" | "closed";
+        state: "open";
         /** @description The title of the milestone. */
         title: string;
         /** Format: date-time */
@@ -27513,8 +27830,7 @@ export interface components {
        * @description A collection of related issues and pull requests.
        */
       milestone: {
-        /** Format: date-time */
-        closed_at: string | null;
+        closed_at: null;
         closed_issues: number;
         /** Format: date-time */
         created_at: string;
@@ -27571,7 +27887,7 @@ export interface components {
          * @description The state of the milestone.
          * @enum {string}
          */
-        state: "open" | "closed";
+        state: "open";
         /** @description The title of the milestone. */
         title: string;
         /** Format: date-time */
@@ -61236,6 +61552,10 @@ export interface components {
         /** Format: uri */
         contributors_url: string;
         created_at: number | string;
+        /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+        custom_properties?: {
+          [key: string]: unknown;
+        };
         /** @description The default branch of the repository. */
         default_branch: string;
         /**
@@ -63002,8 +63322,11 @@ export interface components {
       readonly ghsa_id: string;
       /** @description The Common Vulnerabilities and Exposures (CVE) ID. */
       cve_id: string | null;
-      /** @description The API URL for the advisory. */
-      url: string;
+      /**
+       * Format: uri
+       * @description The API URL for the advisory.
+       */
+      readonly url: string;
       /**
        * Format: uri
        * @description The URL for the advisory.
@@ -63509,6 +63832,13 @@ export interface components {
         };
       };
       conditions?:
+        | (
+            | null
+            | (
+                | components["schemas"]["repository-ruleset-conditions"]
+                | components["schemas"]["org-ruleset-conditions"]
+              )
+          )
         | components["schemas"]["repository-ruleset-conditions"]
         | components["schemas"]["org-ruleset-conditions"];
       rules?: components["schemas"]["repository-rule"][];
@@ -63527,7 +63857,7 @@ export interface components {
      * @description An actor that can bypass rules in a ruleset
      */
     "repository-ruleset-bypass-actor": {
-      /** @description The ID of the actor that can bypass a ruleset */
+      /** @description The ID of the actor that can bypass a ruleset. If `actor_type` is `OrganizationAdmin`, this should be `1`. */
       actor_id: number;
       /**
        * @description The type of actor that can bypass a ruleset
@@ -63565,7 +63895,9 @@ export interface components {
       | (components["schemas"]["repository-ruleset-conditions"] &
           components["schemas"]["repository-ruleset-conditions-repository-name-target"])
       | (components["schemas"]["repository-ruleset-conditions"] &
-          components["schemas"]["repository-ruleset-conditions-repository-id-target"]);
+          components["schemas"]["repository-ruleset-conditions-repository-id-target"])
+      | (components["schemas"]["repository-ruleset-conditions"] &
+          components["schemas"]["repository-ruleset-conditions-repository-property-target"]);
     /**
      * Repository ruleset conditions for repository names
      * @description Parameters for a repository name condition
@@ -63591,6 +63923,28 @@ export interface components {
       };
     };
     /**
+     * Repository ruleset conditions for repository properties
+     * @description Parameters for a repository property condition
+     */
+    "repository-ruleset-conditions-repository-property-target": {
+      repository_property: {
+        /** @description The repository properties and values to include. All of these properties must match for the condition to pass. */
+        include?: components["schemas"]["repository-ruleset-conditions-repository-property-spec"][];
+        /** @description The repository properties and values to exclude. The condition will not pass if any of these properties match. */
+        exclude?: components["schemas"]["repository-ruleset-conditions-repository-property-spec"][];
+      };
+    };
+    /**
+     * Repository ruleset property targeting definition
+     * @description Parameters for a targeting a repository property
+     */
+    "repository-ruleset-conditions-repository-property-spec": {
+      /** @description The name of the repository property to target */
+      name: string;
+      /** @description The values to match for the repository property */
+      property_values: string[];
+    };
+    /**
      * Repository Rule
      * @description A repository rule.
      */
@@ -63608,7 +63962,8 @@ export interface components {
       | components["schemas"]["repository-rule-commit-author-email-pattern"]
       | components["schemas"]["repository-rule-committer-email-pattern"]
       | components["schemas"]["repository-rule-branch-name-pattern"]
-      | components["schemas"]["repository-rule-tag-name-pattern"];
+      | components["schemas"]["repository-rule-tag-name-pattern"]
+      | components["schemas"]["repository-rule-workflows"];
     /**
      * creation
      * @description Only allow users with bypass permission to create matching refs.
@@ -63647,7 +64002,7 @@ export interface components {
     };
     /**
      * required_deployments
-     * @description Choose which environments must be successfully deployed to before refs can be merged into a branch that matches this rule.
+     * @description Choose which environments must be successfully deployed to before refs can be pushed into a ref that matches this rule.
      */
     "repository-rule-required-deployments": {
       /** @enum {string} */
@@ -63687,7 +64042,7 @@ export interface components {
     };
     /**
      * required_status_checks
-     * @description Choose which status checks must pass before branches can be merged into a branch that matches this rule. When enabled, commits must first be pushed to another branch, then merged or pushed directly to a ref that matches this rule after status checks have passed.
+     * @description Choose which status checks must pass before the ref is updated. When enabled, commits must first be pushed to another ref where the checks pass.
      */
     "repository-rule-required-status-checks": {
       /** @enum {string} */
@@ -63821,6 +64176,32 @@ export interface components {
         /** @description The pattern to match with. */
         pattern: string;
       };
+    };
+    /**
+     * workflows
+     * @description Require all changes made to a targeted branch to pass the specified workflows before they can be merged.
+     */
+    "repository-rule-workflows": {
+      /** @enum {string} */
+      type: "workflows";
+      parameters?: {
+        /** @description Workflows that must pass for this rule to pass. */
+        workflows: components["schemas"]["repository-rule-params-workflow-file-reference"][];
+      };
+    };
+    /**
+     * WorkflowFileReference
+     * @description A workflow that must run for this rule to pass
+     */
+    "repository-rule-params-workflow-file-reference": {
+      /** @description The path to the workflow file */
+      path: string;
+      /** @description The ref (branch or tag) of the workflow file to use */
+      ref?: string;
+      /** @description The ID of the repository where the workflow is defined */
+      repository_id: number;
+      /** @description The commit SHA of the workflow file to use */
+      sha?: string;
     };
     /** repository ruleset deleted event */
     "webhook-repository-ruleset-deleted": {
@@ -64384,6 +64765,11 @@ export interface components {
       resolution_comment?: string | null;
       /** @description The type of secret that secret scanning detected. */
       secret_type?: string;
+      /**
+       * @description The token status as of the latest validity check.
+       * @enum {string}
+       */
+      validity?: "active" | "inactive" | "unknown";
       /** @description Whether push protection was bypassed for the detected secret. */
       push_protection_bypassed?: boolean | null;
       push_protection_bypassed_by?: null | components["schemas"]["simple-user"];
@@ -64408,7 +64794,7 @@ export interface components {
     /** Secret Scanning Alert Location Created Event */
     "webhook-secret-scanning-alert-location-created": {
       /** @enum {string} */
-      action?: "created";
+      action: "created";
       alert: components["schemas"]["secret-scanning-alert-webhook"];
       installation?: components["schemas"]["simple-installation"];
       location: components["schemas"]["secret-scanning-location"];
@@ -64418,15 +64804,35 @@ export interface components {
     };
     "secret-scanning-location": {
       /**
-       * @description The location type. Because secrets may be found in different types of resources (ie. code, comments, issues), this field identifies the type of resource where the secret was found.
+       * @description The location type. Because secrets may be found in different types of resources (ie. code, comments, issues, pull requests, discussions), this field identifies the type of resource where the secret was found.
        * @enum {string}
        */
-      type: "commit" | "issue_title" | "issue_body" | "issue_comment";
+      type:
+        | "commit"
+        | "issue_title"
+        | "issue_body"
+        | "issue_comment"
+        | "discussion_title"
+        | "discussion_body"
+        | "discussion_comment"
+        | "pull_request_title"
+        | "pull_request_body"
+        | "pull_request_comment"
+        | "pull_request_review"
+        | "pull_request_review_comment";
       details:
         | components["schemas"]["secret-scanning-location-commit"]
         | components["schemas"]["secret-scanning-location-issue-title"]
         | components["schemas"]["secret-scanning-location-issue-body"]
-        | components["schemas"]["secret-scanning-location-issue-comment"];
+        | components["schemas"]["secret-scanning-location-issue-comment"]
+        | components["schemas"]["secret-scanning-location-discussion-title"]
+        | components["schemas"]["secret-scanning-location-discussion-body"]
+        | components["schemas"]["secret-scanning-location-discussion-comment"]
+        | components["schemas"]["secret-scanning-location-pull-request-title"]
+        | components["schemas"]["secret-scanning-location-pull-request-body"]
+        | components["schemas"]["secret-scanning-location-pull-request-comment"]
+        | components["schemas"]["secret-scanning-location-pull-request-review"]
+        | components["schemas"]["secret-scanning-location-pull-request-review-comment"];
     };
     /** @description Represents a 'commit' secret scanning location type. This location type shows that a secret was detected inside a commit to a repository. */
     "secret-scanning-location-commit": {
@@ -64473,6 +64879,70 @@ export interface components {
        */
       issue_comment_url: string;
     };
+    /** @description Represents a 'discussion_title' secret scanning location type. This location type shows that a secret was detected in the title of a discussion. */
+    "secret-scanning-location-discussion-title": {
+      /**
+       * Format: uri
+       * @description The URL to the discussion where the secret was detected.
+       */
+      discussion_title_url: string;
+    };
+    /** @description Represents a 'discussion_body' secret scanning location type. This location type shows that a secret was detected in the body of a discussion. */
+    "secret-scanning-location-discussion-body": {
+      /**
+       * Format: uri
+       * @description The URL to the discussion where the secret was detected.
+       */
+      discussion_body_url: string;
+    };
+    /** @description Represents a 'discussion_comment' secret scanning location type. This location type shows that a secret was detected in a comment on a discussion. */
+    "secret-scanning-location-discussion-comment": {
+      /**
+       * Format: uri
+       * @description The API URL to get the discussion comment where the secret was detected.
+       */
+      discussion_comment_url: string;
+    };
+    /** @description Represents a 'pull_request_title' secret scanning location type. This location type shows that a secret was detected in the title of a pull request. */
+    "secret-scanning-location-pull-request-title": {
+      /**
+       * Format: uri
+       * @description The API URL to get the pull request where the secret was detected.
+       */
+      pull_request_title_url: string;
+    };
+    /** @description Represents a 'pull_request_body' secret scanning location type. This location type shows that a secret was detected in the body of a pull request. */
+    "secret-scanning-location-pull-request-body": {
+      /**
+       * Format: uri
+       * @description The API URL to get the pull request where the secret was detected.
+       */
+      pull_request_body_url: string;
+    };
+    /** @description Represents a 'pull_request_comment' secret scanning location type. This location type shows that a secret was detected in a comment on a pull request. */
+    "secret-scanning-location-pull-request-comment": {
+      /**
+       * Format: uri
+       * @description The API URL to get the pull request comment where the secret was detected.
+       */
+      pull_request_comment_url: string;
+    };
+    /** @description Represents a 'pull_request_review' secret scanning location type. This location type shows that a secret was detected in a review on a pull request. */
+    "secret-scanning-location-pull-request-review": {
+      /**
+       * Format: uri
+       * @description The API URL to get the pull request review where the secret was detected.
+       */
+      pull_request_review_url: string;
+    };
+    /** @description Represents a 'pull_request_review_comment' secret scanning location type. This location type shows that a secret was detected in a review comment on a pull request. */
+    "secret-scanning-location-pull-request-review-comment": {
+      /**
+       * Format: uri
+       * @description The API URL to get the pull request review comment where the secret was detected.
+       */
+      pull_request_review_comment_url: string;
+    };
     /** secret_scanning_alert reopened event */
     "webhook-secret-scanning-alert-reopened": {
       /** @enum {string} */
@@ -64499,6 +64969,17 @@ export interface components {
     "webhook-secret-scanning-alert-revoked": {
       /** @enum {string} */
       action: "revoked";
+      alert: components["schemas"]["secret-scanning-alert-webhook"];
+      enterprise?: components["schemas"]["enterprise-webhooks"];
+      installation?: components["schemas"]["simple-installation"];
+      organization?: components["schemas"]["organization-simple-webhooks"];
+      repository: components["schemas"]["repository-webhooks"];
+      sender?: components["schemas"]["simple-user-webhooks"];
+    };
+    /** secret_scanning_alert validated event */
+    "webhook-secret-scanning-alert-validated": {
+      /** @enum {string} */
+      action: "validated";
       alert: components["schemas"]["secret-scanning-alert-webhook"];
       enterprise?: components["schemas"]["enterprise-webhooks"];
       installation?: components["schemas"]["simple-installation"];
@@ -64739,7 +65220,7 @@ export interface components {
       forks_count: number;
       stargazers_count: number;
       watchers_count: number;
-      /** @description The size of the repository. Size is calculated hourly. When a repository is initially created, the size is 0. */
+      /** @description The size of the repository, in kilobytes. Size is calculated hourly. When a repository is initially created, the size is 0. */
       size: number;
       default_branch: string;
       open_issues_count: number;
@@ -64749,7 +65230,7 @@ export interface components {
       has_projects: boolean;
       has_wiki: boolean;
       has_pages: boolean;
-      has_downloads: boolean;
+      has_downloads?: boolean;
       has_discussions: boolean;
       archived: boolean;
       /** @description Returns whether or not this repository disabled. */
@@ -64831,6 +65312,10 @@ export interface components {
       anonymous_access_enabled?: boolean;
       code_of_conduct?: components["schemas"]["code-of-conduct-simple"];
       security_and_analysis?: components["schemas"]["security-and-analysis"];
+      /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+      custom_properties?: {
+        [key: string]: unknown;
+      };
     };
     /**
      * Repository
@@ -64927,7 +65412,7 @@ export interface components {
       forks_count: number;
       stargazers_count: number;
       watchers_count: number;
-      /** @description The size of the repository. Size is calculated hourly. When a repository is initially created, the size is 0. */
+      /** @description The size of the repository, in kilobytes. Size is calculated hourly. When a repository is initially created, the size is 0. */
       size: number;
       /** @description The default branch of the repository. */
       default_branch: string;
@@ -66369,6 +66854,10 @@ export interface components {
         /** Format: uri */
         contributors_url: string;
         created_at: number | string;
+        /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+        custom_properties?: {
+          [key: string]: unknown;
+        };
         /** @description The default branch of the repository. */
         default_branch: string;
         /**
@@ -66682,6 +67171,10 @@ export interface components {
         /** Format: uri */
         contributors_url: string;
         created_at: number | string;
+        /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+        custom_properties?: {
+          [key: string]: unknown;
+        };
         /** @description The default branch of the repository. */
         default_branch: string;
         /**
@@ -66995,6 +67488,10 @@ export interface components {
         /** Format: uri */
         contributors_url: string;
         created_at: number | string;
+        /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+        custom_properties?: {
+          [key: string]: unknown;
+        };
         /** @description The default branch of the repository. */
         default_branch: string;
         /**
@@ -67339,6 +67836,10 @@ export interface components {
         /** Format: uri */
         contributors_url: string;
         created_at: number | string;
+        /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+        custom_properties?: {
+          [key: string]: unknown;
+        };
         /** @description The default branch of the repository. */
         default_branch: string;
         /**
@@ -67652,6 +68153,10 @@ export interface components {
         /** Format: uri */
         contributors_url: string;
         created_at: number | string;
+        /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+        custom_properties?: {
+          [key: string]: unknown;
+        };
         /** @description The default branch of the repository. */
         default_branch: string;
         /**
@@ -70982,6 +71487,154 @@ export interface operations {
     requestBody: {
       content: {
         "application/json": components["schemas"]["webhook-create"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  "custom-property/created": {
+    parameters: {
+      query?: never;
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-custom-property-created"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  "custom-property/deleted": {
+    parameters: {
+      query?: never;
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-custom-property-deleted"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  "custom-property/updated": {
+    parameters: {
+      query?: never;
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-custom-property-updated"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  "custom-property-values/updated": {
+    parameters: {
+      query?: never;
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-custom-property-values-updated"];
       };
     };
     responses: {
@@ -78049,6 +78702,43 @@ export interface operations {
     requestBody: {
       content: {
         "application/json": components["schemas"]["webhook-secret-scanning-alert-revoked"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  "secret-scanning-alert/validated": {
+    parameters: {
+      query?: never;
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-secret-scanning-alert-validated"];
       };
     };
     responses: {

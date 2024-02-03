@@ -12,8 +12,8 @@
     "test": "node scripts/test.js",
     "generate-types": "node scripts/generate-types",
     "update-package": "node scripts/update-package",
-    "lint": "prettier --check '*.{md,json}' 'scripts/*.js' 'packages/**/*.{ts,md,json,d.ts}'",
-    "lint:fix": "prettier --write '*.{md,json}' 'scripts/*.js' 'packages/**/*.{ts,md,json,d.ts}'"
+    "lint": "prettier --check '*.{md,json}' 'scripts/**/*.{js,json}' 'packages/**/*.{ts,md,json,d.ts}'",
+    "lint:fix": "prettier --write '*.{md,json}' 'scripts/**/*.{js,json}' 'packages/**/*.{ts,md,json,d.ts}'"
   },
   "repository": "github:wolfy1339/openapi-webhooks",
   "keywords": [
@@ -30,7 +30,7 @@
     "lodash": "^4.17.21",
     "openapi-typescript": "^7.0.0-next.2",
     "prettier": "^3.0.0",
-    "semantic-release": "^22.0.0",
+    "semantic-release": "^23.0.0",
     "semantic-release-plugin-update-version-in-files": "^1.1.0"
   },
   "engines": {
@@ -84,7 +84,7 @@
       [
         "@semantic-release/npm",
         {
-          "pkgRoot": "packages/openapi-webhooks-types-ghes-3.7"
+          "pkgRoot": "packages/openapi-webhooks-types-ghes-3.11"
         }
       ],
       [

@@ -6,6 +6,7 @@ import {
   copyFileSync,
 } from "node:fs";
 import * as prettier from "prettier";
+import overrides from "./overrides/index.js";
 
 /* if (!process.env.GITHUB_ACTIONS && !process.env.ANICCA_REPOSITORY_PATH) {
   throw new Error("Please set ANICCA_REPOSITORY_PATH");
@@ -41,6 +42,7 @@ async function run() {
       examples: {},
     };
 
+    overrides(file, schema);
     /**
      *  Function to handle special cases:
      * Check all instances of `$ref` in the OpenAPI spec, and add them to the definitions
@@ -67,6 +69,11 @@ async function run() {
       return obj;
     };
 
+    function addActionToRequired(schema) {
+      if (schema.properties.action !== undefined) {
+        schema.required.push("action");
+      }
+    }
     const webhooks = schema.webhooks;
     for (const webhookId in webhooks) {
       const webhook = webhooks[webhookId].post;
@@ -87,6 +94,13 @@ async function run() {
       tempSchema.components.schemas[refName] =
         schema.components.schemas[refName];
       specialHandling(schema.components.schemas[refName]);
+      if (tempSchema.components.schemas[refName].oneOf !== undefined) {
+        for (let oneOf of tempSchema.components.schemas[refName].oneOf) {
+          addActionToRequired(oneOf);
+        }
+      } else {
+        addActionToRequired(tempSchema.components.schemas[refName]);
+      }
       if (typeof examples !== "undefined") {
         for (let key of Object.keys(examples)) {
           const example$ref = examples[key].$ref.split("/").at(-1);
@@ -149,7 +163,7 @@ They are all generated, your changes would be overwritten with the next update. 
         type: "commonjs",
         repository: {
           type: "git",
-          url: "https://github.com/wolfy1330/openapi-webhooks.git",
+          url: "https://github.com/wolfy1339/openapi-webhooks.git",
           directory: `packages/openapi-webhooks`,
         },
         keywords: ["github", "openapi", "octokit", "webhooks"],

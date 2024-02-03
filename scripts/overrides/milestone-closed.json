@@ -1,0 +1,187 @@
+{
+  "title": "milestone closed event",
+  "type": "object",
+  "properties": {
+    "action": {
+      "type": "string",
+      "enum": ["closed"]
+    },
+    "installation": {
+      "$ref": "#/components/schemas/simple-installation"
+    },
+    "milestone": {
+      "title": "Milestone",
+      "description": "A collection of related issues and pull requests.",
+      "type": "object",
+      "properties": {
+        "closed_at": {
+          "type": ["string"],
+          "format": "date-time"
+        },
+        "closed_issues": {
+          "type": "integer"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "creator": {
+          "title": "User",
+          "type": ["object", "null"],
+          "properties": {
+            "avatar_url": {
+              "type": "string",
+              "format": "uri"
+            },
+            "deleted": {
+              "type": "boolean"
+            },
+            "email": {
+              "type": ["string", "null"]
+            },
+            "events_url": {
+              "type": "string",
+              "format": "uri-template"
+            },
+            "followers_url": {
+              "type": "string",
+              "format": "uri"
+            },
+            "following_url": {
+              "type": "string",
+              "format": "uri-template"
+            },
+            "gists_url": {
+              "type": "string",
+              "format": "uri-template"
+            },
+            "gravatar_id": {
+              "type": "string"
+            },
+            "html_url": {
+              "type": "string",
+              "format": "uri"
+            },
+            "id": {
+              "type": "integer"
+            },
+            "login": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "node_id": {
+              "type": "string"
+            },
+            "organizations_url": {
+              "type": "string",
+              "format": "uri"
+            },
+            "received_events_url": {
+              "type": "string",
+              "format": "uri"
+            },
+            "repos_url": {
+              "type": "string",
+              "format": "uri"
+            },
+            "site_admin": {
+              "type": "boolean"
+            },
+            "starred_url": {
+              "type": "string",
+              "format": "uri-template"
+            },
+            "subscriptions_url": {
+              "type": "string",
+              "format": "uri"
+            },
+            "type": {
+              "type": "string",
+              "enum": ["Bot", "User", "Organization", "Mannequin"]
+            },
+            "url": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "required": ["login", "id"]
+        },
+        "description": {
+          "type": ["string", "null"]
+        },
+        "due_on": {
+          "type": ["string", "null"],
+          "format": "date-time"
+        },
+        "html_url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "labels_url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "node_id": {
+          "type": "string"
+        },
+        "number": {
+          "description": "The number of the milestone.",
+          "type": "integer"
+        },
+        "open_issues": {
+          "type": "integer"
+        },
+        "state": {
+          "description": "The state of the milestone.",
+          "type": "string",
+          "enum": ["closed"]
+        },
+        "title": {
+          "description": "The title of the milestone.",
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        }
+      },
+      "required": [
+        "url",
+        "html_url",
+        "labels_url",
+        "id",
+        "node_id",
+        "number",
+        "title",
+        "description",
+        "creator",
+        "open_issues",
+        "closed_issues",
+        "state",
+        "created_at",
+        "updated_at",
+        "due_on",
+        "closed_at"
+      ]
+    },
+    "organization": {
+      "$ref": "#/components/schemas/organization-simple-webhooks"
+    },
+    "repository": {
+      "$ref": "#/components/schemas/repository-webhooks"
+    },
+    "sender": {
+      "$ref": "#/components/schemas/simple-user-webhooks"
+    }
+  },
+  "required": ["action", "milestone", "repository", "sender"]
+}
