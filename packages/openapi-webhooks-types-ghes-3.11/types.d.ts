@@ -1237,155 +1237,183 @@ export interface webhooks {
   };
   "project-card-converted": {
     /**
-     * This event occurs when there is activity relating to a card on a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.11/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.11/rest/projects)" in the REST API documentation.
+     * This event occurs when there is activity relating to a card on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.11/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.11/rest/projects)" in the REST API documentation.
      *
-     * For activity relating to a project or a column on a project, use the `project` and `project_column` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
+     * For activity relating to a project (classic) or a column on a project (classic), use the `project` and `project_column` event.
+     *
+     * This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-     * @description A note in a classic project was converted to an issue.
+     * @description A note in a project (classic) was converted to an issue.
      */
     post: operations["project-card/converted"];
   };
   "project-card-created": {
     /**
-     * This event occurs when there is activity relating to a card on a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.11/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.11/rest/projects)" in the REST API documentation.
+     * This event occurs when there is activity relating to a card on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.11/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.11/rest/projects)" in the REST API documentation.
      *
-     * For activity relating to a project or a column on a project, use the `project` and `project_column` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
+     * For activity relating to a project (classic) or a column on a project (classic), use the `project` and `project_column` event.
+     *
+     * This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-     * @description A card was added to a classic project.
+     * @description A card was added to a project (classic).
      */
     post: operations["project-card/created"];
   };
   "project-card-deleted": {
     /**
-     * This event occurs when there is activity relating to a card on a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.11/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.11/rest/projects)" in the REST API documentation.
+     * This event occurs when there is activity relating to a card on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.11/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.11/rest/projects)" in the REST API documentation.
      *
-     * For activity relating to a project or a column on a project, use the `project` and `project_column` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
+     * For activity relating to a project (classic) or a column on a project (classic), use the `project` and `project_column` event.
+     *
+     * This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-     * @description A card on a classic project was deleted.
+     * @description A card on a project (classic) was deleted.
      */
     post: operations["project-card/deleted"];
   };
   "project-card-edited": {
     /**
-     * This event occurs when there is activity relating to a card on a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.11/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.11/rest/projects)" in the REST API documentation.
+     * This event occurs when there is activity relating to a card on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.11/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.11/rest/projects)" in the REST API documentation.
      *
-     * For activity relating to a project or a column on a project, use the `project` and `project_column` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
+     * For activity relating to a project (classic) or a column on a project (classic), use the `project` and `project_column` event.
+     *
+     * This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-     * @description A note on a classic project was edited.
+     * @description A note on a project (classic) was edited.
      */
     post: operations["project-card/edited"];
   };
   "project-card-moved": {
     /**
-     * This event occurs when there is activity relating to a card on a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.11/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.11/rest/projects)" in the REST API documentation.
+     * This event occurs when there is activity relating to a card on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.11/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.11/rest/projects)" in the REST API documentation.
      *
-     * For activity relating to a project or a column on a project, use the `project` and `project_column` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
+     * For activity relating to a project (classic) or a column on a project (classic), use the `project` and `project_column` event.
+     *
+     * This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-     * @description A card on a classic project was moved to another column or to another position in its column.
+     * @description A card on a project (classic) was moved to another column or to another position in its column.
      */
     post: operations["project-card/moved"];
   };
   "project-closed": {
     /**
-     * This event occurs when there is activity relating to a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.11/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.11/rest/projects)" in the REST API documentation.
+     * This event occurs when there is activity relating to a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.11/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.11/rest/projects)" in the REST API documentation.
      *
-     * For activity relating to a card or column on a project, use the `project_card` and `project_column` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
+     * For activity relating to a card or column on a project (classic), use the `project_card` and `project_column` event.
+     *
+     * This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-     * @description A classic project was closed.
+     * @description A project (classic) was closed.
      */
     post: operations["project/closed"];
   };
   "project-column-created": {
     /**
-     * This event occurs when there is activity relating to a column on a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.11/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.11/rest/projects)" in the REST API documentation.
+     * This event occurs when there is activity relating to a column on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.11/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.11/rest/projects)" in the REST API documentation.
      *
-     * For activity relating to a project or a card on a project, use the `project` and `project_card` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
+     * For activity relating to a project (classic) or a card on a project (classic), use the `project` and `project_card` event.
+     *
+     * This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-     * @description A column was added to a classic project.
+     * @description A column was added to a project (classic).
      */
     post: operations["project-column/created"];
   };
   "project-column-deleted": {
     /**
-     * This event occurs when there is activity relating to a column on a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.11/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.11/rest/projects)" in the REST API documentation.
+     * This event occurs when there is activity relating to a column on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.11/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.11/rest/projects)" in the REST API documentation.
      *
-     * For activity relating to a project or a card on a project, use the `project` and `project_card` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
+     * For activity relating to a project (classic) or a card on a project (classic), use the `project` and `project_card` event.
+     *
+     * This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-     * @description A column was deleted from a classic project.
+     * @description A column was deleted from a project (classic).
      */
     post: operations["project-column/deleted"];
   };
   "project-column-edited": {
     /**
-     * This event occurs when there is activity relating to a column on a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.11/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.11/rest/projects)" in the REST API documentation.
+     * This event occurs when there is activity relating to a column on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.11/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.11/rest/projects)" in the REST API documentation.
      *
-     * For activity relating to a project or a card on a project, use the `project` and `project_card` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
+     * For activity relating to a project (classic) or a card on a project (classic), use the `project` and `project_card` event.
+     *
+     * This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-     * @description The name of a column on a classic project was changed.
+     * @description The name of a column on a project (classic) was changed.
      */
     post: operations["project-column/edited"];
   };
   "project-column-moved": {
     /**
-     * This event occurs when there is activity relating to a column on a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.11/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.11/rest/projects)" in the REST API documentation.
+     * This event occurs when there is activity relating to a column on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.11/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.11/rest/projects)" in the REST API documentation.
      *
-     * For activity relating to a project or a card on a project, use the `project` and `project_card` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
+     * For activity relating to a project (classic) or a card on a project (classic), use the `project` and `project_card` event.
+     *
+     * This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-     * @description A column was moved to a new position on a classic project.
+     * @description A column was moved to a new position on a project (classic).
      */
     post: operations["project-column/moved"];
   };
   "project-created": {
     /**
-     * This event occurs when there is activity relating to a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.11/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.11/rest/projects)" in the REST API documentation.
+     * This event occurs when there is activity relating to a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.11/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.11/rest/projects)" in the REST API documentation.
      *
-     * For activity relating to a card or column on a project, use the `project_card` and `project_column` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
+     * For activity relating to a card or column on a project (classic), use the `project_card` and `project_column` event.
+     *
+     * This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-     * @description A classic project was created.
+     * @description A project (classic) was created.
      */
     post: operations["project/created"];
   };
   "project-deleted": {
     /**
-     * This event occurs when there is activity relating to a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.11/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.11/rest/projects)" in the REST API documentation.
+     * This event occurs when there is activity relating to a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.11/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.11/rest/projects)" in the REST API documentation.
      *
-     * For activity relating to a card or column on a project, use the `project_card` and `project_column` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
+     * For activity relating to a card or column on a project (classic), use the `project_card` and `project_column` event.
+     *
+     * This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-     * @description A classic project was deleted.
+     * @description A project (classic) was deleted.
      */
     post: operations["project/deleted"];
   };
   "project-edited": {
     /**
-     * This event occurs when there is activity relating to a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.11/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.11/rest/projects)" in the REST API documentation.
+     * This event occurs when there is activity relating to a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.11/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.11/rest/projects)" in the REST API documentation.
      *
-     * For activity relating to a card or column on a project, use the `project_card` and `project_column` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
+     * For activity relating to a card or column on a project (classic), use the `project_card` and `project_column` event.
+     *
+     * This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-     * @description The name or description of a classic project was changed.
+     * @description The name or description of a project (classic) was changed.
      */
     post: operations["project/edited"];
   };
   "project-reopened": {
     /**
-     * This event occurs when there is activity relating to a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.11/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.11/rest/projects)" in the REST API documentation.
+     * This event occurs when there is activity relating to a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.11/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.11/rest/projects)" in the REST API documentation.
      *
-     * For activity relating to a card or column on a project, use the `project_card` and `project_column` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
+     * For activity relating to a card or column on a project (classic), use the `project_card` and `project_column` event.
+     *
+     * This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-     * @description A classic project was closed.
+     * @description A project (classic) was closed.
      */
     post: operations["project/reopened"];
   };
@@ -2183,7 +2211,7 @@ export interface webhooks {
   };
   "security-advisory-published": {
     /**
-     * This event occurs when there is activity relating to a security advisory that was reviewed by GitHub. A GitHub-reviewed security advisory provides information about security-related vulnerabilities in software on GitHub. For more information about security advisories, see "[About GitHub Security Advisories for repositories](https://docs.github.com/enterprise-server@3.11/code-security/repository-security-advisories/about-github-security-advisories-for-repositories)." For information about the API to manage security advisories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#securityadvisory).
+     * This event occurs when there is activity relating to a global security advisory that was reviewed by GitHub. A GitHub-reviewed global security advisory provides information about security vulnerabilities or malware that have been mapped to packages in ecosystems we support. For more information about global security advisories, see "[About global security advisories](https://docs.github.com/enterprise-server@3.11/code-security/security-advisories/working-with-global-security-advisories-from-the-github-advisory-database/about-global-security-advisories)." For information about the API to manage security advisories, see [the REST API documentation](https://docs.github.com/enterprise-server@3.11/rest/security-advisories/global-advisories) or [the GraphQL documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#securityadvisory).
      *
      * GitHub Dependabot alerts are also powered by the security advisory dataset. For more information, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.11/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)."
      * @description A security advisory was published to the GitHub community.
@@ -2192,16 +2220,16 @@ export interface webhooks {
   };
   "security-advisory-updated": {
     /**
-     * This event occurs when there is activity relating to a security advisory that was reviewed by GitHub. A GitHub-reviewed security advisory provides information about security-related vulnerabilities in software on GitHub. For more information about security advisories, see "[About GitHub Security Advisories for repositories](https://docs.github.com/enterprise-server@3.11/code-security/repository-security-advisories/about-github-security-advisories-for-repositories)." For information about the API to manage security advisories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#securityadvisory).
+     * This event occurs when there is activity relating to a global security advisory that was reviewed by GitHub. A GitHub-reviewed global security advisory provides information about security vulnerabilities or malware that have been mapped to packages in ecosystems we support. For more information about global security advisories, see "[About global security advisories](https://docs.github.com/enterprise-server@3.11/code-security/security-advisories/working-with-global-security-advisories-from-the-github-advisory-database/about-global-security-advisories)." For information about the API to manage security advisories, see [the REST API documentation](https://docs.github.com/enterprise-server@3.11/rest/security-advisories/global-advisories) or [the GraphQL documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#securityadvisory).
      *
      * GitHub Dependabot alerts are also powered by the security advisory dataset. For more information, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.11/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)."
-     * @description The metadata or description of a security advisory was changed, or the security advisory was withdrawn.
+     * @description The metadata or description of a security advisory was changed.
      */
     post: operations["security-advisory/updated"];
   };
   "security-advisory-withdrawn": {
     /**
-     * This event occurs when there is activity relating to a security advisory that was reviewed by GitHub. A GitHub-reviewed security advisory provides information about security-related vulnerabilities in software on GitHub. For more information about security advisories, see "[About GitHub Security Advisories for repositories](https://docs.github.com/enterprise-server@3.11/code-security/repository-security-advisories/about-github-security-advisories-for-repositories)." For information about the API to manage security advisories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#securityadvisory).
+     * This event occurs when there is activity relating to a global security advisory that was reviewed by GitHub. A GitHub-reviewed global security advisory provides information about security vulnerabilities or malware that have been mapped to packages in ecosystems we support. For more information about global security advisories, see "[About global security advisories](https://docs.github.com/enterprise-server@3.11/code-security/security-advisories/working-with-global-security-advisories-from-the-github-advisory-database/about-global-security-advisories)." For information about the API to manage security advisories, see [the REST API documentation](https://docs.github.com/enterprise-server@3.11/rest/security-advisories/global-advisories) or [the GraphQL documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#securityadvisory).
      *
      * GitHub Dependabot alerts are also powered by the security advisory dataset. For more information, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.11/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)."
      * @description A previously published security advisory was withdrawn.
@@ -2645,7 +2673,7 @@ export interface components {
       forks_count: number;
       stargazers_count: number;
       watchers_count: number;
-      /** @description The size of the repository. Size is calculated hourly. When a repository is initially created, the size is 0. */
+      /** @description The size of the repository, in kilobytes. Size is calculated hourly. When a repository is initially created, the size is 0. */
       size: number;
       /** @description The default branch of the repository. */
       default_branch: string;
@@ -2656,10 +2684,6 @@ export interface components {
        */
       is_template?: boolean;
       topics?: string[];
-      /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
-      custom_properties?: {
-        [key: string]: unknown;
-      };
       /**
        * @description Whether issues are enabled.
        * @default true
@@ -3522,7 +3546,7 @@ export interface components {
       forks_count?: number;
       stargazers_count?: number;
       watchers_count?: number;
-      /** @description The size of the repository. Size is calculated hourly. When a repository is initially created, the size is 0. */
+      /** @description The size of the repository, in kilobytes. Size is calculated hourly. When a repository is initially created, the size is 0. */
       size?: number;
       default_branch?: string;
       open_issues_count?: number;
@@ -10256,10 +10280,6 @@ export interface components {
     "webhook-github-app-authorization-revoked": {
       /** @enum {string} */
       action: "revoked";
-      enterprise?: components["schemas"]["enterprise-webhooks"];
-      installation?: components["schemas"]["simple-installation"];
-      organization?: components["schemas"]["organization-simple-webhooks"];
-      repository?: components["schemas"]["repository-webhooks"];
       sender: components["schemas"]["simple-user-webhooks"];
     };
     /** gollum event */
@@ -10446,10 +10466,20 @@ export interface components {
        */
       checks?: "read" | "write";
       /**
+       * @description The level of permission to grant the access token to create, edit, delete, and list Codespaces.
+       * @enum {string}
+       */
+      codespaces?: "read" | "write";
+      /**
        * @description The level of permission to grant the access token for repository contents, commits, branches, downloads, releases, and merges.
        * @enum {string}
        */
       contents?: "read" | "write";
+      /**
+       * @description The leve of permission to grant the access token to manage Dependabot secrets.
+       * @enum {string}
+       */
+      dependabot_secrets?: "read" | "write";
       /**
        * @description The level of permission to grant the access token for deployments and deployment statuses.
        * @enum {string}
@@ -10541,15 +10571,25 @@ export interface components {
        */
       organization_administration?: "read" | "write";
       /**
-       * @description The level of permission to grant the access token for custom repository roles management. This property is in beta and is subject to change.
+       * @description The level of permission to grant the access token for custom repository roles management.
        * @enum {string}
        */
       organization_custom_roles?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token for managing access to GitHub Copilot for members of an organization with a Copilot Business subscription. This property is in beta and is subject to change.
+       * @enum {string}
+       */
+      organization_copilot_seat_management?: "write";
       /**
        * @description The level of permission to grant the access token to view and manage announcement banners for an organization.
        * @enum {string}
        */
       organization_announcement_banners?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token to view events triggered by an activity in an organization.
+       * @enum {string}
+       */
+      organization_events?: "read";
       /**
        * @description The level of permission to grant the access token to manage the post-receive hooks for an organization.
        * @enum {string}
@@ -10600,6 +10640,41 @@ export interface components {
        * @enum {string}
        */
       team_discussions?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token to manage the email addresses belonging to a user.
+       * @enum {string}
+       */
+      email_addresses?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token to manage the followers belonging to a user.
+       * @enum {string}
+       */
+      followers?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token to manage git SSH keys.
+       * @enum {string}
+       */
+      git_ssh_keys?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token to view and manage GPG keys belonging to a user.
+       * @enum {string}
+       */
+      gpg_keys?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token to view and manage interaction limits on a repository.
+       * @enum {string}
+       */
+      interaction_limits?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token to manage the profile settings belonging to a user.
+       * @enum {string}
+       */
+      profile?: "write";
+      /**
+       * @description The level of permission to grant the access token to list and manage repositories a user is starring.
+       * @enum {string}
+       */
+      starring?: "read" | "write";
     };
     /** installation deleted event */
     "webhook-installation-deleted": {
@@ -13901,6 +13976,7 @@ export interface components {
         timeline_url?: string;
         /** @description Title of the issue */
         title: string;
+        type?: components["schemas"]["issue-type"];
         /** Format: date-time */
         updated_at: string;
         /**
@@ -17916,10 +17992,6 @@ export interface components {
           /** Format: uri */
           contributors_url: string;
           created_at: number | string;
-          /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
-          custom_properties?: {
-            [key: string]: unknown;
-          };
           /** @description The default branch of the repository. */
           default_branch: string;
           /**
@@ -18533,6 +18605,7 @@ export interface components {
         timeline_url?: string;
         /** @description Title of the issue */
         title: string;
+        type?: components["schemas"]["issue-type"];
         /** Format: date-time */
         updated_at: string;
         /**
@@ -19570,6 +19643,7 @@ export interface components {
         state: "open" | "closed";
         timeline_url?: string;
         title?: string;
+        type?: components["schemas"]["issue-type"];
         updated_at?: string;
         url?: string;
         user?: {
@@ -20127,10 +20201,6 @@ export interface components {
           /** Format: uri */
           contributors_url: string;
           created_at: number | string;
-          /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
-          custom_properties?: {
-            [key: string]: unknown;
-          };
           /** @description The default branch of the repository. */
           default_branch: string;
           /**
@@ -55080,10 +55150,6 @@ export interface components {
         /** Format: uri */
         contributors_url: string;
         created_at: number | string;
-        /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
-        custom_properties?: {
-          [key: string]: unknown;
-        };
         /** @description The default branch of the repository. */
         default_branch: string;
         /**
@@ -57006,8 +57072,11 @@ export interface components {
         };
       };
       conditions?:
-        | components["schemas"]["repository-ruleset-conditions"]
-        | components["schemas"]["org-ruleset-conditions"];
+        | null
+        | (
+            | components["schemas"]["repository-ruleset-conditions"]
+            | components["schemas"]["org-ruleset-conditions"]
+          );
       rules?: components["schemas"]["repository-rule"][];
       /** Format: date-time */
       created_at?: string;
@@ -57105,6 +57174,11 @@ export interface components {
       | components["schemas"]["repository-rule-committer-email-pattern"]
       | components["schemas"]["repository-rule-branch-name-pattern"]
       | components["schemas"]["repository-rule-tag-name-pattern"]
+      | components["schemas"]["repository-rule-file-path-restriction"]
+      | components["schemas"]["repository-rule-max-file-path-length"]
+      | components["schemas"]["repository-rule-file-extension-restriction"]
+      | components["schemas"]["repository-rule-max-file-size"]
+      | components["schemas"]["repository-rule-commit-oid"]
       | components["schemas"]["repository-rule-workflows"];
     /**
      * creation
@@ -57907,6 +57981,11 @@ export interface components {
       resolution_comment?: string | null;
       /** @description The type of secret that secret scanning detected. */
       secret_type?: string;
+      /**
+       * @description The token status as of the latest validity check.
+       * @enum {string}
+       */
+      validity?: "active" | "inactive" | "unknown";
       /** @description Whether push protection was bypassed for the detected secret. */
       push_protection_bypassed?: boolean | null;
       push_protection_bypassed_by?: null | components["schemas"]["simple-user"];
@@ -57941,15 +58020,35 @@ export interface components {
     };
     "secret-scanning-location": {
       /**
-       * @description The location type. Because secrets may be found in different types of resources (ie. code, comments, issues), this field identifies the type of resource where the secret was found.
+       * @description The location type. Because secrets may be found in different types of resources (ie. code, comments, issues, pull requests, discussions), this field identifies the type of resource where the secret was found.
        * @enum {string}
        */
-      type: "commit" | "issue_title" | "issue_body" | "issue_comment";
+      type:
+        | "commit"
+        | "issue_title"
+        | "issue_body"
+        | "issue_comment"
+        | "discussion_title"
+        | "discussion_body"
+        | "discussion_comment"
+        | "pull_request_title"
+        | "pull_request_body"
+        | "pull_request_comment"
+        | "pull_request_review"
+        | "pull_request_review_comment";
       details:
         | components["schemas"]["secret-scanning-location-commit"]
         | components["schemas"]["secret-scanning-location-issue-title"]
         | components["schemas"]["secret-scanning-location-issue-body"]
-        | components["schemas"]["secret-scanning-location-issue-comment"];
+        | components["schemas"]["secret-scanning-location-issue-comment"]
+        | components["schemas"]["secret-scanning-location-discussion-title"]
+        | components["schemas"]["secret-scanning-location-discussion-body"]
+        | components["schemas"]["secret-scanning-location-discussion-comment"]
+        | components["schemas"]["secret-scanning-location-pull-request-title"]
+        | components["schemas"]["secret-scanning-location-pull-request-body"]
+        | components["schemas"]["secret-scanning-location-pull-request-comment"]
+        | components["schemas"]["secret-scanning-location-pull-request-review"]
+        | components["schemas"]["secret-scanning-location-pull-request-review-comment"];
     };
     /** @description Represents a 'commit' secret scanning location type. This location type shows that a secret was detected inside a commit to a repository. */
     "secret-scanning-location-commit": {
@@ -57995,6 +58094,70 @@ export interface components {
        * @description The API URL to get the issue comment where the secret was detected.
        */
       issue_comment_url: string;
+    };
+    /** @description Represents a 'discussion_title' secret scanning location type. This location type shows that a secret was detected in the title of a discussion. */
+    "secret-scanning-location-discussion-title": {
+      /**
+       * Format: uri
+       * @description The URL to the discussion where the secret was detected.
+       */
+      discussion_title_url: string;
+    };
+    /** @description Represents a 'discussion_body' secret scanning location type. This location type shows that a secret was detected in the body of a discussion. */
+    "secret-scanning-location-discussion-body": {
+      /**
+       * Format: uri
+       * @description The URL to the discussion where the secret was detected.
+       */
+      discussion_body_url: string;
+    };
+    /** @description Represents a 'discussion_comment' secret scanning location type. This location type shows that a secret was detected in a comment on a discussion. */
+    "secret-scanning-location-discussion-comment": {
+      /**
+       * Format: uri
+       * @description The API URL to get the discussion comment where the secret was detected.
+       */
+      discussion_comment_url: string;
+    };
+    /** @description Represents a 'pull_request_title' secret scanning location type. This location type shows that a secret was detected in the title of a pull request. */
+    "secret-scanning-location-pull-request-title": {
+      /**
+       * Format: uri
+       * @description The API URL to get the pull request where the secret was detected.
+       */
+      pull_request_title_url: string;
+    };
+    /** @description Represents a 'pull_request_body' secret scanning location type. This location type shows that a secret was detected in the body of a pull request. */
+    "secret-scanning-location-pull-request-body": {
+      /**
+       * Format: uri
+       * @description The API URL to get the pull request where the secret was detected.
+       */
+      pull_request_body_url: string;
+    };
+    /** @description Represents a 'pull_request_comment' secret scanning location type. This location type shows that a secret was detected in a comment on a pull request. */
+    "secret-scanning-location-pull-request-comment": {
+      /**
+       * Format: uri
+       * @description The API URL to get the pull request comment where the secret was detected.
+       */
+      pull_request_comment_url: string;
+    };
+    /** @description Represents a 'pull_request_review' secret scanning location type. This location type shows that a secret was detected in a review on a pull request. */
+    "secret-scanning-location-pull-request-review": {
+      /**
+       * Format: uri
+       * @description The API URL to get the pull request review where the secret was detected.
+       */
+      pull_request_review_url: string;
+    };
+    /** @description Represents a 'pull_request_review_comment' secret scanning location type. This location type shows that a secret was detected in a review comment on a pull request. */
+    "secret-scanning-location-pull-request-review-comment": {
+      /**
+       * Format: uri
+       * @description The API URL to get the pull request review comment where the secret was detected.
+       */
+      pull_request_review_comment_url: string;
     };
     /** secret_scanning_alert reopened event */
     "webhook-secret-scanning-alert-reopened": {
@@ -58262,7 +58425,7 @@ export interface components {
       forks_count: number;
       stargazers_count: number;
       watchers_count: number;
-      /** @description The size of the repository. Size is calculated hourly. When a repository is initially created, the size is 0. */
+      /** @description The size of the repository, in kilobytes. Size is calculated hourly. When a repository is initially created, the size is 0. */
       size: number;
       default_branch: string;
       open_issues_count: number;
@@ -58450,7 +58613,7 @@ export interface components {
       forks_count: number;
       stargazers_count: number;
       watchers_count: number;
-      /** @description The size of the repository. Size is calculated hourly. When a repository is initially created, the size is 0. */
+      /** @description The size of the repository, in kilobytes. Size is calculated hourly. When a repository is initially created, the size is 0. */
       size: number;
       /** @description The default branch of the repository. */
       default_branch: string;
@@ -59892,10 +60055,6 @@ export interface components {
         /** Format: uri */
         contributors_url: string;
         created_at: number | string;
-        /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
-        custom_properties?: {
-          [key: string]: unknown;
-        };
         /** @description The default branch of the repository. */
         default_branch: string;
         /**
@@ -60209,10 +60368,6 @@ export interface components {
         /** Format: uri */
         contributors_url: string;
         created_at: number | string;
-        /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
-        custom_properties?: {
-          [key: string]: unknown;
-        };
         /** @description The default branch of the repository. */
         default_branch: string;
         /**
@@ -60526,10 +60681,6 @@ export interface components {
         /** Format: uri */
         contributors_url: string;
         created_at: number | string;
-        /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
-        custom_properties?: {
-          [key: string]: unknown;
-        };
         /** @description The default branch of the repository. */
         default_branch: string;
         /**
@@ -60874,10 +61025,6 @@ export interface components {
         /** Format: uri */
         contributors_url: string;
         created_at: number | string;
-        /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
-        custom_properties?: {
-          [key: string]: unknown;
-        };
         /** @description The default branch of the repository. */
         default_branch: string;
         /**
@@ -61191,10 +61338,6 @@ export interface components {
         /** Format: uri */
         contributors_url: string;
         created_at: number | string;
-        /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
-        custom_properties?: {
-          [key: string]: unknown;
-        };
         /** @description The default branch of the repository. */
         default_branch: string;
         /**
@@ -68580,12 +68723,14 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a card on a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.11/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.11/rest/projects)" in the REST API documentation.
+   * This event occurs when there is activity relating to a card on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.11/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.11/rest/projects)" in the REST API documentation.
    *
-   * For activity relating to a project or a column on a project, use the `project` and `project_column` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
+   * For activity relating to a project (classic) or a column on a project (classic), use the `project` and `project_column` event.
+   *
+   * This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-   * @description A note in a classic project was converted to an issue.
+   * @description A note in a project (classic) was converted to an issue.
    */
   "project-card/converted": {
     parameters: {
@@ -68623,12 +68768,14 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a card on a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.11/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.11/rest/projects)" in the REST API documentation.
+   * This event occurs when there is activity relating to a card on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.11/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.11/rest/projects)" in the REST API documentation.
    *
-   * For activity relating to a project or a column on a project, use the `project` and `project_column` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
+   * For activity relating to a project (classic) or a column on a project (classic), use the `project` and `project_column` event.
+   *
+   * This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-   * @description A card was added to a classic project.
+   * @description A card was added to a project (classic).
    */
   "project-card/created": {
     parameters: {
@@ -68666,12 +68813,14 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a card on a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.11/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.11/rest/projects)" in the REST API documentation.
+   * This event occurs when there is activity relating to a card on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.11/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.11/rest/projects)" in the REST API documentation.
    *
-   * For activity relating to a project or a column on a project, use the `project` and `project_column` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
+   * For activity relating to a project (classic) or a column on a project (classic), use the `project` and `project_column` event.
+   *
+   * This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-   * @description A card on a classic project was deleted.
+   * @description A card on a project (classic) was deleted.
    */
   "project-card/deleted": {
     parameters: {
@@ -68709,12 +68858,14 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a card on a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.11/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.11/rest/projects)" in the REST API documentation.
+   * This event occurs when there is activity relating to a card on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.11/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.11/rest/projects)" in the REST API documentation.
    *
-   * For activity relating to a project or a column on a project, use the `project` and `project_column` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
+   * For activity relating to a project (classic) or a column on a project (classic), use the `project` and `project_column` event.
+   *
+   * This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-   * @description A note on a classic project was edited.
+   * @description A note on a project (classic) was edited.
    */
   "project-card/edited": {
     parameters: {
@@ -68752,12 +68903,14 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a card on a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.11/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.11/rest/projects)" in the REST API documentation.
+   * This event occurs when there is activity relating to a card on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.11/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.11/rest/projects)" in the REST API documentation.
    *
-   * For activity relating to a project or a column on a project, use the `project` and `project_column` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
+   * For activity relating to a project (classic) or a column on a project (classic), use the `project` and `project_column` event.
+   *
+   * This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-   * @description A card on a classic project was moved to another column or to another position in its column.
+   * @description A card on a project (classic) was moved to another column or to another position in its column.
    */
   "project-card/moved": {
     parameters: {
@@ -68795,12 +68948,14 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.11/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.11/rest/projects)" in the REST API documentation.
+   * This event occurs when there is activity relating to a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.11/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.11/rest/projects)" in the REST API documentation.
    *
-   * For activity relating to a card or column on a project, use the `project_card` and `project_column` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
+   * For activity relating to a card or column on a project (classic), use the `project_card` and `project_column` event.
+   *
+   * This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-   * @description A classic project was closed.
+   * @description A project (classic) was closed.
    */
   "project/closed": {
     parameters: {
@@ -68838,12 +68993,14 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a column on a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.11/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.11/rest/projects)" in the REST API documentation.
+   * This event occurs when there is activity relating to a column on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.11/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.11/rest/projects)" in the REST API documentation.
    *
-   * For activity relating to a project or a card on a project, use the `project` and `project_card` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
+   * For activity relating to a project (classic) or a card on a project (classic), use the `project` and `project_card` event.
+   *
+   * This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-   * @description A column was added to a classic project.
+   * @description A column was added to a project (classic).
    */
   "project-column/created": {
     parameters: {
@@ -68881,12 +69038,14 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a column on a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.11/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.11/rest/projects)" in the REST API documentation.
+   * This event occurs when there is activity relating to a column on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.11/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.11/rest/projects)" in the REST API documentation.
    *
-   * For activity relating to a project or a card on a project, use the `project` and `project_card` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
+   * For activity relating to a project (classic) or a card on a project (classic), use the `project` and `project_card` event.
+   *
+   * This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-   * @description A column was deleted from a classic project.
+   * @description A column was deleted from a project (classic).
    */
   "project-column/deleted": {
     parameters: {
@@ -68924,12 +69083,14 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a column on a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.11/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.11/rest/projects)" in the REST API documentation.
+   * This event occurs when there is activity relating to a column on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.11/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.11/rest/projects)" in the REST API documentation.
    *
-   * For activity relating to a project or a card on a project, use the `project` and `project_card` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
+   * For activity relating to a project (classic) or a card on a project (classic), use the `project` and `project_card` event.
+   *
+   * This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-   * @description The name of a column on a classic project was changed.
+   * @description The name of a column on a project (classic) was changed.
    */
   "project-column/edited": {
     parameters: {
@@ -68967,12 +69128,14 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a column on a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.11/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.11/rest/projects)" in the REST API documentation.
+   * This event occurs when there is activity relating to a column on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.11/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.11/rest/projects)" in the REST API documentation.
    *
-   * For activity relating to a project or a card on a project, use the `project` and `project_card` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
+   * For activity relating to a project (classic) or a card on a project (classic), use the `project` and `project_card` event.
+   *
+   * This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-   * @description A column was moved to a new position on a classic project.
+   * @description A column was moved to a new position on a project (classic).
    */
   "project-column/moved": {
     parameters: {
@@ -69010,12 +69173,14 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.11/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.11/rest/projects)" in the REST API documentation.
+   * This event occurs when there is activity relating to a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.11/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.11/rest/projects)" in the REST API documentation.
    *
-   * For activity relating to a card or column on a project, use the `project_card` and `project_column` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
+   * For activity relating to a card or column on a project (classic), use the `project_card` and `project_column` event.
+   *
+   * This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-   * @description A classic project was created.
+   * @description A project (classic) was created.
    */
   "project/created": {
     parameters: {
@@ -69053,12 +69218,14 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.11/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.11/rest/projects)" in the REST API documentation.
+   * This event occurs when there is activity relating to a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.11/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.11/rest/projects)" in the REST API documentation.
    *
-   * For activity relating to a card or column on a project, use the `project_card` and `project_column` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
+   * For activity relating to a card or column on a project (classic), use the `project_card` and `project_column` event.
+   *
+   * This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-   * @description A classic project was deleted.
+   * @description A project (classic) was deleted.
    */
   "project/deleted": {
     parameters: {
@@ -69096,12 +69263,14 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.11/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.11/rest/projects)" in the REST API documentation.
+   * This event occurs when there is activity relating to a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.11/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.11/rest/projects)" in the REST API documentation.
    *
-   * For activity relating to a card or column on a project, use the `project_card` and `project_column` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
+   * For activity relating to a card or column on a project (classic), use the `project_card` and `project_column` event.
+   *
+   * This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-   * @description The name or description of a classic project was changed.
+   * @description The name or description of a project (classic) was changed.
    */
   "project/edited": {
     parameters: {
@@ -69139,12 +69308,14 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a classic project. For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.11/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.11/rest/projects)" in the REST API documentation.
+   * This event occurs when there is activity relating to a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.11/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.11/rest/projects)" in the REST API documentation.
    *
-   * For activity relating to a card or column on a project, use the `project_card` and `project_column` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.
+   * For activity relating to a card or column on a project (classic), use the `project_card` and `project_column` event.
+   *
+   * This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-   * @description A classic project was closed.
+   * @description A project (classic) was closed.
    */
   "project/reopened": {
     parameters: {
@@ -72330,7 +72501,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a security advisory that was reviewed by GitHub. A GitHub-reviewed security advisory provides information about security-related vulnerabilities in software on GitHub. For more information about security advisories, see "[About GitHub Security Advisories for repositories](https://docs.github.com/enterprise-server@3.11/code-security/repository-security-advisories/about-github-security-advisories-for-repositories)." For information about the API to manage security advisories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#securityadvisory).
+   * This event occurs when there is activity relating to a global security advisory that was reviewed by GitHub. A GitHub-reviewed global security advisory provides information about security vulnerabilities or malware that have been mapped to packages in ecosystems we support. For more information about global security advisories, see "[About global security advisories](https://docs.github.com/enterprise-server@3.11/code-security/security-advisories/working-with-global-security-advisories-from-the-github-advisory-database/about-global-security-advisories)." For information about the API to manage security advisories, see [the REST API documentation](https://docs.github.com/enterprise-server@3.11/rest/security-advisories/global-advisories) or [the GraphQL documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#securityadvisory).
    *
    * GitHub Dependabot alerts are also powered by the security advisory dataset. For more information, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.11/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)."
    * @description A security advisory was published to the GitHub community.
@@ -72371,10 +72542,10 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a security advisory that was reviewed by GitHub. A GitHub-reviewed security advisory provides information about security-related vulnerabilities in software on GitHub. For more information about security advisories, see "[About GitHub Security Advisories for repositories](https://docs.github.com/enterprise-server@3.11/code-security/repository-security-advisories/about-github-security-advisories-for-repositories)." For information about the API to manage security advisories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#securityadvisory).
+   * This event occurs when there is activity relating to a global security advisory that was reviewed by GitHub. A GitHub-reviewed global security advisory provides information about security vulnerabilities or malware that have been mapped to packages in ecosystems we support. For more information about global security advisories, see "[About global security advisories](https://docs.github.com/enterprise-server@3.11/code-security/security-advisories/working-with-global-security-advisories-from-the-github-advisory-database/about-global-security-advisories)." For information about the API to manage security advisories, see [the REST API documentation](https://docs.github.com/enterprise-server@3.11/rest/security-advisories/global-advisories) or [the GraphQL documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#securityadvisory).
    *
    * GitHub Dependabot alerts are also powered by the security advisory dataset. For more information, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.11/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)."
-   * @description The metadata or description of a security advisory was changed, or the security advisory was withdrawn.
+   * @description The metadata or description of a security advisory was changed.
    */
   "security-advisory/updated": {
     parameters: {
@@ -72412,7 +72583,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a security advisory that was reviewed by GitHub. A GitHub-reviewed security advisory provides information about security-related vulnerabilities in software on GitHub. For more information about security advisories, see "[About GitHub Security Advisories for repositories](https://docs.github.com/enterprise-server@3.11/code-security/repository-security-advisories/about-github-security-advisories-for-repositories)." For information about the API to manage security advisories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#securityadvisory).
+   * This event occurs when there is activity relating to a global security advisory that was reviewed by GitHub. A GitHub-reviewed global security advisory provides information about security vulnerabilities or malware that have been mapped to packages in ecosystems we support. For more information about global security advisories, see "[About global security advisories](https://docs.github.com/enterprise-server@3.11/code-security/security-advisories/working-with-global-security-advisories-from-the-github-advisory-database/about-global-security-advisories)." For information about the API to manage security advisories, see [the REST API documentation](https://docs.github.com/enterprise-server@3.11/rest/security-advisories/global-advisories) or [the GraphQL documentation](https://docs.github.com/enterprise-server@3.11/graphql/reference/objects#securityadvisory).
    *
    * GitHub Dependabot alerts are also powered by the security advisory dataset. For more information, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.11/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)."
    * @description A previously published security advisory was withdrawn.
