@@ -167,7 +167,7 @@ They are all generated, your changes would be overwritten with the next update. 
         type: "commonjs",
         repository: {
           type: "git",
-          url: "https://github.com/wolfy1339/openapi-webhooks.git",
+          url: "https://github.com/octokit/openapi-webhooks.git",
           directory: `packages/openapi-webhooks`,
         },
         keywords: ["github", "openapi", "octokit", "webhooks"],
