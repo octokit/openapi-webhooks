@@ -19,5 +19,5 @@ jobs:
       - run: npm ci
       - run: npx semantic-release
         env:
-          GITHUB_TOKEN: ${{ secrets.OCTOKITBOT_PAT }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.OCTOKITBOT_NPM_TOKEN }}
