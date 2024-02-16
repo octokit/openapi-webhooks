@@ -1,5 +1,5 @@
 {
-  "name": "@wolfy1339/openapi-webhooks",
+  "name": "@octokit/openapi-webhooks",
   "private": true,
   "version": "0.0.0-development",
   "description": "GitHub's official Webhooks OpenAPI spec with Octokit extensions",
@@ -15,7 +15,7 @@
     "lint": "prettier --check '*.{md,json}' 'scripts/**/*.{js,json}' 'packages/**/*.{ts,md,json,d.ts}'",
     "lint:fix": "prettier --write '*.{md,json}' 'scripts/**/*.{js,json}' 'packages/**/*.{ts,md,json,d.ts}'"
   },
-  "repository": "github:wolfy1339/openapi-webhooks",
+  "repository": "github:octokit/openapi-webhooks",
   "keywords": [
     "github",
     "openapi",
