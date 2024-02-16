@@ -158,7 +158,7 @@ They are all generated, your changes would be overwritten with the next update. 
     `packages/openapi-webhooks/package.json`,
     await prettier.format(
       JSON.stringify({
-        name: `@wolfy1339/openapi-webhooks`,
+        name: `@octokit/openapi-webhooks`,
         version: "0.0.0-development",
         description:
           "GitHub's official Webhooks OpenAPI spec with Octokit extensions",

@@ -1,5 +1,5 @@
 {
-  "name": "@wolfy1339/openapi-webhooks-types-github.ae",
+  "name": "@octokit/openapi-webhooks-types-github.ae",
   "description": "Generated TypeScript definitions based on GitHub's OpenAPI spec for github.ae",
   "repository": {
     "type": "git",

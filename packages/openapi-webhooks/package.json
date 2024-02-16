@@ -1,5 +1,5 @@
 {
-  "name": "@wolfy1339/openapi-webhooks",
+  "name": "@octokit/openapi-webhooks",
   "version": "0.0.0-development",
   "description": "GitHub's official Webhooks OpenAPI spec with Octokit extensions",
   "main": "index.js",
