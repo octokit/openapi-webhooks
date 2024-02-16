@@ -59,7 +59,11 @@ async function run() {
         }
         if (key === "$ref" && typeof obj[key] === "string") {
           const ref = obj[key].split("/").at(-1);
-          tempSchema.components.schemas[ref] = schema.components.schemas[ref];
+          const originalSchemaComponent = schema.components.schemas[ref];
+          if (originalSchemaComponent === undefined) {
+            throw new Error(`Schema component ${obj[key]} not found`);
+          }
+          tempSchema.components.schemas[ref] = originalSchemaComponent;
           // Call the function with the new definition to handle any of it's `$ref`s, and `enterprise` keys
           specialHandling(tempSchema.components.schemas[ref]);
         } else {
@@ -70,7 +74,7 @@ async function run() {
     };
 
     function addActionToRequired(schema) {
-      if (schema.properties.action !== undefined) {
+      if (schema.properties.action !== undefined && schema.required !== undefined && !schema.required.includes("action")){
         schema.required.push("action");
       }
     }
