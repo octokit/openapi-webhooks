@@ -63,7 +63,7 @@ async function run() {
   }
 
   // temporarily hardcode versions until we unblock automated updates
-  const currentGhesVersions = [...(await getCurrentVersions())].filter(version => version !== "3.7");
+  const currentGhesVersions = [...(await getCurrentVersions())];
 
   for (const folder of data) {
     const { name } = folder;
