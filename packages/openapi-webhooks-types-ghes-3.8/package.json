@@ -1,5 +1,5 @@
 {
-  "name": "@wolfy1339/openapi-webhooks-types-ghes-3.8",
+  "name": "@octokit/openapi-webhooks-types-ghes-3.8",
   "description": "Generated TypeScript definitions based on GitHub's OpenAPI spec for ghes-3.8",
   "repository": {
     "type": "git",

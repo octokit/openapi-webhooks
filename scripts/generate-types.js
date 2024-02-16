@@ -43,7 +43,7 @@ async function run() {
       `packages/${packageName}/package.json`,
       await prettier.format(
         JSON.stringify({
-          name: `@wolfy1339/${packageName}`,
+          name: `@octokit/${packageName}`,
           description: `Generated TypeScript definitions based on GitHub's OpenAPI spec for ${name}`,
           repository: {
             type: "git",

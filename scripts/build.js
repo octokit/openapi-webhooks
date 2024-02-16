@@ -59,7 +59,11 @@ async function run() {
         }
         if (key === "$ref" && typeof obj[key] === "string") {
           const ref = obj[key].split("/").at(-1);
-          tempSchema.components.schemas[ref] = schema.components.schemas[ref];
+          const originalSchemaComponent = schema.components.schemas[ref];
+          if (originalSchemaComponent === undefined) {
+            throw new Error(`Schema component ${obj[key]} not found`);
+          }
+          tempSchema.components.schemas[ref] = originalSchemaComponent;
           // Call the function with the new definition to handle any of it's `$ref`s, and `enterprise` keys
           specialHandling(tempSchema.components.schemas[ref]);
         } else {
@@ -70,7 +74,7 @@ async function run() {
     };
 
     function addActionToRequired(schema) {
-      if (schema.properties.action !== undefined) {
+      if (schema.properties.action !== undefined && schema.required !== undefined && !schema.required.includes("action")){
         schema.required.push("action");
       }
     }
@@ -154,7 +158,7 @@ They are all generated, your changes would be overwritten with the next update. 
     `packages/openapi-webhooks/package.json`,
     await prettier.format(
       JSON.stringify({
-        name: `@wolfy1339/openapi-webhooks`,
+        name: `@octokit/openapi-webhooks`,
         version: "0.0.0-development",
         description:
           "GitHub's official Webhooks OpenAPI spec with Octokit extensions",
@@ -163,7 +167,7 @@ They are all generated, your changes would be overwritten with the next update. 
         type: "commonjs",
         repository: {
           type: "git",
-          url: "https://github.com/wolfy1339/openapi-webhooks.git",
+          url: "https://github.com/octokit/openapi-webhooks.git",
           directory: `packages/openapi-webhooks`,
         },
         keywords: ["github", "openapi", "octokit", "webhooks"],

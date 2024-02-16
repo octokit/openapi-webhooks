@@ -2,7 +2,7 @@
 
 > GitHub's official Webhooks OpenAPI spec with Octokit extensions
 
-[![@latest](https://img.shields.io/npm/v/@wolfy1339/openapi-webhooks.svg)](https://www.npmjs.com/package/@wolfy1339/openapi-webhooks)
+[![@latest](https://img.shields.io/npm/v/@octokit/openapi-webhooks.svg)](https://www.npmjs.com/package/@octokit/openapi-webhooks)
 
 Amends webhooks from [GitHub's official OpenAPI specification](https://github.com/github/rest-api-description/) with an `x-octokit` extension that includes the following keys
 
@@ -10,12 +10,12 @@ Amends webhooks from [GitHub's official OpenAPI specification](https://github.co
 
 ## Download
 
-Download from https://unpkg.com/browse/@wolfy1339/openapi-webhooks/generated/
+Download from https://unpkg.com/browse/@octokit/openapi-webhooks/generated/
 
 ## Node Usage
 
 ```js
-const { schemas } = require("@wolfy1339/openapi-webhooks");
+const { schemas } = require("@octokit/openapi-webhooks");
 const version = schemas["api.github.com"].info.version;
 const paths = Object.keys(schemas["api.github.com"].paths).sort();
 ```
