@@ -54316,7 +54316,7 @@ export interface components {
       before: string;
       /** @description An array of commit objects describing the pushed commits. (Pushed commits are all commits that are included in the `compare` between the `before` commit and the `after` commit.) The array includes a maximum of 20 commits. If necessary, you can use the [Commits API](https://docs.github.com/github-ae@latest/rest/commits) to fetch additional commits. This limit is applied to timeline events only and isn't applied to webhook deliveries. */
       commits: {
-        /** @description An array of files added in the commit. */
+        /** @description An array of files added in the commit. A maximum of 3000 changed files will be reported per commit. */
         added?: string[];
         /**
          * Committer
@@ -54349,9 +54349,9 @@ export interface components {
         id: string;
         /** @description The commit message. */
         message: string;
-        /** @description An array of files modified by the commit. */
+        /** @description An array of files modified by the commit. A maximum of 3000 changed files will be reported per commit. */
         modified?: string[];
-        /** @description An array of files removed in the commit. */
+        /** @description An array of files removed in the commit. A maximum of 3000 changed files will be reported per commit. */
         removed?: string[];
         /**
          * Format: date-time

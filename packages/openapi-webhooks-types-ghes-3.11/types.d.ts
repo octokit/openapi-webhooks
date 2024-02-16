@@ -54965,7 +54965,7 @@ export interface components {
       before: string;
       /** @description An array of commit objects describing the pushed commits. (Pushed commits are all commits that are included in the `compare` between the `before` commit and the `after` commit.) The array includes a maximum of 20 commits. If necessary, you can use the [Commits API](https://docs.github.com/enterprise-server@3.11/rest/commits) to fetch additional commits. This limit is applied to timeline events only and isn't applied to webhook deliveries. */
       commits: {
-        /** @description An array of files added in the commit. */
+        /** @description An array of files added in the commit. A maximum of 3000 changed files will be reported per commit. */
         added?: string[];
         /**
          * Committer
@@ -54998,9 +54998,9 @@ export interface components {
         id: string;
         /** @description The commit message. */
         message: string;
-        /** @description An array of files modified by the commit. */
+        /** @description An array of files modified by the commit. A maximum of 3000 changed files will be reported per commit. */
         modified?: string[];
-        /** @description An array of files removed in the commit. */
+        /** @description An array of files removed in the commit. A maximum of 3000 changed files will be reported per commit. */
         removed?: string[];
         /**
          * Format: date-time
@@ -58522,7 +58522,6 @@ export interface components {
       name: string;
       full_name: string;
       license: null | components["schemas"]["license-simple"];
-      organization?: null | components["schemas"]["simple-user"];
       forks: number;
       permissions?: {
         admin: boolean;
@@ -58666,150 +58665,6 @@ export interface components {
        * @default true
        */
       allow_rebase_merge?: boolean;
-      template_repository?: {
-        id?: number;
-        node_id?: string;
-        name?: string;
-        full_name?: string;
-        owner?: {
-          login?: string;
-          id?: number;
-          node_id?: string;
-          avatar_url?: string;
-          gravatar_id?: string;
-          url?: string;
-          html_url?: string;
-          followers_url?: string;
-          following_url?: string;
-          gists_url?: string;
-          starred_url?: string;
-          subscriptions_url?: string;
-          organizations_url?: string;
-          repos_url?: string;
-          events_url?: string;
-          received_events_url?: string;
-          type?: string;
-          site_admin?: boolean;
-        };
-        private?: boolean;
-        html_url?: string;
-        description?: string;
-        fork?: boolean;
-        url?: string;
-        archive_url?: string;
-        assignees_url?: string;
-        blobs_url?: string;
-        branches_url?: string;
-        collaborators_url?: string;
-        comments_url?: string;
-        commits_url?: string;
-        compare_url?: string;
-        contents_url?: string;
-        contributors_url?: string;
-        deployments_url?: string;
-        downloads_url?: string;
-        events_url?: string;
-        forks_url?: string;
-        git_commits_url?: string;
-        git_refs_url?: string;
-        git_tags_url?: string;
-        git_url?: string;
-        issue_comment_url?: string;
-        issue_events_url?: string;
-        issues_url?: string;
-        keys_url?: string;
-        labels_url?: string;
-        languages_url?: string;
-        merges_url?: string;
-        milestones_url?: string;
-        notifications_url?: string;
-        pulls_url?: string;
-        releases_url?: string;
-        ssh_url?: string;
-        stargazers_url?: string;
-        statuses_url?: string;
-        subscribers_url?: string;
-        subscription_url?: string;
-        tags_url?: string;
-        teams_url?: string;
-        trees_url?: string;
-        clone_url?: string;
-        mirror_url?: string;
-        hooks_url?: string;
-        svn_url?: string;
-        homepage?: string;
-        language?: string;
-        forks_count?: number;
-        stargazers_count?: number;
-        watchers_count?: number;
-        size?: number;
-        default_branch?: string;
-        open_issues_count?: number;
-        is_template?: boolean;
-        topics?: string[];
-        has_issues?: boolean;
-        has_projects?: boolean;
-        has_wiki?: boolean;
-        has_pages?: boolean;
-        has_downloads?: boolean;
-        archived?: boolean;
-        disabled?: boolean;
-        visibility?: string;
-        pushed_at?: string;
-        created_at?: string;
-        updated_at?: string;
-        permissions?: {
-          admin?: boolean;
-          maintain?: boolean;
-          push?: boolean;
-          triage?: boolean;
-          pull?: boolean;
-        };
-        allow_rebase_merge?: boolean;
-        temp_clone_token?: string;
-        allow_squash_merge?: boolean;
-        allow_auto_merge?: boolean;
-        delete_branch_on_merge?: boolean;
-        allow_update_branch?: boolean;
-        use_squash_pr_title_as_default?: boolean;
-        /**
-         * @description The default value for a squash merge commit title:
-         *
-         * - `PR_TITLE` - default to the pull request's title.
-         * - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
-         * @enum {string}
-         */
-        squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
-        /**
-         * @description The default value for a squash merge commit message:
-         *
-         * - `PR_BODY` - default to the pull request's body.
-         * - `COMMIT_MESSAGES` - default to the branch's commit messages.
-         * - `BLANK` - default to a blank commit message.
-         * @enum {string}
-         */
-        squash_merge_commit_message?: "PR_BODY" | "COMMIT_MESSAGES" | "BLANK";
-        /**
-         * @description The default value for a merge commit title.
-         *
-         * - `PR_TITLE` - default to the pull request's title.
-         * - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
-         * @enum {string}
-         */
-        merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
-        /**
-         * @description The default value for a merge commit message.
-         *
-         * - `PR_TITLE` - default to the pull request's title.
-         * - `PR_BODY` - default to the pull request's body.
-         * - `BLANK` - default to a blank commit message.
-         * @enum {string}
-         */
-        merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
-        allow_merge_commit?: boolean;
-        subscribers_count?: number;
-        network_count?: number;
-      } | null;
       temp_clone_token?: string;
       /**
        * @description Whether to allow squash merges for pull requests.
@@ -58883,8 +58738,6 @@ export interface components {
        * @default false
        */
       web_commit_signoff_required?: boolean;
-      subscribers_count?: number;
-      network_count?: number;
       open_issues: number;
       watchers: number;
       master_branch?: string;
