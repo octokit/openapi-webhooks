@@ -3,2449 +3,5339 @@
  * Do not make direct changes to the file.
  */
 
-/** OneOf type helpers */
-type Without<T, U> = { [P in Exclude<keyof T, keyof U>]?: never };
-type XOR<T, U> = T | U extends object
-  ? (Without<T, U> & U) | (Without<U, T> & T)
-  : T | U;
-type OneOf<T extends any[]> = T extends [infer Only]
-  ? Only
-  : T extends [infer A, infer B, ...infer Rest]
-    ? OneOf<[XOR<A, B>, ...Rest]>
-    : never;
-
 export type paths = Record<string, never>;
-
 export interface webhooks {
   "branch-protection-rule-created": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to branch protection rules. For more information, see "[About protected branches](https://docs.github.com/enterprise-server@3.10/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches)." For information about the APIs to manage branch protection rules, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#branchprotectionrule) or "[Branch protection](https://docs.github.com/enterprise-server@3.10/rest/branches/branch-protection)" in the REST API documentation.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
      * @description A branch protection rule was created.
      */
     post: operations["branch-protection-rule/created"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "branch-protection-rule-deleted": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to branch protection rules. For more information, see "[About protected branches](https://docs.github.com/enterprise-server@3.10/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches)." For information about the APIs to manage branch protection rules, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#branchprotectionrule) or "[Branch protection](https://docs.github.com/enterprise-server@3.10/rest/branches/branch-protection)" in the REST API documentation.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
      * @description A branch protection rule was deleted.
      */
     post: operations["branch-protection-rule/deleted"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "branch-protection-rule-edited": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to branch protection rules. For more information, see "[About protected branches](https://docs.github.com/enterprise-server@3.10/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches)." For information about the APIs to manage branch protection rules, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#branchprotectionrule) or "[Branch protection](https://docs.github.com/enterprise-server@3.10/rest/branches/branch-protection)" in the REST API documentation.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
      * @description A branch protection rule was edited.
      */
     post: operations["branch-protection-rule/edited"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "cache-sync": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /** This event occurs when a Git ref has been successfully synced to a cache replica. For more information, see "[About repository caching](https://docs.github.com/enterprise-server@3.10/admin/enterprise-management/caching-repositories/about-repository-caching)." */
     post: operations["cache-sync"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "check-run-completed": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a check run. For information about check runs, see "[Getting started with the Checks API](https://docs.github.com/enterprise-server@3.10/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check runs, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#checkrun) or "[Check Runs](https://docs.github.com/enterprise-server@3.10/rest/checks/runs)" in the REST API documentation.
      *
-     * For activity relating to check suites, use the `check-suite` event.
+     *     For activity relating to check suites, use the `check-suite` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Checks" repository permission. To receive the `rerequested` and `requested_action` event types, the app must have at least write-level access for the "Checks" permission. GitHub Apps with write-level access for the "Checks" permission are automatically subscribed to this webhook event.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Checks" repository permission. To receive the `rerequested` and `requested_action` event types, the app must have at least write-level access for the "Checks" permission. GitHub Apps with write-level access for the "Checks" permission are automatically subscribed to this webhook event.
      *
-     * Repository and organization webhooks only receive payloads for the `created` and `completed` event types in repositories.
+     *     Repository and organization webhooks only receive payloads for the `created` and `completed` event types in repositories.
      *
-     * **Note**: The API only looks for pushes in the repository where the check run was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
+     *     **Note**: The API only looks for pushes in the repository where the check run was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
      * @description A check run was completed, and a conclusion is available.
      */
     post: operations["check-run/completed"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "check-run-created": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a check run. For information about check runs, see "[Getting started with the Checks API](https://docs.github.com/enterprise-server@3.10/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check runs, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#checkrun) or "[Check Runs](https://docs.github.com/enterprise-server@3.10/rest/checks/runs)" in the REST API documentation.
      *
-     * For activity relating to check suites, use the `check-suite` event.
+     *     For activity relating to check suites, use the `check-suite` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Checks" repository permission. To receive the `rerequested` and `requested_action` event types, the app must have at least write-level access for the "Checks" permission. GitHub Apps with write-level access for the "Checks" permission are automatically subscribed to this webhook event.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Checks" repository permission. To receive the `rerequested` and `requested_action` event types, the app must have at least write-level access for the "Checks" permission. GitHub Apps with write-level access for the "Checks" permission are automatically subscribed to this webhook event.
      *
-     * Repository and organization webhooks only receive payloads for the `created` and `completed` event types in repositories.
+     *     Repository and organization webhooks only receive payloads for the `created` and `completed` event types in repositories.
      *
-     * **Note**: The API only looks for pushes in the repository where the check run was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
+     *     **Note**: The API only looks for pushes in the repository where the check run was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
      * @description A new check run was created.
      */
     post: operations["check-run/created"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "check-run-requested-action": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a check run. For information about check runs, see "[Getting started with the Checks API](https://docs.github.com/enterprise-server@3.10/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check runs, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#checkrun) or "[Check Runs](https://docs.github.com/enterprise-server@3.10/rest/checks/runs)" in the REST API documentation.
      *
-     * For activity relating to check suites, use the `check-suite` event.
+     *     For activity relating to check suites, use the `check-suite` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Checks" repository permission. To receive the `rerequested` and `requested_action` event types, the app must have at least write-level access for the "Checks" permission. GitHub Apps with write-level access for the "Checks" permission are automatically subscribed to this webhook event.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Checks" repository permission. To receive the `rerequested` and `requested_action` event types, the app must have at least write-level access for the "Checks" permission. GitHub Apps with write-level access for the "Checks" permission are automatically subscribed to this webhook event.
      *
-     * Repository and organization webhooks only receive payloads for the `created` and `completed` event types in repositories.
+     *     Repository and organization webhooks only receive payloads for the `created` and `completed` event types in repositories.
      *
-     * **Note**: The API only looks for pushes in the repository where the check run was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
+     *     **Note**: The API only looks for pushes in the repository where the check run was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
      * @description A check run completed, and someone requested a followup action that your app provides. Only the GitHub App someone requests to perform an action will receive the `requested_action` payload. For more information, see "[Creating CI tests with the Checks API](https://docs.github.com/enterprise-server@3.10/developers/apps/guides/creating-ci-tests-with-the-checks-api)."
      */
     post: operations["check-run/requested-action"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "check-run-rerequested": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a check run. For information about check runs, see "[Getting started with the Checks API](https://docs.github.com/enterprise-server@3.10/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check runs, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#checkrun) or "[Check Runs](https://docs.github.com/enterprise-server@3.10/rest/checks/runs)" in the REST API documentation.
      *
-     * For activity relating to check suites, use the `check-suite` event.
+     *     For activity relating to check suites, use the `check-suite` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Checks" repository permission. To receive the `rerequested` and `requested_action` event types, the app must have at least write-level access for the "Checks" permission. GitHub Apps with write-level access for the "Checks" permission are automatically subscribed to this webhook event.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Checks" repository permission. To receive the `rerequested` and `requested_action` event types, the app must have at least write-level access for the "Checks" permission. GitHub Apps with write-level access for the "Checks" permission are automatically subscribed to this webhook event.
      *
-     * Repository and organization webhooks only receive payloads for the `created` and `completed` event types in repositories.
+     *     Repository and organization webhooks only receive payloads for the `created` and `completed` event types in repositories.
      *
-     * **Note**: The API only looks for pushes in the repository where the check run was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
+     *     **Note**: The API only looks for pushes in the repository where the check run was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
      * @description Someone requested to re-run a check run. Only the GitHub App that someone requests to re-run the check will receive the `rerequested` payload.
      */
     post: operations["check-run/rerequested"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "check-suite-completed": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a check suite. For information about check suites, see "[Getting started with the Checks API](https://docs.github.com/enterprise-server@3.10/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check suites, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#checksuite) or "[Check Suites](https://docs.github.com/enterprise-server@3.10/rest/checks/suites)" in the REST API documentation.
      *
-     * For activity relating to check runs, use the `check_run` event.
+     *     For activity relating to check runs, use the `check_run` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Checks" permission. To receive the `requested` and `rerequested` event types, the app must have at least write-level access for the "Checks" permission. GitHub Apps with write-level access for the "Checks" permission are automatically subscribed to this webhook event.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Checks" permission. To receive the `requested` and `rerequested` event types, the app must have at least write-level access for the "Checks" permission. GitHub Apps with write-level access for the "Checks" permission are automatically subscribed to this webhook event.
      *
-     * Repository and organization webhooks only receive payloads for the `completed` event types in repositories.
+     *     Repository and organization webhooks only receive payloads for the `completed` event types in repositories.
      *
-     * **Note**: The API only looks for pushes in the repository where the check suite was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
+     *     **Note**: The API only looks for pushes in the repository where the check suite was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
      * @description All check runs in a check suite have completed, and a conclusion is available.
      */
     post: operations["check-suite/completed"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "check-suite-requested": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a check suite. For information about check suites, see "[Getting started with the Checks API](https://docs.github.com/enterprise-server@3.10/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check suites, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#checksuite) or "[Check Suites](https://docs.github.com/enterprise-server@3.10/rest/checks/suites)" in the REST API documentation.
      *
-     * For activity relating to check runs, use the `check_run` event.
+     *     For activity relating to check runs, use the `check_run` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Checks" permission. To receive the `requested` and `rerequested` event types, the app must have at least write-level access for the "Checks" permission. GitHub Apps with write-level access for the "Checks" permission are automatically subscribed to this webhook event.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Checks" permission. To receive the `requested` and `rerequested` event types, the app must have at least write-level access for the "Checks" permission. GitHub Apps with write-level access for the "Checks" permission are automatically subscribed to this webhook event.
      *
-     * Repository and organization webhooks only receive payloads for the `completed` event types in repositories.
+     *     Repository and organization webhooks only receive payloads for the `completed` event types in repositories.
      *
-     * **Note**: The API only looks for pushes in the repository where the check suite was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
+     *     **Note**: The API only looks for pushes in the repository where the check suite was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
      * @description Someone requested to run a check suite. By default, check suites are automatically created when you create a check run. For more information, see [the GraphQL API documentation for creating a check run](https://docs.github.com/enterprise-server@3.10/graphql/reference/mutations#createcheckrun) or "[Create a check run](https://docs.github.com/enterprise-server@3.10/rest/checks/runs#create-a-check-run)" in the REST API documentation.
      */
     post: operations["check-suite/requested"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "check-suite-rerequested": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a check suite. For information about check suites, see "[Getting started with the Checks API](https://docs.github.com/enterprise-server@3.10/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check suites, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#checksuite) or "[Check Suites](https://docs.github.com/enterprise-server@3.10/rest/checks/suites)" in the REST API documentation.
      *
-     * For activity relating to check runs, use the `check_run` event.
+     *     For activity relating to check runs, use the `check_run` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Checks" permission. To receive the `requested` and `rerequested` event types, the app must have at least write-level access for the "Checks" permission. GitHub Apps with write-level access for the "Checks" permission are automatically subscribed to this webhook event.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Checks" permission. To receive the `requested` and `rerequested` event types, the app must have at least write-level access for the "Checks" permission. GitHub Apps with write-level access for the "Checks" permission are automatically subscribed to this webhook event.
      *
-     * Repository and organization webhooks only receive payloads for the `completed` event types in repositories.
+     *     Repository and organization webhooks only receive payloads for the `completed` event types in repositories.
      *
-     * **Note**: The API only looks for pushes in the repository where the check suite was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
+     *     **Note**: The API only looks for pushes in the repository where the check suite was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
      * @description Someone requested to re-run the check runs in a check suite. For more information, see [the GraphQL API documentation for creating a check suite](https://docs.github.com/enterprise-server@3.10/graphql/reference/mutations#createchecksuite) or "[Create a check suite](https://docs.github.com/enterprise-server@3.10/rest/checks/suites#create-a-check-suite)" in the REST API documentation.
      */
     post: operations["check-suite/rerequested"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "code-scanning-alert-appeared-in-branch": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/enterprise-server@3.10/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/enterprise-server@3.10/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/enterprise-server@3.10/rest/code-scanning)" in the REST API documentation.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Code scanning alerts" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Code scanning alerts" repository permission.
      * @description A previously created code scanning alert appeared in another branch. This can happen when a branch is merged into or created from a branch with a pre-existing code scanning alert.
      */
     post: operations["code-scanning-alert/appeared-in-branch"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "code-scanning-alert-closed-by-user": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/enterprise-server@3.10/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/enterprise-server@3.10/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/enterprise-server@3.10/rest/code-scanning)" in the REST API documentation.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Code scanning alerts" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Code scanning alerts" repository permission.
      * @description Someone closed a code scanning alert.
      */
     post: operations["code-scanning-alert/closed-by-user"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "code-scanning-alert-created": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/enterprise-server@3.10/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/enterprise-server@3.10/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/enterprise-server@3.10/rest/code-scanning)" in the REST API documentation.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Code scanning alerts" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Code scanning alerts" repository permission.
      * @description A code scanning alert was created in a repository.
      */
     post: operations["code-scanning-alert/created"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "code-scanning-alert-fixed": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/enterprise-server@3.10/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/enterprise-server@3.10/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/enterprise-server@3.10/rest/code-scanning)" in the REST API documentation.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Code scanning alerts" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Code scanning alerts" repository permission.
      * @description A code scanning alert was fixed in a branch by a commit.
      */
     post: operations["code-scanning-alert/fixed"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "code-scanning-alert-reopened": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/enterprise-server@3.10/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/enterprise-server@3.10/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/enterprise-server@3.10/rest/code-scanning)" in the REST API documentation.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Code scanning alerts" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Code scanning alerts" repository permission.
      * @description A previously fixed code scanning alert reappeared in a branch.
      */
     post: operations["code-scanning-alert/reopened"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "code-scanning-alert-reopened-by-user": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/enterprise-server@3.10/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/enterprise-server@3.10/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/enterprise-server@3.10/rest/code-scanning)" in the REST API documentation.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Code scanning alerts" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Code scanning alerts" repository permission.
      * @description Someone reopened a code scanning alert.
      */
     post: operations["code-scanning-alert/reopened-by-user"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "commit-comment-created": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to commit comments. For more information about commit comments, see "[Commenting on a pull request](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request)." For information about the APIs to manage commit comments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#commitcomment) or "[Commit comments](https://docs.github.com/enterprise-server@3.10/rest/commits/comments)" in the REST API documentation.
      *
-     * For activity relating to comments on pull request reviews, use the `pull_request_review_comment` event. For activity relating to issue comments, use the `issue_comment` event. For activity relating to discussion comments, use the `discussion_comment` event.
+     *     For activity relating to comments on pull request reviews, use the `pull_request_review_comment` event. For activity relating to issue comments, use the `issue_comment` event. For activity relating to discussion comments, use the `discussion_comment` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
      * @description Someone commented on a commit.
      */
     post: operations["commit-comment/created"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   create: {
-    /**
-     * This event occurs when a Git branch or tag is created.
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** This event occurs when a Git branch or tag is created.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
      *
-     * **Notes**:
-     * - This event will not occur when more than three tags are created at once.
-     * - Payloads are capped at 25 MB. If an event generates a larger payload, GitHub will not deliver a payload for that webhook event. This may happen, for example, if many branches or tags are pushed at once. We suggest monitoring your payload size to ensure delivery.
-     */
+     *     **Notes**:
+     *     - This event will not occur when more than three tags are created at once.
+     *     - Payloads are capped at 25 MB. If an event generates a larger payload, GitHub will not deliver a payload for that webhook event. This may happen, for example, if many branches or tags are pushed at once. We suggest monitoring your payload size to ensure delivery. */
     post: operations["create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   delete: {
-    /**
-     * This event occurs when a Git branch or tag is deleted. To subscribe to all pushes to a repository, including
-     * branch and tag deletions, use the [`push`](#push) webhook event.
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** This event occurs when a Git branch or tag is deleted. To subscribe to all pushes to a repository, including
+     *     branch and tag deletions, use the [`push`](#push) webhook event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
      *
-     * **Note**: This event will not occur when more than three tags are deleted at once.
-     */
+     *     **Note**: This event will not occur when more than three tags are deleted at once. */
     post: operations["delete"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "dependabot-alert-created": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to Dependabot alerts.
      *
-     * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.10/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.10/rest/dependabot/alerts)" in the REST API documentation.
+     *     For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.10/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.10/rest/dependabot/alerts)" in the REST API documentation.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
      *
-     * **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
+     *     **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
      * @description A manifest file change introduced a vulnerable dependency, or a GitHub Security Advisory was published and an existing dependency was found to be vulnerable.
      */
     post: operations["dependabot-alert/created"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "dependabot-alert-dismissed": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to Dependabot alerts.
      *
-     * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.10/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.10/rest/dependabot/alerts)" in the REST API documentation.
+     *     For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.10/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.10/rest/dependabot/alerts)" in the REST API documentation.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
      *
-     * **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
+     *     **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
      * @description A Dependabot alert was manually closed.
      */
     post: operations["dependabot-alert/dismissed"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "dependabot-alert-fixed": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to Dependabot alerts.
      *
-     * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.10/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.10/rest/dependabot/alerts)" in the REST API documentation.
+     *     For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.10/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.10/rest/dependabot/alerts)" in the REST API documentation.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
      *
-     * **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
+     *     **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
      * @description A manifest file change removed a vulnerability.
      */
     post: operations["dependabot-alert/fixed"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "dependabot-alert-reintroduced": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to Dependabot alerts.
      *
-     * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.10/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.10/rest/dependabot/alerts)" in the REST API documentation.
+     *     For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.10/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.10/rest/dependabot/alerts)" in the REST API documentation.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
      *
-     * **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
+     *     **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
      * @description A manifest file change introduced a vulnerable dependency that had previously been fixed.
      */
     post: operations["dependabot-alert/reintroduced"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "dependabot-alert-reopened": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to Dependabot alerts.
      *
-     * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.10/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.10/rest/dependabot/alerts)" in the REST API documentation.
+     *     For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.10/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.10/rest/dependabot/alerts)" in the REST API documentation.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
      *
-     * **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
+     *     **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
      * @description A Dependabot alert was manually reopened.
      */
     post: operations["dependabot-alert/reopened"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "deploy-key-created": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to deploy keys. For more information, see "[Managing deploy keys](https://docs.github.com/enterprise-server@3.10/developers/overview/managing-deploy-keys)." For information about the APIs to manage deploy keys, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#deploykey) or "[Deploy keys](https://docs.github.com/enterprise-server@3.10/rest/deploy-keys)" in the REST API documentation.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
      * @description A deploy key was created.
      */
     post: operations["deploy-key/created"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "deploy-key-deleted": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to deploy keys. For more information, see "[Managing deploy keys](https://docs.github.com/enterprise-server@3.10/developers/overview/managing-deploy-keys)." For information about the APIs to manage deploy keys, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#deploykey) or "[Deploy keys](https://docs.github.com/enterprise-server@3.10/rest/deploy-keys)" in the REST API documentation.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
      * @description A deploy key was deleted.
      */
     post: operations["deploy-key/deleted"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "deployment-created": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to deployments. For more information, see "[About deployments](https://docs.github.com/enterprise-server@3.10/actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/enterprise-server@3.10/rest/deployments/deployments)" in the REST API documentation.
      *
-     * For activity relating to deployment status, use the `deployment_status` event.
+     *     For activity relating to deployment status, use the `deployment_status` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
      * @description A deployment was created.
      */
     post: operations["deployment/created"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "deployment-protection-rule-requested": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to deployment protection rules. For more information, see "[Using environments for deployment](https://docs.github.com/enterprise-server@3.10/actions/deployment/targeting-different-environments/using-environments-for-deployment#environment-protection-rules)." For information about the API to manage deployment protection rules, see [the REST API documentation](https://docs.github.com/enterprise-server@3.10/rest/deployments/environments).
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
      * @description A deployment protection rule was requested for an environment.
      */
     post: operations["deployment-protection-rule/requested"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "deployment-review-approved": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to deployment reviews. For more information, see "[About deployments](https://docs.github.com/enterprise-server@3.10/actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/enterprise-server@3.10/rest/deployments/deployments)" in the REST API documentation.
      *
-     * For activity relating to deployment creation or deployment status, use the `deployment` or `deployment_status` event.
+     *     For activity relating to deployment creation or deployment status, use the `deployment` or `deployment_status` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
      * @description A deployment review was approved.
      */
     post: operations["deployment-review/approved"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "deployment-review-rejected": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to deployment reviews. For more information, see "[About deployments](https://docs.github.com/enterprise-server@3.10/actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/enterprise-server@3.10/rest/deployments/deployments)" in the REST API documentation.
      *
-     * For activity relating to deployment creation or deployment status, use the `deployment` or `deployment_status` event.
+     *     For activity relating to deployment creation or deployment status, use the `deployment` or `deployment_status` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
      * @description A deployment review was rejected.
      */
     post: operations["deployment-review/rejected"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "deployment-review-requested": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to deployment reviews. For more information, see "[About deployments](https://docs.github.com/enterprise-server@3.10/actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/enterprise-server@3.10/rest/deployments/deployments)" in the REST API documentation.
      *
-     * For activity relating to deployment creation or deployment status, use the `deployment` or `deployment_status` event.
+     *     For activity relating to deployment creation or deployment status, use the `deployment` or `deployment_status` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
      * @description A deployment review was requested.
      */
     post: operations["deployment-review/requested"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "deployment-status-created": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to deployment statuses. For more information, see "[About deployments](https://docs.github.com/enterprise-server@3.10/actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/enterprise-server@3.10/rest/deployments/deployments)" in the REST API documentation.
      *
-     * For activity relating to deployment creation, use the `deployment` event.
+     *     For activity relating to deployment creation, use the `deployment` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
      * @description A new deployment status was created.
      */
     post: operations["deployment-status/created"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "discussion-answered": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.10/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#discussion).
      *
-     * For activity relating to a comment on a discussion, use the `discussion_comment` event.
+     *     For activity relating to a comment on a discussion, use the `discussion_comment` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
      *
-     * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     *     **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
      * @description A comment on the discussion was marked as the answer.
      */
     post: operations["discussion/answered"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "discussion-category-changed": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.10/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#discussion).
      *
-     * For activity relating to a comment on a discussion, use the `discussion_comment` event.
+     *     For activity relating to a comment on a discussion, use the `discussion_comment` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
      *
-     * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     *     **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
      * @description The category of a discussion was changed.
      */
     post: operations["discussion/category-changed"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "discussion-closed": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.10/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#discussion).
      *
-     * For activity relating to a comment on a discussion, use the `discussion_comment` event.
+     *     For activity relating to a comment on a discussion, use the `discussion_comment` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
      *
-     * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     *     **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
      * @description A discussion was closed.
      */
     post: operations["discussion/closed"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "discussion-comment-created": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a comment on a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.10/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#discussion).
      *
-     * For activity relating to a discussion as opposed to comments on a discussion, use the `discussion` event.
+     *     For activity relating to a discussion as opposed to comments on a discussion, use the `discussion` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
      *
-     * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     *     **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
      * @description A comment on a discussion was created.
      */
     post: operations["discussion-comment/created"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "discussion-comment-deleted": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a comment on a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.10/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#discussion).
      *
-     * For activity relating to a discussion as opposed to comments on a discussion, use the `discussion` event.
+     *     For activity relating to a discussion as opposed to comments on a discussion, use the `discussion` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
      *
-     * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     *     **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
      * @description A comment on a discussion was deleted.
      */
     post: operations["discussion-comment/deleted"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "discussion-comment-edited": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a comment on a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.10/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#discussion).
      *
-     * For activity relating to a discussion as opposed to comments on a discussion, use the `discussion` event.
+     *     For activity relating to a discussion as opposed to comments on a discussion, use the `discussion` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
      *
-     * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     *     **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
      * @description A comment on a discussion was edited.
      */
     post: operations["discussion-comment/edited"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "discussion-created": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.10/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#discussion).
      *
-     * For activity relating to a comment on a discussion, use the `discussion_comment` event.
+     *     For activity relating to a comment on a discussion, use the `discussion_comment` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
      *
-     * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     *     **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
      * @description A discussion was created.
      */
     post: operations["discussion/created"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "discussion-deleted": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.10/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#discussion).
      *
-     * For activity relating to a comment on a discussion, use the `discussion_comment` event.
+     *     For activity relating to a comment on a discussion, use the `discussion_comment` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
      *
-     * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     *     **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
      * @description A discussion was deleted.
      */
     post: operations["discussion/deleted"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "discussion-edited": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.10/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#discussion).
      *
-     * For activity relating to a comment on a discussion, use the `discussion_comment` event.
+     *     For activity relating to a comment on a discussion, use the `discussion_comment` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
      *
-     * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     *     **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
      * @description The title or body on a discussion was edited, or the category of the discussion was changed.
      */
     post: operations["discussion/edited"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "discussion-labeled": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.10/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#discussion).
      *
-     * For activity relating to a comment on a discussion, use the `discussion_comment` event.
+     *     For activity relating to a comment on a discussion, use the `discussion_comment` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
      *
-     * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     *     **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
      * @description A label was added to a discussion.
      */
     post: operations["discussion/labeled"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "discussion-locked": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.10/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#discussion).
      *
-     * For activity relating to a comment on a discussion, use the `discussion_comment` event.
+     *     For activity relating to a comment on a discussion, use the `discussion_comment` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
      *
-     * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     *     **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
      * @description A discussion was locked.
      */
     post: operations["discussion/locked"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "discussion-pinned": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.10/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#discussion).
      *
-     * For activity relating to a comment on a discussion, use the `discussion_comment` event.
+     *     For activity relating to a comment on a discussion, use the `discussion_comment` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
      *
-     * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     *     **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
      * @description A discussion was pinned.
      */
     post: operations["discussion/pinned"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "discussion-reopened": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.10/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#discussion).
      *
-     * For activity relating to a comment on a discussion, use the `discussion_comment` event.
+     *     For activity relating to a comment on a discussion, use the `discussion_comment` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
      *
-     * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     *     **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
      * @description A discussion was reopened.
      */
     post: operations["discussion/reopened"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "discussion-transferred": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.10/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#discussion).
      *
-     * For activity relating to a comment on a discussion, use the `discussion_comment` event.
+     *     For activity relating to a comment on a discussion, use the `discussion_comment` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
      *
-     * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     *     **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
      * @description A discussion was transferred to another repository.
      */
     post: operations["discussion/transferred"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "discussion-unanswered": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.10/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#discussion).
      *
-     * For activity relating to a comment on a discussion, use the `discussion_comment` event.
+     *     For activity relating to a comment on a discussion, use the `discussion_comment` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
      *
-     * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     *     **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
      * @description A comment on the discussion was unmarked as the answer.
      */
     post: operations["discussion/unanswered"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "discussion-unlabeled": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.10/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#discussion).
      *
-     * For activity relating to a comment on a discussion, use the `discussion_comment` event.
+     *     For activity relating to a comment on a discussion, use the `discussion_comment` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
      *
-     * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     *     **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
      * @description A label was removed from a discussion.
      */
     post: operations["discussion/unlabeled"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "discussion-unlocked": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.10/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#discussion).
      *
-     * For activity relating to a comment on a discussion, use the `discussion_comment` event.
+     *     For activity relating to a comment on a discussion, use the `discussion_comment` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
      *
-     * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     *     **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
      * @description A discussion was unlocked.
      */
     post: operations["discussion/unlocked"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "discussion-unpinned": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.10/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#discussion).
      *
-     * For activity relating to a comment on a discussion, use the `discussion_comment` event.
+     *     For activity relating to a comment on a discussion, use the `discussion_comment` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
      *
-     * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     *     **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
      * @description A discussion was unpinned.
      */
     post: operations["discussion/unpinned"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "enterprise-anonymous-access-disabled": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to anonymous Git read access in an enterprise. For more information, see "[Enforcing repository management policies in your enterprise](https://docs.github.com/enterprise-server@3.10/admin/policies/enforcing-policies-for-your-enterprise/enforcing-repository-management-policies-in-your-enterprise#configuring-anonymous-git-read-access)."
      * @description Anonymous Git read access was disabled.
      */
     post: operations["enterprise/anonymous-access-disabled"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "enterprise-anonymous-access-enabled": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to anonymous Git read access in an enterprise. For more information, see "[Enforcing repository management policies in your enterprise](https://docs.github.com/enterprise-server@3.10/admin/policies/enforcing-policies-for-your-enterprise/enforcing-repository-management-policies-in-your-enterprise#configuring-anonymous-git-read-access)."
      * @description Anonymous Git read access was enabled.
      */
     post: operations["enterprise/anonymous-access-enabled"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   fork: {
-    /**
-     * This event occurs when someone forks a repository. For more information, see "[Fork a repo](https://docs.github.com/enterprise-server@3.10/get-started/quickstart/fork-a-repo)." For information about the API to manage forks, see "[Forks](https://docs.github.com/enterprise-server@3.10/rest/repos/forks)" in the REST API documentation.
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** This event occurs when someone forks a repository. For more information, see "[Fork a repo](https://docs.github.com/enterprise-server@3.10/get-started/quickstart/fork-a-repo)." For information about the API to manage forks, see "[Forks](https://docs.github.com/enterprise-server@3.10/rest/repos/forks)" in the REST API documentation.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
-     */
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission. */
     post: operations["fork"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "github-app-authorization-revoked": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when a user revokes their authorization of a GitHub App. For more information, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the API to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/apps)" in the REST API documentation.
      *
-     * A GitHub App receives this webhook by default and cannot unsubscribe from this event.
+     *     A GitHub App receives this webhook by default and cannot unsubscribe from this event.
      *
-     * Anyone can revoke their authorization of a GitHub App from their [GitHub account settings page](https://github.com/settings/apps/authorizations). Revoking the authorization of a GitHub App does not uninstall the GitHub App. You should program your GitHub App so that when it receives this webhook, it stops calling the API on behalf of the person who revoked the token. If your GitHub App continues to use a revoked access token, it will receive the `401 Bad Credentials` error. For details about requests with a user access token, which require GitHub App authorization, see "[Authenticating with a GitHub App on behalf of a user](https://docs.github.com/enterprise-server@3.10/apps/creating-github-apps/authenticating-with-a-github-app/authenticating-with-a-github-app-on-behalf-of-a-user)."
+     *     Anyone can revoke their authorization of a GitHub App from their [GitHub account settings page](https://github.com/settings/apps/authorizations). Revoking the authorization of a GitHub App does not uninstall the GitHub App. You should program your GitHub App so that when it receives this webhook, it stops calling the API on behalf of the person who revoked the token. If your GitHub App continues to use a revoked access token, it will receive the `401 Bad Credentials` error. For details about requests with a user access token, which require GitHub App authorization, see "[Authenticating with a GitHub App on behalf of a user](https://docs.github.com/enterprise-server@3.10/apps/creating-github-apps/authenticating-with-a-github-app/authenticating-with-a-github-app-on-behalf-of-a-user)."
      * @description Someone revoked their authorization of a GitHub App.
      */
     post: operations["github-app-authorization/revoked"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   gollum: {
-    /**
-     * This event occurs when someone creates or updates a wiki page. For more information, see "[About wikis](https://docs.github.com/enterprise-server@3.10/communities/documenting-your-project-with-wikis/about-wikis)."
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** This event occurs when someone creates or updates a wiki page. For more information, see "[About wikis](https://docs.github.com/enterprise-server@3.10/communities/documenting-your-project-with-wikis/about-wikis)."
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
-     */
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission. */
     post: operations["gollum"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "installation-created": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
      *
-     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/apps)" in the REST API documentation.
+     *     For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/apps)" in the REST API documentation.
      * @description Someone installed a GitHub App on a user or organization account.
      */
     post: operations["installation/created"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "installation-deleted": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
      *
-     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/apps)" in the REST API documentation.
+     *     For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/apps)" in the REST API documentation.
      * @description Someone uninstalled a GitHub App from their user or organization account.
      */
     post: operations["installation/deleted"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "installation-new-permissions-accepted": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
      *
-     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/apps)" in the REST API documentation.
+     *     For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/apps)" in the REST API documentation.
      * @description Someone granted new permissions to a GitHub App.
      */
     post: operations["installation/new-permissions-accepted"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "installation-repositories-added": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to which repositories a GitHub App installation can access. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
      *
-     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/apps)" in the REST API documentation.
+     *     For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/apps)" in the REST API documentation.
      * @description A GitHub App installation was granted access to one or more repositories.
      */
     post: operations["installation-repositories/added"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "installation-repositories-removed": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to which repositories a GitHub App installation can access. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
      *
-     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/apps)" in the REST API documentation.
+     *     For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/apps)" in the REST API documentation.
      * @description Access to one or more repositories was revoked for a GitHub App installation.
      */
     post: operations["installation-repositories/removed"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "installation-suspend": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
      *
-     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/apps)" in the REST API documentation.
+     *     For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/apps)" in the REST API documentation.
      * @description Someone blocked access by a GitHub App to their user or organization account.
      */
     post: operations["installation/suspend"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "installation-target-renamed": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to the user or organization account that a GitHub App is installed on. For more information, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/apps)" in the REST API documentation.
      * @description Somebody renamed the user or organization account that a GitHub App is installed on.
      */
     post: operations["installation-target/renamed"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "installation-unsuspend": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
      *
-     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/apps)" in the REST API documentation.
+     *     For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/apps)" in the REST API documentation.
      * @description A GitHub App that was blocked from accessing a user or organization account was given access the account again.
      */
     post: operations["installation/unsuspend"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "issue-comment-created": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a comment on an issue or pull request. For more information about issues and pull requests, see "[About issues](https://docs.github.com/enterprise-server@3.10/issues/tracking-your-work-with-issues/about-issues)" and "[About pull requests](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage issue comments, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#issuecomment) or "[Issue comments](https://docs.github.com/enterprise-server@3.10/rest/issues/comments)" in the REST API documentation.
      *
-     * For activity relating to an issue as opposed to comments on an issue, use the `issue` event. For activity related to pull request reviews or pull request review comments, use the `pull_request_review` or `pull_request_review_comment` events. For more information about the different types of pull request comments, see "[Working with comments](https://docs.github.com/enterprise-server@3.10/rest/guides/working-with-comments)."
+     *     For activity relating to an issue as opposed to comments on an issue, use the `issue` event. For activity related to pull request reviews or pull request review comments, use the `pull_request_review` or `pull_request_review_comment` events. For more information about the different types of pull request comments, see "[Working with comments](https://docs.github.com/enterprise-server@3.10/rest/guides/working-with-comments)."
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
      * @description A comment on an issue or pull request was created.
      */
     post: operations["issue-comment/created"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "issue-comment-deleted": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a comment on an issue or pull request. For more information about issues and pull requests, see "[About issues](https://docs.github.com/enterprise-server@3.10/issues/tracking-your-work-with-issues/about-issues)" and "[About pull requests](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage issue comments, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#issuecomment) or "[Issue comments](https://docs.github.com/enterprise-server@3.10/rest/issues/comments)" in the REST API documentation.
      *
-     * For activity relating to an issue as opposed to comments on an issue, use the `issue` event. For activity related to pull request reviews or pull request review comments, use the `pull_request_review` or `pull_request_review_comment` events. For more information about the different types of pull request comments, see "[Working with comments](https://docs.github.com/enterprise-server@3.10/rest/guides/working-with-comments)."
+     *     For activity relating to an issue as opposed to comments on an issue, use the `issue` event. For activity related to pull request reviews or pull request review comments, use the `pull_request_review` or `pull_request_review_comment` events. For more information about the different types of pull request comments, see "[Working with comments](https://docs.github.com/enterprise-server@3.10/rest/guides/working-with-comments)."
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
      * @description A comment on an issue or pull request was deleted.
      */
     post: operations["issue-comment/deleted"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "issue-comment-edited": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a comment on an issue or pull request. For more information about issues and pull requests, see "[About issues](https://docs.github.com/enterprise-server@3.10/issues/tracking-your-work-with-issues/about-issues)" and "[About pull requests](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage issue comments, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#issuecomment) or "[Issue comments](https://docs.github.com/enterprise-server@3.10/rest/issues/comments)" in the REST API documentation.
      *
-     * For activity relating to an issue as opposed to comments on an issue, use the `issue` event. For activity related to pull request reviews or pull request review comments, use the `pull_request_review` or `pull_request_review_comment` events. For more information about the different types of pull request comments, see "[Working with comments](https://docs.github.com/enterprise-server@3.10/rest/guides/working-with-comments)."
+     *     For activity relating to an issue as opposed to comments on an issue, use the `issue` event. For activity related to pull request reviews or pull request review comments, use the `pull_request_review` or `pull_request_review_comment` events. For more information about the different types of pull request comments, see "[Working with comments](https://docs.github.com/enterprise-server@3.10/rest/guides/working-with-comments)."
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
      * @description A comment on an issue or pull request was edited.
      */
     post: operations["issue-comment/edited"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "issues-assigned": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.10/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.10/rest/issues)" in the REST API documentation.
      *
-     * For activity relating to a comment on an issue, use the `issue_comment` event.
+     *     For activity relating to a comment on an issue, use the `issue_comment` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
      * @description An issue was assigned to a user.
      */
     post: operations["issues/assigned"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "issues-closed": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.10/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.10/rest/issues)" in the REST API documentation.
      *
-     * For activity relating to a comment on an issue, use the `issue_comment` event.
+     *     For activity relating to a comment on an issue, use the `issue_comment` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
      * @description An issue was closed.
      */
     post: operations["issues/closed"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "issues-deleted": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.10/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.10/rest/issues)" in the REST API documentation.
      *
-     * For activity relating to a comment on an issue, use the `issue_comment` event.
+     *     For activity relating to a comment on an issue, use the `issue_comment` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
      * @description An issue was deleted.
      */
     post: operations["issues/deleted"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "issues-demilestoned": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.10/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.10/rest/issues)" in the REST API documentation.
      *
-     * For activity relating to a comment on an issue, use the `issue_comment` event.
+     *     For activity relating to a comment on an issue, use the `issue_comment` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
      * @description An issue was removed from a milestone.
      */
     post: operations["issues/demilestoned"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "issues-edited": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.10/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.10/rest/issues)" in the REST API documentation.
      *
-     * For activity relating to a comment on an issue, use the `issue_comment` event.
+     *     For activity relating to a comment on an issue, use the `issue_comment` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
      * @description The title or body on an issue was edited.
      */
     post: operations["issues/edited"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "issues-labeled": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.10/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.10/rest/issues)" in the REST API documentation.
      *
-     * For activity relating to a comment on an issue, use the `issue_comment` event.
+     *     For activity relating to a comment on an issue, use the `issue_comment` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
      * @description A label was added to an issue.
      */
     post: operations["issues/labeled"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "issues-locked": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.10/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.10/rest/issues)" in the REST API documentation.
      *
-     * For activity relating to a comment on an issue, use the `issue_comment` event.
+     *     For activity relating to a comment on an issue, use the `issue_comment` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
      * @description Conversation on an issue was locked. For more information, see "[Locking conversations](https://docs.github.com/enterprise-server@3.10/communities/moderating-comments-and-conversations/locking-conversations)."
      */
     post: operations["issues/locked"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "issues-milestoned": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.10/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.10/rest/issues)" in the REST API documentation.
      *
-     * For activity relating to a comment on an issue, use the `issue_comment` event.
+     *     For activity relating to a comment on an issue, use the `issue_comment` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
      * @description An issue was added to a milestone.
      */
     post: operations["issues/milestoned"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "issues-opened": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.10/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.10/rest/issues)" in the REST API documentation.
      *
-     * For activity relating to a comment on an issue, use the `issue_comment` event.
+     *     For activity relating to a comment on an issue, use the `issue_comment` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
      * @description An issue was created. When a closed issue is reopened, the action will be `reopened` instead.
      */
     post: operations["issues/opened"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "issues-pinned": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.10/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.10/rest/issues)" in the REST API documentation.
      *
-     * For activity relating to a comment on an issue, use the `issue_comment` event.
+     *     For activity relating to a comment on an issue, use the `issue_comment` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
      * @description An issue was pinned to a repository. For more information, see "[Pinning an issue to your repository](https://docs.github.com/enterprise-server@3.10/issues/tracking-your-work-with-issues/pinning-an-issue-to-your-repository)."
      */
     post: operations["issues/pinned"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "issues-reopened": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.10/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.10/rest/issues)" in the REST API documentation.
      *
-     * For activity relating to a comment on an issue, use the `issue_comment` event.
+     *     For activity relating to a comment on an issue, use the `issue_comment` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
      * @description A closed issue was reopened.
      */
     post: operations["issues/reopened"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "issues-transferred": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.10/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.10/rest/issues)" in the REST API documentation.
      *
-     * For activity relating to a comment on an issue, use the `issue_comment` event.
+     *     For activity relating to a comment on an issue, use the `issue_comment` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
      * @description An issue was transferred to another repository. For more information, see "[Transferring an issue to another repository](https://docs.github.com/enterprise-server@3.10/issues/tracking-your-work-with-issues/transferring-an-issue-to-another-repository)."
      */
     post: operations["issues/transferred"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "issues-unassigned": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.10/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.10/rest/issues)" in the REST API documentation.
      *
-     * For activity relating to a comment on an issue, use the `issue_comment` event.
+     *     For activity relating to a comment on an issue, use the `issue_comment` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
      * @description A user was unassigned from an issue.
      */
     post: operations["issues/unassigned"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "issues-unlabeled": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.10/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.10/rest/issues)" in the REST API documentation.
      *
-     * For activity relating to a comment on an issue, use the `issue_comment` event.
+     *     For activity relating to a comment on an issue, use the `issue_comment` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
      * @description A label was removed from an issue.
      */
     post: operations["issues/unlabeled"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "issues-unlocked": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.10/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.10/rest/issues)" in the REST API documentation.
      *
-     * For activity relating to a comment on an issue, use the `issue_comment` event.
+     *     For activity relating to a comment on an issue, use the `issue_comment` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
      * @description Conversation on an issue was locked. For more information, see "[Locking conversations](https://docs.github.com/enterprise-server@3.10/communities/moderating-comments-and-conversations/locking-conversations)."
      */
     post: operations["issues/unlocked"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "issues-unpinned": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.10/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.10/rest/issues)" in the REST API documentation.
      *
-     * For activity relating to a comment on an issue, use the `issue_comment` event.
+     *     For activity relating to a comment on an issue, use the `issue_comment` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
      * @description An issue was unpinned from a repository. For more information, see "[Pinning an issue to your repository](https://docs.github.com/enterprise-server@3.10/issues/tracking-your-work-with-issues/pinning-an-issue-to-your-repository)."
      */
     post: operations["issues/unpinned"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "label-created": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to labels. For more information, see "[Managing labels](https://docs.github.com/enterprise-server@3.10/issues/using-labels-and-milestones-to-track-work/managing-labels)." For information about the APIs to manage labels, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#label) or "[Labels](https://docs.github.com/enterprise-server@3.10/rest/issues/labels)" in the REST API documentation.
      *
-     * If you want to receive an event when a label is added to or removed from an issue, pull request, or discussion, use the `labeled` or `unlabeled` action type for the `issues`, `pull_request`, or `discussion` events instead.
+     *     If you want to receive an event when a label is added to or removed from an issue, pull request, or discussion, use the `labeled` or `unlabeled` action type for the `issues`, `pull_request`, or `discussion` events instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
      * @description A label was created.
      */
     post: operations["label/created"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "label-deleted": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to labels. For more information, see "[Managing labels](https://docs.github.com/enterprise-server@3.10/issues/using-labels-and-milestones-to-track-work/managing-labels)." For information about the APIs to manage labels, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#label) or "[Labels](https://docs.github.com/enterprise-server@3.10/rest/issues/labels)" in the REST API documentation.
      *
-     * If you want to receive an event when a label is added to or removed from an issue, pull request, or discussion, use the `labeled` or `unlabeled` action type for the `issues`, `pull_request`, or `discussion` events instead.
+     *     If you want to receive an event when a label is added to or removed from an issue, pull request, or discussion, use the `labeled` or `unlabeled` action type for the `issues`, `pull_request`, or `discussion` events instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
      * @description A label was deleted.
      */
     post: operations["label/deleted"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "label-edited": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to labels. For more information, see "[Managing labels](https://docs.github.com/enterprise-server@3.10/issues/using-labels-and-milestones-to-track-work/managing-labels)." For information about the APIs to manage labels, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#label) or "[Labels](https://docs.github.com/enterprise-server@3.10/rest/issues/labels)" in the REST API documentation.
      *
-     * If you want to receive an event when a label is added to or removed from an issue, pull request, or discussion, use the `labeled` or `unlabeled` action type for the `issues`, `pull_request`, or `discussion` events instead.
+     *     If you want to receive an event when a label is added to or removed from an issue, pull request, or discussion, use the `labeled` or `unlabeled` action type for the `issues`, `pull_request`, or `discussion` events instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
      * @description A label's name, description, or color was changed.
      */
     post: operations["label/edited"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "member-added": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to collaborators in a repository. For more information, see "[Adding outside collaborators to repositories in your organization](https://docs.github.com/enterprise-server@3.10/organizations/managing-user-access-to-your-organizations-repositories/adding-outside-collaborators-to-repositories-in-your-organization)." For more information about the API to manage repository collaborators, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#repositorycollaboratorconnection) or "[Collaborators](https://docs.github.com/enterprise-server@3.10/rest/collaborators/collaborators)" in the REST API documentation.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
      * @description A GitHub user accepted an invitation to a repository.
      */
     post: operations["member/added"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "member-edited": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to collaborators in a repository. For more information, see "[Adding outside collaborators to repositories in your organization](https://docs.github.com/enterprise-server@3.10/organizations/managing-user-access-to-your-organizations-repositories/adding-outside-collaborators-to-repositories-in-your-organization)." For more information about the API to manage repository collaborators, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#repositorycollaboratorconnection) or "[Collaborators](https://docs.github.com/enterprise-server@3.10/rest/collaborators/collaborators)" in the REST API documentation.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
      * @description Permissions were changed for a collaborator on a repository.
      */
     post: operations["member/edited"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "member-removed": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to collaborators in a repository. For more information, see "[Adding outside collaborators to repositories in your organization](https://docs.github.com/enterprise-server@3.10/organizations/managing-user-access-to-your-organizations-repositories/adding-outside-collaborators-to-repositories-in-your-organization)." For more information about the API to manage repository collaborators, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#repositorycollaboratorconnection) or "[Collaborators](https://docs.github.com/enterprise-server@3.10/rest/collaborators/collaborators)" in the REST API documentation.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
      * @description A collaborator was removed from a repository.
      */
     post: operations["member/removed"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "membership-added": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to team membership. For more information, see "[About teams](https://docs.github.com/enterprise-server@3.10/organizations/organizing-members-into-teams/about-teams)." For more information about the APIs to manage team memberships, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#team) or "[Team members](https://docs.github.com/enterprise-server@3.10/rest/teams/members)" in the REST API documentation.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
      * @description An organization member was added to a team.
      */
     post: operations["membership/added"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "membership-removed": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to team membership. For more information, see "[About teams](https://docs.github.com/enterprise-server@3.10/organizations/organizing-members-into-teams/about-teams)." For more information about the APIs to manage team memberships, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#team) or "[Team members](https://docs.github.com/enterprise-server@3.10/rest/teams/members)" in the REST API documentation.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
      * @description An organization member was removed from a team.
      */
     post: operations["membership/removed"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "meta-deleted": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a webhook itself.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Meta" app permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Meta" app permission.
      * @description The webhook was deleted.
      */
     post: operations["meta/deleted"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "milestone-closed": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to milestones. For more information, see "[About milestones](https://docs.github.com/enterprise-server@3.10/issues/using-labels-and-milestones-to-track-work/about-milestones)." For information about the APIs to manage milestones, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#milestone) or "[Milestones](https://docs.github.com/enterprise-server@3.10/rest/issues/milestones)" in the REST API documentation.
      *
-     * If you want to receive an event when an issue or pull request is added to or removed from a milestone, use the `milestoned` or `demilestoned` action type for the `issues` or `pull_request` events instead.
+     *     If you want to receive an event when an issue or pull request is added to or removed from a milestone, use the `milestoned` or `demilestoned` action type for the `issues` or `pull_request` events instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" or "Pull requests" repository permissions.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" or "Pull requests" repository permissions.
      * @description A milestone was closed.
      */
     post: operations["milestone/closed"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "milestone-created": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to milestones. For more information, see "[About milestones](https://docs.github.com/enterprise-server@3.10/issues/using-labels-and-milestones-to-track-work/about-milestones)." For information about the APIs to manage milestones, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#milestone) or "[Milestones](https://docs.github.com/enterprise-server@3.10/rest/issues/milestones)" in the REST API documentation.
      *
-     * If you want to receive an event when an issue or pull request is added to or removed from a milestone, use the `milestoned` or `demilestoned` action type for the `issues` or `pull_request` events instead.
+     *     If you want to receive an event when an issue or pull request is added to or removed from a milestone, use the `milestoned` or `demilestoned` action type for the `issues` or `pull_request` events instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" or "Pull requests" repository permissions.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" or "Pull requests" repository permissions.
      * @description A milestone was created.
      */
     post: operations["milestone/created"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "milestone-deleted": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to milestones. For more information, see "[About milestones](https://docs.github.com/enterprise-server@3.10/issues/using-labels-and-milestones-to-track-work/about-milestones)." For information about the APIs to manage milestones, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#milestone) or "[Milestones](https://docs.github.com/enterprise-server@3.10/rest/issues/milestones)" in the REST API documentation.
      *
-     * If you want to receive an event when an issue or pull request is added to or removed from a milestone, use the `milestoned` or `demilestoned` action type for the `issues` or `pull_request` events instead.
+     *     If you want to receive an event when an issue or pull request is added to or removed from a milestone, use the `milestoned` or `demilestoned` action type for the `issues` or `pull_request` events instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" or "Pull requests" repository permissions.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" or "Pull requests" repository permissions.
      * @description A milestone was deleted.
      */
     post: operations["milestone/deleted"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "milestone-edited": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to milestones. For more information, see "[About milestones](https://docs.github.com/enterprise-server@3.10/issues/using-labels-and-milestones-to-track-work/about-milestones)." For information about the APIs to manage milestones, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#milestone) or "[Milestones](https://docs.github.com/enterprise-server@3.10/rest/issues/milestones)" in the REST API documentation.
      *
-     * If you want to receive an event when an issue or pull request is added to or removed from a milestone, use the `milestoned` or `demilestoned` action type for the `issues` or `pull_request` events instead.
+     *     If you want to receive an event when an issue or pull request is added to or removed from a milestone, use the `milestoned` or `demilestoned` action type for the `issues` or `pull_request` events instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" or "Pull requests" repository permissions.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" or "Pull requests" repository permissions.
      * @description A milestone was edited.
      */
     post: operations["milestone/edited"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "milestone-opened": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to milestones. For more information, see "[About milestones](https://docs.github.com/enterprise-server@3.10/issues/using-labels-and-milestones-to-track-work/about-milestones)." For information about the APIs to manage milestones, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#milestone) or "[Milestones](https://docs.github.com/enterprise-server@3.10/rest/issues/milestones)" in the REST API documentation.
      *
-     * If you want to receive an event when an issue or pull request is added to or removed from a milestone, use the `milestoned` or `demilestoned` action type for the `issues` or `pull_request` events instead.
+     *     If you want to receive an event when an issue or pull request is added to or removed from a milestone, use the `milestoned` or `demilestoned` action type for the `issues` or `pull_request` events instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" or "Pull requests" repository permissions.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" or "Pull requests" repository permissions.
      * @description A milestone was opened.
      */
     post: operations["milestone/opened"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "organization-deleted": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an organization and its members. For more information, see "[About organizations](https://docs.github.com/enterprise-server@3.10/organizations/collaborating-with-groups-in-organizations/about-organizations)." For information about the APIs to manage organizations, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#organization) or "[Organizations](https://docs.github.com/enterprise-server@3.10/rest/orgs)" in the REST API documentation.
      *
-     * If you want to receive an event when a non-member is blocked or unblocked from an organization, use the `org_block` event instead.
+     *     If you want to receive an event when a non-member is blocked or unblocked from an organization, use the `org_block` event instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
      * @description An organization was deleted.
      */
     post: operations["organization/deleted"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "organization-member-added": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an organization and its members. For more information, see "[About organizations](https://docs.github.com/enterprise-server@3.10/organizations/collaborating-with-groups-in-organizations/about-organizations)." For information about the APIs to manage organizations, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#organization) or "[Organizations](https://docs.github.com/enterprise-server@3.10/rest/orgs)" in the REST API documentation.
      *
-     * If you want to receive an event when a non-member is blocked or unblocked from an organization, use the `org_block` event instead.
+     *     If you want to receive an event when a non-member is blocked or unblocked from an organization, use the `org_block` event instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
      * @description A member accepted an invitation to join an organization.
      */
     post: operations["organization/member-added"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "organization-member-invited": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an organization and its members. For more information, see "[About organizations](https://docs.github.com/enterprise-server@3.10/organizations/collaborating-with-groups-in-organizations/about-organizations)." For information about the APIs to manage organizations, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#organization) or "[Organizations](https://docs.github.com/enterprise-server@3.10/rest/orgs)" in the REST API documentation.
      *
-     * If you want to receive an event when a non-member is blocked or unblocked from an organization, use the `org_block` event instead.
+     *     If you want to receive an event when a non-member is blocked or unblocked from an organization, use the `org_block` event instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
      * @description A member was invited to join the organization.
      */
     post: operations["organization/member-invited"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "organization-member-removed": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an organization and its members. For more information, see "[About organizations](https://docs.github.com/enterprise-server@3.10/organizations/collaborating-with-groups-in-organizations/about-organizations)." For information about the APIs to manage organizations, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#organization) or "[Organizations](https://docs.github.com/enterprise-server@3.10/rest/orgs)" in the REST API documentation.
      *
-     * If you want to receive an event when a non-member is blocked or unblocked from an organization, use the `org_block` event instead.
+     *     If you want to receive an event when a non-member is blocked or unblocked from an organization, use the `org_block` event instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
      * @description A member was removed from the organization.
      */
     post: operations["organization/member-removed"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "organization-renamed": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an organization and its members. For more information, see "[About organizations](https://docs.github.com/enterprise-server@3.10/organizations/collaborating-with-groups-in-organizations/about-organizations)." For information about the APIs to manage organizations, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#organization) or "[Organizations](https://docs.github.com/enterprise-server@3.10/rest/orgs)" in the REST API documentation.
      *
-     * If you want to receive an event when a non-member is blocked or unblocked from an organization, use the `org_block` event instead.
+     *     If you want to receive an event when a non-member is blocked or unblocked from an organization, use the `org_block` event instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
      * @description The name of an organization was changed.
      */
     post: operations["organization/renamed"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "package-published": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to GitHub Packages. For more information, see "[Introduction to GitHub Packages](https://docs.github.com/enterprise-server@3.10/packages/learn-github-packages/introduction-to-github-packages)." For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#package) or "[Packages](https://docs.github.com/enterprise-server@3.10/rest/packages)" in the REST API documentation.
      *
-     * To install this event on a GitHub App, the app must have at least read-level access for the "Packages" repository permission.
+     *     To install this event on a GitHub App, the app must have at least read-level access for the "Packages" repository permission.
      * @description A package was published to a registry.
      */
     post: operations["package/published"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "package-updated": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to GitHub Packages. For more information, see "[Introduction to GitHub Packages](https://docs.github.com/enterprise-server@3.10/packages/learn-github-packages/introduction-to-github-packages)." For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#package) or "[Packages](https://docs.github.com/enterprise-server@3.10/rest/packages)" in the REST API documentation.
      *
-     * To install this event on a GitHub App, the app must have at least read-level access for the "Packages" repository permission.
+     *     To install this event on a GitHub App, the app must have at least read-level access for the "Packages" repository permission.
      * @description A previously published package was updated.
      */
     post: operations["package/updated"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "page-build": {
-    /**
-     * This event occurs when there is an attempted build of a GitHub Pages site. This event occurs regardless of whether the build is successful. For more information, see "[Configuring a publishing source for your GitHub Pages site](https://docs.github.com/enterprise-server@3.10/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)." For information about the API to manage GitHub Pages, see "[Pages](https://docs.github.com/enterprise-server@3.10/rest/pages)" in the REST API documentation.
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** This event occurs when there is an attempted build of a GitHub Pages site. This event occurs regardless of whether the build is successful. For more information, see "[Configuring a publishing source for your GitHub Pages site](https://docs.github.com/enterprise-server@3.10/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)." For information about the API to manage GitHub Pages, see "[Pages](https://docs.github.com/enterprise-server@3.10/rest/pages)" in the REST API documentation.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pages" repository permission.
-     */
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Pages" repository permission. */
     post: operations["page-build"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "personal-access-token-request-approved": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a request for a fine-grained personal access token to access resources that belong to a resource owner that requires approval for token access. For more information, see "[Creating a personal access token](https://docs.github.com/enterprise-server@3.10/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)."
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Personal access token requests" organization permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Personal access token requests" organization permission.
      *
-     * **Note**: Fine-grained PATs are in public beta. Related APIs, events, and functionality are subject to change.
+     *     **Note**: Fine-grained PATs are in public beta. Related APIs, events, and functionality are subject to change.
      * @description A fine-grained personal access token request was approved.
      */
     post: operations["personal-access-token-request/approved"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "personal-access-token-request-cancelled": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a request for a fine-grained personal access token to access resources that belong to a resource owner that requires approval for token access. For more information, see "[Creating a personal access token](https://docs.github.com/enterprise-server@3.10/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)."
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Personal access token requests" organization permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Personal access token requests" organization permission.
      *
-     * **Note**: Fine-grained PATs are in public beta. Related APIs, events, and functionality are subject to change.
+     *     **Note**: Fine-grained PATs are in public beta. Related APIs, events, and functionality are subject to change.
      * @description A fine-grained personal access token request was cancelled by the requester.
      */
     post: operations["personal-access-token-request/cancelled"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "personal-access-token-request-created": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a request for a fine-grained personal access token to access resources that belong to a resource owner that requires approval for token access. For more information, see "[Creating a personal access token](https://docs.github.com/enterprise-server@3.10/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)."
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Personal access token requests" organization permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Personal access token requests" organization permission.
      *
-     * **Note**: Fine-grained PATs are in public beta. Related APIs, events, and functionality are subject to change.
+     *     **Note**: Fine-grained PATs are in public beta. Related APIs, events, and functionality are subject to change.
      * @description A fine-grained personal access token request was created.
      */
     post: operations["personal-access-token-request/created"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "personal-access-token-request-denied": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a request for a fine-grained personal access token to access resources that belong to a resource owner that requires approval for token access. For more information, see "[Creating a personal access token](https://docs.github.com/enterprise-server@3.10/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)."
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Personal access token requests" organization permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Personal access token requests" organization permission.
      *
-     * **Note**: Fine-grained PATs are in public beta. Related APIs, events, and functionality are subject to change.
+     *     **Note**: Fine-grained PATs are in public beta. Related APIs, events, and functionality are subject to change.
      * @description A fine-grained personal access token request was denied.
      */
     post: operations["personal-access-token-request/denied"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   ping: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /** This event occurs when you create a new webhook. The ping event is a confirmation from GitHub that you configured the webhook correctly. */
     post: operations["ping"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "project-card-converted": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a card on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.10/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.10/rest/projects)" in the REST API documentation.
      *
-     * For activity relating to a project (classic) or a column on a project (classic), use the `project` and `project_column` event.
+     *     For activity relating to a project (classic) or a column on a project (classic), use the `project` and `project_column` event.
      *
-     * This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
+     *     This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
      * @description A note in a project (classic) was converted to an issue.
      */
     post: operations["project-card/converted"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "project-card-created": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a card on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.10/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.10/rest/projects)" in the REST API documentation.
      *
-     * For activity relating to a project (classic) or a column on a project (classic), use the `project` and `project_column` event.
+     *     For activity relating to a project (classic) or a column on a project (classic), use the `project` and `project_column` event.
      *
-     * This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
+     *     This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
      * @description A card was added to a project (classic).
      */
     post: operations["project-card/created"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "project-card-deleted": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a card on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.10/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.10/rest/projects)" in the REST API documentation.
      *
-     * For activity relating to a project (classic) or a column on a project (classic), use the `project` and `project_column` event.
+     *     For activity relating to a project (classic) or a column on a project (classic), use the `project` and `project_column` event.
      *
-     * This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
+     *     This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
      * @description A card on a project (classic) was deleted.
      */
     post: operations["project-card/deleted"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "project-card-edited": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a card on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.10/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.10/rest/projects)" in the REST API documentation.
      *
-     * For activity relating to a project (classic) or a column on a project (classic), use the `project` and `project_column` event.
+     *     For activity relating to a project (classic) or a column on a project (classic), use the `project` and `project_column` event.
      *
-     * This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
+     *     This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
      * @description A note on a project (classic) was edited.
      */
     post: operations["project-card/edited"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "project-card-moved": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a card on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.10/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.10/rest/projects)" in the REST API documentation.
      *
-     * For activity relating to a project (classic) or a column on a project (classic), use the `project` and `project_column` event.
+     *     For activity relating to a project (classic) or a column on a project (classic), use the `project` and `project_column` event.
      *
-     * This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
+     *     This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
      * @description A card on a project (classic) was moved to another column or to another position in its column.
      */
     post: operations["project-card/moved"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "project-closed": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.10/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.10/rest/projects)" in the REST API documentation.
      *
-     * For activity relating to a card or column on a project (classic), use the `project_card` and `project_column` event.
+     *     For activity relating to a card or column on a project (classic), use the `project_card` and `project_column` event.
      *
-     * This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
+     *     This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
      * @description A project (classic) was closed.
      */
     post: operations["project/closed"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "project-column-created": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a column on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.10/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.10/rest/projects)" in the REST API documentation.
      *
-     * For activity relating to a project (classic) or a card on a project (classic), use the `project` and `project_card` event.
+     *     For activity relating to a project (classic) or a card on a project (classic), use the `project` and `project_card` event.
      *
-     * This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
+     *     This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
      * @description A column was added to a project (classic).
      */
     post: operations["project-column/created"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "project-column-deleted": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a column on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.10/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.10/rest/projects)" in the REST API documentation.
      *
-     * For activity relating to a project (classic) or a card on a project (classic), use the `project` and `project_card` event.
+     *     For activity relating to a project (classic) or a card on a project (classic), use the `project` and `project_card` event.
      *
-     * This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
+     *     This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
      * @description A column was deleted from a project (classic).
      */
     post: operations["project-column/deleted"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "project-column-edited": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a column on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.10/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.10/rest/projects)" in the REST API documentation.
      *
-     * For activity relating to a project (classic) or a card on a project (classic), use the `project` and `project_card` event.
+     *     For activity relating to a project (classic) or a card on a project (classic), use the `project` and `project_card` event.
      *
-     * This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
+     *     This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
      * @description The name of a column on a project (classic) was changed.
      */
     post: operations["project-column/edited"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "project-column-moved": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a column on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.10/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.10/rest/projects)" in the REST API documentation.
      *
-     * For activity relating to a project (classic) or a card on a project (classic), use the `project` and `project_card` event.
+     *     For activity relating to a project (classic) or a card on a project (classic), use the `project` and `project_card` event.
      *
-     * This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
+     *     This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
      * @description A column was moved to a new position on a project (classic).
      */
     post: operations["project-column/moved"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "project-created": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.10/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.10/rest/projects)" in the REST API documentation.
      *
-     * For activity relating to a card or column on a project (classic), use the `project_card` and `project_column` event.
+     *     For activity relating to a card or column on a project (classic), use the `project_card` and `project_column` event.
      *
-     * This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
+     *     This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
      * @description A project (classic) was created.
      */
     post: operations["project/created"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "project-deleted": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.10/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.10/rest/projects)" in the REST API documentation.
      *
-     * For activity relating to a card or column on a project (classic), use the `project_card` and `project_column` event.
+     *     For activity relating to a card or column on a project (classic), use the `project_card` and `project_column` event.
      *
-     * This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
+     *     This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
      * @description A project (classic) was deleted.
      */
     post: operations["project/deleted"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "project-edited": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.10/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.10/rest/projects)" in the REST API documentation.
      *
-     * For activity relating to a card or column on a project (classic), use the `project_card` and `project_column` event.
+     *     For activity relating to a card or column on a project (classic), use the `project_card` and `project_column` event.
      *
-     * This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
+     *     This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
      * @description The name or description of a project (classic) was changed.
      */
     post: operations["project/edited"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "project-reopened": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.10/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.10/rest/projects)" in the REST API documentation.
      *
-     * For activity relating to a card or column on a project (classic), use the `project_card` and `project_column` event.
+     *     For activity relating to a card or column on a project (classic), use the `project_card` and `project_column` event.
      *
-     * This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
+     *     This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
      * @description A project (classic) was closed.
      */
     post: operations["project/reopened"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "projects-v2-closed": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.10/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#projectv2).
      *
-     * For activity relating to a item on a project, use the `projects_v2_item` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
+     *     For activity relating to a item on a project, use the `projects_v2_item` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
      *
-     * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+     *     **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
      * @description A project in the organization was closed.
      */
     post: operations["projects-v2/closed"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "projects-v2-created": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.10/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#projectv2).
      *
-     * For activity relating to a item on a project, use the `projects_v2_item` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
+     *     For activity relating to a item on a project, use the `projects_v2_item` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
      *
-     * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+     *     **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
      * @description A project in the organization was created.
      */
     post: operations["projects-v2/created"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "projects-v2-deleted": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.10/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#projectv2).
      *
-     * For activity relating to a item on a project, use the `projects_v2_item` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
+     *     For activity relating to a item on a project, use the `projects_v2_item` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
      *
-     * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+     *     **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
      * @description A project in the organization was deleted.
      */
     post: operations["projects-v2/deleted"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "projects-v2-edited": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.10/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#projectv2).
      *
-     * For activity relating to a item on a project, use the `projects_v2_item` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
+     *     For activity relating to a item on a project, use the `projects_v2_item` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
      *
-     * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+     *     **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
      * @description The title, description, or README of a project in the organization was changed.
      */
     post: operations["projects-v2/edited"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "projects-v2-item-archived": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.10/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#projectv2item).
      *
-     * For activity relating to a project (instead of an item on a project), use the `projects_v2` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
+     *     For activity relating to a project (instead of an item on a project), use the `projects_v2` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
      *
-     * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+     *     **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
      * @description An item on an organization project was archived. For more information, see "[Archiving items from your project](https://docs.github.com/enterprise-server@3.10/issues/planning-and-tracking-with-projects/managing-items-in-your-project/archiving-items-from-your-project)."
      */
     post: operations["projects-v2-item/archived"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "projects-v2-item-converted": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.10/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#projectv2item).
      *
-     * For activity relating to a project (instead of an item on a project), use the `projects_v2` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
+     *     For activity relating to a project (instead of an item on a project), use the `projects_v2` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
      *
-     * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+     *     **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
      * @description A draft issue in an organization project was converted to an issue.
      */
     post: operations["projects-v2-item/converted"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "projects-v2-item-created": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.10/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#projectv2item).
      *
-     * For activity relating to a project (instead of an item on a project), use the `projects_v2` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
+     *     For activity relating to a project (instead of an item on a project), use the `projects_v2` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
      *
-     * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+     *     **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
      * @description An item was added to a project in the organization.
      */
     post: operations["projects-v2-item/created"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "projects-v2-item-deleted": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.10/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#projectv2item).
      *
-     * For activity relating to a project (instead of an item on a project), use the `projects_v2` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
+     *     For activity relating to a project (instead of an item on a project), use the `projects_v2` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
      *
-     * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+     *     **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
      * @description An item was deleted from a project in the organization.
      */
     post: operations["projects-v2-item/deleted"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "projects-v2-item-edited": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.10/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#projectv2item).
      *
-     * For activity relating to a project (instead of an item on a project), use the `projects_v2` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
+     *     For activity relating to a project (instead of an item on a project), use the `projects_v2` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
      *
-     * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+     *     **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
      * @description The values or state of an item in an organization project were changed. For example, the value of a field was updated, the body of a draft issue was changed, or a draft issue was converted to an issue.
      */
     post: operations["projects-v2-item/edited"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "projects-v2-item-reordered": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.10/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#projectv2item).
      *
-     * For activity relating to a project (instead of an item on a project), use the `projects_v2` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
+     *     For activity relating to a project (instead of an item on a project), use the `projects_v2` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
      *
-     * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+     *     **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
      * @description The position of an item in an organization project was changed. For example, an item was moved above or below another item in the table or board layout.
      */
     post: operations["projects-v2-item/reordered"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "projects-v2-item-restored": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.10/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#projectv2item).
      *
-     * For activity relating to a project (instead of an item on a project), use the `projects_v2` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
+     *     For activity relating to a project (instead of an item on a project), use the `projects_v2` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
      *
-     * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+     *     **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
      * @description An archived item on an organization project was restored from the archive. For more information, see "[Archiving items from your project](https://docs.github.com/enterprise-server@3.10/issues/planning-and-tracking-with-projects/managing-items-in-your-project/archiving-items-from-your-project)."
      */
     post: operations["projects-v2-item/restored"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "projects-v2-reopened": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.10/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#projectv2).
      *
-     * For activity relating to a item on a project, use the `projects_v2_item` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
+     *     For activity relating to a item on a project, use the `projects_v2_item` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
      *
-     * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+     *     **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
      * @description A project in the organization was reopened.
      */
     post: operations["projects-v2/reopened"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   public: {
-    /**
-     * This event occurs when repository visibility changes from private to public. For more information, see "[Setting repository visibility](https://docs.github.com/enterprise-server@3.10/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/setting-repository-visibility)."
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** This event occurs when repository visibility changes from private to public. For more information, see "[Setting repository visibility](https://docs.github.com/enterprise-server@3.10/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/setting-repository-visibility)."
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
-     */
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission. */
     post: operations["public"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "pull-request-assigned": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.10/rest/pulls/pulls)" in the REST API documentation.
      *
-     * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
+     *     For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
      * @description A pull request was assigned to a user.
      */
     post: operations["pull-request/assigned"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "pull-request-auto-merge-disabled": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.10/rest/pulls/pulls)" in the REST API documentation.
      *
-     * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
+     *     For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
      * @description Auto merge was disabled for a pull request. For more information, see "[Automatically merging a pull request](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/automatically-merging-a-pull-request)."
      */
     post: operations["pull-request/auto-merge-disabled"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "pull-request-auto-merge-enabled": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.10/rest/pulls/pulls)" in the REST API documentation.
      *
-     * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
+     *     For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
      * @description Auto merge was enabled for a pull request. For more information, see "[Automatically merging a pull request](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/automatically-merging-a-pull-request)."
      */
     post: operations["pull-request/auto-merge-enabled"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "pull-request-closed": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.10/rest/pulls/pulls)" in the REST API documentation.
      *
-     * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
+     *     For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
      * @description A pull request was closed. If `merged` is false in the webhook payload, the pull request was closed with unmerged commits. If `merged` is true in the webhook payload, the pull request was merged.
      */
     post: operations["pull-request/closed"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "pull-request-converted-to-draft": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.10/rest/pulls/pulls)" in the REST API documentation.
      *
-     * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
+     *     For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
      * @description A pull request was converted to a draft. For more information, see "[Changing the stage of a pull request](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/changing-the-stage-of-a-pull-request)."
      */
     post: operations["pull-request/converted-to-draft"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "pull-request-demilestoned": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.10/rest/pulls/pulls)" in the REST API documentation.
      *
-     * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
+     *     For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
      * @description A pull request was removed from a milestone.
      */
     post: operations["pull-request/demilestoned"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "pull-request-edited": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.10/rest/pulls/pulls)" in the REST API documentation.
      *
-     * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
+     *     For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
      * @description The title or body of a pull request was edited, or the base branch of a pull request was changed.
      */
     post: operations["pull-request/edited"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "pull-request-labeled": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.10/rest/pulls/pulls)" in the REST API documentation.
      *
-     * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
+     *     For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
      * @description A label was added to a pull request.
      */
     post: operations["pull-request/labeled"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "pull-request-locked": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.10/rest/pulls/pulls)" in the REST API documentation.
      *
-     * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
+     *     For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
      * @description Conversation on a pull request was locked. For more information, see "[Locking conversations](https://docs.github.com/enterprise-server@3.10/communities/moderating-comments-and-conversations/locking-conversations)."
      */
     post: operations["pull-request/locked"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "pull-request-milestoned": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.10/rest/pulls/pulls)" in the REST API documentation.
      *
-     * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
+     *     For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
      * @description A pull request was added to a milestone.
      */
     post: operations["pull-request/milestoned"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "pull-request-opened": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.10/rest/pulls/pulls)" in the REST API documentation.
      *
-     * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
+     *     For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
      * @description A pull request was created
      */
     post: operations["pull-request/opened"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "pull-request-ready-for-review": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.10/rest/pulls/pulls)" in the REST API documentation.
      *
-     * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
+     *     For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
      * @description A draft pull request was marked as ready for review. For more information, see "[Changing the stage of a pull request](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/changing-the-stage-of-a-pull-request)."
      */
     post: operations["pull-request/ready-for-review"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "pull-request-reopened": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.10/rest/pulls/pulls)" in the REST API documentation.
      *
-     * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
+     *     For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
      * @description A previously closed pull request was reopened.
      */
     post: operations["pull-request/reopened"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "pull-request-review-comment-created": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a pull request review comment. A pull request review comment is a comment on a pull request's diff. For more information, see "[Commenting on a pull request](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request)." For information about the APIs to manage pull request review comments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#pullrequestreviewcomment) or "[Pull request review comments](https://docs.github.com/enterprise-server@3.10/rest/pulls/comments)" in the REST API documentation.
      *
-     * For activity related to pull request reviews, pull request comments, or pull request review threads, use the `pull_request_review`, `issue_comment`, or `pull_request_review_thread` events instead.
+     *     For activity related to pull request reviews, pull request comments, or pull request review threads, use the `pull_request_review`, `issue_comment`, or `pull_request_review_thread` events instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
      * @description A comment on a pull request diff was created.
      */
     post: operations["pull-request-review-comment/created"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "pull-request-review-comment-deleted": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a pull request review comment. A pull request review comment is a comment on a pull request's diff. For more information, see "[Commenting on a pull request](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request)." For information about the APIs to manage pull request review comments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#pullrequestreviewcomment) or "[Pull request review comments](https://docs.github.com/enterprise-server@3.10/rest/pulls/comments)" in the REST API documentation.
      *
-     * For activity related to pull request reviews, pull request comments, or pull request review threads, use the `pull_request_review`, `issue_comment`, or `pull_request_review_thread` events instead.
+     *     For activity related to pull request reviews, pull request comments, or pull request review threads, use the `pull_request_review`, `issue_comment`, or `pull_request_review_thread` events instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
      * @description A comment on a pull request diff was deleted.
      */
     post: operations["pull-request-review-comment/deleted"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "pull-request-review-comment-edited": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a pull request review comment. A pull request review comment is a comment on a pull request's diff. For more information, see "[Commenting on a pull request](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request)." For information about the APIs to manage pull request review comments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#pullrequestreviewcomment) or "[Pull request review comments](https://docs.github.com/enterprise-server@3.10/rest/pulls/comments)" in the REST API documentation.
      *
-     * For activity related to pull request reviews, pull request comments, or pull request review threads, use the `pull_request_review`, `issue_comment`, or `pull_request_review_thread` events instead.
+     *     For activity related to pull request reviews, pull request comments, or pull request review threads, use the `pull_request_review`, `issue_comment`, or `pull_request_review_thread` events instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
      * @description The content of a comment on a pull request diff was changed.
      */
     post: operations["pull-request-review-comment/edited"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "pull-request-review-dismissed": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a pull request review. A pull request review is a group of pull request review comments in addition to a body comment and a state. For more information, see "[About pull request reviews](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request reviews, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#pullrequestreview) or "[Pull request reviews](https://docs.github.com/enterprise-server@3.10/rest/pulls/reviews)" in the REST API documentation.
      *
-     * For activity related to pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
+     *     For activity related to pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
      * @description A review on a pull request was dismissed.
      */
     post: operations["pull-request-review/dismissed"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "pull-request-review-edited": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a pull request review. A pull request review is a group of pull request review comments in addition to a body comment and a state. For more information, see "[About pull request reviews](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request reviews, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#pullrequestreview) or "[Pull request reviews](https://docs.github.com/enterprise-server@3.10/rest/pulls/reviews)" in the REST API documentation.
      *
-     * For activity related to pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
+     *     For activity related to pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
      * @description The body comment on a pull request review was edited.
      */
     post: operations["pull-request-review/edited"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "pull-request-review-request-removed": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.10/rest/pulls/pulls)" in the REST API documentation.
      *
-     * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
+     *     For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
      * @description A request for review by a person or team was removed from a pull request.
      */
     post: operations["pull-request/review-request-removed"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "pull-request-review-requested": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.10/rest/pulls/pulls)" in the REST API documentation.
      *
-     * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
+     *     For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
      * @description Review by a person or team was requested for a pull request. For more information, see "[Requesting a pull request review](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/requesting-a-pull-request-review)."
      */
     post: operations["pull-request/review-requested"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "pull-request-review-submitted": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a pull request review. A pull request review is a group of pull request review comments in addition to a body comment and a state. For more information, see "[About pull request reviews](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request reviews, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#pullrequestreview) or "[Pull request reviews](https://docs.github.com/enterprise-server@3.10/rest/pulls/reviews)" in the REST API documentation.
      *
-     * For activity related to pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
+     *     For activity related to pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
      * @description A review on a pull request was submitted.
      */
     post: operations["pull-request-review/submitted"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "pull-request-review-thread-resolved": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a comment thread on a pull request. For more information, see "[About pull request reviews](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request reviews, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#pullrequestreviewthread) or "[Pull request review comments](https://docs.github.com/enterprise-server@3.10/rest/pulls/comments)" in the REST API documentation.
      *
-     * For activity related to pull request review comments, pull request comments, or pull request reviews, use the `pull_request_review_comment`, `issue_comment`, or `pull_request_review` events instead.
+     *     For activity related to pull request review comments, pull request comments, or pull request reviews, use the `pull_request_review_comment`, `issue_comment`, or `pull_request_review` events instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
      * @description A comment thread on a pull request was marked as resolved.
      */
     post: operations["pull-request-review-thread/resolved"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "pull-request-review-thread-unresolved": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a comment thread on a pull request. For more information, see "[About pull request reviews](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request reviews, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#pullrequestreviewthread) or "[Pull request review comments](https://docs.github.com/enterprise-server@3.10/rest/pulls/comments)" in the REST API documentation.
      *
-     * For activity related to pull request review comments, pull request comments, or pull request reviews, use the `pull_request_review_comment`, `issue_comment`, or `pull_request_review` events instead.
+     *     For activity related to pull request review comments, pull request comments, or pull request reviews, use the `pull_request_review_comment`, `issue_comment`, or `pull_request_review` events instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
      * @description A previously resolved comment thread on a pull request was marked as unresolved.
      */
     post: operations["pull-request-review-thread/unresolved"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "pull-request-synchronize": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.10/rest/pulls/pulls)" in the REST API documentation.
      *
-     * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
+     *     For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
      * @description A pull request's head branch was updated. For example, the head branch was updated from the base branch or new commits were pushed to the head branch.
      */
     post: operations["pull-request/synchronize"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "pull-request-unassigned": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.10/rest/pulls/pulls)" in the REST API documentation.
      *
-     * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
+     *     For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
      * @description A user was unassigned from a pull request.
      */
     post: operations["pull-request/unassigned"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "pull-request-unlabeled": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.10/rest/pulls/pulls)" in the REST API documentation.
      *
-     * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
+     *     For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
      * @description A label was removed from a pull request.
      */
     post: operations["pull-request/unlabeled"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "pull-request-unlocked": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.10/rest/pulls/pulls)" in the REST API documentation.
      *
-     * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
+     *     For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
      * @description Conversation on a pull request was unlocked. For more information, see "[Locking conversations](https://docs.github.com/enterprise-server@3.10/communities/moderating-comments-and-conversations/locking-conversations)."
      */
     post: operations["pull-request/unlocked"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   push: {
-    /**
-     * This event occurs when there is a push to a repository branch. This includes when a commit is pushed, when a commit tag is pushed,
-     * when a branch is deleted, when a tag is deleted, or when a repository is created from a template. To subscribe to only branch
-     * and tag deletions, use the [`delete`](#delete) webhook event.
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** This event occurs when there is a push to a repository branch. This includes when a commit is pushed, when a commit tag is pushed,
+     *     when a branch is deleted, when a tag is deleted, or when a repository is created from a template. To subscribe to only branch
+     *     and tag deletions, use the [`delete`](#delete) webhook event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
      *
-     * **Note**: An event will not be created when more than three tags are pushed at once.
-     */
+     *     **Note**: An event will not be created when more than three tags are pushed at once. */
     post: operations["push"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "registry-package-published": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to GitHub Packages. For more information, see "[Introduction to GitHub Packages](https://docs.github.com/enterprise-server@3.10/packages/learn-github-packages/introduction-to-github-packages)." For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#package) or "[Packages](https://docs.github.com/enterprise-server@3.10/rest/packages)" in the REST API documentation.
      *
-     * To install this event on a GitHub App, the app must have at least read-level access for the "Packages" repository permission.
+     *     To install this event on a GitHub App, the app must have at least read-level access for the "Packages" repository permission.
      *
-     * **Note**: GitHub recommends that you use the newer `package` event instead.
+     *     **Note**: GitHub recommends that you use the newer `package` event instead.
      * @description A package was published to a registry.
      */
     post: operations["registry-package/published"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "registry-package-updated": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to GitHub Packages. For more information, see "[Introduction to GitHub Packages](https://docs.github.com/enterprise-server@3.10/packages/learn-github-packages/introduction-to-github-packages)." For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#package) or "[Packages](https://docs.github.com/enterprise-server@3.10/rest/packages)" in the REST API documentation.
      *
-     * To install this event on a GitHub App, the app must have at least read-level access for the "Packages" repository permission.
+     *     To install this event on a GitHub App, the app must have at least read-level access for the "Packages" repository permission.
      *
-     * **Note**: GitHub recommends that you use the newer `package` event instead.
+     *     **Note**: GitHub recommends that you use the newer `package` event instead.
      * @description A package that was previously published to a registry was updated.
      */
     post: operations["registry-package/updated"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "release-created": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-server@3.10/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-server@3.10/rest/releases)" in the REST API documentation.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
      * @description A draft was saved, or a release or pre-release was published without previously being saved as a draft.
      */
     post: operations["release/created"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "release-deleted": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-server@3.10/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-server@3.10/rest/releases)" in the REST API documentation.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
      * @description A release, pre-release, or draft release was deleted.
      */
     post: operations["release/deleted"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "release-edited": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-server@3.10/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-server@3.10/rest/releases)" in the REST API documentation.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
      * @description The details of a release, pre-release, or draft release were edited. For more information, see "[Managing releases in a repository](https://docs.github.com/enterprise-server@3.10/repositories/releasing-projects-on-github/managing-releases-in-a-repository#editing-a-release)."
      */
     post: operations["release/edited"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "release-prereleased": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-server@3.10/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-server@3.10/rest/releases)" in the REST API documentation.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
      * @description A release was created and identified as a pre-release. A pre-release is a release that is not ready for production and may be unstable.
      */
     post: operations["release/prereleased"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "release-published": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-server@3.10/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-server@3.10/rest/releases)" in the REST API documentation.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
      * @description A release, pre-release, or draft of a release was published.
      */
     post: operations["release/published"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "release-released": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-server@3.10/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-server@3.10/rest/releases)" in the REST API documentation.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
      * @description A release was published, or a pre-release was changed to a release.
      */
     post: operations["release/released"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "release-unpublished": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-server@3.10/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-server@3.10/rest/releases)" in the REST API documentation.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
      * @description A release or pre-release was unpublished.
      */
     post: operations["release/unpublished"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "repository-anonymous-access-disabled": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.10/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.10/rest/repos)" in the REST API documentation.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
      * @description Someone disabled anonymous Git read access to the repository. For more information, see "[Enabling anonymous Git read access for a repository](/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/enabling-anonymous-git-read-access-for-a-repository)."
      */
     post: operations["repository/anonymous-access-disabled"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "repository-anonymous-access-enabled": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.10/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.10/rest/repos)" in the REST API documentation.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
      * @description Someone enabled anonymous Git read access to the repository. For more information, see "[Enabling anonymous Git read access for a repository](/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/enabling-anonymous-git-read-access-for-a-repository)."
      */
     post: operations["repository/anonymous-access-enabled"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "repository-archived": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.10/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.10/rest/repos)" in the REST API documentation.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
      * @description A repository was archived.
      */
     post: operations["repository/archived"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "repository-created": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.10/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.10/rest/repos)" in the REST API documentation.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
      * @description A repository was created.
      */
     post: operations["repository/created"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "repository-deleted": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.10/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.10/rest/repos)" in the REST API documentation.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
      * @description A repository was deleted. GitHub Apps and repository webhooks will not receive this event.
      */
     post: operations["repository/deleted"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "repository-dispatch-sample.collected": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when a GitHub App sends a `POST` request to `/repos/{owner}/{repo}/dispatches`. For more information, see [the REST API documentation for creating a repository dispatch event](https://docs.github.com/enterprise-server@3.10/rest/repos/repos#create-a-repository-dispatch-event).
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
      * @description The `event_type` that was specified in the `POST /repos/{owner}/{repo}/dispatches` request body.
      */
     post: operations["repository-dispatch/sample.collected"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "repository-edited": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.10/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.10/rest/repos)" in the REST API documentation.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
      * @description The topics, default branch, description, or homepage of a repository was changed.
      */
     post: operations["repository/edited"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "repository-privatized": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.10/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.10/rest/repos)" in the REST API documentation.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
      * @description The visibility of a repository was changed to `private`.
      */
     post: operations["repository/privatized"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "repository-publicized": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.10/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.10/rest/repos)" in the REST API documentation.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
      * @description The visibility of a repository was changed to `public`.
      */
     post: operations["repository/publicized"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "repository-renamed": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.10/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.10/rest/repos)" in the REST API documentation.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
      * @description The name of a repository was changed.
      */
     post: operations["repository/renamed"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "repository-transferred": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.10/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.10/rest/repos)" in the REST API documentation.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
      * @description Ownership of the repository was transferred to a user or organization account. This event is only sent to the account where the ownership is transferred. To receive the `repository.transferred` event, the new owner account must have the GitHub App installed, and the App must be subscribed to "Repository" events.
      */
     post: operations["repository/transferred"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "repository-unarchived": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.10/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.10/rest/repos)" in the REST API documentation.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
      * @description A previously archived repository was unarchived.
      */
     post: operations["repository/unarchived"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "repository-vulnerability-alert-create": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a security vulnerability alert in a repository.
      *
-     * **Note**: This event is deprecated. Use the `dependabot_alert` event instead.
+     *     **Note**: This event is deprecated. Use the `dependabot_alert` event instead.
      * @description A repository vulnerability alert was created.
      */
     post: operations["repository-vulnerability-alert/create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "repository-vulnerability-alert-dismiss": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a security vulnerability alert in a repository.
      *
-     * **Note**: This event is deprecated. Use the `dependabot_alert` event instead.
+     *     **Note**: This event is deprecated. Use the `dependabot_alert` event instead.
      * @description A repository vulnerability alert was dismissed.
      */
     post: operations["repository-vulnerability-alert/dismiss"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "repository-vulnerability-alert-reopen": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a security vulnerability alert in a repository.
      *
-     * **Note**: This event is deprecated. Use the `dependabot_alert` event instead.
+     *     **Note**: This event is deprecated. Use the `dependabot_alert` event instead.
      * @description A previously dismissed or resolved repository vulnerability alert was reopened.
      */
     post: operations["repository-vulnerability-alert/reopen"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "repository-vulnerability-alert-resolve": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a security vulnerability alert in a repository.
      *
-     * **Note**: This event is deprecated. Use the `dependabot_alert` event instead.
+     *     **Note**: This event is deprecated. Use the `dependabot_alert` event instead.
      * @description A repository vulnerability alert was marked as resolved.
      */
     post: operations["repository-vulnerability-alert/resolve"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "secret-scanning-alert-created": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a secret scanning alert. For more information about secret scanning, see "[About secret scanning](https://docs.github.com/enterprise-server@3.10/code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/enterprise-server@3.10/rest/secret-scanning)" in the REST API documentation.
      *
-     * For activity relating to secret scanning alert locations, use the `secret_scanning_alert_location` event.
+     *     For activity relating to secret scanning alert locations, use the `secret_scanning_alert_location` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
      * @description A secret scanning alert was created.
      */
     post: operations["secret-scanning-alert/created"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "secret-scanning-alert-location-created": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to the locations of a secret in a secret scanning alert.
      *
-     * For more information about secret scanning, see "[About secret scanning](https://docs.github.com/enterprise-server@3.10/code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/enterprise-server@3.10/rest/secret-scanning)" in the REST API documentation.
+     *     For more information about secret scanning, see "[About secret scanning](https://docs.github.com/enterprise-server@3.10/code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/enterprise-server@3.10/rest/secret-scanning)" in the REST API documentation.
      *
-     * For activity relating to secret scanning alerts, use the `secret_scanning_alert` event.
+     *     For activity relating to secret scanning alerts, use the `secret_scanning_alert` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
      * @description A new instance of a previously detected secret was detected in a repository, and the location of the secret was added to the existing alert.
      */
     post: operations["secret-scanning-alert-location/created"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "secret-scanning-alert-reopened": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a secret scanning alert. For more information about secret scanning, see "[About secret scanning](https://docs.github.com/enterprise-server@3.10/code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/enterprise-server@3.10/rest/secret-scanning)" in the REST API documentation.
      *
-     * For activity relating to secret scanning alert locations, use the `secret_scanning_alert_location` event.
+     *     For activity relating to secret scanning alert locations, use the `secret_scanning_alert_location` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
      * @description A previously closed secret scanning alert was reopened.
      */
     post: operations["secret-scanning-alert/reopened"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "secret-scanning-alert-resolved": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a secret scanning alert. For more information about secret scanning, see "[About secret scanning](https://docs.github.com/enterprise-server@3.10/code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/enterprise-server@3.10/rest/secret-scanning)" in the REST API documentation.
      *
-     * For activity relating to secret scanning alert locations, use the `secret_scanning_alert_location` event.
+     *     For activity relating to secret scanning alert locations, use the `secret_scanning_alert_location` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
      * @description A secret scanning alert was closed.
      */
     post: operations["secret-scanning-alert/resolved"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "secret-scanning-alert-revoked": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a secret scanning alert. For more information about secret scanning, see "[About secret scanning](https://docs.github.com/enterprise-server@3.10/code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/enterprise-server@3.10/rest/secret-scanning)" in the REST API documentation.
      *
-     * For activity relating to secret scanning alert locations, use the `secret_scanning_alert_location` event.
+     *     For activity relating to secret scanning alert locations, use the `secret_scanning_alert_location` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
      * @description A secret scanning alert was marked as revoked.
      */
     post: operations["secret-scanning-alert/revoked"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "security-advisory-published": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a global security advisory that was reviewed by GitHub. A GitHub-reviewed global security advisory provides information about security vulnerabilities or malware that have been mapped to packages in ecosystems we support. For more information about global security advisories, see "[About global security advisories](https://docs.github.com/enterprise-server@3.10/code-security/security-advisories/working-with-global-security-advisories-from-the-github-advisory-database/about-global-security-advisories)." For information about the API to manage security advisories, see [the REST API documentation](https://docs.github.com/enterprise-server@3.10/rest/security-advisories/global-advisories) or [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#securityadvisory).
      *
-     * GitHub Dependabot alerts are also powered by the security advisory dataset. For more information, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.10/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)."
+     *     GitHub Dependabot alerts are also powered by the security advisory dataset. For more information, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.10/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)."
      * @description A security advisory was published to the GitHub community.
      */
     post: operations["security-advisory/published"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "security-advisory-updated": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a global security advisory that was reviewed by GitHub. A GitHub-reviewed global security advisory provides information about security vulnerabilities or malware that have been mapped to packages in ecosystems we support. For more information about global security advisories, see "[About global security advisories](https://docs.github.com/enterprise-server@3.10/code-security/security-advisories/working-with-global-security-advisories-from-the-github-advisory-database/about-global-security-advisories)." For information about the API to manage security advisories, see [the REST API documentation](https://docs.github.com/enterprise-server@3.10/rest/security-advisories/global-advisories) or [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#securityadvisory).
      *
-     * GitHub Dependabot alerts are also powered by the security advisory dataset. For more information, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.10/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)."
+     *     GitHub Dependabot alerts are also powered by the security advisory dataset. For more information, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.10/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)."
      * @description The metadata or description of a security advisory was changed.
      */
     post: operations["security-advisory/updated"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "security-advisory-withdrawn": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a global security advisory that was reviewed by GitHub. A GitHub-reviewed global security advisory provides information about security vulnerabilities or malware that have been mapped to packages in ecosystems we support. For more information about global security advisories, see "[About global security advisories](https://docs.github.com/enterprise-server@3.10/code-security/security-advisories/working-with-global-security-advisories-from-the-github-advisory-database/about-global-security-advisories)." For information about the API to manage security advisories, see [the REST API documentation](https://docs.github.com/enterprise-server@3.10/rest/security-advisories/global-advisories) or [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#securityadvisory).
      *
-     * GitHub Dependabot alerts are also powered by the security advisory dataset. For more information, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.10/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)."
+     *     GitHub Dependabot alerts are also powered by the security advisory dataset. For more information, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.10/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)."
      * @description A previously published security advisory was withdrawn.
      */
     post: operations["security-advisory/withdrawn"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "security-and-analysis": {
-    /**
-     * This event occurs when code security and analysis features are enabled or disabled for a repository. For more information, see "[GitHub security features](https://docs.github.com/enterprise-server@3.10/code-security/getting-started/github-security-features)."
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** This event occurs when code security and analysis features are enabled or disabled for a repository. For more information, see "[GitHub security features](https://docs.github.com/enterprise-server@3.10/code-security/getting-started/github-security-features)."
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
-     */
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission. */
     post: operations["security-and-analysis"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "sponsorship-cancelled": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a sponsorship listing. For more information, see "[About GitHub Sponsors](https://docs.github.com/enterprise-server@3.10/sponsors/getting-started-with-github-sponsors/about-github-sponsors)." For information about the API to manage sponsors, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#sponsorship).
      *
-     * You can only create a sponsorship webhook on GitHub.com. For more information, see "[Configuring webhooks for events in your sponsored account](https://docs.github.com/enterprise-server@3.10/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)."
+     *     You can only create a sponsorship webhook on GitHub.com. For more information, see "[Configuring webhooks for events in your sponsored account](https://docs.github.com/enterprise-server@3.10/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)."
      * @description A sponsorship was cancelled and the last billing cycle has ended.
      *
-     * This event is only sent when a recurring (monthly) sponsorship is cancelled; it is not sent for one-time sponsorships.
+     *     This event is only sent when a recurring (monthly) sponsorship is cancelled; it is not sent for one-time sponsorships.
      */
     post: operations["sponsorship/cancelled"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "sponsorship-created": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a sponsorship listing. For more information, see "[About GitHub Sponsors](https://docs.github.com/enterprise-server@3.10/sponsors/getting-started-with-github-sponsors/about-github-sponsors)." For information about the API to manage sponsors, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#sponsorship).
      *
-     * You can only create a sponsorship webhook on GitHub.com. For more information, see "[Configuring webhooks for events in your sponsored account](https://docs.github.com/enterprise-server@3.10/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)."
+     *     You can only create a sponsorship webhook on GitHub.com. For more information, see "[Configuring webhooks for events in your sponsored account](https://docs.github.com/enterprise-server@3.10/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)."
      * @description A sponsor created a sponsorship for a sponsored account. This event occurs once the payment is successfully processed.
      */
     post: operations["sponsorship/created"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "sponsorship-edited": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a sponsorship listing. For more information, see "[About GitHub Sponsors](https://docs.github.com/enterprise-server@3.10/sponsors/getting-started-with-github-sponsors/about-github-sponsors)." For information about the API to manage sponsors, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#sponsorship).
      *
-     * You can only create a sponsorship webhook on GitHub.com. For more information, see "[Configuring webhooks for events in your sponsored account](https://docs.github.com/enterprise-server@3.10/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)."
+     *     You can only create a sponsorship webhook on GitHub.com. For more information, see "[Configuring webhooks for events in your sponsored account](https://docs.github.com/enterprise-server@3.10/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)."
      * @description A monthly sponsor changed who can see their sponsorship. If you recognize your sponsors publicly, you may want to update your sponsor recognition to reflect the change when this event occurs.
      */
     post: operations["sponsorship/edited"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "sponsorship-pending-cancellation": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a sponsorship listing. For more information, see "[About GitHub Sponsors](https://docs.github.com/enterprise-server@3.10/sponsors/getting-started-with-github-sponsors/about-github-sponsors)." For information about the API to manage sponsors, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#sponsorship).
      *
-     * You can only create a sponsorship webhook on GitHub.com. For more information, see "[Configuring webhooks for events in your sponsored account](https://docs.github.com/enterprise-server@3.10/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)."
+     *     You can only create a sponsorship webhook on GitHub.com. For more information, see "[Configuring webhooks for events in your sponsored account](https://docs.github.com/enterprise-server@3.10/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)."
      * @description A sponsor scheduled a cancellation for their sponsorship. The cancellation will become effective on their next billing date.
      *
-     * This event is only sent when a recurring (monthly) sponsorship is cancelled; it is not sent for one-time sponsorships.
+     *     This event is only sent when a recurring (monthly) sponsorship is cancelled; it is not sent for one-time sponsorships.
      */
     post: operations["sponsorship/pending-cancellation"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "sponsorship-pending-tier-change": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a sponsorship listing. For more information, see "[About GitHub Sponsors](https://docs.github.com/enterprise-server@3.10/sponsors/getting-started-with-github-sponsors/about-github-sponsors)." For information about the API to manage sponsors, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#sponsorship).
      *
-     * You can only create a sponsorship webhook on GitHub.com. For more information, see "[Configuring webhooks for events in your sponsored account](https://docs.github.com/enterprise-server@3.10/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)."
+     *     You can only create a sponsorship webhook on GitHub.com. For more information, see "[Configuring webhooks for events in your sponsored account](https://docs.github.com/enterprise-server@3.10/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)."
      * @description A sponsor scheduled a downgrade to a lower sponsorship tier. The new tier will become effective on their next billing date.
      */
     post: operations["sponsorship/pending-tier-change"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "sponsorship-tier-changed": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a sponsorship listing. For more information, see "[About GitHub Sponsors](https://docs.github.com/enterprise-server@3.10/sponsors/getting-started-with-github-sponsors/about-github-sponsors)." For information about the API to manage sponsors, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#sponsorship).
      *
-     * You can only create a sponsorship webhook on GitHub.com. For more information, see "[Configuring webhooks for events in your sponsored account](https://docs.github.com/enterprise-server@3.10/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)."
+     *     You can only create a sponsorship webhook on GitHub.com. For more information, see "[Configuring webhooks for events in your sponsored account](https://docs.github.com/enterprise-server@3.10/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)."
      * @description A sponsor changed the tier of their sponsorship and the change has taken effect. If a sponsor upgraded their tier, the change took effect immediately. If a sponsor downgraded their tier, the change took effect at the beginning of the sponsor's next billing cycle.
      */
     post: operations["sponsorship/tier-changed"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "star-created": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to repository stars. For more information about stars, see "[Saving repositories with stars](https://docs.github.com/enterprise-server@3.10/get-started/exploring-projects-on-github/saving-repositories-with-stars)." For information about the APIs to manage stars, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#starredrepositoryconnection) or "[Starring](https://docs.github.com/enterprise-server@3.10/rest/activity/starring)" in the REST API documentation.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
      * @description Someone starred a repository.
      */
     post: operations["star/created"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "star-deleted": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to repository stars. For more information about stars, see "[Saving repositories with stars](https://docs.github.com/enterprise-server@3.10/get-started/exploring-projects-on-github/saving-repositories-with-stars)." For information about the APIs to manage stars, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#starredrepositoryconnection) or "[Starring](https://docs.github.com/enterprise-server@3.10/rest/activity/starring)" in the REST API documentation.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
      * @description Someone unstarred the repository.
      */
     post: operations["star/deleted"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   status: {
-    /**
-     * This event occurs when the status of a Git commit changes. For example, commits can be marked as `error`, `failure`, `pending`, or `success`. For more information, see "[About status checks](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/collaborating-on-repositories-with-code-quality-features/about-status-checks)." For information about the APIs to manage commit statuses, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#status) or "[Commit statuses](https://docs.github.com/enterprise-server@3.10/rest/commits/statuses)" in the REST API documentation.
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** This event occurs when the status of a Git commit changes. For example, commits can be marked as `error`, `failure`, `pending`, or `success`. For more information, see "[About status checks](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/collaborating-on-repositories-with-code-quality-features/about-status-checks)." For information about the APIs to manage commit statuses, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#status) or "[Commit statuses](https://docs.github.com/enterprise-server@3.10/rest/commits/statuses)" in the REST API documentation.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Commit statuses" repository permission.
-     */
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Commit statuses" repository permission. */
     post: operations["status"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "team-add": {
-    /**
-     * This event occurs when a team is added to a repository.
-     * For more information, see "[Managing teams and people with access to your repository](https://docs.github.com/enterprise-server@3.10/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/managing-teams-and-people-with-access-to-your-repository)."
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** This event occurs when a team is added to a repository.
+     *     For more information, see "[Managing teams and people with access to your repository](https://docs.github.com/enterprise-server@3.10/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/managing-teams-and-people-with-access-to-your-repository)."
      *
-     * For activity relating to teams, see the `teams` event.
+     *     For activity relating to teams, see the `teams` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
-     */
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission. */
     post: operations["team-add"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "team-added-to-repository": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to teams in an organization.
-     * For more information, see "[About teams](https://docs.github.com/enterprise-server@3.10/organizations/organizing-members-into-teams/about-teams)."
+     *     For more information, see "[About teams](https://docs.github.com/enterprise-server@3.10/organizations/organizing-members-into-teams/about-teams)."
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
      * @description A team was granted access to a repository.
      */
     post: operations["team/added-to-repository"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "team-created": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to teams in an organization.
-     * For more information, see "[About teams](https://docs.github.com/enterprise-server@3.10/organizations/organizing-members-into-teams/about-teams)."
+     *     For more information, see "[About teams](https://docs.github.com/enterprise-server@3.10/organizations/organizing-members-into-teams/about-teams)."
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
      * @description A team was created.
      */
     post: operations["team/created"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "team-deleted": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to teams in an organization.
-     * For more information, see "[About teams](https://docs.github.com/enterprise-server@3.10/organizations/organizing-members-into-teams/about-teams)."
+     *     For more information, see "[About teams](https://docs.github.com/enterprise-server@3.10/organizations/organizing-members-into-teams/about-teams)."
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
      * @description A team was deleted.
      */
     post: operations["team/deleted"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "team-edited": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to teams in an organization.
-     * For more information, see "[About teams](https://docs.github.com/enterprise-server@3.10/organizations/organizing-members-into-teams/about-teams)."
+     *     For more information, see "[About teams](https://docs.github.com/enterprise-server@3.10/organizations/organizing-members-into-teams/about-teams)."
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
      * @description The name, description, or visibility of a team was changed.
      */
     post: operations["team/edited"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "team-removed-from-repository": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to teams in an organization.
-     * For more information, see "[About teams](https://docs.github.com/enterprise-server@3.10/organizations/organizing-members-into-teams/about-teams)."
+     *     For more information, see "[About teams](https://docs.github.com/enterprise-server@3.10/organizations/organizing-members-into-teams/about-teams)."
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
      * @description A team's access to a repository was removed.
      */
     post: operations["team/removed-from-repository"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "user-created": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to user accounts in an enterprise.
      * @description A user account was added to the enterprise.
      */
     post: operations["user/created"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "user-deleted": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to user accounts in an enterprise.
      * @description A user account was removed from the enterprise.
      */
     post: operations["user/deleted"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "watch-started": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to watching, or subscribing to, a repository. For more information about watching, see "[Managing your subscriptions](https://docs.github.com/enterprise-server@3.10/account-and-profile/managing-subscriptions-and-notifications-on-github/managing-subscriptions-for-activity-on-github/managing-your-subscriptions)." For information about the APIs to manage watching, see "[Watching](https://docs.github.com/enterprise-server@3.10/rest/activity/watching)" in the REST API documentation.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
      * @description Someone started watching the repository.
      */
     post: operations["watch/started"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "workflow-dispatch": {
-    /**
-     * This event occurs when a GitHub Actions workflow is manually triggered. For more information, see "[Manually running a workflow](https://docs.github.com/enterprise-server@3.10/actions/managing-workflow-runs/manually-running-a-workflow)."
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** This event occurs when a GitHub Actions workflow is manually triggered. For more information, see "[Manually running a workflow](https://docs.github.com/enterprise-server@3.10/actions/managing-workflow-runs/manually-running-a-workflow)."
      *
-     * For activity relating to workflow runs, use the `workflow_run` event.
+     *     For activity relating to workflow runs, use the `workflow_run` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
-     */
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission. */
     post: operations["workflow-dispatch"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "workflow-job-completed": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a job in a GitHub Actions workflow. For more information, see "[Using jobs in a workflow](https://docs.github.com/enterprise-server@3.10/actions/using-jobs/using-jobs-in-a-workflow)." For information about the API to manage workflow jobs, see "[Workflow jobs](https://docs.github.com/enterprise-server@3.10/rest/actions/workflow-jobs)" in the REST API documentation.
      *
-     * For activity relating to a workflow run instead of a job in a workflow run, use the `workflow_run` event.
+     *     For activity relating to a workflow run instead of a job in a workflow run, use the `workflow_run` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Actions" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Actions" repository permission.
      * @description A job in a workflow run finished. This event occurs when a job in a workflow is completed, regardless of whether the job was successful or unsuccessful.
      */
     post: operations["workflow-job/completed"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "workflow-job-in-progress": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a job in a GitHub Actions workflow. For more information, see "[Using jobs in a workflow](https://docs.github.com/enterprise-server@3.10/actions/using-jobs/using-jobs-in-a-workflow)." For information about the API to manage workflow jobs, see "[Workflow jobs](https://docs.github.com/enterprise-server@3.10/rest/actions/workflow-jobs)" in the REST API documentation.
      *
-     * For activity relating to a workflow run instead of a job in a workflow run, use the `workflow_run` event.
+     *     For activity relating to a workflow run instead of a job in a workflow run, use the `workflow_run` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Actions" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Actions" repository permission.
      * @description A job in a workflow run started processing on a runner.
      */
     post: operations["workflow-job/in-progress"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "workflow-job-queued": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a job in a GitHub Actions workflow. For more information, see "[Using jobs in a workflow](https://docs.github.com/enterprise-server@3.10/actions/using-jobs/using-jobs-in-a-workflow)." For information about the API to manage workflow jobs, see "[Workflow jobs](https://docs.github.com/enterprise-server@3.10/rest/actions/workflow-jobs)" in the REST API documentation.
      *
-     * For activity relating to a workflow run instead of a job in a workflow run, use the `workflow_run` event.
+     *     For activity relating to a workflow run instead of a job in a workflow run, use the `workflow_run` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Actions" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Actions" repository permission.
      * @description A job in a workflow run was created.
      */
     post: operations["workflow-job/queued"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "workflow-job-waiting": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a job in a GitHub Actions workflow. For more information, see "[Using jobs in a workflow](https://docs.github.com/enterprise-server@3.10/actions/using-jobs/using-jobs-in-a-workflow)." For information about the API to manage workflow jobs, see "[Workflow jobs](https://docs.github.com/enterprise-server@3.10/rest/actions/workflow-jobs)" in the REST API documentation.
      *
-     * For activity relating to a workflow run instead of a job in a workflow run, use the `workflow_run` event.
+     *     For activity relating to a workflow run instead of a job in a workflow run, use the `workflow_run` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Actions" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Actions" repository permission.
      * @description A job in a workflow run was created and is waiting for approvals.
      */
     post: operations["workflow-job/waiting"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "workflow-run-completed": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a run of a GitHub Actions workflow. For more information, see "[About workflows](https://docs.github.com/enterprise-server@3.10/actions/using-workflows/about-workflows)." For information about the APIs to manage workflow runs, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#workflowrun) or "[Workflow runs](https://docs.github.com/enterprise-server@3.10/rest/actions/workflow-runs)" in the REST API documentation.
      *
-     * For activity relating to a job in a workflow run, use the `workflow_job` event.
+     *     For activity relating to a job in a workflow run, use the `workflow_job` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Actions" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Actions" repository permission.
      * @description A workflow run finished. This event occurs when a workflow run is completed, regardless of whether the workflow was successful or unsuccessful.
      */
     post: operations["workflow-run/completed"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "workflow-run-in-progress": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a run of a GitHub Actions workflow. For more information, see "[About workflows](https://docs.github.com/enterprise-server@3.10/actions/using-workflows/about-workflows)." For information about the APIs to manage workflow runs, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#workflowrun) or "[Workflow runs](https://docs.github.com/enterprise-server@3.10/rest/actions/workflow-runs)" in the REST API documentation.
      *
-     * For activity relating to a job in a workflow run, use the `workflow_job` event.
+     *     For activity relating to a job in a workflow run, use the `workflow_job` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Actions" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Actions" repository permission.
      * @description A workflow run started processing on a runner.
      */
     post: operations["workflow-run/in-progress"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "workflow-run-requested": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * This event occurs when there is activity relating to a run of a GitHub Actions workflow. For more information, see "[About workflows](https://docs.github.com/enterprise-server@3.10/actions/using-workflows/about-workflows)." For information about the APIs to manage workflow runs, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#workflowrun) or "[Workflow runs](https://docs.github.com/enterprise-server@3.10/rest/actions/workflow-runs)" in the REST API documentation.
      *
-     * For activity relating to a job in a workflow run, use the `workflow_job` event.
+     *     For activity relating to a job in a workflow run, use the `workflow_job` event.
      *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Actions" repository permission.
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Actions" repository permission.
      * @description A workflow run was triggered.
      */
     post: operations["workflow-run/requested"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
 }
-
 export interface components {
   schemas: {
     /** branch protection rule created event */
@@ -2523,8 +5413,9 @@ export interface components {
     /**
      * Enterprise
      * @description An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured
-     * on an enterprise account or an organization that's part of an enterprise account. For more information,
-     * see "[About enterprise accounts](https://docs.github.com/enterprise-server@3.10/admin/overview/about-enterprise-accounts)."
+     *     on an enterprise account or an organization that's part of an enterprise account. For more information,
+     *     see "[About enterprise accounts](https://docs.github.com/enterprise-server@3.10/admin/overview/about-enterprise-accounts)."
+     *
      */
     "enterprise-webhooks": {
       /** @description A short description of the enterprise. */
@@ -2553,8 +5444,8 @@ export interface components {
     /**
      * Simple Installation
      * @description The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured
-     * for and sent to a GitHub App. For more information,
-     * see "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-server@3.10/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."
+     *     for and sent to a GitHub App. For more information,
+     *     see "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-server@3.10/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."
      */
     "simple-installation": {
       /** @description The ID of the installation. */
@@ -2565,7 +5456,7 @@ export interface components {
     /**
      * Organization Simple
      * @description A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an
-     * organization, or when the event occurs from activity in a repository owned by an organization.
+     *     organization, or when the event occurs from activity in a repository owned by an organization.
      */
     "organization-simple-webhooks": {
       login: string;
@@ -2587,7 +5478,7 @@ export interface components {
     /**
      * Repository
      * @description The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property
-     * when the event occurs from activity in a repository.
+     *     when the event occurs from activity in a repository.
      */
     "repository-webhooks": {
       /** @description Unique identifier of the repository */
@@ -2849,34 +5740,34 @@ export interface components {
         /**
          * @description The default value for a squash merge commit title:
          *
-         * - `PR_TITLE` - default to the pull request's title.
-         * - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+         *     - `PR_TITLE` - default to the pull request's title.
+         *     - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
          * @enum {string}
          */
         squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
         /**
          * @description The default value for a squash merge commit message:
          *
-         * - `PR_BODY` - default to the pull request's body.
-         * - `COMMIT_MESSAGES` - default to the branch's commit messages.
-         * - `BLANK` - default to a blank commit message.
+         *     - `PR_BODY` - default to the pull request's body.
+         *     - `COMMIT_MESSAGES` - default to the branch's commit messages.
+         *     - `BLANK` - default to a blank commit message.
          * @enum {string}
          */
         squash_merge_commit_message?: "PR_BODY" | "COMMIT_MESSAGES" | "BLANK";
         /**
          * @description The default value for a merge commit title.
          *
-         * - `PR_TITLE` - default to the pull request's title.
-         * - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
+         *     - `PR_TITLE` - default to the pull request's title.
+         *     - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
          * @enum {string}
          */
         merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
         /**
          * @description The default value for a merge commit message.
          *
-         * - `PR_TITLE` - default to the pull request's title.
-         * - `PR_BODY` - default to the pull request's body.
-         * - `BLANK` - default to a blank commit message.
+         *     - `PR_TITLE` - default to the pull request's title.
+         *     - `PR_BODY` - default to the pull request's body.
+         *     - `BLANK` - default to a blank commit message.
          * @enum {string}
          */
         merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
@@ -2914,34 +5805,34 @@ export interface components {
       /**
        * @description The default value for a squash merge commit title:
        *
-       * - `PR_TITLE` - default to the pull request's title.
-       * - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+       *     - `PR_TITLE` - default to the pull request's title.
+       *     - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
        * @enum {string}
        */
       squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
       /**
        * @description The default value for a squash merge commit message:
        *
-       * - `PR_BODY` - default to the pull request's body.
-       * - `COMMIT_MESSAGES` - default to the branch's commit messages.
-       * - `BLANK` - default to a blank commit message.
+       *     - `PR_BODY` - default to the pull request's body.
+       *     - `COMMIT_MESSAGES` - default to the branch's commit messages.
+       *     - `BLANK` - default to a blank commit message.
        * @enum {string}
        */
       squash_merge_commit_message?: "PR_BODY" | "COMMIT_MESSAGES" | "BLANK";
       /**
        * @description The default value for a merge commit title.
        *
-       * - `PR_TITLE` - default to the pull request's title.
-       * - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
+       *     - `PR_TITLE` - default to the pull request's title.
+       *     - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
        * @enum {string}
        */
       merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
       /**
        * @description The default value for a merge commit message.
        *
-       * - `PR_TITLE` - default to the pull request's title.
-       * - `PR_BODY` - default to the pull request's body.
-       * - `BLANK` - default to a blank commit message.
+       *     - `PR_TITLE` - default to the pull request's title.
+       *     - `PR_BODY` - default to the pull request's body.
+       *     - `BLANK` - default to a blank commit message.
        * @enum {string}
        */
       merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
@@ -3318,9 +6209,9 @@ export interface components {
       /**
        * @description The set of permissions for the GitHub app
        * @example {
-       *   "issues": "read",
-       *   "deployments": "write"
-       * }
+       *       "issues": "read",
+       *       "deployments": "write"
+       *     }
        */
       permissions: {
         issues?: string;
@@ -5378,10 +8269,10 @@ export interface components {
        * @description The state of the Dependabot alert.
        * @enum {string}
        */
-      state: "auto_dismissed" | "dismissed" | "fixed" | "open";
+      readonly state: "auto_dismissed" | "dismissed" | "fixed" | "open";
       /** @description Details for the vulnerable dependency. */
-      dependency: {
-        readonly package?: components["schemas"]["dependabot-alert-package"];
+      readonly dependency: {
+        package?: components["schemas"]["dependabot-alert-package"];
         /** @description The full path to the dependency manifest file, relative to the root of the repository. */
         readonly manifest_path?: string;
         /**
@@ -5415,16 +8306,16 @@ export interface components {
       auto_dismissed_at?: components["schemas"]["alert-auto-dismissed-at"];
     };
     /** @description The security alert number. */
-    readonly "alert-number": number;
+    "alert-number": number;
     /** @description Details for the vulnerable package. */
-    readonly "dependabot-alert-package": {
+    "dependabot-alert-package": {
       /** @description The package's language or package management ecosystem. */
       readonly ecosystem: string;
       /** @description The unique package name within its ecosystem. */
       readonly name: string;
     };
     /** @description Details for the GitHub Security Advisory. */
-    readonly "dependabot-alert-security-advisory": {
+    "dependabot-alert-security-advisory": {
       /** @description The unique GitHub Security Advisory ID assigned to the advisory. */
       readonly ghsa_id: string;
       /** @description The unique CVE ID assigned to the advisory. */
@@ -5434,7 +8325,7 @@ export interface components {
       /** @description A long-form Markdown-supported description of the advisory. */
       readonly description: string;
       /** @description Vulnerable version range information for the advisory. */
-      readonly vulnerabilities: readonly components["schemas"]["dependabot-alert-security-vulnerability"][];
+      readonly vulnerabilities: components["schemas"]["dependabot-alert-security-vulnerability"][];
       /**
        * @description The severity of the advisory.
        * @enum {string}
@@ -5448,14 +8339,14 @@ export interface components {
         readonly vector_string: string | null;
       };
       /** @description Details for the advisory pertaining to Common Weakness Enumeration. */
-      readonly cwes: readonly {
+      readonly cwes: {
         /** @description The unique CWE ID. */
         readonly cwe_id: string;
         /** @description The short, plain text name of the CWE. */
         readonly name: string;
       }[];
       /** @description Values that identify this advisory among security information sources. */
-      readonly identifiers: readonly {
+      readonly identifiers: {
         /**
          * @description The type of advisory identifier.
          * @enum {string}
@@ -5465,7 +8356,7 @@ export interface components {
         readonly value: string;
       }[];
       /** @description Links to additional advisory information. */
-      readonly references: readonly {
+      readonly references: {
         /**
          * Format: uri
          * @description The URL of the reference.
@@ -5489,8 +8380,8 @@ export interface components {
       readonly withdrawn_at: string | null;
     };
     /** @description Details pertaining to one vulnerable version range for the advisory. */
-    readonly "dependabot-alert-security-vulnerability": {
-      readonly package: components["schemas"]["dependabot-alert-package"];
+    "dependabot-alert-security-vulnerability": {
+      package: components["schemas"]["dependabot-alert-package"];
       /**
        * @description The severity of the vulnerability.
        * @enum {string}
@@ -5508,37 +8399,37 @@ export interface components {
      * Format: uri
      * @description The REST API URL of the alert resource.
      */
-    readonly "alert-url": string;
+    "alert-url": string;
     /**
      * Format: uri
      * @description The GitHub URL of the alert resource.
      */
-    readonly "alert-html-url": string;
+    "alert-html-url": string;
     /**
      * Format: date-time
      * @description The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
      */
-    readonly "alert-created-at": string;
+    "alert-created-at": string;
     /**
      * Format: date-time
      * @description The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
      */
-    readonly "alert-updated-at": string;
+    "alert-updated-at": string;
     /**
      * Format: date-time
      * @description The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
      */
-    readonly "alert-dismissed-at": string | null;
+    "alert-dismissed-at": string | null;
     /**
      * Format: date-time
      * @description The time that the alert was no longer detected and was considered fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
      */
-    readonly "alert-fixed-at": string | null;
+    "alert-fixed-at": string | null;
     /**
      * Format: date-time
      * @description The time that the alert was auto-dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
      */
-    readonly "alert-auto-dismissed-at": string | null;
+    "alert-auto-dismissed-at": string | null;
     /** Dependabot alert dismissed event */
     "webhook-dependabot-alert-dismissed": {
       /** @enum {string} */
@@ -6235,14 +9126,11 @@ export interface components {
       ref: string;
       /** @description Parameter to specify a task to execute */
       task: string;
-      payload: OneOf<
-        [
-          {
+      payload:
+        | {
             [key: string]: unknown;
-          },
-          string,
-        ]
-      >;
+          }
+        | string;
       original_environment?: string;
       /** @description Name for the target deployment environment. */
       environment: string;
@@ -8076,7 +10964,8 @@ export interface components {
         id: number;
         node_id: string;
         original_environment: string;
-        payload: string | Record<string, never> | null;
+        payload: (null | Record<string, never>) &
+          (string | Record<string, never>);
         /**
          * App
          * @description GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
@@ -9030,8 +11919,8 @@ export interface components {
       repository_url: string;
       /**
        * @description The current state of the discussion.
-       * `converting` means that the discussion is being converted from an issue.
-       * `transferring` means that the discussion is being transferred from another repository.
+       *     `converting` means that the discussion is being converted from an issue.
+       *     `transferring` means that the discussion is being transferred from another repository.
        * @enum {string}
        */
       state: "open" | "closed" | "locked" | "converting" | "transferring";
@@ -10061,7 +12950,7 @@ export interface components {
         public?: boolean;
         /** Format: uri-template */
         pulls_url: string;
-        pushed_at: number | string | null;
+        pushed_at: null | number | string;
         /** Format: uri-template */
         releases_url: string;
         role_name?: string | null;
@@ -10301,11 +13190,15 @@ export interface components {
       /** @description The ID of the installation. */
       id: number;
       account:
-        | null
         | (
-            | components["schemas"]["simple-user"]
-            | components["schemas"]["enterprise"]
-          );
+            | null
+            | (
+                | components["schemas"]["simple-user"]
+                | components["schemas"]["enterprise"]
+              )
+          )
+        | components["schemas"]["simple-user"]
+        | components["schemas"]["enterprise"];
       /**
        * @description Describe whether all repositories have been selected or there's a selection involved
        * @enum {string}
@@ -10368,11 +13261,11 @@ export interface components {
      * App Permissions
      * @description The permissions granted to the user access token.
      * @example {
-     *   "contents": "read",
-     *   "issues": "read",
-     *   "deployments": "write",
-     *   "single_file": "read"
-     * }
+     *       "contents": "read",
+     *       "issues": "read",
+     *       "deployments": "write",
+     *       "single_file": "read"
+     *     }
      */
     "app-permissions": {
       /**
@@ -18062,7 +20955,7 @@ export interface components {
           public?: boolean;
           /** Format: uri-template */
           pulls_url: string;
-          pushed_at: number | string | null;
+          pushed_at: null | number | string;
           /** Format: uri-template */
           releases_url: string;
           role_name?: string | null;
@@ -20272,7 +23165,7 @@ export interface components {
           public?: boolean;
           /** Format: uri-template */
           pulls_url: string;
-          pushed_at: number | string | null;
+          pushed_at: null | number | string;
           /** Format: uri-template */
           releases_url: string;
           role_name?: string | null;
@@ -24378,19 +27271,16 @@ export interface components {
             | {
                 id?: number | string;
                 name?: string;
-                value?: OneOf<
-                  [
-                    boolean,
-                    string,
-                    number,
-                    {
+                value?:
+                  | boolean
+                  | string
+                  | number
+                  | {
                       url?: string;
                       branch?: string;
                       commit?: string;
                       type?: string;
-                    },
-                  ]
-                >;
+                    };
               }[]
             | null;
           package_files: {
@@ -24494,11 +27384,11 @@ export interface components {
       };
       platform?: string;
       metadata?: {
-        [key: string]: string;
+        [key: string]: string | undefined;
       };
       repo?: string;
       dependencies?: {
-        [key: string]: string;
+        [key: string]: string | undefined;
       }[];
       commit_oid?: string;
     };
@@ -24782,37 +27672,37 @@ export interface components {
       /** @description New requested permissions, categorized by type of permission. */
       permissions_added: {
         organization?: {
-          [key: string]: string;
+          [key: string]: string | undefined;
         };
         repository?: {
-          [key: string]: string;
+          [key: string]: string | undefined;
         };
         other?: {
-          [key: string]: string;
+          [key: string]: string | undefined;
         };
       };
       /** @description Requested permissions that elevate access for a previously approved request for access, categorized by type of permission. */
       permissions_upgraded: {
         organization?: {
-          [key: string]: string;
+          [key: string]: string | undefined;
         };
         repository?: {
-          [key: string]: string;
+          [key: string]: string | undefined;
         };
         other?: {
-          [key: string]: string;
+          [key: string]: string | undefined;
         };
       };
       /** @description Permissions requested, categorized by type of permission. This field incorporates `permissions_added` and `permissions_upgraded`. */
       permissions_result: {
         organization?: {
-          [key: string]: string;
+          [key: string]: string | undefined;
         };
         repository?: {
-          [key: string]: string;
+          [key: string]: string | undefined;
         };
         other?: {
-          [key: string]: string;
+          [key: string]: string | undefined;
         };
       };
       /**
@@ -25989,22 +28879,19 @@ export interface components {
     "webhook-projects-v2-item-edited": {
       /** @enum {string} */
       action: "edited";
-      changes?: OneOf<
-        [
-          {
+      changes?:
+        | {
             field_value: {
               field_node_id?: string;
               field_type?: string;
             };
-          },
-          {
+          }
+        | {
             body: {
               from?: string | null;
               to?: string | null;
             };
-          },
-        ]
-      >;
+          };
       installation?: components["schemas"]["simple-installation"];
       organization: components["schemas"]["organization-simple-webhooks"];
       projects_v2_item: components["schemas"]["projects-v2-item"];
@@ -26445,17 +29332,17 @@ export interface components {
             /**
              * @description The default value for a merge commit message.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `PR_BODY` - default to the pull request's body.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
             /**
              * @description The default value for a merge commit title.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
              * @enum {string}
              */
             merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
@@ -26522,7 +29409,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string | null;
+            pushed_at: null | number | string;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -26530,9 +29417,9 @@ export interface components {
             /**
              * @description The default value for a squash merge commit message:
              *
-             * - `PR_BODY` - default to the pull request's body.
-             * - `COMMIT_MESSAGES` - default to the branch's commit messages.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `COMMIT_MESSAGES` - default to the branch's commit messages.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             squash_merge_commit_message?:
@@ -26542,8 +29429,8 @@ export interface components {
             /**
              * @description The default value for a squash merge commit title:
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
              * @enum {string}
              */
             squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
@@ -26788,17 +29675,17 @@ export interface components {
             /**
              * @description The default value for a merge commit message.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `PR_BODY` - default to the pull request's body.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
             /**
              * @description The default value for a merge commit title.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
              * @enum {string}
              */
             merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
@@ -26865,7 +29752,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string | null;
+            pushed_at: null | number | string;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -26873,9 +29760,9 @@ export interface components {
             /**
              * @description The default value for a squash merge commit message:
              *
-             * - `PR_BODY` - default to the pull request's body.
-             * - `COMMIT_MESSAGES` - default to the branch's commit messages.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `COMMIT_MESSAGES` - default to the branch's commit messages.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             squash_merge_commit_message?:
@@ -26885,8 +29772,8 @@ export interface components {
             /**
              * @description The default value for a squash merge commit title:
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
              * @enum {string}
              */
             squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
@@ -27108,9 +29995,8 @@ export interface components {
         /** Format: uri */
         patch_url: string;
         rebaseable?: boolean | null;
-        requested_reviewers: OneOf<
-          [
-            {
+        requested_reviewers: (
+          | ({
               /** Format: uri */
               avatar_url?: string;
               deleted?: boolean;
@@ -27145,8 +30031,8 @@ export interface components {
               type?: "Bot" | "User" | "Organization" | "Mannequin";
               /** Format: uri */
               url?: string;
-            } | null,
-            {
+            } | null)
+          | {
               deleted?: boolean;
               /** @description Description of the team */
               description: string | null;
@@ -27196,9 +30082,8 @@ export interface components {
                * @description URL for the team
                */
               url: string;
-            },
-          ]
-        >[];
+            }
+        )[];
         requested_teams: {
           deleted?: boolean;
           /** @description Description of the team */
@@ -27657,17 +30542,17 @@ export interface components {
             /**
              * @description The default value for a merge commit message.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `PR_BODY` - default to the pull request's body.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
             /**
              * @description The default value for a merge commit title.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
              * @enum {string}
              */
             merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
@@ -27734,7 +30619,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string | null;
+            pushed_at: null | number | string;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -27742,9 +30627,9 @@ export interface components {
             /**
              * @description The default value for a squash merge commit message:
              *
-             * - `PR_BODY` - default to the pull request's body.
-             * - `COMMIT_MESSAGES` - default to the branch's commit messages.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `COMMIT_MESSAGES` - default to the branch's commit messages.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             squash_merge_commit_message?:
@@ -27754,8 +30639,8 @@ export interface components {
             /**
              * @description The default value for a squash merge commit title:
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
              * @enum {string}
              */
             squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
@@ -28000,17 +30885,17 @@ export interface components {
             /**
              * @description The default value for a merge commit message.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `PR_BODY` - default to the pull request's body.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
             /**
              * @description The default value for a merge commit title.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
              * @enum {string}
              */
             merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
@@ -28077,7 +30962,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string | null;
+            pushed_at: null | number | string;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -28085,9 +30970,9 @@ export interface components {
             /**
              * @description The default value for a squash merge commit message:
              *
-             * - `PR_BODY` - default to the pull request's body.
-             * - `COMMIT_MESSAGES` - default to the branch's commit messages.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `COMMIT_MESSAGES` - default to the branch's commit messages.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             squash_merge_commit_message?:
@@ -28097,8 +30982,8 @@ export interface components {
             /**
              * @description The default value for a squash merge commit title:
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
              * @enum {string}
              */
             squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
@@ -28320,9 +31205,8 @@ export interface components {
         /** Format: uri */
         patch_url: string;
         rebaseable?: boolean | null;
-        requested_reviewers: OneOf<
-          [
-            {
+        requested_reviewers: (
+          | ({
               /** Format: uri */
               avatar_url?: string;
               deleted?: boolean;
@@ -28357,8 +31241,8 @@ export interface components {
               type?: "Bot" | "User" | "Organization" | "Mannequin";
               /** Format: uri */
               url?: string;
-            } | null,
-            {
+            } | null)
+          | {
               deleted?: boolean;
               /** @description Description of the team */
               description: string | null;
@@ -28408,9 +31292,8 @@ export interface components {
                * @description URL for the team
                */
               url: string;
-            },
-          ]
-        >[];
+            }
+        )[];
         requested_teams: {
           deleted?: boolean;
           /** @description Description of the team */
@@ -28870,17 +31753,17 @@ export interface components {
             /**
              * @description The default value for a merge commit message.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `PR_BODY` - default to the pull request's body.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
             /**
              * @description The default value for a merge commit title.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
              * @enum {string}
              */
             merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
@@ -28947,7 +31830,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string | null;
+            pushed_at: null | number | string;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -28955,9 +31838,9 @@ export interface components {
             /**
              * @description The default value for a squash merge commit message:
              *
-             * - `PR_BODY` - default to the pull request's body.
-             * - `COMMIT_MESSAGES` - default to the branch's commit messages.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `COMMIT_MESSAGES` - default to the branch's commit messages.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             squash_merge_commit_message?:
@@ -28967,8 +31850,8 @@ export interface components {
             /**
              * @description The default value for a squash merge commit title:
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
              * @enum {string}
              */
             squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
@@ -29213,17 +32096,17 @@ export interface components {
             /**
              * @description The default value for a merge commit message.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `PR_BODY` - default to the pull request's body.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
             /**
              * @description The default value for a merge commit title.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
              * @enum {string}
              */
             merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
@@ -29290,7 +32173,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string | null;
+            pushed_at: null | number | string;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -29298,9 +32181,9 @@ export interface components {
             /**
              * @description The default value for a squash merge commit message:
              *
-             * - `PR_BODY` - default to the pull request's body.
-             * - `COMMIT_MESSAGES` - default to the branch's commit messages.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `COMMIT_MESSAGES` - default to the branch's commit messages.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             squash_merge_commit_message?:
@@ -29310,8 +32193,8 @@ export interface components {
             /**
              * @description The default value for a squash merge commit title:
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
              * @enum {string}
              */
             squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
@@ -29533,9 +32416,8 @@ export interface components {
         /** Format: uri */
         patch_url: string;
         rebaseable?: boolean | null;
-        requested_reviewers: OneOf<
-          [
-            {
+        requested_reviewers: (
+          | ({
               /** Format: uri */
               avatar_url?: string;
               deleted?: boolean;
@@ -29570,8 +32452,8 @@ export interface components {
               type?: "Bot" | "User" | "Organization" | "Mannequin";
               /** Format: uri */
               url?: string;
-            } | null,
-            {
+            } | null)
+          | {
               deleted?: boolean;
               /** @description Description of the team */
               description: string | null;
@@ -29621,9 +32503,8 @@ export interface components {
                * @description URL for the team
                */
               url: string;
-            },
-          ]
-        >[];
+            }
+        )[];
         requested_teams: {
           deleted?: boolean;
           /** @description Description of the team */
@@ -29759,31 +32640,31 @@ export interface components {
         delete_branch_on_merge?: boolean;
         /**
          * @description The default value for a merge commit message.
-         * - `PR_TITLE` - default to the pull request's title.
-         * - `PR_BODY` - default to the pull request's body.
-         * - `BLANK` - default to a blank commit message.
+         *     - `PR_TITLE` - default to the pull request's title.
+         *     - `PR_BODY` - default to the pull request's body.
+         *     - `BLANK` - default to a blank commit message.
          * @enum {string}
          */
         merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
         /**
          * @description The default value for a merge commit title.
-         * - `PR_TITLE` - default to the pull request's title.
-         * - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., "Merge pull request #123 from branch-name").
+         *     - `PR_TITLE` - default to the pull request's title.
+         *     - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., "Merge pull request #123 from branch-name").
          * @enum {string}
          */
         merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
         /**
          * @description The default value for a squash merge commit message:
-         * - `PR_BODY` - default to the pull request's body.
-         * - `COMMIT_MESSAGES` - default to the branch's commit messages.
-         * - `BLANK` - default to a blank commit message.
+         *     - `PR_BODY` - default to the pull request's body.
+         *     - `COMMIT_MESSAGES` - default to the branch's commit messages.
+         *     - `BLANK` - default to a blank commit message.
          * @enum {string}
          */
         squash_merge_commit_message?: "PR_BODY" | "COMMIT_MESSAGES" | "BLANK";
         /**
          * @description The default value for a squash merge commit title:
-         * - `PR_TITLE` - default to the pull request's title.
-         * - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+         *     - `PR_TITLE` - default to the pull request's title.
+         *     - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
          * @enum {string}
          */
         squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
@@ -29820,31 +32701,31 @@ export interface components {
         delete_branch_on_merge?: boolean;
         /**
          * @description The default value for a merge commit message.
-         * - `PR_TITLE` - default to the pull request's title.
-         * - `PR_BODY` - default to the pull request's body.
-         * - `BLANK` - default to a blank commit message.
+         *     - `PR_TITLE` - default to the pull request's title.
+         *     - `PR_BODY` - default to the pull request's body.
+         *     - `BLANK` - default to a blank commit message.
          * @enum {string}
          */
         merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
         /**
          * @description The default value for a merge commit title.
-         * - `PR_TITLE` - default to the pull request's title.
-         * - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., "Merge pull request #123 from branch-name").
+         *     - `PR_TITLE` - default to the pull request's title.
+         *     - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., "Merge pull request #123 from branch-name").
          * @enum {string}
          */
         merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
         /**
          * @description The default value for a squash merge commit message:
-         * - `PR_BODY` - default to the pull request's body.
-         * - `COMMIT_MESSAGES` - default to the branch's commit messages.
-         * - `BLANK` - default to a blank commit message.
+         *     - `PR_BODY` - default to the pull request's body.
+         *     - `COMMIT_MESSAGES` - default to the branch's commit messages.
+         *     - `BLANK` - default to a blank commit message.
          * @enum {string}
          */
         squash_merge_commit_message?: "PR_BODY" | "COMMIT_MESSAGES" | "BLANK";
         /**
          * @description The default value for a squash merge commit title:
-         * - `PR_TITLE` - default to the pull request's title.
-         * - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+         *     - `PR_TITLE` - default to the pull request's title.
+         *     - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
          * @enum {string}
          */
         squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
@@ -30206,17 +33087,17 @@ export interface components {
             /**
              * @description The default value for a merge commit message.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `PR_BODY` - default to the pull request's body.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
             /**
              * @description The default value for a merge commit title.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
              * @enum {string}
              */
             merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
@@ -30283,7 +33164,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string | null;
+            pushed_at: null | number | string;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -30291,9 +33172,9 @@ export interface components {
             /**
              * @description The default value for a squash merge commit message:
              *
-             * - `PR_BODY` - default to the pull request's body.
-             * - `COMMIT_MESSAGES` - default to the branch's commit messages.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `COMMIT_MESSAGES` - default to the branch's commit messages.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             squash_merge_commit_message?:
@@ -30303,8 +33184,8 @@ export interface components {
             /**
              * @description The default value for a squash merge commit title:
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
              * @enum {string}
              */
             squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
@@ -30549,17 +33430,17 @@ export interface components {
             /**
              * @description The default value for a merge commit message.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `PR_BODY` - default to the pull request's body.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
             /**
              * @description The default value for a merge commit title.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
              * @enum {string}
              */
             merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
@@ -30626,7 +33507,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string | null;
+            pushed_at: null | number | string;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -30634,9 +33515,9 @@ export interface components {
             /**
              * @description The default value for a squash merge commit message:
              *
-             * - `PR_BODY` - default to the pull request's body.
-             * - `COMMIT_MESSAGES` - default to the branch's commit messages.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `COMMIT_MESSAGES` - default to the branch's commit messages.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             squash_merge_commit_message?:
@@ -30646,8 +33527,8 @@ export interface components {
             /**
              * @description The default value for a squash merge commit title:
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
              * @enum {string}
              */
             squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
@@ -30869,9 +33750,8 @@ export interface components {
         /** Format: uri */
         patch_url: string;
         rebaseable?: boolean | null;
-        requested_reviewers: OneOf<
-          [
-            {
+        requested_reviewers: (
+          | ({
               /** Format: uri */
               avatar_url?: string;
               deleted?: boolean;
@@ -30906,8 +33786,8 @@ export interface components {
               type?: "Bot" | "User" | "Organization";
               /** Format: uri */
               url?: string;
-            } | null,
-            {
+            } | null)
+          | {
               deleted?: boolean;
               /** @description Description of the team */
               description?: string | null;
@@ -30957,9 +33837,8 @@ export interface components {
                * @description URL for the team
                */
               url?: string;
-            },
-          ]
-        >[];
+            }
+        )[];
         requested_teams: {
           deleted?: boolean;
           /** @description Description of the team */
@@ -31113,31 +33992,31 @@ export interface components {
         delete_branch_on_merge?: boolean;
         /**
          * @description The default value for a merge commit message.
-         * - `PR_TITLE` - default to the pull request's title.
-         * - `PR_BODY` - default to the pull request's body.
-         * - `BLANK` - default to a blank commit message.
+         *     - `PR_TITLE` - default to the pull request's title.
+         *     - `PR_BODY` - default to the pull request's body.
+         *     - `BLANK` - default to a blank commit message.
          * @enum {string}
          */
         merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
         /**
          * @description The default value for a merge commit title.
-         * - `PR_TITLE` - default to the pull request's title.
-         * - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., "Merge pull request #123 from branch-name").
+         *     - `PR_TITLE` - default to the pull request's title.
+         *     - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., "Merge pull request #123 from branch-name").
          * @enum {string}
          */
         merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
         /**
          * @description The default value for a squash merge commit message:
-         * - `PR_BODY` - default to the pull request's body.
-         * - `COMMIT_MESSAGES` - default to the branch's commit messages.
-         * - `BLANK` - default to a blank commit message.
+         *     - `PR_BODY` - default to the pull request's body.
+         *     - `COMMIT_MESSAGES` - default to the branch's commit messages.
+         *     - `BLANK` - default to a blank commit message.
          * @enum {string}
          */
         squash_merge_commit_message?: "PR_BODY" | "COMMIT_MESSAGES" | "BLANK";
         /**
          * @description The default value for a squash merge commit title:
-         * - `PR_TITLE` - default to the pull request's title.
-         * - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+         *     - `PR_TITLE` - default to the pull request's title.
+         *     - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
          * @enum {string}
          */
         squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
@@ -31515,17 +34394,17 @@ export interface components {
             /**
              * @description The default value for a merge commit message.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `PR_BODY` - default to the pull request's body.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
             /**
              * @description The default value for a merge commit title.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
              * @enum {string}
              */
             merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
@@ -31592,7 +34471,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string | null;
+            pushed_at: null | number | string;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -31600,9 +34479,9 @@ export interface components {
             /**
              * @description The default value for a squash merge commit message:
              *
-             * - `PR_BODY` - default to the pull request's body.
-             * - `COMMIT_MESSAGES` - default to the branch's commit messages.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `COMMIT_MESSAGES` - default to the branch's commit messages.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             squash_merge_commit_message?:
@@ -31612,8 +34491,8 @@ export interface components {
             /**
              * @description The default value for a squash merge commit title:
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
              * @enum {string}
              */
             squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
@@ -31858,17 +34737,17 @@ export interface components {
             /**
              * @description The default value for a merge commit message.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `PR_BODY` - default to the pull request's body.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
             /**
              * @description The default value for a merge commit title.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
              * @enum {string}
              */
             merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
@@ -31935,7 +34814,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string | null;
+            pushed_at: null | number | string;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -31943,9 +34822,9 @@ export interface components {
             /**
              * @description The default value for a squash merge commit message:
              *
-             * - `PR_BODY` - default to the pull request's body.
-             * - `COMMIT_MESSAGES` - default to the branch's commit messages.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `COMMIT_MESSAGES` - default to the branch's commit messages.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             squash_merge_commit_message?:
@@ -31955,8 +34834,8 @@ export interface components {
             /**
              * @description The default value for a squash merge commit title:
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
              * @enum {string}
              */
             squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
@@ -32178,9 +35057,8 @@ export interface components {
         /** Format: uri */
         patch_url: string;
         rebaseable?: boolean | null;
-        requested_reviewers: OneOf<
-          [
-            {
+        requested_reviewers: (
+          | ({
               /** Format: uri */
               avatar_url?: string;
               deleted?: boolean;
@@ -32215,8 +35093,8 @@ export interface components {
               type?: "Bot" | "User" | "Organization" | "Mannequin";
               /** Format: uri */
               url?: string;
-            } | null,
-            {
+            } | null)
+          | {
               deleted?: boolean;
               /** @description Description of the team */
               description: string | null;
@@ -32266,9 +35144,8 @@ export interface components {
                * @description URL for the team
                */
               url: string;
-            },
-          ]
-        >[];
+            }
+        )[];
         requested_teams: {
           deleted?: boolean;
           /** @description Description of the team */
@@ -32728,17 +35605,17 @@ export interface components {
             /**
              * @description The default value for a merge commit message.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `PR_BODY` - default to the pull request's body.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
             /**
              * @description The default value for a merge commit title.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
              * @enum {string}
              */
             merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
@@ -32805,7 +35682,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string | null;
+            pushed_at: null | number | string;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -32813,9 +35690,9 @@ export interface components {
             /**
              * @description The default value for a squash merge commit message:
              *
-             * - `PR_BODY` - default to the pull request's body.
-             * - `COMMIT_MESSAGES` - default to the branch's commit messages.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `COMMIT_MESSAGES` - default to the branch's commit messages.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             squash_merge_commit_message?:
@@ -32825,8 +35702,8 @@ export interface components {
             /**
              * @description The default value for a squash merge commit title:
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
              * @enum {string}
              */
             squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
@@ -33071,17 +35948,17 @@ export interface components {
             /**
              * @description The default value for a merge commit message.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `PR_BODY` - default to the pull request's body.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
             /**
              * @description The default value for a merge commit title.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
              * @enum {string}
              */
             merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
@@ -33148,7 +36025,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string | null;
+            pushed_at: null | number | string;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -33156,9 +36033,9 @@ export interface components {
             /**
              * @description The default value for a squash merge commit message:
              *
-             * - `PR_BODY` - default to the pull request's body.
-             * - `COMMIT_MESSAGES` - default to the branch's commit messages.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `COMMIT_MESSAGES` - default to the branch's commit messages.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             squash_merge_commit_message?:
@@ -33168,8 +36045,8 @@ export interface components {
             /**
              * @description The default value for a squash merge commit title:
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
              * @enum {string}
              */
             squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
@@ -33391,9 +36268,8 @@ export interface components {
         /** Format: uri */
         patch_url: string;
         rebaseable?: boolean | null;
-        requested_reviewers: OneOf<
-          [
-            {
+        requested_reviewers: (
+          | ({
               /** Format: uri */
               avatar_url?: string;
               deleted?: boolean;
@@ -33428,8 +36304,8 @@ export interface components {
               type?: "Bot" | "User" | "Organization" | "Mannequin";
               /** Format: uri */
               url?: string;
-            } | null,
-            {
+            } | null)
+          | {
               deleted?: boolean;
               /** @description Description of the team */
               description: string | null;
@@ -33479,9 +36355,8 @@ export interface components {
                * @description URL for the team
                */
               url: string;
-            },
-          ]
-        >[];
+            }
+        )[];
         requested_teams: {
           deleted?: boolean;
           /** @description Description of the team */
@@ -33941,17 +36816,17 @@ export interface components {
             /**
              * @description The default value for a merge commit message.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `PR_BODY` - default to the pull request's body.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
             /**
              * @description The default value for a merge commit title.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
              * @enum {string}
              */
             merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
@@ -34018,7 +36893,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string | null;
+            pushed_at: null | number | string;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -34026,9 +36901,9 @@ export interface components {
             /**
              * @description The default value for a squash merge commit message:
              *
-             * - `PR_BODY` - default to the pull request's body.
-             * - `COMMIT_MESSAGES` - default to the branch's commit messages.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `COMMIT_MESSAGES` - default to the branch's commit messages.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             squash_merge_commit_message?:
@@ -34038,8 +36913,8 @@ export interface components {
             /**
              * @description The default value for a squash merge commit title:
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
              * @enum {string}
              */
             squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
@@ -34284,17 +37159,17 @@ export interface components {
             /**
              * @description The default value for a merge commit message.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `PR_BODY` - default to the pull request's body.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
             /**
              * @description The default value for a merge commit title.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
              * @enum {string}
              */
             merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
@@ -34361,7 +37236,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string | null;
+            pushed_at: null | number | string;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -34369,9 +37244,9 @@ export interface components {
             /**
              * @description The default value for a squash merge commit message:
              *
-             * - `PR_BODY` - default to the pull request's body.
-             * - `COMMIT_MESSAGES` - default to the branch's commit messages.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `COMMIT_MESSAGES` - default to the branch's commit messages.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             squash_merge_commit_message?:
@@ -34381,8 +37256,8 @@ export interface components {
             /**
              * @description The default value for a squash merge commit title:
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
              * @enum {string}
              */
             squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
@@ -34604,9 +37479,8 @@ export interface components {
         /** Format: uri */
         patch_url: string;
         rebaseable?: boolean | null;
-        requested_reviewers: OneOf<
-          [
-            {
+        requested_reviewers: (
+          | ({
               /** Format: uri */
               avatar_url?: string;
               deleted?: boolean;
@@ -34641,8 +37515,8 @@ export interface components {
               type?: "Bot" | "User" | "Organization";
               /** Format: uri */
               url?: string;
-            } | null,
-            {
+            } | null)
+          | {
               deleted?: boolean;
               /** @description Description of the team */
               description?: string | null;
@@ -34692,9 +37566,8 @@ export interface components {
                * @description URL for the team
                */
               url?: string;
-            },
-          ]
-        >[];
+            }
+        )[];
         requested_teams: {
           deleted?: boolean;
           /** @description Description of the team */
@@ -34829,31 +37702,31 @@ export interface components {
         delete_branch_on_merge?: boolean;
         /**
          * @description The default value for a merge commit message.
-         * - `PR_TITLE` - default to the pull request's title.
-         * - `PR_BODY` - default to the pull request's body.
-         * - `BLANK` - default to a blank commit message.
+         *     - `PR_TITLE` - default to the pull request's title.
+         *     - `PR_BODY` - default to the pull request's body.
+         *     - `BLANK` - default to a blank commit message.
          * @enum {string}
          */
         merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
         /**
          * @description The default value for a merge commit title.
-         * - `PR_TITLE` - default to the pull request's title.
-         * - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
+         *     - `PR_TITLE` - default to the pull request's title.
+         *     - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
          * @enum {string}
          */
         merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
         /**
          * @description The default value for a squash merge commit message:
-         * - `PR_BODY` - default to the pull request's body.
-         * - `COMMIT_MESSAGES` - default to the branch's commit messages.
-         * - `BLANK` - default to a blank commit message.
+         *     - `PR_BODY` - default to the pull request's body.
+         *     - `COMMIT_MESSAGES` - default to the branch's commit messages.
+         *     - `BLANK` - default to a blank commit message.
          * @enum {string}
          */
         squash_merge_commit_message?: "PR_BODY" | "COMMIT_MESSAGES" | "BLANK";
         /**
          * @description The default value for a squash merge commit title:
-         * - `PR_TITLE` - default to the pull request's title.
-         * - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+         *     - `PR_TITLE` - default to the pull request's title.
+         *     - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
          * @enum {string}
          */
         squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
@@ -34890,31 +37763,31 @@ export interface components {
         delete_branch_on_merge?: boolean;
         /**
          * @description The default value for a merge commit message.
-         * - `PR_TITLE` - default to the pull request's title.
-         * - `PR_BODY` - default to the pull request's body.
-         * - `BLANK` - default to a blank commit message.
+         *     - `PR_TITLE` - default to the pull request's title.
+         *     - `PR_BODY` - default to the pull request's body.
+         *     - `BLANK` - default to a blank commit message.
          * @enum {string}
          */
         merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
         /**
          * @description The default value for a merge commit title.
-         * - `PR_TITLE` - default to the pull request's title.
-         * - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., "Merge pull request #123 from branch-name").
+         *     - `PR_TITLE` - default to the pull request's title.
+         *     - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., "Merge pull request #123 from branch-name").
          * @enum {string}
          */
         merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
         /**
          * @description The default value for a squash merge commit message:
-         * - `PR_BODY` - default to the pull request's body.
-         * - `COMMIT_MESSAGES` - default to the branch's commit messages.
-         * - `BLANK` - default to a blank commit message.
+         *     - `PR_BODY` - default to the pull request's body.
+         *     - `COMMIT_MESSAGES` - default to the branch's commit messages.
+         *     - `BLANK` - default to a blank commit message.
          * @enum {string}
          */
         squash_merge_commit_message?: "PR_BODY" | "COMMIT_MESSAGES" | "BLANK";
         /**
          * @description The default value for a squash merge commit title:
-         * - `PR_TITLE` - default to the pull request's title.
-         * - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+         *     - `PR_TITLE` - default to the pull request's title.
+         *     - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
          * @enum {string}
          */
         squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
@@ -34951,31 +37824,31 @@ export interface components {
         delete_branch_on_merge?: boolean;
         /**
          * @description The default value for a merge commit message.
-         * - `PR_TITLE` - default to the pull request's title.
-         * - `PR_BODY` - default to the pull request's body.
-         * - `BLANK` - default to a blank commit message.
+         *     - `PR_TITLE` - default to the pull request's title.
+         *     - `PR_BODY` - default to the pull request's body.
+         *     - `BLANK` - default to a blank commit message.
          * @enum {string}
          */
         merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
         /**
          * @description The default value for a merge commit title.
-         * - `PR_TITLE` - default to the pull request's title.
-         * - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., "Merge pull request #123 from branch-name").
+         *     - `PR_TITLE` - default to the pull request's title.
+         *     - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., "Merge pull request #123 from branch-name").
          * @enum {string}
          */
         merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
         /**
          * @description The default value for a squash merge commit message:
-         * - `PR_BODY` - default to the pull request's body.
-         * - `COMMIT_MESSAGES` - default to the branch's commit messages.
-         * - `BLANK` - default to a blank commit message.
+         *     - `PR_BODY` - default to the pull request's body.
+         *     - `COMMIT_MESSAGES` - default to the branch's commit messages.
+         *     - `BLANK` - default to a blank commit message.
          * @enum {string}
          */
         squash_merge_commit_message?: "PR_BODY" | "COMMIT_MESSAGES" | "BLANK";
         /**
          * @description The default value for a squash merge commit title:
-         * - `PR_TITLE` - default to the pull request's title.
-         * - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+         *     - `PR_TITLE` - default to the pull request's title.
+         *     - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
          * @enum {string}
          */
         squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
@@ -35486,17 +38359,17 @@ export interface components {
             /**
              * @description The default value for a merge commit message.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `PR_BODY` - default to the pull request's body.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
             /**
              * @description The default value for a merge commit title.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
              * @enum {string}
              */
             merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
@@ -35563,7 +38436,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string | null;
+            pushed_at: null | number | string;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -35571,9 +38444,9 @@ export interface components {
             /**
              * @description The default value for a squash merge commit message:
              *
-             * - `PR_BODY` - default to the pull request's body.
-             * - `COMMIT_MESSAGES` - default to the branch's commit messages.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `COMMIT_MESSAGES` - default to the branch's commit messages.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             squash_merge_commit_message?:
@@ -35583,8 +38456,8 @@ export interface components {
             /**
              * @description The default value for a squash merge commit title:
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
              * @enum {string}
              */
             squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
@@ -35822,17 +38695,17 @@ export interface components {
             /**
              * @description The default value for a merge commit message.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `PR_BODY` - default to the pull request's body.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
             /**
              * @description The default value for a merge commit title.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
              * @enum {string}
              */
             merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
@@ -35899,7 +38772,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string | null;
+            pushed_at: null | number | string;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -35907,9 +38780,9 @@ export interface components {
             /**
              * @description The default value for a squash merge commit message:
              *
-             * - `PR_BODY` - default to the pull request's body.
-             * - `COMMIT_MESSAGES` - default to the branch's commit messages.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `COMMIT_MESSAGES` - default to the branch's commit messages.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             squash_merge_commit_message?:
@@ -35919,8 +38792,8 @@ export interface components {
             /**
              * @description The default value for a squash merge commit title:
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
              * @enum {string}
              */
             squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
@@ -36097,9 +38970,8 @@ export interface components {
         number: number;
         /** Format: uri */
         patch_url: string;
-        requested_reviewers: OneOf<
-          [
-            {
+        requested_reviewers: (
+          | ({
               /** Format: uri */
               avatar_url?: string;
               deleted?: boolean;
@@ -36134,8 +39006,8 @@ export interface components {
               type?: "Bot" | "User" | "Organization" | "Mannequin";
               /** Format: uri */
               url?: string;
-            } | null,
-            {
+            } | null)
+          | {
               deleted?: boolean;
               /** @description Description of the team */
               description: string | null;
@@ -36185,9 +39057,8 @@ export interface components {
                * @description URL for the team
                */
               url: string;
-            },
-          ]
-        >[];
+            }
+        )[];
         requested_teams: {
           deleted?: boolean;
           /** @description Description of the team */
@@ -36790,17 +39661,17 @@ export interface components {
             /**
              * @description The default value for a merge commit message.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `PR_BODY` - default to the pull request's body.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
             /**
              * @description The default value for a merge commit title.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
              * @enum {string}
              */
             merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
@@ -36867,7 +39738,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string | null;
+            pushed_at: null | number | string;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -36875,9 +39746,9 @@ export interface components {
             /**
              * @description The default value for a squash merge commit message:
              *
-             * - `PR_BODY` - default to the pull request's body.
-             * - `COMMIT_MESSAGES` - default to the branch's commit messages.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `COMMIT_MESSAGES` - default to the branch's commit messages.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             squash_merge_commit_message?:
@@ -36887,8 +39758,8 @@ export interface components {
             /**
              * @description The default value for a squash merge commit title:
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
              * @enum {string}
              */
             squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
@@ -37126,17 +39997,17 @@ export interface components {
             /**
              * @description The default value for a merge commit message.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `PR_BODY` - default to the pull request's body.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
             /**
              * @description The default value for a merge commit title.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
              * @enum {string}
              */
             merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
@@ -37203,7 +40074,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string | null;
+            pushed_at: null | number | string;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -37211,9 +40082,9 @@ export interface components {
             /**
              * @description The default value for a squash merge commit message:
              *
-             * - `PR_BODY` - default to the pull request's body.
-             * - `COMMIT_MESSAGES` - default to the branch's commit messages.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `COMMIT_MESSAGES` - default to the branch's commit messages.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             squash_merge_commit_message?:
@@ -37223,8 +40094,8 @@ export interface components {
             /**
              * @description The default value for a squash merge commit title:
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
              * @enum {string}
              */
             squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
@@ -37401,9 +40272,8 @@ export interface components {
         number: number;
         /** Format: uri */
         patch_url: string;
-        requested_reviewers: OneOf<
-          [
-            {
+        requested_reviewers: (
+          | ({
               /** Format: uri */
               avatar_url?: string;
               deleted?: boolean;
@@ -37438,8 +40308,8 @@ export interface components {
               type?: "Bot" | "User" | "Organization";
               /** Format: uri */
               url?: string;
-            } | null,
-            {
+            } | null)
+          | {
               deleted?: boolean;
               /** @description Description of the team */
               description?: string | null;
@@ -37489,9 +40359,8 @@ export interface components {
                * @description URL for the team
                */
               url?: string;
-            },
-          ]
-        >[];
+            }
+        )[];
         requested_teams: {
           deleted?: boolean;
           /** @description Description of the team */
@@ -38101,17 +40970,17 @@ export interface components {
             /**
              * @description The default value for a merge commit message.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `PR_BODY` - default to the pull request's body.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
             /**
              * @description The default value for a merge commit title.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
              * @enum {string}
              */
             merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
@@ -38178,7 +41047,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string | null;
+            pushed_at: null | number | string;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -38186,9 +41055,9 @@ export interface components {
             /**
              * @description The default value for a squash merge commit message:
              *
-             * - `PR_BODY` - default to the pull request's body.
-             * - `COMMIT_MESSAGES` - default to the branch's commit messages.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `COMMIT_MESSAGES` - default to the branch's commit messages.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             squash_merge_commit_message?:
@@ -38198,8 +41067,8 @@ export interface components {
             /**
              * @description The default value for a squash merge commit title:
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
              * @enum {string}
              */
             squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
@@ -38437,17 +41306,17 @@ export interface components {
             /**
              * @description The default value for a merge commit message.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `PR_BODY` - default to the pull request's body.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
             /**
              * @description The default value for a merge commit title.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
              * @enum {string}
              */
             merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
@@ -38514,7 +41383,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string | null;
+            pushed_at: null | number | string;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -38522,9 +41391,9 @@ export interface components {
             /**
              * @description The default value for a squash merge commit message:
              *
-             * - `PR_BODY` - default to the pull request's body.
-             * - `COMMIT_MESSAGES` - default to the branch's commit messages.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `COMMIT_MESSAGES` - default to the branch's commit messages.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             squash_merge_commit_message?:
@@ -38534,8 +41403,8 @@ export interface components {
             /**
              * @description The default value for a squash merge commit title:
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
              * @enum {string}
              */
             squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
@@ -38712,9 +41581,8 @@ export interface components {
         number: number;
         /** Format: uri */
         patch_url: string;
-        requested_reviewers: OneOf<
-          [
-            {
+        requested_reviewers: (
+          | ({
               /** Format: uri */
               avatar_url?: string;
               deleted?: boolean;
@@ -38749,8 +41617,8 @@ export interface components {
               type?: "Bot" | "User" | "Organization";
               /** Format: uri */
               url?: string;
-            } | null,
-            {
+            } | null)
+          | {
               deleted?: boolean;
               /** @description Description of the team */
               description?: string | null;
@@ -38800,9 +41668,8 @@ export interface components {
                * @description URL for the team
                */
               url?: string;
-            },
-          ]
-        >[];
+            }
+        )[];
         requested_teams: {
           deleted?: boolean;
           /** @description Description of the team */
@@ -39253,17 +42120,17 @@ export interface components {
             /**
              * @description The default value for a merge commit message.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `PR_BODY` - default to the pull request's body.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
             /**
              * @description The default value for a merge commit title.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
              * @enum {string}
              */
             merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
@@ -39330,7 +42197,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string | null;
+            pushed_at: null | number | string;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -39338,9 +42205,9 @@ export interface components {
             /**
              * @description The default value for a squash merge commit message:
              *
-             * - `PR_BODY` - default to the pull request's body.
-             * - `COMMIT_MESSAGES` - default to the branch's commit messages.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `COMMIT_MESSAGES` - default to the branch's commit messages.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             squash_merge_commit_message?:
@@ -39350,8 +42217,8 @@ export interface components {
             /**
              * @description The default value for a squash merge commit title:
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
              * @enum {string}
              */
             squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
@@ -39589,17 +42456,17 @@ export interface components {
             /**
              * @description The default value for a merge commit message.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `PR_BODY` - default to the pull request's body.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
             /**
              * @description The default value for a merge commit title.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
              * @enum {string}
              */
             merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
@@ -39666,7 +42533,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string | null;
+            pushed_at: null | number | string;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -39674,9 +42541,9 @@ export interface components {
             /**
              * @description The default value for a squash merge commit message:
              *
-             * - `PR_BODY` - default to the pull request's body.
-             * - `COMMIT_MESSAGES` - default to the branch's commit messages.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `COMMIT_MESSAGES` - default to the branch's commit messages.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             squash_merge_commit_message?:
@@ -39686,8 +42553,8 @@ export interface components {
             /**
              * @description The default value for a squash merge commit title:
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
              * @enum {string}
              */
             squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
@@ -39864,9 +42731,8 @@ export interface components {
         number: number;
         /** Format: uri */
         patch_url: string;
-        requested_reviewers: OneOf<
-          [
-            {
+        requested_reviewers: (
+          | ({
               /** Format: uri */
               avatar_url?: string;
               deleted?: boolean;
@@ -39901,8 +42767,8 @@ export interface components {
               type?: "Bot" | "User" | "Organization" | "Mannequin";
               /** Format: uri */
               url?: string;
-            } | null,
-            {
+            } | null)
+          | {
               deleted?: boolean;
               /** @description Description of the team */
               description: string | null;
@@ -39952,9 +42818,8 @@ export interface components {
                * @description URL for the team
                */
               url: string;
-            },
-          ]
-        >[];
+            }
+        )[];
         requested_teams: {
           deleted?: boolean;
           /** @description Description of the team */
@@ -40547,7 +43412,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string | null;
+            pushed_at: null | number | string;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -40834,7 +43699,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string | null;
+            pushed_at: null | number | string;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -41005,9 +43870,8 @@ export interface components {
         number: number;
         /** Format: uri */
         patch_url: string;
-        requested_reviewers: OneOf<
-          [
-            {
+        requested_reviewers: (
+          | ({
               /** Format: uri */
               avatar_url?: string;
               deleted?: boolean;
@@ -41042,8 +43906,8 @@ export interface components {
               type?: "Bot" | "User" | "Organization" | "Mannequin";
               /** Format: uri */
               url?: string;
-            } | null,
-            {
+            } | null)
+          | {
               deleted?: boolean;
               /** @description Description of the team */
               description: string | null;
@@ -41093,9 +43957,8 @@ export interface components {
                * @description URL for the team
                */
               url: string;
-            },
-          ]
-        >[];
+            }
+        )[];
         requested_teams: {
           deleted?: boolean;
           /** @description Description of the team */
@@ -41281,9 +44144,8 @@ export interface components {
       sender: components["schemas"]["simple-user-webhooks"];
     };
     /** pull_request review_request_removed event */
-    "webhook-pull-request-review-request-removed": OneOf<
-      [
-        {
+    "webhook-pull-request-review-request-removed":
+      | {
           /** @enum {string} */
           action: "review_request_removed";
           enterprise?: components["schemas"]["enterprise-webhooks"];
@@ -41631,17 +44493,17 @@ export interface components {
                 /**
                  * @description The default value for a merge commit message.
                  *
-                 * - `PR_TITLE` - default to the pull request's title.
-                 * - `PR_BODY` - default to the pull request's body.
-                 * - `BLANK` - default to a blank commit message.
+                 *     - `PR_TITLE` - default to the pull request's title.
+                 *     - `PR_BODY` - default to the pull request's body.
+                 *     - `BLANK` - default to a blank commit message.
                  * @enum {string}
                  */
                 merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
                 /**
                  * @description The default value for a merge commit title.
                  *
-                 * - `PR_TITLE` - default to the pull request's title.
-                 * - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
+                 *     - `PR_TITLE` - default to the pull request's title.
+                 *     - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
                  * @enum {string}
                  */
                 merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
@@ -41708,7 +44570,7 @@ export interface components {
                 public?: boolean;
                 /** Format: uri-template */
                 pulls_url: string;
-                pushed_at: number | string | null;
+                pushed_at: null | number | string;
                 /** Format: uri-template */
                 releases_url: string;
                 role_name?: string | null;
@@ -41967,17 +44829,17 @@ export interface components {
                 /**
                  * @description The default value for a merge commit message.
                  *
-                 * - `PR_TITLE` - default to the pull request's title.
-                 * - `PR_BODY` - default to the pull request's body.
-                 * - `BLANK` - default to a blank commit message.
+                 *     - `PR_TITLE` - default to the pull request's title.
+                 *     - `PR_BODY` - default to the pull request's body.
+                 *     - `BLANK` - default to a blank commit message.
                  * @enum {string}
                  */
                 merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
                 /**
                  * @description The default value for a merge commit title.
                  *
-                 * - `PR_TITLE` - default to the pull request's title.
-                 * - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
+                 *     - `PR_TITLE` - default to the pull request's title.
+                 *     - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
                  * @enum {string}
                  */
                 merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
@@ -42044,7 +44906,7 @@ export interface components {
                 public?: boolean;
                 /** Format: uri-template */
                 pulls_url: string;
-                pushed_at: number | string | null;
+                pushed_at: null | number | string;
                 /** Format: uri-template */
                 releases_url: string;
                 role_name?: string | null;
@@ -42052,9 +44914,9 @@ export interface components {
                 /**
                  * @description The default value for a squash merge commit message:
                  *
-                 * - `PR_BODY` - default to the pull request's body.
-                 * - `COMMIT_MESSAGES` - default to the branch's commit messages.
-                 * - `BLANK` - default to a blank commit message.
+                 *     - `PR_BODY` - default to the pull request's body.
+                 *     - `COMMIT_MESSAGES` - default to the branch's commit messages.
+                 *     - `BLANK` - default to a blank commit message.
                  * @enum {string}
                  */
                 squash_merge_commit_message?:
@@ -42064,8 +44926,8 @@ export interface components {
                 /**
                  * @description The default value for a squash merge commit title:
                  *
-                 * - `PR_TITLE` - default to the pull request's title.
-                 * - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+                 *     - `PR_TITLE` - default to the pull request's title.
+                 *     - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
                  * @enum {string}
                  */
                 squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
@@ -42287,9 +45149,8 @@ export interface components {
             /** Format: uri */
             patch_url: string;
             rebaseable?: boolean | null;
-            requested_reviewers: OneOf<
-              [
-                {
+            requested_reviewers: (
+              | ({
                   /** Format: uri */
                   avatar_url?: string;
                   deleted?: boolean;
@@ -42324,8 +45185,8 @@ export interface components {
                   type?: "Bot" | "User" | "Organization";
                   /** Format: uri */
                   url?: string;
-                } | null,
-                {
+                } | null)
+              | {
                   deleted?: boolean;
                   /** @description Description of the team */
                   description: string | null;
@@ -42375,9 +45236,8 @@ export interface components {
                    * @description URL for the team
                    */
                   url: string;
-                },
-              ]
-            >[];
+                }
+            )[];
             requested_teams: {
               deleted?: boolean;
               /** @description Description of the team */
@@ -42524,8 +45384,8 @@ export interface components {
             url?: string;
           } | null;
           sender: components["schemas"]["simple-user-webhooks"];
-        },
-        {
+        }
+      | {
           /** @enum {string} */
           action: "review_request_removed";
           enterprise?: components["schemas"]["enterprise-webhooks"];
@@ -42873,17 +45733,17 @@ export interface components {
                 /**
                  * @description The default value for a merge commit message.
                  *
-                 * - `PR_TITLE` - default to the pull request's title.
-                 * - `PR_BODY` - default to the pull request's body.
-                 * - `BLANK` - default to a blank commit message.
+                 *     - `PR_TITLE` - default to the pull request's title.
+                 *     - `PR_BODY` - default to the pull request's body.
+                 *     - `BLANK` - default to a blank commit message.
                  * @enum {string}
                  */
                 merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
                 /**
                  * @description The default value for a merge commit title.
                  *
-                 * - `PR_TITLE` - default to the pull request's title.
-                 * - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
+                 *     - `PR_TITLE` - default to the pull request's title.
+                 *     - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
                  * @enum {string}
                  */
                 merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
@@ -42950,7 +45810,7 @@ export interface components {
                 public?: boolean;
                 /** Format: uri-template */
                 pulls_url: string;
-                pushed_at: number | string | null;
+                pushed_at: null | number | string;
                 /** Format: uri-template */
                 releases_url: string;
                 role_name?: string | null;
@@ -42958,9 +45818,9 @@ export interface components {
                 /**
                  * @description The default value for a squash merge commit message:
                  *
-                 * - `PR_BODY` - default to the pull request's body.
-                 * - `COMMIT_MESSAGES` - default to the branch's commit messages.
-                 * - `BLANK` - default to a blank commit message.
+                 *     - `PR_BODY` - default to the pull request's body.
+                 *     - `COMMIT_MESSAGES` - default to the branch's commit messages.
+                 *     - `BLANK` - default to a blank commit message.
                  * @enum {string}
                  */
                 squash_merge_commit_message?:
@@ -42970,8 +45830,8 @@ export interface components {
                 /**
                  * @description The default value for a squash merge commit title:
                  *
-                 * - `PR_TITLE` - default to the pull request's title.
-                 * - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+                 *     - `PR_TITLE` - default to the pull request's title.
+                 *     - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
                  * @enum {string}
                  */
                 squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
@@ -43216,17 +46076,17 @@ export interface components {
                 /**
                  * @description The default value for a merge commit message.
                  *
-                 * - `PR_TITLE` - default to the pull request's title.
-                 * - `PR_BODY` - default to the pull request's body.
-                 * - `BLANK` - default to a blank commit message.
+                 *     - `PR_TITLE` - default to the pull request's title.
+                 *     - `PR_BODY` - default to the pull request's body.
+                 *     - `BLANK` - default to a blank commit message.
                  * @enum {string}
                  */
                 merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
                 /**
                  * @description The default value for a merge commit title.
                  *
-                 * - `PR_TITLE` - default to the pull request's title.
-                 * - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
+                 *     - `PR_TITLE` - default to the pull request's title.
+                 *     - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
                  * @enum {string}
                  */
                 merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
@@ -43293,7 +46153,7 @@ export interface components {
                 public?: boolean;
                 /** Format: uri-template */
                 pulls_url: string;
-                pushed_at: number | string | null;
+                pushed_at: null | number | string;
                 /** Format: uri-template */
                 releases_url: string;
                 role_name?: string | null;
@@ -43301,9 +46161,9 @@ export interface components {
                 /**
                  * @description The default value for a squash merge commit message:
                  *
-                 * - `PR_BODY` - default to the pull request's body.
-                 * - `COMMIT_MESSAGES` - default to the branch's commit messages.
-                 * - `BLANK` - default to a blank commit message.
+                 *     - `PR_BODY` - default to the pull request's body.
+                 *     - `COMMIT_MESSAGES` - default to the branch's commit messages.
+                 *     - `BLANK` - default to a blank commit message.
                  * @enum {string}
                  */
                 squash_merge_commit_message?:
@@ -43313,8 +46173,8 @@ export interface components {
                 /**
                  * @description The default value for a squash merge commit title:
                  *
-                 * - `PR_TITLE` - default to the pull request's title.
-                 * - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+                 *     - `PR_TITLE` - default to the pull request's title.
+                 *     - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
                  * @enum {string}
                  */
                 squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
@@ -43536,9 +46396,8 @@ export interface components {
             /** Format: uri */
             patch_url: string;
             rebaseable?: boolean | null;
-            requested_reviewers: OneOf<
-              [
-                {
+            requested_reviewers: (
+              | ({
                   /** Format: uri */
                   avatar_url?: string;
                   deleted?: boolean;
@@ -43573,8 +46432,8 @@ export interface components {
                   type?: "Bot" | "User" | "Organization";
                   /** Format: uri */
                   url?: string;
-                } | null,
-                {
+                } | null)
+              | {
                   deleted?: boolean;
                   /** @description Description of the team */
                   description: string | null;
@@ -43624,9 +46483,8 @@ export interface components {
                    * @description URL for the team
                    */
                   url: string;
-                },
-              ]
-            >[];
+                }
+            )[];
             requested_teams: {
               deleted?: boolean;
               /** @description Description of the team */
@@ -43791,13 +46649,10 @@ export interface components {
             url: string;
           };
           sender: components["schemas"]["simple-user-webhooks"];
-        },
-      ]
-    >;
+        };
     /** pull_request review_requested event */
-    "webhook-pull-request-review-requested": OneOf<
-      [
-        {
+    "webhook-pull-request-review-requested":
+      | {
           /** @enum {string} */
           action: "review_requested";
           enterprise?: components["schemas"]["enterprise-webhooks"];
@@ -44145,17 +47000,17 @@ export interface components {
                 /**
                  * @description The default value for a merge commit message.
                  *
-                 * - `PR_TITLE` - default to the pull request's title.
-                 * - `PR_BODY` - default to the pull request's body.
-                 * - `BLANK` - default to a blank commit message.
+                 *     - `PR_TITLE` - default to the pull request's title.
+                 *     - `PR_BODY` - default to the pull request's body.
+                 *     - `BLANK` - default to a blank commit message.
                  * @enum {string}
                  */
                 merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
                 /**
                  * @description The default value for a merge commit title.
                  *
-                 * - `PR_TITLE` - default to the pull request's title.
-                 * - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
+                 *     - `PR_TITLE` - default to the pull request's title.
+                 *     - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
                  * @enum {string}
                  */
                 merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
@@ -44222,7 +47077,7 @@ export interface components {
                 public?: boolean;
                 /** Format: uri-template */
                 pulls_url: string;
-                pushed_at: number | string | null;
+                pushed_at: null | number | string;
                 /** Format: uri-template */
                 releases_url: string;
                 role_name?: string | null;
@@ -44230,9 +47085,9 @@ export interface components {
                 /**
                  * @description The default value for a squash merge commit message:
                  *
-                 * - `PR_BODY` - default to the pull request's body.
-                 * - `COMMIT_MESSAGES` - default to the branch's commit messages.
-                 * - `BLANK` - default to a blank commit message.
+                 *     - `PR_BODY` - default to the pull request's body.
+                 *     - `COMMIT_MESSAGES` - default to the branch's commit messages.
+                 *     - `BLANK` - default to a blank commit message.
                  * @enum {string}
                  */
                 squash_merge_commit_message?:
@@ -44242,8 +47097,8 @@ export interface components {
                 /**
                  * @description The default value for a squash merge commit title:
                  *
-                 * - `PR_TITLE` - default to the pull request's title.
-                 * - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+                 *     - `PR_TITLE` - default to the pull request's title.
+                 *     - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
                  * @enum {string}
                  */
                 squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
@@ -44488,17 +47343,17 @@ export interface components {
                 /**
                  * @description The default value for a merge commit message.
                  *
-                 * - `PR_TITLE` - default to the pull request's title.
-                 * - `PR_BODY` - default to the pull request's body.
-                 * - `BLANK` - default to a blank commit message.
+                 *     - `PR_TITLE` - default to the pull request's title.
+                 *     - `PR_BODY` - default to the pull request's body.
+                 *     - `BLANK` - default to a blank commit message.
                  * @enum {string}
                  */
                 merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
                 /**
                  * @description The default value for a merge commit title.
                  *
-                 * - `PR_TITLE` - default to the pull request's title.
-                 * - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
+                 *     - `PR_TITLE` - default to the pull request's title.
+                 *     - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
                  * @enum {string}
                  */
                 merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
@@ -44565,7 +47420,7 @@ export interface components {
                 public?: boolean;
                 /** Format: uri-template */
                 pulls_url: string;
-                pushed_at: number | string | null;
+                pushed_at: null | number | string;
                 /** Format: uri-template */
                 releases_url: string;
                 role_name?: string | null;
@@ -44573,9 +47428,9 @@ export interface components {
                 /**
                  * @description The default value for a squash merge commit message:
                  *
-                 * - `PR_BODY` - default to the pull request's body.
-                 * - `COMMIT_MESSAGES` - default to the branch's commit messages.
-                 * - `BLANK` - default to a blank commit message.
+                 *     - `PR_BODY` - default to the pull request's body.
+                 *     - `COMMIT_MESSAGES` - default to the branch's commit messages.
+                 *     - `BLANK` - default to a blank commit message.
                  * @enum {string}
                  */
                 squash_merge_commit_message?:
@@ -44585,8 +47440,8 @@ export interface components {
                 /**
                  * @description The default value for a squash merge commit title:
                  *
-                 * - `PR_TITLE` - default to the pull request's title.
-                 * - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+                 *     - `PR_TITLE` - default to the pull request's title.
+                 *     - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
                  * @enum {string}
                  */
                 squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
@@ -44808,9 +47663,8 @@ export interface components {
             /** Format: uri */
             patch_url: string;
             rebaseable?: boolean | null;
-            requested_reviewers: OneOf<
-              [
-                {
+            requested_reviewers: (
+              | ({
                   /** Format: uri */
                   avatar_url?: string;
                   deleted?: boolean;
@@ -44845,8 +47699,8 @@ export interface components {
                   type?: "Bot" | "User" | "Organization";
                   /** Format: uri */
                   url?: string;
-                } | null,
-                {
+                } | null)
+              | {
                   deleted?: boolean;
                   /** @description Description of the team */
                   description: string | null;
@@ -44896,9 +47750,8 @@ export interface components {
                    * @description URL for the team
                    */
                   url: string;
-                },
-              ]
-            >[];
+                }
+            )[];
             requested_teams: {
               deleted?: boolean;
               /** @description Description of the team */
@@ -45045,8 +47898,8 @@ export interface components {
             url?: string;
           } | null;
           sender: components["schemas"]["simple-user-webhooks"];
-        },
-        {
+        }
+      | {
           /** @enum {string} */
           action: "review_requested";
           enterprise?: components["schemas"]["enterprise-webhooks"];
@@ -45394,17 +48247,17 @@ export interface components {
                 /**
                  * @description The default value for a merge commit message.
                  *
-                 * - `PR_TITLE` - default to the pull request's title.
-                 * - `PR_BODY` - default to the pull request's body.
-                 * - `BLANK` - default to a blank commit message.
+                 *     - `PR_TITLE` - default to the pull request's title.
+                 *     - `PR_BODY` - default to the pull request's body.
+                 *     - `BLANK` - default to a blank commit message.
                  * @enum {string}
                  */
                 merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
                 /**
                  * @description The default value for a merge commit title.
                  *
-                 * - `PR_TITLE` - default to the pull request's title.
-                 * - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
+                 *     - `PR_TITLE` - default to the pull request's title.
+                 *     - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
                  * @enum {string}
                  */
                 merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
@@ -45471,7 +48324,7 @@ export interface components {
                 public?: boolean;
                 /** Format: uri-template */
                 pulls_url: string;
-                pushed_at: number | string | null;
+                pushed_at: null | number | string;
                 /** Format: uri-template */
                 releases_url: string;
                 role_name?: string | null;
@@ -45479,9 +48332,9 @@ export interface components {
                 /**
                  * @description The default value for a squash merge commit message:
                  *
-                 * - `PR_BODY` - default to the pull request's body.
-                 * - `COMMIT_MESSAGES` - default to the branch's commit messages.
-                 * - `BLANK` - default to a blank commit message.
+                 *     - `PR_BODY` - default to the pull request's body.
+                 *     - `COMMIT_MESSAGES` - default to the branch's commit messages.
+                 *     - `BLANK` - default to a blank commit message.
                  * @enum {string}
                  */
                 squash_merge_commit_message?:
@@ -45491,8 +48344,8 @@ export interface components {
                 /**
                  * @description The default value for a squash merge commit title:
                  *
-                 * - `PR_TITLE` - default to the pull request's title.
-                 * - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+                 *     - `PR_TITLE` - default to the pull request's title.
+                 *     - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
                  * @enum {string}
                  */
                 squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
@@ -45737,17 +48590,17 @@ export interface components {
                 /**
                  * @description The default value for a merge commit message.
                  *
-                 * - `PR_TITLE` - default to the pull request's title.
-                 * - `PR_BODY` - default to the pull request's body.
-                 * - `BLANK` - default to a blank commit message.
+                 *     - `PR_TITLE` - default to the pull request's title.
+                 *     - `PR_BODY` - default to the pull request's body.
+                 *     - `BLANK` - default to a blank commit message.
                  * @enum {string}
                  */
                 merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
                 /**
                  * @description The default value for a merge commit title.
                  *
-                 * - `PR_TITLE` - default to the pull request's title.
-                 * - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
+                 *     - `PR_TITLE` - default to the pull request's title.
+                 *     - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
                  * @enum {string}
                  */
                 merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
@@ -45814,7 +48667,7 @@ export interface components {
                 public?: boolean;
                 /** Format: uri-template */
                 pulls_url: string;
-                pushed_at: number | string | null;
+                pushed_at: null | number | string;
                 /** Format: uri-template */
                 releases_url: string;
                 role_name?: string | null;
@@ -45822,9 +48675,9 @@ export interface components {
                 /**
                  * @description The default value for a squash merge commit message:
                  *
-                 * - `PR_BODY` - default to the pull request's body.
-                 * - `COMMIT_MESSAGES` - default to the branch's commit messages.
-                 * - `BLANK` - default to a blank commit message.
+                 *     - `PR_BODY` - default to the pull request's body.
+                 *     - `COMMIT_MESSAGES` - default to the branch's commit messages.
+                 *     - `BLANK` - default to a blank commit message.
                  * @enum {string}
                  */
                 squash_merge_commit_message?:
@@ -45834,8 +48687,8 @@ export interface components {
                 /**
                  * @description The default value for a squash merge commit title:
                  *
-                 * - `PR_TITLE` - default to the pull request's title.
-                 * - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+                 *     - `PR_TITLE` - default to the pull request's title.
+                 *     - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
                  * @enum {string}
                  */
                 squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
@@ -46057,9 +48910,8 @@ export interface components {
             /** Format: uri */
             patch_url: string;
             rebaseable?: boolean | null;
-            requested_reviewers: OneOf<
-              [
-                {
+            requested_reviewers: (
+              | ({
                   /** Format: uri */
                   avatar_url?: string;
                   deleted?: boolean;
@@ -46094,8 +48946,8 @@ export interface components {
                   type?: "Bot" | "User" | "Organization";
                   /** Format: uri */
                   url?: string;
-                } | null,
-                {
+                } | null)
+              | {
                   deleted?: boolean;
                   /** @description Description of the team */
                   description?: string | null;
@@ -46145,9 +48997,8 @@ export interface components {
                    * @description URL for the team
                    */
                   url?: string;
-                },
-              ]
-            >[];
+                }
+            )[];
             requested_teams: {
               deleted?: boolean;
               /** @description Description of the team */
@@ -46312,9 +49163,7 @@ export interface components {
             url?: string;
           };
           sender: components["schemas"]["simple-user-webhooks"];
-        },
-      ]
-    >;
+        };
     /** pull_request_review submitted event */
     "webhook-pull-request-review-submitted": {
       /** @enum {string} */
@@ -46661,17 +49510,17 @@ export interface components {
             /**
              * @description The default value for a merge commit message.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `PR_BODY` - default to the pull request's body.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
             /**
              * @description The default value for a merge commit title.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
              * @enum {string}
              */
             merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
@@ -46738,7 +49587,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string | null;
+            pushed_at: null | number | string;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -46746,9 +49595,9 @@ export interface components {
             /**
              * @description The default value for a squash merge commit message:
              *
-             * - `PR_BODY` - default to the pull request's body.
-             * - `COMMIT_MESSAGES` - default to the branch's commit messages.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `COMMIT_MESSAGES` - default to the branch's commit messages.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             squash_merge_commit_message?:
@@ -46758,8 +49607,8 @@ export interface components {
             /**
              * @description The default value for a squash merge commit title:
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
              * @enum {string}
              */
             squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
@@ -46997,17 +49846,17 @@ export interface components {
             /**
              * @description The default value for a merge commit message.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `PR_BODY` - default to the pull request's body.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
             /**
              * @description The default value for a merge commit title.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
              * @enum {string}
              */
             merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
@@ -47074,7 +49923,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string | null;
+            pushed_at: null | number | string;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -47082,9 +49931,9 @@ export interface components {
             /**
              * @description The default value for a squash merge commit message:
              *
-             * - `PR_BODY` - default to the pull request's body.
-             * - `COMMIT_MESSAGES` - default to the branch's commit messages.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `COMMIT_MESSAGES` - default to the branch's commit messages.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             squash_merge_commit_message?:
@@ -47094,8 +49943,8 @@ export interface components {
             /**
              * @description The default value for a squash merge commit title:
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
              * @enum {string}
              */
             squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
@@ -47272,9 +50121,8 @@ export interface components {
         number: number;
         /** Format: uri */
         patch_url: string;
-        requested_reviewers: OneOf<
-          [
-            {
+        requested_reviewers: (
+          | ({
               /** Format: uri */
               avatar_url?: string;
               deleted?: boolean;
@@ -47309,8 +50157,8 @@ export interface components {
               type?: "Bot" | "User" | "Organization" | "Mannequin";
               /** Format: uri */
               url?: string;
-            } | null,
-            {
+            } | null)
+          | {
               deleted?: boolean;
               /** @description Description of the team */
               description: string | null;
@@ -47360,9 +50208,8 @@ export interface components {
                * @description URL for the team
                */
               url: string;
-            },
-          ]
-        >[];
+            }
+        )[];
         requested_teams: {
           deleted?: boolean;
           /** @description Description of the team */
@@ -47953,7 +50800,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string | null;
+            pushed_at: null | number | string;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -48247,7 +51094,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string | null;
+            pushed_at: null | number | string;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -48420,9 +51267,8 @@ export interface components {
         number: number;
         /** Format: uri */
         patch_url: string;
-        requested_reviewers: OneOf<
-          [
-            {
+        requested_reviewers: (
+          | ({
               /** Format: uri */
               avatar_url?: string;
               deleted?: boolean;
@@ -48457,8 +51303,8 @@ export interface components {
               type?: "Bot" | "User" | "Organization" | "Mannequin";
               /** Format: uri */
               url?: string;
-            } | null,
-            {
+            } | null)
+          | {
               deleted?: boolean;
               /** @description Description of the team */
               description: string | null;
@@ -48508,9 +51354,8 @@ export interface components {
                * @description URL for the team
                */
               url: string;
-            },
-          ]
-        >[];
+            }
+        )[];
         requested_teams: {
           deleted?: boolean;
           /** @description Description of the team */
@@ -49173,7 +52018,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string | null;
+            pushed_at: null | number | string;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -49467,7 +52312,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string | null;
+            pushed_at: null | number | string;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -49640,9 +52485,8 @@ export interface components {
         number: number;
         /** Format: uri */
         patch_url: string;
-        requested_reviewers: OneOf<
-          [
-            {
+        requested_reviewers: (
+          | ({
               /** Format: uri */
               avatar_url?: string;
               deleted?: boolean;
@@ -49677,8 +52521,8 @@ export interface components {
               type?: "Bot" | "User" | "Organization";
               /** Format: uri */
               url?: string;
-            } | null,
-            {
+            } | null)
+          | {
               deleted?: boolean;
               /** @description Description of the team */
               description?: string | null;
@@ -49728,9 +52572,8 @@ export interface components {
                * @description URL for the team
                */
               url?: string;
-            },
-          ]
-        >[];
+            }
+        )[];
         requested_teams: {
           deleted?: boolean;
           /** @description Description of the team */
@@ -50338,17 +53181,17 @@ export interface components {
             /**
              * @description The default value for a merge commit message.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `PR_BODY` - default to the pull request's body.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
             /**
              * @description The default value for a merge commit title.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
              * @enum {string}
              */
             merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
@@ -50415,7 +53258,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string | null;
+            pushed_at: null | number | string;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -50423,9 +53266,9 @@ export interface components {
             /**
              * @description The default value for a squash merge commit message:
              *
-             * - `PR_BODY` - default to the pull request's body.
-             * - `COMMIT_MESSAGES` - default to the branch's commit messages.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `COMMIT_MESSAGES` - default to the branch's commit messages.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             squash_merge_commit_message?:
@@ -50435,8 +53278,8 @@ export interface components {
             /**
              * @description The default value for a squash merge commit title:
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
              * @enum {string}
              */
             squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
@@ -50751,7 +53594,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string | null;
+            pushed_at: null | number | string;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -50759,9 +53602,9 @@ export interface components {
             /**
              * @description The default value for a squash merge commit message:
              *
-             * - `PR_BODY` - default to the pull request's body.
-             * - `COMMIT_MESSAGES` - default to the branch's commit messages.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `COMMIT_MESSAGES` - default to the branch's commit messages.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             squash_merge_commit_message?:
@@ -50771,8 +53614,8 @@ export interface components {
             /**
              * @description The default value for a squash merge commit title:
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
              * @enum {string}
              */
             squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
@@ -50994,9 +53837,8 @@ export interface components {
         /** Format: uri */
         patch_url: string;
         rebaseable?: boolean | null;
-        requested_reviewers: OneOf<
-          [
-            {
+        requested_reviewers: (
+          | ({
               /** Format: uri */
               avatar_url?: string;
               deleted?: boolean;
@@ -51031,8 +53873,8 @@ export interface components {
               type?: "Bot" | "User" | "Organization" | "Mannequin";
               /** Format: uri */
               url?: string;
-            } | null,
-            {
+            } | null)
+          | {
               deleted?: boolean;
               /** @description Description of the team */
               description: string | null;
@@ -51082,9 +53924,8 @@ export interface components {
                * @description URL for the team
                */
               url: string;
-            },
-          ]
-        >[];
+            }
+        )[];
         requested_teams: {
           deleted?: boolean;
           /** @description Description of the team */
@@ -51581,17 +54422,17 @@ export interface components {
             /**
              * @description The default value for a merge commit message.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `PR_BODY` - default to the pull request's body.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
             /**
              * @description The default value for a merge commit title.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
              * @enum {string}
              */
             merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
@@ -51658,7 +54499,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string | null;
+            pushed_at: null | number | string;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -51666,9 +54507,9 @@ export interface components {
             /**
              * @description The default value for a squash merge commit message:
              *
-             * - `PR_BODY` - default to the pull request's body.
-             * - `COMMIT_MESSAGES` - default to the branch's commit messages.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `COMMIT_MESSAGES` - default to the branch's commit messages.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             squash_merge_commit_message?:
@@ -51678,8 +54519,8 @@ export interface components {
             /**
              * @description The default value for a squash merge commit title:
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
              * @enum {string}
              */
             squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
@@ -51924,17 +54765,17 @@ export interface components {
             /**
              * @description The default value for a merge commit message.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `PR_BODY` - default to the pull request's body.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
             /**
              * @description The default value for a merge commit title.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
              * @enum {string}
              */
             merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
@@ -52001,7 +54842,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string | null;
+            pushed_at: null | number | string;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -52009,9 +54850,9 @@ export interface components {
             /**
              * @description The default value for a squash merge commit message:
              *
-             * - `PR_BODY` - default to the pull request's body.
-             * - `COMMIT_MESSAGES` - default to the branch's commit messages.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `COMMIT_MESSAGES` - default to the branch's commit messages.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             squash_merge_commit_message?:
@@ -52021,8 +54862,8 @@ export interface components {
             /**
              * @description The default value for a squash merge commit title:
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
              * @enum {string}
              */
             squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
@@ -52244,9 +55085,8 @@ export interface components {
         /** Format: uri */
         patch_url: string;
         rebaseable?: boolean | null;
-        requested_reviewers: OneOf<
-          [
-            {
+        requested_reviewers: (
+          | ({
               /** Format: uri */
               avatar_url?: string;
               deleted?: boolean;
@@ -52281,8 +55121,8 @@ export interface components {
               type?: "Bot" | "User" | "Organization" | "Mannequin";
               /** Format: uri */
               url?: string;
-            } | null,
-            {
+            } | null)
+          | {
               deleted?: boolean;
               /** @description Description of the team */
               description: string | null;
@@ -52332,9 +55172,8 @@ export interface components {
                * @description URL for the team
                */
               url: string;
-            },
-          ]
-        >[];
+            }
+        )[];
         requested_teams: {
           deleted?: boolean;
           /** @description Description of the team */
@@ -52810,17 +55649,17 @@ export interface components {
             /**
              * @description The default value for a merge commit message.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `PR_BODY` - default to the pull request's body.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
             /**
              * @description The default value for a merge commit title.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
              * @enum {string}
              */
             merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
@@ -52887,7 +55726,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string | null;
+            pushed_at: null | number | string;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -52895,9 +55734,9 @@ export interface components {
             /**
              * @description The default value for a squash merge commit message:
              *
-             * - `PR_BODY` - default to the pull request's body.
-             * - `COMMIT_MESSAGES` - default to the branch's commit messages.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `COMMIT_MESSAGES` - default to the branch's commit messages.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             squash_merge_commit_message?:
@@ -52907,8 +55746,8 @@ export interface components {
             /**
              * @description The default value for a squash merge commit title:
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
              * @enum {string}
              */
             squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
@@ -53223,7 +56062,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string | null;
+            pushed_at: null | number | string;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -53231,9 +56070,9 @@ export interface components {
             /**
              * @description The default value for a squash merge commit message:
              *
-             * - `PR_BODY` - default to the pull request's body.
-             * - `COMMIT_MESSAGES` - default to the branch's commit messages.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `COMMIT_MESSAGES` - default to the branch's commit messages.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             squash_merge_commit_message?:
@@ -53243,8 +56082,8 @@ export interface components {
             /**
              * @description The default value for a squash merge commit title:
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
              * @enum {string}
              */
             squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
@@ -53466,9 +56305,8 @@ export interface components {
         /** Format: uri */
         patch_url: string;
         rebaseable?: boolean | null;
-        requested_reviewers: OneOf<
-          [
-            {
+        requested_reviewers: (
+          | ({
               /** Format: uri */
               avatar_url?: string;
               deleted?: boolean;
@@ -53503,8 +56341,8 @@ export interface components {
               type?: "Bot" | "User" | "Organization" | "Mannequin";
               /** Format: uri */
               url?: string;
-            } | null,
-            {
+            } | null)
+          | {
               deleted?: boolean;
               /** @description Description of the team */
               description: string | null;
@@ -53554,9 +56392,8 @@ export interface components {
                * @description URL for the team
                */
               url: string;
-            },
-          ]
-        >[];
+            }
+        )[];
         requested_teams: {
           deleted?: boolean;
           /** @description Description of the team */
@@ -54016,17 +56853,17 @@ export interface components {
             /**
              * @description The default value for a merge commit message.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `PR_BODY` - default to the pull request's body.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
             /**
              * @description The default value for a merge commit title.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
              * @enum {string}
              */
             merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
@@ -54093,7 +56930,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string | null;
+            pushed_at: null | number | string;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -54101,9 +56938,9 @@ export interface components {
             /**
              * @description The default value for a squash merge commit message:
              *
-             * - `PR_BODY` - default to the pull request's body.
-             * - `COMMIT_MESSAGES` - default to the branch's commit messages.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `COMMIT_MESSAGES` - default to the branch's commit messages.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             squash_merge_commit_message?:
@@ -54113,8 +56950,8 @@ export interface components {
             /**
              * @description The default value for a squash merge commit title:
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
              * @enum {string}
              */
             squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
@@ -54359,17 +57196,17 @@ export interface components {
             /**
              * @description The default value for a merge commit message.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `PR_BODY` - default to the pull request's body.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
             /**
              * @description The default value for a merge commit title.
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
              * @enum {string}
              */
             merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
@@ -54436,7 +57273,7 @@ export interface components {
             public?: boolean;
             /** Format: uri-template */
             pulls_url: string;
-            pushed_at: number | string | null;
+            pushed_at: null | number | string;
             /** Format: uri-template */
             releases_url: string;
             role_name?: string | null;
@@ -54444,9 +57281,9 @@ export interface components {
             /**
              * @description The default value for a squash merge commit message:
              *
-             * - `PR_BODY` - default to the pull request's body.
-             * - `COMMIT_MESSAGES` - default to the branch's commit messages.
-             * - `BLANK` - default to a blank commit message.
+             *     - `PR_BODY` - default to the pull request's body.
+             *     - `COMMIT_MESSAGES` - default to the branch's commit messages.
+             *     - `BLANK` - default to a blank commit message.
              * @enum {string}
              */
             squash_merge_commit_message?:
@@ -54456,8 +57293,8 @@ export interface components {
             /**
              * @description The default value for a squash merge commit title:
              *
-             * - `PR_TITLE` - default to the pull request's title.
-             * - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+             *     - `PR_TITLE` - default to the pull request's title.
+             *     - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
              * @enum {string}
              */
             squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
@@ -54679,9 +57516,8 @@ export interface components {
         /** Format: uri */
         patch_url: string;
         rebaseable?: boolean | null;
-        requested_reviewers: OneOf<
-          [
-            {
+        requested_reviewers: (
+          | ({
               /** Format: uri */
               avatar_url?: string;
               deleted?: boolean;
@@ -54716,8 +57552,8 @@ export interface components {
               type?: "Bot" | "User" | "Organization";
               /** Format: uri */
               url?: string;
-            } | null,
-            {
+            } | null)
+          | {
               deleted?: boolean;
               /** @description Description of the team */
               description?: string | null;
@@ -54767,9 +57603,8 @@ export interface components {
                * @description URL for the team
                */
               url?: string;
-            },
-          ]
-        >[];
+            }
+        )[];
         requested_teams: {
           deleted?: boolean;
           /** @description Description of the team */
@@ -55221,7 +58056,7 @@ export interface components {
         public?: boolean;
         /** Format: uri-template */
         pulls_url: string;
-        pushed_at: number | string | null;
+        pushed_at: null | number | string;
         /** Format: uri-template */
         releases_url: string;
         role_name?: string | null;
@@ -55343,19 +58178,23 @@ export interface components {
             name?: string;
             version?: string;
             npm_user?: string;
-            author?: string | Record<string, never> | null;
-            bugs?: string | Record<string, never> | null;
+            author?: (null | Record<string, never>) &
+              (string | Record<string, never>);
+            bugs?: (null | Record<string, never>) &
+              (string | Record<string, never>);
             dependencies?: Record<string, never>;
             dev_dependencies?: Record<string, never>;
             peer_dependencies?: Record<string, never>;
             optional_dependencies?: Record<string, never>;
             description?: string;
-            dist?: string | Record<string, never> | null;
+            dist?: (null | Record<string, never>) &
+              (string | Record<string, never>);
             git_head?: string;
             homepage?: string;
             license?: string;
             main?: string;
-            repository?: string | Record<string, never> | null;
+            repository?: (null | Record<string, never>) &
+              (string | Record<string, never>);
             scripts?: Record<string, never>;
             id?: string;
             node_version?: string;
@@ -55368,7 +58207,8 @@ export interface components {
             files?: string[];
             bin?: Record<string, never>;
             man?: Record<string, never>;
-            directories?: string | Record<string, never> | null;
+            directories?: (null | Record<string, never>) &
+              (string | Record<string, never>);
             os?: string[];
             cpu?: string[];
             readme?: string;
@@ -55380,21 +58220,19 @@ export interface components {
           } | null;
           nuget_metadata?:
             | {
-                id?: string | Record<string, never> | number | null;
+                id?: (null | Record<string, never>) &
+                  (string | Record<string, never> | number);
                 name?: string;
-                value?: OneOf<
-                  [
-                    boolean,
-                    string,
-                    number,
-                    {
+                value?:
+                  | boolean
+                  | string
+                  | number
+                  | {
                       url?: string;
                       branch?: string;
                       commit?: string;
                       type?: string;
-                    },
-                  ]
-                >;
+                    };
               }[]
             | null;
           package_files: {
@@ -57919,34 +60757,34 @@ export interface components {
       /**
        * @description The default value for a squash merge commit title:
        *
-       * - `PR_TITLE` - default to the pull request's title.
-       * - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+       *     - `PR_TITLE` - default to the pull request's title.
+       *     - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
        * @enum {string}
        */
       squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
       /**
        * @description The default value for a squash merge commit message:
        *
-       * - `PR_BODY` - default to the pull request's body.
-       * - `COMMIT_MESSAGES` - default to the branch's commit messages.
-       * - `BLANK` - default to a blank commit message.
+       *     - `PR_BODY` - default to the pull request's body.
+       *     - `COMMIT_MESSAGES` - default to the branch's commit messages.
+       *     - `BLANK` - default to a blank commit message.
        * @enum {string}
        */
       squash_merge_commit_message?: "PR_BODY" | "COMMIT_MESSAGES" | "BLANK";
       /**
        * @description The default value for a merge commit title.
        *
-       *   - `PR_TITLE` - default to the pull request's title.
-       *   - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
+       *       - `PR_TITLE` - default to the pull request's title.
+       *       - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
        * @enum {string}
        */
       merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
       /**
        * @description The default value for a merge commit message.
        *
-       * - `PR_TITLE` - default to the pull request's title.
-       * - `PR_BODY` - default to the pull request's body.
-       * - `BLANK` - default to a blank commit message.
+       *     - `PR_TITLE` - default to the pull request's title.
+       *     - `PR_BODY` - default to the pull request's body.
+       *     - `BLANK` - default to a blank commit message.
        * @enum {string}
        */
       merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
@@ -58155,34 +60993,34 @@ export interface components {
       /**
        * @description The default value for a squash merge commit title:
        *
-       * - `PR_TITLE` - default to the pull request's title.
-       * - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+       *     - `PR_TITLE` - default to the pull request's title.
+       *     - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
        * @enum {string}
        */
       squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
       /**
        * @description The default value for a squash merge commit message:
        *
-       * - `PR_BODY` - default to the pull request's body.
-       * - `COMMIT_MESSAGES` - default to the branch's commit messages.
-       * - `BLANK` - default to a blank commit message.
+       *     - `PR_BODY` - default to the pull request's body.
+       *     - `COMMIT_MESSAGES` - default to the branch's commit messages.
+       *     - `BLANK` - default to a blank commit message.
        * @enum {string}
        */
       squash_merge_commit_message?: "PR_BODY" | "COMMIT_MESSAGES" | "BLANK";
       /**
        * @description The default value for a merge commit title.
        *
-       * - `PR_TITLE` - default to the pull request's title.
-       * - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
+       *     - `PR_TITLE` - default to the pull request's title.
+       *     - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
        * @enum {string}
        */
       merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
       /**
        * @description The default value for a merge commit message.
        *
-       * - `PR_TITLE` - default to the pull request's title.
-       * - `PR_BODY` - default to the pull request's body.
-       * - `BLANK` - default to a blank commit message.
+       *     - `PR_TITLE` - default to the pull request's title.
+       *     - `PR_BODY` - default to the pull request's body.
+       *     - `BLANK` - default to a blank commit message.
        * @enum {string}
        */
       merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
@@ -59505,7 +62343,7 @@ export interface components {
         public?: boolean;
         /** Format: uri-template */
         pulls_url: string;
-        pushed_at: number | string | null;
+        pushed_at: null | number | string;
         /** Format: uri-template */
         releases_url: string;
         role_name?: string | null;
@@ -59818,7 +62656,7 @@ export interface components {
         public?: boolean;
         /** Format: uri-template */
         pulls_url: string;
-        pushed_at: number | string | null;
+        pushed_at: null | number | string;
         /** Format: uri-template */
         releases_url: string;
         role_name?: string | null;
@@ -60131,7 +62969,7 @@ export interface components {
         public?: boolean;
         /** Format: uri-template */
         pulls_url: string;
-        pushed_at: number | string | null;
+        pushed_at: null | number | string;
         /** Format: uri-template */
         releases_url: string;
         role_name?: string | null;
@@ -60475,7 +63313,7 @@ export interface components {
         public?: boolean;
         /** Format: uri-template */
         pulls_url: string;
-        pushed_at: number | string | null;
+        pushed_at: null | number | string;
         /** Format: uri-template */
         releases_url: string;
         role_name?: string | null;
@@ -60788,7 +63626,7 @@ export interface components {
         public?: boolean;
         /** Format: uri-template */
         pulls_url: string;
-        pushed_at: number | string | null;
+        pushed_at: null | number | string;
         /** Format: uri-template */
         releases_url: string;
         role_name?: string | null;
@@ -63243,20 +66081,11 @@ export interface components {
   headers: never;
   pathItems: never;
 }
-
 export type $defs = Record<string, never>;
-
-export type external = Record<string, never>;
-
 export interface operations {
-  /**
-   * This event occurs when there is activity relating to branch protection rules. For more information, see "[About protected branches](https://docs.github.com/enterprise-server@3.10/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches)." For information about the APIs to manage branch protection rules, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#branchprotectionrule) or "[Branch protection](https://docs.github.com/enterprise-server@3.10/rest/branches/branch-protection)" in the REST API documentation.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
-   * @description A branch protection rule was created.
-   */
   "branch-protection-rule/created": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -63277,6 +66106,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -63286,18 +66117,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to branch protection rules. For more information, see "[About protected branches](https://docs.github.com/enterprise-server@3.10/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches)." For information about the APIs to manage branch protection rules, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#branchprotectionrule) or "[Branch protection](https://docs.github.com/enterprise-server@3.10/rest/branches/branch-protection)" in the REST API documentation.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
-   * @description A branch protection rule was deleted.
-   */
   "branch-protection-rule/deleted": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -63318,6 +66147,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -63327,18 +66158,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to branch protection rules. For more information, see "[About protected branches](https://docs.github.com/enterprise-server@3.10/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches)." For information about the APIs to manage branch protection rules, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#branchprotectionrule) or "[Branch protection](https://docs.github.com/enterprise-server@3.10/rest/branches/branch-protection)" in the REST API documentation.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
-   * @description A branch protection rule was edited.
-   */
   "branch-protection-rule/edited": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -63359,6 +66188,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -63368,13 +66199,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /** This event occurs when a Git ref has been successfully synced to a cache replica. For more information, see "[About repository caching](https://docs.github.com/enterprise-server@3.10/admin/enterprise-management/caching-repositories/about-repository-caching)." */
   "cache-sync": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -63395,6 +66229,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -63404,24 +66240,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a check run. For information about check runs, see "[Getting started with the Checks API](https://docs.github.com/enterprise-server@3.10/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check runs, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#checkrun) or "[Check Runs](https://docs.github.com/enterprise-server@3.10/rest/checks/runs)" in the REST API documentation.
-   *
-   * For activity relating to check suites, use the `check-suite` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Checks" repository permission. To receive the `rerequested` and `requested_action` event types, the app must have at least write-level access for the "Checks" permission. GitHub Apps with write-level access for the "Checks" permission are automatically subscribed to this webhook event.
-   *
-   * Repository and organization webhooks only receive payloads for the `created` and `completed` event types in repositories.
-   *
-   * **Note**: The API only looks for pushes in the repository where the check run was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
-   * @description A check run was completed, and a conclusion is available.
-   */
   "check-run/completed": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -63442,6 +66270,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -63451,24 +66281,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a check run. For information about check runs, see "[Getting started with the Checks API](https://docs.github.com/enterprise-server@3.10/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check runs, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#checkrun) or "[Check Runs](https://docs.github.com/enterprise-server@3.10/rest/checks/runs)" in the REST API documentation.
-   *
-   * For activity relating to check suites, use the `check-suite` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Checks" repository permission. To receive the `rerequested` and `requested_action` event types, the app must have at least write-level access for the "Checks" permission. GitHub Apps with write-level access for the "Checks" permission are automatically subscribed to this webhook event.
-   *
-   * Repository and organization webhooks only receive payloads for the `created` and `completed` event types in repositories.
-   *
-   * **Note**: The API only looks for pushes in the repository where the check run was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
-   * @description A new check run was created.
-   */
   "check-run/created": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -63489,6 +66311,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -63498,24 +66322,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a check run. For information about check runs, see "[Getting started with the Checks API](https://docs.github.com/enterprise-server@3.10/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check runs, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#checkrun) or "[Check Runs](https://docs.github.com/enterprise-server@3.10/rest/checks/runs)" in the REST API documentation.
-   *
-   * For activity relating to check suites, use the `check-suite` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Checks" repository permission. To receive the `rerequested` and `requested_action` event types, the app must have at least write-level access for the "Checks" permission. GitHub Apps with write-level access for the "Checks" permission are automatically subscribed to this webhook event.
-   *
-   * Repository and organization webhooks only receive payloads for the `created` and `completed` event types in repositories.
-   *
-   * **Note**: The API only looks for pushes in the repository where the check run was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
-   * @description A check run completed, and someone requested a followup action that your app provides. Only the GitHub App someone requests to perform an action will receive the `requested_action` payload. For more information, see "[Creating CI tests with the Checks API](https://docs.github.com/enterprise-server@3.10/developers/apps/guides/creating-ci-tests-with-the-checks-api)."
-   */
   "check-run/requested-action": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -63536,6 +66352,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -63545,24 +66363,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a check run. For information about check runs, see "[Getting started with the Checks API](https://docs.github.com/enterprise-server@3.10/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check runs, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#checkrun) or "[Check Runs](https://docs.github.com/enterprise-server@3.10/rest/checks/runs)" in the REST API documentation.
-   *
-   * For activity relating to check suites, use the `check-suite` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Checks" repository permission. To receive the `rerequested` and `requested_action` event types, the app must have at least write-level access for the "Checks" permission. GitHub Apps with write-level access for the "Checks" permission are automatically subscribed to this webhook event.
-   *
-   * Repository and organization webhooks only receive payloads for the `created` and `completed` event types in repositories.
-   *
-   * **Note**: The API only looks for pushes in the repository where the check run was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
-   * @description Someone requested to re-run a check run. Only the GitHub App that someone requests to re-run the check will receive the `rerequested` payload.
-   */
   "check-run/rerequested": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -63583,6 +66393,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -63592,24 +66404,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a check suite. For information about check suites, see "[Getting started with the Checks API](https://docs.github.com/enterprise-server@3.10/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check suites, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#checksuite) or "[Check Suites](https://docs.github.com/enterprise-server@3.10/rest/checks/suites)" in the REST API documentation.
-   *
-   * For activity relating to check runs, use the `check_run` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Checks" permission. To receive the `requested` and `rerequested` event types, the app must have at least write-level access for the "Checks" permission. GitHub Apps with write-level access for the "Checks" permission are automatically subscribed to this webhook event.
-   *
-   * Repository and organization webhooks only receive payloads for the `completed` event types in repositories.
-   *
-   * **Note**: The API only looks for pushes in the repository where the check suite was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
-   * @description All check runs in a check suite have completed, and a conclusion is available.
-   */
   "check-suite/completed": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -63630,6 +66434,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -63639,24 +66445,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a check suite. For information about check suites, see "[Getting started with the Checks API](https://docs.github.com/enterprise-server@3.10/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check suites, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#checksuite) or "[Check Suites](https://docs.github.com/enterprise-server@3.10/rest/checks/suites)" in the REST API documentation.
-   *
-   * For activity relating to check runs, use the `check_run` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Checks" permission. To receive the `requested` and `rerequested` event types, the app must have at least write-level access for the "Checks" permission. GitHub Apps with write-level access for the "Checks" permission are automatically subscribed to this webhook event.
-   *
-   * Repository and organization webhooks only receive payloads for the `completed` event types in repositories.
-   *
-   * **Note**: The API only looks for pushes in the repository where the check suite was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
-   * @description Someone requested to run a check suite. By default, check suites are automatically created when you create a check run. For more information, see [the GraphQL API documentation for creating a check run](https://docs.github.com/enterprise-server@3.10/graphql/reference/mutations#createcheckrun) or "[Create a check run](https://docs.github.com/enterprise-server@3.10/rest/checks/runs#create-a-check-run)" in the REST API documentation.
-   */
   "check-suite/requested": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -63677,6 +66475,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -63686,24 +66486,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a check suite. For information about check suites, see "[Getting started with the Checks API](https://docs.github.com/enterprise-server@3.10/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check suites, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#checksuite) or "[Check Suites](https://docs.github.com/enterprise-server@3.10/rest/checks/suites)" in the REST API documentation.
-   *
-   * For activity relating to check runs, use the `check_run` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Checks" permission. To receive the `requested` and `rerequested` event types, the app must have at least write-level access for the "Checks" permission. GitHub Apps with write-level access for the "Checks" permission are automatically subscribed to this webhook event.
-   *
-   * Repository and organization webhooks only receive payloads for the `completed` event types in repositories.
-   *
-   * **Note**: The API only looks for pushes in the repository where the check suite was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
-   * @description Someone requested to re-run the check runs in a check suite. For more information, see [the GraphQL API documentation for creating a check suite](https://docs.github.com/enterprise-server@3.10/graphql/reference/mutations#createchecksuite) or "[Create a check suite](https://docs.github.com/enterprise-server@3.10/rest/checks/suites#create-a-check-suite)" in the REST API documentation.
-   */
   "check-suite/rerequested": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -63724,6 +66516,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -63733,18 +66527,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/enterprise-server@3.10/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/enterprise-server@3.10/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/enterprise-server@3.10/rest/code-scanning)" in the REST API documentation.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Code scanning alerts" repository permission.
-   * @description A previously created code scanning alert appeared in another branch. This can happen when a branch is merged into or created from a branch with a pre-existing code scanning alert.
-   */
   "code-scanning-alert/appeared-in-branch": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -63765,6 +66557,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -63774,18 +66568,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/enterprise-server@3.10/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/enterprise-server@3.10/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/enterprise-server@3.10/rest/code-scanning)" in the REST API documentation.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Code scanning alerts" repository permission.
-   * @description Someone closed a code scanning alert.
-   */
   "code-scanning-alert/closed-by-user": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -63806,6 +66598,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -63815,18 +66609,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/enterprise-server@3.10/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/enterprise-server@3.10/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/enterprise-server@3.10/rest/code-scanning)" in the REST API documentation.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Code scanning alerts" repository permission.
-   * @description A code scanning alert was created in a repository.
-   */
   "code-scanning-alert/created": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -63847,6 +66639,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -63856,18 +66650,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/enterprise-server@3.10/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/enterprise-server@3.10/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/enterprise-server@3.10/rest/code-scanning)" in the REST API documentation.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Code scanning alerts" repository permission.
-   * @description A code scanning alert was fixed in a branch by a commit.
-   */
   "code-scanning-alert/fixed": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -63888,6 +66680,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -63897,18 +66691,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/enterprise-server@3.10/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/enterprise-server@3.10/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/enterprise-server@3.10/rest/code-scanning)" in the REST API documentation.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Code scanning alerts" repository permission.
-   * @description A previously fixed code scanning alert reappeared in a branch.
-   */
   "code-scanning-alert/reopened": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -63929,6 +66721,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -63938,18 +66732,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/enterprise-server@3.10/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/enterprise-server@3.10/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/enterprise-server@3.10/rest/code-scanning)" in the REST API documentation.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Code scanning alerts" repository permission.
-   * @description Someone reopened a code scanning alert.
-   */
   "code-scanning-alert/reopened-by-user": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -63970,6 +66762,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -63979,20 +66773,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to commit comments. For more information about commit comments, see "[Commenting on a pull request](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request)." For information about the APIs to manage commit comments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#commitcomment) or "[Commit comments](https://docs.github.com/enterprise-server@3.10/rest/commits/comments)" in the REST API documentation.
-   *
-   * For activity relating to comments on pull request reviews, use the `pull_request_review_comment` event. For activity relating to issue comments, use the `issue_comment` event. For activity relating to discussion comments, use the `discussion_comment` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
-   * @description Someone commented on a commit.
-   */
   "commit-comment/created": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -64013,6 +66803,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -64022,21 +66814,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when a Git branch or tag is created.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
-   *
-   * **Notes**:
-   * - This event will not occur when more than three tags are created at once.
-   * - Payloads are capped at 25 MB. If an event generates a larger payload, GitHub will not deliver a payload for that webhook event. This may happen, for example, if many branches or tags are pushed at once. We suggest monitoring your payload size to ensure delivery.
-   */
   create: {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -64057,6 +66844,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -64066,20 +66855,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when a Git branch or tag is deleted. To subscribe to all pushes to a repository, including
-   * branch and tag deletions, use the [`push`](#push) webhook event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
-   *
-   * **Note**: This event will not occur when more than three tags are deleted at once.
-   */
   delete: {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -64100,6 +66885,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -64109,22 +66896,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to Dependabot alerts.
-   *
-   * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.10/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.10/rest/dependabot/alerts)" in the REST API documentation.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
-   *
-   * **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
-   * @description A manifest file change introduced a vulnerable dependency, or a GitHub Security Advisory was published and an existing dependency was found to be vulnerable.
-   */
   "dependabot-alert/created": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -64145,6 +66926,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -64154,22 +66937,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to Dependabot alerts.
-   *
-   * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.10/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.10/rest/dependabot/alerts)" in the REST API documentation.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
-   *
-   * **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
-   * @description A Dependabot alert was manually closed.
-   */
   "dependabot-alert/dismissed": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -64190,6 +66967,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -64199,22 +66978,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to Dependabot alerts.
-   *
-   * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.10/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.10/rest/dependabot/alerts)" in the REST API documentation.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
-   *
-   * **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
-   * @description A manifest file change removed a vulnerability.
-   */
   "dependabot-alert/fixed": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -64235,6 +67008,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -64244,22 +67019,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to Dependabot alerts.
-   *
-   * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.10/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.10/rest/dependabot/alerts)" in the REST API documentation.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
-   *
-   * **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
-   * @description A manifest file change introduced a vulnerable dependency that had previously been fixed.
-   */
   "dependabot-alert/reintroduced": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -64280,6 +67049,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -64289,22 +67060,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to Dependabot alerts.
-   *
-   * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.10/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.10/rest/dependabot/alerts)" in the REST API documentation.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
-   *
-   * **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
-   * @description A Dependabot alert was manually reopened.
-   */
   "dependabot-alert/reopened": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -64325,6 +67090,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -64334,18 +67101,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to deploy keys. For more information, see "[Managing deploy keys](https://docs.github.com/enterprise-server@3.10/developers/overview/managing-deploy-keys)." For information about the APIs to manage deploy keys, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#deploykey) or "[Deploy keys](https://docs.github.com/enterprise-server@3.10/rest/deploy-keys)" in the REST API documentation.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
-   * @description A deploy key was created.
-   */
   "deploy-key/created": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -64366,6 +67131,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -64375,18 +67142,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to deploy keys. For more information, see "[Managing deploy keys](https://docs.github.com/enterprise-server@3.10/developers/overview/managing-deploy-keys)." For information about the APIs to manage deploy keys, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#deploykey) or "[Deploy keys](https://docs.github.com/enterprise-server@3.10/rest/deploy-keys)" in the REST API documentation.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
-   * @description A deploy key was deleted.
-   */
   "deploy-key/deleted": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -64407,6 +67172,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -64416,20 +67183,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to deployments. For more information, see "[About deployments](https://docs.github.com/enterprise-server@3.10/actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/enterprise-server@3.10/rest/deployments/deployments)" in the REST API documentation.
-   *
-   * For activity relating to deployment status, use the `deployment_status` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
-   * @description A deployment was created.
-   */
   "deployment/created": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -64450,6 +67213,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -64459,18 +67224,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to deployment protection rules. For more information, see "[Using environments for deployment](https://docs.github.com/enterprise-server@3.10/actions/deployment/targeting-different-environments/using-environments-for-deployment#environment-protection-rules)." For information about the API to manage deployment protection rules, see [the REST API documentation](https://docs.github.com/enterprise-server@3.10/rest/deployments/environments).
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
-   * @description A deployment protection rule was requested for an environment.
-   */
   "deployment-protection-rule/requested": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -64491,6 +67254,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -64500,20 +67265,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to deployment reviews. For more information, see "[About deployments](https://docs.github.com/enterprise-server@3.10/actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/enterprise-server@3.10/rest/deployments/deployments)" in the REST API documentation.
-   *
-   * For activity relating to deployment creation or deployment status, use the `deployment` or `deployment_status` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
-   * @description A deployment review was approved.
-   */
   "deployment-review/approved": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -64534,6 +67295,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -64543,20 +67306,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to deployment reviews. For more information, see "[About deployments](https://docs.github.com/enterprise-server@3.10/actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/enterprise-server@3.10/rest/deployments/deployments)" in the REST API documentation.
-   *
-   * For activity relating to deployment creation or deployment status, use the `deployment` or `deployment_status` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
-   * @description A deployment review was rejected.
-   */
   "deployment-review/rejected": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -64577,6 +67336,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -64586,20 +67347,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to deployment reviews. For more information, see "[About deployments](https://docs.github.com/enterprise-server@3.10/actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/enterprise-server@3.10/rest/deployments/deployments)" in the REST API documentation.
-   *
-   * For activity relating to deployment creation or deployment status, use the `deployment` or `deployment_status` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
-   * @description A deployment review was requested.
-   */
   "deployment-review/requested": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -64620,6 +67377,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -64629,20 +67388,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to deployment statuses. For more information, see "[About deployments](https://docs.github.com/enterprise-server@3.10/actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/enterprise-server@3.10/rest/deployments/deployments)" in the REST API documentation.
-   *
-   * For activity relating to deployment creation, use the `deployment` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
-   * @description A new deployment status was created.
-   */
   "deployment-status/created": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -64663,6 +67418,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -64672,22 +67429,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.10/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#discussion).
-   *
-   * For activity relating to a comment on a discussion, use the `discussion_comment` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
-   *
-   * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
-   * @description A comment on the discussion was marked as the answer.
-   */
   "discussion/answered": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -64708,6 +67459,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -64717,22 +67470,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.10/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#discussion).
-   *
-   * For activity relating to a comment on a discussion, use the `discussion_comment` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
-   *
-   * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
-   * @description The category of a discussion was changed.
-   */
   "discussion/category-changed": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -64753,6 +67500,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -64762,22 +67511,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.10/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#discussion).
-   *
-   * For activity relating to a comment on a discussion, use the `discussion_comment` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
-   *
-   * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
-   * @description A discussion was closed.
-   */
   "discussion/closed": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -64798,6 +67541,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -64807,22 +67552,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a comment on a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.10/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#discussion).
-   *
-   * For activity relating to a discussion as opposed to comments on a discussion, use the `discussion` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
-   *
-   * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
-   * @description A comment on a discussion was created.
-   */
   "discussion-comment/created": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -64843,6 +67582,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -64852,22 +67593,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a comment on a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.10/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#discussion).
-   *
-   * For activity relating to a discussion as opposed to comments on a discussion, use the `discussion` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
-   *
-   * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
-   * @description A comment on a discussion was deleted.
-   */
   "discussion-comment/deleted": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -64888,6 +67623,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -64897,22 +67634,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a comment on a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.10/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#discussion).
-   *
-   * For activity relating to a discussion as opposed to comments on a discussion, use the `discussion` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
-   *
-   * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
-   * @description A comment on a discussion was edited.
-   */
   "discussion-comment/edited": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -64933,6 +67664,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -64942,22 +67675,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.10/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#discussion).
-   *
-   * For activity relating to a comment on a discussion, use the `discussion_comment` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
-   *
-   * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
-   * @description A discussion was created.
-   */
   "discussion/created": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -64978,6 +67705,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -64987,22 +67716,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.10/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#discussion).
-   *
-   * For activity relating to a comment on a discussion, use the `discussion_comment` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
-   *
-   * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
-   * @description A discussion was deleted.
-   */
   "discussion/deleted": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -65023,6 +67746,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -65032,22 +67757,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.10/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#discussion).
-   *
-   * For activity relating to a comment on a discussion, use the `discussion_comment` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
-   *
-   * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
-   * @description The title or body on a discussion was edited, or the category of the discussion was changed.
-   */
   "discussion/edited": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -65068,6 +67787,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -65077,22 +67798,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.10/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#discussion).
-   *
-   * For activity relating to a comment on a discussion, use the `discussion_comment` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
-   *
-   * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
-   * @description A label was added to a discussion.
-   */
   "discussion/labeled": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -65113,6 +67828,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -65122,22 +67839,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.10/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#discussion).
-   *
-   * For activity relating to a comment on a discussion, use the `discussion_comment` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
-   *
-   * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
-   * @description A discussion was locked.
-   */
   "discussion/locked": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -65158,6 +67869,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -65167,22 +67880,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.10/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#discussion).
-   *
-   * For activity relating to a comment on a discussion, use the `discussion_comment` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
-   *
-   * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
-   * @description A discussion was pinned.
-   */
   "discussion/pinned": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -65203,6 +67910,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -65212,22 +67921,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.10/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#discussion).
-   *
-   * For activity relating to a comment on a discussion, use the `discussion_comment` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
-   *
-   * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
-   * @description A discussion was reopened.
-   */
   "discussion/reopened": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -65248,6 +67951,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -65257,22 +67962,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.10/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#discussion).
-   *
-   * For activity relating to a comment on a discussion, use the `discussion_comment` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
-   *
-   * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
-   * @description A discussion was transferred to another repository.
-   */
   "discussion/transferred": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -65293,6 +67992,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -65302,22 +68003,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.10/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#discussion).
-   *
-   * For activity relating to a comment on a discussion, use the `discussion_comment` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
-   *
-   * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
-   * @description A comment on the discussion was unmarked as the answer.
-   */
   "discussion/unanswered": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -65338,6 +68033,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -65347,22 +68044,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.10/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#discussion).
-   *
-   * For activity relating to a comment on a discussion, use the `discussion_comment` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
-   *
-   * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
-   * @description A label was removed from a discussion.
-   */
   "discussion/unlabeled": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -65383,6 +68074,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -65392,22 +68085,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.10/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#discussion).
-   *
-   * For activity relating to a comment on a discussion, use the `discussion_comment` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
-   *
-   * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
-   * @description A discussion was unlocked.
-   */
   "discussion/unlocked": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -65428,6 +68115,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -65437,22 +68126,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.10/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#discussion).
-   *
-   * For activity relating to a comment on a discussion, use the `discussion_comment` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
-   *
-   * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
-   * @description A discussion was unpinned.
-   */
   "discussion/unpinned": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -65473,6 +68156,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -65482,16 +68167,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to anonymous Git read access in an enterprise. For more information, see "[Enforcing repository management policies in your enterprise](https://docs.github.com/enterprise-server@3.10/admin/policies/enforcing-policies-for-your-enterprise/enforcing-repository-management-policies-in-your-enterprise#configuring-anonymous-git-read-access)."
-   * @description Anonymous Git read access was disabled.
-   */
   "enterprise/anonymous-access-disabled": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -65512,6 +68197,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -65521,16 +68208,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to anonymous Git read access in an enterprise. For more information, see "[Enforcing repository management policies in your enterprise](https://docs.github.com/enterprise-server@3.10/admin/policies/enforcing-policies-for-your-enterprise/enforcing-repository-management-policies-in-your-enterprise#configuring-anonymous-git-read-access)."
-   * @description Anonymous Git read access was enabled.
-   */
   "enterprise/anonymous-access-enabled": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -65551,6 +68238,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -65560,17 +68249,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when someone forks a repository. For more information, see "[Fork a repo](https://docs.github.com/enterprise-server@3.10/get-started/quickstart/fork-a-repo)." For information about the API to manage forks, see "[Forks](https://docs.github.com/enterprise-server@3.10/rest/repos/forks)" in the REST API documentation.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
-   */
   fork: {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -65591,6 +68279,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -65600,20 +68290,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when a user revokes their authorization of a GitHub App. For more information, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the API to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/apps)" in the REST API documentation.
-   *
-   * A GitHub App receives this webhook by default and cannot unsubscribe from this event.
-   *
-   * Anyone can revoke their authorization of a GitHub App from their [GitHub account settings page](https://github.com/settings/apps/authorizations). Revoking the authorization of a GitHub App does not uninstall the GitHub App. You should program your GitHub App so that when it receives this webhook, it stops calling the API on behalf of the person who revoked the token. If your GitHub App continues to use a revoked access token, it will receive the `401 Bad Credentials` error. For details about requests with a user access token, which require GitHub App authorization, see "[Authenticating with a GitHub App on behalf of a user](https://docs.github.com/enterprise-server@3.10/apps/creating-github-apps/authenticating-with-a-github-app/authenticating-with-a-github-app-on-behalf-of-a-user)."
-   * @description Someone revoked their authorization of a GitHub App.
-   */
   "github-app-authorization/revoked": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -65634,6 +68320,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -65643,17 +68331,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when someone creates or updates a wiki page. For more information, see "[About wikis](https://docs.github.com/enterprise-server@3.10/communities/documenting-your-project-with-wikis/about-wikis)."
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
-   */
   gollum: {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -65674,6 +68361,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -65683,18 +68372,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
-   *
-   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/apps)" in the REST API documentation.
-   * @description Someone installed a GitHub App on a user or organization account.
-   */
   "installation/created": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -65715,6 +68402,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -65724,18 +68413,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
-   *
-   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/apps)" in the REST API documentation.
-   * @description Someone uninstalled a GitHub App from their user or organization account.
-   */
   "installation/deleted": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -65756,6 +68443,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -65765,18 +68454,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
-   *
-   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/apps)" in the REST API documentation.
-   * @description Someone granted new permissions to a GitHub App.
-   */
   "installation/new-permissions-accepted": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -65797,6 +68484,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -65806,18 +68495,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to which repositories a GitHub App installation can access. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
-   *
-   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/apps)" in the REST API documentation.
-   * @description A GitHub App installation was granted access to one or more repositories.
-   */
   "installation-repositories/added": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -65838,6 +68525,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -65847,18 +68536,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to which repositories a GitHub App installation can access. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
-   *
-   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/apps)" in the REST API documentation.
-   * @description Access to one or more repositories was revoked for a GitHub App installation.
-   */
   "installation-repositories/removed": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -65879,6 +68566,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -65888,18 +68577,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
-   *
-   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/apps)" in the REST API documentation.
-   * @description Someone blocked access by a GitHub App to their user or organization account.
-   */
   "installation/suspend": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -65920,6 +68607,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -65929,16 +68618,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to the user or organization account that a GitHub App is installed on. For more information, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/apps)" in the REST API documentation.
-   * @description Somebody renamed the user or organization account that a GitHub App is installed on.
-   */
   "installation-target/renamed": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -65959,6 +68648,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -65968,18 +68659,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
-   *
-   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.10/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.10/rest/apps)" in the REST API documentation.
-   * @description A GitHub App that was blocked from accessing a user or organization account was given access the account again.
-   */
   "installation/unsuspend": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -66000,6 +68689,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -66009,20 +68700,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a comment on an issue or pull request. For more information about issues and pull requests, see "[About issues](https://docs.github.com/enterprise-server@3.10/issues/tracking-your-work-with-issues/about-issues)" and "[About pull requests](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage issue comments, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#issuecomment) or "[Issue comments](https://docs.github.com/enterprise-server@3.10/rest/issues/comments)" in the REST API documentation.
-   *
-   * For activity relating to an issue as opposed to comments on an issue, use the `issue` event. For activity related to pull request reviews or pull request review comments, use the `pull_request_review` or `pull_request_review_comment` events. For more information about the different types of pull request comments, see "[Working with comments](https://docs.github.com/enterprise-server@3.10/rest/guides/working-with-comments)."
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
-   * @description A comment on an issue or pull request was created.
-   */
   "issue-comment/created": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -66043,6 +68730,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -66052,20 +68741,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a comment on an issue or pull request. For more information about issues and pull requests, see "[About issues](https://docs.github.com/enterprise-server@3.10/issues/tracking-your-work-with-issues/about-issues)" and "[About pull requests](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage issue comments, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#issuecomment) or "[Issue comments](https://docs.github.com/enterprise-server@3.10/rest/issues/comments)" in the REST API documentation.
-   *
-   * For activity relating to an issue as opposed to comments on an issue, use the `issue` event. For activity related to pull request reviews or pull request review comments, use the `pull_request_review` or `pull_request_review_comment` events. For more information about the different types of pull request comments, see "[Working with comments](https://docs.github.com/enterprise-server@3.10/rest/guides/working-with-comments)."
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
-   * @description A comment on an issue or pull request was deleted.
-   */
   "issue-comment/deleted": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -66086,6 +68771,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -66095,20 +68782,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a comment on an issue or pull request. For more information about issues and pull requests, see "[About issues](https://docs.github.com/enterprise-server@3.10/issues/tracking-your-work-with-issues/about-issues)" and "[About pull requests](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage issue comments, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#issuecomment) or "[Issue comments](https://docs.github.com/enterprise-server@3.10/rest/issues/comments)" in the REST API documentation.
-   *
-   * For activity relating to an issue as opposed to comments on an issue, use the `issue` event. For activity related to pull request reviews or pull request review comments, use the `pull_request_review` or `pull_request_review_comment` events. For more information about the different types of pull request comments, see "[Working with comments](https://docs.github.com/enterprise-server@3.10/rest/guides/working-with-comments)."
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
-   * @description A comment on an issue or pull request was edited.
-   */
   "issue-comment/edited": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -66129,6 +68812,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -66138,20 +68823,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.10/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.10/rest/issues)" in the REST API documentation.
-   *
-   * For activity relating to a comment on an issue, use the `issue_comment` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
-   * @description An issue was assigned to a user.
-   */
   "issues/assigned": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -66172,6 +68853,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -66181,20 +68864,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.10/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.10/rest/issues)" in the REST API documentation.
-   *
-   * For activity relating to a comment on an issue, use the `issue_comment` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
-   * @description An issue was closed.
-   */
   "issues/closed": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -66215,6 +68894,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -66224,20 +68905,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.10/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.10/rest/issues)" in the REST API documentation.
-   *
-   * For activity relating to a comment on an issue, use the `issue_comment` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
-   * @description An issue was deleted.
-   */
   "issues/deleted": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -66258,6 +68935,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -66267,20 +68946,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.10/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.10/rest/issues)" in the REST API documentation.
-   *
-   * For activity relating to a comment on an issue, use the `issue_comment` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
-   * @description An issue was removed from a milestone.
-   */
   "issues/demilestoned": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -66301,6 +68976,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -66310,20 +68987,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.10/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.10/rest/issues)" in the REST API documentation.
-   *
-   * For activity relating to a comment on an issue, use the `issue_comment` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
-   * @description The title or body on an issue was edited.
-   */
   "issues/edited": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -66344,6 +69017,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -66353,20 +69028,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.10/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.10/rest/issues)" in the REST API documentation.
-   *
-   * For activity relating to a comment on an issue, use the `issue_comment` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
-   * @description A label was added to an issue.
-   */
   "issues/labeled": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -66387,6 +69058,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -66396,20 +69069,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.10/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.10/rest/issues)" in the REST API documentation.
-   *
-   * For activity relating to a comment on an issue, use the `issue_comment` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
-   * @description Conversation on an issue was locked. For more information, see "[Locking conversations](https://docs.github.com/enterprise-server@3.10/communities/moderating-comments-and-conversations/locking-conversations)."
-   */
   "issues/locked": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -66430,6 +69099,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -66439,20 +69110,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.10/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.10/rest/issues)" in the REST API documentation.
-   *
-   * For activity relating to a comment on an issue, use the `issue_comment` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
-   * @description An issue was added to a milestone.
-   */
   "issues/milestoned": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -66473,6 +69140,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -66482,20 +69151,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.10/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.10/rest/issues)" in the REST API documentation.
-   *
-   * For activity relating to a comment on an issue, use the `issue_comment` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
-   * @description An issue was created. When a closed issue is reopened, the action will be `reopened` instead.
-   */
   "issues/opened": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -66516,6 +69181,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -66525,20 +69192,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.10/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.10/rest/issues)" in the REST API documentation.
-   *
-   * For activity relating to a comment on an issue, use the `issue_comment` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
-   * @description An issue was pinned to a repository. For more information, see "[Pinning an issue to your repository](https://docs.github.com/enterprise-server@3.10/issues/tracking-your-work-with-issues/pinning-an-issue-to-your-repository)."
-   */
   "issues/pinned": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -66559,6 +69222,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -66568,20 +69233,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.10/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.10/rest/issues)" in the REST API documentation.
-   *
-   * For activity relating to a comment on an issue, use the `issue_comment` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
-   * @description A closed issue was reopened.
-   */
   "issues/reopened": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -66602,6 +69263,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -66611,20 +69274,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.10/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.10/rest/issues)" in the REST API documentation.
-   *
-   * For activity relating to a comment on an issue, use the `issue_comment` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
-   * @description An issue was transferred to another repository. For more information, see "[Transferring an issue to another repository](https://docs.github.com/enterprise-server@3.10/issues/tracking-your-work-with-issues/transferring-an-issue-to-another-repository)."
-   */
   "issues/transferred": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -66645,6 +69304,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -66654,20 +69315,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.10/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.10/rest/issues)" in the REST API documentation.
-   *
-   * For activity relating to a comment on an issue, use the `issue_comment` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
-   * @description A user was unassigned from an issue.
-   */
   "issues/unassigned": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -66688,6 +69345,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -66697,20 +69356,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.10/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.10/rest/issues)" in the REST API documentation.
-   *
-   * For activity relating to a comment on an issue, use the `issue_comment` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
-   * @description A label was removed from an issue.
-   */
   "issues/unlabeled": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -66731,6 +69386,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -66740,20 +69397,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.10/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.10/rest/issues)" in the REST API documentation.
-   *
-   * For activity relating to a comment on an issue, use the `issue_comment` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
-   * @description Conversation on an issue was locked. For more information, see "[Locking conversations](https://docs.github.com/enterprise-server@3.10/communities/moderating-comments-and-conversations/locking-conversations)."
-   */
   "issues/unlocked": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -66774,6 +69427,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -66783,20 +69438,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.10/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.10/rest/issues)" in the REST API documentation.
-   *
-   * For activity relating to a comment on an issue, use the `issue_comment` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
-   * @description An issue was unpinned from a repository. For more information, see "[Pinning an issue to your repository](https://docs.github.com/enterprise-server@3.10/issues/tracking-your-work-with-issues/pinning-an-issue-to-your-repository)."
-   */
   "issues/unpinned": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -66817,6 +69468,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -66826,20 +69479,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to labels. For more information, see "[Managing labels](https://docs.github.com/enterprise-server@3.10/issues/using-labels-and-milestones-to-track-work/managing-labels)." For information about the APIs to manage labels, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#label) or "[Labels](https://docs.github.com/enterprise-server@3.10/rest/issues/labels)" in the REST API documentation.
-   *
-   * If you want to receive an event when a label is added to or removed from an issue, pull request, or discussion, use the `labeled` or `unlabeled` action type for the `issues`, `pull_request`, or `discussion` events instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
-   * @description A label was created.
-   */
   "label/created": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -66860,6 +69509,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -66869,20 +69520,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to labels. For more information, see "[Managing labels](https://docs.github.com/enterprise-server@3.10/issues/using-labels-and-milestones-to-track-work/managing-labels)." For information about the APIs to manage labels, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#label) or "[Labels](https://docs.github.com/enterprise-server@3.10/rest/issues/labels)" in the REST API documentation.
-   *
-   * If you want to receive an event when a label is added to or removed from an issue, pull request, or discussion, use the `labeled` or `unlabeled` action type for the `issues`, `pull_request`, or `discussion` events instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
-   * @description A label was deleted.
-   */
   "label/deleted": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -66903,6 +69550,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -66912,20 +69561,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to labels. For more information, see "[Managing labels](https://docs.github.com/enterprise-server@3.10/issues/using-labels-and-milestones-to-track-work/managing-labels)." For information about the APIs to manage labels, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#label) or "[Labels](https://docs.github.com/enterprise-server@3.10/rest/issues/labels)" in the REST API documentation.
-   *
-   * If you want to receive an event when a label is added to or removed from an issue, pull request, or discussion, use the `labeled` or `unlabeled` action type for the `issues`, `pull_request`, or `discussion` events instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
-   * @description A label's name, description, or color was changed.
-   */
   "label/edited": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -66946,6 +69591,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -66955,18 +69602,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to collaborators in a repository. For more information, see "[Adding outside collaborators to repositories in your organization](https://docs.github.com/enterprise-server@3.10/organizations/managing-user-access-to-your-organizations-repositories/adding-outside-collaborators-to-repositories-in-your-organization)." For more information about the API to manage repository collaborators, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#repositorycollaboratorconnection) or "[Collaborators](https://docs.github.com/enterprise-server@3.10/rest/collaborators/collaborators)" in the REST API documentation.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
-   * @description A GitHub user accepted an invitation to a repository.
-   */
   "member/added": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -66987,6 +69632,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -66996,18 +69643,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to collaborators in a repository. For more information, see "[Adding outside collaborators to repositories in your organization](https://docs.github.com/enterprise-server@3.10/organizations/managing-user-access-to-your-organizations-repositories/adding-outside-collaborators-to-repositories-in-your-organization)." For more information about the API to manage repository collaborators, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#repositorycollaboratorconnection) or "[Collaborators](https://docs.github.com/enterprise-server@3.10/rest/collaborators/collaborators)" in the REST API documentation.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
-   * @description Permissions were changed for a collaborator on a repository.
-   */
   "member/edited": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -67028,6 +69673,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -67037,18 +69684,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to collaborators in a repository. For more information, see "[Adding outside collaborators to repositories in your organization](https://docs.github.com/enterprise-server@3.10/organizations/managing-user-access-to-your-organizations-repositories/adding-outside-collaborators-to-repositories-in-your-organization)." For more information about the API to manage repository collaborators, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#repositorycollaboratorconnection) or "[Collaborators](https://docs.github.com/enterprise-server@3.10/rest/collaborators/collaborators)" in the REST API documentation.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
-   * @description A collaborator was removed from a repository.
-   */
   "member/removed": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -67069,6 +69714,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -67078,18 +69725,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to team membership. For more information, see "[About teams](https://docs.github.com/enterprise-server@3.10/organizations/organizing-members-into-teams/about-teams)." For more information about the APIs to manage team memberships, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#team) or "[Team members](https://docs.github.com/enterprise-server@3.10/rest/teams/members)" in the REST API documentation.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
-   * @description An organization member was added to a team.
-   */
   "membership/added": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -67110,6 +69755,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -67119,18 +69766,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to team membership. For more information, see "[About teams](https://docs.github.com/enterprise-server@3.10/organizations/organizing-members-into-teams/about-teams)." For more information about the APIs to manage team memberships, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#team) or "[Team members](https://docs.github.com/enterprise-server@3.10/rest/teams/members)" in the REST API documentation.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
-   * @description An organization member was removed from a team.
-   */
   "membership/removed": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -67151,6 +69796,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -67160,18 +69807,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a webhook itself.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Meta" app permission.
-   * @description The webhook was deleted.
-   */
   "meta/deleted": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -67192,6 +69837,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -67201,20 +69848,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to milestones. For more information, see "[About milestones](https://docs.github.com/enterprise-server@3.10/issues/using-labels-and-milestones-to-track-work/about-milestones)." For information about the APIs to manage milestones, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#milestone) or "[Milestones](https://docs.github.com/enterprise-server@3.10/rest/issues/milestones)" in the REST API documentation.
-   *
-   * If you want to receive an event when an issue or pull request is added to or removed from a milestone, use the `milestoned` or `demilestoned` action type for the `issues` or `pull_request` events instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" or "Pull requests" repository permissions.
-   * @description A milestone was closed.
-   */
   "milestone/closed": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -67235,6 +69878,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -67244,20 +69889,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to milestones. For more information, see "[About milestones](https://docs.github.com/enterprise-server@3.10/issues/using-labels-and-milestones-to-track-work/about-milestones)." For information about the APIs to manage milestones, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#milestone) or "[Milestones](https://docs.github.com/enterprise-server@3.10/rest/issues/milestones)" in the REST API documentation.
-   *
-   * If you want to receive an event when an issue or pull request is added to or removed from a milestone, use the `milestoned` or `demilestoned` action type for the `issues` or `pull_request` events instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" or "Pull requests" repository permissions.
-   * @description A milestone was created.
-   */
   "milestone/created": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -67278,6 +69919,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -67287,20 +69930,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to milestones. For more information, see "[About milestones](https://docs.github.com/enterprise-server@3.10/issues/using-labels-and-milestones-to-track-work/about-milestones)." For information about the APIs to manage milestones, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#milestone) or "[Milestones](https://docs.github.com/enterprise-server@3.10/rest/issues/milestones)" in the REST API documentation.
-   *
-   * If you want to receive an event when an issue or pull request is added to or removed from a milestone, use the `milestoned` or `demilestoned` action type for the `issues` or `pull_request` events instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" or "Pull requests" repository permissions.
-   * @description A milestone was deleted.
-   */
   "milestone/deleted": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -67321,6 +69960,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -67330,20 +69971,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to milestones. For more information, see "[About milestones](https://docs.github.com/enterprise-server@3.10/issues/using-labels-and-milestones-to-track-work/about-milestones)." For information about the APIs to manage milestones, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#milestone) or "[Milestones](https://docs.github.com/enterprise-server@3.10/rest/issues/milestones)" in the REST API documentation.
-   *
-   * If you want to receive an event when an issue or pull request is added to or removed from a milestone, use the `milestoned` or `demilestoned` action type for the `issues` or `pull_request` events instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" or "Pull requests" repository permissions.
-   * @description A milestone was edited.
-   */
   "milestone/edited": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -67364,6 +70001,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -67373,20 +70012,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to milestones. For more information, see "[About milestones](https://docs.github.com/enterprise-server@3.10/issues/using-labels-and-milestones-to-track-work/about-milestones)." For information about the APIs to manage milestones, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#milestone) or "[Milestones](https://docs.github.com/enterprise-server@3.10/rest/issues/milestones)" in the REST API documentation.
-   *
-   * If you want to receive an event when an issue or pull request is added to or removed from a milestone, use the `milestoned` or `demilestoned` action type for the `issues` or `pull_request` events instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" or "Pull requests" repository permissions.
-   * @description A milestone was opened.
-   */
   "milestone/opened": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -67407,6 +70042,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -67416,20 +70053,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to an organization and its members. For more information, see "[About organizations](https://docs.github.com/enterprise-server@3.10/organizations/collaborating-with-groups-in-organizations/about-organizations)." For information about the APIs to manage organizations, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#organization) or "[Organizations](https://docs.github.com/enterprise-server@3.10/rest/orgs)" in the REST API documentation.
-   *
-   * If you want to receive an event when a non-member is blocked or unblocked from an organization, use the `org_block` event instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
-   * @description An organization was deleted.
-   */
   "organization/deleted": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -67450,6 +70083,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -67459,20 +70094,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to an organization and its members. For more information, see "[About organizations](https://docs.github.com/enterprise-server@3.10/organizations/collaborating-with-groups-in-organizations/about-organizations)." For information about the APIs to manage organizations, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#organization) or "[Organizations](https://docs.github.com/enterprise-server@3.10/rest/orgs)" in the REST API documentation.
-   *
-   * If you want to receive an event when a non-member is blocked or unblocked from an organization, use the `org_block` event instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
-   * @description A member accepted an invitation to join an organization.
-   */
   "organization/member-added": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -67493,6 +70124,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -67502,20 +70135,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to an organization and its members. For more information, see "[About organizations](https://docs.github.com/enterprise-server@3.10/organizations/collaborating-with-groups-in-organizations/about-organizations)." For information about the APIs to manage organizations, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#organization) or "[Organizations](https://docs.github.com/enterprise-server@3.10/rest/orgs)" in the REST API documentation.
-   *
-   * If you want to receive an event when a non-member is blocked or unblocked from an organization, use the `org_block` event instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
-   * @description A member was invited to join the organization.
-   */
   "organization/member-invited": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -67536,6 +70165,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -67545,20 +70176,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to an organization and its members. For more information, see "[About organizations](https://docs.github.com/enterprise-server@3.10/organizations/collaborating-with-groups-in-organizations/about-organizations)." For information about the APIs to manage organizations, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#organization) or "[Organizations](https://docs.github.com/enterprise-server@3.10/rest/orgs)" in the REST API documentation.
-   *
-   * If you want to receive an event when a non-member is blocked or unblocked from an organization, use the `org_block` event instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
-   * @description A member was removed from the organization.
-   */
   "organization/member-removed": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -67579,6 +70206,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -67588,20 +70217,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to an organization and its members. For more information, see "[About organizations](https://docs.github.com/enterprise-server@3.10/organizations/collaborating-with-groups-in-organizations/about-organizations)." For information about the APIs to manage organizations, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#organization) or "[Organizations](https://docs.github.com/enterprise-server@3.10/rest/orgs)" in the REST API documentation.
-   *
-   * If you want to receive an event when a non-member is blocked or unblocked from an organization, use the `org_block` event instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
-   * @description The name of an organization was changed.
-   */
   "organization/renamed": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -67622,6 +70247,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -67631,18 +70258,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to GitHub Packages. For more information, see "[Introduction to GitHub Packages](https://docs.github.com/enterprise-server@3.10/packages/learn-github-packages/introduction-to-github-packages)." For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#package) or "[Packages](https://docs.github.com/enterprise-server@3.10/rest/packages)" in the REST API documentation.
-   *
-   * To install this event on a GitHub App, the app must have at least read-level access for the "Packages" repository permission.
-   * @description A package was published to a registry.
-   */
   "package/published": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -67663,6 +70288,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -67672,18 +70299,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to GitHub Packages. For more information, see "[Introduction to GitHub Packages](https://docs.github.com/enterprise-server@3.10/packages/learn-github-packages/introduction-to-github-packages)." For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#package) or "[Packages](https://docs.github.com/enterprise-server@3.10/rest/packages)" in the REST API documentation.
-   *
-   * To install this event on a GitHub App, the app must have at least read-level access for the "Packages" repository permission.
-   * @description A previously published package was updated.
-   */
   "package/updated": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -67704,6 +70329,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -67713,17 +70340,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is an attempted build of a GitHub Pages site. This event occurs regardless of whether the build is successful. For more information, see "[Configuring a publishing source for your GitHub Pages site](https://docs.github.com/enterprise-server@3.10/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)." For information about the API to manage GitHub Pages, see "[Pages](https://docs.github.com/enterprise-server@3.10/rest/pages)" in the REST API documentation.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pages" repository permission.
-   */
   "page-build": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -67744,6 +70370,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -67753,20 +70381,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a request for a fine-grained personal access token to access resources that belong to a resource owner that requires approval for token access. For more information, see "[Creating a personal access token](https://docs.github.com/enterprise-server@3.10/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)."
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Personal access token requests" organization permission.
-   *
-   * **Note**: Fine-grained PATs are in public beta. Related APIs, events, and functionality are subject to change.
-   * @description A fine-grained personal access token request was approved.
-   */
   "personal-access-token-request/approved": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -67783,6 +70407,8 @@ export interface operations {
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -67792,20 +70418,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a request for a fine-grained personal access token to access resources that belong to a resource owner that requires approval for token access. For more information, see "[Creating a personal access token](https://docs.github.com/enterprise-server@3.10/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)."
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Personal access token requests" organization permission.
-   *
-   * **Note**: Fine-grained PATs are in public beta. Related APIs, events, and functionality are subject to change.
-   * @description A fine-grained personal access token request was cancelled by the requester.
-   */
   "personal-access-token-request/cancelled": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -67822,6 +70444,8 @@ export interface operations {
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -67831,20 +70455,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a request for a fine-grained personal access token to access resources that belong to a resource owner that requires approval for token access. For more information, see "[Creating a personal access token](https://docs.github.com/enterprise-server@3.10/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)."
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Personal access token requests" organization permission.
-   *
-   * **Note**: Fine-grained PATs are in public beta. Related APIs, events, and functionality are subject to change.
-   * @description A fine-grained personal access token request was created.
-   */
   "personal-access-token-request/created": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -67861,6 +70481,8 @@ export interface operations {
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -67870,20 +70492,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a request for a fine-grained personal access token to access resources that belong to a resource owner that requires approval for token access. For more information, see "[Creating a personal access token](https://docs.github.com/enterprise-server@3.10/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)."
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Personal access token requests" organization permission.
-   *
-   * **Note**: Fine-grained PATs are in public beta. Related APIs, events, and functionality are subject to change.
-   * @description A fine-grained personal access token request was denied.
-   */
   "personal-access-token-request/denied": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -67900,6 +70518,8 @@ export interface operations {
         /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
         "X-Hub-Signature-256": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -67909,13 +70529,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /** This event occurs when you create a new webhook. The ping event is a confirmation from GitHub that you configured the webhook correctly. */
   ping: {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -67936,6 +70559,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -67945,22 +70570,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a card on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.10/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.10/rest/projects)" in the REST API documentation.
-   *
-   * For activity relating to a project (classic) or a column on a project (classic), use the `project` and `project_column` event.
-   *
-   * This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-   * @description A note in a project (classic) was converted to an issue.
-   */
   "project-card/converted": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -67981,6 +70600,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -67990,22 +70611,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a card on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.10/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.10/rest/projects)" in the REST API documentation.
-   *
-   * For activity relating to a project (classic) or a column on a project (classic), use the `project` and `project_column` event.
-   *
-   * This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-   * @description A card was added to a project (classic).
-   */
   "project-card/created": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -68026,6 +70641,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -68035,22 +70652,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a card on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.10/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.10/rest/projects)" in the REST API documentation.
-   *
-   * For activity relating to a project (classic) or a column on a project (classic), use the `project` and `project_column` event.
-   *
-   * This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-   * @description A card on a project (classic) was deleted.
-   */
   "project-card/deleted": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -68071,6 +70682,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -68080,22 +70693,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a card on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.10/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.10/rest/projects)" in the REST API documentation.
-   *
-   * For activity relating to a project (classic) or a column on a project (classic), use the `project` and `project_column` event.
-   *
-   * This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-   * @description A note on a project (classic) was edited.
-   */
   "project-card/edited": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -68116,6 +70723,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -68125,22 +70734,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a card on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.10/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.10/rest/projects)" in the REST API documentation.
-   *
-   * For activity relating to a project (classic) or a column on a project (classic), use the `project` and `project_column` event.
-   *
-   * This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-   * @description A card on a project (classic) was moved to another column or to another position in its column.
-   */
   "project-card/moved": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -68161,6 +70764,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -68170,22 +70775,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.10/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.10/rest/projects)" in the REST API documentation.
-   *
-   * For activity relating to a card or column on a project (classic), use the `project_card` and `project_column` event.
-   *
-   * This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-   * @description A project (classic) was closed.
-   */
   "project/closed": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -68206,6 +70805,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -68215,22 +70816,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a column on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.10/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.10/rest/projects)" in the REST API documentation.
-   *
-   * For activity relating to a project (classic) or a card on a project (classic), use the `project` and `project_card` event.
-   *
-   * This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-   * @description A column was added to a project (classic).
-   */
   "project-column/created": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -68251,6 +70846,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -68260,22 +70857,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a column on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.10/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.10/rest/projects)" in the REST API documentation.
-   *
-   * For activity relating to a project (classic) or a card on a project (classic), use the `project` and `project_card` event.
-   *
-   * This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-   * @description A column was deleted from a project (classic).
-   */
   "project-column/deleted": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -68296,6 +70887,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -68305,22 +70898,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a column on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.10/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.10/rest/projects)" in the REST API documentation.
-   *
-   * For activity relating to a project (classic) or a card on a project (classic), use the `project` and `project_card` event.
-   *
-   * This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-   * @description The name of a column on a project (classic) was changed.
-   */
   "project-column/edited": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -68341,6 +70928,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -68350,22 +70939,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a column on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.10/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.10/rest/projects)" in the REST API documentation.
-   *
-   * For activity relating to a project (classic) or a card on a project (classic), use the `project` and `project_card` event.
-   *
-   * This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-   * @description A column was moved to a new position on a project (classic).
-   */
   "project-column/moved": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -68386,6 +70969,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -68395,22 +70980,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.10/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.10/rest/projects)" in the REST API documentation.
-   *
-   * For activity relating to a card or column on a project (classic), use the `project_card` and `project_column` event.
-   *
-   * This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-   * @description A project (classic) was created.
-   */
   "project/created": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -68431,6 +71010,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -68440,22 +71021,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.10/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.10/rest/projects)" in the REST API documentation.
-   *
-   * For activity relating to a card or column on a project (classic), use the `project_card` and `project_column` event.
-   *
-   * This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-   * @description A project (classic) was deleted.
-   */
   "project/deleted": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -68476,6 +71051,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -68485,22 +71062,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.10/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.10/rest/projects)" in the REST API documentation.
-   *
-   * For activity relating to a card or column on a project (classic), use the `project_card` and `project_column` event.
-   *
-   * This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-   * @description The name or description of a project (classic) was changed.
-   */
   "project/edited": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -68521,6 +71092,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -68530,22 +71103,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.10/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.10/rest/projects)" in the REST API documentation.
-   *
-   * For activity relating to a card or column on a project (classic), use the `project_card` and `project_column` event.
-   *
-   * This event relates to projects (classic) only. For activity relating to the new Projects experience, use the `projects_v2` event instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" repository or organization permission.
-   * @description A project (classic) was closed.
-   */
   "project/reopened": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -68566,6 +71133,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -68575,22 +71144,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.10/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#projectv2).
-   *
-   * For activity relating to a item on a project, use the `projects_v2_item` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
-   *
-   * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
-   * @description A project in the organization was closed.
-   */
   "projects-v2/closed": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -68611,6 +71174,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -68620,22 +71185,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.10/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#projectv2).
-   *
-   * For activity relating to a item on a project, use the `projects_v2_item` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
-   *
-   * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
-   * @description A project in the organization was created.
-   */
   "projects-v2/created": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -68656,6 +71215,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -68665,22 +71226,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.10/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#projectv2).
-   *
-   * For activity relating to a item on a project, use the `projects_v2_item` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
-   *
-   * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
-   * @description A project in the organization was deleted.
-   */
   "projects-v2/deleted": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -68701,6 +71256,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -68710,22 +71267,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.10/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#projectv2).
-   *
-   * For activity relating to a item on a project, use the `projects_v2_item` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
-   *
-   * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
-   * @description The title, description, or README of a project in the organization was changed.
-   */
   "projects-v2/edited": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -68746,6 +71297,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -68755,22 +71308,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.10/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#projectv2item).
-   *
-   * For activity relating to a project (instead of an item on a project), use the `projects_v2` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
-   *
-   * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
-   * @description An item on an organization project was archived. For more information, see "[Archiving items from your project](https://docs.github.com/enterprise-server@3.10/issues/planning-and-tracking-with-projects/managing-items-in-your-project/archiving-items-from-your-project)."
-   */
   "projects-v2-item/archived": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -68791,6 +71338,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -68800,22 +71349,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.10/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#projectv2item).
-   *
-   * For activity relating to a project (instead of an item on a project), use the `projects_v2` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
-   *
-   * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
-   * @description A draft issue in an organization project was converted to an issue.
-   */
   "projects-v2-item/converted": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -68836,6 +71379,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -68845,22 +71390,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.10/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#projectv2item).
-   *
-   * For activity relating to a project (instead of an item on a project), use the `projects_v2` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
-   *
-   * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
-   * @description An item was added to a project in the organization.
-   */
   "projects-v2-item/created": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -68881,6 +71420,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -68890,22 +71431,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.10/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#projectv2item).
-   *
-   * For activity relating to a project (instead of an item on a project), use the `projects_v2` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
-   *
-   * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
-   * @description An item was deleted from a project in the organization.
-   */
   "projects-v2-item/deleted": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -68926,6 +71461,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -68935,22 +71472,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.10/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#projectv2item).
-   *
-   * For activity relating to a project (instead of an item on a project), use the `projects_v2` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
-   *
-   * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
-   * @description The values or state of an item in an organization project were changed. For example, the value of a field was updated, the body of a draft issue was changed, or a draft issue was converted to an issue.
-   */
   "projects-v2-item/edited": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -68971,6 +71502,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -68980,22 +71513,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.10/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#projectv2item).
-   *
-   * For activity relating to a project (instead of an item on a project), use the `projects_v2` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
-   *
-   * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
-   * @description The position of an item in an organization project was changed. For example, an item was moved above or below another item in the table or board layout.
-   */
   "projects-v2-item/reordered": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -69016,6 +71543,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -69025,22 +71554,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.10/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#projectv2item).
-   *
-   * For activity relating to a project (instead of an item on a project), use the `projects_v2` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
-   *
-   * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
-   * @description An archived item on an organization project was restored from the archive. For more information, see "[Archiving items from your project](https://docs.github.com/enterprise-server@3.10/issues/planning-and-tracking-with-projects/managing-items-in-your-project/archiving-items-from-your-project)."
-   */
   "projects-v2-item/restored": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -69061,6 +71584,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -69070,22 +71595,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.10/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#projectv2).
-   *
-   * For activity relating to a item on a project, use the `projects_v2_item` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
-   *
-   * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
-   * @description A project in the organization was reopened.
-   */
   "projects-v2/reopened": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -69106,6 +71625,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -69115,17 +71636,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when repository visibility changes from private to public. For more information, see "[Setting repository visibility](https://docs.github.com/enterprise-server@3.10/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/setting-repository-visibility)."
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
-   */
   public: {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -69146,6 +71666,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -69155,20 +71677,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.10/rest/pulls/pulls)" in the REST API documentation.
-   *
-   * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-   * @description A pull request was assigned to a user.
-   */
   "pull-request/assigned": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -69189,6 +71707,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -69198,20 +71718,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.10/rest/pulls/pulls)" in the REST API documentation.
-   *
-   * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-   * @description Auto merge was disabled for a pull request. For more information, see "[Automatically merging a pull request](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/automatically-merging-a-pull-request)."
-   */
   "pull-request/auto-merge-disabled": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -69232,6 +71748,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -69241,20 +71759,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.10/rest/pulls/pulls)" in the REST API documentation.
-   *
-   * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-   * @description Auto merge was enabled for a pull request. For more information, see "[Automatically merging a pull request](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/automatically-merging-a-pull-request)."
-   */
   "pull-request/auto-merge-enabled": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -69275,6 +71789,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -69284,20 +71800,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.10/rest/pulls/pulls)" in the REST API documentation.
-   *
-   * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-   * @description A pull request was closed. If `merged` is false in the webhook payload, the pull request was closed with unmerged commits. If `merged` is true in the webhook payload, the pull request was merged.
-   */
   "pull-request/closed": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -69318,6 +71830,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -69327,20 +71841,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.10/rest/pulls/pulls)" in the REST API documentation.
-   *
-   * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-   * @description A pull request was converted to a draft. For more information, see "[Changing the stage of a pull request](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/changing-the-stage-of-a-pull-request)."
-   */
   "pull-request/converted-to-draft": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -69361,6 +71871,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -69370,20 +71882,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.10/rest/pulls/pulls)" in the REST API documentation.
-   *
-   * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-   * @description A pull request was removed from a milestone.
-   */
   "pull-request/demilestoned": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -69404,6 +71912,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -69413,20 +71923,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.10/rest/pulls/pulls)" in the REST API documentation.
-   *
-   * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-   * @description The title or body of a pull request was edited, or the base branch of a pull request was changed.
-   */
   "pull-request/edited": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -69447,6 +71953,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -69456,20 +71964,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.10/rest/pulls/pulls)" in the REST API documentation.
-   *
-   * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-   * @description A label was added to a pull request.
-   */
   "pull-request/labeled": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -69490,6 +71994,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -69499,20 +72005,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.10/rest/pulls/pulls)" in the REST API documentation.
-   *
-   * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-   * @description Conversation on a pull request was locked. For more information, see "[Locking conversations](https://docs.github.com/enterprise-server@3.10/communities/moderating-comments-and-conversations/locking-conversations)."
-   */
   "pull-request/locked": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -69533,6 +72035,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -69542,20 +72046,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.10/rest/pulls/pulls)" in the REST API documentation.
-   *
-   * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-   * @description A pull request was added to a milestone.
-   */
   "pull-request/milestoned": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -69576,6 +72076,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -69585,20 +72087,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.10/rest/pulls/pulls)" in the REST API documentation.
-   *
-   * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-   * @description A pull request was created
-   */
   "pull-request/opened": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -69619,6 +72117,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -69628,20 +72128,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.10/rest/pulls/pulls)" in the REST API documentation.
-   *
-   * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-   * @description A draft pull request was marked as ready for review. For more information, see "[Changing the stage of a pull request](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/changing-the-stage-of-a-pull-request)."
-   */
   "pull-request/ready-for-review": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -69662,6 +72158,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -69671,20 +72169,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.10/rest/pulls/pulls)" in the REST API documentation.
-   *
-   * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-   * @description A previously closed pull request was reopened.
-   */
   "pull-request/reopened": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -69705,6 +72199,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -69714,20 +72210,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a pull request review comment. A pull request review comment is a comment on a pull request's diff. For more information, see "[Commenting on a pull request](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request)." For information about the APIs to manage pull request review comments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#pullrequestreviewcomment) or "[Pull request review comments](https://docs.github.com/enterprise-server@3.10/rest/pulls/comments)" in the REST API documentation.
-   *
-   * For activity related to pull request reviews, pull request comments, or pull request review threads, use the `pull_request_review`, `issue_comment`, or `pull_request_review_thread` events instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-   * @description A comment on a pull request diff was created.
-   */
   "pull-request-review-comment/created": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -69748,6 +72240,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -69757,20 +72251,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a pull request review comment. A pull request review comment is a comment on a pull request's diff. For more information, see "[Commenting on a pull request](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request)." For information about the APIs to manage pull request review comments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#pullrequestreviewcomment) or "[Pull request review comments](https://docs.github.com/enterprise-server@3.10/rest/pulls/comments)" in the REST API documentation.
-   *
-   * For activity related to pull request reviews, pull request comments, or pull request review threads, use the `pull_request_review`, `issue_comment`, or `pull_request_review_thread` events instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-   * @description A comment on a pull request diff was deleted.
-   */
   "pull-request-review-comment/deleted": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -69791,6 +72281,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -69800,20 +72292,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a pull request review comment. A pull request review comment is a comment on a pull request's diff. For more information, see "[Commenting on a pull request](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request)." For information about the APIs to manage pull request review comments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#pullrequestreviewcomment) or "[Pull request review comments](https://docs.github.com/enterprise-server@3.10/rest/pulls/comments)" in the REST API documentation.
-   *
-   * For activity related to pull request reviews, pull request comments, or pull request review threads, use the `pull_request_review`, `issue_comment`, or `pull_request_review_thread` events instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-   * @description The content of a comment on a pull request diff was changed.
-   */
   "pull-request-review-comment/edited": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -69834,6 +72322,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -69843,20 +72333,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a pull request review. A pull request review is a group of pull request review comments in addition to a body comment and a state. For more information, see "[About pull request reviews](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request reviews, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#pullrequestreview) or "[Pull request reviews](https://docs.github.com/enterprise-server@3.10/rest/pulls/reviews)" in the REST API documentation.
-   *
-   * For activity related to pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-   * @description A review on a pull request was dismissed.
-   */
   "pull-request-review/dismissed": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -69877,6 +72363,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -69886,20 +72374,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a pull request review. A pull request review is a group of pull request review comments in addition to a body comment and a state. For more information, see "[About pull request reviews](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request reviews, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#pullrequestreview) or "[Pull request reviews](https://docs.github.com/enterprise-server@3.10/rest/pulls/reviews)" in the REST API documentation.
-   *
-   * For activity related to pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-   * @description The body comment on a pull request review was edited.
-   */
   "pull-request-review/edited": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -69920,6 +72404,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -69929,20 +72415,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.10/rest/pulls/pulls)" in the REST API documentation.
-   *
-   * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-   * @description A request for review by a person or team was removed from a pull request.
-   */
   "pull-request/review-request-removed": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -69963,6 +72445,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -69972,20 +72456,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.10/rest/pulls/pulls)" in the REST API documentation.
-   *
-   * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-   * @description Review by a person or team was requested for a pull request. For more information, see "[Requesting a pull request review](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/requesting-a-pull-request-review)."
-   */
   "pull-request/review-requested": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -70006,6 +72486,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -70015,20 +72497,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a pull request review. A pull request review is a group of pull request review comments in addition to a body comment and a state. For more information, see "[About pull request reviews](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request reviews, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#pullrequestreview) or "[Pull request reviews](https://docs.github.com/enterprise-server@3.10/rest/pulls/reviews)" in the REST API documentation.
-   *
-   * For activity related to pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-   * @description A review on a pull request was submitted.
-   */
   "pull-request-review/submitted": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -70049,6 +72527,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -70058,20 +72538,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a comment thread on a pull request. For more information, see "[About pull request reviews](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request reviews, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#pullrequestreviewthread) or "[Pull request review comments](https://docs.github.com/enterprise-server@3.10/rest/pulls/comments)" in the REST API documentation.
-   *
-   * For activity related to pull request review comments, pull request comments, or pull request reviews, use the `pull_request_review_comment`, `issue_comment`, or `pull_request_review` events instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-   * @description A comment thread on a pull request was marked as resolved.
-   */
   "pull-request-review-thread/resolved": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -70092,6 +72568,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -70101,20 +72579,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a comment thread on a pull request. For more information, see "[About pull request reviews](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request reviews, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#pullrequestreviewthread) or "[Pull request review comments](https://docs.github.com/enterprise-server@3.10/rest/pulls/comments)" in the REST API documentation.
-   *
-   * For activity related to pull request review comments, pull request comments, or pull request reviews, use the `pull_request_review_comment`, `issue_comment`, or `pull_request_review` events instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-   * @description A previously resolved comment thread on a pull request was marked as unresolved.
-   */
   "pull-request-review-thread/unresolved": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -70135,6 +72609,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -70144,20 +72620,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.10/rest/pulls/pulls)" in the REST API documentation.
-   *
-   * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-   * @description A pull request's head branch was updated. For example, the head branch was updated from the base branch or new commits were pushed to the head branch.
-   */
   "pull-request/synchronize": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -70178,6 +72650,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -70187,20 +72661,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.10/rest/pulls/pulls)" in the REST API documentation.
-   *
-   * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-   * @description A user was unassigned from a pull request.
-   */
   "pull-request/unassigned": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -70221,6 +72691,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -70230,20 +72702,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.10/rest/pulls/pulls)" in the REST API documentation.
-   *
-   * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-   * @description A label was removed from a pull request.
-   */
   "pull-request/unlabeled": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -70264,6 +72732,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -70273,20 +72743,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.10/rest/pulls/pulls)" in the REST API documentation.
-   *
-   * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-   * @description Conversation on a pull request was unlocked. For more information, see "[Locking conversations](https://docs.github.com/enterprise-server@3.10/communities/moderating-comments-and-conversations/locking-conversations)."
-   */
   "pull-request/unlocked": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -70307,6 +72773,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -70316,21 +72784,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is a push to a repository branch. This includes when a commit is pushed, when a commit tag is pushed,
-   * when a branch is deleted, when a tag is deleted, or when a repository is created from a template. To subscribe to only branch
-   * and tag deletions, use the [`delete`](#delete) webhook event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
-   *
-   * **Note**: An event will not be created when more than three tags are pushed at once.
-   */
   push: {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -70351,6 +72814,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -70360,20 +72825,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to GitHub Packages. For more information, see "[Introduction to GitHub Packages](https://docs.github.com/enterprise-server@3.10/packages/learn-github-packages/introduction-to-github-packages)." For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#package) or "[Packages](https://docs.github.com/enterprise-server@3.10/rest/packages)" in the REST API documentation.
-   *
-   * To install this event on a GitHub App, the app must have at least read-level access for the "Packages" repository permission.
-   *
-   * **Note**: GitHub recommends that you use the newer `package` event instead.
-   * @description A package was published to a registry.
-   */
   "registry-package/published": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -70394,6 +72855,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -70403,20 +72866,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to GitHub Packages. For more information, see "[Introduction to GitHub Packages](https://docs.github.com/enterprise-server@3.10/packages/learn-github-packages/introduction-to-github-packages)." For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#package) or "[Packages](https://docs.github.com/enterprise-server@3.10/rest/packages)" in the REST API documentation.
-   *
-   * To install this event on a GitHub App, the app must have at least read-level access for the "Packages" repository permission.
-   *
-   * **Note**: GitHub recommends that you use the newer `package` event instead.
-   * @description A package that was previously published to a registry was updated.
-   */
   "registry-package/updated": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -70437,6 +72896,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -70446,18 +72907,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-server@3.10/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-server@3.10/rest/releases)" in the REST API documentation.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
-   * @description A draft was saved, or a release or pre-release was published without previously being saved as a draft.
-   */
   "release/created": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -70478,6 +72937,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -70487,18 +72948,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-server@3.10/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-server@3.10/rest/releases)" in the REST API documentation.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
-   * @description A release, pre-release, or draft release was deleted.
-   */
   "release/deleted": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -70519,6 +72978,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -70528,18 +72989,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-server@3.10/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-server@3.10/rest/releases)" in the REST API documentation.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
-   * @description The details of a release, pre-release, or draft release were edited. For more information, see "[Managing releases in a repository](https://docs.github.com/enterprise-server@3.10/repositories/releasing-projects-on-github/managing-releases-in-a-repository#editing-a-release)."
-   */
   "release/edited": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -70560,6 +73019,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -70569,18 +73030,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-server@3.10/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-server@3.10/rest/releases)" in the REST API documentation.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
-   * @description A release was created and identified as a pre-release. A pre-release is a release that is not ready for production and may be unstable.
-   */
   "release/prereleased": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -70601,6 +73060,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -70610,18 +73071,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-server@3.10/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-server@3.10/rest/releases)" in the REST API documentation.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
-   * @description A release, pre-release, or draft of a release was published.
-   */
   "release/published": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -70642,6 +73101,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -70651,18 +73112,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-server@3.10/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-server@3.10/rest/releases)" in the REST API documentation.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
-   * @description A release was published, or a pre-release was changed to a release.
-   */
   "release/released": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -70683,6 +73142,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -70692,18 +73153,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-server@3.10/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-server@3.10/rest/releases)" in the REST API documentation.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
-   * @description A release or pre-release was unpublished.
-   */
   "release/unpublished": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -70724,6 +73183,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -70733,18 +73194,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.10/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.10/rest/repos)" in the REST API documentation.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
-   * @description Someone disabled anonymous Git read access to the repository. For more information, see "[Enabling anonymous Git read access for a repository](/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/enabling-anonymous-git-read-access-for-a-repository)."
-   */
   "repository/anonymous-access-disabled": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -70765,6 +73224,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -70774,18 +73235,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.10/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.10/rest/repos)" in the REST API documentation.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
-   * @description Someone enabled anonymous Git read access to the repository. For more information, see "[Enabling anonymous Git read access for a repository](/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/enabling-anonymous-git-read-access-for-a-repository)."
-   */
   "repository/anonymous-access-enabled": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -70806,6 +73265,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -70815,18 +73276,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.10/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.10/rest/repos)" in the REST API documentation.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
-   * @description A repository was archived.
-   */
   "repository/archived": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -70847,6 +73306,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -70856,18 +73317,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.10/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.10/rest/repos)" in the REST API documentation.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
-   * @description A repository was created.
-   */
   "repository/created": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -70888,6 +73347,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -70897,18 +73358,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.10/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.10/rest/repos)" in the REST API documentation.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
-   * @description A repository was deleted. GitHub Apps and repository webhooks will not receive this event.
-   */
   "repository/deleted": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -70929,6 +73388,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -70938,18 +73399,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when a GitHub App sends a `POST` request to `/repos/{owner}/{repo}/dispatches`. For more information, see [the REST API documentation for creating a repository dispatch event](https://docs.github.com/enterprise-server@3.10/rest/repos/repos#create-a-repository-dispatch-event).
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
-   * @description The `event_type` that was specified in the `POST /repos/{owner}/{repo}/dispatches` request body.
-   */
   "repository-dispatch/sample.collected": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -70970,6 +73429,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -70979,18 +73440,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.10/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.10/rest/repos)" in the REST API documentation.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
-   * @description The topics, default branch, description, or homepage of a repository was changed.
-   */
   "repository/edited": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -71011,6 +73470,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -71020,18 +73481,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.10/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.10/rest/repos)" in the REST API documentation.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
-   * @description The visibility of a repository was changed to `private`.
-   */
   "repository/privatized": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -71052,6 +73511,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -71061,18 +73522,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.10/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.10/rest/repos)" in the REST API documentation.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
-   * @description The visibility of a repository was changed to `public`.
-   */
   "repository/publicized": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -71093,6 +73552,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -71102,18 +73563,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.10/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.10/rest/repos)" in the REST API documentation.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
-   * @description The name of a repository was changed.
-   */
   "repository/renamed": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -71134,6 +73593,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -71143,18 +73604,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.10/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.10/rest/repos)" in the REST API documentation.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
-   * @description Ownership of the repository was transferred to a user or organization account. This event is only sent to the account where the ownership is transferred. To receive the `repository.transferred` event, the new owner account must have the GitHub App installed, and the App must be subscribed to "Repository" events.
-   */
   "repository/transferred": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -71175,6 +73634,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -71184,18 +73645,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.10/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.10/rest/repos)" in the REST API documentation.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
-   * @description A previously archived repository was unarchived.
-   */
   "repository/unarchived": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -71216,6 +73675,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -71225,18 +73686,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a security vulnerability alert in a repository.
-   *
-   * **Note**: This event is deprecated. Use the `dependabot_alert` event instead.
-   * @description A repository vulnerability alert was created.
-   */
   "repository-vulnerability-alert/create": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -71257,6 +73716,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -71266,18 +73727,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a security vulnerability alert in a repository.
-   *
-   * **Note**: This event is deprecated. Use the `dependabot_alert` event instead.
-   * @description A repository vulnerability alert was dismissed.
-   */
   "repository-vulnerability-alert/dismiss": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -71298,6 +73757,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -71307,18 +73768,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a security vulnerability alert in a repository.
-   *
-   * **Note**: This event is deprecated. Use the `dependabot_alert` event instead.
-   * @description A previously dismissed or resolved repository vulnerability alert was reopened.
-   */
   "repository-vulnerability-alert/reopen": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -71339,6 +73798,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -71348,18 +73809,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a security vulnerability alert in a repository.
-   *
-   * **Note**: This event is deprecated. Use the `dependabot_alert` event instead.
-   * @description A repository vulnerability alert was marked as resolved.
-   */
   "repository-vulnerability-alert/resolve": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -71380,6 +73839,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -71389,20 +73850,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a secret scanning alert. For more information about secret scanning, see "[About secret scanning](https://docs.github.com/enterprise-server@3.10/code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/enterprise-server@3.10/rest/secret-scanning)" in the REST API documentation.
-   *
-   * For activity relating to secret scanning alert locations, use the `secret_scanning_alert_location` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
-   * @description A secret scanning alert was created.
-   */
   "secret-scanning-alert/created": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -71423,6 +73880,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -71432,22 +73891,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to the locations of a secret in a secret scanning alert.
-   *
-   * For more information about secret scanning, see "[About secret scanning](https://docs.github.com/enterprise-server@3.10/code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/enterprise-server@3.10/rest/secret-scanning)" in the REST API documentation.
-   *
-   * For activity relating to secret scanning alerts, use the `secret_scanning_alert` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
-   * @description A new instance of a previously detected secret was detected in a repository, and the location of the secret was added to the existing alert.
-   */
   "secret-scanning-alert-location/created": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -71468,6 +73921,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -71477,20 +73932,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a secret scanning alert. For more information about secret scanning, see "[About secret scanning](https://docs.github.com/enterprise-server@3.10/code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/enterprise-server@3.10/rest/secret-scanning)" in the REST API documentation.
-   *
-   * For activity relating to secret scanning alert locations, use the `secret_scanning_alert_location` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
-   * @description A previously closed secret scanning alert was reopened.
-   */
   "secret-scanning-alert/reopened": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -71511,6 +73962,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -71520,20 +73973,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a secret scanning alert. For more information about secret scanning, see "[About secret scanning](https://docs.github.com/enterprise-server@3.10/code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/enterprise-server@3.10/rest/secret-scanning)" in the REST API documentation.
-   *
-   * For activity relating to secret scanning alert locations, use the `secret_scanning_alert_location` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
-   * @description A secret scanning alert was closed.
-   */
   "secret-scanning-alert/resolved": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -71554,6 +74003,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -71563,20 +74014,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a secret scanning alert. For more information about secret scanning, see "[About secret scanning](https://docs.github.com/enterprise-server@3.10/code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/enterprise-server@3.10/rest/secret-scanning)" in the REST API documentation.
-   *
-   * For activity relating to secret scanning alert locations, use the `secret_scanning_alert_location` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
-   * @description A secret scanning alert was marked as revoked.
-   */
   "secret-scanning-alert/revoked": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -71597,6 +74044,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -71606,18 +74055,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a global security advisory that was reviewed by GitHub. A GitHub-reviewed global security advisory provides information about security vulnerabilities or malware that have been mapped to packages in ecosystems we support. For more information about global security advisories, see "[About global security advisories](https://docs.github.com/enterprise-server@3.10/code-security/security-advisories/working-with-global-security-advisories-from-the-github-advisory-database/about-global-security-advisories)." For information about the API to manage security advisories, see [the REST API documentation](https://docs.github.com/enterprise-server@3.10/rest/security-advisories/global-advisories) or [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#securityadvisory).
-   *
-   * GitHub Dependabot alerts are also powered by the security advisory dataset. For more information, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.10/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)."
-   * @description A security advisory was published to the GitHub community.
-   */
   "security-advisory/published": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -71638,6 +74085,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -71647,18 +74096,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a global security advisory that was reviewed by GitHub. A GitHub-reviewed global security advisory provides information about security vulnerabilities or malware that have been mapped to packages in ecosystems we support. For more information about global security advisories, see "[About global security advisories](https://docs.github.com/enterprise-server@3.10/code-security/security-advisories/working-with-global-security-advisories-from-the-github-advisory-database/about-global-security-advisories)." For information about the API to manage security advisories, see [the REST API documentation](https://docs.github.com/enterprise-server@3.10/rest/security-advisories/global-advisories) or [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#securityadvisory).
-   *
-   * GitHub Dependabot alerts are also powered by the security advisory dataset. For more information, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.10/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)."
-   * @description The metadata or description of a security advisory was changed.
-   */
   "security-advisory/updated": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -71679,6 +74126,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -71688,18 +74137,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a global security advisory that was reviewed by GitHub. A GitHub-reviewed global security advisory provides information about security vulnerabilities or malware that have been mapped to packages in ecosystems we support. For more information about global security advisories, see "[About global security advisories](https://docs.github.com/enterprise-server@3.10/code-security/security-advisories/working-with-global-security-advisories-from-the-github-advisory-database/about-global-security-advisories)." For information about the API to manage security advisories, see [the REST API documentation](https://docs.github.com/enterprise-server@3.10/rest/security-advisories/global-advisories) or [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#securityadvisory).
-   *
-   * GitHub Dependabot alerts are also powered by the security advisory dataset. For more information, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.10/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)."
-   * @description A previously published security advisory was withdrawn.
-   */
   "security-advisory/withdrawn": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -71720,6 +74167,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -71729,17 +74178,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when code security and analysis features are enabled or disabled for a repository. For more information, see "[GitHub security features](https://docs.github.com/enterprise-server@3.10/code-security/getting-started/github-security-features)."
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
-   */
   "security-and-analysis": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -71760,6 +74208,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -71769,20 +74219,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a sponsorship listing. For more information, see "[About GitHub Sponsors](https://docs.github.com/enterprise-server@3.10/sponsors/getting-started-with-github-sponsors/about-github-sponsors)." For information about the API to manage sponsors, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#sponsorship).
-   *
-   * You can only create a sponsorship webhook on GitHub.com. For more information, see "[Configuring webhooks for events in your sponsored account](https://docs.github.com/enterprise-server@3.10/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)."
-   * @description A sponsorship was cancelled and the last billing cycle has ended.
-   *
-   * This event is only sent when a recurring (monthly) sponsorship is cancelled; it is not sent for one-time sponsorships.
-   */
   "sponsorship/cancelled": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -71803,6 +74249,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -71812,18 +74260,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a sponsorship listing. For more information, see "[About GitHub Sponsors](https://docs.github.com/enterprise-server@3.10/sponsors/getting-started-with-github-sponsors/about-github-sponsors)." For information about the API to manage sponsors, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#sponsorship).
-   *
-   * You can only create a sponsorship webhook on GitHub.com. For more information, see "[Configuring webhooks for events in your sponsored account](https://docs.github.com/enterprise-server@3.10/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)."
-   * @description A sponsor created a sponsorship for a sponsored account. This event occurs once the payment is successfully processed.
-   */
   "sponsorship/created": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -71844,6 +74290,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -71853,18 +74301,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a sponsorship listing. For more information, see "[About GitHub Sponsors](https://docs.github.com/enterprise-server@3.10/sponsors/getting-started-with-github-sponsors/about-github-sponsors)." For information about the API to manage sponsors, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#sponsorship).
-   *
-   * You can only create a sponsorship webhook on GitHub.com. For more information, see "[Configuring webhooks for events in your sponsored account](https://docs.github.com/enterprise-server@3.10/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)."
-   * @description A monthly sponsor changed who can see their sponsorship. If you recognize your sponsors publicly, you may want to update your sponsor recognition to reflect the change when this event occurs.
-   */
   "sponsorship/edited": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -71885,6 +74331,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -71894,20 +74342,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a sponsorship listing. For more information, see "[About GitHub Sponsors](https://docs.github.com/enterprise-server@3.10/sponsors/getting-started-with-github-sponsors/about-github-sponsors)." For information about the API to manage sponsors, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#sponsorship).
-   *
-   * You can only create a sponsorship webhook on GitHub.com. For more information, see "[Configuring webhooks for events in your sponsored account](https://docs.github.com/enterprise-server@3.10/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)."
-   * @description A sponsor scheduled a cancellation for their sponsorship. The cancellation will become effective on their next billing date.
-   *
-   * This event is only sent when a recurring (monthly) sponsorship is cancelled; it is not sent for one-time sponsorships.
-   */
   "sponsorship/pending-cancellation": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -71928,6 +74372,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -71937,18 +74383,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a sponsorship listing. For more information, see "[About GitHub Sponsors](https://docs.github.com/enterprise-server@3.10/sponsors/getting-started-with-github-sponsors/about-github-sponsors)." For information about the API to manage sponsors, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#sponsorship).
-   *
-   * You can only create a sponsorship webhook on GitHub.com. For more information, see "[Configuring webhooks for events in your sponsored account](https://docs.github.com/enterprise-server@3.10/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)."
-   * @description A sponsor scheduled a downgrade to a lower sponsorship tier. The new tier will become effective on their next billing date.
-   */
   "sponsorship/pending-tier-change": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -71969,6 +74413,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -71978,18 +74424,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a sponsorship listing. For more information, see "[About GitHub Sponsors](https://docs.github.com/enterprise-server@3.10/sponsors/getting-started-with-github-sponsors/about-github-sponsors)." For information about the API to manage sponsors, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#sponsorship).
-   *
-   * You can only create a sponsorship webhook on GitHub.com. For more information, see "[Configuring webhooks for events in your sponsored account](https://docs.github.com/enterprise-server@3.10/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)."
-   * @description A sponsor changed the tier of their sponsorship and the change has taken effect. If a sponsor upgraded their tier, the change took effect immediately. If a sponsor downgraded their tier, the change took effect at the beginning of the sponsor's next billing cycle.
-   */
   "sponsorship/tier-changed": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -72010,6 +74454,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -72019,18 +74465,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to repository stars. For more information about stars, see "[Saving repositories with stars](https://docs.github.com/enterprise-server@3.10/get-started/exploring-projects-on-github/saving-repositories-with-stars)." For information about the APIs to manage stars, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#starredrepositoryconnection) or "[Starring](https://docs.github.com/enterprise-server@3.10/rest/activity/starring)" in the REST API documentation.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
-   * @description Someone starred a repository.
-   */
   "star/created": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -72051,6 +74495,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -72060,18 +74506,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to repository stars. For more information about stars, see "[Saving repositories with stars](https://docs.github.com/enterprise-server@3.10/get-started/exploring-projects-on-github/saving-repositories-with-stars)." For information about the APIs to manage stars, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#starredrepositoryconnection) or "[Starring](https://docs.github.com/enterprise-server@3.10/rest/activity/starring)" in the REST API documentation.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
-   * @description Someone unstarred the repository.
-   */
   "star/deleted": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -72092,6 +74536,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -72101,17 +74547,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when the status of a Git commit changes. For example, commits can be marked as `error`, `failure`, `pending`, or `success`. For more information, see "[About status checks](https://docs.github.com/enterprise-server@3.10/pull-requests/collaborating-with-pull-requests/collaborating-on-repositories-with-code-quality-features/about-status-checks)." For information about the APIs to manage commit statuses, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#status) or "[Commit statuses](https://docs.github.com/enterprise-server@3.10/rest/commits/statuses)" in the REST API documentation.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Commit statuses" repository permission.
-   */
   status: {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -72132,6 +74577,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -72141,20 +74588,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when a team is added to a repository.
-   * For more information, see "[Managing teams and people with access to your repository](https://docs.github.com/enterprise-server@3.10/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/managing-teams-and-people-with-access-to-your-repository)."
-   *
-   * For activity relating to teams, see the `teams` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
-   */
   "team-add": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -72175,6 +74618,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -72184,19 +74629,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to teams in an organization.
-   * For more information, see "[About teams](https://docs.github.com/enterprise-server@3.10/organizations/organizing-members-into-teams/about-teams)."
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
-   * @description A team was granted access to a repository.
-   */
   "team/added-to-repository": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -72217,6 +74659,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -72226,19 +74670,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to teams in an organization.
-   * For more information, see "[About teams](https://docs.github.com/enterprise-server@3.10/organizations/organizing-members-into-teams/about-teams)."
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
-   * @description A team was created.
-   */
   "team/created": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -72259,6 +74700,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -72268,19 +74711,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to teams in an organization.
-   * For more information, see "[About teams](https://docs.github.com/enterprise-server@3.10/organizations/organizing-members-into-teams/about-teams)."
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
-   * @description A team was deleted.
-   */
   "team/deleted": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -72301,6 +74741,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -72310,19 +74752,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to teams in an organization.
-   * For more information, see "[About teams](https://docs.github.com/enterprise-server@3.10/organizations/organizing-members-into-teams/about-teams)."
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
-   * @description The name, description, or visibility of a team was changed.
-   */
   "team/edited": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -72343,6 +74782,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -72352,19 +74793,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to teams in an organization.
-   * For more information, see "[About teams](https://docs.github.com/enterprise-server@3.10/organizations/organizing-members-into-teams/about-teams)."
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
-   * @description A team's access to a repository was removed.
-   */
   "team/removed-from-repository": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -72385,6 +74823,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -72394,16 +74834,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to user accounts in an enterprise.
-   * @description A user account was added to the enterprise.
-   */
   "user/created": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -72424,6 +74864,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -72433,16 +74875,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to user accounts in an enterprise.
-   * @description A user account was removed from the enterprise.
-   */
   "user/deleted": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -72463,6 +74905,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -72472,18 +74916,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to watching, or subscribing to, a repository. For more information about watching, see "[Managing your subscriptions](https://docs.github.com/enterprise-server@3.10/account-and-profile/managing-subscriptions-and-notifications-on-github/managing-subscriptions-for-activity-on-github/managing-your-subscriptions)." For information about the APIs to manage watching, see "[Watching](https://docs.github.com/enterprise-server@3.10/rest/activity/watching)" in the REST API documentation.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
-   * @description Someone started watching the repository.
-   */
   "watch/started": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -72504,6 +74946,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -72513,19 +74957,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when a GitHub Actions workflow is manually triggered. For more information, see "[Manually running a workflow](https://docs.github.com/enterprise-server@3.10/actions/managing-workflow-runs/manually-running-a-workflow)."
-   *
-   * For activity relating to workflow runs, use the `workflow_run` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
-   */
   "workflow-dispatch": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -72546,6 +74987,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -72555,20 +74998,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a job in a GitHub Actions workflow. For more information, see "[Using jobs in a workflow](https://docs.github.com/enterprise-server@3.10/actions/using-jobs/using-jobs-in-a-workflow)." For information about the API to manage workflow jobs, see "[Workflow jobs](https://docs.github.com/enterprise-server@3.10/rest/actions/workflow-jobs)" in the REST API documentation.
-   *
-   * For activity relating to a workflow run instead of a job in a workflow run, use the `workflow_run` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Actions" repository permission.
-   * @description A job in a workflow run finished. This event occurs when a job in a workflow is completed, regardless of whether the job was successful or unsuccessful.
-   */
   "workflow-job/completed": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -72589,6 +75028,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -72598,20 +75039,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a job in a GitHub Actions workflow. For more information, see "[Using jobs in a workflow](https://docs.github.com/enterprise-server@3.10/actions/using-jobs/using-jobs-in-a-workflow)." For information about the API to manage workflow jobs, see "[Workflow jobs](https://docs.github.com/enterprise-server@3.10/rest/actions/workflow-jobs)" in the REST API documentation.
-   *
-   * For activity relating to a workflow run instead of a job in a workflow run, use the `workflow_run` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Actions" repository permission.
-   * @description A job in a workflow run started processing on a runner.
-   */
   "workflow-job/in-progress": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -72632,6 +75069,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -72641,20 +75080,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a job in a GitHub Actions workflow. For more information, see "[Using jobs in a workflow](https://docs.github.com/enterprise-server@3.10/actions/using-jobs/using-jobs-in-a-workflow)." For information about the API to manage workflow jobs, see "[Workflow jobs](https://docs.github.com/enterprise-server@3.10/rest/actions/workflow-jobs)" in the REST API documentation.
-   *
-   * For activity relating to a workflow run instead of a job in a workflow run, use the `workflow_run` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Actions" repository permission.
-   * @description A job in a workflow run was created.
-   */
   "workflow-job/queued": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -72675,6 +75110,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -72684,20 +75121,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a job in a GitHub Actions workflow. For more information, see "[Using jobs in a workflow](https://docs.github.com/enterprise-server@3.10/actions/using-jobs/using-jobs-in-a-workflow)." For information about the API to manage workflow jobs, see "[Workflow jobs](https://docs.github.com/enterprise-server@3.10/rest/actions/workflow-jobs)" in the REST API documentation.
-   *
-   * For activity relating to a workflow run instead of a job in a workflow run, use the `workflow_run` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Actions" repository permission.
-   * @description A job in a workflow run was created and is waiting for approvals.
-   */
   "workflow-job/waiting": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -72718,6 +75151,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -72727,20 +75162,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a run of a GitHub Actions workflow. For more information, see "[About workflows](https://docs.github.com/enterprise-server@3.10/actions/using-workflows/about-workflows)." For information about the APIs to manage workflow runs, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#workflowrun) or "[Workflow runs](https://docs.github.com/enterprise-server@3.10/rest/actions/workflow-runs)" in the REST API documentation.
-   *
-   * For activity relating to a job in a workflow run, use the `workflow_job` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Actions" repository permission.
-   * @description A workflow run finished. This event occurs when a workflow run is completed, regardless of whether the workflow was successful or unsuccessful.
-   */
   "workflow-run/completed": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -72761,6 +75192,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -72770,20 +75203,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a run of a GitHub Actions workflow. For more information, see "[About workflows](https://docs.github.com/enterprise-server@3.10/actions/using-workflows/about-workflows)." For information about the APIs to manage workflow runs, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#workflowrun) or "[Workflow runs](https://docs.github.com/enterprise-server@3.10/rest/actions/workflow-runs)" in the REST API documentation.
-   *
-   * For activity relating to a job in a workflow run, use the `workflow_job` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Actions" repository permission.
-   * @description A workflow run started processing on a runner.
-   */
   "workflow-run/in-progress": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -72804,6 +75233,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -72813,20 +75244,16 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * This event occurs when there is activity relating to a run of a GitHub Actions workflow. For more information, see "[About workflows](https://docs.github.com/enterprise-server@3.10/actions/using-workflows/about-workflows)." For information about the APIs to manage workflow runs, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.10/graphql/reference/objects#workflowrun) or "[Workflow runs](https://docs.github.com/enterprise-server@3.10/rest/actions/workflow-runs)" in the REST API documentation.
-   *
-   * For activity relating to a job in a workflow run, use the `workflow_job` event.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Actions" repository permission.
-   * @description A workflow run was triggered.
-   */
   "workflow-run/requested": {
     parameters: {
+      query?: never;
       header: {
         /** @example GitHub-Hookshot/123abc */
         "User-Agent": string;
@@ -72847,6 +75274,8 @@ export interface operations {
         /** @example ghes.github.com */
         "X-GitHub-Enterprise-Host": string;
       };
+      path?: never;
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -72856,7 +75285,10 @@ export interface operations {
     responses: {
       /** @description Return a 200 status to indicate that the data was received successfully */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
