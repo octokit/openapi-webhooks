@@ -76,7 +76,11 @@ async function run() {
     };
 
     function addActionToRequired(schema) {
-      if (schema.properties.action !== undefined && schema.required !== undefined && !schema.required.includes("action")){
+      if (
+        schema.properties.action !== undefined &&
+        schema.required !== undefined &&
+        !schema.required.includes("action")
+      ) {
         schema.required.push("action");
       }
     }
