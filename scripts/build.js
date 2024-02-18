@@ -36,10 +36,12 @@ async function run() {
     delete schema.components.parameters;
     delete schema.components.headers;
 
-    const tempSchema = { ...schema };
-    tempSchema.components = {
-      schemas: {},
-      examples: {},
+    const tempSchema = {
+      ...schema,
+      components: {
+        schemas: {},
+        examples: {},
+      },
     };
 
     overrides(file, schema);
