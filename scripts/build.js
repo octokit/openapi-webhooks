@@ -15,7 +15,7 @@ import overrides from "./overrides/index.js";
 run();
 
 async function run() {
-  await rm("packages", { recursive: true }).catch(() => {});
+  await rm("packages/openapi-webhooks", { recursive: true }).catch(() => {});
   await mkdir("packages/openapi-webhooks/generated", { recursive: true });
   const schemaFileNames = readdirSync("cache");
 
