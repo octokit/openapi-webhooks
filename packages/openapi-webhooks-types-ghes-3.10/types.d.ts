@@ -54887,7 +54887,7 @@ export interface components {
       base_ref: string | null;
       /** @description The SHA of the most recent commit on `ref` before the push. */
       before: string;
-      /** @description An array of commit objects describing the pushed commits. (Pushed commits are all commits that are included in the `compare` between the `before` commit and the `after` commit.) The array includes a maximum of 20 commits. If necessary, you can use the [Commits API](https://docs.github.com/enterprise-server@3.10/rest/commits) to fetch additional commits. This limit is applied to timeline events only and isn't applied to webhook deliveries. */
+      /** @description An array of commit objects describing the pushed commits. (Pushed commits are all commits that are included in the `compare` between the `before` commit and the `after` commit.) The array includes a maximum of 2048 commits. If necessary, you can use the [Commits API](https://docs.github.com/enterprise-server@3.10/rest/commits) to fetch additional commits. */
       commits: {
         /** @description An array of files added in the commit. A maximum of 3000 changed files will be reported per commit. */
         added?: string[];
