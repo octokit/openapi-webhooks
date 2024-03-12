@@ -23560,9 +23560,19 @@ export interface components {
       /** @enum {string} */
       action: "added";
       changes?: {
+        /**
+         * @description This field is included for legacy purposes; use the `role_name` field instead. The `maintain`
+         * role is mapped to `write` and the `triage` role is mapped to `read`. To determine the role
+         * assigned to the collaborator, use the `role_name` field instead, which will provide the full
+         * role name, including custom roles.
+         */
         permission?: {
           /** @enum {string} */
           to: "write" | "admin" | "read";
+        };
+        /** @description The role assigned to the collaborator. */
+        role_name?: {
+          to: string;
         };
       };
       installation?: components["schemas"]["simple-installation"];
