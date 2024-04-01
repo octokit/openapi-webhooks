@@ -1856,10 +1856,9 @@ export interface webhooks {
   };
   "repository-dispatch-sample.collected": {
     /**
-     * This event occurs when a GitHub App sends a `POST` request to `/repos/{owner}/{repo}/dispatches`. For more information, see [the REST API documentation for creating a repository dispatch event](https://docs.github.com/enterprise-server@3.8/rest/repos/repos#create-a-repository-dispatch-event).
+     * This event occurs when a GitHub App sends a `POST` request to `/repos/{owner}/{repo}/dispatches`. For more information, see [the REST API documentation for creating a repository dispatch event](https://docs.github.com/enterprise-server@3.8/rest/repos/repos#create-a-repository-dispatch-event). In the payload, the `action` will be the `event_type` that was specified in the `POST /repos/{owner}/{repo}/dispatches` request body.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
-     * @description The `event_type` that was specified in the `POST /repos/{owner}/{repo}/dispatches` request body.
      */
     post: operations["repository-dispatch/sample.collected"];
   };
@@ -56391,9 +56390,10 @@ export interface components {
     };
     /** repository_dispatch event */
     "webhook-repository-dispatch-sample": {
-      /** @enum {string} */
-      action: "sample.collected";
+      /** @description The `event_type` that was specified in the `POST /repos/{owner}/{repo}/dispatches` request body. */
+      action: string;
       branch: string;
+      /** @description The `client_payload` that was specified in the `POST /repos/{owner}/{repo}/dispatches` request body. */
       client_payload: {
         [key: string]: unknown;
       } | null;
@@ -69923,10 +69923,9 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when a GitHub App sends a `POST` request to `/repos/{owner}/{repo}/dispatches`. For more information, see [the REST API documentation for creating a repository dispatch event](https://docs.github.com/enterprise-server@3.8/rest/repos/repos#create-a-repository-dispatch-event).
+   * This event occurs when a GitHub App sends a `POST` request to `/repos/{owner}/{repo}/dispatches`. For more information, see [the REST API documentation for creating a repository dispatch event](https://docs.github.com/enterprise-server@3.8/rest/repos/repos#create-a-repository-dispatch-event). In the payload, the `action` will be the `event_type` that was specified in the `POST /repos/{owner}/{repo}/dispatches` request body.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
-   * @description The `event_type` that was specified in the `POST /repos/{owner}/{repo}/dispatches` request body.
    */
   "repository-dispatch/sample.collected": {
     parameters: {
