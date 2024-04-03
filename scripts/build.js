@@ -181,6 +181,7 @@ They are all generated, your changes would be overwritten with the next update. 
         license: "MIT",
         publishConfig: {
           access: "public",
+          provenance: true,
         },
       }),
       { parser: "json-stringify" },

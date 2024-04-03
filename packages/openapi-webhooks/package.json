@@ -22,6 +22,7 @@
   "author": "wolfy1339 <webmaster@wolfy1339.com>",
   "license": "MIT",
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   }
 }

@@ -116,8 +116,5 @@
     "extends": [
       "github>octokit/.github"
     ]
-  },
-  "publishConfig": {
-    "provenance": true
   }
 }
