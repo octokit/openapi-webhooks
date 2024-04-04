@@ -5542,7 +5542,7 @@ export interface components {
       /** @description Whether the property is required. */
       required?: boolean;
       /** @description Default value of the property */
-      default_value?: string | null;
+      default_value?: string | string[] | null | unknown[];
       /** @description Short description of the property */
       description?: string | null;
       /**
