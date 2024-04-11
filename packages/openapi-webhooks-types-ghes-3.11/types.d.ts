@@ -57107,10 +57107,10 @@ export interface components {
        * @enum {string}
        */
       actor_type:
-        | "RepositoryRole"
-        | "Team"
         | "Integration"
-        | "OrganizationAdmin";
+        | "OrganizationAdmin"
+        | "RepositoryRole"
+        | "Team";
       /**
        * @description When the specified actor can bypass the ruleset. `pull_request` means that an actor can only bypass rules on pull requests.
        * @enum {string}
