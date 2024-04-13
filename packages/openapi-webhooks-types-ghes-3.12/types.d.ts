@@ -12494,207 +12494,7 @@ export interface components {
     "webhook-discussion-created": {
       /** @enum {string} */
       action: "created";
-      discussion: {
-        active_lock_reason: string | null;
-        answer_chosen_at: string | null;
-        /** User */
-        answer_chosen_by: {
-          /** Format: uri */
-          avatar_url?: string;
-          deleted?: boolean;
-          email?: string | null;
-          /** Format: uri-template */
-          events_url?: string;
-          /** Format: uri */
-          followers_url?: string;
-          /** Format: uri-template */
-          following_url?: string;
-          /** Format: uri-template */
-          gists_url?: string;
-          gravatar_id?: string;
-          /** Format: uri */
-          html_url?: string;
-          id: number;
-          login: string;
-          name?: string;
-          node_id?: string;
-          /** Format: uri */
-          organizations_url?: string;
-          /** Format: uri */
-          received_events_url?: string;
-          /** Format: uri */
-          repos_url?: string;
-          site_admin?: boolean;
-          /** Format: uri-template */
-          starred_url?: string;
-          /** Format: uri */
-          subscriptions_url?: string;
-          /** @enum {string} */
-          type?: "Bot" | "User" | "Organization";
-          /** Format: uri */
-          url?: string;
-        } | null;
-        answer_html_url: string | null;
-        /**
-         * AuthorAssociation
-         * @description How the author is associated with the repository.
-         * @enum {string}
-         */
-        author_association:
-          | "COLLABORATOR"
-          | "CONTRIBUTOR"
-          | "FIRST_TIMER"
-          | "FIRST_TIME_CONTRIBUTOR"
-          | "MANNEQUIN"
-          | "MEMBER"
-          | "NONE"
-          | "OWNER";
-        body: string | null;
-        category: {
-          /** Format: date-time */
-          created_at: string;
-          description: string;
-          emoji: string;
-          id: number;
-          is_answerable: boolean;
-          name: string;
-          node_id?: string;
-          repository_id: number;
-          slug: string;
-          updated_at: string;
-        };
-        comments: number;
-        /** Format: date-time */
-        created_at: string;
-        html_url: string;
-        id: number;
-        locked: boolean;
-        node_id: string;
-        number: number;
-        /** Reactions */
-        reactions?: {
-          "+1": number;
-          "-1": number;
-          confused: number;
-          eyes: number;
-          heart: number;
-          hooray: number;
-          laugh: number;
-          rocket: number;
-          total_count: number;
-          /** Format: uri */
-          url: string;
-        };
-        repository_url: string;
-        /** @enum {string} */
-        state: "open" | "locked" | "converting" | "transferring";
-        timeline_url?: string;
-        title: string;
-        /** Format: date-time */
-        updated_at: string;
-        /** User */
-        user: {
-          /** Format: uri */
-          avatar_url?: string;
-          deleted?: boolean;
-          email?: string | null;
-          /** Format: uri-template */
-          events_url?: string;
-          /** Format: uri */
-          followers_url?: string;
-          /** Format: uri-template */
-          following_url?: string;
-          /** Format: uri-template */
-          gists_url?: string;
-          gravatar_id?: string;
-          /** Format: uri */
-          html_url?: string;
-          id: number;
-          login: string;
-          name?: string;
-          node_id?: string;
-          /** Format: uri */
-          organizations_url?: string;
-          /** Format: uri */
-          received_events_url?: string;
-          /** Format: uri */
-          repos_url?: string;
-          site_admin?: boolean;
-          /** Format: uri-template */
-          starred_url?: string;
-          /** Format: uri */
-          subscriptions_url?: string;
-          /** @enum {string} */
-          type?: "Bot" | "User" | "Organization";
-          /** Format: uri */
-          url?: string;
-        } | null;
-      } & {
-        active_lock_reason?: null;
-        answer_chosen_at: null;
-        answer_chosen_by: null;
-        answer_html_url: string | null;
-        author_association?: string;
-        body?: string | null;
-        category?: {
-          created_at?: string;
-          description?: string;
-          emoji?: string;
-          id?: number;
-          is_answerable?: boolean;
-          name?: string;
-          node_id?: string;
-          repository_id?: number;
-          slug?: string;
-          updated_at?: string;
-        };
-        comments?: number;
-        created_at?: string;
-        html_url?: string;
-        id?: number;
-        /** @enum {boolean} */
-        locked: false;
-        node_id?: string;
-        number?: number;
-        reactions?: {
-          "+1"?: number;
-          "-1"?: number;
-          confused?: number;
-          eyes?: number;
-          heart?: number;
-          hooray?: number;
-          laugh?: number;
-          rocket?: number;
-          total_count?: number;
-          url?: string;
-        };
-        repository_url?: string;
-        /** @enum {string} */
-        state: "open" | "converting" | "transferring";
-        timeline_url?: string;
-        title?: string;
-        updated_at?: string;
-        user?: {
-          avatar_url?: string;
-          events_url?: string;
-          followers_url?: string;
-          following_url?: string;
-          gists_url?: string;
-          gravatar_id?: string;
-          html_url?: string;
-          id?: number;
-          login?: string;
-          node_id?: string;
-          organizations_url?: string;
-          received_events_url?: string;
-          repos_url?: string;
-          site_admin?: boolean;
-          starred_url?: string;
-          subscriptions_url?: string;
-          type?: string;
-          url?: string;
-        };
-      };
+      discussion: components["schemas"]["discussion"];
       enterprise?: components["schemas"]["enterprise-webhooks"];
       installation?: components["schemas"]["simple-installation"];
       organization?: components["schemas"]["organization-simple-webhooks"];
@@ -17609,6 +17409,10 @@ export interface components {
       action: "demilestoned";
       enterprise?: components["schemas"]["enterprise-webhooks"];
       installation?: components["schemas"]["simple-installation"];
+      /**
+       * Issue
+       * @description The [issue](https://docs.github.com/enterprise-server@3.12/rest/issues/issues#get-an-issue) itself.
+       */
       issue: {
         /** @enum {string|null} */
         active_lock_reason:
@@ -17720,7 +17524,7 @@ export interface components {
         html_url: string;
         /** Format: int64 */
         id: number;
-        labels?: {
+        labels?: ({
           /** @description 6-character hex code, without the leading #, identifying the color */
           color: string;
           default: boolean;
@@ -17734,7 +17538,7 @@ export interface components {
            * @description URL for the label
            */
           url: string;
-        }[];
+        } | null)[];
         /** Format: uri-template */
         labels_url: string;
         locked?: boolean;
@@ -18073,134 +17877,6 @@ export interface components {
           /** Format: uri */
           url?: string;
         } | null;
-      } & {
-        active_lock_reason?: string | null;
-        assignee?: Record<string, never> | null;
-        assignees?: (Record<string, never> | null)[];
-        author_association?: string;
-        body?: string | null;
-        closed_at?: string | null;
-        comments?: number;
-        comments_url?: string;
-        created_at?: string;
-        events_url?: string;
-        html_url?: string;
-        id?: number;
-        labels?: (Record<string, never> | null)[];
-        labels_url?: string;
-        locked?: boolean;
-        /**
-         * Milestone
-         * @description A collection of related issues and pull requests.
-         */
-        milestone: {
-          /** Format: date-time */
-          closed_at: string | null;
-          closed_issues: number;
-          /** Format: date-time */
-          created_at: string;
-          /** User */
-          creator: {
-            /** Format: uri */
-            avatar_url?: string;
-            deleted?: boolean;
-            email?: string | null;
-            /** Format: uri-template */
-            events_url?: string;
-            /** Format: uri */
-            followers_url?: string;
-            /** Format: uri-template */
-            following_url?: string;
-            /** Format: uri-template */
-            gists_url?: string;
-            gravatar_id?: string;
-            /** Format: uri */
-            html_url?: string;
-            id: number;
-            login: string;
-            name?: string;
-            node_id?: string;
-            /** Format: uri */
-            organizations_url?: string;
-            /** Format: uri */
-            received_events_url?: string;
-            /** Format: uri */
-            repos_url?: string;
-            site_admin?: boolean;
-            /** Format: uri-template */
-            starred_url?: string;
-            /** Format: uri */
-            subscriptions_url?: string;
-            /** @enum {string} */
-            type?: "Bot" | "User" | "Organization" | "Mannequin";
-            /** Format: uri */
-            url?: string;
-          } | null;
-          description: string | null;
-          /** Format: date-time */
-          due_on: string | null;
-          /** Format: uri */
-          html_url: string;
-          id: number;
-          /** Format: uri */
-          labels_url: string;
-          node_id: string;
-          /** @description The number of the milestone. */
-          number: number;
-          open_issues: number;
-          /**
-           * @description The state of the milestone.
-           * @enum {string}
-           */
-          state: "open" | "closed";
-          /** @description The title of the milestone. */
-          title: string;
-          /** Format: date-time */
-          updated_at: string;
-          /** Format: uri */
-          url: string;
-        } | null;
-        node_id?: string;
-        number?: number;
-        performed_via_github_app?: Record<string, never> | null;
-        reactions?: {
-          "+1"?: number;
-          "-1"?: number;
-          confused?: number;
-          eyes?: number;
-          heart?: number;
-          hooray?: number;
-          laugh?: number;
-          rocket?: number;
-          total_count?: number;
-          url?: string;
-        };
-        repository_url?: string;
-        state?: string;
-        timeline_url?: string;
-        title?: string;
-        updated_at?: string;
-        url?: string;
-        user?: {
-          avatar_url?: string;
-          events_url?: string;
-          followers_url?: string;
-          following_url?: string;
-          gists_url?: string;
-          gravatar_id?: string;
-          html_url?: string;
-          id?: number;
-          login?: string;
-          node_id?: string;
-          organizations_url?: string;
-          received_events_url?: string;
-          repos_url?: string;
-          site_admin?: boolean;
-          starred_url?: string;
-          subscriptions_url?: string;
-          type?: string;
-          url?: string;
-        };
       };
       /**
        * Milestone
@@ -19289,6 +18965,10 @@ export interface components {
       action: "locked";
       enterprise?: components["schemas"]["enterprise-webhooks"];
       installation?: components["schemas"]["simple-installation"];
+      /**
+       * Issue
+       * @description The [issue](https://docs.github.com/enterprise-server@3.12/rest/issues/issues#get-an-issue) itself.
+       */
       issue: {
         /** @enum {string|null} */
         active_lock_reason:
@@ -19400,7 +19080,7 @@ export interface components {
         html_url: string;
         /** Format: int64 */
         id: number;
-        labels?: {
+        labels?: ({
           /** @description 6-character hex code, without the leading #, identifying the color */
           color: string;
           default: boolean;
@@ -19414,10 +19094,11 @@ export interface components {
            * @description URL for the label
            */
           url: string;
-        }[];
+        } | null)[];
         /** Format: uri-template */
         labels_url: string;
-        locked?: boolean;
+        /** @enum {boolean} */
+        locked: true;
         /**
          * Milestone
          * @description A collection of related issues and pull requests.
@@ -19755,71 +19436,6 @@ export interface components {
           /** Format: uri */
           url?: string;
         } | null;
-      } & {
-        /** @enum {string|null} */
-        active_lock_reason:
-          | "resolved"
-          | "off-topic"
-          | "too heated"
-          | "spam"
-          | null;
-        assignee?: Record<string, never> | null;
-        assignees?: (Record<string, never> | null)[];
-        author_association?: string;
-        body?: string | null;
-        closed_at?: string | null;
-        comments?: number;
-        comments_url?: string;
-        created_at?: string;
-        events_url?: string;
-        html_url?: string;
-        id?: number;
-        labels?: (Record<string, never> | null)[];
-        labels_url?: string;
-        /** @enum {boolean} */
-        locked: true;
-        milestone?: Record<string, never> | null;
-        node_id?: string;
-        number?: number;
-        performed_via_github_app?: Record<string, never> | null;
-        reactions?: {
-          "+1"?: number;
-          "-1"?: number;
-          confused?: number;
-          eyes?: number;
-          heart?: number;
-          hooray?: number;
-          laugh?: number;
-          rocket?: number;
-          total_count?: number;
-          url?: string;
-        };
-        repository_url?: string;
-        state?: string;
-        timeline_url?: string;
-        title?: string;
-        updated_at?: string;
-        url?: string;
-        user?: {
-          avatar_url?: string;
-          events_url?: string;
-          followers_url?: string;
-          following_url?: string;
-          gists_url?: string;
-          gravatar_id?: string;
-          html_url?: string;
-          id?: number;
-          login?: string;
-          node_id?: string;
-          organizations_url?: string;
-          received_events_url?: string;
-          repos_url?: string;
-          site_admin?: boolean;
-          starred_url?: string;
-          subscriptions_url?: string;
-          type?: string;
-          url?: string;
-        };
       };
       organization?: components["schemas"]["organization-simple-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
@@ -19831,6 +19447,10 @@ export interface components {
       action: "milestoned";
       enterprise?: components["schemas"]["enterprise-webhooks"];
       installation?: components["schemas"]["simple-installation"];
+      /**
+       * Issue
+       * @description The [issue](https://docs.github.com/enterprise-server@3.12/rest/issues/issues#get-an-issue) itself.
+       */
       issue: {
         /** @enum {string|null} */
         active_lock_reason:
@@ -19942,7 +19562,7 @@ export interface components {
         html_url: string;
         /** Format: int64 */
         id: number;
-        labels?: {
+        labels?: ({
           /** @description 6-character hex code, without the leading #, identifying the color */
           color: string;
           default: boolean;
@@ -19956,7 +19576,7 @@ export interface components {
            * @description URL for the label
            */
           url: string;
-        }[];
+        } | null)[];
         /** Format: uri-template */
         labels_url: string;
         locked?: boolean;
@@ -20296,134 +19916,6 @@ export interface components {
           /** Format: uri */
           url?: string;
         } | null;
-      } & {
-        active_lock_reason?: string | null;
-        assignee?: Record<string, never> | null;
-        assignees?: (Record<string, never> | null)[];
-        author_association?: string;
-        body?: string | null;
-        closed_at?: string | null;
-        comments?: number;
-        comments_url?: string;
-        created_at?: string;
-        events_url?: string;
-        html_url?: string;
-        id?: number;
-        labels?: (Record<string, never> | null)[];
-        labels_url?: string;
-        locked?: boolean;
-        /**
-         * Milestone
-         * @description A collection of related issues and pull requests.
-         */
-        milestone: {
-          /** Format: date-time */
-          closed_at: string | null;
-          closed_issues: number;
-          /** Format: date-time */
-          created_at: string;
-          /** User */
-          creator: {
-            /** Format: uri */
-            avatar_url?: string;
-            deleted?: boolean;
-            email?: string | null;
-            /** Format: uri-template */
-            events_url?: string;
-            /** Format: uri */
-            followers_url?: string;
-            /** Format: uri-template */
-            following_url?: string;
-            /** Format: uri-template */
-            gists_url?: string;
-            gravatar_id?: string;
-            /** Format: uri */
-            html_url?: string;
-            id: number;
-            login: string;
-            name?: string;
-            node_id?: string;
-            /** Format: uri */
-            organizations_url?: string;
-            /** Format: uri */
-            received_events_url?: string;
-            /** Format: uri */
-            repos_url?: string;
-            site_admin?: boolean;
-            /** Format: uri-template */
-            starred_url?: string;
-            /** Format: uri */
-            subscriptions_url?: string;
-            /** @enum {string} */
-            type?: "Bot" | "User" | "Organization" | "Mannequin";
-            /** Format: uri */
-            url?: string;
-          } | null;
-          description: string | null;
-          /** Format: date-time */
-          due_on: string | null;
-          /** Format: uri */
-          html_url: string;
-          id: number;
-          /** Format: uri */
-          labels_url: string;
-          node_id: string;
-          /** @description The number of the milestone. */
-          number: number;
-          open_issues: number;
-          /**
-           * @description The state of the milestone.
-           * @enum {string}
-           */
-          state: "open" | "closed";
-          /** @description The title of the milestone. */
-          title: string;
-          /** Format: date-time */
-          updated_at: string;
-          /** Format: uri */
-          url: string;
-        };
-        node_id?: string;
-        number?: number;
-        performed_via_github_app?: Record<string, never> | null;
-        reactions?: {
-          "+1"?: number;
-          "-1"?: number;
-          confused?: number;
-          eyes?: number;
-          heart?: number;
-          hooray?: number;
-          laugh?: number;
-          rocket?: number;
-          total_count?: number;
-          url?: string;
-        };
-        repository_url?: string;
-        state?: string;
-        timeline_url?: string;
-        title?: string;
-        updated_at?: string;
-        url?: string;
-        user?: {
-          avatar_url?: string;
-          events_url?: string;
-          followers_url?: string;
-          following_url?: string;
-          gists_url?: string;
-          gravatar_id?: string;
-          html_url?: string;
-          id?: number;
-          login?: string;
-          node_id?: string;
-          organizations_url?: string;
-          received_events_url?: string;
-          repos_url?: string;
-          site_admin?: boolean;
-          starred_url?: string;
-          subscriptions_url?: string;
-          type?: string;
-          url?: string;
-        };
       };
       /**
        * Milestone
@@ -22177,6 +21669,10 @@ export interface components {
       action: "reopened";
       enterprise?: components["schemas"]["enterprise-webhooks"];
       installation?: components["schemas"]["simple-installation"];
+      /**
+       * Issue
+       * @description The [issue](https://docs.github.com/enterprise-server@3.12/rest/issues/issues#get-an-issue) itself.
+       */
       issue: {
         /** @enum {string|null} */
         active_lock_reason:
@@ -22288,7 +21784,7 @@ export interface components {
         html_url: string;
         /** Format: int64 */
         id: number;
-        labels?: {
+        labels?: ({
           /** @description 6-character hex code, without the leading #, identifying the color */
           color: string;
           default: boolean;
@@ -22302,7 +21798,7 @@ export interface components {
            * @description URL for the label
            */
           url: string;
-        }[];
+        } | null)[];
         /** Format: uri-template */
         labels_url: string;
         locked?: boolean;
@@ -22593,7 +22089,7 @@ export interface components {
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
          */
-        state?: "open" | "closed";
+        state: "open" | "closed";
         state_reason?: string | null;
         /** Format: uri */
         timeline_url?: string;
@@ -22643,65 +22139,6 @@ export interface components {
           /** Format: uri */
           url?: string;
         } | null;
-      } & {
-        active_lock_reason?: string | null;
-        assignee?: Record<string, never> | null;
-        assignees?: (Record<string, never> | null)[];
-        author_association?: string;
-        body?: string | null;
-        closed_at?: string | null;
-        comments?: number;
-        comments_url?: string;
-        created_at?: string;
-        events_url?: string;
-        html_url?: string;
-        id?: number;
-        labels?: (Record<string, never> | null)[];
-        labels_url?: string;
-        locked?: boolean;
-        milestone?: Record<string, never> | null;
-        node_id?: string;
-        number?: number;
-        performed_via_github_app?: Record<string, never> | null;
-        reactions?: {
-          "+1"?: number;
-          "-1"?: number;
-          confused?: number;
-          eyes?: number;
-          heart?: number;
-          hooray?: number;
-          laugh?: number;
-          rocket?: number;
-          total_count?: number;
-          url?: string;
-        };
-        repository_url?: string;
-        /** @enum {string} */
-        state: "open" | "closed";
-        timeline_url?: string;
-        title?: string;
-        updated_at?: string;
-        url?: string;
-        user?: {
-          avatar_url?: string;
-          events_url?: string;
-          followers_url?: string;
-          following_url?: string;
-          gists_url?: string;
-          gravatar_id?: string;
-          html_url?: string;
-          id?: number;
-          login?: string;
-          node_id?: string;
-          organizations_url?: string;
-          received_events_url?: string;
-          repos_url?: string;
-          site_admin?: boolean;
-          starred_url?: string;
-          subscriptions_url?: string;
-          type?: string;
-          url?: string;
-        };
       };
       organization?: components["schemas"]["organization-simple-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
@@ -24923,6 +24360,10 @@ export interface components {
       action: "unlocked";
       enterprise?: components["schemas"]["enterprise-webhooks"];
       installation?: components["schemas"]["simple-installation"];
+      /**
+       * Issue
+       * @description The [issue](https://docs.github.com/enterprise-server@3.12/rest/issues/issues#get-an-issue) itself.
+       */
       issue: {
         /** @enum {string|null} */
         active_lock_reason:
@@ -25034,7 +24475,7 @@ export interface components {
         html_url: string;
         /** Format: int64 */
         id: number;
-        labels?: {
+        labels?: ({
           /** @description 6-character hex code, without the leading #, identifying the color */
           color: string;
           default: boolean;
@@ -25048,10 +24489,11 @@ export interface components {
            * @description URL for the label
            */
           url: string;
-        }[];
+        } | null)[];
         /** Format: uri-template */
         labels_url: string;
-        locked?: boolean;
+        /** @enum {boolean} */
+        locked: false;
         /**
          * Milestone
          * @description A collection of related issues and pull requests.
@@ -25387,65 +24829,6 @@ export interface components {
           /** Format: uri */
           url?: string;
         } | null;
-      } & {
-        active_lock_reason: null;
-        assignee?: Record<string, never> | null;
-        assignees?: (Record<string, never> | null)[];
-        author_association?: string;
-        body?: string | null;
-        closed_at?: string | null;
-        comments?: number;
-        comments_url?: string;
-        created_at?: string;
-        events_url?: string;
-        html_url?: string;
-        id?: number;
-        labels?: (Record<string, never> | null)[];
-        labels_url?: string;
-        /** @enum {boolean} */
-        locked: false;
-        milestone?: Record<string, never> | null;
-        node_id?: string;
-        number?: number;
-        performed_via_github_app?: null;
-        reactions?: {
-          "+1"?: number;
-          "-1"?: number;
-          confused?: number;
-          eyes?: number;
-          heart?: number;
-          hooray?: number;
-          laugh?: number;
-          rocket?: number;
-          total_count?: number;
-          url?: string;
-        };
-        repository_url?: string;
-        state?: string;
-        timeline_url?: string;
-        title?: string;
-        updated_at?: string;
-        url?: string;
-        user?: {
-          avatar_url?: string;
-          events_url?: string;
-          followers_url?: string;
-          following_url?: string;
-          gists_url?: string;
-          gravatar_id?: string;
-          html_url?: string;
-          id?: number;
-          login?: string;
-          node_id?: string;
-          organizations_url?: string;
-          received_events_url?: string;
-          repos_url?: string;
-          site_admin?: boolean;
-          starred_url?: string;
-          subscriptions_url?: string;
-          type?: string;
-          url?: string;
-        };
       };
       organization?: components["schemas"]["organization-simple-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
@@ -32855,57 +32238,58 @@ export interface components {
       /** @description The pull request number. */
       number: number;
       organization?: components["schemas"]["organization-simple-webhooks"];
-      pull_request: components["schemas"]["pull-request"] & {
-        /**
-         * @description Whether to allow auto-merge for pull requests.
-         * @default false
-         */
-        allow_auto_merge?: boolean;
-        /** @description Whether to allow updating the pull request's branch. */
-        allow_update_branch?: boolean;
-        /**
-         * @description Whether to delete head branches when pull requests are merged.
-         * @default false
-         */
-        delete_branch_on_merge?: boolean;
-        /**
-         * @description The default value for a merge commit message.
-         *     - `PR_TITLE` - default to the pull request's title.
-         *     - `PR_BODY` - default to the pull request's body.
-         *     - `BLANK` - default to a blank commit message.
-         * @enum {string}
-         */
-        merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
-        /**
-         * @description The default value for a merge commit title.
-         *     - `PR_TITLE` - default to the pull request's title.
-         *     - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., "Merge pull request #123 from branch-name").
-         * @enum {string}
-         */
-        merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
-        /**
-         * @description The default value for a squash merge commit message:
-         *     - `PR_BODY` - default to the pull request's body.
-         *     - `COMMIT_MESSAGES` - default to the branch's commit messages.
-         *     - `BLANK` - default to a blank commit message.
-         * @enum {string}
-         */
-        squash_merge_commit_message?: "PR_BODY" | "COMMIT_MESSAGES" | "BLANK";
-        /**
-         * @description The default value for a squash merge commit title:
-         *     - `PR_TITLE` - default to the pull request's title.
-         *     - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
-         * @enum {string}
-         */
-        squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
-        /**
-         * @description Whether a squash merge commit can use the pull request title as default. **This property has been deprecated. Please use `squash_merge_commit_title` instead.**
-         * @default false
-         */
-        use_squash_pr_title_as_default?: boolean;
-      };
+      pull_request: components["schemas"]["pull-request-webhook"];
       repository: components["schemas"]["repository-webhooks"];
       sender: components["schemas"]["simple-user-webhooks"];
+    };
+    "pull-request-webhook": components["schemas"]["pull-request"] & {
+      /**
+       * @description Whether to allow auto-merge for pull requests.
+       * @default false
+       */
+      allow_auto_merge?: boolean;
+      /** @description Whether to allow updating the pull request's branch. */
+      allow_update_branch?: boolean;
+      /**
+       * @description Whether to delete head branches when pull requests are merged.
+       * @default false
+       */
+      delete_branch_on_merge?: boolean;
+      /**
+       * @description The default value for a merge commit message.
+       *     - `PR_TITLE` - default to the pull request's title.
+       *     - `PR_BODY` - default to the pull request's body.
+       *     - `BLANK` - default to a blank commit message.
+       * @enum {string}
+       */
+      merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
+      /**
+       * @description The default value for a merge commit title.
+       *     - `PR_TITLE` - default to the pull request's title.
+       *     - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., "Merge pull request #123 from branch-name").
+       * @enum {string}
+       */
+      merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
+      /**
+       * @description The default value for a squash merge commit message:
+       *     - `PR_BODY` - default to the pull request's body.
+       *     - `COMMIT_MESSAGES` - default to the branch's commit messages.
+       *     - `BLANK` - default to a blank commit message.
+       * @enum {string}
+       */
+      squash_merge_commit_message?: "PR_BODY" | "COMMIT_MESSAGES" | "BLANK";
+      /**
+       * @description The default value for a squash merge commit title:
+       *     - `PR_TITLE` - default to the pull request's title.
+       *     - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+       * @enum {string}
+       */
+      squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
+      /**
+       * @description Whether a squash merge commit can use the pull request title as default. **This property has been deprecated. Please use `squash_merge_commit_title` instead.**
+       * @default false
+       */
+      use_squash_pr_title_as_default?: boolean;
     };
     /** pull_request converted_to_draft event */
     "webhook-pull-request-converted-to-draft": {
@@ -32916,55 +32300,7 @@ export interface components {
       /** @description The pull request number. */
       number: number;
       organization?: components["schemas"]["organization-simple-webhooks"];
-      pull_request: components["schemas"]["pull-request"] & {
-        /**
-         * @description Whether to allow auto-merge for pull requests.
-         * @default false
-         */
-        allow_auto_merge?: boolean;
-        /** @description Whether to allow updating the pull request's branch. */
-        allow_update_branch?: boolean;
-        /**
-         * @description Whether to delete head branches when pull requests are merged.
-         * @default false
-         */
-        delete_branch_on_merge?: boolean;
-        /**
-         * @description The default value for a merge commit message.
-         *     - `PR_TITLE` - default to the pull request's title.
-         *     - `PR_BODY` - default to the pull request's body.
-         *     - `BLANK` - default to a blank commit message.
-         * @enum {string}
-         */
-        merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
-        /**
-         * @description The default value for a merge commit title.
-         *     - `PR_TITLE` - default to the pull request's title.
-         *     - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., "Merge pull request #123 from branch-name").
-         * @enum {string}
-         */
-        merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
-        /**
-         * @description The default value for a squash merge commit message:
-         *     - `PR_BODY` - default to the pull request's body.
-         *     - `COMMIT_MESSAGES` - default to the branch's commit messages.
-         *     - `BLANK` - default to a blank commit message.
-         * @enum {string}
-         */
-        squash_merge_commit_message?: "PR_BODY" | "COMMIT_MESSAGES" | "BLANK";
-        /**
-         * @description The default value for a squash merge commit title:
-         *     - `PR_TITLE` - default to the pull request's title.
-         *     - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
-         * @enum {string}
-         */
-        squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
-        /**
-         * @description Whether a squash merge commit can use the pull request title as default. **This property has been deprecated. Please use `squash_merge_commit_title` instead.**
-         * @default false
-         */
-        use_squash_pr_title_as_default?: boolean;
-      };
+      pull_request: components["schemas"]["pull-request-webhook"];
       repository: components["schemas"]["repository-webhooks"];
       sender: components["schemas"]["simple-user-webhooks"];
     };
@@ -34207,55 +33543,7 @@ export interface components {
       /** @description The pull request number. */
       number: number;
       organization?: components["schemas"]["organization-simple-webhooks"];
-      pull_request: components["schemas"]["pull-request"] & {
-        /**
-         * @description Whether to allow auto-merge for pull requests.
-         * @default false
-         */
-        allow_auto_merge?: boolean;
-        /** @description Whether to allow updating the pull request's branch. */
-        allow_update_branch?: boolean;
-        /**
-         * @description Whether to delete head branches when pull requests are merged.
-         * @default false
-         */
-        delete_branch_on_merge?: boolean;
-        /**
-         * @description The default value for a merge commit message.
-         *     - `PR_TITLE` - default to the pull request's title.
-         *     - `PR_BODY` - default to the pull request's body.
-         *     - `BLANK` - default to a blank commit message.
-         * @enum {string}
-         */
-        merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
-        /**
-         * @description The default value for a merge commit title.
-         *     - `PR_TITLE` - default to the pull request's title.
-         *     - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., "Merge pull request #123 from branch-name").
-         * @enum {string}
-         */
-        merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
-        /**
-         * @description The default value for a squash merge commit message:
-         *     - `PR_BODY` - default to the pull request's body.
-         *     - `COMMIT_MESSAGES` - default to the branch's commit messages.
-         *     - `BLANK` - default to a blank commit message.
-         * @enum {string}
-         */
-        squash_merge_commit_message?: "PR_BODY" | "COMMIT_MESSAGES" | "BLANK";
-        /**
-         * @description The default value for a squash merge commit title:
-         *     - `PR_TITLE` - default to the pull request's title.
-         *     - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
-         * @enum {string}
-         */
-        squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
-        /**
-         * @description Whether a squash merge commit can use the pull request title as default. **This property has been deprecated. Please use `squash_merge_commit_title` instead.
-         * @default false
-         */
-        use_squash_pr_title_as_default?: boolean;
-      };
+      pull_request: components["schemas"]["pull-request-webhook"];
       repository: components["schemas"]["repository-webhooks"];
       sender?: components["schemas"]["simple-user-webhooks"];
     };
@@ -37917,55 +37205,7 @@ export interface components {
       /** @description The pull request number. */
       number: number;
       organization?: components["schemas"]["organization-simple-webhooks"];
-      pull_request: components["schemas"]["pull-request"] & {
-        /**
-         * @description Whether to allow auto-merge for pull requests.
-         * @default false
-         */
-        allow_auto_merge?: boolean;
-        /** @description Whether to allow updating the pull request's branch. */
-        allow_update_branch?: boolean;
-        /**
-         * @description Whether to delete head branches when pull requests are merged.
-         * @default false
-         */
-        delete_branch_on_merge?: boolean;
-        /**
-         * @description The default value for a merge commit message.
-         *     - `PR_TITLE` - default to the pull request's title.
-         *     - `PR_BODY` - default to the pull request's body.
-         *     - `BLANK` - default to a blank commit message.
-         * @enum {string}
-         */
-        merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
-        /**
-         * @description The default value for a merge commit title.
-         *     - `PR_TITLE` - default to the pull request's title.
-         *     - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
-         * @enum {string}
-         */
-        merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
-        /**
-         * @description The default value for a squash merge commit message:
-         *     - `PR_BODY` - default to the pull request's body.
-         *     - `COMMIT_MESSAGES` - default to the branch's commit messages.
-         *     - `BLANK` - default to a blank commit message.
-         * @enum {string}
-         */
-        squash_merge_commit_message?: "PR_BODY" | "COMMIT_MESSAGES" | "BLANK";
-        /**
-         * @description The default value for a squash merge commit title:
-         *     - `PR_TITLE` - default to the pull request's title.
-         *     - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
-         * @enum {string}
-         */
-        squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
-        /**
-         * @description Whether a squash merge commit can use the pull request title as default. **This property has been deprecated. Please use `squash_merge_commit_title` instead.**
-         * @default false
-         */
-        use_squash_pr_title_as_default?: boolean;
-      };
+      pull_request: components["schemas"]["pull-request-webhook"];
       repository: components["schemas"]["repository-webhooks"];
       sender: components["schemas"]["simple-user-webhooks"];
     };
@@ -37978,55 +37218,7 @@ export interface components {
       /** @description The pull request number. */
       number: number;
       organization?: components["schemas"]["organization-simple-webhooks"];
-      pull_request: components["schemas"]["pull-request"] & {
-        /**
-         * @description Whether to allow auto-merge for pull requests.
-         * @default false
-         */
-        allow_auto_merge?: boolean;
-        /** @description Whether to allow updating the pull request's branch. */
-        allow_update_branch?: boolean;
-        /**
-         * @description Whether to delete head branches when pull requests are merged.
-         * @default false
-         */
-        delete_branch_on_merge?: boolean;
-        /**
-         * @description The default value for a merge commit message.
-         *     - `PR_TITLE` - default to the pull request's title.
-         *     - `PR_BODY` - default to the pull request's body.
-         *     - `BLANK` - default to a blank commit message.
-         * @enum {string}
-         */
-        merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
-        /**
-         * @description The default value for a merge commit title.
-         *     - `PR_TITLE` - default to the pull request's title.
-         *     - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., "Merge pull request #123 from branch-name").
-         * @enum {string}
-         */
-        merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
-        /**
-         * @description The default value for a squash merge commit message:
-         *     - `PR_BODY` - default to the pull request's body.
-         *     - `COMMIT_MESSAGES` - default to the branch's commit messages.
-         *     - `BLANK` - default to a blank commit message.
-         * @enum {string}
-         */
-        squash_merge_commit_message?: "PR_BODY" | "COMMIT_MESSAGES" | "BLANK";
-        /**
-         * @description The default value for a squash merge commit title:
-         *     - `PR_TITLE` - default to the pull request's title.
-         *     - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
-         * @enum {string}
-         */
-        squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
-        /**
-         * @description Whether a squash merge commit can use the pull request title as default. **This property has been deprecated. Please use `squash_merge_commit_title` instead.**
-         * @default false
-         */
-        use_squash_pr_title_as_default?: boolean;
-      };
+      pull_request: components["schemas"]["pull-request-webhook"];
       repository: components["schemas"]["repository-webhooks"];
       sender: components["schemas"]["simple-user-webhooks"];
     };
@@ -38039,55 +37231,7 @@ export interface components {
       /** @description The pull request number. */
       number: number;
       organization?: components["schemas"]["organization-simple-webhooks"];
-      pull_request: components["schemas"]["pull-request"] & {
-        /**
-         * @description Whether to allow auto-merge for pull requests.
-         * @default false
-         */
-        allow_auto_merge?: boolean;
-        /** @description Whether to allow updating the pull request's branch. */
-        allow_update_branch?: boolean;
-        /**
-         * @description Whether to delete head branches when pull requests are merged.
-         * @default false
-         */
-        delete_branch_on_merge?: boolean;
-        /**
-         * @description The default value for a merge commit message.
-         *     - `PR_TITLE` - default to the pull request's title.
-         *     - `PR_BODY` - default to the pull request's body.
-         *     - `BLANK` - default to a blank commit message.
-         * @enum {string}
-         */
-        merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
-        /**
-         * @description The default value for a merge commit title.
-         *     - `PR_TITLE` - default to the pull request's title.
-         *     - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., "Merge pull request #123 from branch-name").
-         * @enum {string}
-         */
-        merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
-        /**
-         * @description The default value for a squash merge commit message:
-         *     - `PR_BODY` - default to the pull request's body.
-         *     - `COMMIT_MESSAGES` - default to the branch's commit messages.
-         *     - `BLANK` - default to a blank commit message.
-         * @enum {string}
-         */
-        squash_merge_commit_message?: "PR_BODY" | "COMMIT_MESSAGES" | "BLANK";
-        /**
-         * @description The default value for a squash merge commit title:
-         *     - `PR_TITLE` - default to the pull request's title.
-         *     - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
-         * @enum {string}
-         */
-        squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
-        /**
-         * @description Whether a squash merge commit can use the pull request title as default. **This property has been deprecated. Please use `squash_merge_commit_title` instead.**
-         * @default false
-         */
-        use_squash_pr_title_as_default?: boolean;
-      };
+      pull_request: components["schemas"]["pull-request-webhook"];
       repository: components["schemas"]["repository-webhooks"];
       sender: components["schemas"]["simple-user-webhooks"];
     };
@@ -59157,8 +58301,12 @@ export interface components {
       enterprise?: components["schemas"]["enterprise-webhooks"];
       installation?: components["schemas"]["simple-installation"];
       organization?: components["schemas"]["organization-simple-webhooks"];
+      /**
+       * Release
+       * @description The [release](https://docs.github.com/enterprise-server@3.12/rest/releases/releases/#get-a-release) object.
+       */
       release: {
-        assets: {
+        assets: ({
           /** Format: uri */
           browser_download_url: string;
           content_type: string;
@@ -59217,7 +58365,7 @@ export interface components {
           } | null;
           /** Format: uri */
           url: string;
-        }[];
+        } | null)[];
         /** Format: uri */
         assets_url: string;
         /** User */
@@ -59269,8 +58417,11 @@ export interface components {
         id: number;
         name: string | null;
         node_id: string;
-        /** @description Whether the release is identified as a prerelease or a full release. */
-        prerelease: boolean;
+        /**
+         * @description Whether the release is identified as a prerelease or a full release.
+         * @enum {boolean}
+         */
+        prerelease: true;
         /** Format: date-time */
         published_at: string | null;
         /** Reactions */
@@ -59299,48 +58450,6 @@ export interface components {
         url: string;
         /** Format: uri */
         zipball_url: string | null;
-      } & {
-        assets?: (Record<string, never> | null)[];
-        assets_url?: string;
-        author?: {
-          avatar_url?: string;
-          events_url?: string;
-          followers_url?: string;
-          following_url?: string;
-          gists_url?: string;
-          gravatar_id?: string;
-          html_url?: string;
-          id?: number;
-          login?: string;
-          node_id?: string;
-          organizations_url?: string;
-          received_events_url?: string;
-          repos_url?: string;
-          site_admin?: boolean;
-          starred_url?: string;
-          subscriptions_url?: string;
-          type?: string;
-          url?: string;
-        };
-        body?: string | null;
-        created_at?: string;
-        draft?: boolean;
-        html_url?: string;
-        id?: number;
-        name?: string | null;
-        node_id?: string;
-        /**
-         * @description Whether the release is identified as a prerelease or a full release.
-         * @enum {boolean}
-         */
-        prerelease: true;
-        published_at?: string | null;
-        tag_name?: string;
-        tarball_url?: string | null;
-        target_commitish?: string;
-        upload_url?: string;
-        url?: string;
-        zipball_url?: string | null;
       };
       repository: components["schemas"]["repository-webhooks"];
       sender?: components["schemas"]["simple-user-webhooks"];
@@ -59352,8 +58461,12 @@ export interface components {
       enterprise?: components["schemas"]["enterprise-webhooks"];
       installation?: components["schemas"]["simple-installation"];
       organization?: components["schemas"]["organization-simple-webhooks"];
+      /**
+       * Release
+       * @description The [release](https://docs.github.com/enterprise-server@3.12/rest/releases/releases/#get-a-release) object.
+       */
       release: {
-        assets: {
+        assets: ({
           /** Format: uri */
           browser_download_url: string;
           content_type: string;
@@ -59412,7 +58525,7 @@ export interface components {
           } | null;
           /** Format: uri */
           url: string;
-        }[];
+        } | null)[];
         /** Format: uri */
         assets_url: string;
         /** User */
@@ -59494,45 +58607,6 @@ export interface components {
         url: string;
         /** Format: uri */
         zipball_url: string | null;
-      } & {
-        assets?: (Record<string, never> | null)[];
-        assets_url?: string;
-        author?: {
-          avatar_url?: string;
-          events_url?: string;
-          followers_url?: string;
-          following_url?: string;
-          gists_url?: string;
-          gravatar_id?: string;
-          html_url?: string;
-          id?: number;
-          login?: string;
-          node_id?: string;
-          organizations_url?: string;
-          received_events_url?: string;
-          repos_url?: string;
-          site_admin?: boolean;
-          starred_url?: string;
-          subscriptions_url?: string;
-          type?: string;
-          url?: string;
-        };
-        body?: string | null;
-        created_at?: string;
-        draft?: boolean;
-        html_url?: string;
-        id?: number;
-        name?: string | null;
-        node_id?: string;
-        prerelease?: boolean;
-        /** Format: date-time */
-        published_at: string | null;
-        tag_name?: string;
-        tarball_url?: string | null;
-        target_commitish?: string;
-        upload_url?: string;
-        url?: string;
-        zipball_url?: string | null;
       };
       repository: components["schemas"]["repository-webhooks"];
       sender?: components["schemas"]["simple-user-webhooks"];
@@ -59701,8 +58775,12 @@ export interface components {
       enterprise?: components["schemas"]["enterprise-webhooks"];
       installation?: components["schemas"]["simple-installation"];
       organization?: components["schemas"]["organization-simple-webhooks"];
+      /**
+       * Release
+       * @description The [release](https://docs.github.com/enterprise-server@3.12/rest/releases/releases/#get-a-release) object.
+       */
       release: {
-        assets: {
+        assets: ({
           /** Format: uri */
           browser_download_url: string;
           content_type: string;
@@ -59761,7 +58839,7 @@ export interface components {
           } | null;
           /** Format: uri */
           url: string;
-        }[];
+        } | null)[];
         /** Format: uri */
         assets_url: string;
         /** User */
@@ -59843,44 +58921,6 @@ export interface components {
         url: string;
         /** Format: uri */
         zipball_url: string | null;
-      } & {
-        assets?: (Record<string, never> | null)[];
-        assets_url?: string;
-        author?: {
-          avatar_url?: string;
-          events_url?: string;
-          followers_url?: string;
-          following_url?: string;
-          gists_url?: string;
-          gravatar_id?: string;
-          html_url?: string;
-          id?: number;
-          login?: string;
-          node_id?: string;
-          organizations_url?: string;
-          received_events_url?: string;
-          repos_url?: string;
-          site_admin?: boolean;
-          starred_url?: string;
-          subscriptions_url?: string;
-          type?: string;
-          url?: string;
-        };
-        body?: string | null;
-        created_at?: string;
-        draft?: boolean;
-        html_url?: string;
-        id?: number;
-        name?: string | null;
-        node_id?: string;
-        prerelease?: boolean;
-        published_at: string | null;
-        tag_name?: string;
-        tarball_url?: string | null;
-        target_commitish?: string;
-        upload_url?: string;
-        url?: string;
-        zipball_url?: string | null;
       };
       repository: components["schemas"]["repository-webhooks"];
       sender?: components["schemas"]["simple-user-webhooks"];
@@ -60094,10 +59134,10 @@ export interface components {
        * @enum {string}
        */
       actor_type:
-        | "RepositoryRole"
-        | "Team"
         | "Integration"
-        | "OrganizationAdmin";
+        | "OrganizationAdmin"
+        | "RepositoryRole"
+        | "Team";
       /**
        * @description When the specified actor can bypass the ruleset. `pull_request` means that an actor can only bypass rules on pull requests.
        * @enum {string}
@@ -60570,6 +59610,10 @@ export interface components {
     "webhook-repository-vulnerability-alert-create": {
       /** @enum {string} */
       action: "create";
+      /**
+       * Repository Vulnerability Alert Alert
+       * @description The security alert of the vulnerable dependency.
+       */
       alert: {
         affected_package_name: string;
         affected_range: string;
@@ -60625,20 +59669,6 @@ export interface components {
         node_id: string;
         number: number;
         severity: string;
-        /** @enum {string} */
-        state: "open" | "dismissed" | "fixed";
-      } & {
-        affected_package_name?: string;
-        affected_range?: string;
-        created_at?: string;
-        external_identifier?: string;
-        external_reference?: string | null;
-        fixed_in?: string;
-        ghsa_id?: string;
-        id?: number;
-        node_id?: string;
-        number?: number;
-        severity?: string;
         /** @enum {string} */
         state: "open";
       };
@@ -60652,68 +59682,14 @@ export interface components {
     "webhook-repository-vulnerability-alert-dismiss": {
       /** @enum {string} */
       action: "dismiss";
+      /**
+       * Repository Vulnerability Alert Alert
+       * @description The security alert of the vulnerable dependency.
+       */
       alert: {
         affected_package_name: string;
         affected_range: string;
         created_at: string;
-        dismiss_comment?: string | null;
-        dismiss_reason?: string;
-        dismissed_at?: string;
-        /** User */
-        dismisser?: {
-          /** Format: uri */
-          avatar_url?: string;
-          deleted?: boolean;
-          email?: string | null;
-          /** Format: uri-template */
-          events_url?: string;
-          /** Format: uri */
-          followers_url?: string;
-          /** Format: uri-template */
-          following_url?: string;
-          /** Format: uri-template */
-          gists_url?: string;
-          gravatar_id?: string;
-          /** Format: uri */
-          html_url?: string;
-          id: number;
-          login: string;
-          name?: string;
-          node_id?: string;
-          /** Format: uri */
-          organizations_url?: string;
-          /** Format: uri */
-          received_events_url?: string;
-          /** Format: uri */
-          repos_url?: string;
-          site_admin?: boolean;
-          /** Format: uri-template */
-          starred_url?: string;
-          /** Format: uri */
-          subscriptions_url?: string;
-          /** @enum {string} */
-          type?: "Bot" | "User" | "Organization";
-          /** Format: uri */
-          url?: string;
-        } | null;
-        external_identifier: string;
-        /** Format: uri */
-        external_reference: string | null;
-        fix_reason?: string;
-        /** Format: date-time */
-        fixed_at?: string;
-        fixed_in?: string;
-        ghsa_id: string;
-        id: number;
-        node_id: string;
-        number: number;
-        severity: string;
-        /** @enum {string} */
-        state: "open" | "dismissed" | "fixed";
-      } & {
-        affected_package_name?: string;
-        affected_range?: string;
-        created_at?: string;
         dismiss_comment?: string | null;
         dismiss_reason: string;
         dismissed_at: string;
@@ -60754,14 +59730,18 @@ export interface components {
           /** Format: uri */
           url?: string;
         } | null;
-        external_identifier?: string;
-        external_reference?: string | null;
+        external_identifier: string;
+        /** Format: uri */
+        external_reference: string | null;
+        fix_reason?: string;
+        /** Format: date-time */
+        fixed_at?: string;
         fixed_in?: string;
-        ghsa_id?: string;
-        id?: number;
-        node_id?: string;
-        number?: number;
-        severity?: string;
+        ghsa_id: string;
+        id: number;
+        node_id: string;
+        number: number;
+        severity: string;
         /** @enum {string} */
         state: "dismissed";
       };
@@ -60775,6 +59755,10 @@ export interface components {
     "webhook-repository-vulnerability-alert-reopen": {
       /** @enum {string} */
       action: "reopen";
+      /**
+       * Repository Vulnerability Alert Alert
+       * @description The security alert of the vulnerable dependency.
+       */
       alert: {
         affected_package_name: string;
         affected_range: string;
@@ -60830,20 +59814,6 @@ export interface components {
         node_id: string;
         number: number;
         severity: string;
-        /** @enum {string} */
-        state: "open" | "dismissed" | "fixed";
-      } & {
-        affected_package_name?: string;
-        affected_range?: string;
-        created_at?: string;
-        external_identifier?: string;
-        external_reference?: string | null;
-        fixed_in?: string;
-        ghsa_id?: string;
-        id?: number;
-        node_id?: string;
-        number?: number;
-        severity?: string;
         /** @enum {string} */
         state: "open";
       };
@@ -60857,6 +59827,10 @@ export interface components {
     "webhook-repository-vulnerability-alert-resolve": {
       /** @enum {string} */
       action: "resolve";
+      /**
+       * Repository Vulnerability Alert Alert
+       * @description The security alert of the vulnerable dependency.
+       */
       alert: {
         affected_package_name: string;
         affected_range: string;
@@ -60912,23 +59886,6 @@ export interface components {
         node_id: string;
         number: number;
         severity: string;
-        /** @enum {string} */
-        state: "open" | "dismissed" | "fixed";
-      } & {
-        affected_package_name?: string;
-        affected_range?: string;
-        created_at?: string;
-        external_identifier?: string;
-        external_reference?: string | null;
-        fix_reason?: string;
-        /** Format: date-time */
-        fixed_at?: string;
-        fixed_in?: string;
-        ghsa_id?: string;
-        id?: number;
-        node_id?: string;
-        number?: number;
-        severity?: string;
         /** @enum {string} */
         state: "fixed" | "open";
       };
@@ -64893,6 +63850,7 @@ export interface components {
         /** Format: uri */
         url: string;
       } | null;
+      /** Workflow Run */
       workflow_run: {
         /** User */
         actor: {
@@ -64941,15 +63899,15 @@ export interface components {
         check_suite_url: string;
         /** @enum {string|null} */
         conclusion:
-          | "success"
+          | "action_required"
+          | "cancelled"
           | "failure"
           | "neutral"
-          | "cancelled"
-          | "timed_out"
-          | "action_required"
+          | "skipped"
           | "stale"
-          | null
-          | "skipped";
+          | "success"
+          | "timed_out"
+          | null;
         /** Format: date-time */
         created_at: string;
         event: string;
@@ -65126,7 +64084,7 @@ export interface components {
         path: string;
         /** Format: uri */
         previous_attempt_url: string | null;
-        pull_requests: {
+        pull_requests: ({
           base: {
             ref: string;
             /** Repo Ref */
@@ -65153,7 +64111,7 @@ export interface components {
           number: number;
           /** Format: uri */
           url: string;
-        }[];
+        } | null)[];
         referenced_workflows?:
           | {
               path: string;
@@ -65345,239 +64303,8 @@ export interface components {
         workflow_id: number;
         /** Format: uri */
         workflow_url: string;
-      } & {
-        actor?: {
-          avatar_url?: string;
-          events_url?: string;
-          followers_url?: string;
-          following_url?: string;
-          gists_url?: string;
-          gravatar_id?: string;
-          html_url?: string;
-          id?: number;
-          login?: string;
-          node_id?: string;
-          organizations_url?: string;
-          received_events_url?: string;
-          repos_url?: string;
-          site_admin?: boolean;
-          starred_url?: string;
-          subscriptions_url?: string;
-          type?: string;
-          url?: string;
-        };
-        artifacts_url?: string;
-        cancel_url?: string;
-        check_suite_id?: number;
-        check_suite_node_id?: string;
-        check_suite_url?: string;
-        /** @enum {string} */
-        conclusion:
-          | "success"
-          | "failure"
-          | "neutral"
-          | "cancelled"
-          | "timed_out"
-          | "action_required"
-          | "stale"
-          | "skipped";
-        created_at?: string;
-        event?: string;
-        head_branch?: string | null;
-        head_commit?: {
-          author?: {
-            email?: string;
-            name?: string;
-          };
-          committer?: {
-            email?: string;
-            name?: string;
-          };
-          id?: string;
-          message?: string;
-          timestamp?: string;
-          tree_id?: string;
-        };
-        head_repository?: {
-          archive_url?: string;
-          assignees_url?: string;
-          blobs_url?: string;
-          branches_url?: string;
-          collaborators_url?: string;
-          comments_url?: string;
-          commits_url?: string;
-          compare_url?: string;
-          contents_url?: string;
-          contributors_url?: string;
-          deployments_url?: string;
-          description?: string | null;
-          downloads_url?: string;
-          events_url?: string;
-          fork?: boolean;
-          forks_url?: string;
-          full_name?: string;
-          git_commits_url?: string;
-          git_refs_url?: string;
-          git_tags_url?: string;
-          hooks_url?: string;
-          html_url?: string;
-          id?: number;
-          issue_comment_url?: string;
-          issue_events_url?: string;
-          issues_url?: string;
-          keys_url?: string;
-          labels_url?: string;
-          languages_url?: string;
-          merges_url?: string;
-          milestones_url?: string;
-          name?: string;
-          node_id?: string;
-          notifications_url?: string;
-          owner?: {
-            avatar_url?: string;
-            events_url?: string;
-            followers_url?: string;
-            following_url?: string;
-            gists_url?: string;
-            gravatar_id?: string;
-            html_url?: string;
-            id?: number;
-            login?: string;
-            node_id?: string;
-            organizations_url?: string;
-            received_events_url?: string;
-            repos_url?: string;
-            site_admin?: boolean;
-            starred_url?: string;
-            subscriptions_url?: string;
-            type?: string;
-            url?: string;
-          };
-          private?: boolean;
-          pulls_url?: string;
-          releases_url?: string;
-          stargazers_url?: string;
-          statuses_url?: string;
-          subscribers_url?: string;
-          subscription_url?: string;
-          tags_url?: string;
-          teams_url?: string;
-          trees_url?: string;
-          url?: string;
-        };
-        head_sha?: string;
-        html_url?: string;
-        id?: number;
-        jobs_url?: string;
-        logs_url?: string;
-        name?: string | null;
-        node_id?: string;
-        path?: string;
-        previous_attempt_url?: string | null;
-        pull_requests?: (Record<string, never> | null)[];
-        referenced_workflows?:
-          | {
-              path: string;
-              ref?: string;
-              sha: string;
-            }[]
-          | null;
-        repository?: {
-          archive_url?: string;
-          assignees_url?: string;
-          blobs_url?: string;
-          branches_url?: string;
-          collaborators_url?: string;
-          comments_url?: string;
-          commits_url?: string;
-          compare_url?: string;
-          contents_url?: string;
-          contributors_url?: string;
-          deployments_url?: string;
-          description?: string | null;
-          downloads_url?: string;
-          events_url?: string;
-          fork?: boolean;
-          forks_url?: string;
-          full_name?: string;
-          git_commits_url?: string;
-          git_refs_url?: string;
-          git_tags_url?: string;
-          hooks_url?: string;
-          html_url?: string;
-          id?: number;
-          issue_comment_url?: string;
-          issue_events_url?: string;
-          issues_url?: string;
-          keys_url?: string;
-          labels_url?: string;
-          languages_url?: string;
-          merges_url?: string;
-          milestones_url?: string;
-          name?: string;
-          node_id?: string;
-          notifications_url?: string;
-          owner?: {
-            avatar_url?: string;
-            events_url?: string;
-            followers_url?: string;
-            following_url?: string;
-            gists_url?: string;
-            gravatar_id?: string;
-            html_url?: string;
-            id?: number;
-            login?: string;
-            node_id?: string;
-            organizations_url?: string;
-            received_events_url?: string;
-            repos_url?: string;
-            site_admin?: boolean;
-            starred_url?: string;
-            subscriptions_url?: string;
-            type?: string;
-            url?: string;
-          };
-          private?: boolean;
-          pulls_url?: string;
-          releases_url?: string;
-          stargazers_url?: string;
-          statuses_url?: string;
-          subscribers_url?: string;
-          subscription_url?: string;
-          tags_url?: string;
-          teams_url?: string;
-          trees_url?: string;
-          url?: string;
-        };
-        rerun_url?: string;
-        run_attempt?: number;
-        run_number?: number;
-        run_started_at?: string;
-        status?: string;
-        triggering_actor?: {
-          avatar_url?: string;
-          events_url?: string;
-          followers_url?: string;
-          following_url?: string;
-          gists_url?: string;
-          gravatar_id?: string;
-          html_url?: string;
-          id?: number;
-          login?: string;
-          node_id?: string;
-          organizations_url?: string;
-          received_events_url?: string;
-          repos_url?: string;
-          site_admin?: boolean;
-          starred_url?: string;
-          subscriptions_url?: string;
-          type?: string;
-          url?: string;
-        } | null;
-        updated_at?: string;
-        url?: string;
-        workflow_id?: number;
-        workflow_url?: string;
+        /** @description The event-specific title associated with the run or the run-name if set, or the value of `run-name` if it is set in the workflow. */
+        display_title?: string;
       };
     };
     /** workflow_run in_progress event */
@@ -65607,6 +64334,7 @@ export interface components {
         /** Format: uri */
         url: string;
       } | null;
+      /** Workflow Run */
       workflow_run: {
         /** User */
         actor: {
@@ -65655,14 +64383,14 @@ export interface components {
         check_suite_url: string;
         /** @enum {string|null} */
         conclusion:
-          | "success"
+          | "action_required"
+          | "cancelled"
           | "failure"
           | "neutral"
-          | "cancelled"
-          | "timed_out"
-          | "action_required"
-          | "stale"
           | "skipped"
+          | "stale"
+          | "success"
+          | "timed_out"
           | null;
         /** Format: date-time */
         created_at: string;
@@ -65763,7 +64491,7 @@ export interface components {
           /** Format: uri-template */
           milestones_url: string;
           /** @description The name of the repository. */
-          name: string;
+          name: string | null;
           node_id: string;
           /** Format: uri-template */
           notifications_url: string;
@@ -65840,7 +64568,7 @@ export interface components {
         path: string;
         /** Format: uri */
         previous_attempt_url: string | null;
-        pull_requests: {
+        pull_requests: ({
           base: {
             ref: string;
             /** Repo Ref */
@@ -65867,7 +64595,7 @@ export interface components {
           number: number;
           /** Format: uri */
           url: string;
-        }[];
+        } | null)[];
         referenced_workflows?:
           | {
               path: string;
@@ -66058,240 +64786,6 @@ export interface components {
         workflow_id: number;
         /** Format: uri */
         workflow_url: string;
-      } & {
-        actor?: {
-          avatar_url?: string;
-          events_url?: string;
-          followers_url?: string;
-          following_url?: string;
-          gists_url?: string;
-          gravatar_id?: string;
-          html_url?: string;
-          id?: number;
-          login?: string;
-          node_id?: string;
-          organizations_url?: string;
-          received_events_url?: string;
-          repos_url?: string;
-          site_admin?: boolean;
-          starred_url?: string;
-          subscriptions_url?: string;
-          type?: string;
-          url?: string;
-        };
-        artifacts_url?: string;
-        cancel_url?: string;
-        check_suite_id?: number;
-        check_suite_node_id?: string;
-        check_suite_url?: string;
-        /** @enum {string|null} */
-        conclusion:
-          | "success"
-          | "failure"
-          | "neutral"
-          | "cancelled"
-          | "timed_out"
-          | "action_required"
-          | "skipped"
-          | "stale"
-          | null;
-        created_at?: string;
-        event?: string;
-        head_branch?: string | null;
-        head_commit?: {
-          author?: {
-            email?: string;
-            name?: string;
-          };
-          committer?: {
-            email?: string;
-            name?: string;
-          };
-          id?: string;
-          message?: string;
-          timestamp?: string;
-          tree_id?: string;
-        };
-        head_repository?: {
-          archive_url?: string;
-          assignees_url?: string;
-          blobs_url?: string;
-          branches_url?: string;
-          collaborators_url?: string;
-          comments_url?: string;
-          commits_url?: string;
-          compare_url?: string;
-          contents_url?: string;
-          contributors_url?: string;
-          deployments_url?: string;
-          description?: string | null;
-          downloads_url?: string;
-          events_url?: string;
-          fork?: boolean;
-          forks_url?: string;
-          full_name?: string;
-          git_commits_url?: string;
-          git_refs_url?: string;
-          git_tags_url?: string;
-          hooks_url?: string;
-          html_url?: string;
-          id?: number;
-          issue_comment_url?: string;
-          issue_events_url?: string;
-          issues_url?: string;
-          keys_url?: string;
-          labels_url?: string;
-          languages_url?: string;
-          merges_url?: string;
-          milestones_url?: string;
-          name?: string | null;
-          node_id?: string;
-          notifications_url?: string;
-          owner?: {
-            avatar_url?: string;
-            events_url?: string;
-            followers_url?: string;
-            following_url?: string;
-            gists_url?: string;
-            gravatar_id?: string;
-            html_url?: string;
-            id?: number;
-            login?: string;
-            node_id?: string;
-            organizations_url?: string;
-            received_events_url?: string;
-            repos_url?: string;
-            site_admin?: boolean;
-            starred_url?: string;
-            subscriptions_url?: string;
-            type?: string;
-            url?: string;
-          };
-          private?: boolean;
-          pulls_url?: string;
-          releases_url?: string;
-          stargazers_url?: string;
-          statuses_url?: string;
-          subscribers_url?: string;
-          subscription_url?: string;
-          tags_url?: string;
-          teams_url?: string;
-          trees_url?: string;
-          url?: string;
-        };
-        head_sha?: string;
-        html_url?: string;
-        id?: number;
-        jobs_url?: string;
-        logs_url?: string;
-        name?: string | null;
-        node_id?: string;
-        path?: string;
-        previous_attempt_url?: string | null;
-        pull_requests?: (Record<string, never> | null)[];
-        referenced_workflows?:
-          | {
-              path: string;
-              ref?: string;
-              sha: string;
-            }[]
-          | null;
-        repository?: {
-          archive_url?: string;
-          assignees_url?: string;
-          blobs_url?: string;
-          branches_url?: string;
-          collaborators_url?: string;
-          comments_url?: string;
-          commits_url?: string;
-          compare_url?: string;
-          contents_url?: string;
-          contributors_url?: string;
-          deployments_url?: string;
-          description?: string | null;
-          downloads_url?: string;
-          events_url?: string;
-          fork?: boolean;
-          forks_url?: string;
-          full_name?: string;
-          git_commits_url?: string;
-          git_refs_url?: string;
-          git_tags_url?: string;
-          hooks_url?: string;
-          html_url?: string;
-          id?: number;
-          issue_comment_url?: string;
-          issue_events_url?: string;
-          issues_url?: string;
-          keys_url?: string;
-          labels_url?: string;
-          languages_url?: string;
-          merges_url?: string;
-          milestones_url?: string;
-          name?: string;
-          node_id?: string;
-          notifications_url?: string;
-          owner?: {
-            avatar_url?: string;
-            events_url?: string;
-            followers_url?: string;
-            following_url?: string;
-            gists_url?: string;
-            gravatar_id?: string;
-            html_url?: string;
-            id?: number;
-            login?: string;
-            node_id?: string;
-            organizations_url?: string;
-            received_events_url?: string;
-            repos_url?: string;
-            site_admin?: boolean;
-            starred_url?: string;
-            subscriptions_url?: string;
-            type?: string;
-            url?: string;
-          };
-          private?: boolean;
-          pulls_url?: string;
-          releases_url?: string;
-          stargazers_url?: string;
-          statuses_url?: string;
-          subscribers_url?: string;
-          subscription_url?: string;
-          tags_url?: string;
-          teams_url?: string;
-          trees_url?: string;
-          url?: string;
-        };
-        rerun_url?: string;
-        run_attempt?: number;
-        run_number?: number;
-        run_started_at?: string;
-        status?: string;
-        triggering_actor?: {
-          avatar_url?: string;
-          events_url?: string;
-          followers_url?: string;
-          following_url?: string;
-          gists_url?: string;
-          gravatar_id?: string;
-          html_url?: string;
-          id?: number;
-          login?: string;
-          node_id?: string;
-          organizations_url?: string;
-          received_events_url?: string;
-          repos_url?: string;
-          site_admin?: boolean;
-          starred_url?: string;
-          subscriptions_url?: string;
-          type?: string;
-          url?: string;
-        };
-        updated_at?: string;
-        url?: string;
-        workflow_id?: number;
-        workflow_url?: string;
       };
     };
     /** workflow_run requested event */
