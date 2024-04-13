@@ -95,12 +95,6 @@
       [
         "@semantic-release/npm",
         {
-          "pkgRoot": "packages/openapi-webhooks-types-ghes-3.8"
-        }
-      ],
-      [
-        "@semantic-release/npm",
-        {
           "pkgRoot": "packages/openapi-webhooks-types-ghes-3.9"
         }
       ],
