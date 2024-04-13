@@ -15,7 +15,7 @@ import overrides from "./overrides/index.js";
 run();
 
 async function run() {
-  await rm("packages", { recursive: true }).catch(() => {});
+  await rm("packages/openapi-webhooks", { recursive: true }).catch(() => {});
   await mkdir("packages/openapi-webhooks/generated", { recursive: true });
   const schemaFileNames = readdirSync("cache");
 
@@ -36,10 +36,12 @@ async function run() {
     delete schema.components.parameters;
     delete schema.components.headers;
 
-    const tempSchema = { ...schema };
-    tempSchema.components = {
-      schemas: {},
-      examples: {},
+    const tempSchema = {
+      ...schema,
+      components: {
+        schemas: {},
+        examples: {},
+      },
     };
 
     overrides(file, schema);
@@ -74,7 +76,11 @@ async function run() {
     };
 
     function addActionToRequired(schema) {
-      if (schema.properties.action !== undefined && schema.required !== undefined && !schema.required.includes("action")){
+      if (
+        schema.properties.action !== undefined &&
+        schema.required !== undefined &&
+        !schema.required.includes("action")
+      ) {
         schema.required.push("action");
       }
     }

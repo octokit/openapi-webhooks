@@ -4356,12 +4356,9 @@ export interface webhooks {
     };
     get?: never;
     put?: never;
-    /**
-     * This event occurs when a GitHub App sends a `POST` request to `/repos/{owner}/{repo}/dispatches`. For more information, see [the REST API documentation for creating a repository dispatch event](https://docs.github.com/enterprise-server@3.11/rest/repos/repos#create-a-repository-dispatch-event).
+    /** This event occurs when a GitHub App sends a `POST` request to `/repos/{owner}/{repo}/dispatches`. For more information, see [the REST API documentation for creating a repository dispatch event](https://docs.github.com/enterprise-server@3.11/rest/repos/repos#create-a-repository-dispatch-event). In the payload, the `action` will be the `event_type` that was specified in the `POST /repos/{owner}/{repo}/dispatches` request body.
      *
-     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
-     * @description The `event_type` that was specified in the `POST /repos/{owner}/{repo}/dispatches` request body.
-     */
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission. */
     post: operations["repository-dispatch/sample.collected"];
     delete?: never;
     options?: never;
@@ -25947,9 +25944,17 @@ export interface components {
       /** @enum {string} */
       action: "added";
       changes?: {
+        /** @description This field is included for legacy purposes; use the `role_name` field instead. The `maintain`
+         *     role is mapped to `write` and the `triage` role is mapped to `read`. To determine the role
+         *     assigned to the collaborator, use the `role_name` field instead, which will provide the full
+         *     role name, including custom roles. */
         permission?: {
           /** @enum {string} */
           to: "write" | "admin" | "read";
+        };
+        /** @description The role assigned to the collaborator. */
+        role_name?: {
+          to: string;
         };
       };
       enterprise?: components["schemas"]["enterprise-webhooks"];
@@ -57863,7 +57868,7 @@ export interface components {
       base_ref: string | null;
       /** @description The SHA of the most recent commit on `ref` before the push. */
       before: string;
-      /** @description An array of commit objects describing the pushed commits. (Pushed commits are all commits that are included in the `compare` between the `before` commit and the `after` commit.) The array includes a maximum of 20 commits. If necessary, you can use the [Commits API](https://docs.github.com/enterprise-server@3.11/rest/commits) to fetch additional commits. This limit is applied to timeline events only and isn't applied to webhook deliveries. */
+      /** @description An array of commit objects describing the pushed commits. (Pushed commits are all commits that are included in the `compare` between the `before` commit and the `after` commit.) The array includes a maximum of 2048 commits. If necessary, you can use the [Commits API](https://docs.github.com/enterprise-server@3.11/rest/commits) to fetch additional commits. */
       commits: {
         /** @description An array of files added in the commit. A maximum of 3000 changed files will be reported per commit. */
         added?: string[];
@@ -59846,9 +59851,10 @@ export interface components {
     };
     /** repository_dispatch event */
     "webhook-repository-dispatch-sample": {
-      /** @enum {string} */
-      action: "sample.collected";
+      /** @description The `event_type` that was specified in the `POST /repos/{owner}/{repo}/dispatches` request body. */
+      action: string;
       branch: string;
+      /** @description The `client_payload` that was specified in the `POST /repos/{owner}/{repo}/dispatches` request body. */
       client_payload: {
         [key: string]: unknown;
       } | null;

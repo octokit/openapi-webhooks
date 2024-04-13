@@ -4691,12 +4691,9 @@ export interface webhooks {
     };
     get?: never;
     put?: never;
-    /**
-     * This event occurs when a GitHub App sends a `POST` request to `/repos/{owner}/{repo}/dispatches`. For more information, see [the REST API documentation for creating a repository dispatch event](https://docs.github.com/rest/repos/repos#create-a-repository-dispatch-event).
+    /** This event occurs when a GitHub App sends a `POST` request to `/repos/{owner}/{repo}/dispatches`. For more information, see [the REST API documentation for creating a repository dispatch event](https://docs.github.com/rest/repos/repos#create-a-repository-dispatch-event). In the payload, the `action` will be the `event_type` that was specified in the `POST /repos/{owner}/{repo}/dispatches` request body.
      *
-     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
-     * @description The `event_type` that was specified in the `POST /repos/{owner}/{repo}/dispatches` request body.
-     */
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission. */
     post: operations["repository-dispatch/sample.collected"];
     delete?: never;
     options?: never;
@@ -26697,9 +26694,17 @@ export interface components {
       /** @enum {string} */
       action: "added";
       changes?: {
+        /** @description This field is included for legacy purposes; use the `role_name` field instead. The `maintain`
+         *     role is mapped to `write` and the `triage` role is mapped to `read`. To determine the role
+         *     assigned to the collaborator, use the `role_name` field instead, which will provide the full
+         *     role name, including custom roles. */
         permission?: {
           /** @enum {string} */
           to: "write" | "admin" | "read";
+        };
+        /** @description The role assigned to the collaborator. */
+        role_name?: {
+          to: string;
         };
       };
       installation?: components["schemas"]["simple-installation"];
@@ -61137,7 +61142,7 @@ export interface components {
       base_ref: string | null;
       /** @description The SHA of the most recent commit on `ref` before the push. */
       before: string;
-      /** @description An array of commit objects describing the pushed commits. (Pushed commits are all commits that are included in the `compare` between the `before` commit and the `after` commit.) The array includes a maximum of 20 commits. If necessary, you can use the [Commits API](https://docs.github.com/rest/commits) to fetch additional commits. This limit is applied to timeline events only and isn't applied to webhook deliveries. */
+      /** @description An array of commit objects describing the pushed commits. (Pushed commits are all commits that are included in the `compare` between the `before` commit and the `after` commit.) The array includes a maximum of 2048 commits. If necessary, you can use the [Commits API](https://docs.github.com/rest/commits) to fetch additional commits. */
       commits: {
         /** @description An array of files added in the commit. A maximum of 3000 changed files will be reported per commit. */
         added?: string[];
@@ -63450,9 +63455,10 @@ export interface components {
     };
     /** repository_dispatch event */
     "webhook-repository-dispatch-sample": {
-      /** @enum {string} */
-      action: "sample.collected";
+      /** @description The `event_type` that was specified in the `POST /repos/{owner}/{repo}/dispatches` request body. */
+      action: string;
       branch: string;
+      /** @description The `client_payload` that was specified in the `POST /repos/{owner}/{repo}/dispatches` request body. */
       client_payload: {
         [key: string]: unknown;
       } | null;
@@ -64545,8 +64551,9 @@ export interface components {
        * @description The location type. Because secrets may be found in different types of resources (ie. code, comments, issues, pull requests, discussions), this field identifies the type of resource where the secret was found.
        * @enum {string}
        */
-      type:
+      type?:
         | "commit"
+        | "wiki_commit"
         | "issue_title"
         | "issue_body"
         | "issue_comment"
@@ -64558,8 +64565,9 @@ export interface components {
         | "pull_request_comment"
         | "pull_request_review"
         | "pull_request_review_comment";
-      details:
+      details?:
         | components["schemas"]["secret-scanning-location-commit"]
+        | components["schemas"]["secret-scanning-location-wiki-commit"]
         | components["schemas"]["secret-scanning-location-issue-title"]
         | components["schemas"]["secret-scanning-location-issue-body"]
         | components["schemas"]["secret-scanning-location-issue-comment"]
@@ -64591,6 +64599,27 @@ export interface components {
       /** @description SHA-1 hash ID of the associated commit */
       commit_sha: string;
       /** @description The API URL to get the associated commit resource */
+      commit_url: string;
+    };
+    /** @description Represents a 'wiki_commit' secret scanning location type. This location type shows that a secret was detected inside a commit to a repository wiki. */
+    "secret-scanning-location-wiki-commit": {
+      /** @description The file path of the wiki page */
+      path: string;
+      /** @description Line number at which the secret starts in the file */
+      start_line: number;
+      /** @description Line number at which the secret ends in the file */
+      end_line: number;
+      /** @description The column at which the secret starts within the start line when the file is interpreted as 8-bit ASCII. */
+      start_column: number;
+      /** @description The column at which the secret ends within the end line when the file is interpreted as 8-bit ASCII. */
+      end_column: number;
+      /** @description SHA-1 hash ID of the associated blob */
+      blob_sha: string;
+      /** @description The GitHub URL to get the associated wiki page */
+      page_url: string;
+      /** @description SHA-1 hash ID of the associated commit */
+      commit_sha: string;
+      /** @description The GitHub URL to get the associated wiki commit */
       commit_url: string;
     };
     /** @description Represents an 'issue_title' secret scanning location type. This location type shows that a secret was detected in the title of an issue. */
