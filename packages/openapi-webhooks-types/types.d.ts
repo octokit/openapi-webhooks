@@ -3185,69 +3185,61 @@ export interface components {
       installation?: components["schemas"]["simple-installation"];
       organization?: components["schemas"]["organization-simple-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
-      /**
-       * branch protection rule
-       * @description The branch protection rule. Includes a `name` and all the [branch protection settings](https://docs.github.com/github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#about-branch-protection-settings) applied to branches that match the name. Binary settings are boolean. Multi-level configurations are one of `off`, `non_admins`, or `everyone`. Actor and build lists are arrays of strings.
-       */
-      rule: {
-        admin_enforced: boolean;
-        /** @enum {string} */
-        allow_deletions_enforcement_level: "off" | "non_admins" | "everyone";
-        /** @enum {string} */
-        allow_force_pushes_enforcement_level: "off" | "non_admins" | "everyone";
-        authorized_actor_names: string[];
-        authorized_actors_only: boolean;
-        authorized_dismissal_actors_only: boolean;
-        create_protected?: boolean;
-        /** Format: date-time */
-        created_at: string;
-        dismiss_stale_reviews_on_push: boolean;
-        id: number;
-        ignore_approvals_from_contributors: boolean;
-        /** @enum {string} */
-        linear_history_requirement_enforcement_level:
-          | "off"
-          | "non_admins"
-          | "everyone";
-        /** @enum {string} */
-        merge_queue_enforcement_level: "off" | "non_admins" | "everyone";
-        name: string;
-        /** @enum {string} */
-        pull_request_reviews_enforcement_level:
-          | "off"
-          | "non_admins"
-          | "everyone";
-        repository_id: number;
-        require_code_owner_review: boolean;
-        /** @description Whether the most recent push must be approved by someone other than the person who pushed it */
-        require_last_push_approval?: boolean;
-        required_approving_review_count: number;
-        /** @enum {string} */
-        required_conversation_resolution_level:
-          | "off"
-          | "non_admins"
-          | "everyone";
-        /** @enum {string} */
-        required_deployments_enforcement_level:
-          | "off"
-          | "non_admins"
-          | "everyone";
-        required_status_checks: string[];
-        /** @enum {string} */
-        required_status_checks_enforcement_level:
-          | "off"
-          | "non_admins"
-          | "everyone";
-        /** @enum {string} */
-        signature_requirement_enforcement_level:
-          | "off"
-          | "non_admins"
-          | "everyone";
-        strict_required_status_checks_policy: boolean;
-        /** Format: date-time */
-        updated_at: string;
-      };
+      rule: components["schemas"]["webhooks_rule"];
       sender: components["schemas"]["simple-user-webhooks"];
+    };
+    /**
+     * branch protection rule
+     * @description The branch protection rule. Includes a `name` and all the [branch protection settings](https://docs.github.com/github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#about-branch-protection-settings) applied to branches that match the name. Binary settings are boolean. Multi-level configurations are one of `off`, `non_admins`, or `everyone`. Actor and build lists are arrays of strings.
+     */
+    webhooks_rule: {
+      admin_enforced: boolean;
+      /** @enum {string} */
+      allow_deletions_enforcement_level: "off" | "non_admins" | "everyone";
+      /** @enum {string} */
+      allow_force_pushes_enforcement_level: "off" | "non_admins" | "everyone";
+      authorized_actor_names: string[];
+      authorized_actors_only: boolean;
+      authorized_dismissal_actors_only: boolean;
+      create_protected?: boolean;
+      /** Format: date-time */
+      created_at: string;
+      dismiss_stale_reviews_on_push: boolean;
+      id: number;
+      ignore_approvals_from_contributors: boolean;
+      /** @enum {string} */
+      linear_history_requirement_enforcement_level:
+        | "off"
+        | "non_admins"
+        | "everyone";
+      /** @enum {string} */
+      merge_queue_enforcement_level: "off" | "non_admins" | "everyone";
+      name: string;
+      /** @enum {string} */
+      pull_request_reviews_enforcement_level: "off" | "non_admins" | "everyone";
+      repository_id: number;
+      require_code_owner_review: boolean;
+      /** @description Whether the most recent push must be approved by someone other than the person who pushed it */
+      require_last_push_approval?: boolean;
+      required_approving_review_count: number;
+      /** @enum {string} */
+      required_conversation_resolution_level: "off" | "non_admins" | "everyone";
+      /** @enum {string} */
+      required_deployments_enforcement_level: "off" | "non_admins" | "everyone";
+      required_status_checks: string[];
+      /** @enum {string} */
+      required_status_checks_enforcement_level:
+        | "off"
+        | "non_admins"
+        | "everyone";
+      /** @enum {string} */
+      signature_requirement_enforcement_level:
+        | "off"
+        | "non_admins"
+        | "everyone";
+      strict_required_status_checks_policy: boolean;
+      /** Format: date-time */
+      updated_at: string;
     };
     /** branch protection rule deleted event */
     "webhook-branch-protection-rule-deleted": {
@@ -3256,68 +3248,7 @@ export interface components {
       installation?: components["schemas"]["simple-installation"];
       organization?: components["schemas"]["organization-simple-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
-      /**
-       * branch protection rule
-       * @description The branch protection rule. Includes a `name` and all the [branch protection settings](https://docs.github.com/github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#about-branch-protection-settings) applied to branches that match the name. Binary settings are boolean. Multi-level configurations are one of `off`, `non_admins`, or `everyone`. Actor and build lists are arrays of strings.
-       */
-      rule: {
-        admin_enforced: boolean;
-        /** @enum {string} */
-        allow_deletions_enforcement_level: "off" | "non_admins" | "everyone";
-        /** @enum {string} */
-        allow_force_pushes_enforcement_level: "off" | "non_admins" | "everyone";
-        authorized_actor_names: string[];
-        authorized_actors_only: boolean;
-        authorized_dismissal_actors_only: boolean;
-        create_protected?: boolean;
-        /** Format: date-time */
-        created_at: string;
-        dismiss_stale_reviews_on_push: boolean;
-        id: number;
-        ignore_approvals_from_contributors: boolean;
-        /** @enum {string} */
-        linear_history_requirement_enforcement_level:
-          | "off"
-          | "non_admins"
-          | "everyone";
-        /** @enum {string} */
-        merge_queue_enforcement_level: "off" | "non_admins" | "everyone";
-        name: string;
-        /** @enum {string} */
-        pull_request_reviews_enforcement_level:
-          | "off"
-          | "non_admins"
-          | "everyone";
-        repository_id: number;
-        require_code_owner_review: boolean;
-        /** @description Whether the most recent push must be approved by someone other than the person who pushed it */
-        require_last_push_approval?: boolean;
-        required_approving_review_count: number;
-        /** @enum {string} */
-        required_conversation_resolution_level:
-          | "off"
-          | "non_admins"
-          | "everyone";
-        /** @enum {string} */
-        required_deployments_enforcement_level:
-          | "off"
-          | "non_admins"
-          | "everyone";
-        required_status_checks: string[];
-        /** @enum {string} */
-        required_status_checks_enforcement_level:
-          | "off"
-          | "non_admins"
-          | "everyone";
-        /** @enum {string} */
-        signature_requirement_enforcement_level:
-          | "off"
-          | "non_admins"
-          | "everyone";
-        strict_required_status_checks_policy: boolean;
-        /** Format: date-time */
-        updated_at: string;
-      };
+      rule: components["schemas"]["webhooks_rule"];
       sender: components["schemas"]["simple-user-webhooks"];
     };
     /** branch protection rule edited event */
@@ -3353,68 +3284,7 @@ export interface components {
       installation?: components["schemas"]["simple-installation"];
       organization?: components["schemas"]["organization-simple-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
-      /**
-       * branch protection rule
-       * @description The branch protection rule. Includes a `name` and all the [branch protection settings](https://docs.github.com/github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#about-branch-protection-settings) applied to branches that match the name. Binary settings are boolean. Multi-level configurations are one of `off`, `non_admins`, or `everyone`. Actor and build lists are arrays of strings.
-       */
-      rule: {
-        admin_enforced: boolean;
-        /** @enum {string} */
-        allow_deletions_enforcement_level: "off" | "non_admins" | "everyone";
-        /** @enum {string} */
-        allow_force_pushes_enforcement_level: "off" | "non_admins" | "everyone";
-        authorized_actor_names: string[];
-        authorized_actors_only: boolean;
-        authorized_dismissal_actors_only: boolean;
-        create_protected?: boolean;
-        /** Format: date-time */
-        created_at: string;
-        dismiss_stale_reviews_on_push: boolean;
-        id: number;
-        ignore_approvals_from_contributors: boolean;
-        /** @enum {string} */
-        linear_history_requirement_enforcement_level:
-          | "off"
-          | "non_admins"
-          | "everyone";
-        /** @enum {string} */
-        merge_queue_enforcement_level: "off" | "non_admins" | "everyone";
-        name: string;
-        /** @enum {string} */
-        pull_request_reviews_enforcement_level:
-          | "off"
-          | "non_admins"
-          | "everyone";
-        repository_id: number;
-        require_code_owner_review: boolean;
-        /** @description Whether the most recent push must be approved by someone other than the person who pushed it */
-        require_last_push_approval?: boolean;
-        required_approving_review_count: number;
-        /** @enum {string} */
-        required_conversation_resolution_level:
-          | "off"
-          | "non_admins"
-          | "everyone";
-        /** @enum {string} */
-        required_deployments_enforcement_level:
-          | "off"
-          | "non_admins"
-          | "everyone";
-        required_status_checks: string[];
-        /** @enum {string} */
-        required_status_checks_enforcement_level:
-          | "off"
-          | "non_admins"
-          | "everyone";
-        /** @enum {string} */
-        signature_requirement_enforcement_level:
-          | "off"
-          | "non_admins"
-          | "everyone";
-        strict_required_status_checks_policy: boolean;
-        /** Format: date-time */
-        updated_at: string;
-      };
+      rule: components["schemas"]["webhooks_rule"];
       sender: components["schemas"]["simple-user-webhooks"];
     };
     /** Check Run Completed Event */
