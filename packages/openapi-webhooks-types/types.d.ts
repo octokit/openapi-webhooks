@@ -53308,9 +53308,11 @@ export interface components {
       name: string;
       /**
        * @description The target of the ruleset
+       *
+       * **Note**: The `push` target is in beta and is subject to change.
        * @enum {string}
        */
-      target?: "branch" | "tag";
+      target?: "branch" | "tag" | "push";
       /**
        * @description The type of the source of the ruleset
        * @enum {string}
@@ -53361,7 +53363,7 @@ export interface components {
      */
     "repository-ruleset-bypass-actor": {
       /** @description The ID of the actor that can bypass a ruleset. If `actor_type` is `OrganizationAdmin`, this should be `1`. */
-      actor_id: number;
+      actor_id?: number | null;
       /**
        * @description The type of actor that can bypass a ruleset
        * @enum {string}
@@ -53465,6 +53467,38 @@ export interface components {
       | components["schemas"]["repository-rule-committer-email-pattern"]
       | components["schemas"]["repository-rule-branch-name-pattern"]
       | components["schemas"]["repository-rule-tag-name-pattern"]
+      | {
+          /** @enum {string} */
+          type: "file_path_restriction";
+          parameters?: {
+            /** @description The file paths that are restricted from being pushed to the commit graph. */
+            restricted_file_paths: string[];
+          };
+        }
+      | {
+          /** @enum {string} */
+          type: "max_file_path_length";
+          parameters?: {
+            /** @description The maximum amount of characters allowed in file paths */
+            max_file_path_length: number;
+          };
+        }
+      | {
+          /** @enum {string} */
+          type: "file_extension_restriction";
+          parameters?: {
+            /** @description The file extensions that are restricted from being pushed to the commit graph. */
+            restricted_file_extensions: string[];
+          };
+        }
+      | {
+          /** @enum {string} */
+          type: "max_file_size";
+          parameters?: {
+            /** @description The maximum file size allowed in megabytes. This limit does not apply to Git Large File Storage (Git LFS). */
+            max_file_size: number;
+          };
+        }
       | components["schemas"]["repository-rule-workflows"];
     /**
      * creation
