@@ -53574,19 +53574,22 @@ export interface components {
      * @description An actor that can bypass rules in a ruleset
      */
     "repository-ruleset-bypass-actor": {
-      /** @description The ID of the actor that can bypass a ruleset. If `actor_type` is `OrganizationAdmin`, this should be `1`. */
+      /** @description The ID of the actor that can bypass a ruleset. If `actor_type` is `OrganizationAdmin`, this should be `1`. If `actor_type` is `DeployKey`, this should be null. `OrganizationAdmin` is not applicable for personal repositories. */
       actor_id?: number | null;
       /**
-       * @description The type of actor that can bypass a ruleset
+       * @description The type of actor that can bypass a ruleset.
+       *
        * @enum {string}
        */
       actor_type:
         | "Integration"
         | "OrganizationAdmin"
         | "RepositoryRole"
-        | "Team";
+        | "Team"
+        | "DeployKey";
       /**
-       * @description When the specified actor can bypass the ruleset. `pull_request` means that an actor can only bypass rules on pull requests.
+       * @description When the specified actor can bypass the ruleset. `pull_request` means that an actor can only bypass rules on pull requests. `pull_request` is not applicable for the `DeployKey` actor type.
+       *
        * @enum {string}
        */
       bypass_mode: "always" | "pull_request";
