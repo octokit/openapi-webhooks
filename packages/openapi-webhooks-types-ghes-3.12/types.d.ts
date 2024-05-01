@@ -1912,7 +1912,7 @@ export interface webhooks {
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
      *
-     * **Note**: An event will not be created when more than three tags are pushed at once.
+     * **Note**: Events will not be created if more than 5000 branches are pushed at once. Events will not be created for tags when more than three tags are pushed at once.
      */
     post: operations["push"];
   };
@@ -62548,7 +62548,7 @@ export interface operations {
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
    *
-   * **Note**: An event will not be created when more than three tags are pushed at once.
+   * **Note**: Events will not be created if more than 5000 branches are pushed at once. Events will not be created for tags when more than three tags are pushed at once.
    */
   push: {
     parameters: {
