@@ -53714,7 +53714,8 @@ export interface components {
             max_file_size: number;
           };
         }
-      | components["schemas"]["repository-rule-workflows"];
+      | components["schemas"]["repository-rule-workflows"]
+      | components["schemas"]["repository-rule-code-scanning"];
     /**
      * creation
      * @description Only allow users with bypass permission to create matching refs.
@@ -53953,6 +53954,41 @@ export interface components {
       repository_id: number;
       /** @description The commit SHA of the workflow file to use */
       sha?: string;
+    };
+    /**
+     * code_scanning
+     * @description Choose which tools must provide code scanning results before the reference is updated. When configured, code scanning must be enabled and have results for both the commit and the reference being updated.
+     */
+    "repository-rule-code-scanning": {
+      /** @enum {string} */
+      type: "code_scanning";
+      parameters?: {
+        /** @description Tools that must provide code scanning results for this rule to pass. */
+        code_scanning_tools: components["schemas"]["repository-rule-params-code-scanning-tool"][];
+      };
+    };
+    /**
+     * CodeScanningTool
+     * @description A tool that must provide code scanning results for this rule to pass.
+     */
+    "repository-rule-params-code-scanning-tool": {
+      /**
+       * @description The severity level at which code scanning results that raise alerts block a reference update. For more information on alert severity levels, see "[About code scanning alerts](https://docs.github.com/enterprise-cloud@latest//code-security/code-scanning/managing-code-scanning-alerts/about-code-scanning-alerts#about-alert-severity-and-security-severity-levels)."
+       * @enum {string}
+       */
+      alerts_threshold: "none" | "errors" | "errors_and_warnings" | "all";
+      /**
+       * @description The severity level at which code scanning results that raise security alerts block a reference update. For more information on security severity levels, see "[About code scanning alerts](https://docs.github.com/enterprise-cloud@latest//code-security/code-scanning/managing-code-scanning-alerts/about-code-scanning-alerts#about-alert-severity-and-security-severity-levels)."
+       * @enum {string}
+       */
+      security_alerts_threshold:
+        | "none"
+        | "critical"
+        | "high_or_higher"
+        | "medium_or_higher"
+        | "all";
+      /** @description The name of a code scanning tool */
+      tool: string;
     };
     /** repository ruleset deleted event */
     "webhook-repository-ruleset-deleted": {
