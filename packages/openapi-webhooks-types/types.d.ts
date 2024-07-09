@@ -2039,7 +2039,7 @@ export interface webhooks {
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
      *
-     * **Note**: An event will not be created when more than three tags are pushed at once.
+     * **Note**: Events will not be created if more than 5000 branches are pushed at once. Events will not be created for tags when more than three tags are pushed at once.
      */
     post: operations["push"];
   };
@@ -53308,9 +53308,11 @@ export interface components {
       name: string;
       /**
        * @description The target of the ruleset
+       *
+       * **Note**: The `push` target is in beta and is subject to change.
        * @enum {string}
        */
-      target?: "branch" | "tag";
+      target?: "branch" | "tag" | "push";
       /**
        * @description The type of the source of the ruleset
        * @enum {string}
@@ -53360,19 +53362,22 @@ export interface components {
      * @description An actor that can bypass rules in a ruleset
      */
     "repository-ruleset-bypass-actor": {
-      /** @description The ID of the actor that can bypass a ruleset. If `actor_type` is `OrganizationAdmin`, this should be `1`. */
-      actor_id: number;
+      /** @description The ID of the actor that can bypass a ruleset. If `actor_type` is `OrganizationAdmin`, this should be `1`. If `actor_type` is `DeployKey`, this should be null. `OrganizationAdmin` is not applicable for personal repositories. */
+      actor_id?: number | null;
       /**
-       * @description The type of actor that can bypass a ruleset
+       * @description The type of actor that can bypass a ruleset.
+       *
        * @enum {string}
        */
       actor_type:
         | "Integration"
         | "OrganizationAdmin"
         | "RepositoryRole"
-        | "Team";
+        | "Team"
+        | "DeployKey";
       /**
-       * @description When the specified actor can bypass the ruleset. `pull_request` means that an actor can only bypass rules on pull requests.
+       * @description When the specified actor can bypass the ruleset. `pull_request` means that an actor can only bypass rules on pull requests. `pull_request` is not applicable for the `DeployKey` actor type.
+       *
        * @enum {string}
        */
       bypass_mode: "always" | "pull_request";
@@ -53465,7 +53470,40 @@ export interface components {
       | components["schemas"]["repository-rule-committer-email-pattern"]
       | components["schemas"]["repository-rule-branch-name-pattern"]
       | components["schemas"]["repository-rule-tag-name-pattern"]
-      | components["schemas"]["repository-rule-workflows"];
+      | {
+          /** @enum {string} */
+          type: "file_path_restriction";
+          parameters?: {
+            /** @description The file paths that are restricted from being pushed to the commit graph. */
+            restricted_file_paths: string[];
+          };
+        }
+      | {
+          /** @enum {string} */
+          type: "max_file_path_length";
+          parameters?: {
+            /** @description The maximum amount of characters allowed in file paths */
+            max_file_path_length: number;
+          };
+        }
+      | {
+          /** @enum {string} */
+          type: "file_extension_restriction";
+          parameters?: {
+            /** @description The file extensions that are restricted from being pushed to the commit graph. */
+            restricted_file_extensions: string[];
+          };
+        }
+      | {
+          /** @enum {string} */
+          type: "max_file_size";
+          parameters?: {
+            /** @description The maximum file size allowed in megabytes. This limit does not apply to Git Large File Storage (Git LFS). */
+            max_file_size: number;
+          };
+        }
+      | components["schemas"]["repository-rule-workflows"]
+      | components["schemas"]["repository-rule-code-scanning"];
     /**
      * creation
      * @description Only allow users with bypass permission to create matching refs.
@@ -53704,6 +53742,41 @@ export interface components {
       repository_id: number;
       /** @description The commit SHA of the workflow file to use */
       sha?: string;
+    };
+    /**
+     * code_scanning
+     * @description Choose which tools must provide code scanning results before the reference is updated. When configured, code scanning must be enabled and have results for both the commit and the reference being updated.
+     */
+    "repository-rule-code-scanning": {
+      /** @enum {string} */
+      type: "code_scanning";
+      parameters?: {
+        /** @description Tools that must provide code scanning results for this rule to pass. */
+        code_scanning_tools: components["schemas"]["repository-rule-params-code-scanning-tool"][];
+      };
+    };
+    /**
+     * CodeScanningTool
+     * @description A tool that must provide code scanning results for this rule to pass.
+     */
+    "repository-rule-params-code-scanning-tool": {
+      /**
+       * @description The severity level at which code scanning results that raise alerts block a reference update. For more information on alert severity levels, see "[About code scanning alerts](https://docs.github.com/code-security/code-scanning/managing-code-scanning-alerts/about-code-scanning-alerts#about-alert-severity-and-security-severity-levels)."
+       * @enum {string}
+       */
+      alerts_threshold: "none" | "errors" | "errors_and_warnings" | "all";
+      /**
+       * @description The severity level at which code scanning results that raise security alerts block a reference update. For more information on security severity levels, see "[About code scanning alerts](https://docs.github.com/code-security/code-scanning/managing-code-scanning-alerts/about-code-scanning-alerts#about-alert-severity-and-security-severity-levels)."
+       * @enum {string}
+       */
+      security_alerts_threshold:
+        | "none"
+        | "critical"
+        | "high_or_higher"
+        | "medium_or_higher"
+        | "all";
+      /** @description The name of a code scanning tool */
+      tool: string;
     };
     /** repository ruleset deleted event */
     "webhook-repository-ruleset-deleted": {
@@ -65455,7 +65528,7 @@ export interface operations {
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
    *
-   * **Note**: An event will not be created when more than three tags are pushed at once.
+   * **Note**: Events will not be created if more than 5000 branches are pushed at once. Events will not be created for tags when more than three tags are pushed at once.
    */
   push: {
     parameters: {

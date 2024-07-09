@@ -1886,7 +1886,7 @@ export interface webhooks {
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
      *
-     * **Note**: An event will not be created when more than three tags are pushed at once.
+     * **Note**: Events will not be created if more than 5000 branches are pushed at once. Events will not be created for tags when more than three tags are pushed at once.
      */
     post: operations["push"];
   };
@@ -50238,7 +50238,8 @@ export interface components {
         | "RepositoryRole"
         | "Team";
       /**
-       * @description When the specified actor can bypass the ruleset. `pull_request` means that an actor can only bypass rules on pull requests.
+       * @description When the specified actor can bypass the ruleset. `pull_request` means that an actor can only bypass rules on pull requests. `pull_request` is not applicable for the `DeployKey` actor type.
+       *
        * @enum {string}
        */
       bypass_mode: "always" | "pull_request";
@@ -62395,7 +62396,7 @@ export interface operations {
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
    *
-   * **Note**: An event will not be created when more than three tags are pushed at once.
+   * **Note**: Events will not be created if more than 5000 branches are pushed at once. Events will not be created for tags when more than three tags are pushed at once.
    */
   push: {
     parameters: {
