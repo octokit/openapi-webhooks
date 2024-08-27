@@ -5615,7 +5615,8 @@ export interface components {
         metadata?: string;
         contents?: string;
         deployments?: string;
-        [key: string]: string | undefined;
+      } & {
+        [key: string]: string;
       };
       /** @description The list of events for the GitHub app */
       events: string[];
@@ -26765,11 +26766,11 @@ export interface components {
       };
       platform?: string;
       metadata?: {
-        [key: string]: string | undefined;
+        [key: string]: string;
       };
       repo?: string;
       dependencies?: {
-        [key: string]: string | undefined;
+        [key: string]: string;
       }[];
       commit_oid?: string;
     };
