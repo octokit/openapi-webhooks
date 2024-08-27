@@ -17,9 +17,31 @@ type OneOf<T extends any[]> = T extends [infer Only]
 export type paths = Record<string, never>;
 
 export interface webhooks {
+  "branch-protection-configuration-disabled": {
+    /**
+     * This event occurs when there is a change to branch protection configurations for a repository.
+     * For more information, see "[About protected branches](https://docs.github.com/enterprise-server@3.14/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches)."
+     * For information about using the APIs to manage branch protection rules, see "[Branch protection rule](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#branchprotectionrule)" in the GraphQL documentation or "[Branch protection](https://docs.github.com/enterprise-server@3.14/rest/branches/branch-protection)" in the REST API documentation.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+     * @description All branch protections were disabled for a repository.
+     */
+    post: operations["branch-protection-configuration/disabled"];
+  };
+  "branch-protection-configuration-enabled": {
+    /**
+     * This event occurs when there is a change to branch protection configurations for a repository.
+     * For more information, see "[About protected branches](https://docs.github.com/enterprise-server@3.14/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches)."
+     * For information about using the APIs to manage branch protection rules, see "[Branch protection rule](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#branchprotectionrule)" in the GraphQL documentation or "[Branch protection](https://docs.github.com/enterprise-server@3.14/rest/branches/branch-protection)" in the REST API documentation.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+     * @description All branch protections were enabled for a repository.
+     */
+    post: operations["branch-protection-configuration/enabled"];
+  };
   "branch-protection-rule-created": {
     /**
-     * This event occurs when there is activity relating to branch protection rules. For more information, see "[About protected branches](https://docs.github.com/enterprise-server@3.9/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches)." For information about the APIs to manage branch protection rules, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#branchprotectionrule) or "[Branch protection](https://docs.github.com/enterprise-server@3.9/rest/branches/branch-protection)" in the REST API documentation.
+     * This event occurs when there is activity relating to branch protection rules. For more information, see "[About protected branches](https://docs.github.com/enterprise-server@3.14/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches)." For information about the APIs to manage branch protection rules, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#branchprotectionrule) or "[Branch protection](https://docs.github.com/enterprise-server@3.14/rest/branches/branch-protection)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
      * @description A branch protection rule was created.
@@ -28,7 +50,7 @@ export interface webhooks {
   };
   "branch-protection-rule-deleted": {
     /**
-     * This event occurs when there is activity relating to branch protection rules. For more information, see "[About protected branches](https://docs.github.com/enterprise-server@3.9/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches)." For information about the APIs to manage branch protection rules, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#branchprotectionrule) or "[Branch protection](https://docs.github.com/enterprise-server@3.9/rest/branches/branch-protection)" in the REST API documentation.
+     * This event occurs when there is activity relating to branch protection rules. For more information, see "[About protected branches](https://docs.github.com/enterprise-server@3.14/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches)." For information about the APIs to manage branch protection rules, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#branchprotectionrule) or "[Branch protection](https://docs.github.com/enterprise-server@3.14/rest/branches/branch-protection)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
      * @description A branch protection rule was deleted.
@@ -37,20 +59,85 @@ export interface webhooks {
   };
   "branch-protection-rule-edited": {
     /**
-     * This event occurs when there is activity relating to branch protection rules. For more information, see "[About protected branches](https://docs.github.com/enterprise-server@3.9/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches)." For information about the APIs to manage branch protection rules, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#branchprotectionrule) or "[Branch protection](https://docs.github.com/enterprise-server@3.9/rest/branches/branch-protection)" in the REST API documentation.
+     * This event occurs when there is activity relating to branch protection rules. For more information, see "[About protected branches](https://docs.github.com/enterprise-server@3.14/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches)." For information about the APIs to manage branch protection rules, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#branchprotectionrule) or "[Branch protection](https://docs.github.com/enterprise-server@3.14/rest/branches/branch-protection)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
      * @description A branch protection rule was edited.
      */
     post: operations["branch-protection-rule/edited"];
   };
+  "bypass-request-secret-scanning-cancelled": {
+    /**
+     * This event occurs when there is activity related to a user's request to bypass secret scanning push protection.
+     *
+     * For more information, see "[Enabling delegated bypass for push protection](https://docs.github.com/enterprise-server@3.14/code-security/secret-scanning/using-advanced-secret-scanning-and-push-protection-features/delegated-bypass-for-push-protection/about-delegated-bypass-for-push-protection#enabling-delegated-bypass-for-push-protection)."
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
+     *
+     * Note: Delegated bypass for push protection is currently in beta and subject to change.
+     * @description A secret scanning push protection bypass request was cancelled.
+     */
+    post: operations["exemption-request-secret-scanning/cancelled"];
+  };
+  "bypass-request-secret-scanning-completed": {
+    /**
+     * This event occurs when there is activity related to a user's request to bypass secret scanning push protection.
+     *
+     * For more information, see "[Enabling delegated bypass for push protection](https://docs.github.com/enterprise-server@3.14/code-security/secret-scanning/using-advanced-secret-scanning-and-push-protection-features/delegated-bypass-for-push-protection/about-delegated-bypass-for-push-protection#enabling-delegated-bypass-for-push-protection)."
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
+     *
+     * Note: Delegated bypass for push protection is currently in beta and subject to change.
+     * @description A secret scanning bypass request was completed.
+     */
+    post: operations["exemption-request-secret-scanning/completed"];
+  };
+  "bypass-request-secret-scanning-created": {
+    /**
+     * This event occurs when there is activity related to a user's request to bypass secret scanning push protection.
+     *
+     * For more information, see "[Enabling delegated bypass for push protection](https://docs.github.com/enterprise-server@3.14/code-security/secret-scanning/using-advanced-secret-scanning-and-push-protection-features/delegated-bypass-for-push-protection/about-delegated-bypass-for-push-protection#enabling-delegated-bypass-for-push-protection)."
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
+     *
+     * Note: Delegated bypass for push protection is currently in beta and subject to change.
+     * @description A secret scanning push protection bypass request was created.
+     */
+    post: operations["exemption-request-secret-scanning/created"];
+  };
+  "bypass-request-secret-scanning-response-dismissed": {
+    /**
+     * This event occurs when there is activity related to a user's request to bypass secret scanning push protection.
+     *
+     * For more information, see "[Enabling delegated bypass for push protection](https://docs.github.com/enterprise-server@3.14/code-security/secret-scanning/using-advanced-secret-scanning-and-push-protection-features/delegated-bypass-for-push-protection/about-delegated-bypass-for-push-protection#enabling-delegated-bypass-for-push-protection)."
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
+     *
+     * Note: Delegated bypass for push protection is currently in beta and subject to change.
+     * @description A secret scanning push protection bypass response was dismissed.
+     */
+    post: operations["exemption-request-secret-scanning/response-dismissed"];
+  };
+  "bypass-request-secret-scanning-response-submitted": {
+    /**
+     * This event occurs when there is activity related to a user's request to bypass secret scanning push protection.
+     *
+     * For more information, see "[Enabling delegated bypass for push protection](https://docs.github.com/enterprise-server@3.14/code-security/secret-scanning/using-advanced-secret-scanning-and-push-protection-features/delegated-bypass-for-push-protection/about-delegated-bypass-for-push-protection#enabling-delegated-bypass-for-push-protection)."
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
+     *
+     * Note: Delegated bypass for push protection is currently in beta and subject to change.
+     * @description A response either approving or rejecting the secret scanning push protection bypass request was submitted.
+     */
+    post: operations["exemption-request-secret-scanning/response-submitted"];
+  };
   "cache-sync": {
-    /** This event occurs when a Git ref has been successfully synced to a cache replica. For more information, see "[About repository caching](https://docs.github.com/enterprise-server@3.9/admin/enterprise-management/caching-repositories/about-repository-caching)." */
+    /** This event occurs when a Git ref has been successfully synced to a cache replica. For more information, see "[About repository caching](https://docs.github.com/enterprise-server@3.14/admin/enterprise-management/caching-repositories/about-repository-caching)." */
     post: operations["cache-sync"];
   };
   "check-run-completed": {
     /**
-     * This event occurs when there is activity relating to a check run. For information about check runs, see "[Getting started with the Checks API](https://docs.github.com/enterprise-server@3.9/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check runs, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#checkrun) or "[Check Runs](https://docs.github.com/enterprise-server@3.9/rest/checks/runs)" in the REST API documentation.
+     * This event occurs when there is activity relating to a check run. For information about check runs, see "[Getting started with the Checks API](https://docs.github.com/enterprise-server@3.14/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check runs, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#checkrun) or "[Check Runs](https://docs.github.com/enterprise-server@3.14/rest/checks/runs)" in the REST API documentation.
      *
      * For activity relating to check suites, use the `check-suite` event.
      *
@@ -58,14 +145,15 @@ export interface webhooks {
      *
      * Repository and organization webhooks only receive payloads for the `created` and `completed` event types in repositories.
      *
-     * **Note**: The API only looks for pushes in the repository where the check run was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
+     * > [!NOTE]
+     * > The API only looks for pushes in the repository where the check run was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
      * @description A check run was completed, and a conclusion is available.
      */
     post: operations["check-run/completed"];
   };
   "check-run-created": {
     /**
-     * This event occurs when there is activity relating to a check run. For information about check runs, see "[Getting started with the Checks API](https://docs.github.com/enterprise-server@3.9/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check runs, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#checkrun) or "[Check Runs](https://docs.github.com/enterprise-server@3.9/rest/checks/runs)" in the REST API documentation.
+     * This event occurs when there is activity relating to a check run. For information about check runs, see "[Getting started with the Checks API](https://docs.github.com/enterprise-server@3.14/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check runs, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#checkrun) or "[Check Runs](https://docs.github.com/enterprise-server@3.14/rest/checks/runs)" in the REST API documentation.
      *
      * For activity relating to check suites, use the `check-suite` event.
      *
@@ -73,14 +161,15 @@ export interface webhooks {
      *
      * Repository and organization webhooks only receive payloads for the `created` and `completed` event types in repositories.
      *
-     * **Note**: The API only looks for pushes in the repository where the check run was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
+     * > [!NOTE]
+     * > The API only looks for pushes in the repository where the check run was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
      * @description A new check run was created.
      */
     post: operations["check-run/created"];
   };
   "check-run-requested-action": {
     /**
-     * This event occurs when there is activity relating to a check run. For information about check runs, see "[Getting started with the Checks API](https://docs.github.com/enterprise-server@3.9/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check runs, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#checkrun) or "[Check Runs](https://docs.github.com/enterprise-server@3.9/rest/checks/runs)" in the REST API documentation.
+     * This event occurs when there is activity relating to a check run. For information about check runs, see "[Getting started with the Checks API](https://docs.github.com/enterprise-server@3.14/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check runs, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#checkrun) or "[Check Runs](https://docs.github.com/enterprise-server@3.14/rest/checks/runs)" in the REST API documentation.
      *
      * For activity relating to check suites, use the `check-suite` event.
      *
@@ -88,14 +177,15 @@ export interface webhooks {
      *
      * Repository and organization webhooks only receive payloads for the `created` and `completed` event types in repositories.
      *
-     * **Note**: The API only looks for pushes in the repository where the check run was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
-     * @description A check run completed, and someone requested a followup action that your app provides. Only the GitHub App someone requests to perform an action will receive the `requested_action` payload. For more information, see "[Creating CI tests with the Checks API](https://docs.github.com/enterprise-server@3.9/developers/apps/guides/creating-ci-tests-with-the-checks-api)."
+     * > [!NOTE]
+     * > The API only looks for pushes in the repository where the check run was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
+     * @description A check run completed, and someone requested a followup action that your app provides. Only the GitHub App someone requests to perform an action will receive the `requested_action` payload. For more information, see "[Creating CI tests with the Checks API](https://docs.github.com/enterprise-server@3.14/developers/apps/guides/creating-ci-tests-with-the-checks-api)."
      */
     post: operations["check-run/requested-action"];
   };
   "check-run-rerequested": {
     /**
-     * This event occurs when there is activity relating to a check run. For information about check runs, see "[Getting started with the Checks API](https://docs.github.com/enterprise-server@3.9/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check runs, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#checkrun) or "[Check Runs](https://docs.github.com/enterprise-server@3.9/rest/checks/runs)" in the REST API documentation.
+     * This event occurs when there is activity relating to a check run. For information about check runs, see "[Getting started with the Checks API](https://docs.github.com/enterprise-server@3.14/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check runs, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#checkrun) or "[Check Runs](https://docs.github.com/enterprise-server@3.14/rest/checks/runs)" in the REST API documentation.
      *
      * For activity relating to check suites, use the `check-suite` event.
      *
@@ -103,14 +193,15 @@ export interface webhooks {
      *
      * Repository and organization webhooks only receive payloads for the `created` and `completed` event types in repositories.
      *
-     * **Note**: The API only looks for pushes in the repository where the check run was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
+     * > [!NOTE]
+     * > The API only looks for pushes in the repository where the check run was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
      * @description Someone requested to re-run a check run. Only the GitHub App that someone requests to re-run the check will receive the `rerequested` payload.
      */
     post: operations["check-run/rerequested"];
   };
   "check-suite-completed": {
     /**
-     * This event occurs when there is activity relating to a check suite. For information about check suites, see "[Getting started with the Checks API](https://docs.github.com/enterprise-server@3.9/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check suites, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#checksuite) or "[Check Suites](https://docs.github.com/enterprise-server@3.9/rest/checks/suites)" in the REST API documentation.
+     * This event occurs when there is activity relating to a check suite. For information about check suites, see "[Getting started with the Checks API](https://docs.github.com/enterprise-server@3.14/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check suites, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#checksuite) or "[Check Suites](https://docs.github.com/enterprise-server@3.14/rest/checks/suites)" in the REST API documentation.
      *
      * For activity relating to check runs, use the `check_run` event.
      *
@@ -118,14 +209,15 @@ export interface webhooks {
      *
      * Repository and organization webhooks only receive payloads for the `completed` event types in repositories.
      *
-     * **Note**: The API only looks for pushes in the repository where the check suite was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
+     * > [!NOTE]
+     * > The API only looks for pushes in the repository where the check suite was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
      * @description All check runs in a check suite have completed, and a conclusion is available.
      */
     post: operations["check-suite/completed"];
   };
   "check-suite-requested": {
     /**
-     * This event occurs when there is activity relating to a check suite. For information about check suites, see "[Getting started with the Checks API](https://docs.github.com/enterprise-server@3.9/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check suites, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#checksuite) or "[Check Suites](https://docs.github.com/enterprise-server@3.9/rest/checks/suites)" in the REST API documentation.
+     * This event occurs when there is activity relating to a check suite. For information about check suites, see "[Getting started with the Checks API](https://docs.github.com/enterprise-server@3.14/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check suites, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#checksuite) or "[Check Suites](https://docs.github.com/enterprise-server@3.14/rest/checks/suites)" in the REST API documentation.
      *
      * For activity relating to check runs, use the `check_run` event.
      *
@@ -133,14 +225,15 @@ export interface webhooks {
      *
      * Repository and organization webhooks only receive payloads for the `completed` event types in repositories.
      *
-     * **Note**: The API only looks for pushes in the repository where the check suite was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
-     * @description Someone requested to run a check suite. By default, check suites are automatically created when you create a check run. For more information, see [the GraphQL API documentation for creating a check run](https://docs.github.com/enterprise-server@3.9/graphql/reference/mutations#createcheckrun) or "[Create a check run](https://docs.github.com/enterprise-server@3.9/rest/checks/runs#create-a-check-run)" in the REST API documentation.
+     * > [!NOTE]
+     * > The API only looks for pushes in the repository where the check suite was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
+     * @description Someone requested to run a check suite. By default, check suites are automatically created when you create a check run. For more information, see [the GraphQL API documentation for creating a check run](https://docs.github.com/enterprise-server@3.14/graphql/reference/mutations#createcheckrun) or "[Create a check run](https://docs.github.com/enterprise-server@3.14/rest/checks/runs#create-a-check-run)" in the REST API documentation.
      */
     post: operations["check-suite/requested"];
   };
   "check-suite-rerequested": {
     /**
-     * This event occurs when there is activity relating to a check suite. For information about check suites, see "[Getting started with the Checks API](https://docs.github.com/enterprise-server@3.9/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check suites, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#checksuite) or "[Check Suites](https://docs.github.com/enterprise-server@3.9/rest/checks/suites)" in the REST API documentation.
+     * This event occurs when there is activity relating to a check suite. For information about check suites, see "[Getting started with the Checks API](https://docs.github.com/enterprise-server@3.14/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check suites, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#checksuite) or "[Check Suites](https://docs.github.com/enterprise-server@3.14/rest/checks/suites)" in the REST API documentation.
      *
      * For activity relating to check runs, use the `check_run` event.
      *
@@ -148,14 +241,15 @@ export interface webhooks {
      *
      * Repository and organization webhooks only receive payloads for the `completed` event types in repositories.
      *
-     * **Note**: The API only looks for pushes in the repository where the check suite was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
-     * @description Someone requested to re-run the check runs in a check suite. For more information, see [the GraphQL API documentation for creating a check suite](https://docs.github.com/enterprise-server@3.9/graphql/reference/mutations#createchecksuite) or "[Create a check suite](https://docs.github.com/enterprise-server@3.9/rest/checks/suites#create-a-check-suite)" in the REST API documentation.
+     * > [!NOTE]
+     * > The API only looks for pushes in the repository where the check suite was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
+     * @description Someone requested to re-run the check runs in a check suite. For more information, see [the GraphQL API documentation for creating a check suite](https://docs.github.com/enterprise-server@3.14/graphql/reference/mutations#createchecksuite) or "[Create a check suite](https://docs.github.com/enterprise-server@3.14/rest/checks/suites#create-a-check-suite)" in the REST API documentation.
      */
     post: operations["check-suite/rerequested"];
   };
   "code-scanning-alert-appeared-in-branch": {
     /**
-     * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/enterprise-server@3.9/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/enterprise-server@3.9/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/enterprise-server@3.9/rest/code-scanning)" in the REST API documentation.
+     * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/enterprise-server@3.14/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/enterprise-server@3.14/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/enterprise-server@3.14/rest/code-scanning)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Code scanning alerts" repository permission.
      * @description A previously created code scanning alert appeared in another branch. This can happen when a branch is merged into or created from a branch with a pre-existing code scanning alert.
@@ -164,7 +258,7 @@ export interface webhooks {
   };
   "code-scanning-alert-closed-by-user": {
     /**
-     * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/enterprise-server@3.9/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/enterprise-server@3.9/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/enterprise-server@3.9/rest/code-scanning)" in the REST API documentation.
+     * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/enterprise-server@3.14/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/enterprise-server@3.14/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/enterprise-server@3.14/rest/code-scanning)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Code scanning alerts" repository permission.
      * @description Someone closed a code scanning alert.
@@ -173,7 +267,7 @@ export interface webhooks {
   };
   "code-scanning-alert-created": {
     /**
-     * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/enterprise-server@3.9/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/enterprise-server@3.9/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/enterprise-server@3.9/rest/code-scanning)" in the REST API documentation.
+     * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/enterprise-server@3.14/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/enterprise-server@3.14/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/enterprise-server@3.14/rest/code-scanning)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Code scanning alerts" repository permission.
      * @description A code scanning alert was created in a repository.
@@ -182,7 +276,7 @@ export interface webhooks {
   };
   "code-scanning-alert-fixed": {
     /**
-     * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/enterprise-server@3.9/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/enterprise-server@3.9/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/enterprise-server@3.9/rest/code-scanning)" in the REST API documentation.
+     * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/enterprise-server@3.14/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/enterprise-server@3.14/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/enterprise-server@3.14/rest/code-scanning)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Code scanning alerts" repository permission.
      * @description A code scanning alert was fixed in a branch by a commit.
@@ -191,7 +285,7 @@ export interface webhooks {
   };
   "code-scanning-alert-reopened": {
     /**
-     * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/enterprise-server@3.9/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/enterprise-server@3.9/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/enterprise-server@3.9/rest/code-scanning)" in the REST API documentation.
+     * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/enterprise-server@3.14/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/enterprise-server@3.14/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/enterprise-server@3.14/rest/code-scanning)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Code scanning alerts" repository permission.
      * @description A previously fixed code scanning alert reappeared in a branch.
@@ -200,7 +294,7 @@ export interface webhooks {
   };
   "code-scanning-alert-reopened-by-user": {
     /**
-     * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/enterprise-server@3.9/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/enterprise-server@3.9/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/enterprise-server@3.9/rest/code-scanning)" in the REST API documentation.
+     * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/enterprise-server@3.14/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/enterprise-server@3.14/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/enterprise-server@3.14/rest/code-scanning)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Code scanning alerts" repository permission.
      * @description Someone reopened a code scanning alert.
@@ -209,7 +303,7 @@ export interface webhooks {
   };
   "commit-comment-created": {
     /**
-     * This event occurs when there is activity relating to commit comments. For more information about commit comments, see "[Commenting on a pull request](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request)." For information about the APIs to manage commit comments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#commitcomment) or "[Commit comments](https://docs.github.com/enterprise-server@3.9/rest/commits/comments)" in the REST API documentation.
+     * This event occurs when there is activity relating to commit comments. For more information about commit comments, see "[Commenting on a pull request](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request)." For information about the APIs to manage commit comments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#commitcomment) or "[Commit comments](https://docs.github.com/enterprise-server@3.14/rest/commits/comments)" in the REST API documentation.
      *
      * For activity relating to comments on pull request reviews, use the `pull_request_review_comment` event. For activity relating to issue comments, use the `issue_comment` event. For activity relating to discussion comments, use the `discussion_comment` event.
      *
@@ -237,19 +331,49 @@ export interface webhooks {
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
      *
-     * **Note**: This event will not occur when more than three tags are deleted at once.
+     * > [!NOTE]
+     * > This event will not occur when more than three tags are deleted at once.
      */
     post: operations["delete"];
+  };
+  "dependabot-alert-auto-dismissed": {
+    /**
+     * This event occurs when there is activity relating to Dependabot alerts.
+     *
+     * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.14/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.14/rest/dependabot/alerts)" in the REST API documentation.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
+     *
+     * > [!NOTE]
+     * > Webhook events for Dependabot alerts are currently in beta and subject to change.
+     * @description A Dependabot alert was automatically closed by a Dependabot auto-triage rule.
+     */
+    post: operations["dependabot-alert/auto-dismissed"];
+  };
+  "dependabot-alert-auto-reopened": {
+    /**
+     * This event occurs when there is activity relating to Dependabot alerts.
+     *
+     * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.14/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.14/rest/dependabot/alerts)" in the REST API documentation.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
+     *
+     * > [!NOTE]
+     * > Webhook events for Dependabot alerts are currently in beta and subject to change.
+     * @description A Dependabot alert, that had been automatically closed by a Dependabot auto-triage rule, was automatically reopened because the alert metadata or rule changed.
+     */
+    post: operations["dependabot-alert/auto-reopened"];
   };
   "dependabot-alert-created": {
     /**
      * This event occurs when there is activity relating to Dependabot alerts.
      *
-     * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.9/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.9/rest/dependabot/alerts)" in the REST API documentation.
+     * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.14/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.14/rest/dependabot/alerts)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
      *
-     * **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
+     * > [!NOTE]
+     * > Webhook events for Dependabot alerts are currently in beta and subject to change.
      * @description A manifest file change introduced a vulnerable dependency, or a GitHub Security Advisory was published and an existing dependency was found to be vulnerable.
      */
     post: operations["dependabot-alert/created"];
@@ -258,11 +382,12 @@ export interface webhooks {
     /**
      * This event occurs when there is activity relating to Dependabot alerts.
      *
-     * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.9/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.9/rest/dependabot/alerts)" in the REST API documentation.
+     * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.14/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.14/rest/dependabot/alerts)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
      *
-     * **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
+     * > [!NOTE]
+     * > Webhook events for Dependabot alerts are currently in beta and subject to change.
      * @description A Dependabot alert was manually closed.
      */
     post: operations["dependabot-alert/dismissed"];
@@ -271,11 +396,12 @@ export interface webhooks {
     /**
      * This event occurs when there is activity relating to Dependabot alerts.
      *
-     * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.9/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.9/rest/dependabot/alerts)" in the REST API documentation.
+     * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.14/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.14/rest/dependabot/alerts)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
      *
-     * **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
+     * > [!NOTE]
+     * > Webhook events for Dependabot alerts are currently in beta and subject to change.
      * @description A manifest file change removed a vulnerability.
      */
     post: operations["dependabot-alert/fixed"];
@@ -284,11 +410,12 @@ export interface webhooks {
     /**
      * This event occurs when there is activity relating to Dependabot alerts.
      *
-     * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.9/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.9/rest/dependabot/alerts)" in the REST API documentation.
+     * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.14/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.14/rest/dependabot/alerts)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
      *
-     * **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
+     * > [!NOTE]
+     * > Webhook events for Dependabot alerts are currently in beta and subject to change.
      * @description A manifest file change introduced a vulnerable dependency that had previously been fixed.
      */
     post: operations["dependabot-alert/reintroduced"];
@@ -297,18 +424,19 @@ export interface webhooks {
     /**
      * This event occurs when there is activity relating to Dependabot alerts.
      *
-     * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.9/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.9/rest/dependabot/alerts)" in the REST API documentation.
+     * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.14/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.14/rest/dependabot/alerts)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
      *
-     * **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
+     * > [!NOTE]
+     * > Webhook events for Dependabot alerts are currently in beta and subject to change.
      * @description A Dependabot alert was manually reopened.
      */
     post: operations["dependabot-alert/reopened"];
   };
   "deploy-key-created": {
     /**
-     * This event occurs when there is activity relating to deploy keys. For more information, see "[Managing deploy keys](https://docs.github.com/enterprise-server@3.9/developers/overview/managing-deploy-keys)." For information about the APIs to manage deploy keys, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#deploykey) or "[Deploy keys](https://docs.github.com/enterprise-server@3.9/rest/deploy-keys)" in the REST API documentation.
+     * This event occurs when there is activity relating to deploy keys. For more information, see "[Managing deploy keys](https://docs.github.com/enterprise-server@3.14/developers/overview/managing-deploy-keys)." For information about the APIs to manage deploy keys, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#deploykey) or "[Deploy keys](https://docs.github.com/enterprise-server@3.14/rest/deploy-keys)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
      * @description A deploy key was created.
@@ -317,7 +445,7 @@ export interface webhooks {
   };
   "deploy-key-deleted": {
     /**
-     * This event occurs when there is activity relating to deploy keys. For more information, see "[Managing deploy keys](https://docs.github.com/enterprise-server@3.9/developers/overview/managing-deploy-keys)." For information about the APIs to manage deploy keys, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#deploykey) or "[Deploy keys](https://docs.github.com/enterprise-server@3.9/rest/deploy-keys)" in the REST API documentation.
+     * This event occurs when there is activity relating to deploy keys. For more information, see "[Managing deploy keys](https://docs.github.com/enterprise-server@3.14/developers/overview/managing-deploy-keys)." For information about the APIs to manage deploy keys, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#deploykey) or "[Deploy keys](https://docs.github.com/enterprise-server@3.14/rest/deploy-keys)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
      * @description A deploy key was deleted.
@@ -326,7 +454,7 @@ export interface webhooks {
   };
   "deployment-created": {
     /**
-     * This event occurs when there is activity relating to deployments. For more information, see "[About deployments](https://docs.github.com/enterprise-server@3.9/actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/enterprise-server@3.9/rest/deployments/deployments)" in the REST API documentation.
+     * This event occurs when there is activity relating to deployments. For more information, see "[About deployments](https://docs.github.com/enterprise-server@3.14/actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/enterprise-server@3.14/rest/deployments/deployments)" in the REST API documentation.
      *
      * For activity relating to deployment status, use the `deployment_status` event.
      *
@@ -335,9 +463,18 @@ export interface webhooks {
      */
     post: operations["deployment/created"];
   };
+  "deployment-protection-rule-requested": {
+    /**
+     * This event occurs when there is activity relating to deployment protection rules. For more information, see "[Using environments for deployment](https://docs.github.com/enterprise-server@3.14/actions/deployment/targeting-different-environments/using-environments-for-deployment#environment-protection-rules)." For information about the API to manage deployment protection rules, see [the REST API documentation](https://docs.github.com/enterprise-server@3.14/rest/deployments/environments).
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
+     * @description A deployment protection rule was requested for an environment.
+     */
+    post: operations["deployment-protection-rule/requested"];
+  };
   "deployment-review-approved": {
     /**
-     * This event occurs when there is activity relating to deployment reviews. For more information, see "[About deployments](https://docs.github.com/enterprise-server@3.9/actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/enterprise-server@3.9/rest/deployments/deployments)" in the REST API documentation.
+     * This event occurs when there is activity relating to deployment reviews. For more information, see "[About deployments](https://docs.github.com/enterprise-server@3.14/actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/enterprise-server@3.14/rest/deployments/deployments)" in the REST API documentation.
      *
      * For activity relating to deployment creation or deployment status, use the `deployment` or `deployment_status` event.
      *
@@ -348,7 +485,7 @@ export interface webhooks {
   };
   "deployment-review-rejected": {
     /**
-     * This event occurs when there is activity relating to deployment reviews. For more information, see "[About deployments](https://docs.github.com/enterprise-server@3.9/actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/enterprise-server@3.9/rest/deployments/deployments)" in the REST API documentation.
+     * This event occurs when there is activity relating to deployment reviews. For more information, see "[About deployments](https://docs.github.com/enterprise-server@3.14/actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/enterprise-server@3.14/rest/deployments/deployments)" in the REST API documentation.
      *
      * For activity relating to deployment creation or deployment status, use the `deployment` or `deployment_status` event.
      *
@@ -359,7 +496,7 @@ export interface webhooks {
   };
   "deployment-review-requested": {
     /**
-     * This event occurs when there is activity relating to deployment reviews. For more information, see "[About deployments](https://docs.github.com/enterprise-server@3.9/actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/enterprise-server@3.9/rest/deployments/deployments)" in the REST API documentation.
+     * This event occurs when there is activity relating to deployment reviews. For more information, see "[About deployments](https://docs.github.com/enterprise-server@3.14/actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/enterprise-server@3.14/rest/deployments/deployments)" in the REST API documentation.
      *
      * For activity relating to deployment creation or deployment status, use the `deployment` or `deployment_status` event.
      *
@@ -370,266 +507,287 @@ export interface webhooks {
   };
   "deployment-status-created": {
     /**
-     * This event occurs when there is activity relating to deployment statuses. For more information, see "[About deployments](https://docs.github.com/enterprise-server@3.9/actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/enterprise-server@3.9/rest/deployments/deployments)" in the REST API documentation.
+     * This event occurs when there is activity relating to deployment statuses. For more information, see "[About deployments](https://docs.github.com/enterprise-server@3.14/actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/enterprise-server@3.14/rest/deployments/deployments)" in the REST API documentation.
      *
      * For activity relating to deployment creation, use the `deployment` event.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
+     *
+     * > [!NOTE]
+     * > A webhook event is not fired for deployment statuses with an `inactive` state.
      * @description A new deployment status was created.
      */
     post: operations["deployment-status/created"];
   };
   "discussion-answered": {
     /**
-     * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.9/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#discussion).
+     * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.14/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion).
      *
      * For activity relating to a comment on a discussion, use the `discussion_comment` event.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
      *
-     * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     * > [!NOTE]
+     * > Webhook events for GitHub Discussions are currently in beta and subject to change.
      * @description A comment on the discussion was marked as the answer.
      */
     post: operations["discussion/answered"];
   };
   "discussion-category-changed": {
     /**
-     * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.9/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#discussion).
+     * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.14/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion).
      *
      * For activity relating to a comment on a discussion, use the `discussion_comment` event.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
      *
-     * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     * > [!NOTE]
+     * > Webhook events for GitHub Discussions are currently in beta and subject to change.
      * @description The category of a discussion was changed.
      */
     post: operations["discussion/category-changed"];
   };
   "discussion-closed": {
     /**
-     * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.9/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#discussion).
+     * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.14/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion).
      *
      * For activity relating to a comment on a discussion, use the `discussion_comment` event.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
      *
-     * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     * > [!NOTE]
+     * > Webhook events for GitHub Discussions are currently in beta and subject to change.
      * @description A discussion was closed.
      */
     post: operations["discussion/closed"];
   };
   "discussion-comment-created": {
     /**
-     * This event occurs when there is activity relating to a comment on a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.9/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#discussion).
+     * This event occurs when there is activity relating to a comment on a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.14/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion).
      *
      * For activity relating to a discussion as opposed to comments on a discussion, use the `discussion` event.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
      *
-     * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     * > [!NOTE]
+     * > Webhook events for GitHub Discussions are currently in beta and subject to change.
      * @description A comment on a discussion was created.
      */
     post: operations["discussion-comment/created"];
   };
   "discussion-comment-deleted": {
     /**
-     * This event occurs when there is activity relating to a comment on a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.9/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#discussion).
+     * This event occurs when there is activity relating to a comment on a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.14/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion).
      *
      * For activity relating to a discussion as opposed to comments on a discussion, use the `discussion` event.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
      *
-     * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     * > [!NOTE]
+     * > Webhook events for GitHub Discussions are currently in beta and subject to change.
      * @description A comment on a discussion was deleted.
      */
     post: operations["discussion-comment/deleted"];
   };
   "discussion-comment-edited": {
     /**
-     * This event occurs when there is activity relating to a comment on a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.9/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#discussion).
+     * This event occurs when there is activity relating to a comment on a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.14/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion).
      *
      * For activity relating to a discussion as opposed to comments on a discussion, use the `discussion` event.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
      *
-     * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     * > [!NOTE]
+     * > Webhook events for GitHub Discussions are currently in beta and subject to change.
      * @description A comment on a discussion was edited.
      */
     post: operations["discussion-comment/edited"];
   };
   "discussion-created": {
     /**
-     * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.9/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#discussion).
+     * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.14/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion).
      *
      * For activity relating to a comment on a discussion, use the `discussion_comment` event.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
      *
-     * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     * > [!NOTE]
+     * > Webhook events for GitHub Discussions are currently in beta and subject to change.
      * @description A discussion was created.
      */
     post: operations["discussion/created"];
   };
   "discussion-deleted": {
     /**
-     * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.9/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#discussion).
+     * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.14/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion).
      *
      * For activity relating to a comment on a discussion, use the `discussion_comment` event.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
      *
-     * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     * > [!NOTE]
+     * > Webhook events for GitHub Discussions are currently in beta and subject to change.
      * @description A discussion was deleted.
      */
     post: operations["discussion/deleted"];
   };
   "discussion-edited": {
     /**
-     * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.9/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#discussion).
+     * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.14/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion).
      *
      * For activity relating to a comment on a discussion, use the `discussion_comment` event.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
      *
-     * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     * > [!NOTE]
+     * > Webhook events for GitHub Discussions are currently in beta and subject to change.
      * @description The title or body on a discussion was edited, or the category of the discussion was changed.
      */
     post: operations["discussion/edited"];
   };
   "discussion-labeled": {
     /**
-     * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.9/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#discussion).
+     * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.14/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion).
      *
      * For activity relating to a comment on a discussion, use the `discussion_comment` event.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
      *
-     * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     * > [!NOTE]
+     * > Webhook events for GitHub Discussions are currently in beta and subject to change.
      * @description A label was added to a discussion.
      */
     post: operations["discussion/labeled"];
   };
   "discussion-locked": {
     /**
-     * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.9/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#discussion).
+     * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.14/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion).
      *
      * For activity relating to a comment on a discussion, use the `discussion_comment` event.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
      *
-     * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     * > [!NOTE]
+     * > Webhook events for GitHub Discussions are currently in beta and subject to change.
      * @description A discussion was locked.
      */
     post: operations["discussion/locked"];
   };
   "discussion-pinned": {
     /**
-     * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.9/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#discussion).
+     * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.14/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion).
      *
      * For activity relating to a comment on a discussion, use the `discussion_comment` event.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
      *
-     * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     * > [!NOTE]
+     * > Webhook events for GitHub Discussions are currently in beta and subject to change.
      * @description A discussion was pinned.
      */
     post: operations["discussion/pinned"];
   };
   "discussion-reopened": {
     /**
-     * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.9/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#discussion).
+     * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.14/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion).
      *
      * For activity relating to a comment on a discussion, use the `discussion_comment` event.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
      *
-     * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     * > [!NOTE]
+     * > Webhook events for GitHub Discussions are currently in beta and subject to change.
      * @description A discussion was reopened.
      */
     post: operations["discussion/reopened"];
   };
   "discussion-transferred": {
     /**
-     * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.9/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#discussion).
+     * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.14/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion).
      *
      * For activity relating to a comment on a discussion, use the `discussion_comment` event.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
      *
-     * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     * > [!NOTE]
+     * > Webhook events for GitHub Discussions are currently in beta and subject to change.
      * @description A discussion was transferred to another repository.
      */
     post: operations["discussion/transferred"];
   };
   "discussion-unanswered": {
     /**
-     * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.9/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#discussion).
+     * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.14/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion).
      *
      * For activity relating to a comment on a discussion, use the `discussion_comment` event.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
      *
-     * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     * > [!NOTE]
+     * > Webhook events for GitHub Discussions are currently in beta and subject to change.
      * @description A comment on the discussion was unmarked as the answer.
      */
     post: operations["discussion/unanswered"];
   };
   "discussion-unlabeled": {
     /**
-     * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.9/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#discussion).
+     * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.14/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion).
      *
      * For activity relating to a comment on a discussion, use the `discussion_comment` event.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
      *
-     * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     * > [!NOTE]
+     * > Webhook events for GitHub Discussions are currently in beta and subject to change.
      * @description A label was removed from a discussion.
      */
     post: operations["discussion/unlabeled"];
   };
   "discussion-unlocked": {
     /**
-     * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.9/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#discussion).
+     * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.14/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion).
      *
      * For activity relating to a comment on a discussion, use the `discussion_comment` event.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
      *
-     * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     * > [!NOTE]
+     * > Webhook events for GitHub Discussions are currently in beta and subject to change.
      * @description A discussion was unlocked.
      */
     post: operations["discussion/unlocked"];
   };
   "discussion-unpinned": {
     /**
-     * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.9/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#discussion).
+     * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.14/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion).
      *
      * For activity relating to a comment on a discussion, use the `discussion_comment` event.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
      *
-     * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     * > [!NOTE]
+     * > Webhook events for GitHub Discussions are currently in beta and subject to change.
      * @description A discussion was unpinned.
      */
     post: operations["discussion/unpinned"];
   };
   "enterprise-anonymous-access-disabled": {
     /**
-     * This event occurs when there is activity relating to anonymous Git read access in an enterprise. For more information, see "[Enforcing repository management policies in your enterprise](https://docs.github.com/enterprise-server@3.9/admin/policies/enforcing-policies-for-your-enterprise/enforcing-repository-management-policies-in-your-enterprise#configuring-anonymous-git-read-access)."
+     * This event occurs when there is activity relating to anonymous Git read access in an enterprise. For more information, see "[Enforcing repository management policies in your enterprise](https://docs.github.com/enterprise-server@3.14/admin/policies/enforcing-policies-for-your-enterprise/enforcing-repository-management-policies-in-your-enterprise#configuring-anonymous-git-read-access)."
      * @description Anonymous Git read access was disabled.
      */
     post: operations["enterprise/anonymous-access-disabled"];
   };
   "enterprise-anonymous-access-enabled": {
     /**
-     * This event occurs when there is activity relating to anonymous Git read access in an enterprise. For more information, see "[Enforcing repository management policies in your enterprise](https://docs.github.com/enterprise-server@3.9/admin/policies/enforcing-policies-for-your-enterprise/enforcing-repository-management-policies-in-your-enterprise#configuring-anonymous-git-read-access)."
+     * This event occurs when there is activity relating to anonymous Git read access in an enterprise. For more information, see "[Enforcing repository management policies in your enterprise](https://docs.github.com/enterprise-server@3.14/admin/policies/enforcing-policies-for-your-enterprise/enforcing-repository-management-policies-in-your-enterprise#configuring-anonymous-git-read-access)."
      * @description Anonymous Git read access was enabled.
      */
     post: operations["enterprise/anonymous-access-enabled"];
   };
   fork: {
     /**
-     * This event occurs when someone forks a repository. For more information, see "[Fork a repo](https://docs.github.com/enterprise-server@3.9/get-started/quickstart/fork-a-repo)." For information about the API to manage forks, see "[Forks](https://docs.github.com/enterprise-server@3.9/rest/repos/forks)" in the REST API documentation.
+     * This event occurs when someone forks a repository. For more information, see "[Fork a repo](https://docs.github.com/enterprise-server@3.14/get-started/quickstart/fork-a-repo)." For information about the API to manage forks, see "[Forks](https://docs.github.com/enterprise-server@3.14/rest/repos/forks)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
      */
@@ -637,18 +795,18 @@ export interface webhooks {
   };
   "github-app-authorization-revoked": {
     /**
-     * This event occurs when a user revokes their authorization of a GitHub App. For more information, see "[About apps](https://docs.github.com/enterprise-server@3.9/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the API to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.9/rest/apps)" in the REST API documentation.
+     * This event occurs when a user revokes their authorization of a GitHub App. For more information, see "[About apps](https://docs.github.com/enterprise-server@3.14/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the API to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.14/rest/apps)" in the REST API documentation.
      *
      * A GitHub App receives this webhook by default and cannot unsubscribe from this event.
      *
-     * Anyone can revoke their authorization of a GitHub App from their [GitHub account settings page](https://github.com/settings/apps/authorizations). Revoking the authorization of a GitHub App does not uninstall the GitHub App. You should program your GitHub App so that when it receives this webhook, it stops calling the API on behalf of the person who revoked the token. If your GitHub App continues to use a revoked access token, it will receive the `401 Bad Credentials` error. For details about requests with a user access token, which require GitHub App authorization, see "[Authenticating with a GitHub App on behalf of a user](https://docs.github.com/enterprise-server@3.9/apps/creating-github-apps/authenticating-with-a-github-app/authenticating-with-a-github-app-on-behalf-of-a-user)."
+     * Anyone can revoke their authorization of a GitHub App from their [GitHub account settings page](https://github.com/settings/apps/authorizations). Revoking the authorization of a GitHub App does not uninstall the GitHub App. You should program your GitHub App so that when it receives this webhook, it stops calling the API on behalf of the person who revoked the token. If your GitHub App continues to use a revoked access token, it will receive the `401 Bad Credentials` error. For details about requests with a user access token, which require GitHub App authorization, see "[Authenticating with a GitHub App on behalf of a user](https://docs.github.com/enterprise-server@3.14/apps/creating-github-apps/authenticating-with-a-github-app/authenticating-with-a-github-app-on-behalf-of-a-user)."
      * @description Someone revoked their authorization of a GitHub App.
      */
     post: operations["github-app-authorization/revoked"];
   };
   gollum: {
     /**
-     * This event occurs when someone creates or updates a wiki page. For more information, see "[About wikis](https://docs.github.com/enterprise-server@3.9/communities/documenting-your-project-with-wikis/about-wikis)."
+     * This event occurs when someone creates or updates a wiki page. For more information, see "[About wikis](https://docs.github.com/enterprise-server@3.14/communities/documenting-your-project-with-wikis/about-wikis)."
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
      */
@@ -658,7 +816,7 @@ export interface webhooks {
     /**
      * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
      *
-     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.9/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.9/rest/apps)" in the REST API documentation.
+     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.14/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.14/rest/apps)" in the REST API documentation.
      * @description Someone installed a GitHub App on a user or organization account.
      */
     post: operations["installation/created"];
@@ -667,7 +825,7 @@ export interface webhooks {
     /**
      * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
      *
-     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.9/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.9/rest/apps)" in the REST API documentation.
+     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.14/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.14/rest/apps)" in the REST API documentation.
      * @description Someone uninstalled a GitHub App from their user or organization account.
      */
     post: operations["installation/deleted"];
@@ -676,7 +834,7 @@ export interface webhooks {
     /**
      * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
      *
-     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.9/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.9/rest/apps)" in the REST API documentation.
+     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.14/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.14/rest/apps)" in the REST API documentation.
      * @description Someone granted new permissions to a GitHub App.
      */
     post: operations["installation/new-permissions-accepted"];
@@ -685,7 +843,7 @@ export interface webhooks {
     /**
      * This event occurs when there is activity relating to which repositories a GitHub App installation can access. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
      *
-     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.9/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.9/rest/apps)" in the REST API documentation.
+     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.14/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.14/rest/apps)" in the REST API documentation.
      * @description A GitHub App installation was granted access to one or more repositories.
      */
     post: operations["installation-repositories/added"];
@@ -694,7 +852,7 @@ export interface webhooks {
     /**
      * This event occurs when there is activity relating to which repositories a GitHub App installation can access. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
      *
-     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.9/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.9/rest/apps)" in the REST API documentation.
+     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.14/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.14/rest/apps)" in the REST API documentation.
      * @description Access to one or more repositories was revoked for a GitHub App installation.
      */
     post: operations["installation-repositories/removed"];
@@ -703,14 +861,14 @@ export interface webhooks {
     /**
      * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
      *
-     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.9/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.9/rest/apps)" in the REST API documentation.
+     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.14/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.14/rest/apps)" in the REST API documentation.
      * @description Someone blocked access by a GitHub App to their user or organization account.
      */
     post: operations["installation/suspend"];
   };
   "installation-target-renamed": {
     /**
-     * This event occurs when there is activity relating to the user or organization account that a GitHub App is installed on. For more information, see "[About apps](https://docs.github.com/enterprise-server@3.9/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.9/rest/apps)" in the REST API documentation.
+     * This event occurs when there is activity relating to the user or organization account that a GitHub App is installed on. For more information, see "[About apps](https://docs.github.com/enterprise-server@3.14/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.14/rest/apps)" in the REST API documentation.
      * @description Somebody renamed the user or organization account that a GitHub App is installed on.
      */
     post: operations["installation-target/renamed"];
@@ -719,16 +877,16 @@ export interface webhooks {
     /**
      * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
      *
-     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.9/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.9/rest/apps)" in the REST API documentation.
+     * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.14/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.14/rest/apps)" in the REST API documentation.
      * @description A GitHub App that was blocked from accessing a user or organization account was given access the account again.
      */
     post: operations["installation/unsuspend"];
   };
   "issue-comment-created": {
     /**
-     * This event occurs when there is activity relating to a comment on an issue or pull request. For more information about issues and pull requests, see "[About issues](https://docs.github.com/enterprise-server@3.9/issues/tracking-your-work-with-issues/about-issues)" and "[About pull requests](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage issue comments, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#issuecomment) or "[Issue comments](https://docs.github.com/enterprise-server@3.9/rest/issues/comments)" in the REST API documentation.
+     * This event occurs when there is activity relating to a comment on an issue or pull request. For more information about issues and pull requests, see "[About issues](https://docs.github.com/enterprise-server@3.14/issues/tracking-your-work-with-issues/about-issues)" and "[About pull requests](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage issue comments, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#issuecomment) or "[Issue comments](https://docs.github.com/enterprise-server@3.14/rest/issues/comments)" in the REST API documentation.
      *
-     * For activity relating to an issue as opposed to comments on an issue, use the `issue` event. For activity related to pull request reviews or pull request review comments, use the `pull_request_review` or `pull_request_review_comment` events. For more information about the different types of pull request comments, see "[Working with comments](https://docs.github.com/enterprise-server@3.9/rest/guides/working-with-comments)."
+     * For activity relating to an issue as opposed to comments on an issue, use the `issue` event. For activity related to pull request reviews or pull request review comments, use the `pull_request_review` or `pull_request_review_comment` events. For more information about the different types of pull request comments, see "[Working with comments](https://docs.github.com/enterprise-server@3.14/rest/guides/working-with-comments)."
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
      * @description A comment on an issue or pull request was created.
@@ -737,9 +895,9 @@ export interface webhooks {
   };
   "issue-comment-deleted": {
     /**
-     * This event occurs when there is activity relating to a comment on an issue or pull request. For more information about issues and pull requests, see "[About issues](https://docs.github.com/enterprise-server@3.9/issues/tracking-your-work-with-issues/about-issues)" and "[About pull requests](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage issue comments, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#issuecomment) or "[Issue comments](https://docs.github.com/enterprise-server@3.9/rest/issues/comments)" in the REST API documentation.
+     * This event occurs when there is activity relating to a comment on an issue or pull request. For more information about issues and pull requests, see "[About issues](https://docs.github.com/enterprise-server@3.14/issues/tracking-your-work-with-issues/about-issues)" and "[About pull requests](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage issue comments, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#issuecomment) or "[Issue comments](https://docs.github.com/enterprise-server@3.14/rest/issues/comments)" in the REST API documentation.
      *
-     * For activity relating to an issue as opposed to comments on an issue, use the `issue` event. For activity related to pull request reviews or pull request review comments, use the `pull_request_review` or `pull_request_review_comment` events. For more information about the different types of pull request comments, see "[Working with comments](https://docs.github.com/enterprise-server@3.9/rest/guides/working-with-comments)."
+     * For activity relating to an issue as opposed to comments on an issue, use the `issue` event. For activity related to pull request reviews or pull request review comments, use the `pull_request_review` or `pull_request_review_comment` events. For more information about the different types of pull request comments, see "[Working with comments](https://docs.github.com/enterprise-server@3.14/rest/guides/working-with-comments)."
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
      * @description A comment on an issue or pull request was deleted.
@@ -748,9 +906,9 @@ export interface webhooks {
   };
   "issue-comment-edited": {
     /**
-     * This event occurs when there is activity relating to a comment on an issue or pull request. For more information about issues and pull requests, see "[About issues](https://docs.github.com/enterprise-server@3.9/issues/tracking-your-work-with-issues/about-issues)" and "[About pull requests](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage issue comments, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#issuecomment) or "[Issue comments](https://docs.github.com/enterprise-server@3.9/rest/issues/comments)" in the REST API documentation.
+     * This event occurs when there is activity relating to a comment on an issue or pull request. For more information about issues and pull requests, see "[About issues](https://docs.github.com/enterprise-server@3.14/issues/tracking-your-work-with-issues/about-issues)" and "[About pull requests](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage issue comments, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#issuecomment) or "[Issue comments](https://docs.github.com/enterprise-server@3.14/rest/issues/comments)" in the REST API documentation.
      *
-     * For activity relating to an issue as opposed to comments on an issue, use the `issue` event. For activity related to pull request reviews or pull request review comments, use the `pull_request_review` or `pull_request_review_comment` events. For more information about the different types of pull request comments, see "[Working with comments](https://docs.github.com/enterprise-server@3.9/rest/guides/working-with-comments)."
+     * For activity relating to an issue as opposed to comments on an issue, use the `issue` event. For activity related to pull request reviews or pull request review comments, use the `pull_request_review` or `pull_request_review_comment` events. For more information about the different types of pull request comments, see "[Working with comments](https://docs.github.com/enterprise-server@3.14/rest/guides/working-with-comments)."
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
      * @description A comment on an issue or pull request was edited.
@@ -759,7 +917,7 @@ export interface webhooks {
   };
   "issues-assigned": {
     /**
-     * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.9/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.9/rest/issues)" in the REST API documentation.
+     * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.14/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.14/rest/issues)" in the REST API documentation.
      *
      * For activity relating to a comment on an issue, use the `issue_comment` event.
      *
@@ -770,7 +928,7 @@ export interface webhooks {
   };
   "issues-closed": {
     /**
-     * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.9/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.9/rest/issues)" in the REST API documentation.
+     * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.14/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.14/rest/issues)" in the REST API documentation.
      *
      * For activity relating to a comment on an issue, use the `issue_comment` event.
      *
@@ -781,7 +939,7 @@ export interface webhooks {
   };
   "issues-deleted": {
     /**
-     * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.9/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.9/rest/issues)" in the REST API documentation.
+     * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.14/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.14/rest/issues)" in the REST API documentation.
      *
      * For activity relating to a comment on an issue, use the `issue_comment` event.
      *
@@ -792,7 +950,7 @@ export interface webhooks {
   };
   "issues-demilestoned": {
     /**
-     * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.9/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.9/rest/issues)" in the REST API documentation.
+     * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.14/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.14/rest/issues)" in the REST API documentation.
      *
      * For activity relating to a comment on an issue, use the `issue_comment` event.
      *
@@ -803,7 +961,7 @@ export interface webhooks {
   };
   "issues-edited": {
     /**
-     * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.9/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.9/rest/issues)" in the REST API documentation.
+     * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.14/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.14/rest/issues)" in the REST API documentation.
      *
      * For activity relating to a comment on an issue, use the `issue_comment` event.
      *
@@ -814,7 +972,7 @@ export interface webhooks {
   };
   "issues-labeled": {
     /**
-     * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.9/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.9/rest/issues)" in the REST API documentation.
+     * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.14/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.14/rest/issues)" in the REST API documentation.
      *
      * For activity relating to a comment on an issue, use the `issue_comment` event.
      *
@@ -825,18 +983,18 @@ export interface webhooks {
   };
   "issues-locked": {
     /**
-     * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.9/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.9/rest/issues)" in the REST API documentation.
+     * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.14/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.14/rest/issues)" in the REST API documentation.
      *
      * For activity relating to a comment on an issue, use the `issue_comment` event.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
-     * @description Conversation on an issue was locked. For more information, see "[Locking conversations](https://docs.github.com/enterprise-server@3.9/communities/moderating-comments-and-conversations/locking-conversations)."
+     * @description Conversation on an issue was locked. For more information, see "[Locking conversations](https://docs.github.com/enterprise-server@3.14/communities/moderating-comments-and-conversations/locking-conversations)."
      */
     post: operations["issues/locked"];
   };
   "issues-milestoned": {
     /**
-     * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.9/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.9/rest/issues)" in the REST API documentation.
+     * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.14/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.14/rest/issues)" in the REST API documentation.
      *
      * For activity relating to a comment on an issue, use the `issue_comment` event.
      *
@@ -847,7 +1005,7 @@ export interface webhooks {
   };
   "issues-opened": {
     /**
-     * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.9/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.9/rest/issues)" in the REST API documentation.
+     * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.14/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.14/rest/issues)" in the REST API documentation.
      *
      * For activity relating to a comment on an issue, use the `issue_comment` event.
      *
@@ -858,18 +1016,18 @@ export interface webhooks {
   };
   "issues-pinned": {
     /**
-     * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.9/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.9/rest/issues)" in the REST API documentation.
+     * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.14/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.14/rest/issues)" in the REST API documentation.
      *
      * For activity relating to a comment on an issue, use the `issue_comment` event.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
-     * @description An issue was pinned to a repository. For more information, see "[Pinning an issue to your repository](https://docs.github.com/enterprise-server@3.9/issues/tracking-your-work-with-issues/pinning-an-issue-to-your-repository)."
+     * @description An issue was pinned to a repository. For more information, see "[Pinning an issue to your repository](https://docs.github.com/enterprise-server@3.14/issues/tracking-your-work-with-issues/pinning-an-issue-to-your-repository)."
      */
     post: operations["issues/pinned"];
   };
   "issues-reopened": {
     /**
-     * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.9/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.9/rest/issues)" in the REST API documentation.
+     * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.14/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.14/rest/issues)" in the REST API documentation.
      *
      * For activity relating to a comment on an issue, use the `issue_comment` event.
      *
@@ -880,18 +1038,18 @@ export interface webhooks {
   };
   "issues-transferred": {
     /**
-     * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.9/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.9/rest/issues)" in the REST API documentation.
+     * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.14/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.14/rest/issues)" in the REST API documentation.
      *
      * For activity relating to a comment on an issue, use the `issue_comment` event.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
-     * @description An issue was transferred to another repository. For more information, see "[Transferring an issue to another repository](https://docs.github.com/enterprise-server@3.9/issues/tracking-your-work-with-issues/transferring-an-issue-to-another-repository)."
+     * @description An issue was transferred to another repository. For more information, see "[Transferring an issue to another repository](https://docs.github.com/enterprise-server@3.14/issues/tracking-your-work-with-issues/transferring-an-issue-to-another-repository)."
      */
     post: operations["issues/transferred"];
   };
   "issues-unassigned": {
     /**
-     * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.9/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.9/rest/issues)" in the REST API documentation.
+     * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.14/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.14/rest/issues)" in the REST API documentation.
      *
      * For activity relating to a comment on an issue, use the `issue_comment` event.
      *
@@ -902,7 +1060,7 @@ export interface webhooks {
   };
   "issues-unlabeled": {
     /**
-     * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.9/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.9/rest/issues)" in the REST API documentation.
+     * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.14/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.14/rest/issues)" in the REST API documentation.
      *
      * For activity relating to a comment on an issue, use the `issue_comment` event.
      *
@@ -913,29 +1071,29 @@ export interface webhooks {
   };
   "issues-unlocked": {
     /**
-     * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.9/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.9/rest/issues)" in the REST API documentation.
+     * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.14/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.14/rest/issues)" in the REST API documentation.
      *
      * For activity relating to a comment on an issue, use the `issue_comment` event.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
-     * @description Conversation on an issue was locked. For more information, see "[Locking conversations](https://docs.github.com/enterprise-server@3.9/communities/moderating-comments-and-conversations/locking-conversations)."
+     * @description Conversation on an issue was locked. For more information, see "[Locking conversations](https://docs.github.com/enterprise-server@3.14/communities/moderating-comments-and-conversations/locking-conversations)."
      */
     post: operations["issues/unlocked"];
   };
   "issues-unpinned": {
     /**
-     * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.9/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.9/rest/issues)" in the REST API documentation.
+     * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.14/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.14/rest/issues)" in the REST API documentation.
      *
      * For activity relating to a comment on an issue, use the `issue_comment` event.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
-     * @description An issue was unpinned from a repository. For more information, see "[Pinning an issue to your repository](https://docs.github.com/enterprise-server@3.9/issues/tracking-your-work-with-issues/pinning-an-issue-to-your-repository)."
+     * @description An issue was unpinned from a repository. For more information, see "[Pinning an issue to your repository](https://docs.github.com/enterprise-server@3.14/issues/tracking-your-work-with-issues/pinning-an-issue-to-your-repository)."
      */
     post: operations["issues/unpinned"];
   };
   "label-created": {
     /**
-     * This event occurs when there is activity relating to labels. For more information, see "[Managing labels](https://docs.github.com/enterprise-server@3.9/issues/using-labels-and-milestones-to-track-work/managing-labels)." For information about the APIs to manage labels, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#label) or "[Labels](https://docs.github.com/enterprise-server@3.9/rest/issues/labels)" in the REST API documentation.
+     * This event occurs when there is activity relating to labels. For more information, see "[Managing labels](https://docs.github.com/enterprise-server@3.14/issues/using-labels-and-milestones-to-track-work/managing-labels)." For information about the APIs to manage labels, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#label) or "[Labels](https://docs.github.com/enterprise-server@3.14/rest/issues/labels)" in the REST API documentation.
      *
      * If you want to receive an event when a label is added to or removed from an issue, pull request, or discussion, use the `labeled` or `unlabeled` action type for the `issues`, `pull_request`, or `discussion` events instead.
      *
@@ -946,7 +1104,7 @@ export interface webhooks {
   };
   "label-deleted": {
     /**
-     * This event occurs when there is activity relating to labels. For more information, see "[Managing labels](https://docs.github.com/enterprise-server@3.9/issues/using-labels-and-milestones-to-track-work/managing-labels)." For information about the APIs to manage labels, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#label) or "[Labels](https://docs.github.com/enterprise-server@3.9/rest/issues/labels)" in the REST API documentation.
+     * This event occurs when there is activity relating to labels. For more information, see "[Managing labels](https://docs.github.com/enterprise-server@3.14/issues/using-labels-and-milestones-to-track-work/managing-labels)." For information about the APIs to manage labels, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#label) or "[Labels](https://docs.github.com/enterprise-server@3.14/rest/issues/labels)" in the REST API documentation.
      *
      * If you want to receive an event when a label is added to or removed from an issue, pull request, or discussion, use the `labeled` or `unlabeled` action type for the `issues`, `pull_request`, or `discussion` events instead.
      *
@@ -957,7 +1115,7 @@ export interface webhooks {
   };
   "label-edited": {
     /**
-     * This event occurs when there is activity relating to labels. For more information, see "[Managing labels](https://docs.github.com/enterprise-server@3.9/issues/using-labels-and-milestones-to-track-work/managing-labels)." For information about the APIs to manage labels, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#label) or "[Labels](https://docs.github.com/enterprise-server@3.9/rest/issues/labels)" in the REST API documentation.
+     * This event occurs when there is activity relating to labels. For more information, see "[Managing labels](https://docs.github.com/enterprise-server@3.14/issues/using-labels-and-milestones-to-track-work/managing-labels)." For information about the APIs to manage labels, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#label) or "[Labels](https://docs.github.com/enterprise-server@3.14/rest/issues/labels)" in the REST API documentation.
      *
      * If you want to receive an event when a label is added to or removed from an issue, pull request, or discussion, use the `labeled` or `unlabeled` action type for the `issues`, `pull_request`, or `discussion` events instead.
      *
@@ -968,7 +1126,7 @@ export interface webhooks {
   };
   "member-added": {
     /**
-     * This event occurs when there is activity relating to collaborators in a repository. For more information, see "[Adding outside collaborators to repositories in your organization](https://docs.github.com/enterprise-server@3.9/organizations/managing-user-access-to-your-organizations-repositories/adding-outside-collaborators-to-repositories-in-your-organization)." For more information about the API to manage repository collaborators, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#repositorycollaboratorconnection) or "[Collaborators](https://docs.github.com/enterprise-server@3.9/rest/collaborators/collaborators)" in the REST API documentation.
+     * This event occurs when there is activity relating to collaborators in a repository. For more information, see "[Adding outside collaborators to repositories in your organization](https://docs.github.com/enterprise-server@3.14/organizations/managing-user-access-to-your-organizations-repositories/adding-outside-collaborators-to-repositories-in-your-organization)." For more information about the API to manage repository collaborators, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#repositorycollaboratorconnection) or "[Collaborators](https://docs.github.com/enterprise-server@3.14/rest/collaborators/collaborators)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
      * @description A GitHub user accepted an invitation to a repository.
@@ -977,7 +1135,7 @@ export interface webhooks {
   };
   "member-edited": {
     /**
-     * This event occurs when there is activity relating to collaborators in a repository. For more information, see "[Adding outside collaborators to repositories in your organization](https://docs.github.com/enterprise-server@3.9/organizations/managing-user-access-to-your-organizations-repositories/adding-outside-collaborators-to-repositories-in-your-organization)." For more information about the API to manage repository collaborators, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#repositorycollaboratorconnection) or "[Collaborators](https://docs.github.com/enterprise-server@3.9/rest/collaborators/collaborators)" in the REST API documentation.
+     * This event occurs when there is activity relating to collaborators in a repository. For more information, see "[Adding outside collaborators to repositories in your organization](https://docs.github.com/enterprise-server@3.14/organizations/managing-user-access-to-your-organizations-repositories/adding-outside-collaborators-to-repositories-in-your-organization)." For more information about the API to manage repository collaborators, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#repositorycollaboratorconnection) or "[Collaborators](https://docs.github.com/enterprise-server@3.14/rest/collaborators/collaborators)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
      * @description Permissions were changed for a collaborator on a repository.
@@ -986,7 +1144,7 @@ export interface webhooks {
   };
   "member-removed": {
     /**
-     * This event occurs when there is activity relating to collaborators in a repository. For more information, see "[Adding outside collaborators to repositories in your organization](https://docs.github.com/enterprise-server@3.9/organizations/managing-user-access-to-your-organizations-repositories/adding-outside-collaborators-to-repositories-in-your-organization)." For more information about the API to manage repository collaborators, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#repositorycollaboratorconnection) or "[Collaborators](https://docs.github.com/enterprise-server@3.9/rest/collaborators/collaborators)" in the REST API documentation.
+     * This event occurs when there is activity relating to collaborators in a repository. For more information, see "[Adding outside collaborators to repositories in your organization](https://docs.github.com/enterprise-server@3.14/organizations/managing-user-access-to-your-organizations-repositories/adding-outside-collaborators-to-repositories-in-your-organization)." For more information about the API to manage repository collaborators, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#repositorycollaboratorconnection) or "[Collaborators](https://docs.github.com/enterprise-server@3.14/rest/collaborators/collaborators)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
      * @description A collaborator was removed from a repository.
@@ -995,7 +1153,7 @@ export interface webhooks {
   };
   "membership-added": {
     /**
-     * This event occurs when there is activity relating to team membership. For more information, see "[About teams](https://docs.github.com/enterprise-server@3.9/organizations/organizing-members-into-teams/about-teams)." For more information about the APIs to manage team memberships, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#team) or "[Team members](https://docs.github.com/enterprise-server@3.9/rest/teams/members)" in the REST API documentation.
+     * This event occurs when there is activity relating to team membership. For more information, see "[About teams](https://docs.github.com/enterprise-server@3.14/organizations/organizing-members-into-teams/about-teams)." For more information about the APIs to manage team memberships, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#team) or "[Team members](https://docs.github.com/enterprise-server@3.14/rest/teams/members)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
      * @description An organization member was added to a team.
@@ -1004,7 +1162,7 @@ export interface webhooks {
   };
   "membership-removed": {
     /**
-     * This event occurs when there is activity relating to team membership. For more information, see "[About teams](https://docs.github.com/enterprise-server@3.9/organizations/organizing-members-into-teams/about-teams)." For more information about the APIs to manage team memberships, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#team) or "[Team members](https://docs.github.com/enterprise-server@3.9/rest/teams/members)" in the REST API documentation.
+     * This event occurs when there is activity relating to team membership. For more information, see "[About teams](https://docs.github.com/enterprise-server@3.14/organizations/organizing-members-into-teams/about-teams)." For more information about the APIs to manage team memberships, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#team) or "[Team members](https://docs.github.com/enterprise-server@3.14/rest/teams/members)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
      * @description An organization member was removed from a team.
@@ -1022,7 +1180,7 @@ export interface webhooks {
   };
   "milestone-closed": {
     /**
-     * This event occurs when there is activity relating to milestones. For more information, see "[About milestones](https://docs.github.com/enterprise-server@3.9/issues/using-labels-and-milestones-to-track-work/about-milestones)." For information about the APIs to manage milestones, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#milestone) or "[Milestones](https://docs.github.com/enterprise-server@3.9/rest/issues/milestones)" in the REST API documentation.
+     * This event occurs when there is activity relating to milestones. For more information, see "[About milestones](https://docs.github.com/enterprise-server@3.14/issues/using-labels-and-milestones-to-track-work/about-milestones)." For information about the APIs to manage milestones, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#milestone) or "[Milestones](https://docs.github.com/enterprise-server@3.14/rest/issues/milestones)" in the REST API documentation.
      *
      * If you want to receive an event when an issue or pull request is added to or removed from a milestone, use the `milestoned` or `demilestoned` action type for the `issues` or `pull_request` events instead.
      *
@@ -1033,7 +1191,7 @@ export interface webhooks {
   };
   "milestone-created": {
     /**
-     * This event occurs when there is activity relating to milestones. For more information, see "[About milestones](https://docs.github.com/enterprise-server@3.9/issues/using-labels-and-milestones-to-track-work/about-milestones)." For information about the APIs to manage milestones, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#milestone) or "[Milestones](https://docs.github.com/enterprise-server@3.9/rest/issues/milestones)" in the REST API documentation.
+     * This event occurs when there is activity relating to milestones. For more information, see "[About milestones](https://docs.github.com/enterprise-server@3.14/issues/using-labels-and-milestones-to-track-work/about-milestones)." For information about the APIs to manage milestones, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#milestone) or "[Milestones](https://docs.github.com/enterprise-server@3.14/rest/issues/milestones)" in the REST API documentation.
      *
      * If you want to receive an event when an issue or pull request is added to or removed from a milestone, use the `milestoned` or `demilestoned` action type for the `issues` or `pull_request` events instead.
      *
@@ -1044,7 +1202,7 @@ export interface webhooks {
   };
   "milestone-deleted": {
     /**
-     * This event occurs when there is activity relating to milestones. For more information, see "[About milestones](https://docs.github.com/enterprise-server@3.9/issues/using-labels-and-milestones-to-track-work/about-milestones)." For information about the APIs to manage milestones, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#milestone) or "[Milestones](https://docs.github.com/enterprise-server@3.9/rest/issues/milestones)" in the REST API documentation.
+     * This event occurs when there is activity relating to milestones. For more information, see "[About milestones](https://docs.github.com/enterprise-server@3.14/issues/using-labels-and-milestones-to-track-work/about-milestones)." For information about the APIs to manage milestones, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#milestone) or "[Milestones](https://docs.github.com/enterprise-server@3.14/rest/issues/milestones)" in the REST API documentation.
      *
      * If you want to receive an event when an issue or pull request is added to or removed from a milestone, use the `milestoned` or `demilestoned` action type for the `issues` or `pull_request` events instead.
      *
@@ -1055,7 +1213,7 @@ export interface webhooks {
   };
   "milestone-edited": {
     /**
-     * This event occurs when there is activity relating to milestones. For more information, see "[About milestones](https://docs.github.com/enterprise-server@3.9/issues/using-labels-and-milestones-to-track-work/about-milestones)." For information about the APIs to manage milestones, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#milestone) or "[Milestones](https://docs.github.com/enterprise-server@3.9/rest/issues/milestones)" in the REST API documentation.
+     * This event occurs when there is activity relating to milestones. For more information, see "[About milestones](https://docs.github.com/enterprise-server@3.14/issues/using-labels-and-milestones-to-track-work/about-milestones)." For information about the APIs to manage milestones, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#milestone) or "[Milestones](https://docs.github.com/enterprise-server@3.14/rest/issues/milestones)" in the REST API documentation.
      *
      * If you want to receive an event when an issue or pull request is added to or removed from a milestone, use the `milestoned` or `demilestoned` action type for the `issues` or `pull_request` events instead.
      *
@@ -1066,7 +1224,7 @@ export interface webhooks {
   };
   "milestone-opened": {
     /**
-     * This event occurs when there is activity relating to milestones. For more information, see "[About milestones](https://docs.github.com/enterprise-server@3.9/issues/using-labels-and-milestones-to-track-work/about-milestones)." For information about the APIs to manage milestones, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#milestone) or "[Milestones](https://docs.github.com/enterprise-server@3.9/rest/issues/milestones)" in the REST API documentation.
+     * This event occurs when there is activity relating to milestones. For more information, see "[About milestones](https://docs.github.com/enterprise-server@3.14/issues/using-labels-and-milestones-to-track-work/about-milestones)." For information about the APIs to manage milestones, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#milestone) or "[Milestones](https://docs.github.com/enterprise-server@3.14/rest/issues/milestones)" in the REST API documentation.
      *
      * If you want to receive an event when an issue or pull request is added to or removed from a milestone, use the `milestoned` or `demilestoned` action type for the `issues` or `pull_request` events instead.
      *
@@ -1077,7 +1235,7 @@ export interface webhooks {
   };
   "organization-deleted": {
     /**
-     * This event occurs when there is activity relating to an organization and its members. For more information, see "[About organizations](https://docs.github.com/enterprise-server@3.9/organizations/collaborating-with-groups-in-organizations/about-organizations)." For information about the APIs to manage organizations, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#organization) or "[Organizations](https://docs.github.com/enterprise-server@3.9/rest/orgs)" in the REST API documentation.
+     * This event occurs when there is activity relating to an organization and its members. For more information, see "[About organizations](https://docs.github.com/enterprise-server@3.14/organizations/collaborating-with-groups-in-organizations/about-organizations)." For information about the APIs to manage organizations, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#organization) or "[Organizations](https://docs.github.com/enterprise-server@3.14/rest/orgs)" in the REST API documentation.
      *
      * If you want to receive an event when a non-member is blocked or unblocked from an organization, use the `org_block` event instead.
      *
@@ -1088,7 +1246,7 @@ export interface webhooks {
   };
   "organization-member-added": {
     /**
-     * This event occurs when there is activity relating to an organization and its members. For more information, see "[About organizations](https://docs.github.com/enterprise-server@3.9/organizations/collaborating-with-groups-in-organizations/about-organizations)." For information about the APIs to manage organizations, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#organization) or "[Organizations](https://docs.github.com/enterprise-server@3.9/rest/orgs)" in the REST API documentation.
+     * This event occurs when there is activity relating to an organization and its members. For more information, see "[About organizations](https://docs.github.com/enterprise-server@3.14/organizations/collaborating-with-groups-in-organizations/about-organizations)." For information about the APIs to manage organizations, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#organization) or "[Organizations](https://docs.github.com/enterprise-server@3.14/rest/orgs)" in the REST API documentation.
      *
      * If you want to receive an event when a non-member is blocked or unblocked from an organization, use the `org_block` event instead.
      *
@@ -1099,7 +1257,7 @@ export interface webhooks {
   };
   "organization-member-invited": {
     /**
-     * This event occurs when there is activity relating to an organization and its members. For more information, see "[About organizations](https://docs.github.com/enterprise-server@3.9/organizations/collaborating-with-groups-in-organizations/about-organizations)." For information about the APIs to manage organizations, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#organization) or "[Organizations](https://docs.github.com/enterprise-server@3.9/rest/orgs)" in the REST API documentation.
+     * This event occurs when there is activity relating to an organization and its members. For more information, see "[About organizations](https://docs.github.com/enterprise-server@3.14/organizations/collaborating-with-groups-in-organizations/about-organizations)." For information about the APIs to manage organizations, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#organization) or "[Organizations](https://docs.github.com/enterprise-server@3.14/rest/orgs)" in the REST API documentation.
      *
      * If you want to receive an event when a non-member is blocked or unblocked from an organization, use the `org_block` event instead.
      *
@@ -1110,7 +1268,7 @@ export interface webhooks {
   };
   "organization-member-removed": {
     /**
-     * This event occurs when there is activity relating to an organization and its members. For more information, see "[About organizations](https://docs.github.com/enterprise-server@3.9/organizations/collaborating-with-groups-in-organizations/about-organizations)." For information about the APIs to manage organizations, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#organization) or "[Organizations](https://docs.github.com/enterprise-server@3.9/rest/orgs)" in the REST API documentation.
+     * This event occurs when there is activity relating to an organization and its members. For more information, see "[About organizations](https://docs.github.com/enterprise-server@3.14/organizations/collaborating-with-groups-in-organizations/about-organizations)." For information about the APIs to manage organizations, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#organization) or "[Organizations](https://docs.github.com/enterprise-server@3.14/rest/orgs)" in the REST API documentation.
      *
      * If you want to receive an event when a non-member is blocked or unblocked from an organization, use the `org_block` event instead.
      *
@@ -1121,7 +1279,7 @@ export interface webhooks {
   };
   "organization-renamed": {
     /**
-     * This event occurs when there is activity relating to an organization and its members. For more information, see "[About organizations](https://docs.github.com/enterprise-server@3.9/organizations/collaborating-with-groups-in-organizations/about-organizations)." For information about the APIs to manage organizations, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#organization) or "[Organizations](https://docs.github.com/enterprise-server@3.9/rest/orgs)" in the REST API documentation.
+     * This event occurs when there is activity relating to an organization and its members. For more information, see "[About organizations](https://docs.github.com/enterprise-server@3.14/organizations/collaborating-with-groups-in-organizations/about-organizations)." For information about the APIs to manage organizations, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#organization) or "[Organizations](https://docs.github.com/enterprise-server@3.14/rest/orgs)" in the REST API documentation.
      *
      * If you want to receive an event when a non-member is blocked or unblocked from an organization, use the `org_block` event instead.
      *
@@ -1132,7 +1290,7 @@ export interface webhooks {
   };
   "package-published": {
     /**
-     * This event occurs when there is activity relating to GitHub Packages. For more information, see "[Introduction to GitHub Packages](https://docs.github.com/enterprise-server@3.9/packages/learn-github-packages/introduction-to-github-packages)." For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#package) or "[Packages](https://docs.github.com/enterprise-server@3.9/rest/packages)" in the REST API documentation.
+     * This event occurs when there is activity relating to GitHub Packages. For more information, see "[Introduction to GitHub Packages](https://docs.github.com/enterprise-server@3.14/packages/learn-github-packages/introduction-to-github-packages)." For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#package) or "[Packages](https://docs.github.com/enterprise-server@3.14/rest/packages)" in the REST API documentation.
      *
      * To install this event on a GitHub App, the app must have at least read-level access for the "Packages" repository permission.
      * @description A package was published to a registry.
@@ -1141,7 +1299,7 @@ export interface webhooks {
   };
   "package-updated": {
     /**
-     * This event occurs when there is activity relating to GitHub Packages. For more information, see "[Introduction to GitHub Packages](https://docs.github.com/enterprise-server@3.9/packages/learn-github-packages/introduction-to-github-packages)." For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#package) or "[Packages](https://docs.github.com/enterprise-server@3.9/rest/packages)" in the REST API documentation.
+     * This event occurs when there is activity relating to GitHub Packages. For more information, see "[Introduction to GitHub Packages](https://docs.github.com/enterprise-server@3.14/packages/learn-github-packages/introduction-to-github-packages)." For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#package) or "[Packages](https://docs.github.com/enterprise-server@3.14/rest/packages)" in the REST API documentation.
      *
      * To install this event on a GitHub App, the app must have at least read-level access for the "Packages" repository permission.
      * @description A previously published package was updated.
@@ -1150,11 +1308,59 @@ export interface webhooks {
   };
   "page-build": {
     /**
-     * This event occurs when there is an attempted build of a GitHub Pages site. This event occurs regardless of whether the build is successful. For more information, see "[Configuring a publishing source for your GitHub Pages site](https://docs.github.com/enterprise-server@3.9/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)." For information about the API to manage GitHub Pages, see "[Pages](https://docs.github.com/enterprise-server@3.9/rest/pages)" in the REST API documentation.
+     * This event occurs when there is an attempted build of a GitHub Pages site. This event occurs regardless of whether the build is successful. For more information, see "[Configuring a publishing source for your GitHub Pages site](https://docs.github.com/enterprise-server@3.14/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)." For information about the API to manage GitHub Pages, see "[Pages](https://docs.github.com/enterprise-server@3.14/rest/pages)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Pages" repository permission.
      */
     post: operations["page-build"];
+  };
+  "personal-access-token-request-approved": {
+    /**
+     * This event occurs when there is activity relating to a request for a fine-grained personal access token to access resources that belong to a resource owner that requires approval for token access. For more information, see "[Creating a personal access token](https://docs.github.com/enterprise-server@3.14/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)."
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Personal access token requests" organization permission.
+     *
+     * > [!NOTE]
+     * > Fine-grained PATs are in public beta. Related APIs, events, and functionality are subject to change.
+     * @description A fine-grained personal access token request was approved.
+     */
+    post: operations["personal-access-token-request/approved"];
+  };
+  "personal-access-token-request-cancelled": {
+    /**
+     * This event occurs when there is activity relating to a request for a fine-grained personal access token to access resources that belong to a resource owner that requires approval for token access. For more information, see "[Creating a personal access token](https://docs.github.com/enterprise-server@3.14/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)."
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Personal access token requests" organization permission.
+     *
+     * > [!NOTE]
+     * > Fine-grained PATs are in public beta. Related APIs, events, and functionality are subject to change.
+     * @description A fine-grained personal access token request was cancelled by the requester.
+     */
+    post: operations["personal-access-token-request/cancelled"];
+  };
+  "personal-access-token-request-created": {
+    /**
+     * This event occurs when there is activity relating to a request for a fine-grained personal access token to access resources that belong to a resource owner that requires approval for token access. For more information, see "[Creating a personal access token](https://docs.github.com/enterprise-server@3.14/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)."
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Personal access token requests" organization permission.
+     *
+     * > [!NOTE]
+     * > Fine-grained PATs are in public beta. Related APIs, events, and functionality are subject to change.
+     * @description A fine-grained personal access token request was created.
+     */
+    post: operations["personal-access-token-request/created"];
+  };
+  "personal-access-token-request-denied": {
+    /**
+     * This event occurs when there is activity relating to a request for a fine-grained personal access token to access resources that belong to a resource owner that requires approval for token access. For more information, see "[Creating a personal access token](https://docs.github.com/enterprise-server@3.14/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)."
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Personal access token requests" organization permission.
+     *
+     * > [!NOTE]
+     * > Fine-grained PATs are in public beta. Related APIs, events, and functionality are subject to change.
+     * @description A fine-grained personal access token request was denied.
+     */
+    post: operations["personal-access-token-request/denied"];
   };
   ping: {
     /** This event occurs when you create a new webhook. The ping event is a confirmation from GitHub that you configured the webhook correctly. */
@@ -1162,7 +1368,7 @@ export interface webhooks {
   };
   "project-card-converted": {
     /**
-     * This event occurs when there is activity relating to a card on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.9/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.9/rest/projects)" in the REST API documentation.
+     * This event occurs when there is activity relating to a card on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.14/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.14/rest/projects)" in the REST API documentation.
      *
      * For activity relating to a project (classic) or a column on a project (classic), use the `project` and `project_column` event.
      *
@@ -1175,7 +1381,7 @@ export interface webhooks {
   };
   "project-card-created": {
     /**
-     * This event occurs when there is activity relating to a card on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.9/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.9/rest/projects)" in the REST API documentation.
+     * This event occurs when there is activity relating to a card on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.14/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.14/rest/projects)" in the REST API documentation.
      *
      * For activity relating to a project (classic) or a column on a project (classic), use the `project` and `project_column` event.
      *
@@ -1188,7 +1394,7 @@ export interface webhooks {
   };
   "project-card-deleted": {
     /**
-     * This event occurs when there is activity relating to a card on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.9/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.9/rest/projects)" in the REST API documentation.
+     * This event occurs when there is activity relating to a card on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.14/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.14/rest/projects)" in the REST API documentation.
      *
      * For activity relating to a project (classic) or a column on a project (classic), use the `project` and `project_column` event.
      *
@@ -1201,7 +1407,7 @@ export interface webhooks {
   };
   "project-card-edited": {
     /**
-     * This event occurs when there is activity relating to a card on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.9/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.9/rest/projects)" in the REST API documentation.
+     * This event occurs when there is activity relating to a card on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.14/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.14/rest/projects)" in the REST API documentation.
      *
      * For activity relating to a project (classic) or a column on a project (classic), use the `project` and `project_column` event.
      *
@@ -1214,7 +1420,7 @@ export interface webhooks {
   };
   "project-card-moved": {
     /**
-     * This event occurs when there is activity relating to a card on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.9/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.9/rest/projects)" in the REST API documentation.
+     * This event occurs when there is activity relating to a card on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.14/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.14/rest/projects)" in the REST API documentation.
      *
      * For activity relating to a project (classic) or a column on a project (classic), use the `project` and `project_column` event.
      *
@@ -1227,7 +1433,7 @@ export interface webhooks {
   };
   "project-closed": {
     /**
-     * This event occurs when there is activity relating to a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.9/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.9/rest/projects)" in the REST API documentation.
+     * This event occurs when there is activity relating to a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.14/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.14/rest/projects)" in the REST API documentation.
      *
      * For activity relating to a card or column on a project (classic), use the `project_card` and `project_column` event.
      *
@@ -1240,7 +1446,7 @@ export interface webhooks {
   };
   "project-column-created": {
     /**
-     * This event occurs when there is activity relating to a column on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.9/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.9/rest/projects)" in the REST API documentation.
+     * This event occurs when there is activity relating to a column on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.14/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.14/rest/projects)" in the REST API documentation.
      *
      * For activity relating to a project (classic) or a card on a project (classic), use the `project` and `project_card` event.
      *
@@ -1253,7 +1459,7 @@ export interface webhooks {
   };
   "project-column-deleted": {
     /**
-     * This event occurs when there is activity relating to a column on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.9/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.9/rest/projects)" in the REST API documentation.
+     * This event occurs when there is activity relating to a column on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.14/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.14/rest/projects)" in the REST API documentation.
      *
      * For activity relating to a project (classic) or a card on a project (classic), use the `project` and `project_card` event.
      *
@@ -1266,7 +1472,7 @@ export interface webhooks {
   };
   "project-column-edited": {
     /**
-     * This event occurs when there is activity relating to a column on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.9/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.9/rest/projects)" in the REST API documentation.
+     * This event occurs when there is activity relating to a column on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.14/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.14/rest/projects)" in the REST API documentation.
      *
      * For activity relating to a project (classic) or a card on a project (classic), use the `project` and `project_card` event.
      *
@@ -1279,7 +1485,7 @@ export interface webhooks {
   };
   "project-column-moved": {
     /**
-     * This event occurs when there is activity relating to a column on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.9/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.9/rest/projects)" in the REST API documentation.
+     * This event occurs when there is activity relating to a column on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.14/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.14/rest/projects)" in the REST API documentation.
      *
      * For activity relating to a project (classic) or a card on a project (classic), use the `project` and `project_card` event.
      *
@@ -1292,7 +1498,7 @@ export interface webhooks {
   };
   "project-created": {
     /**
-     * This event occurs when there is activity relating to a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.9/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.9/rest/projects)" in the REST API documentation.
+     * This event occurs when there is activity relating to a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.14/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.14/rest/projects)" in the REST API documentation.
      *
      * For activity relating to a card or column on a project (classic), use the `project_card` and `project_column` event.
      *
@@ -1305,7 +1511,7 @@ export interface webhooks {
   };
   "project-deleted": {
     /**
-     * This event occurs when there is activity relating to a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.9/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.9/rest/projects)" in the REST API documentation.
+     * This event occurs when there is activity relating to a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.14/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.14/rest/projects)" in the REST API documentation.
      *
      * For activity relating to a card or column on a project (classic), use the `project_card` and `project_column` event.
      *
@@ -1318,7 +1524,7 @@ export interface webhooks {
   };
   "project-edited": {
     /**
-     * This event occurs when there is activity relating to a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.9/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.9/rest/projects)" in the REST API documentation.
+     * This event occurs when there is activity relating to a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.14/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.14/rest/projects)" in the REST API documentation.
      *
      * For activity relating to a card or column on a project (classic), use the `project_card` and `project_column` event.
      *
@@ -1331,7 +1537,7 @@ export interface webhooks {
   };
   "project-reopened": {
     /**
-     * This event occurs when there is activity relating to a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.9/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.9/rest/projects)" in the REST API documentation.
+     * This event occurs when there is activity relating to a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.14/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.14/rest/projects)" in the REST API documentation.
      *
      * For activity relating to a card or column on a project (classic), use the `project_card` and `project_column` event.
      *
@@ -1344,163 +1550,175 @@ export interface webhooks {
   };
   "projects-v2-closed": {
     /**
-     * This event occurs when there is activity relating to an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.9/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#projectv2).
+     * This event occurs when there is activity relating to an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.14/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#projectv2).
      *
      * For activity relating to a item on a project, use the `projects_v2_item` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
      *
-     * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+     * > [!NOTE]
+     * > Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
      * @description A project in the organization was closed.
      */
     post: operations["projects-v2/closed"];
   };
   "projects-v2-created": {
     /**
-     * This event occurs when there is activity relating to an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.9/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#projectv2).
+     * This event occurs when there is activity relating to an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.14/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#projectv2).
      *
      * For activity relating to a item on a project, use the `projects_v2_item` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
      *
-     * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+     * > [!NOTE]
+     * > Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
      * @description A project in the organization was created.
      */
     post: operations["projects-v2/created"];
   };
   "projects-v2-deleted": {
     /**
-     * This event occurs when there is activity relating to an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.9/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#projectv2).
+     * This event occurs when there is activity relating to an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.14/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#projectv2).
      *
      * For activity relating to a item on a project, use the `projects_v2_item` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
      *
-     * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+     * > [!NOTE]
+     * > Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
      * @description A project in the organization was deleted.
      */
     post: operations["projects-v2/deleted"];
   };
   "projects-v2-edited": {
     /**
-     * This event occurs when there is activity relating to an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.9/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#projectv2).
+     * This event occurs when there is activity relating to an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.14/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#projectv2).
      *
      * For activity relating to a item on a project, use the `projects_v2_item` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
      *
-     * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+     * > [!NOTE]
+     * > Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
      * @description The title, description, or README of a project in the organization was changed.
      */
     post: operations["projects-v2/edited"];
   };
   "projects-v2-item-archived": {
     /**
-     * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.9/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#projectv2item).
+     * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.14/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#projectv2item).
      *
      * For activity relating to a project (instead of an item on a project), use the `projects_v2` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
      *
-     * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
-     * @description An item on an organization project was archived. For more information, see "[Archiving items from your project](https://docs.github.com/enterprise-server@3.9/issues/planning-and-tracking-with-projects/managing-items-in-your-project/archiving-items-from-your-project)."
+     * > [!NOTE]
+     * > Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+     * @description An item on an organization project was archived. For more information, see "[Archiving items from your project](https://docs.github.com/enterprise-server@3.14/issues/planning-and-tracking-with-projects/managing-items-in-your-project/archiving-items-from-your-project)."
      */
     post: operations["projects-v2-item/archived"];
   };
   "projects-v2-item-converted": {
     /**
-     * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.9/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#projectv2item).
+     * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.14/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#projectv2item).
      *
      * For activity relating to a project (instead of an item on a project), use the `projects_v2` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
      *
-     * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+     * > [!NOTE]
+     * > Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
      * @description A draft issue in an organization project was converted to an issue.
      */
     post: operations["projects-v2-item/converted"];
   };
   "projects-v2-item-created": {
     /**
-     * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.9/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#projectv2item).
+     * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.14/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#projectv2item).
      *
      * For activity relating to a project (instead of an item on a project), use the `projects_v2` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
      *
-     * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+     * > [!NOTE]
+     * > Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
      * @description An item was added to a project in the organization.
      */
     post: operations["projects-v2-item/created"];
   };
   "projects-v2-item-deleted": {
     /**
-     * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.9/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#projectv2item).
+     * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.14/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#projectv2item).
      *
      * For activity relating to a project (instead of an item on a project), use the `projects_v2` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
      *
-     * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+     * > [!NOTE]
+     * > Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
      * @description An item was deleted from a project in the organization.
      */
     post: operations["projects-v2-item/deleted"];
   };
   "projects-v2-item-edited": {
     /**
-     * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.9/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#projectv2item).
+     * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.14/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#projectv2item).
      *
      * For activity relating to a project (instead of an item on a project), use the `projects_v2` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
      *
-     * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+     * > [!NOTE]
+     * > Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
      * @description The values or state of an item in an organization project were changed. For example, the value of a field was updated, the body of a draft issue was changed, or a draft issue was converted to an issue.
      */
     post: operations["projects-v2-item/edited"];
   };
   "projects-v2-item-reordered": {
     /**
-     * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.9/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#projectv2item).
+     * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.14/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#projectv2item).
      *
      * For activity relating to a project (instead of an item on a project), use the `projects_v2` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
      *
-     * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+     * > [!NOTE]
+     * > Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
      * @description The position of an item in an organization project was changed. For example, an item was moved above or below another item in the table or board layout.
      */
     post: operations["projects-v2-item/reordered"];
   };
   "projects-v2-item-restored": {
     /**
-     * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.9/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#projectv2item).
+     * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.14/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#projectv2item).
      *
      * For activity relating to a project (instead of an item on a project), use the `projects_v2` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
      *
-     * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
-     * @description An archived item on an organization project was restored from the archive. For more information, see "[Archiving items from your project](https://docs.github.com/enterprise-server@3.9/issues/planning-and-tracking-with-projects/managing-items-in-your-project/archiving-items-from-your-project)."
+     * > [!NOTE]
+     * > Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+     * @description An archived item on an organization project was restored from the archive. For more information, see "[Archiving items from your project](https://docs.github.com/enterprise-server@3.14/issues/planning-and-tracking-with-projects/managing-items-in-your-project/archiving-items-from-your-project)."
      */
     post: operations["projects-v2-item/restored"];
   };
   "projects-v2-reopened": {
     /**
-     * This event occurs when there is activity relating to an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.9/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#projectv2).
+     * This event occurs when there is activity relating to an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.14/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#projectv2).
      *
      * For activity relating to a item on a project, use the `projects_v2_item` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
      *
-     * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+     * > [!NOTE]
+     * > Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
      * @description A project in the organization was reopened.
      */
     post: operations["projects-v2/reopened"];
   };
   public: {
     /**
-     * This event occurs when repository visibility changes from private to public. For more information, see "[Setting repository visibility](https://docs.github.com/enterprise-server@3.9/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/setting-repository-visibility)."
+     * This event occurs when repository visibility changes from private to public. For more information, see "[Setting repository visibility](https://docs.github.com/enterprise-server@3.14/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/setting-repository-visibility)."
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
      */
@@ -1508,7 +1726,7 @@ export interface webhooks {
   };
   "pull-request-assigned": {
     /**
-     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.9/rest/pulls/pulls)" in the REST API documentation.
+     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.14/rest/pulls/pulls)" in the REST API documentation.
      *
      * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
      *
@@ -1519,29 +1737,29 @@ export interface webhooks {
   };
   "pull-request-auto-merge-disabled": {
     /**
-     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.9/rest/pulls/pulls)" in the REST API documentation.
+     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.14/rest/pulls/pulls)" in the REST API documentation.
      *
      * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-     * @description Auto merge was disabled for a pull request. For more information, see "[Automatically merging a pull request](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/automatically-merging-a-pull-request)."
+     * @description Auto merge was disabled for a pull request. For more information, see "[Automatically merging a pull request](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/automatically-merging-a-pull-request)."
      */
     post: operations["pull-request/auto-merge-disabled"];
   };
   "pull-request-auto-merge-enabled": {
     /**
-     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.9/rest/pulls/pulls)" in the REST API documentation.
+     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.14/rest/pulls/pulls)" in the REST API documentation.
      *
      * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-     * @description Auto merge was enabled for a pull request. For more information, see "[Automatically merging a pull request](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/automatically-merging-a-pull-request)."
+     * @description Auto merge was enabled for a pull request. For more information, see "[Automatically merging a pull request](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/automatically-merging-a-pull-request)."
      */
     post: operations["pull-request/auto-merge-enabled"];
   };
   "pull-request-closed": {
     /**
-     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.9/rest/pulls/pulls)" in the REST API documentation.
+     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.14/rest/pulls/pulls)" in the REST API documentation.
      *
      * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
      *
@@ -1552,18 +1770,18 @@ export interface webhooks {
   };
   "pull-request-converted-to-draft": {
     /**
-     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.9/rest/pulls/pulls)" in the REST API documentation.
+     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.14/rest/pulls/pulls)" in the REST API documentation.
      *
      * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-     * @description A pull request was converted to a draft. For more information, see "[Changing the stage of a pull request](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/changing-the-stage-of-a-pull-request)."
+     * @description A pull request was converted to a draft. For more information, see "[Changing the stage of a pull request](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/changing-the-stage-of-a-pull-request)."
      */
     post: operations["pull-request/converted-to-draft"];
   };
   "pull-request-demilestoned": {
     /**
-     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.9/rest/pulls/pulls)" in the REST API documentation.
+     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.14/rest/pulls/pulls)" in the REST API documentation.
      *
      * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
      *
@@ -1574,7 +1792,7 @@ export interface webhooks {
   };
   "pull-request-edited": {
     /**
-     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.9/rest/pulls/pulls)" in the REST API documentation.
+     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.14/rest/pulls/pulls)" in the REST API documentation.
      *
      * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
      *
@@ -1585,7 +1803,7 @@ export interface webhooks {
   };
   "pull-request-labeled": {
     /**
-     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.9/rest/pulls/pulls)" in the REST API documentation.
+     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.14/rest/pulls/pulls)" in the REST API documentation.
      *
      * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
      *
@@ -1596,18 +1814,18 @@ export interface webhooks {
   };
   "pull-request-locked": {
     /**
-     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.9/rest/pulls/pulls)" in the REST API documentation.
+     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.14/rest/pulls/pulls)" in the REST API documentation.
      *
      * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-     * @description Conversation on a pull request was locked. For more information, see "[Locking conversations](https://docs.github.com/enterprise-server@3.9/communities/moderating-comments-and-conversations/locking-conversations)."
+     * @description Conversation on a pull request was locked. For more information, see "[Locking conversations](https://docs.github.com/enterprise-server@3.14/communities/moderating-comments-and-conversations/locking-conversations)."
      */
     post: operations["pull-request/locked"];
   };
   "pull-request-milestoned": {
     /**
-     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.9/rest/pulls/pulls)" in the REST API documentation.
+     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.14/rest/pulls/pulls)" in the REST API documentation.
      *
      * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
      *
@@ -1618,7 +1836,7 @@ export interface webhooks {
   };
   "pull-request-opened": {
     /**
-     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.9/rest/pulls/pulls)" in the REST API documentation.
+     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.14/rest/pulls/pulls)" in the REST API documentation.
      *
      * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
      *
@@ -1629,18 +1847,18 @@ export interface webhooks {
   };
   "pull-request-ready-for-review": {
     /**
-     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.9/rest/pulls/pulls)" in the REST API documentation.
+     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.14/rest/pulls/pulls)" in the REST API documentation.
      *
      * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-     * @description A draft pull request was marked as ready for review. For more information, see "[Changing the stage of a pull request](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/changing-the-stage-of-a-pull-request)."
+     * @description A draft pull request was marked as ready for review. For more information, see "[Changing the stage of a pull request](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/changing-the-stage-of-a-pull-request)."
      */
     post: operations["pull-request/ready-for-review"];
   };
   "pull-request-reopened": {
     /**
-     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.9/rest/pulls/pulls)" in the REST API documentation.
+     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.14/rest/pulls/pulls)" in the REST API documentation.
      *
      * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
      *
@@ -1651,7 +1869,7 @@ export interface webhooks {
   };
   "pull-request-review-comment-created": {
     /**
-     * This event occurs when there is activity relating to a pull request review comment. A pull request review comment is a comment on a pull request's diff. For more information, see "[Commenting on a pull request](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request)." For information about the APIs to manage pull request review comments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#pullrequestreviewcomment) or "[Pull request review comments](https://docs.github.com/enterprise-server@3.9/rest/pulls/comments)" in the REST API documentation.
+     * This event occurs when there is activity relating to a pull request review comment. A pull request review comment is a comment on a pull request's diff. For more information, see "[Commenting on a pull request](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request)." For information about the APIs to manage pull request review comments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#pullrequestreviewcomment) or "[Pull request review comments](https://docs.github.com/enterprise-server@3.14/rest/pulls/comments)" in the REST API documentation.
      *
      * For activity related to pull request reviews, pull request comments, or pull request review threads, use the `pull_request_review`, `issue_comment`, or `pull_request_review_thread` events instead.
      *
@@ -1662,7 +1880,7 @@ export interface webhooks {
   };
   "pull-request-review-comment-deleted": {
     /**
-     * This event occurs when there is activity relating to a pull request review comment. A pull request review comment is a comment on a pull request's diff. For more information, see "[Commenting on a pull request](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request)." For information about the APIs to manage pull request review comments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#pullrequestreviewcomment) or "[Pull request review comments](https://docs.github.com/enterprise-server@3.9/rest/pulls/comments)" in the REST API documentation.
+     * This event occurs when there is activity relating to a pull request review comment. A pull request review comment is a comment on a pull request's diff. For more information, see "[Commenting on a pull request](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request)." For information about the APIs to manage pull request review comments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#pullrequestreviewcomment) or "[Pull request review comments](https://docs.github.com/enterprise-server@3.14/rest/pulls/comments)" in the REST API documentation.
      *
      * For activity related to pull request reviews, pull request comments, or pull request review threads, use the `pull_request_review`, `issue_comment`, or `pull_request_review_thread` events instead.
      *
@@ -1673,7 +1891,7 @@ export interface webhooks {
   };
   "pull-request-review-comment-edited": {
     /**
-     * This event occurs when there is activity relating to a pull request review comment. A pull request review comment is a comment on a pull request's diff. For more information, see "[Commenting on a pull request](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request)." For information about the APIs to manage pull request review comments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#pullrequestreviewcomment) or "[Pull request review comments](https://docs.github.com/enterprise-server@3.9/rest/pulls/comments)" in the REST API documentation.
+     * This event occurs when there is activity relating to a pull request review comment. A pull request review comment is a comment on a pull request's diff. For more information, see "[Commenting on a pull request](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request)." For information about the APIs to manage pull request review comments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#pullrequestreviewcomment) or "[Pull request review comments](https://docs.github.com/enterprise-server@3.14/rest/pulls/comments)" in the REST API documentation.
      *
      * For activity related to pull request reviews, pull request comments, or pull request review threads, use the `pull_request_review`, `issue_comment`, or `pull_request_review_thread` events instead.
      *
@@ -1684,7 +1902,7 @@ export interface webhooks {
   };
   "pull-request-review-dismissed": {
     /**
-     * This event occurs when there is activity relating to a pull request review. A pull request review is a group of pull request review comments in addition to a body comment and a state. For more information, see "[About pull request reviews](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request reviews, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#pullrequestreview) or "[Pull request reviews](https://docs.github.com/enterprise-server@3.9/rest/pulls/reviews)" in the REST API documentation.
+     * This event occurs when there is activity relating to a pull request review. A pull request review is a group of pull request review comments in addition to a body comment and a state. For more information, see "[About pull request reviews](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request reviews, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#pullrequestreview) or "[Pull request reviews](https://docs.github.com/enterprise-server@3.14/rest/pulls/reviews)" in the REST API documentation.
      *
      * For activity related to pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
      *
@@ -1695,7 +1913,7 @@ export interface webhooks {
   };
   "pull-request-review-edited": {
     /**
-     * This event occurs when there is activity relating to a pull request review. A pull request review is a group of pull request review comments in addition to a body comment and a state. For more information, see "[About pull request reviews](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request reviews, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#pullrequestreview) or "[Pull request reviews](https://docs.github.com/enterprise-server@3.9/rest/pulls/reviews)" in the REST API documentation.
+     * This event occurs when there is activity relating to a pull request review. A pull request review is a group of pull request review comments in addition to a body comment and a state. For more information, see "[About pull request reviews](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request reviews, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#pullrequestreview) or "[Pull request reviews](https://docs.github.com/enterprise-server@3.14/rest/pulls/reviews)" in the REST API documentation.
      *
      * For activity related to pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
      *
@@ -1706,7 +1924,7 @@ export interface webhooks {
   };
   "pull-request-review-request-removed": {
     /**
-     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.9/rest/pulls/pulls)" in the REST API documentation.
+     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.14/rest/pulls/pulls)" in the REST API documentation.
      *
      * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
      *
@@ -1717,18 +1935,18 @@ export interface webhooks {
   };
   "pull-request-review-requested": {
     /**
-     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.9/rest/pulls/pulls)" in the REST API documentation.
+     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.14/rest/pulls/pulls)" in the REST API documentation.
      *
      * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-     * @description Review by a person or team was requested for a pull request. For more information, see "[Requesting a pull request review](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/requesting-a-pull-request-review)."
+     * @description Review by a person or team was requested for a pull request. For more information, see "[Requesting a pull request review](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/requesting-a-pull-request-review)."
      */
     post: operations["pull-request/review-requested"];
   };
   "pull-request-review-submitted": {
     /**
-     * This event occurs when there is activity relating to a pull request review. A pull request review is a group of pull request review comments in addition to a body comment and a state. For more information, see "[About pull request reviews](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request reviews, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#pullrequestreview) or "[Pull request reviews](https://docs.github.com/enterprise-server@3.9/rest/pulls/reviews)" in the REST API documentation.
+     * This event occurs when there is activity relating to a pull request review. A pull request review is a group of pull request review comments in addition to a body comment and a state. For more information, see "[About pull request reviews](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request reviews, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#pullrequestreview) or "[Pull request reviews](https://docs.github.com/enterprise-server@3.14/rest/pulls/reviews)" in the REST API documentation.
      *
      * For activity related to pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
      *
@@ -1739,7 +1957,7 @@ export interface webhooks {
   };
   "pull-request-review-thread-resolved": {
     /**
-     * This event occurs when there is activity relating to a comment thread on a pull request. For more information, see "[About pull request reviews](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request reviews, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#pullrequestreviewthread) or "[Pull request review comments](https://docs.github.com/enterprise-server@3.9/rest/pulls/comments)" in the REST API documentation.
+     * This event occurs when there is activity relating to a comment thread on a pull request. For more information, see "[About pull request reviews](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request reviews, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#pullrequestreviewthread) or "[Pull request review comments](https://docs.github.com/enterprise-server@3.14/rest/pulls/comments)" in the REST API documentation.
      *
      * For activity related to pull request review comments, pull request comments, or pull request reviews, use the `pull_request_review_comment`, `issue_comment`, or `pull_request_review` events instead.
      *
@@ -1750,7 +1968,7 @@ export interface webhooks {
   };
   "pull-request-review-thread-unresolved": {
     /**
-     * This event occurs when there is activity relating to a comment thread on a pull request. For more information, see "[About pull request reviews](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request reviews, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#pullrequestreviewthread) or "[Pull request review comments](https://docs.github.com/enterprise-server@3.9/rest/pulls/comments)" in the REST API documentation.
+     * This event occurs when there is activity relating to a comment thread on a pull request. For more information, see "[About pull request reviews](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request reviews, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#pullrequestreviewthread) or "[Pull request review comments](https://docs.github.com/enterprise-server@3.14/rest/pulls/comments)" in the REST API documentation.
      *
      * For activity related to pull request review comments, pull request comments, or pull request reviews, use the `pull_request_review_comment`, `issue_comment`, or `pull_request_review` events instead.
      *
@@ -1761,7 +1979,7 @@ export interface webhooks {
   };
   "pull-request-synchronize": {
     /**
-     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.9/rest/pulls/pulls)" in the REST API documentation.
+     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.14/rest/pulls/pulls)" in the REST API documentation.
      *
      * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
      *
@@ -1772,7 +1990,7 @@ export interface webhooks {
   };
   "pull-request-unassigned": {
     /**
-     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.9/rest/pulls/pulls)" in the REST API documentation.
+     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.14/rest/pulls/pulls)" in the REST API documentation.
      *
      * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
      *
@@ -1783,7 +2001,7 @@ export interface webhooks {
   };
   "pull-request-unlabeled": {
     /**
-     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.9/rest/pulls/pulls)" in the REST API documentation.
+     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.14/rest/pulls/pulls)" in the REST API documentation.
      *
      * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
      *
@@ -1794,12 +2012,12 @@ export interface webhooks {
   };
   "pull-request-unlocked": {
     /**
-     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.9/rest/pulls/pulls)" in the REST API documentation.
+     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.14/rest/pulls/pulls)" in the REST API documentation.
      *
      * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-     * @description Conversation on a pull request was unlocked. For more information, see "[Locking conversations](https://docs.github.com/enterprise-server@3.9/communities/moderating-comments-and-conversations/locking-conversations)."
+     * @description Conversation on a pull request was unlocked. For more information, see "[Locking conversations](https://docs.github.com/enterprise-server@3.14/communities/moderating-comments-and-conversations/locking-conversations)."
      */
     post: operations["pull-request/unlocked"];
   };
@@ -1811,35 +2029,38 @@ export interface webhooks {
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
      *
-     * **Note**: Events will not be created if more than 5000 branches are pushed at once. Events will not be created for tags when more than three tags are pushed at once.
+     * > [!NOTE]
+     * > Events will not be created if more than 5000 branches are pushed at once. Events will not be created for tags when more than three tags are pushed at once.
      */
     post: operations["push"];
   };
   "registry-package-published": {
     /**
-     * This event occurs when there is activity relating to GitHub Packages. For more information, see "[Introduction to GitHub Packages](https://docs.github.com/enterprise-server@3.9/packages/learn-github-packages/introduction-to-github-packages)." For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#package) or "[Packages](https://docs.github.com/enterprise-server@3.9/rest/packages)" in the REST API documentation.
+     * This event occurs when there is activity relating to GitHub Packages. For more information, see "[Introduction to GitHub Packages](https://docs.github.com/enterprise-server@3.14/packages/learn-github-packages/introduction-to-github-packages)." For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#package) or "[Packages](https://docs.github.com/enterprise-server@3.14/rest/packages)" in the REST API documentation.
      *
      * To install this event on a GitHub App, the app must have at least read-level access for the "Packages" repository permission.
      *
-     * **Note**: GitHub recommends that you use the newer `package` event instead.
+     * > [!NOTE]
+     * > GitHub recommends that you use the newer `package` event instead.
      * @description A package was published to a registry.
      */
     post: operations["registry-package/published"];
   };
   "registry-package-updated": {
     /**
-     * This event occurs when there is activity relating to GitHub Packages. For more information, see "[Introduction to GitHub Packages](https://docs.github.com/enterprise-server@3.9/packages/learn-github-packages/introduction-to-github-packages)." For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#package) or "[Packages](https://docs.github.com/enterprise-server@3.9/rest/packages)" in the REST API documentation.
+     * This event occurs when there is activity relating to GitHub Packages. For more information, see "[Introduction to GitHub Packages](https://docs.github.com/enterprise-server@3.14/packages/learn-github-packages/introduction-to-github-packages)." For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#package) or "[Packages](https://docs.github.com/enterprise-server@3.14/rest/packages)" in the REST API documentation.
      *
      * To install this event on a GitHub App, the app must have at least read-level access for the "Packages" repository permission.
      *
-     * **Note**: GitHub recommends that you use the newer `package` event instead.
+     * > [!NOTE]
+     * > GitHub recommends that you use the newer `package` event instead.
      * @description A package that was previously published to a registry was updated.
      */
     post: operations["registry-package/updated"];
   };
   "release-created": {
     /**
-     * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-server@3.9/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-server@3.9/rest/releases)" in the REST API documentation.
+     * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-server@3.14/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-server@3.14/rest/releases)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
      * @description A draft was saved, or a release or pre-release was published without previously being saved as a draft.
@@ -1848,7 +2069,7 @@ export interface webhooks {
   };
   "release-deleted": {
     /**
-     * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-server@3.9/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-server@3.9/rest/releases)" in the REST API documentation.
+     * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-server@3.14/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-server@3.14/rest/releases)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
      * @description A release, pre-release, or draft release was deleted.
@@ -1857,16 +2078,16 @@ export interface webhooks {
   };
   "release-edited": {
     /**
-     * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-server@3.9/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-server@3.9/rest/releases)" in the REST API documentation.
+     * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-server@3.14/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-server@3.14/rest/releases)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
-     * @description The details of a release, pre-release, or draft release were edited. For more information, see "[Managing releases in a repository](https://docs.github.com/enterprise-server@3.9/repositories/releasing-projects-on-github/managing-releases-in-a-repository#editing-a-release)."
+     * @description The details of a release, pre-release, or draft release were edited. For more information, see "[Managing releases in a repository](https://docs.github.com/enterprise-server@3.14/repositories/releasing-projects-on-github/managing-releases-in-a-repository#editing-a-release)."
      */
     post: operations["release/edited"];
   };
   "release-prereleased": {
     /**
-     * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-server@3.9/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-server@3.9/rest/releases)" in the REST API documentation.
+     * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-server@3.14/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-server@3.14/rest/releases)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
      * @description A release was created and identified as a pre-release. A pre-release is a release that is not ready for production and may be unstable.
@@ -1875,7 +2096,7 @@ export interface webhooks {
   };
   "release-published": {
     /**
-     * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-server@3.9/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-server@3.9/rest/releases)" in the REST API documentation.
+     * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-server@3.14/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-server@3.14/rest/releases)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
      * @description A release, pre-release, or draft of a release was published.
@@ -1884,7 +2105,7 @@ export interface webhooks {
   };
   "release-released": {
     /**
-     * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-server@3.9/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-server@3.9/rest/releases)" in the REST API documentation.
+     * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-server@3.14/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-server@3.14/rest/releases)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
      * @description A release was published, or a pre-release was changed to a release.
@@ -1893,7 +2114,7 @@ export interface webhooks {
   };
   "release-unpublished": {
     /**
-     * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-server@3.9/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-server@3.9/rest/releases)" in the REST API documentation.
+     * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-server@3.14/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-server@3.14/rest/releases)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
      * @description A release or pre-release was unpublished.
@@ -1902,7 +2123,7 @@ export interface webhooks {
   };
   "repository-anonymous-access-disabled": {
     /**
-     * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.9/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.9/rest/repos)" in the REST API documentation.
+     * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.14/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.14/rest/repos)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
      * @description Someone disabled anonymous Git read access to the repository. For more information, see "[Enabling anonymous Git read access for a repository](/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/enabling-anonymous-git-read-access-for-a-repository)."
@@ -1911,7 +2132,7 @@ export interface webhooks {
   };
   "repository-anonymous-access-enabled": {
     /**
-     * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.9/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.9/rest/repos)" in the REST API documentation.
+     * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.14/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.14/rest/repos)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
      * @description Someone enabled anonymous Git read access to the repository. For more information, see "[Enabling anonymous Git read access for a repository](/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/enabling-anonymous-git-read-access-for-a-repository)."
@@ -1920,7 +2141,7 @@ export interface webhooks {
   };
   "repository-archived": {
     /**
-     * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.9/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.9/rest/repos)" in the REST API documentation.
+     * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.14/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.14/rest/repos)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
      * @description A repository was archived.
@@ -1929,7 +2150,7 @@ export interface webhooks {
   };
   "repository-created": {
     /**
-     * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.9/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.9/rest/repos)" in the REST API documentation.
+     * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.14/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.14/rest/repos)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
      * @description A repository was created.
@@ -1938,7 +2159,7 @@ export interface webhooks {
   };
   "repository-deleted": {
     /**
-     * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.9/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.9/rest/repos)" in the REST API documentation.
+     * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.14/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.14/rest/repos)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
      * @description A repository was deleted. GitHub Apps and repository webhooks will not receive this event.
@@ -1947,7 +2168,7 @@ export interface webhooks {
   };
   "repository-dispatch-sample.collected": {
     /**
-     * This event occurs when a GitHub App sends a `POST` request to `/repos/{owner}/{repo}/dispatches`. For more information, see [the REST API documentation for creating a repository dispatch event](https://docs.github.com/enterprise-server@3.9/rest/repos/repos#create-a-repository-dispatch-event). In the payload, the `action` will be the `event_type` that was specified in the `POST /repos/{owner}/{repo}/dispatches` request body.
+     * This event occurs when a GitHub App sends a `POST` request to `/repos/{owner}/{repo}/dispatches`. For more information, see [the REST API documentation for creating a repository dispatch event](https://docs.github.com/enterprise-server@3.14/rest/repos/repos#create-a-repository-dispatch-event). In the payload, the `action` will be the `event_type` that was specified in the `POST /repos/{owner}/{repo}/dispatches` request body.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
      */
@@ -1955,7 +2176,7 @@ export interface webhooks {
   };
   "repository-edited": {
     /**
-     * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.9/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.9/rest/repos)" in the REST API documentation.
+     * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.14/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.14/rest/repos)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
      * @description The topics, default branch, description, or homepage of a repository was changed.
@@ -1964,7 +2185,7 @@ export interface webhooks {
   };
   "repository-privatized": {
     /**
-     * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.9/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.9/rest/repos)" in the REST API documentation.
+     * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.14/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.14/rest/repos)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
      * @description The visibility of a repository was changed to `private`.
@@ -1973,7 +2194,7 @@ export interface webhooks {
   };
   "repository-publicized": {
     /**
-     * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.9/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.9/rest/repos)" in the REST API documentation.
+     * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.14/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.14/rest/repos)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
      * @description The visibility of a repository was changed to `public`.
@@ -1982,16 +2203,49 @@ export interface webhooks {
   };
   "repository-renamed": {
     /**
-     * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.9/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.9/rest/repos)" in the REST API documentation.
+     * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.14/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.14/rest/repos)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
      * @description The name of a repository was changed.
      */
     post: operations["repository/renamed"];
   };
+  "repository-ruleset-created": {
+    /**
+     * This event occurs when there is activity relating to repository rulesets.
+     * For more information about repository rulesets, see "[Managing rulesets](https://docs.github.com/enterprise-server@3.14/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets)."
+     * For more information on managing rulesets via the APIs, see [Repository ruleset](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#repositoryruleset) in the GraphQL documentation or "[Repository rules](https://docs.github.com/enterprise-server@3.14/rest/repos/rules)" and "[Organization rules](https://docs.github.com/enterprise-server@3.14/rest/orgs/rules) in the REST API documentation."
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository or organization permission.
+     * @description A repository ruleset was created.
+     */
+    post: operations["repository-ruleset/created"];
+  };
+  "repository-ruleset-deleted": {
+    /**
+     * This event occurs when there is activity relating to repository rulesets.
+     * For more information about repository rulesets, see "[Managing rulesets](https://docs.github.com/enterprise-server@3.14/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets)."
+     * For more information on managing rulesets via the APIs, see [Repository ruleset](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#repositoryruleset) in the GraphQL documentation or "[Repository rules](https://docs.github.com/enterprise-server@3.14/rest/repos/rules)" and "[Organization rules](https://docs.github.com/enterprise-server@3.14/rest/orgs/rules) in the REST API documentation."
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository or organization permission.
+     * @description A repository ruleset was deleted.
+     */
+    post: operations["repository-ruleset/deleted"];
+  };
+  "repository-ruleset-edited": {
+    /**
+     * This event occurs when there is activity relating to repository rulesets.
+     * For more information about repository rulesets, see "[Managing rulesets](https://docs.github.com/enterprise-server@3.14/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets)."
+     * For more information on managing rulesets via the APIs, see [Repository ruleset](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#repositoryruleset) in the GraphQL documentation or "[Repository rules](https://docs.github.com/enterprise-server@3.14/rest/repos/rules)" and "[Organization rules](https://docs.github.com/enterprise-server@3.14/rest/orgs/rules) in the REST API documentation."
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository or organization permission.
+     * @description A repository ruleset was edited.
+     */
+    post: operations["repository-ruleset/edited"];
+  };
   "repository-transferred": {
     /**
-     * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.9/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.9/rest/repos)" in the REST API documentation.
+     * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.14/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.14/rest/repos)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
      * @description Ownership of the repository was transferred to a user or organization account. This event is only sent to the account where the ownership is transferred. To receive the `repository.transferred` event, the new owner account must have the GitHub App installed, and the App must be subscribed to "Repository" events.
@@ -2000,7 +2254,7 @@ export interface webhooks {
   };
   "repository-unarchived": {
     /**
-     * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.9/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.9/rest/repos)" in the REST API documentation.
+     * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.14/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.14/rest/repos)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
      * @description A previously archived repository was unarchived.
@@ -2011,7 +2265,8 @@ export interface webhooks {
     /**
      * This event occurs when there is activity relating to a security vulnerability alert in a repository.
      *
-     * **Note**: This event is deprecated. Use the `dependabot_alert` event instead.
+     * > [!WARNING]
+     * > **Deprecation notice:** This event is deprecated. Use the `dependabot_alert` event instead.
      * @description A repository vulnerability alert was created.
      */
     post: operations["repository-vulnerability-alert/create"];
@@ -2020,7 +2275,8 @@ export interface webhooks {
     /**
      * This event occurs when there is activity relating to a security vulnerability alert in a repository.
      *
-     * **Note**: This event is deprecated. Use the `dependabot_alert` event instead.
+     * > [!WARNING]
+     * > **Deprecation notice:** This event is deprecated. Use the `dependabot_alert` event instead.
      * @description A repository vulnerability alert was dismissed.
      */
     post: operations["repository-vulnerability-alert/dismiss"];
@@ -2029,7 +2285,8 @@ export interface webhooks {
     /**
      * This event occurs when there is activity relating to a security vulnerability alert in a repository.
      *
-     * **Note**: This event is deprecated. Use the `dependabot_alert` event instead.
+     * > [!WARNING]
+     * > **Deprecation notice:** This event is deprecated. Use the `dependabot_alert` event instead.
      * @description A previously dismissed or resolved repository vulnerability alert was reopened.
      */
     post: operations["repository-vulnerability-alert/reopen"];
@@ -2038,14 +2295,15 @@ export interface webhooks {
     /**
      * This event occurs when there is activity relating to a security vulnerability alert in a repository.
      *
-     * **Note**: This event is deprecated. Use the `dependabot_alert` event instead.
+     * > [!WARNING]
+     * > **Deprecation notice:** This event is deprecated. Use the `dependabot_alert` event instead.
      * @description A repository vulnerability alert was marked as resolved.
      */
     post: operations["repository-vulnerability-alert/resolve"];
   };
   "secret-scanning-alert-created": {
     /**
-     * This event occurs when there is activity relating to a secret scanning alert. For more information about secret scanning, see "[About secret scanning](https://docs.github.com/enterprise-server@3.9/code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/enterprise-server@3.9/rest/secret-scanning)" in the REST API documentation.
+     * This event occurs when there is activity relating to a secret scanning alert. For more information about secret scanning, see "[About secret scanning](https://docs.github.com/enterprise-server@3.14/code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/enterprise-server@3.14/rest/secret-scanning)" in the REST API documentation.
      *
      * For activity relating to secret scanning alert locations, use the `secret_scanning_alert_location` event.
      *
@@ -2058,7 +2316,7 @@ export interface webhooks {
     /**
      * This event occurs when there is activity relating to the locations of a secret in a secret scanning alert.
      *
-     * For more information about secret scanning, see "[About secret scanning](https://docs.github.com/enterprise-server@3.9/code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/enterprise-server@3.9/rest/secret-scanning)" in the REST API documentation.
+     * For more information about secret scanning, see "[About secret scanning](https://docs.github.com/enterprise-server@3.14/code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/enterprise-server@3.14/rest/secret-scanning)" in the REST API documentation.
      *
      * For activity relating to secret scanning alerts, use the `secret_scanning_alert` event.
      *
@@ -2069,7 +2327,7 @@ export interface webhooks {
   };
   "secret-scanning-alert-reopened": {
     /**
-     * This event occurs when there is activity relating to a secret scanning alert. For more information about secret scanning, see "[About secret scanning](https://docs.github.com/enterprise-server@3.9/code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/enterprise-server@3.9/rest/secret-scanning)" in the REST API documentation.
+     * This event occurs when there is activity relating to a secret scanning alert. For more information about secret scanning, see "[About secret scanning](https://docs.github.com/enterprise-server@3.14/code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/enterprise-server@3.14/rest/secret-scanning)" in the REST API documentation.
      *
      * For activity relating to secret scanning alert locations, use the `secret_scanning_alert_location` event.
      *
@@ -2080,7 +2338,7 @@ export interface webhooks {
   };
   "secret-scanning-alert-resolved": {
     /**
-     * This event occurs when there is activity relating to a secret scanning alert. For more information about secret scanning, see "[About secret scanning](https://docs.github.com/enterprise-server@3.9/code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/enterprise-server@3.9/rest/secret-scanning)" in the REST API documentation.
+     * This event occurs when there is activity relating to a secret scanning alert. For more information about secret scanning, see "[About secret scanning](https://docs.github.com/enterprise-server@3.14/code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/enterprise-server@3.14/rest/secret-scanning)" in the REST API documentation.
      *
      * For activity relating to secret scanning alert locations, use the `secret_scanning_alert_location` event.
      *
@@ -2089,47 +2347,47 @@ export interface webhooks {
      */
     post: operations["secret-scanning-alert/resolved"];
   };
-  "secret-scanning-alert-revoked": {
+  "secret-scanning-alert-validated": {
     /**
-     * This event occurs when there is activity relating to a secret scanning alert. For more information about secret scanning, see "[About secret scanning](https://docs.github.com/enterprise-server@3.9/code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/enterprise-server@3.9/rest/secret-scanning)" in the REST API documentation.
+     * This event occurs when there is activity relating to a secret scanning alert. For more information about secret scanning, see "[About secret scanning](https://docs.github.com/enterprise-server@3.14/code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/enterprise-server@3.14/rest/secret-scanning)" in the REST API documentation.
      *
      * For activity relating to secret scanning alert locations, use the `secret_scanning_alert_location` event.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
-     * @description A secret scanning alert was marked as revoked.
+     * @description A secret scanning alert was validated.
      */
-    post: operations["secret-scanning-alert/revoked"];
+    post: operations["secret-scanning-alert/validated"];
   };
   "security-advisory-published": {
     /**
-     * This event occurs when there is activity relating to a global security advisory that was reviewed by GitHub. A GitHub-reviewed global security advisory provides information about security vulnerabilities or malware that have been mapped to packages in ecosystems we support. For more information about global security advisories, see "[About global security advisories](https://docs.github.com/enterprise-server@3.9/code-security/security-advisories/working-with-global-security-advisories-from-the-github-advisory-database/about-global-security-advisories)." For information about the API to manage security advisories, see [the REST API documentation](https://docs.github.com/enterprise-server@3.9/rest/security-advisories/global-advisories) or [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#securityadvisory).
+     * This event occurs when there is activity relating to a global security advisory that was reviewed by GitHub. A GitHub-reviewed global security advisory provides information about security vulnerabilities or malware that have been mapped to packages in ecosystems we support. For more information about global security advisories, see "[About global security advisories](https://docs.github.com/enterprise-server@3.14/code-security/security-advisories/working-with-global-security-advisories-from-the-github-advisory-database/about-global-security-advisories)." For information about the API to manage security advisories, see [the REST API documentation](https://docs.github.com/enterprise-server@3.14/rest/security-advisories/global-advisories) or [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#securityadvisory).
      *
-     * GitHub Dependabot alerts are also powered by the security advisory dataset. For more information, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.9/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)."
+     * GitHub Dependabot alerts are also powered by the security advisory dataset. For more information, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.14/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)."
      * @description A security advisory was published to the GitHub community.
      */
     post: operations["security-advisory/published"];
   };
   "security-advisory-updated": {
     /**
-     * This event occurs when there is activity relating to a global security advisory that was reviewed by GitHub. A GitHub-reviewed global security advisory provides information about security vulnerabilities or malware that have been mapped to packages in ecosystems we support. For more information about global security advisories, see "[About global security advisories](https://docs.github.com/enterprise-server@3.9/code-security/security-advisories/working-with-global-security-advisories-from-the-github-advisory-database/about-global-security-advisories)." For information about the API to manage security advisories, see [the REST API documentation](https://docs.github.com/enterprise-server@3.9/rest/security-advisories/global-advisories) or [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#securityadvisory).
+     * This event occurs when there is activity relating to a global security advisory that was reviewed by GitHub. A GitHub-reviewed global security advisory provides information about security vulnerabilities or malware that have been mapped to packages in ecosystems we support. For more information about global security advisories, see "[About global security advisories](https://docs.github.com/enterprise-server@3.14/code-security/security-advisories/working-with-global-security-advisories-from-the-github-advisory-database/about-global-security-advisories)." For information about the API to manage security advisories, see [the REST API documentation](https://docs.github.com/enterprise-server@3.14/rest/security-advisories/global-advisories) or [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#securityadvisory).
      *
-     * GitHub Dependabot alerts are also powered by the security advisory dataset. For more information, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.9/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)."
+     * GitHub Dependabot alerts are also powered by the security advisory dataset. For more information, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.14/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)."
      * @description The metadata or description of a security advisory was changed.
      */
     post: operations["security-advisory/updated"];
   };
   "security-advisory-withdrawn": {
     /**
-     * This event occurs when there is activity relating to a global security advisory that was reviewed by GitHub. A GitHub-reviewed global security advisory provides information about security vulnerabilities or malware that have been mapped to packages in ecosystems we support. For more information about global security advisories, see "[About global security advisories](https://docs.github.com/enterprise-server@3.9/code-security/security-advisories/working-with-global-security-advisories-from-the-github-advisory-database/about-global-security-advisories)." For information about the API to manage security advisories, see [the REST API documentation](https://docs.github.com/enterprise-server@3.9/rest/security-advisories/global-advisories) or [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#securityadvisory).
+     * This event occurs when there is activity relating to a global security advisory that was reviewed by GitHub. A GitHub-reviewed global security advisory provides information about security vulnerabilities or malware that have been mapped to packages in ecosystems we support. For more information about global security advisories, see "[About global security advisories](https://docs.github.com/enterprise-server@3.14/code-security/security-advisories/working-with-global-security-advisories-from-the-github-advisory-database/about-global-security-advisories)." For information about the API to manage security advisories, see [the REST API documentation](https://docs.github.com/enterprise-server@3.14/rest/security-advisories/global-advisories) or [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#securityadvisory).
      *
-     * GitHub Dependabot alerts are also powered by the security advisory dataset. For more information, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.9/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)."
+     * GitHub Dependabot alerts are also powered by the security advisory dataset. For more information, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.14/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)."
      * @description A previously published security advisory was withdrawn.
      */
     post: operations["security-advisory/withdrawn"];
   };
   "security-and-analysis": {
     /**
-     * This event occurs when code security and analysis features are enabled or disabled for a repository. For more information, see "[GitHub security features](https://docs.github.com/enterprise-server@3.9/code-security/getting-started/github-security-features)."
+     * This event occurs when code security and analysis features are enabled or disabled for a repository. For more information, see "[GitHub security features](https://docs.github.com/enterprise-server@3.14/code-security/getting-started/github-security-features)."
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
      */
@@ -2137,9 +2395,9 @@ export interface webhooks {
   };
   "sponsorship-cancelled": {
     /**
-     * This event occurs when there is activity relating to a sponsorship listing. For more information, see "[About GitHub Sponsors](https://docs.github.com/enterprise-server@3.9/sponsors/getting-started-with-github-sponsors/about-github-sponsors)." For information about the API to manage sponsors, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#sponsorship).
+     * This event occurs when there is activity relating to a sponsorship listing. For more information, see "[About GitHub Sponsors](https://docs.github.com/enterprise-server@3.14/sponsors/getting-started-with-github-sponsors/about-github-sponsors)." For information about the API to manage sponsors, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#sponsorship).
      *
-     * You can only create a sponsorship webhook on GitHub.com. For more information, see "[Configuring webhooks for events in your sponsored account](https://docs.github.com/enterprise-server@3.9/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)."
+     * You can only create a sponsorship webhook on GitHub.com. For more information, see "[Configuring webhooks for events in your sponsored account](https://docs.github.com/enterprise-server@3.14/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)."
      * @description A sponsorship was cancelled and the last billing cycle has ended.
      *
      * This event is only sent when a recurring (monthly) sponsorship is cancelled; it is not sent for one-time sponsorships.
@@ -2148,27 +2406,27 @@ export interface webhooks {
   };
   "sponsorship-created": {
     /**
-     * This event occurs when there is activity relating to a sponsorship listing. For more information, see "[About GitHub Sponsors](https://docs.github.com/enterprise-server@3.9/sponsors/getting-started-with-github-sponsors/about-github-sponsors)." For information about the API to manage sponsors, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#sponsorship).
+     * This event occurs when there is activity relating to a sponsorship listing. For more information, see "[About GitHub Sponsors](https://docs.github.com/enterprise-server@3.14/sponsors/getting-started-with-github-sponsors/about-github-sponsors)." For information about the API to manage sponsors, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#sponsorship).
      *
-     * You can only create a sponsorship webhook on GitHub.com. For more information, see "[Configuring webhooks for events in your sponsored account](https://docs.github.com/enterprise-server@3.9/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)."
+     * You can only create a sponsorship webhook on GitHub.com. For more information, see "[Configuring webhooks for events in your sponsored account](https://docs.github.com/enterprise-server@3.14/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)."
      * @description A sponsor created a sponsorship for a sponsored account. This event occurs once the payment is successfully processed.
      */
     post: operations["sponsorship/created"];
   };
   "sponsorship-edited": {
     /**
-     * This event occurs when there is activity relating to a sponsorship listing. For more information, see "[About GitHub Sponsors](https://docs.github.com/enterprise-server@3.9/sponsors/getting-started-with-github-sponsors/about-github-sponsors)." For information about the API to manage sponsors, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#sponsorship).
+     * This event occurs when there is activity relating to a sponsorship listing. For more information, see "[About GitHub Sponsors](https://docs.github.com/enterprise-server@3.14/sponsors/getting-started-with-github-sponsors/about-github-sponsors)." For information about the API to manage sponsors, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#sponsorship).
      *
-     * You can only create a sponsorship webhook on GitHub.com. For more information, see "[Configuring webhooks for events in your sponsored account](https://docs.github.com/enterprise-server@3.9/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)."
+     * You can only create a sponsorship webhook on GitHub.com. For more information, see "[Configuring webhooks for events in your sponsored account](https://docs.github.com/enterprise-server@3.14/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)."
      * @description A monthly sponsor changed who can see their sponsorship. If you recognize your sponsors publicly, you may want to update your sponsor recognition to reflect the change when this event occurs.
      */
     post: operations["sponsorship/edited"];
   };
   "sponsorship-pending-cancellation": {
     /**
-     * This event occurs when there is activity relating to a sponsorship listing. For more information, see "[About GitHub Sponsors](https://docs.github.com/enterprise-server@3.9/sponsors/getting-started-with-github-sponsors/about-github-sponsors)." For information about the API to manage sponsors, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#sponsorship).
+     * This event occurs when there is activity relating to a sponsorship listing. For more information, see "[About GitHub Sponsors](https://docs.github.com/enterprise-server@3.14/sponsors/getting-started-with-github-sponsors/about-github-sponsors)." For information about the API to manage sponsors, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#sponsorship).
      *
-     * You can only create a sponsorship webhook on GitHub.com. For more information, see "[Configuring webhooks for events in your sponsored account](https://docs.github.com/enterprise-server@3.9/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)."
+     * You can only create a sponsorship webhook on GitHub.com. For more information, see "[Configuring webhooks for events in your sponsored account](https://docs.github.com/enterprise-server@3.14/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)."
      * @description A sponsor scheduled a cancellation for their sponsorship. The cancellation will become effective on their next billing date.
      *
      * This event is only sent when a recurring (monthly) sponsorship is cancelled; it is not sent for one-time sponsorships.
@@ -2177,25 +2435,25 @@ export interface webhooks {
   };
   "sponsorship-pending-tier-change": {
     /**
-     * This event occurs when there is activity relating to a sponsorship listing. For more information, see "[About GitHub Sponsors](https://docs.github.com/enterprise-server@3.9/sponsors/getting-started-with-github-sponsors/about-github-sponsors)." For information about the API to manage sponsors, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#sponsorship).
+     * This event occurs when there is activity relating to a sponsorship listing. For more information, see "[About GitHub Sponsors](https://docs.github.com/enterprise-server@3.14/sponsors/getting-started-with-github-sponsors/about-github-sponsors)." For information about the API to manage sponsors, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#sponsorship).
      *
-     * You can only create a sponsorship webhook on GitHub.com. For more information, see "[Configuring webhooks for events in your sponsored account](https://docs.github.com/enterprise-server@3.9/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)."
+     * You can only create a sponsorship webhook on GitHub.com. For more information, see "[Configuring webhooks for events in your sponsored account](https://docs.github.com/enterprise-server@3.14/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)."
      * @description A sponsor scheduled a downgrade to a lower sponsorship tier. The new tier will become effective on their next billing date.
      */
     post: operations["sponsorship/pending-tier-change"];
   };
   "sponsorship-tier-changed": {
     /**
-     * This event occurs when there is activity relating to a sponsorship listing. For more information, see "[About GitHub Sponsors](https://docs.github.com/enterprise-server@3.9/sponsors/getting-started-with-github-sponsors/about-github-sponsors)." For information about the API to manage sponsors, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#sponsorship).
+     * This event occurs when there is activity relating to a sponsorship listing. For more information, see "[About GitHub Sponsors](https://docs.github.com/enterprise-server@3.14/sponsors/getting-started-with-github-sponsors/about-github-sponsors)." For information about the API to manage sponsors, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#sponsorship).
      *
-     * You can only create a sponsorship webhook on GitHub.com. For more information, see "[Configuring webhooks for events in your sponsored account](https://docs.github.com/enterprise-server@3.9/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)."
+     * You can only create a sponsorship webhook on GitHub.com. For more information, see "[Configuring webhooks for events in your sponsored account](https://docs.github.com/enterprise-server@3.14/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)."
      * @description A sponsor changed the tier of their sponsorship and the change has taken effect. If a sponsor upgraded their tier, the change took effect immediately. If a sponsor downgraded their tier, the change took effect at the beginning of the sponsor's next billing cycle.
      */
     post: operations["sponsorship/tier-changed"];
   };
   "star-created": {
     /**
-     * This event occurs when there is activity relating to repository stars. For more information about stars, see "[Saving repositories with stars](https://docs.github.com/enterprise-server@3.9/get-started/exploring-projects-on-github/saving-repositories-with-stars)." For information about the APIs to manage stars, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#starredrepositoryconnection) or "[Starring](https://docs.github.com/enterprise-server@3.9/rest/activity/starring)" in the REST API documentation.
+     * This event occurs when there is activity relating to repository stars. For more information about stars, see "[Saving repositories with stars](https://docs.github.com/enterprise-server@3.14/get-started/exploring-projects-on-github/saving-repositories-with-stars)." For information about the APIs to manage stars, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#starredrepositoryconnection) or "[Starring](https://docs.github.com/enterprise-server@3.14/rest/activity/starring)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
      * @description Someone starred a repository.
@@ -2204,7 +2462,7 @@ export interface webhooks {
   };
   "star-deleted": {
     /**
-     * This event occurs when there is activity relating to repository stars. For more information about stars, see "[Saving repositories with stars](https://docs.github.com/enterprise-server@3.9/get-started/exploring-projects-on-github/saving-repositories-with-stars)." For information about the APIs to manage stars, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#starredrepositoryconnection) or "[Starring](https://docs.github.com/enterprise-server@3.9/rest/activity/starring)" in the REST API documentation.
+     * This event occurs when there is activity relating to repository stars. For more information about stars, see "[Saving repositories with stars](https://docs.github.com/enterprise-server@3.14/get-started/exploring-projects-on-github/saving-repositories-with-stars)." For information about the APIs to manage stars, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#starredrepositoryconnection) or "[Starring](https://docs.github.com/enterprise-server@3.14/rest/activity/starring)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
      * @description Someone unstarred the repository.
@@ -2213,7 +2471,7 @@ export interface webhooks {
   };
   status: {
     /**
-     * This event occurs when the status of a Git commit changes. For example, commits can be marked as `error`, `failure`, `pending`, or `success`. For more information, see "[About status checks](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/collaborating-on-repositories-with-code-quality-features/about-status-checks)." For information about the APIs to manage commit statuses, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#status) or "[Commit statuses](https://docs.github.com/enterprise-server@3.9/rest/commits/statuses)" in the REST API documentation.
+     * This event occurs when the status of a Git commit changes. For example, commits can be marked as `error`, `failure`, `pending`, or `success`. For more information, see "[About status checks](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/collaborating-on-repositories-with-code-quality-features/about-status-checks)." For information about the APIs to manage commit statuses, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#status) or "[Commit statuses](https://docs.github.com/enterprise-server@3.14/rest/commits/statuses)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Commit statuses" repository permission.
      */
@@ -2222,7 +2480,7 @@ export interface webhooks {
   "team-add": {
     /**
      * This event occurs when a team is added to a repository.
-     * For more information, see "[Managing teams and people with access to your repository](https://docs.github.com/enterprise-server@3.9/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/managing-teams-and-people-with-access-to-your-repository)."
+     * For more information, see "[Managing teams and people with access to your repository](https://docs.github.com/enterprise-server@3.14/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/managing-teams-and-people-with-access-to-your-repository)."
      *
      * For activity relating to teams, see the `teams` event.
      *
@@ -2233,7 +2491,7 @@ export interface webhooks {
   "team-added-to-repository": {
     /**
      * This event occurs when there is activity relating to teams in an organization.
-     * For more information, see "[About teams](https://docs.github.com/enterprise-server@3.9/organizations/organizing-members-into-teams/about-teams)."
+     * For more information, see "[About teams](https://docs.github.com/enterprise-server@3.14/organizations/organizing-members-into-teams/about-teams)."
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
      * @description A team was granted access to a repository.
@@ -2243,7 +2501,7 @@ export interface webhooks {
   "team-created": {
     /**
      * This event occurs when there is activity relating to teams in an organization.
-     * For more information, see "[About teams](https://docs.github.com/enterprise-server@3.9/organizations/organizing-members-into-teams/about-teams)."
+     * For more information, see "[About teams](https://docs.github.com/enterprise-server@3.14/organizations/organizing-members-into-teams/about-teams)."
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
      * @description A team was created.
@@ -2253,7 +2511,7 @@ export interface webhooks {
   "team-deleted": {
     /**
      * This event occurs when there is activity relating to teams in an organization.
-     * For more information, see "[About teams](https://docs.github.com/enterprise-server@3.9/organizations/organizing-members-into-teams/about-teams)."
+     * For more information, see "[About teams](https://docs.github.com/enterprise-server@3.14/organizations/organizing-members-into-teams/about-teams)."
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
      * @description A team was deleted.
@@ -2263,7 +2521,7 @@ export interface webhooks {
   "team-edited": {
     /**
      * This event occurs when there is activity relating to teams in an organization.
-     * For more information, see "[About teams](https://docs.github.com/enterprise-server@3.9/organizations/organizing-members-into-teams/about-teams)."
+     * For more information, see "[About teams](https://docs.github.com/enterprise-server@3.14/organizations/organizing-members-into-teams/about-teams)."
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
      * @description The name, description, or visibility of a team was changed.
@@ -2273,7 +2531,7 @@ export interface webhooks {
   "team-removed-from-repository": {
     /**
      * This event occurs when there is activity relating to teams in an organization.
-     * For more information, see "[About teams](https://docs.github.com/enterprise-server@3.9/organizations/organizing-members-into-teams/about-teams)."
+     * For more information, see "[About teams](https://docs.github.com/enterprise-server@3.14/organizations/organizing-members-into-teams/about-teams)."
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
      * @description A team's access to a repository was removed.
@@ -2296,7 +2554,7 @@ export interface webhooks {
   };
   "watch-started": {
     /**
-     * This event occurs when there is activity relating to watching, or subscribing to, a repository. For more information about watching, see "[Managing your subscriptions](https://docs.github.com/enterprise-server@3.9/account-and-profile/managing-subscriptions-and-notifications-on-github/managing-subscriptions-for-activity-on-github/managing-your-subscriptions)." For information about the APIs to manage watching, see "[Watching](https://docs.github.com/enterprise-server@3.9/rest/activity/watching)" in the REST API documentation.
+     * This event occurs when there is activity relating to watching, or subscribing to, a repository. For more information about watching, see "[Managing your subscriptions](https://docs.github.com/enterprise-server@3.14/account-and-profile/managing-subscriptions-and-notifications-on-github/managing-subscriptions-for-activity-on-github/managing-your-subscriptions)." For information about the APIs to manage watching, see "[Watching](https://docs.github.com/enterprise-server@3.14/rest/activity/watching)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
      * @description Someone started watching the repository.
@@ -2305,7 +2563,7 @@ export interface webhooks {
   };
   "workflow-dispatch": {
     /**
-     * This event occurs when a GitHub Actions workflow is manually triggered. For more information, see "[Manually running a workflow](https://docs.github.com/enterprise-server@3.9/actions/managing-workflow-runs/manually-running-a-workflow)."
+     * This event occurs when a GitHub Actions workflow is manually triggered. For more information, see "[Manually running a workflow](https://docs.github.com/enterprise-server@3.14/actions/managing-workflow-runs/manually-running-a-workflow)."
      *
      * For activity relating to workflow runs, use the `workflow_run` event.
      *
@@ -2315,7 +2573,7 @@ export interface webhooks {
   };
   "workflow-job-completed": {
     /**
-     * This event occurs when there is activity relating to a job in a GitHub Actions workflow. For more information, see "[Using jobs in a workflow](https://docs.github.com/enterprise-server@3.9/actions/using-jobs/using-jobs-in-a-workflow)." For information about the API to manage workflow jobs, see "[Workflow jobs](https://docs.github.com/enterprise-server@3.9/rest/actions/workflow-jobs)" in the REST API documentation.
+     * This event occurs when there is activity relating to a job in a GitHub Actions workflow. For more information, see "[Using jobs in a workflow](https://docs.github.com/enterprise-server@3.14/actions/using-jobs/using-jobs-in-a-workflow)." For information about the API to manage workflow jobs, see "[Workflow jobs](https://docs.github.com/enterprise-server@3.14/rest/actions/workflow-jobs)" in the REST API documentation.
      *
      * For activity relating to a workflow run instead of a job in a workflow run, use the `workflow_run` event.
      *
@@ -2326,7 +2584,7 @@ export interface webhooks {
   };
   "workflow-job-in-progress": {
     /**
-     * This event occurs when there is activity relating to a job in a GitHub Actions workflow. For more information, see "[Using jobs in a workflow](https://docs.github.com/enterprise-server@3.9/actions/using-jobs/using-jobs-in-a-workflow)." For information about the API to manage workflow jobs, see "[Workflow jobs](https://docs.github.com/enterprise-server@3.9/rest/actions/workflow-jobs)" in the REST API documentation.
+     * This event occurs when there is activity relating to a job in a GitHub Actions workflow. For more information, see "[Using jobs in a workflow](https://docs.github.com/enterprise-server@3.14/actions/using-jobs/using-jobs-in-a-workflow)." For information about the API to manage workflow jobs, see "[Workflow jobs](https://docs.github.com/enterprise-server@3.14/rest/actions/workflow-jobs)" in the REST API documentation.
      *
      * For activity relating to a workflow run instead of a job in a workflow run, use the `workflow_run` event.
      *
@@ -2337,7 +2595,7 @@ export interface webhooks {
   };
   "workflow-job-queued": {
     /**
-     * This event occurs when there is activity relating to a job in a GitHub Actions workflow. For more information, see "[Using jobs in a workflow](https://docs.github.com/enterprise-server@3.9/actions/using-jobs/using-jobs-in-a-workflow)." For information about the API to manage workflow jobs, see "[Workflow jobs](https://docs.github.com/enterprise-server@3.9/rest/actions/workflow-jobs)" in the REST API documentation.
+     * This event occurs when there is activity relating to a job in a GitHub Actions workflow. For more information, see "[Using jobs in a workflow](https://docs.github.com/enterprise-server@3.14/actions/using-jobs/using-jobs-in-a-workflow)." For information about the API to manage workflow jobs, see "[Workflow jobs](https://docs.github.com/enterprise-server@3.14/rest/actions/workflow-jobs)" in the REST API documentation.
      *
      * For activity relating to a workflow run instead of a job in a workflow run, use the `workflow_run` event.
      *
@@ -2348,7 +2606,7 @@ export interface webhooks {
   };
   "workflow-job-waiting": {
     /**
-     * This event occurs when there is activity relating to a job in a GitHub Actions workflow. For more information, see "[Using jobs in a workflow](https://docs.github.com/enterprise-server@3.9/actions/using-jobs/using-jobs-in-a-workflow)." For information about the API to manage workflow jobs, see "[Workflow jobs](https://docs.github.com/enterprise-server@3.9/rest/actions/workflow-jobs)" in the REST API documentation.
+     * This event occurs when there is activity relating to a job in a GitHub Actions workflow. For more information, see "[Using jobs in a workflow](https://docs.github.com/enterprise-server@3.14/actions/using-jobs/using-jobs-in-a-workflow)." For information about the API to manage workflow jobs, see "[Workflow jobs](https://docs.github.com/enterprise-server@3.14/rest/actions/workflow-jobs)" in the REST API documentation.
      *
      * For activity relating to a workflow run instead of a job in a workflow run, use the `workflow_run` event.
      *
@@ -2359,7 +2617,7 @@ export interface webhooks {
   };
   "workflow-run-completed": {
     /**
-     * This event occurs when there is activity relating to a run of a GitHub Actions workflow. For more information, see "[About workflows](https://docs.github.com/enterprise-server@3.9/actions/using-workflows/about-workflows)." For information about the APIs to manage workflow runs, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#workflowrun) or "[Workflow runs](https://docs.github.com/enterprise-server@3.9/rest/actions/workflow-runs)" in the REST API documentation.
+     * This event occurs when there is activity relating to a run of a GitHub Actions workflow. For more information, see "[About workflows](https://docs.github.com/enterprise-server@3.14/actions/using-workflows/about-workflows)." For information about the APIs to manage workflow runs, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#workflowrun) or "[Workflow runs](https://docs.github.com/enterprise-server@3.14/rest/actions/workflow-runs)" in the REST API documentation.
      *
      * For activity relating to a job in a workflow run, use the `workflow_job` event.
      *
@@ -2370,7 +2628,7 @@ export interface webhooks {
   };
   "workflow-run-in-progress": {
     /**
-     * This event occurs when there is activity relating to a run of a GitHub Actions workflow. For more information, see "[About workflows](https://docs.github.com/enterprise-server@3.9/actions/using-workflows/about-workflows)." For information about the APIs to manage workflow runs, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#workflowrun) or "[Workflow runs](https://docs.github.com/enterprise-server@3.9/rest/actions/workflow-runs)" in the REST API documentation.
+     * This event occurs when there is activity relating to a run of a GitHub Actions workflow. For more information, see "[About workflows](https://docs.github.com/enterprise-server@3.14/actions/using-workflows/about-workflows)." For information about the APIs to manage workflow runs, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#workflowrun) or "[Workflow runs](https://docs.github.com/enterprise-server@3.14/rest/actions/workflow-runs)" in the REST API documentation.
      *
      * For activity relating to a job in a workflow run, use the `workflow_job` event.
      *
@@ -2381,7 +2639,7 @@ export interface webhooks {
   };
   "workflow-run-requested": {
     /**
-     * This event occurs when there is activity relating to a run of a GitHub Actions workflow. For more information, see "[About workflows](https://docs.github.com/enterprise-server@3.9/actions/using-workflows/about-workflows)." For information about the APIs to manage workflow runs, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#workflowrun) or "[Workflow runs](https://docs.github.com/enterprise-server@3.9/rest/actions/workflow-runs)" in the REST API documentation.
+     * This event occurs when there is activity relating to a run of a GitHub Actions workflow. For more information, see "[About workflows](https://docs.github.com/enterprise-server@3.14/actions/using-workflows/about-workflows)." For information about the APIs to manage workflow runs, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#workflowrun) or "[Workflow runs](https://docs.github.com/enterprise-server@3.14/rest/actions/workflow-runs)" in the REST API documentation.
      *
      * For activity relating to a job in a workflow run, use the `workflow_job` event.
      *
@@ -2394,22 +2652,21 @@ export interface webhooks {
 
 export interface components {
   schemas: {
-    /** branch protection rule created event */
-    "webhook-branch-protection-rule-created": {
+    /** branch protection configuration disabled event */
+    "webhook-branch-protection-configuration-disabled": {
       /** @enum {string} */
-      action: "created";
+      action: "disabled";
       enterprise?: components["schemas"]["enterprise-webhooks"];
       installation?: components["schemas"]["simple-installation"];
       organization?: components["schemas"]["organization-simple-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
-      rule: components["schemas"]["webhooks_rule"];
       sender: components["schemas"]["simple-user-webhooks"];
     };
     /**
      * Enterprise
      * @description An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured
      * on an enterprise account or an organization that's part of an enterprise account. For more information,
-     * see "[About enterprise accounts](https://docs.github.com/enterprise-server@3.9/admin/overview/about-enterprise-accounts)."
+     * see "[About enterprise accounts](https://docs.github.com/enterprise-server@3.14/admin/overview/about-enterprise-accounts)."
      */
     "enterprise-webhooks": {
       /** @description A short description of the enterprise. */
@@ -2439,7 +2696,7 @@ export interface components {
      * Simple Installation
      * @description The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured
      * for and sent to a GitHub App. For more information,
-     * see "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-server@3.9/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."
+     * see "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-server@3.14/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."
      */
     "simple-installation": {
       /** @description The ID of the installation. */
@@ -2475,7 +2732,10 @@ export interface components {
      * when the event occurs from activity in a repository.
      */
     "repository-webhooks": {
-      /** @description Unique identifier of the repository */
+      /**
+       * Format: int64
+       * @description Unique identifier of the repository
+       */
       id: number;
       node_id: string;
       /** @description The name of the repository. */
@@ -2576,6 +2836,10 @@ export interface components {
        */
       is_template?: boolean;
       topics?: string[];
+      /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+      custom_properties?: {
+        [key: string]: unknown;
+      };
       /**
        * @description Whether issues are enabled.
        * @default true
@@ -2873,6 +3137,7 @@ export interface components {
       name?: string | null;
       email?: string | null;
       login: string;
+      /** Format: int64 */
       id: number;
       node_id: string;
       /** Format: uri */
@@ -2899,57 +3164,6 @@ export interface components {
       type: string;
       site_admin: boolean;
       starred_at?: string;
-    };
-    /**
-     * branch protection rule
-     * @description The branch protection rule. Includes a `name` and all the [branch protection settings](https://docs.github.com/enterprise-server@3.9/github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#about-branch-protection-settings) applied to branches that match the name. Binary settings are boolean. Multi-level configurations are one of `off`, `non_admins`, or `everyone`. Actor and build lists are arrays of strings.
-     */
-    webhooks_rule: {
-      admin_enforced: boolean;
-      /** @enum {string} */
-      allow_deletions_enforcement_level: "off" | "non_admins" | "everyone";
-      /** @enum {string} */
-      allow_force_pushes_enforcement_level: "off" | "non_admins" | "everyone";
-      authorized_actor_names: string[];
-      authorized_actors_only: boolean;
-      authorized_dismissal_actors_only: boolean;
-      create_protected?: boolean;
-      /** Format: date-time */
-      created_at: string;
-      dismiss_stale_reviews_on_push: boolean;
-      id: number;
-      ignore_approvals_from_contributors: boolean;
-      /** @enum {string} */
-      linear_history_requirement_enforcement_level:
-        | "off"
-        | "non_admins"
-        | "everyone";
-      /** @enum {string} */
-      merge_queue_enforcement_level: "off" | "non_admins" | "everyone";
-      name: string;
-      /** @enum {string} */
-      pull_request_reviews_enforcement_level: "off" | "non_admins" | "everyone";
-      repository_id: number;
-      require_code_owner_review: boolean;
-      required_approving_review_count: number;
-      /** @enum {string} */
-      required_conversation_resolution_level: "off" | "non_admins" | "everyone";
-      /** @enum {string} */
-      required_deployments_enforcement_level: "off" | "non_admins" | "everyone";
-      required_status_checks: string[];
-      /** @enum {string} */
-      required_status_checks_enforcement_level:
-        | "off"
-        | "non_admins"
-        | "everyone";
-      /** @enum {string} */
-      signature_requirement_enforcement_level:
-        | "off"
-        | "non_admins"
-        | "everyone";
-      strict_required_status_checks_policy: boolean;
-      /** Format: date-time */
-      updated_at: string;
     };
     /**
      * Simple User
@@ -2986,6 +3200,80 @@ export interface components {
       site_admin: boolean;
       starred_at?: string;
     };
+    /** branch protection configuration enabled event */
+    "webhook-branch-protection-configuration-enabled": {
+      /** @enum {string} */
+      action: "enabled";
+      enterprise?: components["schemas"]["enterprise-webhooks"];
+      installation?: components["schemas"]["simple-installation"];
+      organization?: components["schemas"]["organization-simple-webhooks"];
+      repository: components["schemas"]["repository-webhooks"];
+      sender: components["schemas"]["simple-user-webhooks"];
+    };
+    /** branch protection rule created event */
+    "webhook-branch-protection-rule-created": {
+      /** @enum {string} */
+      action: "created";
+      enterprise?: components["schemas"]["enterprise-webhooks"];
+      installation?: components["schemas"]["simple-installation"];
+      organization?: components["schemas"]["organization-simple-webhooks"];
+      repository: components["schemas"]["repository-webhooks"];
+      rule: components["schemas"]["webhooks_rule"];
+      sender: components["schemas"]["simple-user-webhooks"];
+    };
+    /**
+     * branch protection rule
+     * @description The branch protection rule. Includes a `name` and all the [branch protection settings](https://docs.github.com/enterprise-server@3.14/github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#about-branch-protection-settings) applied to branches that match the name. Binary settings are boolean. Multi-level configurations are one of `off`, `non_admins`, or `everyone`. Actor and build lists are arrays of strings.
+     */
+    webhooks_rule: {
+      admin_enforced: boolean;
+      /** @enum {string} */
+      allow_deletions_enforcement_level: "off" | "non_admins" | "everyone";
+      /** @enum {string} */
+      allow_force_pushes_enforcement_level: "off" | "non_admins" | "everyone";
+      authorized_actor_names: string[];
+      authorized_actors_only: boolean;
+      authorized_dismissal_actors_only: boolean;
+      create_protected?: boolean;
+      /** Format: date-time */
+      created_at: string;
+      dismiss_stale_reviews_on_push: boolean;
+      id: number;
+      ignore_approvals_from_contributors: boolean;
+      /** @enum {string} */
+      linear_history_requirement_enforcement_level:
+        | "off"
+        | "non_admins"
+        | "everyone";
+      /** @enum {string} */
+      merge_queue_enforcement_level: "off" | "non_admins" | "everyone";
+      name: string;
+      /** @enum {string} */
+      pull_request_reviews_enforcement_level: "off" | "non_admins" | "everyone";
+      repository_id: number;
+      require_code_owner_review: boolean;
+      /** @description Whether the most recent push must be approved by someone other than the person who pushed it */
+      require_last_push_approval?: boolean;
+      required_approving_review_count: number;
+      /** @enum {string} */
+      required_conversation_resolution_level: "off" | "non_admins" | "everyone";
+      /** @enum {string} */
+      required_deployments_enforcement_level: "off" | "non_admins" | "everyone";
+      required_status_checks: string[];
+      /** @enum {string} */
+      required_status_checks_enforcement_level:
+        | "off"
+        | "non_admins"
+        | "everyone";
+      /** @enum {string} */
+      signature_requirement_enforcement_level:
+        | "off"
+        | "non_admins"
+        | "everyone";
+      strict_required_status_checks_policy: boolean;
+      /** Format: date-time */
+      updated_at: string;
+    };
     /** branch protection rule deleted event */
     "webhook-branch-protection-rule-deleted": {
       /** @enum {string} */
@@ -3019,6 +3307,13 @@ export interface components {
           /** @enum {string} */
           from: "off" | "non_admins" | "everyone";
         };
+        pull_request_reviews_enforcement_level?: {
+          /** @enum {string} */
+          from: "off" | "non_admins" | "everyone";
+        };
+        require_last_push_approval?: {
+          from: boolean | null;
+        };
         required_status_checks?: {
           from: string[];
         };
@@ -3032,6 +3327,193 @@ export interface components {
       organization?: components["schemas"]["organization-simple-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
       rule: components["schemas"]["webhooks_rule"];
+      sender: components["schemas"]["simple-user-webhooks"];
+    };
+    /** Exemption request cancellation event */
+    "webhook-exemption-request-cancelled": {
+      /** @enum {string} */
+      action: "cancelled";
+      enterprise?: components["schemas"]["enterprise-webhooks"];
+      installation?: components["schemas"]["simple-installation"];
+      organization?: components["schemas"]["organization-simple-webhooks"];
+      repository?: components["schemas"]["repository-webhooks"];
+      exemption_request: components["schemas"]["exemption-request"];
+      sender: components["schemas"]["simple-user-webhooks"];
+    };
+    /**
+     * Exemption Request
+     * @description A request from a user to be exempted from a set of rules.
+     */
+    "exemption-request": {
+      /** @description The ID of the exemption request. */
+      id?: number;
+      /** @description The number uniquely identifying the exemption request within it's repository. */
+      number?: number;
+      /** @description The ID of the repository the exemption request is for. */
+      repository_id?: number;
+      /** @description The ID of the user who requested the exemption. */
+      requester_id?: number;
+      /** @description The login of the user who requested the exemption. */
+      requester_login?: string;
+      /**
+       * @description The type of request.
+       * @enum {string}
+       */
+      request_type?: "push_ruleset_bypass" | "secret_scanning";
+      exemption_request_data?:
+        | components["schemas"]["exemption-request-push-ruleset-bypass"]
+        | components["schemas"]["exemption-request-secret-scanning"];
+      /** @description The unique identifier for the request type of the exemption request. For example, a commit SHA. */
+      resource_identifier?: string;
+      /**
+       * @description The status of the exemption request.
+       * @enum {string}
+       */
+      status?: "pending" | "rejected" | "cancelled" | "completed";
+      /** @description The comment the requester provided when creating the exemption request. */
+      requester_comment?: string | null;
+      /** @description Metadata about the exemption request. */
+      metadata?:
+        | components["schemas"]["exemption-request-secret-scanning-metadata"]
+        | Record<string, never>
+        | null;
+      /**
+       * Format: date-time
+       * @description The date and time the exemption request will expire.
+       */
+      expires_at?: string;
+      /**
+       * Format: date-time
+       * @description The date and time the exemption request was created.
+       */
+      created_at?: string;
+      /** @description The responses to the exemption request. */
+      responses?: components["schemas"]["exemption-response"][] | null;
+      /**
+       * Format: uri
+       * @description The URL to view the exemption request in a browser.
+       */
+      html_url?: string;
+    };
+    /**
+     * Push ruleset bypass exemption request data
+     * @description Push rules that are being requested to be bypassed.
+     */
+    "exemption-request-push-ruleset-bypass": {
+      /**
+       * @description The type of request
+       * @enum {string}
+       */
+      type?: "push_ruleset_bypass";
+      /** @description The data pertaining to the push rules that are being requested to be bypassed. */
+      data?: {
+        /** @description The ID of the ruleset for the rules that were violated */
+        ruleset_id?: number;
+        /** @description The name of the ruleset for the rules that were violated */
+        ruleset_name?: string;
+        /** @description The number of violations */
+        total_violations?: number;
+        /** @description The type of rule that was violated */
+        rule_type?: string;
+      }[];
+    };
+    /**
+     * Secret scanning push protection exemption request data
+     * @description Secret scanning push protections that are being requested to be bypassed.
+     */
+    "exemption-request-secret-scanning": {
+      /**
+       * @description The type of request
+       * @enum {string}
+       */
+      type?: "secret_scanning";
+      /** @description The data pertaining to the secret scanning push protections that are being requested to be bypassed. */
+      data?: {
+        /** @description The type of secret that was detected */
+        secret_type?: string;
+        /** @description The commits that introduced the secret */
+        commits?: string[];
+      }[];
+    };
+    /**
+     * Secret Scanning Push Protection Exemption Request Metadata
+     * @description Metadata for a secret scanning push protection exemption request.
+     */
+    "exemption-request-secret-scanning-metadata": {
+      /** @description The label for the secret type */
+      label?: string;
+      /**
+       * @description The reason for the exemption request
+       * @enum {string}
+       */
+      reason?: "fixed_later" | "false_positive" | "tests";
+    };
+    /**
+     * Exemption response
+     * @description A response to an exemption request by a delegated bypasser.
+     */
+    "exemption-response": {
+      /** @description The ID of the exemption response. */
+      id?: number;
+      /** @description The ID of the user who reviewed the exemption request. */
+      reviewer_id?: number;
+      /** @description The login of the user who reviewed the exemption request. */
+      reviewer_login?: string;
+      /**
+       * @description The status of the exemption response.
+       * @enum {string}
+       */
+      status?: "approved" | "rejected" | "dismissed";
+      /**
+       * Format: date-time
+       * @description The date and time the exemption request was created.
+       */
+      created_at?: string;
+    };
+    /** Exemption request completed event */
+    "webhook-exemption-request-completed": {
+      /** @enum {string} */
+      action: "completed";
+      enterprise?: components["schemas"]["enterprise-webhooks"];
+      installation?: components["schemas"]["simple-installation"];
+      organization?: components["schemas"]["organization-simple-webhooks"];
+      repository?: components["schemas"]["repository-webhooks"];
+      exemption_request: components["schemas"]["exemption-request"];
+      sender: components["schemas"]["simple-user-webhooks"];
+    };
+    /** Exemption request created event */
+    "webhook-exemption-request-created": {
+      /** @enum {string} */
+      action: "created";
+      enterprise?: components["schemas"]["enterprise-webhooks"];
+      installation?: components["schemas"]["simple-installation"];
+      organization?: components["schemas"]["organization-simple-webhooks"];
+      repository?: components["schemas"]["repository-webhooks"];
+      exemption_request: components["schemas"]["exemption-request"];
+      sender: components["schemas"]["simple-user-webhooks"];
+    };
+    /** Exemption response dismissed event */
+    "webhook-exemption-request-response-dismissed": {
+      /** @enum {string} */
+      action: "response_dismissed";
+      enterprise?: components["schemas"]["enterprise-webhooks"];
+      installation?: components["schemas"]["simple-installation"];
+      organization?: components["schemas"]["organization-simple-webhooks"];
+      repository?: components["schemas"]["repository-webhooks"];
+      exemption_request: components["schemas"]["exemption-request"];
+      exemption_response: components["schemas"]["exemption-response"];
+      sender: components["schemas"]["simple-user-webhooks"];
+    };
+    /** Exemption response submitted event */
+    "webhook-exemption-request-response-submitted": {
+      /** @enum {string} */
+      action: "response_submitted";
+      enterprise?: components["schemas"]["enterprise-webhooks"];
+      installation?: components["schemas"]["simple-installation"];
+      organization?: components["schemas"]["organization-simple-webhooks"];
+      repository?: components["schemas"]["repository-webhooks"];
+      exemption_request: components["schemas"]["exemption-request"];
+      exemption_response: components["schemas"]["exemption-response"];
       sender: components["schemas"]["simple-user-webhooks"];
     };
     "webhook-cache-sync": {
@@ -3117,6 +3599,7 @@ export interface components {
       /** @description The slug name of the GitHub app */
       slug?: string;
       node_id: string;
+      client_id?: string;
       owner: null | components["schemas"]["simple-user"];
       /** @description The name of the GitHub app */
       name: string;
@@ -3148,7 +3631,6 @@ export interface components {
       events: string[];
       /** @description The number of installations associated with the GitHub app */
       installations_count?: number;
-      client_id?: string;
       client_secret?: string;
       webhook_secret?: string | null;
       pem?: string;
@@ -3187,6 +3669,7 @@ export interface components {
     };
     /** Pull Request Minimal */
     "pull-request-minimal": {
+      /** Format: int64 */
       id: number;
       number: number;
       url: string;
@@ -3194,6 +3677,7 @@ export interface components {
         ref: string;
         sha: string;
         repo: {
+          /** Format: int64 */
           id: number;
           url: string;
           name: string;
@@ -3203,6 +3687,7 @@ export interface components {
         ref: string;
         sha: string;
         repo: {
+          /** Format: int64 */
           id: number;
           url: string;
           name: string;
@@ -3214,6 +3699,7 @@ export interface components {
      * @description Minimal Repository
      */
     "minimal-repository": {
+      /** Format: int64 */
       id: number;
       node_id: string;
       name: string;
@@ -3351,6 +3837,14 @@ export interface components {
         /** @enum {string} */
         status?: "enabled" | "disabled";
       };
+      /** @description Enable or disable Dependabot security updates for the repository. */
+      dependabot_security_updates?: {
+        /**
+         * @description The enablement status of Dependabot security updates for the repository.
+         * @enum {string}
+         */
+        status?: "enabled" | "disabled";
+      };
       secret_scanning?: {
         /** @enum {string} */
         status?: "enabled" | "disabled";
@@ -3429,7 +3923,7 @@ export interface components {
     "webhook-check-suite-completed": {
       /** @enum {string} */
       action: "completed";
-      /** @description The [check_suite](https://docs.github.com/enterprise-server@3.9/rest/checks/suites#get-a-check-suite). */
+      /** @description The [check_suite](https://docs.github.com/enterprise-server@3.14/rest/checks/suites#get-a-check-suite). */
       check_suite: {
         after: string | null;
         /**
@@ -3501,6 +3995,8 @@ export interface components {
           html_url: string;
           /** @description Unique identifier of the GitHub app */
           id: number | null;
+          /** @description The client ID of the GitHub app */
+          client_id?: string | null;
           /** @description The name of the GitHub app */
           name: string;
           node_id: string;
@@ -3739,7 +4235,7 @@ export interface components {
     "webhook-check-suite-requested": {
       /** @enum {string} */
       action: "requested";
-      /** @description The [check_suite](https://docs.github.com/enterprise-server@3.9/rest/checks/suites#get-a-check-suite). */
+      /** @description The [check_suite](https://docs.github.com/enterprise-server@3.14/rest/checks/suites#get-a-check-suite). */
       check_suite: {
         after: string | null;
         /**
@@ -3812,6 +4308,8 @@ export interface components {
           html_url: string;
           /** @description Unique identifier of the GitHub app */
           id: number | null;
+          /** @description Client ID of the GitHub app */
+          client_id?: string | null;
           /** @description The name of the GitHub app */
           name: string;
           node_id: string;
@@ -4043,7 +4541,7 @@ export interface components {
     "webhook-check-suite-rerequested": {
       /** @enum {string} */
       action: "rerequested";
-      /** @description The [check_suite](https://docs.github.com/enterprise-server@3.9/rest/checks/suites#get-a-check-suite). */
+      /** @description The [check_suite](https://docs.github.com/enterprise-server@3.14/rest/checks/suites#get-a-check-suite). */
       check_suite: {
         after: string | null;
         /**
@@ -4111,6 +4609,8 @@ export interface components {
           html_url: string;
           /** @description Unique identifier of the GitHub app */
           id: number | null;
+          /** @description The Client ID for the GitHub app */
+          client_id?: string | null;
           /** @description The name of the GitHub app */
           name: string;
           node_id: string;
@@ -5028,7 +5528,7 @@ export interface components {
        * @enum {string}
        */
       action: "created";
-      /** @description The [commit comment](https://docs.github.com/enterprise-server@3.9/rest/commits/comments#get-a-commit-comment) resource. */
+      /** @description The [commit comment](https://docs.github.com/enterprise-server@3.14/rest/commits/comments#get-a-commit-comment) resource. */
       comment: {
         /**
          * AuthorAssociation
@@ -5095,6 +5595,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -5143,7 +5644,7 @@ export interface components {
     };
     /** @description The pusher type for the event. Can be either `user` or a deploy key. */
     webhooks_deploy_pusher_type: string;
-    /** @description The [`git ref`](https://docs.github.com/enterprise-server@3.9/rest/git/refs#get-a-reference) resource. */
+    /** @description The [`git ref`](https://docs.github.com/enterprise-server@3.14/rest/git/refs#get-a-reference) resource. */
     webhooks_ref_0: string;
     /** delete event */
     "webhook-delete": {
@@ -5160,10 +5661,10 @@ export interface components {
       repository: components["schemas"]["repository-webhooks"];
       sender: components["schemas"]["simple-user-webhooks"];
     };
-    /** Dependabot alert created event */
-    "webhook-dependabot-alert-created": {
+    /** Dependabot alert auto-dismissed event */
+    "webhook-dependabot-alert-auto-dismissed": {
       /** @enum {string} */
-      action: "created";
+      action: "auto_dismissed";
       alert: components["schemas"]["dependabot-alert"];
       installation?: components["schemas"]["simple-installation"];
       organization?: components["schemas"]["organization-simple-webhooks"];
@@ -5339,6 +5840,28 @@ export interface components {
      * @description The time that the alert was auto-dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
      */
     readonly "alert-auto-dismissed-at": string | null;
+    /** Dependabot alert auto-reopened event */
+    "webhook-dependabot-alert-auto-reopened": {
+      /** @enum {string} */
+      action: "auto_reopened";
+      alert: components["schemas"]["dependabot-alert"];
+      installation?: components["schemas"]["simple-installation"];
+      organization?: components["schemas"]["organization-simple-webhooks"];
+      enterprise?: components["schemas"]["enterprise-webhooks"];
+      repository: components["schemas"]["repository-webhooks"];
+      sender: components["schemas"]["simple-user-webhooks"];
+    };
+    /** Dependabot alert created event */
+    "webhook-dependabot-alert-created": {
+      /** @enum {string} */
+      action: "created";
+      alert: components["schemas"]["dependabot-alert"];
+      installation?: components["schemas"]["simple-installation"];
+      organization?: components["schemas"]["organization-simple-webhooks"];
+      enterprise?: components["schemas"]["enterprise-webhooks"];
+      repository: components["schemas"]["repository-webhooks"];
+      sender: components["schemas"]["simple-user-webhooks"];
+    };
     /** Dependabot alert dismissed event */
     "webhook-dependabot-alert-dismissed": {
       /** @enum {string} */
@@ -5394,7 +5917,7 @@ export interface components {
       repository: components["schemas"]["repository-webhooks"];
       sender: components["schemas"]["simple-user-webhooks"];
     };
-    /** @description The [`deploy key`](https://docs.github.com/enterprise-server@3.9/rest/deploy-keys/deploy-keys#get-a-deploy-key) resource. */
+    /** @description The [`deploy key`](https://docs.github.com/enterprise-server@3.14/rest/deploy-keys/deploy-keys#get-a-deploy-key) resource. */
     webhooks_deploy_key: {
       added_by?: string | null;
       created_at: string;
@@ -5424,7 +5947,7 @@ export interface components {
       action: "created";
       /**
        * Deployment
-       * @description The [deployment](https://docs.github.com/enterprise-server@3.9/rest/deployments/deployments#list-deployments).
+       * @description The [deployment](https://docs.github.com/enterprise-server@3.14/rest/deployments/deployments#list-deployments).
        */
       deployment: {
         created_at: string;
@@ -5989,6 +6512,627 @@ export interface components {
       updated_at: string;
       /** Format: uri */
       url: string;
+    } | null;
+    /** deployment protection rule requested event */
+    "webhook-deployment-protection-rule-requested": {
+      /** @enum {string} */
+      action: "requested";
+      /** @description The name of the environment that has the deployment protection rule. */
+      environment?: string;
+      /** @description The event that triggered the deployment protection rule. */
+      event?: string;
+      /**
+       * Format: uri
+       * @description The URL to review the deployment protection rule.
+       */
+      deployment_callback_url?: string;
+      deployment?: components["schemas"]["deployment"];
+      pull_requests?: components["schemas"]["pull-request"][];
+      repository: components["schemas"]["repository-webhooks"];
+      organization?: components["schemas"]["organization-simple-webhooks"];
+      installation?: components["schemas"]["simple-installation"];
+      sender: components["schemas"]["simple-user-webhooks"];
+    };
+    /**
+     * Deployment
+     * @description A request for a specific ref(branch,sha,tag) to be deployed
+     */
+    deployment: {
+      /** Format: uri */
+      url: string;
+      /**
+       * Format: int64
+       * @description Unique identifier of the deployment
+       */
+      id: number;
+      node_id: string;
+      sha: string;
+      /** @description The ref to deploy. This can be a branch, tag, or sha. */
+      ref: string;
+      /** @description Parameter to specify a task to execute */
+      task: string;
+      payload: OneOf<
+        [
+          {
+            [key: string]: unknown;
+          },
+          string,
+        ]
+      >;
+      original_environment?: string;
+      /** @description Name for the target deployment environment. */
+      environment: string;
+      description: string | null;
+      creator: null | components["schemas"]["simple-user"];
+      /** Format: date-time */
+      created_at: string;
+      /** Format: date-time */
+      updated_at: string;
+      /** Format: uri */
+      statuses_url: string;
+      /** Format: uri */
+      repository_url: string;
+      /** @description Specifies if the given environment is will no longer exist at some point in the future. Default: false. */
+      transient_environment?: boolean;
+      /** @description Specifies if the given environment is one that end-users directly interact with. Default: false. */
+      production_environment?: boolean;
+      performed_via_github_app?: null | components["schemas"]["integration"];
+    };
+    /**
+     * Pull Request
+     * @description Pull requests let you tell others about changes you've pushed to a repository on GitHub. Once a pull request is sent, interested parties can review the set of changes, discuss potential modifications, and even push follow-up commits if necessary.
+     */
+    "pull-request": {
+      /** Format: uri */
+      url: string;
+      /** Format: int64 */
+      id: number;
+      node_id: string;
+      /** Format: uri */
+      html_url: string;
+      /** Format: uri */
+      diff_url: string;
+      /** Format: uri */
+      patch_url: string;
+      /** Format: uri */
+      issue_url: string;
+      /** Format: uri */
+      commits_url: string;
+      /** Format: uri */
+      review_comments_url: string;
+      review_comment_url: string;
+      /** Format: uri */
+      comments_url: string;
+      /** Format: uri */
+      statuses_url: string;
+      /** @description Number uniquely identifying the pull request within its repository. */
+      number: number;
+      /**
+       * @description State of this Pull Request. Either `open` or `closed`.
+       * @enum {string}
+       */
+      state: "open" | "closed";
+      locked: boolean;
+      /** @description The title of the pull request. */
+      title: string;
+      user: components["schemas"]["simple-user"];
+      body: string | null;
+      labels: {
+        /** Format: int64 */
+        id: number;
+        node_id: string;
+        url: string;
+        name: string;
+        description: string | null;
+        color: string;
+        default: boolean;
+      }[];
+      milestone: null | components["schemas"]["milestone"];
+      active_lock_reason?: string | null;
+      /** Format: date-time */
+      created_at: string;
+      /** Format: date-time */
+      updated_at: string;
+      /** Format: date-time */
+      closed_at: string | null;
+      /** Format: date-time */
+      merged_at: string | null;
+      merge_commit_sha: string | null;
+      assignee: null | components["schemas"]["simple-user"];
+      assignees?: components["schemas"]["simple-user"][] | null;
+      requested_reviewers?: components["schemas"]["simple-user"][] | null;
+      requested_teams?: components["schemas"]["team-simple"][] | null;
+      head: {
+        label: string;
+        ref: string;
+        repo: {
+          archive_url: string;
+          assignees_url: string;
+          blobs_url: string;
+          branches_url: string;
+          collaborators_url: string;
+          comments_url: string;
+          commits_url: string;
+          compare_url: string;
+          contents_url: string;
+          /** Format: uri */
+          contributors_url: string;
+          /** Format: uri */
+          deployments_url: string;
+          description: string | null;
+          /** Format: uri */
+          downloads_url: string;
+          /** Format: uri */
+          events_url: string;
+          fork: boolean;
+          /** Format: uri */
+          forks_url: string;
+          full_name: string;
+          git_commits_url: string;
+          git_refs_url: string;
+          git_tags_url: string;
+          /** Format: uri */
+          hooks_url: string;
+          /** Format: uri */
+          html_url: string;
+          id: number;
+          node_id: string;
+          issue_comment_url: string;
+          issue_events_url: string;
+          issues_url: string;
+          keys_url: string;
+          labels_url: string;
+          /** Format: uri */
+          languages_url: string;
+          /** Format: uri */
+          merges_url: string;
+          milestones_url: string;
+          name: string;
+          notifications_url: string;
+          owner: {
+            /** Format: uri */
+            avatar_url: string;
+            events_url: string;
+            /** Format: uri */
+            followers_url: string;
+            following_url: string;
+            gists_url: string;
+            gravatar_id: string | null;
+            /** Format: uri */
+            html_url: string;
+            id: number;
+            node_id: string;
+            login: string;
+            /** Format: uri */
+            organizations_url: string;
+            /** Format: uri */
+            received_events_url: string;
+            /** Format: uri */
+            repos_url: string;
+            site_admin: boolean;
+            starred_url: string;
+            /** Format: uri */
+            subscriptions_url: string;
+            type: string;
+            /** Format: uri */
+            url: string;
+          };
+          private: boolean;
+          pulls_url: string;
+          releases_url: string;
+          /** Format: uri */
+          stargazers_url: string;
+          statuses_url: string;
+          /** Format: uri */
+          subscribers_url: string;
+          /** Format: uri */
+          subscription_url: string;
+          /** Format: uri */
+          tags_url: string;
+          /** Format: uri */
+          teams_url: string;
+          trees_url: string;
+          /** Format: uri */
+          url: string;
+          clone_url: string;
+          default_branch: string;
+          forks: number;
+          forks_count: number;
+          git_url: string;
+          has_downloads: boolean;
+          has_issues: boolean;
+          has_projects: boolean;
+          has_wiki: boolean;
+          has_pages: boolean;
+          has_discussions: boolean;
+          /** Format: uri */
+          homepage: string | null;
+          language: string | null;
+          master_branch?: string;
+          archived: boolean;
+          disabled: boolean;
+          /** @description The repository visibility: public, private, or internal. */
+          visibility?: string;
+          /** Format: uri */
+          mirror_url: string | null;
+          open_issues: number;
+          open_issues_count: number;
+          permissions?: {
+            admin: boolean;
+            maintain?: boolean;
+            push: boolean;
+            triage?: boolean;
+            pull: boolean;
+          };
+          temp_clone_token?: string;
+          allow_merge_commit?: boolean;
+          allow_squash_merge?: boolean;
+          allow_rebase_merge?: boolean;
+          license: {
+            key: string;
+            name: string;
+            /** Format: uri */
+            url: string | null;
+            spdx_id: string | null;
+            node_id: string;
+          } | null;
+          /** Format: date-time */
+          pushed_at: string;
+          size: number;
+          ssh_url: string;
+          stargazers_count: number;
+          /** Format: uri */
+          svn_url: string;
+          topics?: string[];
+          watchers: number;
+          watchers_count: number;
+          /** Format: date-time */
+          created_at: string;
+          /** Format: date-time */
+          updated_at: string;
+          allow_forking?: boolean;
+          is_template?: boolean;
+          web_commit_signoff_required?: boolean;
+        } | null;
+        sha: string;
+        user: {
+          /** Format: uri */
+          avatar_url: string;
+          events_url: string;
+          /** Format: uri */
+          followers_url: string;
+          following_url: string;
+          gists_url: string;
+          gravatar_id: string | null;
+          /** Format: uri */
+          html_url: string;
+          /** Format: int64 */
+          id: number;
+          node_id: string;
+          login: string;
+          /** Format: uri */
+          organizations_url: string;
+          /** Format: uri */
+          received_events_url: string;
+          /** Format: uri */
+          repos_url: string;
+          site_admin: boolean;
+          starred_url: string;
+          /** Format: uri */
+          subscriptions_url: string;
+          type: string;
+          /** Format: uri */
+          url: string;
+        };
+      };
+      base: {
+        label: string;
+        ref: string;
+        repo: {
+          archive_url: string;
+          assignees_url: string;
+          blobs_url: string;
+          branches_url: string;
+          collaborators_url: string;
+          comments_url: string;
+          commits_url: string;
+          compare_url: string;
+          contents_url: string;
+          /** Format: uri */
+          contributors_url: string;
+          /** Format: uri */
+          deployments_url: string;
+          description: string | null;
+          /** Format: uri */
+          downloads_url: string;
+          /** Format: uri */
+          events_url: string;
+          fork: boolean;
+          /** Format: uri */
+          forks_url: string;
+          full_name: string;
+          git_commits_url: string;
+          git_refs_url: string;
+          git_tags_url: string;
+          /** Format: uri */
+          hooks_url: string;
+          /** Format: uri */
+          html_url: string;
+          id: number;
+          is_template?: boolean;
+          node_id: string;
+          issue_comment_url: string;
+          issue_events_url: string;
+          issues_url: string;
+          keys_url: string;
+          labels_url: string;
+          /** Format: uri */
+          languages_url: string;
+          /** Format: uri */
+          merges_url: string;
+          milestones_url: string;
+          name: string;
+          notifications_url: string;
+          owner: {
+            /** Format: uri */
+            avatar_url: string;
+            events_url: string;
+            /** Format: uri */
+            followers_url: string;
+            following_url: string;
+            gists_url: string;
+            gravatar_id: string | null;
+            /** Format: uri */
+            html_url: string;
+            id: number;
+            node_id: string;
+            login: string;
+            /** Format: uri */
+            organizations_url: string;
+            /** Format: uri */
+            received_events_url: string;
+            /** Format: uri */
+            repos_url: string;
+            site_admin: boolean;
+            starred_url: string;
+            /** Format: uri */
+            subscriptions_url: string;
+            type: string;
+            /** Format: uri */
+            url: string;
+          };
+          private: boolean;
+          pulls_url: string;
+          releases_url: string;
+          /** Format: uri */
+          stargazers_url: string;
+          statuses_url: string;
+          /** Format: uri */
+          subscribers_url: string;
+          /** Format: uri */
+          subscription_url: string;
+          /** Format: uri */
+          tags_url: string;
+          /** Format: uri */
+          teams_url: string;
+          trees_url: string;
+          /** Format: uri */
+          url: string;
+          clone_url: string;
+          default_branch: string;
+          forks: number;
+          forks_count: number;
+          git_url: string;
+          has_downloads: boolean;
+          has_issues: boolean;
+          has_projects: boolean;
+          has_wiki: boolean;
+          has_pages: boolean;
+          has_discussions: boolean;
+          /** Format: uri */
+          homepage: string | null;
+          language: string | null;
+          master_branch?: string;
+          archived: boolean;
+          disabled: boolean;
+          /** @description The repository visibility: public, private, or internal. */
+          visibility?: string;
+          /** Format: uri */
+          mirror_url: string | null;
+          open_issues: number;
+          open_issues_count: number;
+          permissions?: {
+            admin: boolean;
+            maintain?: boolean;
+            push: boolean;
+            triage?: boolean;
+            pull: boolean;
+          };
+          temp_clone_token?: string;
+          allow_merge_commit?: boolean;
+          allow_squash_merge?: boolean;
+          allow_rebase_merge?: boolean;
+          license: null | components["schemas"]["license-simple"];
+          /** Format: date-time */
+          pushed_at: string;
+          size: number;
+          ssh_url: string;
+          stargazers_count: number;
+          /** Format: uri */
+          svn_url: string;
+          topics?: string[];
+          watchers: number;
+          watchers_count: number;
+          /** Format: date-time */
+          created_at: string;
+          /** Format: date-time */
+          updated_at: string;
+          allow_forking?: boolean;
+          web_commit_signoff_required?: boolean;
+        };
+        sha: string;
+        user: {
+          /** Format: uri */
+          avatar_url: string;
+          events_url: string;
+          /** Format: uri */
+          followers_url: string;
+          following_url: string;
+          gists_url: string;
+          gravatar_id: string | null;
+          /** Format: uri */
+          html_url: string;
+          /** Format: int64 */
+          id: number;
+          node_id: string;
+          login: string;
+          /** Format: uri */
+          organizations_url: string;
+          /** Format: uri */
+          received_events_url: string;
+          /** Format: uri */
+          repos_url: string;
+          site_admin: boolean;
+          starred_url: string;
+          /** Format: uri */
+          subscriptions_url: string;
+          type: string;
+          /** Format: uri */
+          url: string;
+        };
+      };
+      _links: {
+        comments: components["schemas"]["link"];
+        commits: components["schemas"]["link"];
+        statuses: components["schemas"]["link"];
+        html: components["schemas"]["link"];
+        issue: components["schemas"]["link"];
+        review_comments: components["schemas"]["link"];
+        review_comment: components["schemas"]["link"];
+        self: components["schemas"]["link"];
+      };
+      author_association: components["schemas"]["author-association"];
+      auto_merge: components["schemas"]["auto-merge"];
+      /** @description Indicates whether or not the pull request is a draft. */
+      draft?: boolean;
+      merged: boolean;
+      mergeable: boolean | null;
+      rebaseable?: boolean | null;
+      mergeable_state: string;
+      merged_by: null | components["schemas"]["simple-user"];
+      comments: number;
+      review_comments: number;
+      /** @description Indicates whether maintainers can modify the pull request. */
+      maintainer_can_modify: boolean;
+      commits: number;
+      additions: number;
+      deletions: number;
+      changed_files: number;
+    };
+    /**
+     * Milestone
+     * @description A collection of related issues and pull requests.
+     */
+    milestone: {
+      /** Format: uri */
+      url: string;
+      /** Format: uri */
+      html_url: string;
+      /** Format: uri */
+      labels_url: string;
+      id: number;
+      node_id: string;
+      /** @description The number of the milestone. */
+      number: number;
+      /**
+       * @description The state of the milestone.
+       * @default open
+       * @enum {string}
+       */
+      state: "open" | "closed";
+      /** @description The title of the milestone. */
+      title: string;
+      description: string | null;
+      creator: null | components["schemas"]["simple-user"];
+      open_issues: number;
+      closed_issues: number;
+      /** Format: date-time */
+      created_at: string;
+      /** Format: date-time */
+      updated_at: string;
+      /** Format: date-time */
+      closed_at: string | null;
+      /** Format: date-time */
+      due_on: string | null;
+    };
+    /**
+     * Team Simple
+     * @description Groups of organization members that gives permissions on specified repositories.
+     */
+    "team-simple": {
+      /** @description Unique identifier of the team */
+      id: number;
+      node_id: string;
+      /**
+       * Format: uri
+       * @description URL for the team
+       */
+      url: string;
+      members_url: string;
+      /** @description Name of the team */
+      name: string;
+      /** @description Description of the team */
+      description: string | null;
+      /** @description Permission that the team will have for its repositories */
+      permission: string;
+      /** @description The level of privacy this team should have */
+      privacy?: string;
+      /** @description The notification setting the team has set */
+      notification_setting?: string;
+      /** Format: uri */
+      html_url: string;
+      /** Format: uri */
+      repositories_url: string;
+      slug: string;
+      /** @description Distinguished Name (DN) that team maps to within LDAP environment */
+      ldap_dn?: string;
+    };
+    /**
+     * Link
+     * @description Hypermedia Link
+     */
+    link: {
+      href: string;
+    };
+    /**
+     * author_association
+     * @description How the author is associated with the repository.
+     * @enum {string}
+     */
+    "author-association":
+      | "COLLABORATOR"
+      | "CONTRIBUTOR"
+      | "FIRST_TIMER"
+      | "FIRST_TIME_CONTRIBUTOR"
+      | "MANNEQUIN"
+      | "MEMBER"
+      | "NONE"
+      | "OWNER";
+    /**
+     * Auto merge
+     * @description The status of auto merging a pull request.
+     */
+    "auto-merge": {
+      enabled_by: components["schemas"]["simple-user"];
+      /**
+       * @description The merge method to use.
+       * @enum {string}
+       */
+      merge_method: "merge" | "squash" | "rebase";
+      /** @description Title for the merge commit message. */
+      commit_title: string;
+      /** @description Commit message for the merge commit. */
+      commit_message: string;
     } | null;
     "webhook-deployment-review-approved": {
       /** @enum {string} */
@@ -7076,6 +8220,7 @@ export interface components {
       gravatar_id?: string;
       /** Format: uri */
       html_url?: string;
+      /** Format: int64 */
       id: number;
       login: string;
       name?: string;
@@ -7141,7 +8286,7 @@ export interface components {
       } | null;
       /**
        * Deployment
-       * @description The [deployment](https://docs.github.com/enterprise-server@3.9/rest/deployments/deployments#list-deployments).
+       * @description The [deployment](https://docs.github.com/enterprise-server@3.14/rest/deployments/deployments#list-deployments).
        */
       deployment: {
         created_at: string;
@@ -7386,7 +8531,7 @@ export interface components {
         /** Format: uri */
         url: string;
       };
-      /** @description The [deployment status](https://docs.github.com/enterprise-server@3.9/rest/deployments/statuses#list-deployment-statuses). */
+      /** @description The [deployment status](https://docs.github.com/enterprise-server@3.14/rest/deployments/statuses#list-deployment-statuses). */
       deployment_status: {
         created_at: string;
         /** User */
@@ -8006,6 +9151,7 @@ export interface components {
         gravatar_id?: string;
         /** Format: uri */
         html_url?: string;
+        /** Format: int64 */
         id: number;
         login: string;
         name?: string;
@@ -8156,6 +9302,7 @@ export interface components {
         gravatar_id?: string;
         /** Format: uri */
         html_url?: string;
+        /** Format: int64 */
         id: number;
         login: string;
         name?: string;
@@ -8176,6 +9323,32 @@ export interface components {
         /** Format: uri */
         url?: string;
       } | null;
+      labels?: components["schemas"]["label"][];
+    };
+    /**
+     * Label
+     * @description Color-coded labels help you categorize and filter your issues (just like labels in Gmail).
+     */
+    label: {
+      /**
+       * Format: int64
+       * @description Unique identifier for the label.
+       */
+      id: number;
+      node_id: string;
+      /**
+       * Format: uri
+       * @description URL for the label
+       */
+      url: string;
+      /** @description The name of the label. */
+      name: string;
+      /** @description Optional description of the label, such as its purpose. */
+      description: string | null;
+      /** @description 6-character hex code, without the leading #, identifying the color */
+      color: string;
+      /** @description Whether this label comes by default in a new repository. */
+      default: boolean;
     };
     /** discussion category changed event */
     "webhook-discussion-category-changed": {
@@ -8284,6 +9457,7 @@ export interface components {
         gravatar_id?: string;
         /** Format: uri */
         html_url?: string;
+        /** Format: int64 */
         id: number;
         login: string;
         name?: string;
@@ -8511,7 +9685,7 @@ export interface components {
      */
     "webhook-fork": {
       enterprise?: components["schemas"]["enterprise-webhooks"];
-      /** @description The created [`repository`](https://docs.github.com/enterprise-server@3.9/rest/repos/repos#get-a-repository) resource. */
+      /** @description The created [`repository`](https://docs.github.com/enterprise-server@3.14/rest/repos/repos#get-a-repository) resource. */
       forkee: {
         /**
          * @description Whether to allow auto-merge for pull requests.
@@ -8564,10 +9738,6 @@ export interface components {
         /** Format: uri */
         contributors_url: string;
         created_at: number | string;
-        /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
-        custom_properties?: {
-          [key: string]: unknown;
-        };
         /** @description The default branch of the repository. */
         default_branch: string;
         /**
@@ -8624,7 +9794,10 @@ export interface components {
         hooks_url: string;
         /** Format: uri */
         html_url: string;
-        /** @description Unique identifier of the repository */
+        /**
+         * Format: int64
+         * @description Unique identifier of the repository
+         */
         id: number;
         is_template?: boolean;
         /** Format: uri-template */
@@ -9047,6 +10220,11 @@ export interface components {
        */
       pull_requests?: "read" | "write";
       /**
+       * @description The level of permission to grant the access token to view and edit custom properties for a repository, when allowed by the property.
+       * @enum {string}
+       */
+      repository_custom_properties?: "read" | "write";
+      /**
        * @description The level of permission to grant the access token to manage the post-receive hooks for a repository.
        * @enum {string}
        */
@@ -9106,6 +10284,16 @@ export interface components {
        * @enum {string}
        */
       organization_custom_roles?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token for custom organization roles management.
+       * @enum {string}
+       */
+      organization_custom_org_roles?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token for custom property management.
+       * @enum {string}
+       */
+      organization_custom_properties?: "read" | "write" | "admin";
       /**
        * @description The level of permission to grant the access token for managing access to GitHub Copilot for members of an organization with a Copilot Business subscription. This property is in beta and is subject to change.
        * @enum {string}
@@ -9320,6 +10508,7 @@ export interface components {
     };
     "webhook-installation-target-renamed": {
       account: {
+        archived_at?: string | null;
         avatar_url: string;
         created_at?: string;
         description?: null;
@@ -9391,7 +10580,7 @@ export interface components {
       action: "created";
       /**
        * issue comment
-       * @description The [comment](https://docs.github.com/enterprise-server@3.9/rest/issues/comments#get-an-issue-comment) itself.
+       * @description The [comment](https://docs.github.com/enterprise-server@3.14/rest/issues/comments#get-an-issue-comment) itself.
        */
       comment: {
         /**
@@ -9461,6 +10650,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -9484,7 +10674,7 @@ export interface components {
       };
       enterprise?: components["schemas"]["enterprise-webhooks"];
       installation?: components["schemas"]["simple-installation"];
-      /** @description The [issue](https://docs.github.com/enterprise-server@3.9/rest/issues/issues#get-an-issue) the comment belongs to. */
+      /** @description The [issue](https://docs.github.com/enterprise-server@3.14/rest/issues/issues#get-an-issue) the comment belongs to. */
       issue: {
         /** @enum {string|null} */
         active_lock_reason:
@@ -9931,6 +11121,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -10051,6 +11242,7 @@ export interface components {
           gists_url?: string;
           gravatar_id?: string;
           html_url?: string;
+          /** Format: int64 */
           id?: number;
           login?: string;
           node_id?: string;
@@ -10075,7 +11267,7 @@ export interface components {
       comment: components["schemas"]["webhooks_issue_comment"];
       enterprise?: components["schemas"]["enterprise-webhooks"];
       installation?: components["schemas"]["simple-installation"];
-      /** @description The [issue](https://docs.github.com/enterprise-server@3.9/rest/issues/issues#get-an-issue) the comment belongs to. */
+      /** @description The [issue](https://docs.github.com/enterprise-server@3.14/rest/issues/issues#get-an-issue) the comment belongs to. */
       issue: {
         /** @enum {string|null} */
         active_lock_reason:
@@ -10520,6 +11712,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -10640,6 +11833,7 @@ export interface components {
           gists_url?: string;
           gravatar_id?: string;
           html_url?: string;
+          /** Format: int64 */
           id?: number;
           login?: string;
           node_id?: string;
@@ -10659,7 +11853,7 @@ export interface components {
     };
     /**
      * issue comment
-     * @description The [comment](https://docs.github.com/enterprise-server@3.9/rest/issues/comments#get-an-issue-comment) itself.
+     * @description The [comment](https://docs.github.com/enterprise-server@3.14/rest/issues/comments#get-an-issue-comment) itself.
      */
     webhooks_issue_comment: {
       /**
@@ -10729,6 +11923,7 @@ export interface components {
         gravatar_id?: string;
         /** Format: uri */
         html_url?: string;
+        /** Format: int64 */
         id: number;
         login: string;
         name?: string;
@@ -10758,7 +11953,7 @@ export interface components {
       comment: components["schemas"]["webhooks_issue_comment"];
       enterprise?: components["schemas"]["enterprise-webhooks"];
       installation?: components["schemas"]["simple-installation"];
-      /** @description The [issue](https://docs.github.com/enterprise-server@3.9/rest/issues/issues#get-an-issue) the comment belongs to. */
+      /** @description The [issue](https://docs.github.com/enterprise-server@3.14/rest/issues/issues#get-an-issue) the comment belongs to. */
       issue: {
         /** @enum {string|null} */
         active_lock_reason:
@@ -11205,6 +12400,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -11325,6 +12521,7 @@ export interface components {
           gists_url?: string;
           gravatar_id?: string;
           html_url?: string;
+          /** Format: int64 */
           id?: number;
           login?: string;
           node_id?: string;
@@ -11366,7 +12563,7 @@ export interface components {
     };
     /**
      * Issue
-     * @description The [issue](https://docs.github.com/enterprise-server@3.9/rest/issues/issues#get-an-issue) itself.
+     * @description The [issue](https://docs.github.com/enterprise-server@3.14/rest/issues/issues#get-an-issue) itself.
      */
     webhooks_issue: {
       /** @enum {string|null} */
@@ -11814,6 +13011,7 @@ export interface components {
         gravatar_id?: string;
         /** Format: uri */
         html_url?: string;
+        /** Format: int64 */
         id: number;
         login: string;
         name?: string;
@@ -11844,7 +13042,7 @@ export interface components {
       action: "closed";
       enterprise?: components["schemas"]["enterprise-webhooks"];
       installation?: components["schemas"]["simple-installation"];
-      /** @description The [issue](https://docs.github.com/enterprise-server@3.9/rest/issues/issues#get-an-issue) itself. */
+      /** @description The [issue](https://docs.github.com/enterprise-server@3.14/rest/issues/issues#get-an-issue) itself. */
       issue: {
         /** @enum {string|null} */
         active_lock_reason:
@@ -12292,6 +13490,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -12359,6 +13558,7 @@ export interface components {
           gists_url?: string;
           gravatar_id?: string;
           html_url?: string;
+          /** Format: int64 */
           id?: number;
           login?: string;
           node_id?: string;
@@ -12384,7 +13584,7 @@ export interface components {
       installation?: components["schemas"]["simple-installation"];
       /**
        * Issue
-       * @description The [issue](https://docs.github.com/enterprise-server@3.9/rest/issues/issues#get-an-issue) itself.
+       * @description The [issue](https://docs.github.com/enterprise-server@3.14/rest/issues/issues#get-an-issue) itself.
        */
       issue: {
         /** @enum {string|null} */
@@ -12831,6 +14031,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -12864,7 +14065,7 @@ export interface components {
       installation?: components["schemas"]["simple-installation"];
       /**
        * Issue
-       * @description The [issue](https://docs.github.com/enterprise-server@3.9/rest/issues/issues#get-an-issue) itself.
+       * @description The [issue](https://docs.github.com/enterprise-server@3.14/rest/issues/issues#get-an-issue) itself.
        */
       issue: {
         /** @enum {string|null} */
@@ -13310,6 +14511,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -13426,7 +14628,7 @@ export interface components {
       installation?: components["schemas"]["simple-installation"];
       /**
        * Issue
-       * @description The [issue](https://docs.github.com/enterprise-server@3.9/rest/issues/issues#get-an-issue) itself.
+       * @description The [issue](https://docs.github.com/enterprise-server@3.14/rest/issues/issues#get-an-issue) itself.
        */
       issue: {
         /** @enum {string|null} */
@@ -13875,6 +15077,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -13909,7 +15112,7 @@ export interface components {
       installation?: components["schemas"]["simple-installation"];
       /**
        * Issue
-       * @description The [issue](https://docs.github.com/enterprise-server@3.9/rest/issues/issues#get-an-issue) itself.
+       * @description The [issue](https://docs.github.com/enterprise-server@3.14/rest/issues/issues#get-an-issue) itself.
        */
       issue: {
         /** @enum {string|null} */
@@ -14357,6 +15560,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -14391,7 +15595,7 @@ export interface components {
       installation?: components["schemas"]["simple-installation"];
       /**
        * Issue
-       * @description The [issue](https://docs.github.com/enterprise-server@3.9/rest/issues/issues#get-an-issue) itself.
+       * @description The [issue](https://docs.github.com/enterprise-server@3.14/rest/issues/issues#get-an-issue) itself.
        */
       issue: {
         /** @enum {string|null} */
@@ -14840,6 +16044,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -14873,7 +16078,7 @@ export interface components {
       installation?: components["schemas"]["simple-installation"];
       /**
        * Issue
-       * @description The [issue](https://docs.github.com/enterprise-server@3.9/rest/issues/issues#get-an-issue) itself.
+       * @description The [issue](https://docs.github.com/enterprise-server@3.14/rest/issues/issues#get-an-issue) itself.
        */
       issue: {
         /** @enum {string|null} */
@@ -15320,6 +16525,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -15353,7 +16559,7 @@ export interface components {
       changes?: {
         /**
          * Issue
-         * @description The [issue](https://docs.github.com/enterprise-server@3.9/rest/issues/issues#get-an-issue) itself.
+         * @description The [issue](https://docs.github.com/enterprise-server@3.14/rest/issues/issues#get-an-issue) itself.
          */
         old_issue: {
           /** @enum {string|null} */
@@ -15799,6 +17005,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -15876,6 +17083,10 @@ export interface components {
           /** Format: uri */
           contributors_url: string;
           created_at: number | string;
+          /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+          custom_properties?: {
+            [key: string]: unknown;
+          };
           /** @description The default branch of the repository. */
           default_branch: string;
           /**
@@ -15934,7 +17145,10 @@ export interface components {
           hooks_url: string;
           /** Format: uri */
           html_url: string;
-          /** @description Unique identifier of the repository */
+          /**
+           * Format: int64
+           * @description Unique identifier of the repository
+           */
           id: number;
           is_template?: boolean;
           /** Format: uri-template */
@@ -16064,7 +17278,7 @@ export interface components {
       installation?: components["schemas"]["simple-installation"];
       /**
        * Issue
-       * @description The [issue](https://docs.github.com/enterprise-server@3.9/rest/issues/issues#get-an-issue) itself.
+       * @description The [issue](https://docs.github.com/enterprise-server@3.14/rest/issues/issues#get-an-issue) itself.
        */
       issue: {
         /** @enum {string|null} */
@@ -16513,6 +17727,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -16551,7 +17766,7 @@ export interface components {
     };
     /**
      * Issue
-     * @description The [issue](https://docs.github.com/enterprise-server@3.9/rest/issues/issues#get-an-issue) itself.
+     * @description The [issue](https://docs.github.com/enterprise-server@3.14/rest/issues/issues#get-an-issue) itself.
      */
     webhooks_issue_2: {
       /** @enum {string|null} */
@@ -16997,6 +18212,7 @@ export interface components {
         gravatar_id?: string;
         /** Format: uri */
         html_url?: string;
+        /** Format: int64 */
         id: number;
         login: string;
         name?: string;
@@ -17026,7 +18242,7 @@ export interface components {
       installation?: components["schemas"]["simple-installation"];
       /**
        * Issue
-       * @description The [issue](https://docs.github.com/enterprise-server@3.9/rest/issues/issues#get-an-issue) itself.
+       * @description The [issue](https://docs.github.com/enterprise-server@3.14/rest/issues/issues#get-an-issue) itself.
        */
       issue: {
         /** @enum {string|null} */
@@ -17474,6 +18690,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -17506,7 +18723,7 @@ export interface components {
       changes: {
         /**
          * Issue
-         * @description The [issue](https://docs.github.com/enterprise-server@3.9/rest/issues/issues#get-an-issue) itself.
+         * @description The [issue](https://docs.github.com/enterprise-server@3.14/rest/issues/issues#get-an-issue) itself.
          */
         new_issue: {
           /** @enum {string|null} */
@@ -17952,6 +19169,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -18029,6 +19247,10 @@ export interface components {
           /** Format: uri */
           contributors_url: string;
           created_at: number | string;
+          /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+          custom_properties?: {
+            [key: string]: unknown;
+          };
           /** @description The default branch of the repository. */
           default_branch: string;
           /**
@@ -18090,7 +19312,10 @@ export interface components {
           hooks_url: string;
           /** Format: uri */
           html_url: string;
-          /** @description Unique identifier of the repository */
+          /**
+           * Format: int64
+           * @description Unique identifier of the repository
+           */
           id: number;
           is_template?: boolean;
           /** Format: uri-template */
@@ -18295,7 +19520,7 @@ export interface components {
       installation?: components["schemas"]["simple-installation"];
       /**
        * Issue
-       * @description The [issue](https://docs.github.com/enterprise-server@3.9/rest/issues/issues#get-an-issue) itself.
+       * @description The [issue](https://docs.github.com/enterprise-server@3.14/rest/issues/issues#get-an-issue) itself.
        */
       issue: {
         /** @enum {string|null} */
@@ -18742,6 +19967,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -18972,6 +20198,13 @@ export interface components {
         permission: string;
         /** @enum {string} */
         privacy: "open" | "closed" | "secret";
+        /**
+         * @description Whether team members will receive notifications when their team is @mentioned
+         * @enum {string}
+         */
+        notification_setting:
+          | "notifications_enabled"
+          | "notifications_disabled";
         /** Format: uri */
         repositories_url: string;
         slug: string;
@@ -18985,6 +20218,8 @@ export interface components {
       permission?: string;
       /** @enum {string} */
       privacy?: "open" | "closed" | "secret";
+      /** @enum {string} */
+      notification_setting?: "notifications_enabled" | "notifications_disabled";
       /** Format: uri */
       repositories_url?: string;
       slug?: string;
@@ -19447,6 +20682,7 @@ export interface components {
         gravatar_id?: string;
         /** Format: uri */
         html_url?: string;
+        /** Format: int64 */
         id: number;
         login: string;
         name?: string;
@@ -20059,7 +21295,7 @@ export interface components {
     };
     /** page_build event */
     "webhook-page-build": {
-      /** @description The [List GitHub Pages builds](https://docs.github.com/enterprise-server@3.9/rest/pages/pages#list-github-pages-builds) itself. */
+      /** @description The [List GitHub Pages builds](https://docs.github.com/enterprise-server@3.14/rest/pages/pages#list-github-pages-builds) itself. */
       build: {
         commit: string | null;
         created_at: string;
@@ -20116,6 +21352,119 @@ export interface components {
       repository: components["schemas"]["repository-webhooks"];
       sender: components["schemas"]["simple-user-webhooks"];
     };
+    /** personal_access_token_request approved event */
+    "webhook-personal-access-token-request-approved": {
+      /** @enum {string} */
+      action: "approved";
+      personal_access_token_request: components["schemas"]["personal-access-token-request"];
+      enterprise?: components["schemas"]["enterprise-webhooks"];
+      organization: components["schemas"]["organization-simple-webhooks"];
+      sender: components["schemas"]["simple-user-webhooks"];
+      installation: components["schemas"]["simple-installation"];
+    };
+    /**
+     * Personal Access Token Request
+     * @description Details of a Personal Access Token Request.
+     */
+    "personal-access-token-request": {
+      /** @description Unique identifier of the request for access via fine-grained personal access token. Used as the `pat_request_id` parameter in the list and review API calls. */
+      id: number;
+      owner: components["schemas"]["simple-user"];
+      /** @description New requested permissions, categorized by type of permission. */
+      permissions_added: {
+        organization?: {
+          [key: string]: string;
+        };
+        repository?: {
+          [key: string]: string;
+        };
+        other?: {
+          [key: string]: string;
+        };
+      };
+      /** @description Requested permissions that elevate access for a previously approved request for access, categorized by type of permission. */
+      permissions_upgraded: {
+        organization?: {
+          [key: string]: string;
+        };
+        repository?: {
+          [key: string]: string;
+        };
+        other?: {
+          [key: string]: string;
+        };
+      };
+      /** @description Permissions requested, categorized by type of permission. This field incorporates `permissions_added` and `permissions_upgraded`. */
+      permissions_result: {
+        organization?: {
+          [key: string]: string;
+        };
+        repository?: {
+          [key: string]: string;
+        };
+        other?: {
+          [key: string]: string;
+        };
+      };
+      /**
+       * @description Type of repository selection requested.
+       * @enum {string}
+       */
+      repository_selection: "none" | "all" | "subset";
+      /** @description The number of repositories the token is requesting access to. This field is only populated when `repository_selection` is `subset`. */
+      repository_count: number | null;
+      /** @description An array of repository objects the token is requesting access to. This field is only populated when `repository_selection` is `subset`. */
+      repositories:
+        | {
+            full_name: string;
+            /** @description Unique identifier of the repository */
+            id: number;
+            /** @description The name of the repository. */
+            name: string;
+            node_id: string;
+            /** @description Whether the repository is private or public. */
+            private: boolean;
+          }[]
+        | null;
+      /** @description Date and time when the request for access was created. */
+      created_at: string;
+      /** @description Whether the associated fine-grained personal access token has expired. */
+      token_expired: boolean;
+      /** @description Date and time when the associated fine-grained personal access token expires. */
+      token_expires_at: string | null;
+      /** @description Date and time when the associated fine-grained personal access token was last used for authentication. */
+      token_last_used_at: string | null;
+    };
+    /** personal_access_token_request cancelled event */
+    "webhook-personal-access-token-request-cancelled": {
+      /** @enum {string} */
+      action: "cancelled";
+      personal_access_token_request: components["schemas"]["personal-access-token-request"];
+      enterprise?: components["schemas"]["enterprise-webhooks"];
+      organization: components["schemas"]["organization-simple-webhooks"];
+      sender: components["schemas"]["simple-user-webhooks"];
+      installation: components["schemas"]["simple-installation"];
+    };
+    /** personal_access_token_request created event */
+    "webhook-personal-access-token-request-created": {
+      /** @enum {string} */
+      action: "created";
+      personal_access_token_request: components["schemas"]["personal-access-token-request"];
+      enterprise?: components["schemas"]["enterprise-webhooks"];
+      organization: components["schemas"]["organization-simple-webhooks"];
+      sender: components["schemas"]["simple-user-webhooks"];
+      installation?: components["schemas"]["simple-installation"];
+    };
+    /** personal_access_token_request denied event */
+    "webhook-personal-access-token-request-denied": {
+      /** @enum {string} */
+      action: "denied";
+      personal_access_token_request: components["schemas"]["personal-access-token-request"];
+      organization: components["schemas"]["organization-simple-webhooks"];
+      enterprise?: components["schemas"]["enterprise-webhooks"];
+      sender: components["schemas"]["simple-user-webhooks"];
+      installation: components["schemas"]["simple-installation"];
+    };
     "webhook-ping": {
       /**
        * Webhook
@@ -20167,7 +21516,7 @@ export interface components {
     /** @description The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`. */
     "webhook-config-content-type": string;
     "webhook-config-insecure-ssl": string | number;
-    /** @description If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/enterprise-server@3.9/webhooks/event-payloads/#delivery-headers). */
+    /** @description If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/enterprise-server@3.14/webhooks/event-payloads/#delivery-headers). */
     "webhook-config-secret": string;
     /**
      * Format: uri
@@ -20814,12 +22163,32 @@ export interface components {
     "webhook-projects-v2-item-edited": {
       /** @enum {string} */
       action: "edited";
+      /**
+       * @description The changes made to the item may involve modifications in the item's fields and draft issue body.
+       * It includes altered values for text, number, date, single select, and iteration fields, along with the GraphQL node ID of the changed field.
+       */
       changes?: OneOf<
         [
           {
             field_value: {
               field_node_id?: string;
               field_type?: string;
+              field_name?: string;
+              project_number?: number;
+              from?:
+                | string
+                | number
+                | components["schemas"]["projects-v2-single-select-option"]
+                | components["schemas"]["projects-v2-iteration-setting"]
+                | null
+                | Record<string, never>;
+              to?:
+                | string
+                | number
+                | components["schemas"]["projects-v2-single-select-option"]
+                | components["schemas"]["projects-v2-iteration-setting"]
+                | null
+                | Record<string, never>;
             };
           },
           {
@@ -20834,6 +22203,26 @@ export interface components {
       organization: components["schemas"]["organization-simple-webhooks"];
       projects_v2_item: components["schemas"]["projects-v2-item"];
       sender: components["schemas"]["simple-user-webhooks"];
+    };
+    /**
+     * Projects v2 Single Select Option
+     * @description An option for a single select field
+     */
+    "projects-v2-single-select-option": {
+      id: string;
+      name: string;
+      color?: string | null;
+      description?: string | null;
+    };
+    /**
+     * Projects v2 Iteration Setting
+     * @description An iteration setting for an iteration field
+     */
+    "projects-v2-iteration-setting": {
+      id: string;
+      title: string;
+      duration?: number | null;
+      start_date?: string | null;
     };
     /** Projects v2 Item Reordered Event */
     "webhook-projects-v2-item-reordered": {
@@ -21197,7 +22586,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -21382,6 +22774,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -21540,7 +22933,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -21725,6 +23121,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -22066,6 +23463,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -22411,7 +23809,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -22596,6 +23997,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -22754,7 +24156,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -22939,6 +24344,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -23280,6 +24686,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -23624,7 +25031,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -23809,6 +25219,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -24152,6 +25563,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -24493,6 +25905,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -24579,557 +25992,6 @@ export interface components {
        */
       use_squash_pr_title_as_default?: boolean;
     };
-    /**
-     * Pull Request
-     * @description Pull requests let you tell others about changes you've pushed to a repository on GitHub. Once a pull request is sent, interested parties can review the set of changes, discuss potential modifications, and even push follow-up commits if necessary.
-     */
-    "pull-request": {
-      /** Format: uri */
-      url: string;
-      id: number;
-      node_id: string;
-      /** Format: uri */
-      html_url: string;
-      /** Format: uri */
-      diff_url: string;
-      /** Format: uri */
-      patch_url: string;
-      /** Format: uri */
-      issue_url: string;
-      /** Format: uri */
-      commits_url: string;
-      /** Format: uri */
-      review_comments_url: string;
-      review_comment_url: string;
-      /** Format: uri */
-      comments_url: string;
-      /** Format: uri */
-      statuses_url: string;
-      /** @description Number uniquely identifying the pull request within its repository. */
-      number: number;
-      /**
-       * @description State of this Pull Request. Either `open` or `closed`.
-       * @enum {string}
-       */
-      state: "open" | "closed";
-      locked: boolean;
-      /** @description The title of the pull request. */
-      title: string;
-      user: components["schemas"]["simple-user"];
-      body: string | null;
-      labels: {
-        /** Format: int64 */
-        id: number;
-        node_id: string;
-        url: string;
-        name: string;
-        description: string | null;
-        color: string;
-        default: boolean;
-      }[];
-      milestone: null | components["schemas"]["milestone"];
-      active_lock_reason?: string | null;
-      /** Format: date-time */
-      created_at: string;
-      /** Format: date-time */
-      updated_at: string;
-      /** Format: date-time */
-      closed_at: string | null;
-      /** Format: date-time */
-      merged_at: string | null;
-      merge_commit_sha: string | null;
-      assignee: null | components["schemas"]["simple-user"];
-      assignees?: components["schemas"]["simple-user"][] | null;
-      requested_reviewers?: components["schemas"]["simple-user"][] | null;
-      requested_teams?: components["schemas"]["team-simple"][] | null;
-      head: {
-        label: string;
-        ref: string;
-        repo: {
-          archive_url: string;
-          assignees_url: string;
-          blobs_url: string;
-          branches_url: string;
-          collaborators_url: string;
-          comments_url: string;
-          commits_url: string;
-          compare_url: string;
-          contents_url: string;
-          /** Format: uri */
-          contributors_url: string;
-          /** Format: uri */
-          deployments_url: string;
-          description: string | null;
-          /** Format: uri */
-          downloads_url: string;
-          /** Format: uri */
-          events_url: string;
-          fork: boolean;
-          /** Format: uri */
-          forks_url: string;
-          full_name: string;
-          git_commits_url: string;
-          git_refs_url: string;
-          git_tags_url: string;
-          /** Format: uri */
-          hooks_url: string;
-          /** Format: uri */
-          html_url: string;
-          id: number;
-          node_id: string;
-          issue_comment_url: string;
-          issue_events_url: string;
-          issues_url: string;
-          keys_url: string;
-          labels_url: string;
-          /** Format: uri */
-          languages_url: string;
-          /** Format: uri */
-          merges_url: string;
-          milestones_url: string;
-          name: string;
-          notifications_url: string;
-          owner: {
-            /** Format: uri */
-            avatar_url: string;
-            events_url: string;
-            /** Format: uri */
-            followers_url: string;
-            following_url: string;
-            gists_url: string;
-            gravatar_id: string | null;
-            /** Format: uri */
-            html_url: string;
-            id: number;
-            node_id: string;
-            login: string;
-            /** Format: uri */
-            organizations_url: string;
-            /** Format: uri */
-            received_events_url: string;
-            /** Format: uri */
-            repos_url: string;
-            site_admin: boolean;
-            starred_url: string;
-            /** Format: uri */
-            subscriptions_url: string;
-            type: string;
-            /** Format: uri */
-            url: string;
-          };
-          private: boolean;
-          pulls_url: string;
-          releases_url: string;
-          /** Format: uri */
-          stargazers_url: string;
-          statuses_url: string;
-          /** Format: uri */
-          subscribers_url: string;
-          /** Format: uri */
-          subscription_url: string;
-          /** Format: uri */
-          tags_url: string;
-          /** Format: uri */
-          teams_url: string;
-          trees_url: string;
-          /** Format: uri */
-          url: string;
-          clone_url: string;
-          default_branch: string;
-          forks: number;
-          forks_count: number;
-          git_url: string;
-          has_downloads: boolean;
-          has_issues: boolean;
-          has_projects: boolean;
-          has_wiki: boolean;
-          has_pages: boolean;
-          has_discussions: boolean;
-          /** Format: uri */
-          homepage: string | null;
-          language: string | null;
-          master_branch?: string;
-          archived: boolean;
-          disabled: boolean;
-          /** @description The repository visibility: public, private, or internal. */
-          visibility?: string;
-          /** Format: uri */
-          mirror_url: string | null;
-          open_issues: number;
-          open_issues_count: number;
-          permissions?: {
-            admin: boolean;
-            maintain?: boolean;
-            push: boolean;
-            triage?: boolean;
-            pull: boolean;
-          };
-          temp_clone_token?: string;
-          allow_merge_commit?: boolean;
-          allow_squash_merge?: boolean;
-          allow_rebase_merge?: boolean;
-          license: {
-            key: string;
-            name: string;
-            /** Format: uri */
-            url: string | null;
-            spdx_id: string | null;
-            node_id: string;
-          } | null;
-          /** Format: date-time */
-          pushed_at: string;
-          size: number;
-          ssh_url: string;
-          stargazers_count: number;
-          /** Format: uri */
-          svn_url: string;
-          topics?: string[];
-          watchers: number;
-          watchers_count: number;
-          /** Format: date-time */
-          created_at: string;
-          /** Format: date-time */
-          updated_at: string;
-          allow_forking?: boolean;
-          is_template?: boolean;
-          web_commit_signoff_required?: boolean;
-        } | null;
-        sha: string;
-        user: {
-          /** Format: uri */
-          avatar_url: string;
-          events_url: string;
-          /** Format: uri */
-          followers_url: string;
-          following_url: string;
-          gists_url: string;
-          gravatar_id: string | null;
-          /** Format: uri */
-          html_url: string;
-          id: number;
-          node_id: string;
-          login: string;
-          /** Format: uri */
-          organizations_url: string;
-          /** Format: uri */
-          received_events_url: string;
-          /** Format: uri */
-          repos_url: string;
-          site_admin: boolean;
-          starred_url: string;
-          /** Format: uri */
-          subscriptions_url: string;
-          type: string;
-          /** Format: uri */
-          url: string;
-        };
-      };
-      base: {
-        label: string;
-        ref: string;
-        repo: {
-          archive_url: string;
-          assignees_url: string;
-          blobs_url: string;
-          branches_url: string;
-          collaborators_url: string;
-          comments_url: string;
-          commits_url: string;
-          compare_url: string;
-          contents_url: string;
-          /** Format: uri */
-          contributors_url: string;
-          /** Format: uri */
-          deployments_url: string;
-          description: string | null;
-          /** Format: uri */
-          downloads_url: string;
-          /** Format: uri */
-          events_url: string;
-          fork: boolean;
-          /** Format: uri */
-          forks_url: string;
-          full_name: string;
-          git_commits_url: string;
-          git_refs_url: string;
-          git_tags_url: string;
-          /** Format: uri */
-          hooks_url: string;
-          /** Format: uri */
-          html_url: string;
-          id: number;
-          is_template?: boolean;
-          node_id: string;
-          issue_comment_url: string;
-          issue_events_url: string;
-          issues_url: string;
-          keys_url: string;
-          labels_url: string;
-          /** Format: uri */
-          languages_url: string;
-          /** Format: uri */
-          merges_url: string;
-          milestones_url: string;
-          name: string;
-          notifications_url: string;
-          owner: {
-            /** Format: uri */
-            avatar_url: string;
-            events_url: string;
-            /** Format: uri */
-            followers_url: string;
-            following_url: string;
-            gists_url: string;
-            gravatar_id: string | null;
-            /** Format: uri */
-            html_url: string;
-            id: number;
-            node_id: string;
-            login: string;
-            /** Format: uri */
-            organizations_url: string;
-            /** Format: uri */
-            received_events_url: string;
-            /** Format: uri */
-            repos_url: string;
-            site_admin: boolean;
-            starred_url: string;
-            /** Format: uri */
-            subscriptions_url: string;
-            type: string;
-            /** Format: uri */
-            url: string;
-          };
-          private: boolean;
-          pulls_url: string;
-          releases_url: string;
-          /** Format: uri */
-          stargazers_url: string;
-          statuses_url: string;
-          /** Format: uri */
-          subscribers_url: string;
-          /** Format: uri */
-          subscription_url: string;
-          /** Format: uri */
-          tags_url: string;
-          /** Format: uri */
-          teams_url: string;
-          trees_url: string;
-          /** Format: uri */
-          url: string;
-          clone_url: string;
-          default_branch: string;
-          forks: number;
-          forks_count: number;
-          git_url: string;
-          has_downloads: boolean;
-          has_issues: boolean;
-          has_projects: boolean;
-          has_wiki: boolean;
-          has_pages: boolean;
-          has_discussions: boolean;
-          /** Format: uri */
-          homepage: string | null;
-          language: string | null;
-          master_branch?: string;
-          archived: boolean;
-          disabled: boolean;
-          /** @description The repository visibility: public, private, or internal. */
-          visibility?: string;
-          /** Format: uri */
-          mirror_url: string | null;
-          open_issues: number;
-          open_issues_count: number;
-          permissions?: {
-            admin: boolean;
-            maintain?: boolean;
-            push: boolean;
-            triage?: boolean;
-            pull: boolean;
-          };
-          temp_clone_token?: string;
-          allow_merge_commit?: boolean;
-          allow_squash_merge?: boolean;
-          allow_rebase_merge?: boolean;
-          license: null | components["schemas"]["license-simple"];
-          /** Format: date-time */
-          pushed_at: string;
-          size: number;
-          ssh_url: string;
-          stargazers_count: number;
-          /** Format: uri */
-          svn_url: string;
-          topics?: string[];
-          watchers: number;
-          watchers_count: number;
-          /** Format: date-time */
-          created_at: string;
-          /** Format: date-time */
-          updated_at: string;
-          allow_forking?: boolean;
-          web_commit_signoff_required?: boolean;
-        };
-        sha: string;
-        user: {
-          /** Format: uri */
-          avatar_url: string;
-          events_url: string;
-          /** Format: uri */
-          followers_url: string;
-          following_url: string;
-          gists_url: string;
-          gravatar_id: string | null;
-          /** Format: uri */
-          html_url: string;
-          id: number;
-          node_id: string;
-          login: string;
-          /** Format: uri */
-          organizations_url: string;
-          /** Format: uri */
-          received_events_url: string;
-          /** Format: uri */
-          repos_url: string;
-          site_admin: boolean;
-          starred_url: string;
-          /** Format: uri */
-          subscriptions_url: string;
-          type: string;
-          /** Format: uri */
-          url: string;
-        };
-      };
-      _links: {
-        comments: components["schemas"]["link"];
-        commits: components["schemas"]["link"];
-        statuses: components["schemas"]["link"];
-        html: components["schemas"]["link"];
-        issue: components["schemas"]["link"];
-        review_comments: components["schemas"]["link"];
-        review_comment: components["schemas"]["link"];
-        self: components["schemas"]["link"];
-      };
-      author_association: components["schemas"]["author-association"];
-      auto_merge: components["schemas"]["auto-merge"];
-      /** @description Indicates whether or not the pull request is a draft. */
-      draft?: boolean;
-      merged: boolean;
-      mergeable: boolean | null;
-      rebaseable?: boolean | null;
-      mergeable_state: string;
-      merged_by: null | components["schemas"]["simple-user"];
-      comments: number;
-      review_comments: number;
-      /** @description Indicates whether maintainers can modify the pull request. */
-      maintainer_can_modify: boolean;
-      commits: number;
-      additions: number;
-      deletions: number;
-      changed_files: number;
-    };
-    /**
-     * Milestone
-     * @description A collection of related issues and pull requests.
-     */
-    milestone: {
-      /** Format: uri */
-      url: string;
-      /** Format: uri */
-      html_url: string;
-      /** Format: uri */
-      labels_url: string;
-      id: number;
-      node_id: string;
-      /** @description The number of the milestone. */
-      number: number;
-      /**
-       * @description The state of the milestone.
-       * @default open
-       * @enum {string}
-       */
-      state: "open" | "closed";
-      /** @description The title of the milestone. */
-      title: string;
-      description: string | null;
-      creator: null | components["schemas"]["simple-user"];
-      open_issues: number;
-      closed_issues: number;
-      /** Format: date-time */
-      created_at: string;
-      /** Format: date-time */
-      updated_at: string;
-      /** Format: date-time */
-      closed_at: string | null;
-      /** Format: date-time */
-      due_on: string | null;
-    };
-    /**
-     * Team Simple
-     * @description Groups of organization members that gives permissions on specified repositories.
-     */
-    "team-simple": {
-      /** @description Unique identifier of the team */
-      id: number;
-      node_id: string;
-      /**
-       * Format: uri
-       * @description URL for the team
-       */
-      url: string;
-      members_url: string;
-      /** @description Name of the team */
-      name: string;
-      /** @description Description of the team */
-      description: string | null;
-      /** @description Permission that the team will have for its repositories */
-      permission: string;
-      /** @description The level of privacy this team should have */
-      privacy?: string;
-      /** Format: uri */
-      html_url: string;
-      /** Format: uri */
-      repositories_url: string;
-      slug: string;
-      /** @description Distinguished Name (DN) that team maps to within LDAP environment */
-      ldap_dn?: string;
-    };
-    /**
-     * Link
-     * @description Hypermedia Link
-     */
-    link: {
-      href: string;
-    };
-    /**
-     * author_association
-     * @description How the author is associated with the repository.
-     * @enum {string}
-     */
-    "author-association":
-      | "COLLABORATOR"
-      | "CONTRIBUTOR"
-      | "FIRST_TIMER"
-      | "FIRST_TIME_CONTRIBUTOR"
-      | "MANNEQUIN"
-      | "MEMBER"
-      | "NONE"
-      | "OWNER";
-    /**
-     * Auto merge
-     * @description The status of auto merging a pull request.
-     */
-    "auto-merge": {
-      enabled_by: components["schemas"]["simple-user"];
-      /**
-       * @description The merge method to use.
-       * @enum {string}
-       */
-      merge_method: "merge" | "squash" | "rebase";
-      /** @description Title for the merge commit message. */
-      commit_title: string;
-      /** @description Commit message for the merge commit. */
-      commit_message: string;
-    } | null;
     /** pull_request converted_to_draft event */
     "webhook-pull-request-converted-to-draft": {
       /** @enum {string} */
@@ -25465,7 +26327,10 @@ export interface components {
           hooks_url: string;
           /** Format: uri */
           html_url: string;
-          /** @description Unique identifier of the repository */
+          /**
+           * Format: int64
+           * @description Unique identifier of the repository
+           */
           id: number;
           is_template?: boolean;
           /** Format: uri-template */
@@ -25647,6 +26512,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -25805,7 +26671,10 @@ export interface components {
           hooks_url: string;
           /** Format: uri */
           html_url: string;
-          /** @description Unique identifier of the repository */
+          /**
+           * Format: int64
+           * @description Unique identifier of the repository
+           */
           id: number;
           is_template?: boolean;
           /** Format: uri-template */
@@ -25987,6 +26856,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -26328,6 +27198,7 @@ export interface components {
         gravatar_id?: string;
         /** Format: uri */
         html_url?: string;
+        /** Format: int64 */
         id: number;
         login: string;
         name?: string;
@@ -26700,7 +27571,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -26885,6 +27759,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -27043,7 +27918,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -27228,6 +28106,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -27569,6 +28448,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -27912,7 +28792,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -28097,6 +28980,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -28255,7 +29139,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -28440,6 +29327,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -28781,6 +29669,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -28859,7 +29748,7 @@ export interface components {
       action: "created";
       /**
        * Pull Request Review Comment
-       * @description The [comment](https://docs.github.com/enterprise-server@3.9/rest/pulls/comments#get-a-review-comment-for-a-pull-request) itself.
+       * @description The [comment](https://docs.github.com/enterprise-server@3.14/rest/pulls/comments#get-a-review-comment-for-a-pull-request) itself.
        */
       comment: {
         _links: {
@@ -28989,6 +29878,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -29322,7 +30212,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -29507,6 +30400,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -29658,7 +30552,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -29843,6 +30740,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -30133,6 +31031,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -30474,7 +31373,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -30659,6 +31561,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -30810,7 +31713,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -30995,6 +31901,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -31285,6 +32192,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -31311,7 +32219,7 @@ export interface components {
     };
     /**
      * Pull Request Review Comment
-     * @description The [comment](https://docs.github.com/enterprise-server@3.9/rest/pulls/comments#get-a-review-comment-for-a-pull-request) itself.
+     * @description The [comment](https://docs.github.com/enterprise-server@3.14/rest/pulls/comments#get-a-review-comment-for-a-pull-request) itself.
      */
     webhooks_review_comment: {
       _links: {
@@ -31441,6 +32349,7 @@ export interface components {
         gravatar_id?: string;
         /** Format: uri */
         html_url?: string;
+        /** Format: int64 */
         id: number;
         login: string;
         name?: string;
@@ -31780,7 +32689,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -31965,6 +32877,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -32116,7 +33029,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -32301,6 +33217,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -32591,6 +33508,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -32932,7 +33850,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -33117,6 +34038,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -33268,7 +34190,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -33453,6 +34378,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -33743,6 +34669,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -33825,6 +34752,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -34166,7 +35094,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -34307,6 +35238,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -34453,7 +35385,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -34594,6 +35529,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -34884,6 +35820,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -34968,6 +35905,7 @@ export interface components {
         gravatar_id?: string;
         /** Format: uri */
         html_url?: string;
+        /** Format: int64 */
         id: number;
         login: string;
         name?: string;
@@ -35311,7 +36249,10 @@ export interface components {
                 hooks_url: string;
                 /** Format: uri */
                 html_url: string;
-                /** @description Unique identifier of the repository */
+                /**
+                 * Format: int64
+                 * @description Unique identifier of the repository
+                 */
                 id: number;
                 is_template?: boolean;
                 /** Format: uri-template */
@@ -35489,6 +36430,7 @@ export interface components {
                 gravatar_id?: string;
                 /** Format: uri */
                 html_url?: string;
+                /** Format: int64 */
                 id: number;
                 login: string;
                 name?: string;
@@ -35647,7 +36589,10 @@ export interface components {
                 hooks_url: string;
                 /** Format: uri */
                 html_url: string;
-                /** @description Unique identifier of the repository */
+                /**
+                 * Format: int64
+                 * @description Unique identifier of the repository
+                 */
                 id: number;
                 is_template?: boolean;
                 /** Format: uri-template */
@@ -35832,6 +36777,7 @@ export interface components {
                 gravatar_id?: string;
                 /** Format: uri */
                 html_url?: string;
+                /** Format: int64 */
                 id: number;
                 login: string;
                 name?: string;
@@ -36173,6 +37119,7 @@ export interface components {
               gravatar_id?: string;
               /** Format: uri */
               html_url?: string;
+              /** Format: int64 */
               id: number;
               login: string;
               name?: string;
@@ -36553,7 +37500,10 @@ export interface components {
                 hooks_url: string;
                 /** Format: uri */
                 html_url: string;
-                /** @description Unique identifier of the repository */
+                /**
+                 * Format: int64
+                 * @description Unique identifier of the repository
+                 */
                 id: number;
                 is_template?: boolean;
                 /** Format: uri-template */
@@ -36738,6 +37688,7 @@ export interface components {
                 gravatar_id?: string;
                 /** Format: uri */
                 html_url?: string;
+                /** Format: int64 */
                 id: number;
                 login: string;
                 name?: string;
@@ -36896,7 +37847,10 @@ export interface components {
                 hooks_url: string;
                 /** Format: uri */
                 html_url: string;
-                /** @description Unique identifier of the repository */
+                /**
+                 * Format: int64
+                 * @description Unique identifier of the repository
+                 */
                 id: number;
                 is_template?: boolean;
                 /** Format: uri-template */
@@ -37081,6 +38035,7 @@ export interface components {
                 gravatar_id?: string;
                 /** Format: uri */
                 html_url?: string;
+                /** Format: int64 */
                 id: number;
                 login: string;
                 name?: string;
@@ -37422,6 +38377,7 @@ export interface components {
               gravatar_id?: string;
               /** Format: uri */
               html_url?: string;
+              /** Format: int64 */
               id: number;
               login: string;
               name?: string;
@@ -37825,7 +38781,10 @@ export interface components {
                 hooks_url: string;
                 /** Format: uri */
                 html_url: string;
-                /** @description Unique identifier of the repository */
+                /**
+                 * Format: int64
+                 * @description Unique identifier of the repository
+                 */
                 id: number;
                 is_template?: boolean;
                 /** Format: uri-template */
@@ -38010,6 +38969,7 @@ export interface components {
                 gravatar_id?: string;
                 /** Format: uri */
                 html_url?: string;
+                /** Format: int64 */
                 id: number;
                 login: string;
                 name?: string;
@@ -38168,7 +39128,10 @@ export interface components {
                 hooks_url: string;
                 /** Format: uri */
                 html_url: string;
-                /** @description Unique identifier of the repository */
+                /**
+                 * Format: int64
+                 * @description Unique identifier of the repository
+                 */
                 id: number;
                 is_template?: boolean;
                 /** Format: uri-template */
@@ -38353,6 +39316,7 @@ export interface components {
                 gravatar_id?: string;
                 /** Format: uri */
                 html_url?: string;
+                /** Format: int64 */
                 id: number;
                 login: string;
                 name?: string;
@@ -38694,6 +39658,7 @@ export interface components {
               gravatar_id?: string;
               /** Format: uri */
               html_url?: string;
+              /** Format: int64 */
               id: number;
               login: string;
               name?: string;
@@ -39074,7 +40039,10 @@ export interface components {
                 hooks_url: string;
                 /** Format: uri */
                 html_url: string;
-                /** @description Unique identifier of the repository */
+                /**
+                 * Format: int64
+                 * @description Unique identifier of the repository
+                 */
                 id: number;
                 is_template?: boolean;
                 /** Format: uri-template */
@@ -39259,6 +40227,7 @@ export interface components {
                 gravatar_id?: string;
                 /** Format: uri */
                 html_url?: string;
+                /** Format: int64 */
                 id: number;
                 login: string;
                 name?: string;
@@ -39417,7 +40386,10 @@ export interface components {
                 hooks_url: string;
                 /** Format: uri */
                 html_url: string;
-                /** @description Unique identifier of the repository */
+                /**
+                 * Format: int64
+                 * @description Unique identifier of the repository
+                 */
                 id: number;
                 is_template?: boolean;
                 /** Format: uri-template */
@@ -39602,6 +40574,7 @@ export interface components {
                 gravatar_id?: string;
                 /** Format: uri */
                 html_url?: string;
+                /** Format: int64 */
                 id: number;
                 login: string;
                 name?: string;
@@ -39943,6 +40916,7 @@ export interface components {
               gravatar_id?: string;
               /** Format: uri */
               html_url?: string;
+              /** Format: int64 */
               id: number;
               login: string;
               name?: string;
@@ -40341,7 +41315,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -40526,6 +41503,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -40677,7 +41655,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -40862,6 +41843,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -41152,6 +42134,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -41494,7 +42477,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -41637,6 +42623,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -41788,7 +42775,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -41931,6 +42921,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -42221,6 +43212,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -42373,6 +43365,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -42714,7 +43707,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -42857,6 +43853,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -43008,7 +44005,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -43151,6 +44151,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -43441,6 +44442,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -43593,6 +44595,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -43938,7 +44941,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -44123,6 +45129,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -44281,7 +45288,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -44459,6 +45469,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -44800,6 +45811,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -45144,7 +46156,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -45329,6 +46344,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -45487,7 +46503,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -45672,6 +46691,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -46013,6 +47033,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -46357,7 +47378,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -46542,6 +47566,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -46700,7 +47725,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -46878,6 +47906,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -47219,6 +48248,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -47562,7 +48592,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -47747,6 +48780,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -47905,7 +48939,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -48090,6 +49127,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -48431,6 +49469,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -48462,7 +49501,7 @@ export interface components {
       base_ref: components["schemas"]["webhooks_nullable_string"];
       /** @description The SHA of the most recent commit on `ref` before the push. */
       before: string;
-      /** @description An array of commit objects describing the pushed commits. (Pushed commits are all commits that are included in the `compare` between the `before` commit and the `after` commit.) The array includes a maximum of 2048 commits. If necessary, you can use the [Commits API](https://docs.github.com/enterprise-server@3.9/rest/commits) to fetch additional commits. */
+      /** @description An array of commit objects describing the pushed commits. (Pushed commits are all commits that are included in the `compare` between the `before` commit and the `after` commit.) The array includes a maximum of 2048 commits. If necessary, you can use the [Commits API](https://docs.github.com/enterprise-server@3.14/rest/commits) to fetch additional commits. */
       commits: {
         /** @description An array of files added in the commit. A maximum of 3000 changed files will be reported per commit. */
         added?: string[];
@@ -48646,6 +49685,10 @@ export interface components {
         /** Format: uri */
         contributors_url: string;
         created_at: number | string;
+        /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+        custom_properties?: {
+          [key: string]: unknown;
+        };
         /** @description The default branch of the repository. */
         default_branch: string;
         /**
@@ -48707,7 +49750,10 @@ export interface components {
         hooks_url: string;
         /** Format: uri */
         html_url: string;
-        /** @description Unique identifier of the repository */
+        /**
+         * Format: int64
+         * @description Unique identifier of the repository
+         */
         id: number;
         is_template?: boolean;
         /** Format: uri-template */
@@ -49186,7 +50232,7 @@ export interface components {
     };
     /**
      * Release
-     * @description The [release](https://docs.github.com/enterprise-server@3.9/rest/releases/releases/#get-a-release) object.
+     * @description The [release](https://docs.github.com/enterprise-server@3.14/rest/releases/releases/#get-a-release) object.
      */
     webhooks_release: {
       assets: {
@@ -49376,7 +50422,7 @@ export interface components {
       organization?: components["schemas"]["organization-simple-webhooks"];
       /**
        * Release
-       * @description The [release](https://docs.github.com/enterprise-server@3.9/rest/releases/releases/#get-a-release) object.
+       * @description The [release](https://docs.github.com/enterprise-server@3.14/rest/releases/releases/#get-a-release) object.
        */
       release: {
         assets: ({
@@ -49540,7 +50586,7 @@ export interface components {
     };
     /**
      * Release
-     * @description The [release](https://docs.github.com/enterprise-server@3.9/rest/releases/releases/#get-a-release) object.
+     * @description The [release](https://docs.github.com/enterprise-server@3.14/rest/releases/releases/#get-a-release) object.
      */
     webhooks_release_1: {
       assets: ({
@@ -49831,6 +50877,578 @@ export interface components {
       repository: components["schemas"]["repository-webhooks"];
       sender: components["schemas"]["simple-user-webhooks"];
     };
+    /** repository ruleset created event */
+    "webhook-repository-ruleset-created": {
+      /** @enum {string} */
+      action: "created";
+      enterprise?: components["schemas"]["enterprise-webhooks"];
+      installation?: components["schemas"]["simple-installation"];
+      organization?: components["schemas"]["organization-simple-webhooks"];
+      repository?: components["schemas"]["repository-webhooks"];
+      repository_ruleset: components["schemas"]["repository-ruleset"];
+      sender: components["schemas"]["simple-user-webhooks"];
+    };
+    /**
+     * Repository ruleset
+     * @description A set of rules to apply when specified conditions are met.
+     */
+    "repository-ruleset": {
+      /** @description The ID of the ruleset */
+      id: number;
+      /** @description The name of the ruleset */
+      name: string;
+      /**
+       * @description The target of the ruleset
+       *
+       * > [!NOTE]
+       * > The `push` target is in beta and is subject to change.
+       * @enum {string}
+       */
+      target?: "branch" | "tag" | "push";
+      /**
+       * @description The type of the source of the ruleset
+       * @enum {string}
+       */
+      source_type?: "Repository" | "Organization";
+      /** @description The name of the source */
+      source: string;
+      enforcement: components["schemas"]["repository-rule-enforcement"];
+      /** @description The actors that can bypass the rules in this ruleset */
+      bypass_actors?: components["schemas"]["repository-ruleset-bypass-actor"][];
+      /**
+       * @description The bypass type of the user making the API request for this ruleset. This field is only returned when
+       * querying the repository-level endpoint.
+       * @enum {string}
+       */
+      current_user_can_bypass?: "always" | "pull_requests_only" | "never";
+      node_id?: string;
+      _links?: {
+        self?: {
+          /** @description The URL of the ruleset */
+          href?: string;
+        };
+        html?: {
+          /** @description The html URL of the ruleset */
+          href?: string;
+        };
+      };
+      conditions?:
+        | null
+        | (
+            | components["schemas"]["repository-ruleset-conditions"]
+            | components["schemas"]["org-ruleset-conditions"]
+          );
+      rules?: components["schemas"]["repository-rule"][];
+      /** Format: date-time */
+      created_at?: string;
+      /** Format: date-time */
+      updated_at?: string;
+    };
+    /**
+     * @description The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page.
+     * @enum {string}
+     */
+    "repository-rule-enforcement": "disabled" | "active" | "evaluate";
+    /**
+     * Repository Ruleset Bypass Actor
+     * @description An actor that can bypass rules in a ruleset
+     */
+    "repository-ruleset-bypass-actor": {
+      /** @description The ID of the actor that can bypass a ruleset. If `actor_type` is `OrganizationAdmin`, this should be `1`. If `actor_type` is `DeployKey`, this should be null. `OrganizationAdmin` is not applicable for personal repositories. */
+      actor_id?: number | null;
+      /**
+       * @description The type of actor that can bypass a ruleset.
+       *
+       * @enum {string}
+       */
+      actor_type:
+        | "Integration"
+        | "OrganizationAdmin"
+        | "RepositoryRole"
+        | "Team"
+        | "DeployKey"
+        | "EnterpriseTeam";
+      /**
+       * @description When the specified actor can bypass the ruleset. `pull_request` means that an actor can only bypass rules on pull requests. `pull_request` is not applicable for the `DeployKey` actor type.
+       *
+       * @enum {string}
+       */
+      bypass_mode: "always" | "pull_request";
+    };
+    /**
+     * Repository ruleset conditions for ref names
+     * @description Parameters for a repository ruleset ref name condition
+     */
+    "repository-ruleset-conditions": {
+      ref_name?: {
+        /** @description Array of ref names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~DEFAULT_BRANCH` to include the default branch or `~ALL` to include all branches. */
+        include?: string[];
+        /** @description Array of ref names or patterns to exclude. The condition will not pass if any of these patterns match. */
+        exclude?: string[];
+      };
+    };
+    /**
+     * Organization ruleset conditions
+     * @description Conditions for an organization ruleset. The conditions object should contain both `repository_name` and `ref_name` properties or both `repository_id` and `ref_name` properties.
+     */
+    "org-ruleset-conditions":
+      | (components["schemas"]["repository-ruleset-conditions"] &
+          components["schemas"]["repository-ruleset-conditions-repository-name-target"])
+      | (components["schemas"]["repository-ruleset-conditions"] &
+          components["schemas"]["repository-ruleset-conditions-repository-id-target"])
+      | (components["schemas"]["repository-ruleset-conditions"] &
+          components["schemas"]["repository-ruleset-conditions-repository-property-target"]);
+    /**
+     * Repository ruleset conditions for repository names
+     * @description Parameters for a repository name condition
+     */
+    "repository-ruleset-conditions-repository-name-target": {
+      repository_name: {
+        /** @description Array of repository names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~ALL` to include all repositories. */
+        include?: string[];
+        /** @description Array of repository names or patterns to exclude. The condition will not pass if any of these patterns match. */
+        exclude?: string[];
+        /** @description Whether renaming of target repositories is prevented. */
+        protected?: boolean;
+      };
+    };
+    /**
+     * Repository ruleset conditions for repository IDs
+     * @description Parameters for a repository ID condition
+     */
+    "repository-ruleset-conditions-repository-id-target": {
+      repository_id: {
+        /** @description The repository IDs that the ruleset applies to. One of these IDs must match for the condition to pass. */
+        repository_ids?: number[];
+      };
+    };
+    /**
+     * Repository ruleset conditions for repository properties
+     * @description Parameters for a repository property condition
+     */
+    "repository-ruleset-conditions-repository-property-target": {
+      repository_property: {
+        /** @description The repository properties and values to include. All of these properties must match for the condition to pass. */
+        include?: components["schemas"]["repository-ruleset-conditions-repository-property-spec"][];
+        /** @description The repository properties and values to exclude. The condition will not pass if any of these properties match. */
+        exclude?: components["schemas"]["repository-ruleset-conditions-repository-property-spec"][];
+      };
+    };
+    /**
+     * Repository ruleset property targeting definition
+     * @description Parameters for a targeting a repository property
+     */
+    "repository-ruleset-conditions-repository-property-spec": {
+      /** @description The name of the repository property to target */
+      name: string;
+      /** @description The values to match for the repository property */
+      property_values: string[];
+      /**
+       * @description The source of the repository property. Defaults to 'custom' if not specified.
+       * @enum {string}
+       */
+      source?: "custom" | "system";
+    };
+    /**
+     * Repository Rule
+     * @description A repository rule.
+     */
+    "repository-rule":
+      | components["schemas"]["repository-rule-creation"]
+      | components["schemas"]["repository-rule-update"]
+      | components["schemas"]["repository-rule-deletion"]
+      | components["schemas"]["repository-rule-required-linear-history"]
+      | components["schemas"]["repository-rule-required-deployments"]
+      | components["schemas"]["repository-rule-required-signatures"]
+      | components["schemas"]["repository-rule-pull-request"]
+      | components["schemas"]["repository-rule-required-status-checks"]
+      | components["schemas"]["repository-rule-non-fast-forward"]
+      | components["schemas"]["repository-rule-commit-message-pattern"]
+      | components["schemas"]["repository-rule-commit-author-email-pattern"]
+      | components["schemas"]["repository-rule-committer-email-pattern"]
+      | components["schemas"]["repository-rule-branch-name-pattern"]
+      | components["schemas"]["repository-rule-tag-name-pattern"]
+      | {
+          /** @enum {string} */
+          type: "file_path_restriction";
+          parameters?: {
+            /** @description The file paths that are restricted from being pushed to the commit graph. */
+            restricted_file_paths: string[];
+          };
+        }
+      | {
+          /** @enum {string} */
+          type: "max_file_path_length";
+          parameters?: {
+            /** @description The maximum amount of characters allowed in file paths */
+            max_file_path_length: number;
+          };
+        }
+      | {
+          /** @enum {string} */
+          type: "file_extension_restriction";
+          parameters?: {
+            /** @description The file extensions that are restricted from being pushed to the commit graph. */
+            restricted_file_extensions: string[];
+          };
+        }
+      | {
+          /** @enum {string} */
+          type: "max_file_size";
+          parameters?: {
+            /** @description The maximum file size allowed in megabytes. This limit does not apply to Git Large File Storage (Git LFS). */
+            max_file_size: number;
+          };
+        }
+      | components["schemas"]["repository-rule-workflows"]
+      | components["schemas"]["repository-rule-code-scanning"];
+    /**
+     * creation
+     * @description Only allow users with bypass permission to create matching refs.
+     */
+    "repository-rule-creation": {
+      /** @enum {string} */
+      type: "creation";
+    };
+    /**
+     * update
+     * @description Only allow users with bypass permission to update matching refs.
+     */
+    "repository-rule-update": {
+      /** @enum {string} */
+      type: "update";
+      parameters?: {
+        /** @description Branch can pull changes from its upstream repository */
+        update_allows_fetch_and_merge: boolean;
+      };
+    };
+    /**
+     * deletion
+     * @description Only allow users with bypass permissions to delete matching refs.
+     */
+    "repository-rule-deletion": {
+      /** @enum {string} */
+      type: "deletion";
+    };
+    /**
+     * required_linear_history
+     * @description Prevent merge commits from being pushed to matching refs.
+     */
+    "repository-rule-required-linear-history": {
+      /** @enum {string} */
+      type: "required_linear_history";
+    };
+    /**
+     * required_deployments
+     * @description Choose which environments must be successfully deployed to before refs can be pushed into a ref that matches this rule.
+     */
+    "repository-rule-required-deployments": {
+      /** @enum {string} */
+      type: "required_deployments";
+      parameters?: {
+        /** @description The environments that must be successfully deployed to before branches can be merged. */
+        required_deployment_environments: string[];
+      };
+    };
+    /**
+     * required_signatures
+     * @description Commits pushed to matching refs must have verified signatures.
+     */
+    "repository-rule-required-signatures": {
+      /** @enum {string} */
+      type: "required_signatures";
+    };
+    /**
+     * pull_request
+     * @description Require all commits be made to a non-target branch and submitted via a pull request before they can be merged.
+     */
+    "repository-rule-pull-request": {
+      /** @enum {string} */
+      type: "pull_request";
+      parameters?: {
+        /** @description New, reviewable commits pushed will dismiss previous pull request review approvals. */
+        dismiss_stale_reviews_on_push: boolean;
+        /** @description Require an approving review in pull requests that modify files that have a designated code owner. */
+        require_code_owner_review: boolean;
+        /** @description Whether the most recent reviewable push must be approved by someone other than the person who pushed it. */
+        require_last_push_approval: boolean;
+        /** @description The number of approving reviews that are required before a pull request can be merged. */
+        required_approving_review_count: number;
+        /** @description All conversations on code must be resolved before a pull request can be merged. */
+        required_review_thread_resolution: boolean;
+      };
+    };
+    /**
+     * required_status_checks
+     * @description Choose which status checks must pass before the ref is updated. When enabled, commits must first be pushed to another ref where the checks pass.
+     */
+    "repository-rule-required-status-checks": {
+      /** @enum {string} */
+      type: "required_status_checks";
+      parameters?: {
+        /** @description Allow repositories and branches to be created if a check would otherwise prohibit it. */
+        do_not_enforce_on_create?: boolean;
+        /** @description Status checks that are required. */
+        required_status_checks: components["schemas"]["repository-rule-params-status-check-configuration"][];
+        /** @description Whether pull requests targeting a matching branch must be tested with the latest code. This setting will not take effect unless at least one status check is enabled. */
+        strict_required_status_checks_policy: boolean;
+      };
+    };
+    /**
+     * StatusCheckConfiguration
+     * @description Required status check
+     */
+    "repository-rule-params-status-check-configuration": {
+      /** @description The status check context name that must be present on the commit. */
+      context: string;
+      /** @description The optional integration ID that this status check must originate from. */
+      integration_id?: number;
+    };
+    /**
+     * non_fast_forward
+     * @description Prevent users with push access from force pushing to refs.
+     */
+    "repository-rule-non-fast-forward": {
+      /** @enum {string} */
+      type: "non_fast_forward";
+    };
+    /**
+     * commit_message_pattern
+     * @description Parameters to be used for the commit_message_pattern rule
+     */
+    "repository-rule-commit-message-pattern": {
+      /** @enum {string} */
+      type: "commit_message_pattern";
+      parameters?: {
+        /** @description How this rule will appear to users. */
+        name?: string;
+        /** @description If true, the rule will fail if the pattern matches. */
+        negate?: boolean;
+        /**
+         * @description The operator to use for matching.
+         * @enum {string}
+         */
+        operator: "starts_with" | "ends_with" | "contains" | "regex";
+        /** @description The pattern to match with. */
+        pattern: string;
+      };
+    };
+    /**
+     * commit_author_email_pattern
+     * @description Parameters to be used for the commit_author_email_pattern rule
+     */
+    "repository-rule-commit-author-email-pattern": {
+      /** @enum {string} */
+      type: "commit_author_email_pattern";
+      parameters?: {
+        /** @description How this rule will appear to users. */
+        name?: string;
+        /** @description If true, the rule will fail if the pattern matches. */
+        negate?: boolean;
+        /**
+         * @description The operator to use for matching.
+         * @enum {string}
+         */
+        operator: "starts_with" | "ends_with" | "contains" | "regex";
+        /** @description The pattern to match with. */
+        pattern: string;
+      };
+    };
+    /**
+     * committer_email_pattern
+     * @description Parameters to be used for the committer_email_pattern rule
+     */
+    "repository-rule-committer-email-pattern": {
+      /** @enum {string} */
+      type: "committer_email_pattern";
+      parameters?: {
+        /** @description How this rule will appear to users. */
+        name?: string;
+        /** @description If true, the rule will fail if the pattern matches. */
+        negate?: boolean;
+        /**
+         * @description The operator to use for matching.
+         * @enum {string}
+         */
+        operator: "starts_with" | "ends_with" | "contains" | "regex";
+        /** @description The pattern to match with. */
+        pattern: string;
+      };
+    };
+    /**
+     * branch_name_pattern
+     * @description Parameters to be used for the branch_name_pattern rule
+     */
+    "repository-rule-branch-name-pattern": {
+      /** @enum {string} */
+      type: "branch_name_pattern";
+      parameters?: {
+        /** @description How this rule will appear to users. */
+        name?: string;
+        /** @description If true, the rule will fail if the pattern matches. */
+        negate?: boolean;
+        /**
+         * @description The operator to use for matching.
+         * @enum {string}
+         */
+        operator: "starts_with" | "ends_with" | "contains" | "regex";
+        /** @description The pattern to match with. */
+        pattern: string;
+      };
+    };
+    /**
+     * tag_name_pattern
+     * @description Parameters to be used for the tag_name_pattern rule
+     */
+    "repository-rule-tag-name-pattern": {
+      /** @enum {string} */
+      type: "tag_name_pattern";
+      parameters?: {
+        /** @description How this rule will appear to users. */
+        name?: string;
+        /** @description If true, the rule will fail if the pattern matches. */
+        negate?: boolean;
+        /**
+         * @description The operator to use for matching.
+         * @enum {string}
+         */
+        operator: "starts_with" | "ends_with" | "contains" | "regex";
+        /** @description The pattern to match with. */
+        pattern: string;
+      };
+    };
+    /**
+     * workflows
+     * @description Require all changes made to a targeted branch to pass the specified workflows before they can be merged.
+     */
+    "repository-rule-workflows": {
+      /** @enum {string} */
+      type: "workflows";
+      parameters?: {
+        /** @description Allow repositories and branches to be created if a check would otherwise prohibit it. */
+        do_not_enforce_on_create?: boolean;
+        /** @description Workflows that must pass for this rule to pass. */
+        workflows: components["schemas"]["repository-rule-params-workflow-file-reference"][];
+      };
+    };
+    /**
+     * WorkflowFileReference
+     * @description A workflow that must run for this rule to pass
+     */
+    "repository-rule-params-workflow-file-reference": {
+      /** @description The path to the workflow file */
+      path: string;
+      /** @description The ref (branch or tag) of the workflow file to use */
+      ref?: string;
+      /** @description The ID of the repository where the workflow is defined */
+      repository_id: number;
+      /** @description The commit SHA of the workflow file to use */
+      sha?: string;
+    };
+    /**
+     * code_scanning
+     * @description Choose which tools must provide code scanning results before the reference is updated. When configured, code scanning must be enabled and have results for both the commit and the reference being updated.
+     */
+    "repository-rule-code-scanning": {
+      /** @enum {string} */
+      type: "code_scanning";
+      parameters?: {
+        /** @description Tools that must provide code scanning results for this rule to pass. */
+        code_scanning_tools: components["schemas"]["repository-rule-params-code-scanning-tool"][];
+      };
+    };
+    /**
+     * CodeScanningTool
+     * @description A tool that must provide code scanning results for this rule to pass.
+     */
+    "repository-rule-params-code-scanning-tool": {
+      /**
+       * @description The severity level at which code scanning results that raise alerts block a reference update. For more information on alert severity levels, see "[About code scanning alerts](https://docs.github.com/enterprise-server@3.14/code-security/code-scanning/managing-code-scanning-alerts/about-code-scanning-alerts#about-alert-severity-and-security-severity-levels)."
+       * @enum {string}
+       */
+      alerts_threshold: "none" | "errors" | "errors_and_warnings" | "all";
+      /**
+       * @description The severity level at which code scanning results that raise security alerts block a reference update. For more information on security severity levels, see "[About code scanning alerts](https://docs.github.com/enterprise-server@3.14/code-security/code-scanning/managing-code-scanning-alerts/about-code-scanning-alerts#about-alert-severity-and-security-severity-levels)."
+       * @enum {string}
+       */
+      security_alerts_threshold:
+        | "none"
+        | "critical"
+        | "high_or_higher"
+        | "medium_or_higher"
+        | "all";
+      /** @description The name of a code scanning tool */
+      tool: string;
+    };
+    /** repository ruleset deleted event */
+    "webhook-repository-ruleset-deleted": {
+      /** @enum {string} */
+      action: "deleted";
+      enterprise?: components["schemas"]["enterprise-webhooks"];
+      installation?: components["schemas"]["simple-installation"];
+      organization?: components["schemas"]["organization-simple-webhooks"];
+      repository?: components["schemas"]["repository-webhooks"];
+      repository_ruleset: components["schemas"]["repository-ruleset"];
+      sender: components["schemas"]["simple-user-webhooks"];
+    };
+    /** repository ruleset edited event */
+    "webhook-repository-ruleset-edited": {
+      /** @enum {string} */
+      action: "edited";
+      enterprise?: components["schemas"]["enterprise-webhooks"];
+      installation?: components["schemas"]["simple-installation"];
+      organization?: components["schemas"]["organization-simple-webhooks"];
+      repository?: components["schemas"]["repository-webhooks"];
+      repository_ruleset: components["schemas"]["repository-ruleset"];
+      changes?: {
+        name?: {
+          from?: string;
+        };
+        enforcement?: {
+          from?: string;
+        };
+        conditions?: {
+          added?: components["schemas"]["repository-ruleset-conditions"][];
+          deleted?: components["schemas"]["repository-ruleset-conditions"][];
+          updated?: {
+            condition?: components["schemas"]["repository-ruleset-conditions"];
+            changes?: {
+              condition_type?: {
+                from?: string;
+              };
+              target?: {
+                from?: string;
+              };
+              include?: {
+                from?: string[];
+              };
+              exclude?: {
+                from?: string[];
+              };
+            };
+          }[];
+        };
+        rules?: {
+          added?: components["schemas"]["repository-rule"][];
+          deleted?: components["schemas"]["repository-rule"][];
+          updated?: {
+            rule?: components["schemas"]["repository-rule"];
+            changes?: {
+              configuration?: {
+                from?: string;
+              };
+              rule_type?: {
+                from?: string;
+              };
+              pattern?: {
+                from?: string;
+              };
+            };
+          }[];
+        };
+      };
+      sender: components["schemas"]["simple-user-webhooks"];
+    };
     /** repository transferred event */
     "webhook-repository-transferred": {
       /** @enum {string} */
@@ -49880,6 +51498,7 @@ export interface components {
               gravatar_id?: string;
               /** Format: uri */
               html_url?: string;
+              /** Format: int64 */
               id: number;
               login: string;
               name?: string;
@@ -50182,6 +51801,11 @@ export interface components {
       /** @description The type of secret that secret scanning detected. */
       secret_type?: string;
       /**
+       * @description User-friendly name for the detected secret, matching the `secret_type`.
+       * For a list of built-in patterns, see "[Supported secret scanning patterns](https://docs.github.com/enterprise-server@3.14/code-security/secret-scanning/introduction/supported-secret-scanning-patterns#supported-secrets)."
+       */
+      secret_type_display_name?: string;
+      /**
        * @description The token status as of the latest validity check.
        * @enum {string}
        */
@@ -50223,8 +51847,9 @@ export interface components {
        * @description The location type. Because secrets may be found in different types of resources (ie. code, comments, issues, pull requests, discussions), this field identifies the type of resource where the secret was found.
        * @enum {string}
        */
-      type:
+      type?:
         | "commit"
+        | "wiki_commit"
         | "issue_title"
         | "issue_body"
         | "issue_comment"
@@ -50236,8 +51861,9 @@ export interface components {
         | "pull_request_comment"
         | "pull_request_review"
         | "pull_request_review_comment";
-      details:
+      details?:
         | components["schemas"]["secret-scanning-location-commit"]
+        | components["schemas"]["secret-scanning-location-wiki-commit"]
         | components["schemas"]["secret-scanning-location-issue-title"]
         | components["schemas"]["secret-scanning-location-issue-body"]
         | components["schemas"]["secret-scanning-location-issue-comment"]
@@ -50269,6 +51895,27 @@ export interface components {
       /** @description SHA-1 hash ID of the associated commit */
       commit_sha: string;
       /** @description The API URL to get the associated commit resource */
+      commit_url: string;
+    };
+    /** @description Represents a 'wiki_commit' secret scanning location type. This location type shows that a secret was detected inside a commit to a repository wiki. */
+    "secret-scanning-location-wiki-commit": {
+      /** @description The file path of the wiki page */
+      path: string;
+      /** @description Line number at which the secret starts in the file */
+      start_line: number;
+      /** @description Line number at which the secret ends in the file */
+      end_line: number;
+      /** @description The column at which the secret starts within the start line when the file is interpreted as 8-bit ASCII. */
+      start_column: number;
+      /** @description The column at which the secret ends within the end line when the file is interpreted as 8-bit ASCII. */
+      end_column: number;
+      /** @description SHA-1 hash ID of the associated blob */
+      blob_sha: string;
+      /** @description The GitHub URL to get the associated wiki page */
+      page_url: string;
+      /** @description SHA-1 hash ID of the associated commit */
+      commit_sha: string;
+      /** @description The GitHub URL to get the associated wiki commit */
       commit_url: string;
     };
     /** @description Represents an 'issue_title' secret scanning location type. This location type shows that a secret was detected in the title of an issue. */
@@ -50381,10 +52028,10 @@ export interface components {
       repository: components["schemas"]["repository-webhooks"];
       sender?: components["schemas"]["simple-user-webhooks"];
     };
-    /** secret_scanning_alert revoked event */
-    "webhook-secret-scanning-alert-revoked": {
+    /** secret_scanning_alert validated event */
+    "webhook-secret-scanning-alert-validated": {
       /** @enum {string} */
-      action: "revoked";
+      action: "validated";
       alert: components["schemas"]["secret-scanning-alert-webhook"];
       enterprise?: components["schemas"]["enterprise-webhooks"];
       installation?: components["schemas"]["simple-installation"];
@@ -50516,6 +52163,7 @@ export interface components {
      * @description Full Repository
      */
     "full-repository": {
+      /** Format: int64 */
       id: number;
       node_id: string;
       name: string;
@@ -50682,13 +52330,20 @@ export interface components {
       anonymous_access_enabled?: boolean;
       code_of_conduct?: components["schemas"]["code-of-conduct-simple"];
       security_and_analysis?: components["schemas"]["security-and-analysis"];
+      /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+      custom_properties?: {
+        [key: string]: unknown;
+      };
     };
     /**
      * Repository
      * @description A repository on GitHub.
      */
     repository: {
-      /** @description Unique identifier of the repository */
+      /**
+       * Format: int64
+       * @description Unique identifier of the repository
+       */
       id: number;
       node_id: string;
       /** @description The name of the repository. */
@@ -51394,6 +53049,13 @@ export interface components {
         permission: string;
         /** @enum {string} */
         privacy: "open" | "closed" | "secret";
+        /**
+         * @description Whether team members will receive notifications when their team is @mentioned
+         * @enum {string}
+         */
+        notification_setting:
+          | "notifications_enabled"
+          | "notifications_disabled";
         /** Format: uri */
         repositories_url: string;
         slug: string;
@@ -51407,6 +53069,11 @@ export interface components {
       permission?: string;
       /** @enum {string} */
       privacy?: "open" | "closed" | "secret";
+      /**
+       * @description Whether team members will receive notifications when their team is @mentioned
+       * @enum {string}
+       */
+      notification_setting?: "notifications_enabled" | "notifications_disabled";
       /** Format: uri */
       repositories_url?: string;
       slug?: string;
@@ -51479,6 +53146,10 @@ export interface components {
         /** Format: uri */
         contributors_url: string;
         created_at: number | string;
+        /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+        custom_properties?: {
+          [key: string]: unknown;
+        };
         /** @description The default branch of the repository. */
         default_branch: string;
         /**
@@ -51535,7 +53206,10 @@ export interface components {
         hooks_url: string;
         /** Format: uri */
         html_url: string;
-        /** @description Unique identifier of the repository */
+        /**
+         * Format: int64
+         * @description Unique identifier of the repository
+         */
         id: number;
         is_template?: boolean;
         /** Format: uri-template */
@@ -51724,6 +53398,10 @@ export interface components {
         /** Format: uri */
         contributors_url: string;
         created_at: number | string;
+        /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+        custom_properties?: {
+          [key: string]: unknown;
+        };
         /** @description The default branch of the repository. */
         default_branch: string;
         /**
@@ -51780,7 +53458,10 @@ export interface components {
         hooks_url: string;
         /** Format: uri */
         html_url: string;
-        /** @description Unique identifier of the repository */
+        /**
+         * Format: int64
+         * @description Unique identifier of the repository
+         */
         id: number;
         is_template?: boolean;
         /** Format: uri-template */
@@ -51969,6 +53650,10 @@ export interface components {
         /** Format: uri */
         contributors_url: string;
         created_at: number | string;
+        /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+        custom_properties?: {
+          [key: string]: unknown;
+        };
         /** @description The default branch of the repository. */
         default_branch: string;
         /**
@@ -52025,7 +53710,10 @@ export interface components {
         hooks_url: string;
         /** Format: uri */
         html_url: string;
-        /** @description Unique identifier of the repository */
+        /**
+         * Format: int64
+         * @description Unique identifier of the repository
+         */
         id: number;
         is_template?: boolean;
         /** Format: uri-template */
@@ -52245,6 +53933,10 @@ export interface components {
         /** Format: uri */
         contributors_url: string;
         created_at: number | string;
+        /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+        custom_properties?: {
+          [key: string]: unknown;
+        };
         /** @description The default branch of the repository. */
         default_branch: string;
         /**
@@ -52301,7 +53993,10 @@ export interface components {
         hooks_url: string;
         /** Format: uri */
         html_url: string;
-        /** @description Unique identifier of the repository */
+        /**
+         * Format: int64
+         * @description Unique identifier of the repository
+         */
         id: number;
         is_template?: boolean;
         /** Format: uri-template */
@@ -52490,6 +54185,10 @@ export interface components {
         /** Format: uri */
         contributors_url: string;
         created_at: number | string;
+        /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+        custom_properties?: {
+          [key: string]: unknown;
+        };
         /** @description The default branch of the repository. */
         default_branch: string;
         /**
@@ -52546,7 +54245,10 @@ export interface components {
         hooks_url: string;
         /** Format: uri */
         html_url: string;
-        /** @description Unique identifier of the repository */
+        /**
+         * Format: int64
+         * @description Unique identifier of the repository
+         */
         id: number;
         is_template?: boolean;
         /** Format: uri-template */
@@ -52744,7 +54446,7 @@ export interface components {
         /** Format: uri */
         html_url: string;
         id: number;
-        /** @description Custom labels for the job. Specified by the [`"runs-on"` attribute](https://docs.github.com/enterprise-server@3.9/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on) in the workflow YAML. */
+        /** @description Custom labels for the job. Specified by the [`"runs-on"` attribute](https://docs.github.com/enterprise-server@3.14/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on) in the workflow YAML. */
         labels: string[];
         name: string;
         node_id: string;
@@ -52820,48 +54522,6 @@ export interface components {
       };
       deployment?: components["schemas"]["deployment"];
     };
-    /**
-     * Deployment
-     * @description A request for a specific ref(branch,sha,tag) to be deployed
-     */
-    deployment: {
-      /** Format: uri */
-      url: string;
-      /** @description Unique identifier of the deployment */
-      id: number;
-      node_id: string;
-      sha: string;
-      /** @description The ref to deploy. This can be a branch, tag, or sha. */
-      ref: string;
-      /** @description Parameter to specify a task to execute */
-      task: string;
-      payload: OneOf<
-        [
-          {
-            [key: string]: unknown;
-          },
-          string,
-        ]
-      >;
-      original_environment?: string;
-      /** @description Name for the target deployment environment. */
-      environment: string;
-      description: string | null;
-      creator: null | components["schemas"]["simple-user"];
-      /** Format: date-time */
-      created_at: string;
-      /** Format: date-time */
-      updated_at: string;
-      /** Format: uri */
-      statuses_url: string;
-      /** Format: uri */
-      repository_url: string;
-      /** @description Specifies if the given environment is will no longer exist at some point in the future. Default: false. */
-      transient_environment?: boolean;
-      /** @description Specifies if the given environment is one that end-users directly interact with. Default: false. */
-      production_environment?: boolean;
-      performed_via_github_app?: null | components["schemas"]["integration"];
-    };
     /** workflow_job in_progress event */
     "webhook-workflow-job-in-progress": {
       /** @enum {string} */
@@ -52883,7 +54543,7 @@ export interface components {
         /** Format: uri */
         html_url: string;
         id: number;
-        /** @description Custom labels for the job. Specified by the [`"runs-on"` attribute](https://docs.github.com/enterprise-server@3.9/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on) in the workflow YAML. */
+        /** @description Custom labels for the job. Specified by the [`"runs-on"` attribute](https://docs.github.com/enterprise-server@3.14/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on) in the workflow YAML. */
         labels: string[];
         name: string;
         node_id: string;
@@ -53140,6 +54800,7 @@ export interface components {
           | "stale"
           | "success"
           | "timed_out"
+          | "startup_failure"
           | null;
         /** Format: date-time */
         created_at: string;
@@ -54485,7 +56146,85 @@ export type external = Record<string, never>;
 
 export interface operations {
   /**
-   * This event occurs when there is activity relating to branch protection rules. For more information, see "[About protected branches](https://docs.github.com/enterprise-server@3.9/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches)." For information about the APIs to manage branch protection rules, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#branchprotectionrule) or "[Branch protection](https://docs.github.com/enterprise-server@3.9/rest/branches/branch-protection)" in the REST API documentation.
+   * This event occurs when there is a change to branch protection configurations for a repository.
+   * For more information, see "[About protected branches](https://docs.github.com/enterprise-server@3.14/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches)."
+   * For information about using the APIs to manage branch protection rules, see "[Branch protection rule](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#branchprotectionrule)" in the GraphQL documentation or "[Branch protection](https://docs.github.com/enterprise-server@3.14/rest/branches/branch-protection)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+   * @description All branch protections were disabled for a repository.
+   */
+  "branch-protection-configuration/disabled": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-branch-protection-configuration-disabled"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is a change to branch protection configurations for a repository.
+   * For more information, see "[About protected branches](https://docs.github.com/enterprise-server@3.14/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches)."
+   * For information about using the APIs to manage branch protection rules, see "[Branch protection rule](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#branchprotectionrule)" in the GraphQL documentation or "[Branch protection](https://docs.github.com/enterprise-server@3.14/rest/branches/branch-protection)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+   * @description All branch protections were enabled for a repository.
+   */
+  "branch-protection-configuration/enabled": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-branch-protection-configuration-enabled"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to branch protection rules. For more information, see "[About protected branches](https://docs.github.com/enterprise-server@3.14/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches)." For information about the APIs to manage branch protection rules, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#branchprotectionrule) or "[Branch protection](https://docs.github.com/enterprise-server@3.14/rest/branches/branch-protection)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
    * @description A branch protection rule was created.
@@ -54526,7 +56265,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to branch protection rules. For more information, see "[About protected branches](https://docs.github.com/enterprise-server@3.9/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches)." For information about the APIs to manage branch protection rules, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#branchprotectionrule) or "[Branch protection](https://docs.github.com/enterprise-server@3.9/rest/branches/branch-protection)" in the REST API documentation.
+   * This event occurs when there is activity relating to branch protection rules. For more information, see "[About protected branches](https://docs.github.com/enterprise-server@3.14/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches)." For information about the APIs to manage branch protection rules, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#branchprotectionrule) or "[Branch protection](https://docs.github.com/enterprise-server@3.14/rest/branches/branch-protection)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
    * @description A branch protection rule was deleted.
@@ -54567,7 +56306,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to branch protection rules. For more information, see "[About protected branches](https://docs.github.com/enterprise-server@3.9/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches)." For information about the APIs to manage branch protection rules, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#branchprotectionrule) or "[Branch protection](https://docs.github.com/enterprise-server@3.9/rest/branches/branch-protection)" in the REST API documentation.
+   * This event occurs when there is activity relating to branch protection rules. For more information, see "[About protected branches](https://docs.github.com/enterprise-server@3.14/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches)." For information about the APIs to manage branch protection rules, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#branchprotectionrule) or "[Branch protection](https://docs.github.com/enterprise-server@3.14/rest/branches/branch-protection)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
    * @description A branch protection rule was edited.
@@ -54607,7 +56346,212 @@ export interface operations {
       };
     };
   };
-  /** This event occurs when a Git ref has been successfully synced to a cache replica. For more information, see "[About repository caching](https://docs.github.com/enterprise-server@3.9/admin/enterprise-management/caching-repositories/about-repository-caching)." */
+  /**
+   * This event occurs when there is activity related to a user's request to bypass secret scanning push protection.
+   *
+   * For more information, see "[Enabling delegated bypass for push protection](https://docs.github.com/enterprise-server@3.14/code-security/secret-scanning/using-advanced-secret-scanning-and-push-protection-features/delegated-bypass-for-push-protection/about-delegated-bypass-for-push-protection#enabling-delegated-bypass-for-push-protection)."
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
+   *
+   * Note: Delegated bypass for push protection is currently in beta and subject to change.
+   * @description A secret scanning push protection bypass request was cancelled.
+   */
+  "exemption-request-secret-scanning/cancelled": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-exemption-request-cancelled"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity related to a user's request to bypass secret scanning push protection.
+   *
+   * For more information, see "[Enabling delegated bypass for push protection](https://docs.github.com/enterprise-server@3.14/code-security/secret-scanning/using-advanced-secret-scanning-and-push-protection-features/delegated-bypass-for-push-protection/about-delegated-bypass-for-push-protection#enabling-delegated-bypass-for-push-protection)."
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
+   *
+   * Note: Delegated bypass for push protection is currently in beta and subject to change.
+   * @description A secret scanning bypass request was completed.
+   */
+  "exemption-request-secret-scanning/completed": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-exemption-request-completed"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity related to a user's request to bypass secret scanning push protection.
+   *
+   * For more information, see "[Enabling delegated bypass for push protection](https://docs.github.com/enterprise-server@3.14/code-security/secret-scanning/using-advanced-secret-scanning-and-push-protection-features/delegated-bypass-for-push-protection/about-delegated-bypass-for-push-protection#enabling-delegated-bypass-for-push-protection)."
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
+   *
+   * Note: Delegated bypass for push protection is currently in beta and subject to change.
+   * @description A secret scanning push protection bypass request was created.
+   */
+  "exemption-request-secret-scanning/created": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-exemption-request-created"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity related to a user's request to bypass secret scanning push protection.
+   *
+   * For more information, see "[Enabling delegated bypass for push protection](https://docs.github.com/enterprise-server@3.14/code-security/secret-scanning/using-advanced-secret-scanning-and-push-protection-features/delegated-bypass-for-push-protection/about-delegated-bypass-for-push-protection#enabling-delegated-bypass-for-push-protection)."
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
+   *
+   * Note: Delegated bypass for push protection is currently in beta and subject to change.
+   * @description A secret scanning push protection bypass response was dismissed.
+   */
+  "exemption-request-secret-scanning/response-dismissed": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-exemption-request-response-dismissed"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity related to a user's request to bypass secret scanning push protection.
+   *
+   * For more information, see "[Enabling delegated bypass for push protection](https://docs.github.com/enterprise-server@3.14/code-security/secret-scanning/using-advanced-secret-scanning-and-push-protection-features/delegated-bypass-for-push-protection/about-delegated-bypass-for-push-protection#enabling-delegated-bypass-for-push-protection)."
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
+   *
+   * Note: Delegated bypass for push protection is currently in beta and subject to change.
+   * @description A response either approving or rejecting the secret scanning push protection bypass request was submitted.
+   */
+  "exemption-request-secret-scanning/response-submitted": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-exemption-request-response-submitted"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /** This event occurs when a Git ref has been successfully synced to a cache replica. For more information, see "[About repository caching](https://docs.github.com/enterprise-server@3.14/admin/enterprise-management/caching-repositories/about-repository-caching)." */
   "cache-sync": {
     parameters: {
       header: {
@@ -54644,7 +56588,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a check run. For information about check runs, see "[Getting started with the Checks API](https://docs.github.com/enterprise-server@3.9/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check runs, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#checkrun) or "[Check Runs](https://docs.github.com/enterprise-server@3.9/rest/checks/runs)" in the REST API documentation.
+   * This event occurs when there is activity relating to a check run. For information about check runs, see "[Getting started with the Checks API](https://docs.github.com/enterprise-server@3.14/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check runs, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#checkrun) or "[Check Runs](https://docs.github.com/enterprise-server@3.14/rest/checks/runs)" in the REST API documentation.
    *
    * For activity relating to check suites, use the `check-suite` event.
    *
@@ -54652,7 +56596,8 @@ export interface operations {
    *
    * Repository and organization webhooks only receive payloads for the `created` and `completed` event types in repositories.
    *
-   * **Note**: The API only looks for pushes in the repository where the check run was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
+   * > [!NOTE]
+   * > The API only looks for pushes in the repository where the check run was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
    * @description A check run was completed, and a conclusion is available.
    */
   "check-run/completed": {
@@ -54691,7 +56636,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a check run. For information about check runs, see "[Getting started with the Checks API](https://docs.github.com/enterprise-server@3.9/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check runs, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#checkrun) or "[Check Runs](https://docs.github.com/enterprise-server@3.9/rest/checks/runs)" in the REST API documentation.
+   * This event occurs when there is activity relating to a check run. For information about check runs, see "[Getting started with the Checks API](https://docs.github.com/enterprise-server@3.14/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check runs, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#checkrun) or "[Check Runs](https://docs.github.com/enterprise-server@3.14/rest/checks/runs)" in the REST API documentation.
    *
    * For activity relating to check suites, use the `check-suite` event.
    *
@@ -54699,7 +56644,8 @@ export interface operations {
    *
    * Repository and organization webhooks only receive payloads for the `created` and `completed` event types in repositories.
    *
-   * **Note**: The API only looks for pushes in the repository where the check run was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
+   * > [!NOTE]
+   * > The API only looks for pushes in the repository where the check run was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
    * @description A new check run was created.
    */
   "check-run/created": {
@@ -54738,7 +56684,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a check run. For information about check runs, see "[Getting started with the Checks API](https://docs.github.com/enterprise-server@3.9/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check runs, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#checkrun) or "[Check Runs](https://docs.github.com/enterprise-server@3.9/rest/checks/runs)" in the REST API documentation.
+   * This event occurs when there is activity relating to a check run. For information about check runs, see "[Getting started with the Checks API](https://docs.github.com/enterprise-server@3.14/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check runs, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#checkrun) or "[Check Runs](https://docs.github.com/enterprise-server@3.14/rest/checks/runs)" in the REST API documentation.
    *
    * For activity relating to check suites, use the `check-suite` event.
    *
@@ -54746,8 +56692,9 @@ export interface operations {
    *
    * Repository and organization webhooks only receive payloads for the `created` and `completed` event types in repositories.
    *
-   * **Note**: The API only looks for pushes in the repository where the check run was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
-   * @description A check run completed, and someone requested a followup action that your app provides. Only the GitHub App someone requests to perform an action will receive the `requested_action` payload. For more information, see "[Creating CI tests with the Checks API](https://docs.github.com/enterprise-server@3.9/developers/apps/guides/creating-ci-tests-with-the-checks-api)."
+   * > [!NOTE]
+   * > The API only looks for pushes in the repository where the check run was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
+   * @description A check run completed, and someone requested a followup action that your app provides. Only the GitHub App someone requests to perform an action will receive the `requested_action` payload. For more information, see "[Creating CI tests with the Checks API](https://docs.github.com/enterprise-server@3.14/developers/apps/guides/creating-ci-tests-with-the-checks-api)."
    */
   "check-run/requested-action": {
     parameters: {
@@ -54785,7 +56732,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a check run. For information about check runs, see "[Getting started with the Checks API](https://docs.github.com/enterprise-server@3.9/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check runs, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#checkrun) or "[Check Runs](https://docs.github.com/enterprise-server@3.9/rest/checks/runs)" in the REST API documentation.
+   * This event occurs when there is activity relating to a check run. For information about check runs, see "[Getting started with the Checks API](https://docs.github.com/enterprise-server@3.14/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check runs, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#checkrun) or "[Check Runs](https://docs.github.com/enterprise-server@3.14/rest/checks/runs)" in the REST API documentation.
    *
    * For activity relating to check suites, use the `check-suite` event.
    *
@@ -54793,7 +56740,8 @@ export interface operations {
    *
    * Repository and organization webhooks only receive payloads for the `created` and `completed` event types in repositories.
    *
-   * **Note**: The API only looks for pushes in the repository where the check run was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
+   * > [!NOTE]
+   * > The API only looks for pushes in the repository where the check run was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
    * @description Someone requested to re-run a check run. Only the GitHub App that someone requests to re-run the check will receive the `rerequested` payload.
    */
   "check-run/rerequested": {
@@ -54832,7 +56780,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a check suite. For information about check suites, see "[Getting started with the Checks API](https://docs.github.com/enterprise-server@3.9/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check suites, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#checksuite) or "[Check Suites](https://docs.github.com/enterprise-server@3.9/rest/checks/suites)" in the REST API documentation.
+   * This event occurs when there is activity relating to a check suite. For information about check suites, see "[Getting started with the Checks API](https://docs.github.com/enterprise-server@3.14/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check suites, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#checksuite) or "[Check Suites](https://docs.github.com/enterprise-server@3.14/rest/checks/suites)" in the REST API documentation.
    *
    * For activity relating to check runs, use the `check_run` event.
    *
@@ -54840,7 +56788,8 @@ export interface operations {
    *
    * Repository and organization webhooks only receive payloads for the `completed` event types in repositories.
    *
-   * **Note**: The API only looks for pushes in the repository where the check suite was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
+   * > [!NOTE]
+   * > The API only looks for pushes in the repository where the check suite was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
    * @description All check runs in a check suite have completed, and a conclusion is available.
    */
   "check-suite/completed": {
@@ -54879,7 +56828,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a check suite. For information about check suites, see "[Getting started with the Checks API](https://docs.github.com/enterprise-server@3.9/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check suites, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#checksuite) or "[Check Suites](https://docs.github.com/enterprise-server@3.9/rest/checks/suites)" in the REST API documentation.
+   * This event occurs when there is activity relating to a check suite. For information about check suites, see "[Getting started with the Checks API](https://docs.github.com/enterprise-server@3.14/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check suites, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#checksuite) or "[Check Suites](https://docs.github.com/enterprise-server@3.14/rest/checks/suites)" in the REST API documentation.
    *
    * For activity relating to check runs, use the `check_run` event.
    *
@@ -54887,8 +56836,9 @@ export interface operations {
    *
    * Repository and organization webhooks only receive payloads for the `completed` event types in repositories.
    *
-   * **Note**: The API only looks for pushes in the repository where the check suite was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
-   * @description Someone requested to run a check suite. By default, check suites are automatically created when you create a check run. For more information, see [the GraphQL API documentation for creating a check run](https://docs.github.com/enterprise-server@3.9/graphql/reference/mutations#createcheckrun) or "[Create a check run](https://docs.github.com/enterprise-server@3.9/rest/checks/runs#create-a-check-run)" in the REST API documentation.
+   * > [!NOTE]
+   * > The API only looks for pushes in the repository where the check suite was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
+   * @description Someone requested to run a check suite. By default, check suites are automatically created when you create a check run. For more information, see [the GraphQL API documentation for creating a check run](https://docs.github.com/enterprise-server@3.14/graphql/reference/mutations#createcheckrun) or "[Create a check run](https://docs.github.com/enterprise-server@3.14/rest/checks/runs#create-a-check-run)" in the REST API documentation.
    */
   "check-suite/requested": {
     parameters: {
@@ -54926,7 +56876,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a check suite. For information about check suites, see "[Getting started with the Checks API](https://docs.github.com/enterprise-server@3.9/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check suites, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#checksuite) or "[Check Suites](https://docs.github.com/enterprise-server@3.9/rest/checks/suites)" in the REST API documentation.
+   * This event occurs when there is activity relating to a check suite. For information about check suites, see "[Getting started with the Checks API](https://docs.github.com/enterprise-server@3.14/rest/guides/getting-started-with-the-checks-api)." For information about the APIs to manage check suites, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#checksuite) or "[Check Suites](https://docs.github.com/enterprise-server@3.14/rest/checks/suites)" in the REST API documentation.
    *
    * For activity relating to check runs, use the `check_run` event.
    *
@@ -54934,8 +56884,9 @@ export interface operations {
    *
    * Repository and organization webhooks only receive payloads for the `completed` event types in repositories.
    *
-   * **Note**: The API only looks for pushes in the repository where the check suite was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
-   * @description Someone requested to re-run the check runs in a check suite. For more information, see [the GraphQL API documentation for creating a check suite](https://docs.github.com/enterprise-server@3.9/graphql/reference/mutations#createchecksuite) or "[Create a check suite](https://docs.github.com/enterprise-server@3.9/rest/checks/suites#create-a-check-suite)" in the REST API documentation.
+   * > [!NOTE]
+   * > The API only looks for pushes in the repository where the check suite was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
+   * @description Someone requested to re-run the check runs in a check suite. For more information, see [the GraphQL API documentation for creating a check suite](https://docs.github.com/enterprise-server@3.14/graphql/reference/mutations#createchecksuite) or "[Create a check suite](https://docs.github.com/enterprise-server@3.14/rest/checks/suites#create-a-check-suite)" in the REST API documentation.
    */
   "check-suite/rerequested": {
     parameters: {
@@ -54973,7 +56924,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/enterprise-server@3.9/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/enterprise-server@3.9/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/enterprise-server@3.9/rest/code-scanning)" in the REST API documentation.
+   * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/enterprise-server@3.14/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/enterprise-server@3.14/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/enterprise-server@3.14/rest/code-scanning)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Code scanning alerts" repository permission.
    * @description A previously created code scanning alert appeared in another branch. This can happen when a branch is merged into or created from a branch with a pre-existing code scanning alert.
@@ -55014,7 +56965,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/enterprise-server@3.9/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/enterprise-server@3.9/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/enterprise-server@3.9/rest/code-scanning)" in the REST API documentation.
+   * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/enterprise-server@3.14/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/enterprise-server@3.14/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/enterprise-server@3.14/rest/code-scanning)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Code scanning alerts" repository permission.
    * @description Someone closed a code scanning alert.
@@ -55055,7 +57006,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/enterprise-server@3.9/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/enterprise-server@3.9/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/enterprise-server@3.9/rest/code-scanning)" in the REST API documentation.
+   * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/enterprise-server@3.14/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/enterprise-server@3.14/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/enterprise-server@3.14/rest/code-scanning)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Code scanning alerts" repository permission.
    * @description A code scanning alert was created in a repository.
@@ -55096,7 +57047,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/enterprise-server@3.9/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/enterprise-server@3.9/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/enterprise-server@3.9/rest/code-scanning)" in the REST API documentation.
+   * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/enterprise-server@3.14/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/enterprise-server@3.14/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/enterprise-server@3.14/rest/code-scanning)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Code scanning alerts" repository permission.
    * @description A code scanning alert was fixed in a branch by a commit.
@@ -55137,7 +57088,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/enterprise-server@3.9/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/enterprise-server@3.9/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/enterprise-server@3.9/rest/code-scanning)" in the REST API documentation.
+   * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/enterprise-server@3.14/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/enterprise-server@3.14/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/enterprise-server@3.14/rest/code-scanning)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Code scanning alerts" repository permission.
    * @description A previously fixed code scanning alert reappeared in a branch.
@@ -55178,7 +57129,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/enterprise-server@3.9/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/enterprise-server@3.9/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/enterprise-server@3.9/rest/code-scanning)" in the REST API documentation.
+   * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/enterprise-server@3.14/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/enterprise-server@3.14/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/enterprise-server@3.14/rest/code-scanning)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Code scanning alerts" repository permission.
    * @description Someone reopened a code scanning alert.
@@ -55219,7 +57170,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to commit comments. For more information about commit comments, see "[Commenting on a pull request](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request)." For information about the APIs to manage commit comments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#commitcomment) or "[Commit comments](https://docs.github.com/enterprise-server@3.9/rest/commits/comments)" in the REST API documentation.
+   * This event occurs when there is activity relating to commit comments. For more information about commit comments, see "[Commenting on a pull request](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request)." For information about the APIs to manage commit comments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#commitcomment) or "[Commit comments](https://docs.github.com/enterprise-server@3.14/rest/commits/comments)" in the REST API documentation.
    *
    * For activity relating to comments on pull request reviews, use the `pull_request_review_comment` event. For activity relating to issue comments, use the `issue_comment` event. For activity relating to discussion comments, use the `discussion_comment` event.
    *
@@ -55311,7 +57262,8 @@ export interface operations {
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
    *
-   * **Note**: This event will not occur when more than three tags are deleted at once.
+   * > [!NOTE]
+   * > This event will not occur when more than three tags are deleted at once.
    */
   delete: {
     parameters: {
@@ -55351,11 +57303,104 @@ export interface operations {
   /**
    * This event occurs when there is activity relating to Dependabot alerts.
    *
-   * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.9/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.9/rest/dependabot/alerts)" in the REST API documentation.
+   * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.14/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.14/rest/dependabot/alerts)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
    *
-   * **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
+   * > [!NOTE]
+   * > Webhook events for Dependabot alerts are currently in beta and subject to change.
+   * @description A Dependabot alert was automatically closed by a Dependabot auto-triage rule.
+   */
+  "dependabot-alert/auto-dismissed": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+        /** @example 3.1.9 */
+        "X-GitHub-Enterprise-Version": string;
+        /** @example ghes.github.com */
+        "X-GitHub-Enterprise-Host": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-dependabot-alert-auto-dismissed"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to Dependabot alerts.
+   *
+   * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.14/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.14/rest/dependabot/alerts)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
+   *
+   * > [!NOTE]
+   * > Webhook events for Dependabot alerts are currently in beta and subject to change.
+   * @description A Dependabot alert, that had been automatically closed by a Dependabot auto-triage rule, was automatically reopened because the alert metadata or rule changed.
+   */
+  "dependabot-alert/auto-reopened": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+        /** @example 3.1.9 */
+        "X-GitHub-Enterprise-Version": string;
+        /** @example ghes.github.com */
+        "X-GitHub-Enterprise-Host": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-dependabot-alert-auto-reopened"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to Dependabot alerts.
+   *
+   * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.14/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.14/rest/dependabot/alerts)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
+   *
+   * > [!NOTE]
+   * > Webhook events for Dependabot alerts are currently in beta and subject to change.
    * @description A manifest file change introduced a vulnerable dependency, or a GitHub Security Advisory was published and an existing dependency was found to be vulnerable.
    */
   "dependabot-alert/created": {
@@ -55396,11 +57441,12 @@ export interface operations {
   /**
    * This event occurs when there is activity relating to Dependabot alerts.
    *
-   * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.9/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.9/rest/dependabot/alerts)" in the REST API documentation.
+   * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.14/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.14/rest/dependabot/alerts)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
    *
-   * **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
+   * > [!NOTE]
+   * > Webhook events for Dependabot alerts are currently in beta and subject to change.
    * @description A Dependabot alert was manually closed.
    */
   "dependabot-alert/dismissed": {
@@ -55441,11 +57487,12 @@ export interface operations {
   /**
    * This event occurs when there is activity relating to Dependabot alerts.
    *
-   * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.9/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.9/rest/dependabot/alerts)" in the REST API documentation.
+   * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.14/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.14/rest/dependabot/alerts)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
    *
-   * **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
+   * > [!NOTE]
+   * > Webhook events for Dependabot alerts are currently in beta and subject to change.
    * @description A manifest file change removed a vulnerability.
    */
   "dependabot-alert/fixed": {
@@ -55486,11 +57533,12 @@ export interface operations {
   /**
    * This event occurs when there is activity relating to Dependabot alerts.
    *
-   * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.9/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.9/rest/dependabot/alerts)" in the REST API documentation.
+   * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.14/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.14/rest/dependabot/alerts)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
    *
-   * **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
+   * > [!NOTE]
+   * > Webhook events for Dependabot alerts are currently in beta and subject to change.
    * @description A manifest file change introduced a vulnerable dependency that had previously been fixed.
    */
   "dependabot-alert/reintroduced": {
@@ -55531,11 +57579,12 @@ export interface operations {
   /**
    * This event occurs when there is activity relating to Dependabot alerts.
    *
-   * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.9/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.9/rest/dependabot/alerts)" in the REST API documentation.
+   * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.14/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.14/rest/dependabot/alerts)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
    *
-   * **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
+   * > [!NOTE]
+   * > Webhook events for Dependabot alerts are currently in beta and subject to change.
    * @description A Dependabot alert was manually reopened.
    */
   "dependabot-alert/reopened": {
@@ -55574,7 +57623,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to deploy keys. For more information, see "[Managing deploy keys](https://docs.github.com/enterprise-server@3.9/developers/overview/managing-deploy-keys)." For information about the APIs to manage deploy keys, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#deploykey) or "[Deploy keys](https://docs.github.com/enterprise-server@3.9/rest/deploy-keys)" in the REST API documentation.
+   * This event occurs when there is activity relating to deploy keys. For more information, see "[Managing deploy keys](https://docs.github.com/enterprise-server@3.14/developers/overview/managing-deploy-keys)." For information about the APIs to manage deploy keys, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#deploykey) or "[Deploy keys](https://docs.github.com/enterprise-server@3.14/rest/deploy-keys)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
    * @description A deploy key was created.
@@ -55615,7 +57664,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to deploy keys. For more information, see "[Managing deploy keys](https://docs.github.com/enterprise-server@3.9/developers/overview/managing-deploy-keys)." For information about the APIs to manage deploy keys, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#deploykey) or "[Deploy keys](https://docs.github.com/enterprise-server@3.9/rest/deploy-keys)" in the REST API documentation.
+   * This event occurs when there is activity relating to deploy keys. For more information, see "[Managing deploy keys](https://docs.github.com/enterprise-server@3.14/developers/overview/managing-deploy-keys)." For information about the APIs to manage deploy keys, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#deploykey) or "[Deploy keys](https://docs.github.com/enterprise-server@3.14/rest/deploy-keys)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
    * @description A deploy key was deleted.
@@ -55656,7 +57705,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to deployments. For more information, see "[About deployments](https://docs.github.com/enterprise-server@3.9/actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/enterprise-server@3.9/rest/deployments/deployments)" in the REST API documentation.
+   * This event occurs when there is activity relating to deployments. For more information, see "[About deployments](https://docs.github.com/enterprise-server@3.14/actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/enterprise-server@3.14/rest/deployments/deployments)" in the REST API documentation.
    *
    * For activity relating to deployment status, use the `deployment_status` event.
    *
@@ -55699,7 +57748,48 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to deployment reviews. For more information, see "[About deployments](https://docs.github.com/enterprise-server@3.9/actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/enterprise-server@3.9/rest/deployments/deployments)" in the REST API documentation.
+   * This event occurs when there is activity relating to deployment protection rules. For more information, see "[Using environments for deployment](https://docs.github.com/enterprise-server@3.14/actions/deployment/targeting-different-environments/using-environments-for-deployment#environment-protection-rules)." For information about the API to manage deployment protection rules, see [the REST API documentation](https://docs.github.com/enterprise-server@3.14/rest/deployments/environments).
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
+   * @description A deployment protection rule was requested for an environment.
+   */
+  "deployment-protection-rule/requested": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+        /** @example 3.1.9 */
+        "X-GitHub-Enterprise-Version": string;
+        /** @example ghes.github.com */
+        "X-GitHub-Enterprise-Host": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-deployment-protection-rule-requested"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to deployment reviews. For more information, see "[About deployments](https://docs.github.com/enterprise-server@3.14/actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/enterprise-server@3.14/rest/deployments/deployments)" in the REST API documentation.
    *
    * For activity relating to deployment creation or deployment status, use the `deployment` or `deployment_status` event.
    *
@@ -55742,7 +57832,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to deployment reviews. For more information, see "[About deployments](https://docs.github.com/enterprise-server@3.9/actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/enterprise-server@3.9/rest/deployments/deployments)" in the REST API documentation.
+   * This event occurs when there is activity relating to deployment reviews. For more information, see "[About deployments](https://docs.github.com/enterprise-server@3.14/actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/enterprise-server@3.14/rest/deployments/deployments)" in the REST API documentation.
    *
    * For activity relating to deployment creation or deployment status, use the `deployment` or `deployment_status` event.
    *
@@ -55785,7 +57875,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to deployment reviews. For more information, see "[About deployments](https://docs.github.com/enterprise-server@3.9/actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/enterprise-server@3.9/rest/deployments/deployments)" in the REST API documentation.
+   * This event occurs when there is activity relating to deployment reviews. For more information, see "[About deployments](https://docs.github.com/enterprise-server@3.14/actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/enterprise-server@3.14/rest/deployments/deployments)" in the REST API documentation.
    *
    * For activity relating to deployment creation or deployment status, use the `deployment` or `deployment_status` event.
    *
@@ -55828,11 +57918,14 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to deployment statuses. For more information, see "[About deployments](https://docs.github.com/enterprise-server@3.9/actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/enterprise-server@3.9/rest/deployments/deployments)" in the REST API documentation.
+   * This event occurs when there is activity relating to deployment statuses. For more information, see "[About deployments](https://docs.github.com/enterprise-server@3.14/actions/deployment/about-deployments)." For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#deployment) or "[Deployments](https://docs.github.com/enterprise-server@3.14/rest/deployments/deployments)" in the REST API documentation.
    *
    * For activity relating to deployment creation, use the `deployment` event.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
+   *
+   * > [!NOTE]
+   * > A webhook event is not fired for deployment statuses with an `inactive` state.
    * @description A new deployment status was created.
    */
   "deployment-status/created": {
@@ -55871,13 +57964,14 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.9/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#discussion).
+   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.14/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion).
    *
    * For activity relating to a comment on a discussion, use the `discussion_comment` event.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
    *
-   * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+   * > [!NOTE]
+   * > Webhook events for GitHub Discussions are currently in beta and subject to change.
    * @description A comment on the discussion was marked as the answer.
    */
   "discussion/answered": {
@@ -55916,13 +58010,14 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.9/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#discussion).
+   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.14/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion).
    *
    * For activity relating to a comment on a discussion, use the `discussion_comment` event.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
    *
-   * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+   * > [!NOTE]
+   * > Webhook events for GitHub Discussions are currently in beta and subject to change.
    * @description The category of a discussion was changed.
    */
   "discussion/category-changed": {
@@ -55961,13 +58056,14 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.9/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#discussion).
+   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.14/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion).
    *
    * For activity relating to a comment on a discussion, use the `discussion_comment` event.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
    *
-   * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+   * > [!NOTE]
+   * > Webhook events for GitHub Discussions are currently in beta and subject to change.
    * @description A discussion was closed.
    */
   "discussion/closed": {
@@ -56006,13 +58102,14 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a comment on a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.9/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#discussion).
+   * This event occurs when there is activity relating to a comment on a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.14/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion).
    *
    * For activity relating to a discussion as opposed to comments on a discussion, use the `discussion` event.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
    *
-   * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+   * > [!NOTE]
+   * > Webhook events for GitHub Discussions are currently in beta and subject to change.
    * @description A comment on a discussion was created.
    */
   "discussion-comment/created": {
@@ -56051,13 +58148,14 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a comment on a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.9/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#discussion).
+   * This event occurs when there is activity relating to a comment on a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.14/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion).
    *
    * For activity relating to a discussion as opposed to comments on a discussion, use the `discussion` event.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
    *
-   * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+   * > [!NOTE]
+   * > Webhook events for GitHub Discussions are currently in beta and subject to change.
    * @description A comment on a discussion was deleted.
    */
   "discussion-comment/deleted": {
@@ -56096,13 +58194,14 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a comment on a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.9/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#discussion).
+   * This event occurs when there is activity relating to a comment on a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.14/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion).
    *
    * For activity relating to a discussion as opposed to comments on a discussion, use the `discussion` event.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
    *
-   * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+   * > [!NOTE]
+   * > Webhook events for GitHub Discussions are currently in beta and subject to change.
    * @description A comment on a discussion was edited.
    */
   "discussion-comment/edited": {
@@ -56141,13 +58240,14 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.9/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#discussion).
+   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.14/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion).
    *
    * For activity relating to a comment on a discussion, use the `discussion_comment` event.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
    *
-   * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+   * > [!NOTE]
+   * > Webhook events for GitHub Discussions are currently in beta and subject to change.
    * @description A discussion was created.
    */
   "discussion/created": {
@@ -56186,13 +58286,14 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.9/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#discussion).
+   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.14/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion).
    *
    * For activity relating to a comment on a discussion, use the `discussion_comment` event.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
    *
-   * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+   * > [!NOTE]
+   * > Webhook events for GitHub Discussions are currently in beta and subject to change.
    * @description A discussion was deleted.
    */
   "discussion/deleted": {
@@ -56231,13 +58332,14 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.9/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#discussion).
+   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.14/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion).
    *
    * For activity relating to a comment on a discussion, use the `discussion_comment` event.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
    *
-   * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+   * > [!NOTE]
+   * > Webhook events for GitHub Discussions are currently in beta and subject to change.
    * @description The title or body on a discussion was edited, or the category of the discussion was changed.
    */
   "discussion/edited": {
@@ -56276,13 +58378,14 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.9/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#discussion).
+   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.14/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion).
    *
    * For activity relating to a comment on a discussion, use the `discussion_comment` event.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
    *
-   * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+   * > [!NOTE]
+   * > Webhook events for GitHub Discussions are currently in beta and subject to change.
    * @description A label was added to a discussion.
    */
   "discussion/labeled": {
@@ -56321,13 +58424,14 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.9/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#discussion).
+   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.14/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion).
    *
    * For activity relating to a comment on a discussion, use the `discussion_comment` event.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
    *
-   * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+   * > [!NOTE]
+   * > Webhook events for GitHub Discussions are currently in beta and subject to change.
    * @description A discussion was locked.
    */
   "discussion/locked": {
@@ -56366,13 +58470,14 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.9/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#discussion).
+   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.14/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion).
    *
    * For activity relating to a comment on a discussion, use the `discussion_comment` event.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
    *
-   * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+   * > [!NOTE]
+   * > Webhook events for GitHub Discussions are currently in beta and subject to change.
    * @description A discussion was pinned.
    */
   "discussion/pinned": {
@@ -56411,13 +58516,14 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.9/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#discussion).
+   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.14/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion).
    *
    * For activity relating to a comment on a discussion, use the `discussion_comment` event.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
    *
-   * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+   * > [!NOTE]
+   * > Webhook events for GitHub Discussions are currently in beta and subject to change.
    * @description A discussion was reopened.
    */
   "discussion/reopened": {
@@ -56456,13 +58562,14 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.9/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#discussion).
+   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.14/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion).
    *
    * For activity relating to a comment on a discussion, use the `discussion_comment` event.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
    *
-   * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+   * > [!NOTE]
+   * > Webhook events for GitHub Discussions are currently in beta and subject to change.
    * @description A discussion was transferred to another repository.
    */
   "discussion/transferred": {
@@ -56501,13 +58608,14 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.9/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#discussion).
+   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.14/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion).
    *
    * For activity relating to a comment on a discussion, use the `discussion_comment` event.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
    *
-   * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+   * > [!NOTE]
+   * > Webhook events for GitHub Discussions are currently in beta and subject to change.
    * @description A comment on the discussion was unmarked as the answer.
    */
   "discussion/unanswered": {
@@ -56546,13 +58654,14 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.9/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#discussion).
+   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.14/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion).
    *
    * For activity relating to a comment on a discussion, use the `discussion_comment` event.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
    *
-   * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+   * > [!NOTE]
+   * > Webhook events for GitHub Discussions are currently in beta and subject to change.
    * @description A label was removed from a discussion.
    */
   "discussion/unlabeled": {
@@ -56591,13 +58700,14 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.9/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#discussion).
+   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.14/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion).
    *
    * For activity relating to a comment on a discussion, use the `discussion_comment` event.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
    *
-   * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+   * > [!NOTE]
+   * > Webhook events for GitHub Discussions are currently in beta and subject to change.
    * @description A discussion was unlocked.
    */
   "discussion/unlocked": {
@@ -56636,13 +58746,14 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.9/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#discussion).
+   * This event occurs when there is activity relating to a discussion. For more information about discussions, see "[GitHub Discussions](https://docs.github.com/enterprise-server@3.14/discussions)." For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion).
    *
    * For activity relating to a comment on a discussion, use the `discussion_comment` event.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
    *
-   * **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+   * > [!NOTE]
+   * > Webhook events for GitHub Discussions are currently in beta and subject to change.
    * @description A discussion was unpinned.
    */
   "discussion/unpinned": {
@@ -56681,7 +58792,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to anonymous Git read access in an enterprise. For more information, see "[Enforcing repository management policies in your enterprise](https://docs.github.com/enterprise-server@3.9/admin/policies/enforcing-policies-for-your-enterprise/enforcing-repository-management-policies-in-your-enterprise#configuring-anonymous-git-read-access)."
+   * This event occurs when there is activity relating to anonymous Git read access in an enterprise. For more information, see "[Enforcing repository management policies in your enterprise](https://docs.github.com/enterprise-server@3.14/admin/policies/enforcing-policies-for-your-enterprise/enforcing-repository-management-policies-in-your-enterprise#configuring-anonymous-git-read-access)."
    * @description Anonymous Git read access was disabled.
    */
   "enterprise/anonymous-access-disabled": {
@@ -56720,7 +58831,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to anonymous Git read access in an enterprise. For more information, see "[Enforcing repository management policies in your enterprise](https://docs.github.com/enterprise-server@3.9/admin/policies/enforcing-policies-for-your-enterprise/enforcing-repository-management-policies-in-your-enterprise#configuring-anonymous-git-read-access)."
+   * This event occurs when there is activity relating to anonymous Git read access in an enterprise. For more information, see "[Enforcing repository management policies in your enterprise](https://docs.github.com/enterprise-server@3.14/admin/policies/enforcing-policies-for-your-enterprise/enforcing-repository-management-policies-in-your-enterprise#configuring-anonymous-git-read-access)."
    * @description Anonymous Git read access was enabled.
    */
   "enterprise/anonymous-access-enabled": {
@@ -56759,7 +58870,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when someone forks a repository. For more information, see "[Fork a repo](https://docs.github.com/enterprise-server@3.9/get-started/quickstart/fork-a-repo)." For information about the API to manage forks, see "[Forks](https://docs.github.com/enterprise-server@3.9/rest/repos/forks)" in the REST API documentation.
+   * This event occurs when someone forks a repository. For more information, see "[Fork a repo](https://docs.github.com/enterprise-server@3.14/get-started/quickstart/fork-a-repo)." For information about the API to manage forks, see "[Forks](https://docs.github.com/enterprise-server@3.14/rest/repos/forks)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
    */
@@ -56799,11 +58910,11 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when a user revokes their authorization of a GitHub App. For more information, see "[About apps](https://docs.github.com/enterprise-server@3.9/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the API to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.9/rest/apps)" in the REST API documentation.
+   * This event occurs when a user revokes their authorization of a GitHub App. For more information, see "[About apps](https://docs.github.com/enterprise-server@3.14/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the API to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.14/rest/apps)" in the REST API documentation.
    *
    * A GitHub App receives this webhook by default and cannot unsubscribe from this event.
    *
-   * Anyone can revoke their authorization of a GitHub App from their [GitHub account settings page](https://github.com/settings/apps/authorizations). Revoking the authorization of a GitHub App does not uninstall the GitHub App. You should program your GitHub App so that when it receives this webhook, it stops calling the API on behalf of the person who revoked the token. If your GitHub App continues to use a revoked access token, it will receive the `401 Bad Credentials` error. For details about requests with a user access token, which require GitHub App authorization, see "[Authenticating with a GitHub App on behalf of a user](https://docs.github.com/enterprise-server@3.9/apps/creating-github-apps/authenticating-with-a-github-app/authenticating-with-a-github-app-on-behalf-of-a-user)."
+   * Anyone can revoke their authorization of a GitHub App from their [GitHub account settings page](https://github.com/settings/apps/authorizations). Revoking the authorization of a GitHub App does not uninstall the GitHub App. You should program your GitHub App so that when it receives this webhook, it stops calling the API on behalf of the person who revoked the token. If your GitHub App continues to use a revoked access token, it will receive the `401 Bad Credentials` error. For details about requests with a user access token, which require GitHub App authorization, see "[Authenticating with a GitHub App on behalf of a user](https://docs.github.com/enterprise-server@3.14/apps/creating-github-apps/authenticating-with-a-github-app/authenticating-with-a-github-app-on-behalf-of-a-user)."
    * @description Someone revoked their authorization of a GitHub App.
    */
   "github-app-authorization/revoked": {
@@ -56842,7 +58953,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when someone creates or updates a wiki page. For more information, see "[About wikis](https://docs.github.com/enterprise-server@3.9/communities/documenting-your-project-with-wikis/about-wikis)."
+   * This event occurs when someone creates or updates a wiki page. For more information, see "[About wikis](https://docs.github.com/enterprise-server@3.14/communities/documenting-your-project-with-wikis/about-wikis)."
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
    */
@@ -56884,7 +58995,7 @@ export interface operations {
   /**
    * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
    *
-   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.9/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.9/rest/apps)" in the REST API documentation.
+   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.14/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.14/rest/apps)" in the REST API documentation.
    * @description Someone installed a GitHub App on a user or organization account.
    */
   "installation/created": {
@@ -56925,7 +59036,7 @@ export interface operations {
   /**
    * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
    *
-   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.9/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.9/rest/apps)" in the REST API documentation.
+   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.14/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.14/rest/apps)" in the REST API documentation.
    * @description Someone uninstalled a GitHub App from their user or organization account.
    */
   "installation/deleted": {
@@ -56966,7 +59077,7 @@ export interface operations {
   /**
    * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
    *
-   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.9/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.9/rest/apps)" in the REST API documentation.
+   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.14/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.14/rest/apps)" in the REST API documentation.
    * @description Someone granted new permissions to a GitHub App.
    */
   "installation/new-permissions-accepted": {
@@ -57007,7 +59118,7 @@ export interface operations {
   /**
    * This event occurs when there is activity relating to which repositories a GitHub App installation can access. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
    *
-   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.9/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.9/rest/apps)" in the REST API documentation.
+   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.14/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.14/rest/apps)" in the REST API documentation.
    * @description A GitHub App installation was granted access to one or more repositories.
    */
   "installation-repositories/added": {
@@ -57048,7 +59159,7 @@ export interface operations {
   /**
    * This event occurs when there is activity relating to which repositories a GitHub App installation can access. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
    *
-   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.9/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.9/rest/apps)" in the REST API documentation.
+   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.14/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.14/rest/apps)" in the REST API documentation.
    * @description Access to one or more repositories was revoked for a GitHub App installation.
    */
   "installation-repositories/removed": {
@@ -57089,7 +59200,7 @@ export interface operations {
   /**
    * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
    *
-   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.9/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.9/rest/apps)" in the REST API documentation.
+   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.14/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.14/rest/apps)" in the REST API documentation.
    * @description Someone blocked access by a GitHub App to their user or organization account.
    */
   "installation/suspend": {
@@ -57128,7 +59239,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to the user or organization account that a GitHub App is installed on. For more information, see "[About apps](https://docs.github.com/enterprise-server@3.9/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.9/rest/apps)" in the REST API documentation.
+   * This event occurs when there is activity relating to the user or organization account that a GitHub App is installed on. For more information, see "[About apps](https://docs.github.com/enterprise-server@3.14/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.14/rest/apps)" in the REST API documentation.
    * @description Somebody renamed the user or organization account that a GitHub App is installed on.
    */
   "installation-target/renamed": {
@@ -57169,7 +59280,7 @@ export interface operations {
   /**
    * This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.
    *
-   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.9/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.9/rest/apps)" in the REST API documentation.
+   * For more information about GitHub Apps, see "[About apps](https://docs.github.com/enterprise-server@3.14/developers/apps/getting-started-with-apps/about-apps#about-github-apps)." For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#app) or "[Apps](https://docs.github.com/enterprise-server@3.14/rest/apps)" in the REST API documentation.
    * @description A GitHub App that was blocked from accessing a user or organization account was given access the account again.
    */
   "installation/unsuspend": {
@@ -57208,9 +59319,9 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a comment on an issue or pull request. For more information about issues and pull requests, see "[About issues](https://docs.github.com/enterprise-server@3.9/issues/tracking-your-work-with-issues/about-issues)" and "[About pull requests](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage issue comments, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#issuecomment) or "[Issue comments](https://docs.github.com/enterprise-server@3.9/rest/issues/comments)" in the REST API documentation.
+   * This event occurs when there is activity relating to a comment on an issue or pull request. For more information about issues and pull requests, see "[About issues](https://docs.github.com/enterprise-server@3.14/issues/tracking-your-work-with-issues/about-issues)" and "[About pull requests](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage issue comments, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#issuecomment) or "[Issue comments](https://docs.github.com/enterprise-server@3.14/rest/issues/comments)" in the REST API documentation.
    *
-   * For activity relating to an issue as opposed to comments on an issue, use the `issue` event. For activity related to pull request reviews or pull request review comments, use the `pull_request_review` or `pull_request_review_comment` events. For more information about the different types of pull request comments, see "[Working with comments](https://docs.github.com/enterprise-server@3.9/rest/guides/working-with-comments)."
+   * For activity relating to an issue as opposed to comments on an issue, use the `issue` event. For activity related to pull request reviews or pull request review comments, use the `pull_request_review` or `pull_request_review_comment` events. For more information about the different types of pull request comments, see "[Working with comments](https://docs.github.com/enterprise-server@3.14/rest/guides/working-with-comments)."
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
    * @description A comment on an issue or pull request was created.
@@ -57251,9 +59362,9 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a comment on an issue or pull request. For more information about issues and pull requests, see "[About issues](https://docs.github.com/enterprise-server@3.9/issues/tracking-your-work-with-issues/about-issues)" and "[About pull requests](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage issue comments, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#issuecomment) or "[Issue comments](https://docs.github.com/enterprise-server@3.9/rest/issues/comments)" in the REST API documentation.
+   * This event occurs when there is activity relating to a comment on an issue or pull request. For more information about issues and pull requests, see "[About issues](https://docs.github.com/enterprise-server@3.14/issues/tracking-your-work-with-issues/about-issues)" and "[About pull requests](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage issue comments, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#issuecomment) or "[Issue comments](https://docs.github.com/enterprise-server@3.14/rest/issues/comments)" in the REST API documentation.
    *
-   * For activity relating to an issue as opposed to comments on an issue, use the `issue` event. For activity related to pull request reviews or pull request review comments, use the `pull_request_review` or `pull_request_review_comment` events. For more information about the different types of pull request comments, see "[Working with comments](https://docs.github.com/enterprise-server@3.9/rest/guides/working-with-comments)."
+   * For activity relating to an issue as opposed to comments on an issue, use the `issue` event. For activity related to pull request reviews or pull request review comments, use the `pull_request_review` or `pull_request_review_comment` events. For more information about the different types of pull request comments, see "[Working with comments](https://docs.github.com/enterprise-server@3.14/rest/guides/working-with-comments)."
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
    * @description A comment on an issue or pull request was deleted.
@@ -57294,9 +59405,9 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a comment on an issue or pull request. For more information about issues and pull requests, see "[About issues](https://docs.github.com/enterprise-server@3.9/issues/tracking-your-work-with-issues/about-issues)" and "[About pull requests](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage issue comments, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#issuecomment) or "[Issue comments](https://docs.github.com/enterprise-server@3.9/rest/issues/comments)" in the REST API documentation.
+   * This event occurs when there is activity relating to a comment on an issue or pull request. For more information about issues and pull requests, see "[About issues](https://docs.github.com/enterprise-server@3.14/issues/tracking-your-work-with-issues/about-issues)" and "[About pull requests](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage issue comments, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#issuecomment) or "[Issue comments](https://docs.github.com/enterprise-server@3.14/rest/issues/comments)" in the REST API documentation.
    *
-   * For activity relating to an issue as opposed to comments on an issue, use the `issue` event. For activity related to pull request reviews or pull request review comments, use the `pull_request_review` or `pull_request_review_comment` events. For more information about the different types of pull request comments, see "[Working with comments](https://docs.github.com/enterprise-server@3.9/rest/guides/working-with-comments)."
+   * For activity relating to an issue as opposed to comments on an issue, use the `issue` event. For activity related to pull request reviews or pull request review comments, use the `pull_request_review` or `pull_request_review_comment` events. For more information about the different types of pull request comments, see "[Working with comments](https://docs.github.com/enterprise-server@3.14/rest/guides/working-with-comments)."
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
    * @description A comment on an issue or pull request was edited.
@@ -57337,7 +59448,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.9/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.9/rest/issues)" in the REST API documentation.
+   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.14/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.14/rest/issues)" in the REST API documentation.
    *
    * For activity relating to a comment on an issue, use the `issue_comment` event.
    *
@@ -57380,7 +59491,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.9/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.9/rest/issues)" in the REST API documentation.
+   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.14/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.14/rest/issues)" in the REST API documentation.
    *
    * For activity relating to a comment on an issue, use the `issue_comment` event.
    *
@@ -57423,7 +59534,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.9/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.9/rest/issues)" in the REST API documentation.
+   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.14/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.14/rest/issues)" in the REST API documentation.
    *
    * For activity relating to a comment on an issue, use the `issue_comment` event.
    *
@@ -57466,7 +59577,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.9/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.9/rest/issues)" in the REST API documentation.
+   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.14/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.14/rest/issues)" in the REST API documentation.
    *
    * For activity relating to a comment on an issue, use the `issue_comment` event.
    *
@@ -57509,7 +59620,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.9/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.9/rest/issues)" in the REST API documentation.
+   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.14/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.14/rest/issues)" in the REST API documentation.
    *
    * For activity relating to a comment on an issue, use the `issue_comment` event.
    *
@@ -57552,7 +59663,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.9/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.9/rest/issues)" in the REST API documentation.
+   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.14/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.14/rest/issues)" in the REST API documentation.
    *
    * For activity relating to a comment on an issue, use the `issue_comment` event.
    *
@@ -57595,12 +59706,12 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.9/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.9/rest/issues)" in the REST API documentation.
+   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.14/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.14/rest/issues)" in the REST API documentation.
    *
    * For activity relating to a comment on an issue, use the `issue_comment` event.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
-   * @description Conversation on an issue was locked. For more information, see "[Locking conversations](https://docs.github.com/enterprise-server@3.9/communities/moderating-comments-and-conversations/locking-conversations)."
+   * @description Conversation on an issue was locked. For more information, see "[Locking conversations](https://docs.github.com/enterprise-server@3.14/communities/moderating-comments-and-conversations/locking-conversations)."
    */
   "issues/locked": {
     parameters: {
@@ -57638,7 +59749,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.9/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.9/rest/issues)" in the REST API documentation.
+   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.14/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.14/rest/issues)" in the REST API documentation.
    *
    * For activity relating to a comment on an issue, use the `issue_comment` event.
    *
@@ -57681,7 +59792,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.9/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.9/rest/issues)" in the REST API documentation.
+   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.14/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.14/rest/issues)" in the REST API documentation.
    *
    * For activity relating to a comment on an issue, use the `issue_comment` event.
    *
@@ -57724,12 +59835,12 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.9/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.9/rest/issues)" in the REST API documentation.
+   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.14/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.14/rest/issues)" in the REST API documentation.
    *
    * For activity relating to a comment on an issue, use the `issue_comment` event.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
-   * @description An issue was pinned to a repository. For more information, see "[Pinning an issue to your repository](https://docs.github.com/enterprise-server@3.9/issues/tracking-your-work-with-issues/pinning-an-issue-to-your-repository)."
+   * @description An issue was pinned to a repository. For more information, see "[Pinning an issue to your repository](https://docs.github.com/enterprise-server@3.14/issues/tracking-your-work-with-issues/pinning-an-issue-to-your-repository)."
    */
   "issues/pinned": {
     parameters: {
@@ -57767,7 +59878,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.9/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.9/rest/issues)" in the REST API documentation.
+   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.14/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.14/rest/issues)" in the REST API documentation.
    *
    * For activity relating to a comment on an issue, use the `issue_comment` event.
    *
@@ -57810,12 +59921,12 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.9/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.9/rest/issues)" in the REST API documentation.
+   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.14/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.14/rest/issues)" in the REST API documentation.
    *
    * For activity relating to a comment on an issue, use the `issue_comment` event.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
-   * @description An issue was transferred to another repository. For more information, see "[Transferring an issue to another repository](https://docs.github.com/enterprise-server@3.9/issues/tracking-your-work-with-issues/transferring-an-issue-to-another-repository)."
+   * @description An issue was transferred to another repository. For more information, see "[Transferring an issue to another repository](https://docs.github.com/enterprise-server@3.14/issues/tracking-your-work-with-issues/transferring-an-issue-to-another-repository)."
    */
   "issues/transferred": {
     parameters: {
@@ -57853,7 +59964,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.9/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.9/rest/issues)" in the REST API documentation.
+   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.14/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.14/rest/issues)" in the REST API documentation.
    *
    * For activity relating to a comment on an issue, use the `issue_comment` event.
    *
@@ -57896,7 +60007,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.9/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.9/rest/issues)" in the REST API documentation.
+   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.14/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.14/rest/issues)" in the REST API documentation.
    *
    * For activity relating to a comment on an issue, use the `issue_comment` event.
    *
@@ -57939,12 +60050,12 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.9/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.9/rest/issues)" in the REST API documentation.
+   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.14/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.14/rest/issues)" in the REST API documentation.
    *
    * For activity relating to a comment on an issue, use the `issue_comment` event.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
-   * @description Conversation on an issue was locked. For more information, see "[Locking conversations](https://docs.github.com/enterprise-server@3.9/communities/moderating-comments-and-conversations/locking-conversations)."
+   * @description Conversation on an issue was locked. For more information, see "[Locking conversations](https://docs.github.com/enterprise-server@3.14/communities/moderating-comments-and-conversations/locking-conversations)."
    */
   "issues/unlocked": {
     parameters: {
@@ -57982,12 +60093,12 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.9/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.9/rest/issues)" in the REST API documentation.
+   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-server@3.14/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-server@3.14/rest/issues)" in the REST API documentation.
    *
    * For activity relating to a comment on an issue, use the `issue_comment` event.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
-   * @description An issue was unpinned from a repository. For more information, see "[Pinning an issue to your repository](https://docs.github.com/enterprise-server@3.9/issues/tracking-your-work-with-issues/pinning-an-issue-to-your-repository)."
+   * @description An issue was unpinned from a repository. For more information, see "[Pinning an issue to your repository](https://docs.github.com/enterprise-server@3.14/issues/tracking-your-work-with-issues/pinning-an-issue-to-your-repository)."
    */
   "issues/unpinned": {
     parameters: {
@@ -58025,7 +60136,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to labels. For more information, see "[Managing labels](https://docs.github.com/enterprise-server@3.9/issues/using-labels-and-milestones-to-track-work/managing-labels)." For information about the APIs to manage labels, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#label) or "[Labels](https://docs.github.com/enterprise-server@3.9/rest/issues/labels)" in the REST API documentation.
+   * This event occurs when there is activity relating to labels. For more information, see "[Managing labels](https://docs.github.com/enterprise-server@3.14/issues/using-labels-and-milestones-to-track-work/managing-labels)." For information about the APIs to manage labels, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#label) or "[Labels](https://docs.github.com/enterprise-server@3.14/rest/issues/labels)" in the REST API documentation.
    *
    * If you want to receive an event when a label is added to or removed from an issue, pull request, or discussion, use the `labeled` or `unlabeled` action type for the `issues`, `pull_request`, or `discussion` events instead.
    *
@@ -58068,7 +60179,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to labels. For more information, see "[Managing labels](https://docs.github.com/enterprise-server@3.9/issues/using-labels-and-milestones-to-track-work/managing-labels)." For information about the APIs to manage labels, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#label) or "[Labels](https://docs.github.com/enterprise-server@3.9/rest/issues/labels)" in the REST API documentation.
+   * This event occurs when there is activity relating to labels. For more information, see "[Managing labels](https://docs.github.com/enterprise-server@3.14/issues/using-labels-and-milestones-to-track-work/managing-labels)." For information about the APIs to manage labels, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#label) or "[Labels](https://docs.github.com/enterprise-server@3.14/rest/issues/labels)" in the REST API documentation.
    *
    * If you want to receive an event when a label is added to or removed from an issue, pull request, or discussion, use the `labeled` or `unlabeled` action type for the `issues`, `pull_request`, or `discussion` events instead.
    *
@@ -58111,7 +60222,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to labels. For more information, see "[Managing labels](https://docs.github.com/enterprise-server@3.9/issues/using-labels-and-milestones-to-track-work/managing-labels)." For information about the APIs to manage labels, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#label) or "[Labels](https://docs.github.com/enterprise-server@3.9/rest/issues/labels)" in the REST API documentation.
+   * This event occurs when there is activity relating to labels. For more information, see "[Managing labels](https://docs.github.com/enterprise-server@3.14/issues/using-labels-and-milestones-to-track-work/managing-labels)." For information about the APIs to manage labels, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#label) or "[Labels](https://docs.github.com/enterprise-server@3.14/rest/issues/labels)" in the REST API documentation.
    *
    * If you want to receive an event when a label is added to or removed from an issue, pull request, or discussion, use the `labeled` or `unlabeled` action type for the `issues`, `pull_request`, or `discussion` events instead.
    *
@@ -58154,7 +60265,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to collaborators in a repository. For more information, see "[Adding outside collaborators to repositories in your organization](https://docs.github.com/enterprise-server@3.9/organizations/managing-user-access-to-your-organizations-repositories/adding-outside-collaborators-to-repositories-in-your-organization)." For more information about the API to manage repository collaborators, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#repositorycollaboratorconnection) or "[Collaborators](https://docs.github.com/enterprise-server@3.9/rest/collaborators/collaborators)" in the REST API documentation.
+   * This event occurs when there is activity relating to collaborators in a repository. For more information, see "[Adding outside collaborators to repositories in your organization](https://docs.github.com/enterprise-server@3.14/organizations/managing-user-access-to-your-organizations-repositories/adding-outside-collaborators-to-repositories-in-your-organization)." For more information about the API to manage repository collaborators, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#repositorycollaboratorconnection) or "[Collaborators](https://docs.github.com/enterprise-server@3.14/rest/collaborators/collaborators)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
    * @description A GitHub user accepted an invitation to a repository.
@@ -58195,7 +60306,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to collaborators in a repository. For more information, see "[Adding outside collaborators to repositories in your organization](https://docs.github.com/enterprise-server@3.9/organizations/managing-user-access-to-your-organizations-repositories/adding-outside-collaborators-to-repositories-in-your-organization)." For more information about the API to manage repository collaborators, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#repositorycollaboratorconnection) or "[Collaborators](https://docs.github.com/enterprise-server@3.9/rest/collaborators/collaborators)" in the REST API documentation.
+   * This event occurs when there is activity relating to collaborators in a repository. For more information, see "[Adding outside collaborators to repositories in your organization](https://docs.github.com/enterprise-server@3.14/organizations/managing-user-access-to-your-organizations-repositories/adding-outside-collaborators-to-repositories-in-your-organization)." For more information about the API to manage repository collaborators, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#repositorycollaboratorconnection) or "[Collaborators](https://docs.github.com/enterprise-server@3.14/rest/collaborators/collaborators)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
    * @description Permissions were changed for a collaborator on a repository.
@@ -58236,7 +60347,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to collaborators in a repository. For more information, see "[Adding outside collaborators to repositories in your organization](https://docs.github.com/enterprise-server@3.9/organizations/managing-user-access-to-your-organizations-repositories/adding-outside-collaborators-to-repositories-in-your-organization)." For more information about the API to manage repository collaborators, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#repositorycollaboratorconnection) or "[Collaborators](https://docs.github.com/enterprise-server@3.9/rest/collaborators/collaborators)" in the REST API documentation.
+   * This event occurs when there is activity relating to collaborators in a repository. For more information, see "[Adding outside collaborators to repositories in your organization](https://docs.github.com/enterprise-server@3.14/organizations/managing-user-access-to-your-organizations-repositories/adding-outside-collaborators-to-repositories-in-your-organization)." For more information about the API to manage repository collaborators, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#repositorycollaboratorconnection) or "[Collaborators](https://docs.github.com/enterprise-server@3.14/rest/collaborators/collaborators)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
    * @description A collaborator was removed from a repository.
@@ -58277,7 +60388,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to team membership. For more information, see "[About teams](https://docs.github.com/enterprise-server@3.9/organizations/organizing-members-into-teams/about-teams)." For more information about the APIs to manage team memberships, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#team) or "[Team members](https://docs.github.com/enterprise-server@3.9/rest/teams/members)" in the REST API documentation.
+   * This event occurs when there is activity relating to team membership. For more information, see "[About teams](https://docs.github.com/enterprise-server@3.14/organizations/organizing-members-into-teams/about-teams)." For more information about the APIs to manage team memberships, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#team) or "[Team members](https://docs.github.com/enterprise-server@3.14/rest/teams/members)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
    * @description An organization member was added to a team.
@@ -58318,7 +60429,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to team membership. For more information, see "[About teams](https://docs.github.com/enterprise-server@3.9/organizations/organizing-members-into-teams/about-teams)." For more information about the APIs to manage team memberships, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#team) or "[Team members](https://docs.github.com/enterprise-server@3.9/rest/teams/members)" in the REST API documentation.
+   * This event occurs when there is activity relating to team membership. For more information, see "[About teams](https://docs.github.com/enterprise-server@3.14/organizations/organizing-members-into-teams/about-teams)." For more information about the APIs to manage team memberships, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#team) or "[Team members](https://docs.github.com/enterprise-server@3.14/rest/teams/members)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
    * @description An organization member was removed from a team.
@@ -58400,7 +60511,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to milestones. For more information, see "[About milestones](https://docs.github.com/enterprise-server@3.9/issues/using-labels-and-milestones-to-track-work/about-milestones)." For information about the APIs to manage milestones, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#milestone) or "[Milestones](https://docs.github.com/enterprise-server@3.9/rest/issues/milestones)" in the REST API documentation.
+   * This event occurs when there is activity relating to milestones. For more information, see "[About milestones](https://docs.github.com/enterprise-server@3.14/issues/using-labels-and-milestones-to-track-work/about-milestones)." For information about the APIs to manage milestones, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#milestone) or "[Milestones](https://docs.github.com/enterprise-server@3.14/rest/issues/milestones)" in the REST API documentation.
    *
    * If you want to receive an event when an issue or pull request is added to or removed from a milestone, use the `milestoned` or `demilestoned` action type for the `issues` or `pull_request` events instead.
    *
@@ -58443,7 +60554,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to milestones. For more information, see "[About milestones](https://docs.github.com/enterprise-server@3.9/issues/using-labels-and-milestones-to-track-work/about-milestones)." For information about the APIs to manage milestones, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#milestone) or "[Milestones](https://docs.github.com/enterprise-server@3.9/rest/issues/milestones)" in the REST API documentation.
+   * This event occurs when there is activity relating to milestones. For more information, see "[About milestones](https://docs.github.com/enterprise-server@3.14/issues/using-labels-and-milestones-to-track-work/about-milestones)." For information about the APIs to manage milestones, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#milestone) or "[Milestones](https://docs.github.com/enterprise-server@3.14/rest/issues/milestones)" in the REST API documentation.
    *
    * If you want to receive an event when an issue or pull request is added to or removed from a milestone, use the `milestoned` or `demilestoned` action type for the `issues` or `pull_request` events instead.
    *
@@ -58486,7 +60597,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to milestones. For more information, see "[About milestones](https://docs.github.com/enterprise-server@3.9/issues/using-labels-and-milestones-to-track-work/about-milestones)." For information about the APIs to manage milestones, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#milestone) or "[Milestones](https://docs.github.com/enterprise-server@3.9/rest/issues/milestones)" in the REST API documentation.
+   * This event occurs when there is activity relating to milestones. For more information, see "[About milestones](https://docs.github.com/enterprise-server@3.14/issues/using-labels-and-milestones-to-track-work/about-milestones)." For information about the APIs to manage milestones, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#milestone) or "[Milestones](https://docs.github.com/enterprise-server@3.14/rest/issues/milestones)" in the REST API documentation.
    *
    * If you want to receive an event when an issue or pull request is added to or removed from a milestone, use the `milestoned` or `demilestoned` action type for the `issues` or `pull_request` events instead.
    *
@@ -58529,7 +60640,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to milestones. For more information, see "[About milestones](https://docs.github.com/enterprise-server@3.9/issues/using-labels-and-milestones-to-track-work/about-milestones)." For information about the APIs to manage milestones, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#milestone) or "[Milestones](https://docs.github.com/enterprise-server@3.9/rest/issues/milestones)" in the REST API documentation.
+   * This event occurs when there is activity relating to milestones. For more information, see "[About milestones](https://docs.github.com/enterprise-server@3.14/issues/using-labels-and-milestones-to-track-work/about-milestones)." For information about the APIs to manage milestones, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#milestone) or "[Milestones](https://docs.github.com/enterprise-server@3.14/rest/issues/milestones)" in the REST API documentation.
    *
    * If you want to receive an event when an issue or pull request is added to or removed from a milestone, use the `milestoned` or `demilestoned` action type for the `issues` or `pull_request` events instead.
    *
@@ -58572,7 +60683,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to milestones. For more information, see "[About milestones](https://docs.github.com/enterprise-server@3.9/issues/using-labels-and-milestones-to-track-work/about-milestones)." For information about the APIs to manage milestones, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#milestone) or "[Milestones](https://docs.github.com/enterprise-server@3.9/rest/issues/milestones)" in the REST API documentation.
+   * This event occurs when there is activity relating to milestones. For more information, see "[About milestones](https://docs.github.com/enterprise-server@3.14/issues/using-labels-and-milestones-to-track-work/about-milestones)." For information about the APIs to manage milestones, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#milestone) or "[Milestones](https://docs.github.com/enterprise-server@3.14/rest/issues/milestones)" in the REST API documentation.
    *
    * If you want to receive an event when an issue or pull request is added to or removed from a milestone, use the `milestoned` or `demilestoned` action type for the `issues` or `pull_request` events instead.
    *
@@ -58615,7 +60726,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to an organization and its members. For more information, see "[About organizations](https://docs.github.com/enterprise-server@3.9/organizations/collaborating-with-groups-in-organizations/about-organizations)." For information about the APIs to manage organizations, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#organization) or "[Organizations](https://docs.github.com/enterprise-server@3.9/rest/orgs)" in the REST API documentation.
+   * This event occurs when there is activity relating to an organization and its members. For more information, see "[About organizations](https://docs.github.com/enterprise-server@3.14/organizations/collaborating-with-groups-in-organizations/about-organizations)." For information about the APIs to manage organizations, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#organization) or "[Organizations](https://docs.github.com/enterprise-server@3.14/rest/orgs)" in the REST API documentation.
    *
    * If you want to receive an event when a non-member is blocked or unblocked from an organization, use the `org_block` event instead.
    *
@@ -58658,7 +60769,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to an organization and its members. For more information, see "[About organizations](https://docs.github.com/enterprise-server@3.9/organizations/collaborating-with-groups-in-organizations/about-organizations)." For information about the APIs to manage organizations, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#organization) or "[Organizations](https://docs.github.com/enterprise-server@3.9/rest/orgs)" in the REST API documentation.
+   * This event occurs when there is activity relating to an organization and its members. For more information, see "[About organizations](https://docs.github.com/enterprise-server@3.14/organizations/collaborating-with-groups-in-organizations/about-organizations)." For information about the APIs to manage organizations, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#organization) or "[Organizations](https://docs.github.com/enterprise-server@3.14/rest/orgs)" in the REST API documentation.
    *
    * If you want to receive an event when a non-member is blocked or unblocked from an organization, use the `org_block` event instead.
    *
@@ -58701,7 +60812,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to an organization and its members. For more information, see "[About organizations](https://docs.github.com/enterprise-server@3.9/organizations/collaborating-with-groups-in-organizations/about-organizations)." For information about the APIs to manage organizations, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#organization) or "[Organizations](https://docs.github.com/enterprise-server@3.9/rest/orgs)" in the REST API documentation.
+   * This event occurs when there is activity relating to an organization and its members. For more information, see "[About organizations](https://docs.github.com/enterprise-server@3.14/organizations/collaborating-with-groups-in-organizations/about-organizations)." For information about the APIs to manage organizations, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#organization) or "[Organizations](https://docs.github.com/enterprise-server@3.14/rest/orgs)" in the REST API documentation.
    *
    * If you want to receive an event when a non-member is blocked or unblocked from an organization, use the `org_block` event instead.
    *
@@ -58744,7 +60855,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to an organization and its members. For more information, see "[About organizations](https://docs.github.com/enterprise-server@3.9/organizations/collaborating-with-groups-in-organizations/about-organizations)." For information about the APIs to manage organizations, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#organization) or "[Organizations](https://docs.github.com/enterprise-server@3.9/rest/orgs)" in the REST API documentation.
+   * This event occurs when there is activity relating to an organization and its members. For more information, see "[About organizations](https://docs.github.com/enterprise-server@3.14/organizations/collaborating-with-groups-in-organizations/about-organizations)." For information about the APIs to manage organizations, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#organization) or "[Organizations](https://docs.github.com/enterprise-server@3.14/rest/orgs)" in the REST API documentation.
    *
    * If you want to receive an event when a non-member is blocked or unblocked from an organization, use the `org_block` event instead.
    *
@@ -58787,7 +60898,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to an organization and its members. For more information, see "[About organizations](https://docs.github.com/enterprise-server@3.9/organizations/collaborating-with-groups-in-organizations/about-organizations)." For information about the APIs to manage organizations, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#organization) or "[Organizations](https://docs.github.com/enterprise-server@3.9/rest/orgs)" in the REST API documentation.
+   * This event occurs when there is activity relating to an organization and its members. For more information, see "[About organizations](https://docs.github.com/enterprise-server@3.14/organizations/collaborating-with-groups-in-organizations/about-organizations)." For information about the APIs to manage organizations, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#organization) or "[Organizations](https://docs.github.com/enterprise-server@3.14/rest/orgs)" in the REST API documentation.
    *
    * If you want to receive an event when a non-member is blocked or unblocked from an organization, use the `org_block` event instead.
    *
@@ -58830,7 +60941,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to GitHub Packages. For more information, see "[Introduction to GitHub Packages](https://docs.github.com/enterprise-server@3.9/packages/learn-github-packages/introduction-to-github-packages)." For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#package) or "[Packages](https://docs.github.com/enterprise-server@3.9/rest/packages)" in the REST API documentation.
+   * This event occurs when there is activity relating to GitHub Packages. For more information, see "[Introduction to GitHub Packages](https://docs.github.com/enterprise-server@3.14/packages/learn-github-packages/introduction-to-github-packages)." For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#package) or "[Packages](https://docs.github.com/enterprise-server@3.14/rest/packages)" in the REST API documentation.
    *
    * To install this event on a GitHub App, the app must have at least read-level access for the "Packages" repository permission.
    * @description A package was published to a registry.
@@ -58871,7 +60982,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to GitHub Packages. For more information, see "[Introduction to GitHub Packages](https://docs.github.com/enterprise-server@3.9/packages/learn-github-packages/introduction-to-github-packages)." For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#package) or "[Packages](https://docs.github.com/enterprise-server@3.9/rest/packages)" in the REST API documentation.
+   * This event occurs when there is activity relating to GitHub Packages. For more information, see "[Introduction to GitHub Packages](https://docs.github.com/enterprise-server@3.14/packages/learn-github-packages/introduction-to-github-packages)." For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#package) or "[Packages](https://docs.github.com/enterprise-server@3.14/rest/packages)" in the REST API documentation.
    *
    * To install this event on a GitHub App, the app must have at least read-level access for the "Packages" repository permission.
    * @description A previously published package was updated.
@@ -58912,7 +61023,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is an attempted build of a GitHub Pages site. This event occurs regardless of whether the build is successful. For more information, see "[Configuring a publishing source for your GitHub Pages site](https://docs.github.com/enterprise-server@3.9/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)." For information about the API to manage GitHub Pages, see "[Pages](https://docs.github.com/enterprise-server@3.9/rest/pages)" in the REST API documentation.
+   * This event occurs when there is an attempted build of a GitHub Pages site. This event occurs regardless of whether the build is successful. For more information, see "[Configuring a publishing source for your GitHub Pages site](https://docs.github.com/enterprise-server@3.14/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)." For information about the API to manage GitHub Pages, see "[Pages](https://docs.github.com/enterprise-server@3.14/rest/pages)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Pages" repository permission.
    */
@@ -58942,6 +61053,166 @@ export interface operations {
     requestBody: {
       content: {
         "application/json": components["schemas"]["webhook-page-build"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to a request for a fine-grained personal access token to access resources that belong to a resource owner that requires approval for token access. For more information, see "[Creating a personal access token](https://docs.github.com/enterprise-server@3.14/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)."
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Personal access token requests" organization permission.
+   *
+   * > [!NOTE]
+   * > Fine-grained PATs are in public beta. Related APIs, events, and functionality are subject to change.
+   * @description A fine-grained personal access token request was approved.
+   */
+  "personal-access-token-request/approved": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example personal_access_token_request */
+        "X-Github-Event": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example integration */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-personal-access-token-request-approved"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to a request for a fine-grained personal access token to access resources that belong to a resource owner that requires approval for token access. For more information, see "[Creating a personal access token](https://docs.github.com/enterprise-server@3.14/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)."
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Personal access token requests" organization permission.
+   *
+   * > [!NOTE]
+   * > Fine-grained PATs are in public beta. Related APIs, events, and functionality are subject to change.
+   * @description A fine-grained personal access token request was cancelled by the requester.
+   */
+  "personal-access-token-request/cancelled": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example personal_access_token_request */
+        "X-Github-Event": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example integration */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-personal-access-token-request-cancelled"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to a request for a fine-grained personal access token to access resources that belong to a resource owner that requires approval for token access. For more information, see "[Creating a personal access token](https://docs.github.com/enterprise-server@3.14/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)."
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Personal access token requests" organization permission.
+   *
+   * > [!NOTE]
+   * > Fine-grained PATs are in public beta. Related APIs, events, and functionality are subject to change.
+   * @description A fine-grained personal access token request was created.
+   */
+  "personal-access-token-request/created": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example personal_access_token_request */
+        "X-Github-Event": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example integration */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-personal-access-token-request-created"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to a request for a fine-grained personal access token to access resources that belong to a resource owner that requires approval for token access. For more information, see "[Creating a personal access token](https://docs.github.com/enterprise-server@3.14/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)."
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Personal access token requests" organization permission.
+   *
+   * > [!NOTE]
+   * > Fine-grained PATs are in public beta. Related APIs, events, and functionality are subject to change.
+   * @description A fine-grained personal access token request was denied.
+   */
+  "personal-access-token-request/denied": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example personal_access_token_request */
+        "X-Github-Event": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example integration */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-personal-access-token-request-denied"];
       };
     };
     responses: {
@@ -58988,7 +61259,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a card on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.9/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.9/rest/projects)" in the REST API documentation.
+   * This event occurs when there is activity relating to a card on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.14/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.14/rest/projects)" in the REST API documentation.
    *
    * For activity relating to a project (classic) or a column on a project (classic), use the `project` and `project_column` event.
    *
@@ -59033,7 +61304,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a card on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.9/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.9/rest/projects)" in the REST API documentation.
+   * This event occurs when there is activity relating to a card on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.14/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.14/rest/projects)" in the REST API documentation.
    *
    * For activity relating to a project (classic) or a column on a project (classic), use the `project` and `project_column` event.
    *
@@ -59078,7 +61349,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a card on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.9/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.9/rest/projects)" in the REST API documentation.
+   * This event occurs when there is activity relating to a card on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.14/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.14/rest/projects)" in the REST API documentation.
    *
    * For activity relating to a project (classic) or a column on a project (classic), use the `project` and `project_column` event.
    *
@@ -59123,7 +61394,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a card on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.9/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.9/rest/projects)" in the REST API documentation.
+   * This event occurs when there is activity relating to a card on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.14/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.14/rest/projects)" in the REST API documentation.
    *
    * For activity relating to a project (classic) or a column on a project (classic), use the `project` and `project_column` event.
    *
@@ -59168,7 +61439,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a card on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.9/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.9/rest/projects)" in the REST API documentation.
+   * This event occurs when there is activity relating to a card on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.14/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.14/rest/projects)" in the REST API documentation.
    *
    * For activity relating to a project (classic) or a column on a project (classic), use the `project` and `project_column` event.
    *
@@ -59213,7 +61484,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.9/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.9/rest/projects)" in the REST API documentation.
+   * This event occurs when there is activity relating to a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.14/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.14/rest/projects)" in the REST API documentation.
    *
    * For activity relating to a card or column on a project (classic), use the `project_card` and `project_column` event.
    *
@@ -59258,7 +61529,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a column on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.9/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.9/rest/projects)" in the REST API documentation.
+   * This event occurs when there is activity relating to a column on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.14/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.14/rest/projects)" in the REST API documentation.
    *
    * For activity relating to a project (classic) or a card on a project (classic), use the `project` and `project_card` event.
    *
@@ -59303,7 +61574,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a column on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.9/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.9/rest/projects)" in the REST API documentation.
+   * This event occurs when there is activity relating to a column on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.14/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.14/rest/projects)" in the REST API documentation.
    *
    * For activity relating to a project (classic) or a card on a project (classic), use the `project` and `project_card` event.
    *
@@ -59348,7 +61619,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a column on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.9/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.9/rest/projects)" in the REST API documentation.
+   * This event occurs when there is activity relating to a column on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.14/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.14/rest/projects)" in the REST API documentation.
    *
    * For activity relating to a project (classic) or a card on a project (classic), use the `project` and `project_card` event.
    *
@@ -59393,7 +61664,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a column on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.9/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.9/rest/projects)" in the REST API documentation.
+   * This event occurs when there is activity relating to a column on a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.14/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.14/rest/projects)" in the REST API documentation.
    *
    * For activity relating to a project (classic) or a card on a project (classic), use the `project` and `project_card` event.
    *
@@ -59438,7 +61709,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.9/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.9/rest/projects)" in the REST API documentation.
+   * This event occurs when there is activity relating to a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.14/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.14/rest/projects)" in the REST API documentation.
    *
    * For activity relating to a card or column on a project (classic), use the `project_card` and `project_column` event.
    *
@@ -59483,7 +61754,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.9/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.9/rest/projects)" in the REST API documentation.
+   * This event occurs when there is activity relating to a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.14/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.14/rest/projects)" in the REST API documentation.
    *
    * For activity relating to a card or column on a project (classic), use the `project_card` and `project_column` event.
    *
@@ -59528,7 +61799,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.9/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.9/rest/projects)" in the REST API documentation.
+   * This event occurs when there is activity relating to a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.14/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.14/rest/projects)" in the REST API documentation.
    *
    * For activity relating to a card or column on a project (classic), use the `project_card` and `project_column` event.
    *
@@ -59573,7 +61844,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.9/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.9/rest/projects)" in the REST API documentation.
+   * This event occurs when there is activity relating to a project (classic). For more information, see "[About projects (classic)](https://docs.github.com/enterprise-server@3.14/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)." For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#project) or "[Projects (classic)](https://docs.github.com/enterprise-server@3.14/rest/projects)" in the REST API documentation.
    *
    * For activity relating to a card or column on a project (classic), use the `project_card` and `project_column` event.
    *
@@ -59618,13 +61889,14 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.9/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#projectv2).
+   * This event occurs when there is activity relating to an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.14/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#projectv2).
    *
    * For activity relating to a item on a project, use the `projects_v2_item` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
    *
-   * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+   * > [!NOTE]
+   * > Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
    * @description A project in the organization was closed.
    */
   "projects-v2/closed": {
@@ -59663,13 +61935,14 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.9/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#projectv2).
+   * This event occurs when there is activity relating to an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.14/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#projectv2).
    *
    * For activity relating to a item on a project, use the `projects_v2_item` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
    *
-   * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+   * > [!NOTE]
+   * > Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
    * @description A project in the organization was created.
    */
   "projects-v2/created": {
@@ -59708,13 +61981,14 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.9/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#projectv2).
+   * This event occurs when there is activity relating to an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.14/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#projectv2).
    *
    * For activity relating to a item on a project, use the `projects_v2_item` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
    *
-   * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+   * > [!NOTE]
+   * > Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
    * @description A project in the organization was deleted.
    */
   "projects-v2/deleted": {
@@ -59753,13 +62027,14 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.9/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#projectv2).
+   * This event occurs when there is activity relating to an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.14/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#projectv2).
    *
    * For activity relating to a item on a project, use the `projects_v2_item` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
    *
-   * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+   * > [!NOTE]
+   * > Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
    * @description The title, description, or README of a project in the organization was changed.
    */
   "projects-v2/edited": {
@@ -59798,14 +62073,15 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.9/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#projectv2item).
+   * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.14/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#projectv2item).
    *
    * For activity relating to a project (instead of an item on a project), use the `projects_v2` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
    *
-   * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
-   * @description An item on an organization project was archived. For more information, see "[Archiving items from your project](https://docs.github.com/enterprise-server@3.9/issues/planning-and-tracking-with-projects/managing-items-in-your-project/archiving-items-from-your-project)."
+   * > [!NOTE]
+   * > Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+   * @description An item on an organization project was archived. For more information, see "[Archiving items from your project](https://docs.github.com/enterprise-server@3.14/issues/planning-and-tracking-with-projects/managing-items-in-your-project/archiving-items-from-your-project)."
    */
   "projects-v2-item/archived": {
     parameters: {
@@ -59843,13 +62119,14 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.9/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#projectv2item).
+   * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.14/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#projectv2item).
    *
    * For activity relating to a project (instead of an item on a project), use the `projects_v2` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
    *
-   * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+   * > [!NOTE]
+   * > Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
    * @description A draft issue in an organization project was converted to an issue.
    */
   "projects-v2-item/converted": {
@@ -59888,13 +62165,14 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.9/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#projectv2item).
+   * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.14/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#projectv2item).
    *
    * For activity relating to a project (instead of an item on a project), use the `projects_v2` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
    *
-   * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+   * > [!NOTE]
+   * > Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
    * @description An item was added to a project in the organization.
    */
   "projects-v2-item/created": {
@@ -59933,13 +62211,14 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.9/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#projectv2item).
+   * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.14/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#projectv2item).
    *
    * For activity relating to a project (instead of an item on a project), use the `projects_v2` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
    *
-   * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+   * > [!NOTE]
+   * > Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
    * @description An item was deleted from a project in the organization.
    */
   "projects-v2-item/deleted": {
@@ -59978,13 +62257,14 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.9/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#projectv2item).
+   * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.14/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#projectv2item).
    *
    * For activity relating to a project (instead of an item on a project), use the `projects_v2` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
    *
-   * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+   * > [!NOTE]
+   * > Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
    * @description The values or state of an item in an organization project were changed. For example, the value of a field was updated, the body of a draft issue was changed, or a draft issue was converted to an issue.
    */
   "projects-v2-item/edited": {
@@ -60023,13 +62303,14 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.9/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#projectv2item).
+   * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.14/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#projectv2item).
    *
    * For activity relating to a project (instead of an item on a project), use the `projects_v2` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
    *
-   * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+   * > [!NOTE]
+   * > Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
    * @description The position of an item in an organization project was changed. For example, an item was moved above or below another item in the table or board layout.
    */
   "projects-v2-item/reordered": {
@@ -60068,14 +62349,15 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.9/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#projectv2item).
+   * This event occurs when there is activity relating to an item on an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.14/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#projectv2item).
    *
    * For activity relating to a project (instead of an item on a project), use the `projects_v2` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
    *
-   * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
-   * @description An archived item on an organization project was restored from the archive. For more information, see "[Archiving items from your project](https://docs.github.com/enterprise-server@3.9/issues/planning-and-tracking-with-projects/managing-items-in-your-project/archiving-items-from-your-project)."
+   * > [!NOTE]
+   * > Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+   * @description An archived item on an organization project was restored from the archive. For more information, see "[Archiving items from your project](https://docs.github.com/enterprise-server@3.14/issues/planning-and-tracking-with-projects/managing-items-in-your-project/archiving-items-from-your-project)."
    */
   "projects-v2-item/restored": {
     parameters: {
@@ -60113,13 +62395,14 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.9/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#projectv2).
+   * This event occurs when there is activity relating to an organization-level project. For more information, see "[About Projects](https://docs.github.com/enterprise-server@3.14/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)." For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#projectv2).
    *
    * For activity relating to a item on a project, use the `projects_v2_item` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
    *
-   * **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+   * > [!NOTE]
+   * > Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
    * @description A project in the organization was reopened.
    */
   "projects-v2/reopened": {
@@ -60158,7 +62441,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when repository visibility changes from private to public. For more information, see "[Setting repository visibility](https://docs.github.com/enterprise-server@3.9/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/setting-repository-visibility)."
+   * This event occurs when repository visibility changes from private to public. For more information, see "[Setting repository visibility](https://docs.github.com/enterprise-server@3.14/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/setting-repository-visibility)."
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
    */
@@ -60198,7 +62481,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.9/rest/pulls/pulls)" in the REST API documentation.
+   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.14/rest/pulls/pulls)" in the REST API documentation.
    *
    * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
    *
@@ -60241,12 +62524,12 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.9/rest/pulls/pulls)" in the REST API documentation.
+   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.14/rest/pulls/pulls)" in the REST API documentation.
    *
    * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-   * @description Auto merge was disabled for a pull request. For more information, see "[Automatically merging a pull request](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/automatically-merging-a-pull-request)."
+   * @description Auto merge was disabled for a pull request. For more information, see "[Automatically merging a pull request](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/automatically-merging-a-pull-request)."
    */
   "pull-request/auto-merge-disabled": {
     parameters: {
@@ -60284,12 +62567,12 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.9/rest/pulls/pulls)" in the REST API documentation.
+   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.14/rest/pulls/pulls)" in the REST API documentation.
    *
    * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-   * @description Auto merge was enabled for a pull request. For more information, see "[Automatically merging a pull request](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/automatically-merging-a-pull-request)."
+   * @description Auto merge was enabled for a pull request. For more information, see "[Automatically merging a pull request](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/automatically-merging-a-pull-request)."
    */
   "pull-request/auto-merge-enabled": {
     parameters: {
@@ -60327,7 +62610,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.9/rest/pulls/pulls)" in the REST API documentation.
+   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.14/rest/pulls/pulls)" in the REST API documentation.
    *
    * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
    *
@@ -60370,12 +62653,12 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.9/rest/pulls/pulls)" in the REST API documentation.
+   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.14/rest/pulls/pulls)" in the REST API documentation.
    *
    * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-   * @description A pull request was converted to a draft. For more information, see "[Changing the stage of a pull request](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/changing-the-stage-of-a-pull-request)."
+   * @description A pull request was converted to a draft. For more information, see "[Changing the stage of a pull request](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/changing-the-stage-of-a-pull-request)."
    */
   "pull-request/converted-to-draft": {
     parameters: {
@@ -60413,7 +62696,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.9/rest/pulls/pulls)" in the REST API documentation.
+   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.14/rest/pulls/pulls)" in the REST API documentation.
    *
    * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
    *
@@ -60456,7 +62739,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.9/rest/pulls/pulls)" in the REST API documentation.
+   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.14/rest/pulls/pulls)" in the REST API documentation.
    *
    * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
    *
@@ -60499,7 +62782,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.9/rest/pulls/pulls)" in the REST API documentation.
+   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.14/rest/pulls/pulls)" in the REST API documentation.
    *
    * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
    *
@@ -60542,12 +62825,12 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.9/rest/pulls/pulls)" in the REST API documentation.
+   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.14/rest/pulls/pulls)" in the REST API documentation.
    *
    * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-   * @description Conversation on a pull request was locked. For more information, see "[Locking conversations](https://docs.github.com/enterprise-server@3.9/communities/moderating-comments-and-conversations/locking-conversations)."
+   * @description Conversation on a pull request was locked. For more information, see "[Locking conversations](https://docs.github.com/enterprise-server@3.14/communities/moderating-comments-and-conversations/locking-conversations)."
    */
   "pull-request/locked": {
     parameters: {
@@ -60585,7 +62868,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.9/rest/pulls/pulls)" in the REST API documentation.
+   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.14/rest/pulls/pulls)" in the REST API documentation.
    *
    * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
    *
@@ -60628,7 +62911,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.9/rest/pulls/pulls)" in the REST API documentation.
+   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.14/rest/pulls/pulls)" in the REST API documentation.
    *
    * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
    *
@@ -60671,12 +62954,12 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.9/rest/pulls/pulls)" in the REST API documentation.
+   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.14/rest/pulls/pulls)" in the REST API documentation.
    *
    * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-   * @description A draft pull request was marked as ready for review. For more information, see "[Changing the stage of a pull request](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/changing-the-stage-of-a-pull-request)."
+   * @description A draft pull request was marked as ready for review. For more information, see "[Changing the stage of a pull request](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/changing-the-stage-of-a-pull-request)."
    */
   "pull-request/ready-for-review": {
     parameters: {
@@ -60714,7 +62997,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.9/rest/pulls/pulls)" in the REST API documentation.
+   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.14/rest/pulls/pulls)" in the REST API documentation.
    *
    * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
    *
@@ -60757,7 +63040,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a pull request review comment. A pull request review comment is a comment on a pull request's diff. For more information, see "[Commenting on a pull request](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request)." For information about the APIs to manage pull request review comments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#pullrequestreviewcomment) or "[Pull request review comments](https://docs.github.com/enterprise-server@3.9/rest/pulls/comments)" in the REST API documentation.
+   * This event occurs when there is activity relating to a pull request review comment. A pull request review comment is a comment on a pull request's diff. For more information, see "[Commenting on a pull request](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request)." For information about the APIs to manage pull request review comments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#pullrequestreviewcomment) or "[Pull request review comments](https://docs.github.com/enterprise-server@3.14/rest/pulls/comments)" in the REST API documentation.
    *
    * For activity related to pull request reviews, pull request comments, or pull request review threads, use the `pull_request_review`, `issue_comment`, or `pull_request_review_thread` events instead.
    *
@@ -60800,7 +63083,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a pull request review comment. A pull request review comment is a comment on a pull request's diff. For more information, see "[Commenting on a pull request](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request)." For information about the APIs to manage pull request review comments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#pullrequestreviewcomment) or "[Pull request review comments](https://docs.github.com/enterprise-server@3.9/rest/pulls/comments)" in the REST API documentation.
+   * This event occurs when there is activity relating to a pull request review comment. A pull request review comment is a comment on a pull request's diff. For more information, see "[Commenting on a pull request](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request)." For information about the APIs to manage pull request review comments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#pullrequestreviewcomment) or "[Pull request review comments](https://docs.github.com/enterprise-server@3.14/rest/pulls/comments)" in the REST API documentation.
    *
    * For activity related to pull request reviews, pull request comments, or pull request review threads, use the `pull_request_review`, `issue_comment`, or `pull_request_review_thread` events instead.
    *
@@ -60843,7 +63126,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a pull request review comment. A pull request review comment is a comment on a pull request's diff. For more information, see "[Commenting on a pull request](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request)." For information about the APIs to manage pull request review comments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#pullrequestreviewcomment) or "[Pull request review comments](https://docs.github.com/enterprise-server@3.9/rest/pulls/comments)" in the REST API documentation.
+   * This event occurs when there is activity relating to a pull request review comment. A pull request review comment is a comment on a pull request's diff. For more information, see "[Commenting on a pull request](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request)." For information about the APIs to manage pull request review comments, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#pullrequestreviewcomment) or "[Pull request review comments](https://docs.github.com/enterprise-server@3.14/rest/pulls/comments)" in the REST API documentation.
    *
    * For activity related to pull request reviews, pull request comments, or pull request review threads, use the `pull_request_review`, `issue_comment`, or `pull_request_review_thread` events instead.
    *
@@ -60886,7 +63169,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a pull request review. A pull request review is a group of pull request review comments in addition to a body comment and a state. For more information, see "[About pull request reviews](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request reviews, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#pullrequestreview) or "[Pull request reviews](https://docs.github.com/enterprise-server@3.9/rest/pulls/reviews)" in the REST API documentation.
+   * This event occurs when there is activity relating to a pull request review. A pull request review is a group of pull request review comments in addition to a body comment and a state. For more information, see "[About pull request reviews](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request reviews, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#pullrequestreview) or "[Pull request reviews](https://docs.github.com/enterprise-server@3.14/rest/pulls/reviews)" in the REST API documentation.
    *
    * For activity related to pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
    *
@@ -60929,7 +63212,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a pull request review. A pull request review is a group of pull request review comments in addition to a body comment and a state. For more information, see "[About pull request reviews](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request reviews, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#pullrequestreview) or "[Pull request reviews](https://docs.github.com/enterprise-server@3.9/rest/pulls/reviews)" in the REST API documentation.
+   * This event occurs when there is activity relating to a pull request review. A pull request review is a group of pull request review comments in addition to a body comment and a state. For more information, see "[About pull request reviews](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request reviews, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#pullrequestreview) or "[Pull request reviews](https://docs.github.com/enterprise-server@3.14/rest/pulls/reviews)" in the REST API documentation.
    *
    * For activity related to pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
    *
@@ -60972,7 +63255,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.9/rest/pulls/pulls)" in the REST API documentation.
+   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.14/rest/pulls/pulls)" in the REST API documentation.
    *
    * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
    *
@@ -61015,12 +63298,12 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.9/rest/pulls/pulls)" in the REST API documentation.
+   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.14/rest/pulls/pulls)" in the REST API documentation.
    *
    * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-   * @description Review by a person or team was requested for a pull request. For more information, see "[Requesting a pull request review](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/requesting-a-pull-request-review)."
+   * @description Review by a person or team was requested for a pull request. For more information, see "[Requesting a pull request review](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/requesting-a-pull-request-review)."
    */
   "pull-request/review-requested": {
     parameters: {
@@ -61058,7 +63341,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a pull request review. A pull request review is a group of pull request review comments in addition to a body comment and a state. For more information, see "[About pull request reviews](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request reviews, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#pullrequestreview) or "[Pull request reviews](https://docs.github.com/enterprise-server@3.9/rest/pulls/reviews)" in the REST API documentation.
+   * This event occurs when there is activity relating to a pull request review. A pull request review is a group of pull request review comments in addition to a body comment and a state. For more information, see "[About pull request reviews](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request reviews, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#pullrequestreview) or "[Pull request reviews](https://docs.github.com/enterprise-server@3.14/rest/pulls/reviews)" in the REST API documentation.
    *
    * For activity related to pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
    *
@@ -61101,7 +63384,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a comment thread on a pull request. For more information, see "[About pull request reviews](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request reviews, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#pullrequestreviewthread) or "[Pull request review comments](https://docs.github.com/enterprise-server@3.9/rest/pulls/comments)" in the REST API documentation.
+   * This event occurs when there is activity relating to a comment thread on a pull request. For more information, see "[About pull request reviews](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request reviews, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#pullrequestreviewthread) or "[Pull request review comments](https://docs.github.com/enterprise-server@3.14/rest/pulls/comments)" in the REST API documentation.
    *
    * For activity related to pull request review comments, pull request comments, or pull request reviews, use the `pull_request_review_comment`, `issue_comment`, or `pull_request_review` events instead.
    *
@@ -61144,7 +63427,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a comment thread on a pull request. For more information, see "[About pull request reviews](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request reviews, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#pullrequestreviewthread) or "[Pull request review comments](https://docs.github.com/enterprise-server@3.9/rest/pulls/comments)" in the REST API documentation.
+   * This event occurs when there is activity relating to a comment thread on a pull request. For more information, see "[About pull request reviews](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)." For information about the APIs to manage pull request reviews, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#pullrequestreviewthread) or "[Pull request review comments](https://docs.github.com/enterprise-server@3.14/rest/pulls/comments)" in the REST API documentation.
    *
    * For activity related to pull request review comments, pull request comments, or pull request reviews, use the `pull_request_review_comment`, `issue_comment`, or `pull_request_review` events instead.
    *
@@ -61187,7 +63470,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.9/rest/pulls/pulls)" in the REST API documentation.
+   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.14/rest/pulls/pulls)" in the REST API documentation.
    *
    * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
    *
@@ -61230,7 +63513,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.9/rest/pulls/pulls)" in the REST API documentation.
+   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.14/rest/pulls/pulls)" in the REST API documentation.
    *
    * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
    *
@@ -61273,7 +63556,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.9/rest/pulls/pulls)" in the REST API documentation.
+   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.14/rest/pulls/pulls)" in the REST API documentation.
    *
    * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
    *
@@ -61316,12 +63599,12 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.9/rest/pulls/pulls)" in the REST API documentation.
+   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/enterprise-server@3.14/rest/pulls/pulls)" in the REST API documentation.
    *
    * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
-   * @description Conversation on a pull request was unlocked. For more information, see "[Locking conversations](https://docs.github.com/enterprise-server@3.9/communities/moderating-comments-and-conversations/locking-conversations)."
+   * @description Conversation on a pull request was unlocked. For more information, see "[Locking conversations](https://docs.github.com/enterprise-server@3.14/communities/moderating-comments-and-conversations/locking-conversations)."
    */
   "pull-request/unlocked": {
     parameters: {
@@ -61365,7 +63648,8 @@ export interface operations {
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
    *
-   * **Note**: Events will not be created if more than 5000 branches are pushed at once. Events will not be created for tags when more than three tags are pushed at once.
+   * > [!NOTE]
+   * > Events will not be created if more than 5000 branches are pushed at once. Events will not be created for tags when more than three tags are pushed at once.
    */
   push: {
     parameters: {
@@ -61403,11 +63687,12 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to GitHub Packages. For more information, see "[Introduction to GitHub Packages](https://docs.github.com/enterprise-server@3.9/packages/learn-github-packages/introduction-to-github-packages)." For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#package) or "[Packages](https://docs.github.com/enterprise-server@3.9/rest/packages)" in the REST API documentation.
+   * This event occurs when there is activity relating to GitHub Packages. For more information, see "[Introduction to GitHub Packages](https://docs.github.com/enterprise-server@3.14/packages/learn-github-packages/introduction-to-github-packages)." For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#package) or "[Packages](https://docs.github.com/enterprise-server@3.14/rest/packages)" in the REST API documentation.
    *
    * To install this event on a GitHub App, the app must have at least read-level access for the "Packages" repository permission.
    *
-   * **Note**: GitHub recommends that you use the newer `package` event instead.
+   * > [!NOTE]
+   * > GitHub recommends that you use the newer `package` event instead.
    * @description A package was published to a registry.
    */
   "registry-package/published": {
@@ -61446,11 +63731,12 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to GitHub Packages. For more information, see "[Introduction to GitHub Packages](https://docs.github.com/enterprise-server@3.9/packages/learn-github-packages/introduction-to-github-packages)." For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#package) or "[Packages](https://docs.github.com/enterprise-server@3.9/rest/packages)" in the REST API documentation.
+   * This event occurs when there is activity relating to GitHub Packages. For more information, see "[Introduction to GitHub Packages](https://docs.github.com/enterprise-server@3.14/packages/learn-github-packages/introduction-to-github-packages)." For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#package) or "[Packages](https://docs.github.com/enterprise-server@3.14/rest/packages)" in the REST API documentation.
    *
    * To install this event on a GitHub App, the app must have at least read-level access for the "Packages" repository permission.
    *
-   * **Note**: GitHub recommends that you use the newer `package` event instead.
+   * > [!NOTE]
+   * > GitHub recommends that you use the newer `package` event instead.
    * @description A package that was previously published to a registry was updated.
    */
   "registry-package/updated": {
@@ -61489,7 +63775,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-server@3.9/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-server@3.9/rest/releases)" in the REST API documentation.
+   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-server@3.14/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-server@3.14/rest/releases)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
    * @description A draft was saved, or a release or pre-release was published without previously being saved as a draft.
@@ -61530,7 +63816,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-server@3.9/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-server@3.9/rest/releases)" in the REST API documentation.
+   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-server@3.14/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-server@3.14/rest/releases)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
    * @description A release, pre-release, or draft release was deleted.
@@ -61571,10 +63857,10 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-server@3.9/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-server@3.9/rest/releases)" in the REST API documentation.
+   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-server@3.14/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-server@3.14/rest/releases)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
-   * @description The details of a release, pre-release, or draft release were edited. For more information, see "[Managing releases in a repository](https://docs.github.com/enterprise-server@3.9/repositories/releasing-projects-on-github/managing-releases-in-a-repository#editing-a-release)."
+   * @description The details of a release, pre-release, or draft release were edited. For more information, see "[Managing releases in a repository](https://docs.github.com/enterprise-server@3.14/repositories/releasing-projects-on-github/managing-releases-in-a-repository#editing-a-release)."
    */
   "release/edited": {
     parameters: {
@@ -61612,7 +63898,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-server@3.9/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-server@3.9/rest/releases)" in the REST API documentation.
+   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-server@3.14/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-server@3.14/rest/releases)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
    * @description A release was created and identified as a pre-release. A pre-release is a release that is not ready for production and may be unstable.
@@ -61653,7 +63939,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-server@3.9/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-server@3.9/rest/releases)" in the REST API documentation.
+   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-server@3.14/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-server@3.14/rest/releases)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
    * @description A release, pre-release, or draft of a release was published.
@@ -61694,7 +63980,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-server@3.9/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-server@3.9/rest/releases)" in the REST API documentation.
+   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-server@3.14/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-server@3.14/rest/releases)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
    * @description A release was published, or a pre-release was changed to a release.
@@ -61735,7 +64021,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-server@3.9/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-server@3.9/rest/releases)" in the REST API documentation.
+   * This event occurs when there is activity relating to releases. For more information, see "[About releases](https://docs.github.com/enterprise-server@3.14/repositories/releasing-projects-on-github/about-releases)." For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#release) or "[Releases](https://docs.github.com/enterprise-server@3.14/rest/releases)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
    * @description A release or pre-release was unpublished.
@@ -61776,7 +64062,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.9/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.9/rest/repos)" in the REST API documentation.
+   * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.14/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.14/rest/repos)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
    * @description Someone disabled anonymous Git read access to the repository. For more information, see "[Enabling anonymous Git read access for a repository](/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/enabling-anonymous-git-read-access-for-a-repository)."
@@ -61817,7 +64103,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.9/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.9/rest/repos)" in the REST API documentation.
+   * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.14/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.14/rest/repos)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
    * @description Someone enabled anonymous Git read access to the repository. For more information, see "[Enabling anonymous Git read access for a repository](/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/enabling-anonymous-git-read-access-for-a-repository)."
@@ -61858,7 +64144,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.9/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.9/rest/repos)" in the REST API documentation.
+   * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.14/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.14/rest/repos)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
    * @description A repository was archived.
@@ -61899,7 +64185,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.9/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.9/rest/repos)" in the REST API documentation.
+   * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.14/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.14/rest/repos)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
    * @description A repository was created.
@@ -61940,7 +64226,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.9/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.9/rest/repos)" in the REST API documentation.
+   * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.14/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.14/rest/repos)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
    * @description A repository was deleted. GitHub Apps and repository webhooks will not receive this event.
@@ -61981,7 +64267,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when a GitHub App sends a `POST` request to `/repos/{owner}/{repo}/dispatches`. For more information, see [the REST API documentation for creating a repository dispatch event](https://docs.github.com/enterprise-server@3.9/rest/repos/repos#create-a-repository-dispatch-event). In the payload, the `action` will be the `event_type` that was specified in the `POST /repos/{owner}/{repo}/dispatches` request body.
+   * This event occurs when a GitHub App sends a `POST` request to `/repos/{owner}/{repo}/dispatches`. For more information, see [the REST API documentation for creating a repository dispatch event](https://docs.github.com/enterprise-server@3.14/rest/repos/repos#create-a-repository-dispatch-event). In the payload, the `action` will be the `event_type` that was specified in the `POST /repos/{owner}/{repo}/dispatches` request body.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
    */
@@ -62021,7 +64307,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.9/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.9/rest/repos)" in the REST API documentation.
+   * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.14/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.14/rest/repos)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
    * @description The topics, default branch, description, or homepage of a repository was changed.
@@ -62062,7 +64348,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.9/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.9/rest/repos)" in the REST API documentation.
+   * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.14/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.14/rest/repos)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
    * @description The visibility of a repository was changed to `private`.
@@ -62103,7 +64389,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.9/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.9/rest/repos)" in the REST API documentation.
+   * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.14/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.14/rest/repos)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
    * @description The visibility of a repository was changed to `public`.
@@ -62144,7 +64430,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.9/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.9/rest/repos)" in the REST API documentation.
+   * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.14/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.14/rest/repos)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
    * @description The name of a repository was changed.
@@ -62185,7 +64471,124 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.9/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.9/rest/repos)" in the REST API documentation.
+   * This event occurs when there is activity relating to repository rulesets.
+   * For more information about repository rulesets, see "[Managing rulesets](https://docs.github.com/enterprise-server@3.14/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets)."
+   * For more information on managing rulesets via the APIs, see [Repository ruleset](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#repositoryruleset) in the GraphQL documentation or "[Repository rules](https://docs.github.com/enterprise-server@3.14/rest/repos/rules)" and "[Organization rules](https://docs.github.com/enterprise-server@3.14/rest/orgs/rules) in the REST API documentation."
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository or organization permission.
+   * @description A repository ruleset was created.
+   */
+  "repository-ruleset/created": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-repository-ruleset-created"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to repository rulesets.
+   * For more information about repository rulesets, see "[Managing rulesets](https://docs.github.com/enterprise-server@3.14/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets)."
+   * For more information on managing rulesets via the APIs, see [Repository ruleset](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#repositoryruleset) in the GraphQL documentation or "[Repository rules](https://docs.github.com/enterprise-server@3.14/rest/repos/rules)" and "[Organization rules](https://docs.github.com/enterprise-server@3.14/rest/orgs/rules) in the REST API documentation."
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository or organization permission.
+   * @description A repository ruleset was deleted.
+   */
+  "repository-ruleset/deleted": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-repository-ruleset-deleted"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to repository rulesets.
+   * For more information about repository rulesets, see "[Managing rulesets](https://docs.github.com/enterprise-server@3.14/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets)."
+   * For more information on managing rulesets via the APIs, see [Repository ruleset](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#repositoryruleset) in the GraphQL documentation or "[Repository rules](https://docs.github.com/enterprise-server@3.14/rest/repos/rules)" and "[Organization rules](https://docs.github.com/enterprise-server@3.14/rest/orgs/rules) in the REST API documentation."
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository or organization permission.
+   * @description A repository ruleset was edited.
+   */
+  "repository-ruleset/edited": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-repository-ruleset-edited"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.14/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.14/rest/repos)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
    * @description Ownership of the repository was transferred to a user or organization account. This event is only sent to the account where the ownership is transferred. To receive the `repository.transferred` event, the new owner account must have the GitHub App installed, and the App must be subscribed to "Repository" events.
@@ -62226,7 +64629,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.9/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.9/rest/repos)" in the REST API documentation.
+   * This event occurs when there is activity relating to repositories. For more information, see "[About repositories](https://docs.github.com/enterprise-server@3.14/repositories/creating-and-managing-repositories/about-repositories)." For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#repository) or "[Repositories](https://docs.github.com/enterprise-server@3.14/rest/repos)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
    * @description A previously archived repository was unarchived.
@@ -62269,7 +64672,8 @@ export interface operations {
   /**
    * This event occurs when there is activity relating to a security vulnerability alert in a repository.
    *
-   * **Note**: This event is deprecated. Use the `dependabot_alert` event instead.
+   * > [!WARNING]
+   * > **Deprecation notice:** This event is deprecated. Use the `dependabot_alert` event instead.
    * @description A repository vulnerability alert was created.
    */
   "repository-vulnerability-alert/create": {
@@ -62310,7 +64714,8 @@ export interface operations {
   /**
    * This event occurs when there is activity relating to a security vulnerability alert in a repository.
    *
-   * **Note**: This event is deprecated. Use the `dependabot_alert` event instead.
+   * > [!WARNING]
+   * > **Deprecation notice:** This event is deprecated. Use the `dependabot_alert` event instead.
    * @description A repository vulnerability alert was dismissed.
    */
   "repository-vulnerability-alert/dismiss": {
@@ -62351,7 +64756,8 @@ export interface operations {
   /**
    * This event occurs when there is activity relating to a security vulnerability alert in a repository.
    *
-   * **Note**: This event is deprecated. Use the `dependabot_alert` event instead.
+   * > [!WARNING]
+   * > **Deprecation notice:** This event is deprecated. Use the `dependabot_alert` event instead.
    * @description A previously dismissed or resolved repository vulnerability alert was reopened.
    */
   "repository-vulnerability-alert/reopen": {
@@ -62392,7 +64798,8 @@ export interface operations {
   /**
    * This event occurs when there is activity relating to a security vulnerability alert in a repository.
    *
-   * **Note**: This event is deprecated. Use the `dependabot_alert` event instead.
+   * > [!WARNING]
+   * > **Deprecation notice:** This event is deprecated. Use the `dependabot_alert` event instead.
    * @description A repository vulnerability alert was marked as resolved.
    */
   "repository-vulnerability-alert/resolve": {
@@ -62431,7 +64838,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a secret scanning alert. For more information about secret scanning, see "[About secret scanning](https://docs.github.com/enterprise-server@3.9/code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/enterprise-server@3.9/rest/secret-scanning)" in the REST API documentation.
+   * This event occurs when there is activity relating to a secret scanning alert. For more information about secret scanning, see "[About secret scanning](https://docs.github.com/enterprise-server@3.14/code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/enterprise-server@3.14/rest/secret-scanning)" in the REST API documentation.
    *
    * For activity relating to secret scanning alert locations, use the `secret_scanning_alert_location` event.
    *
@@ -62476,7 +64883,7 @@ export interface operations {
   /**
    * This event occurs when there is activity relating to the locations of a secret in a secret scanning alert.
    *
-   * For more information about secret scanning, see "[About secret scanning](https://docs.github.com/enterprise-server@3.9/code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/enterprise-server@3.9/rest/secret-scanning)" in the REST API documentation.
+   * For more information about secret scanning, see "[About secret scanning](https://docs.github.com/enterprise-server@3.14/code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/enterprise-server@3.14/rest/secret-scanning)" in the REST API documentation.
    *
    * For activity relating to secret scanning alerts, use the `secret_scanning_alert` event.
    *
@@ -62519,7 +64926,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a secret scanning alert. For more information about secret scanning, see "[About secret scanning](https://docs.github.com/enterprise-server@3.9/code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/enterprise-server@3.9/rest/secret-scanning)" in the REST API documentation.
+   * This event occurs when there is activity relating to a secret scanning alert. For more information about secret scanning, see "[About secret scanning](https://docs.github.com/enterprise-server@3.14/code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/enterprise-server@3.14/rest/secret-scanning)" in the REST API documentation.
    *
    * For activity relating to secret scanning alert locations, use the `secret_scanning_alert_location` event.
    *
@@ -62562,7 +64969,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a secret scanning alert. For more information about secret scanning, see "[About secret scanning](https://docs.github.com/enterprise-server@3.9/code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/enterprise-server@3.9/rest/secret-scanning)" in the REST API documentation.
+   * This event occurs when there is activity relating to a secret scanning alert. For more information about secret scanning, see "[About secret scanning](https://docs.github.com/enterprise-server@3.14/code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/enterprise-server@3.14/rest/secret-scanning)" in the REST API documentation.
    *
    * For activity relating to secret scanning alert locations, use the `secret_scanning_alert_location` event.
    *
@@ -62605,14 +65012,14 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a secret scanning alert. For more information about secret scanning, see "[About secret scanning](https://docs.github.com/enterprise-server@3.9/code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/enterprise-server@3.9/rest/secret-scanning)" in the REST API documentation.
+   * This event occurs when there is activity relating to a secret scanning alert. For more information about secret scanning, see "[About secret scanning](https://docs.github.com/enterprise-server@3.14/code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/enterprise-server@3.14/rest/secret-scanning)" in the REST API documentation.
    *
    * For activity relating to secret scanning alert locations, use the `secret_scanning_alert_location` event.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
-   * @description A secret scanning alert was marked as revoked.
+   * @description A secret scanning alert was validated.
    */
-  "secret-scanning-alert/revoked": {
+  "secret-scanning-alert/validated": {
     parameters: {
       header: {
         /** @example GitHub-Hookshot/123abc */
@@ -62637,7 +65044,7 @@ export interface operations {
     };
     requestBody: {
       content: {
-        "application/json": components["schemas"]["webhook-secret-scanning-alert-revoked"];
+        "application/json": components["schemas"]["webhook-secret-scanning-alert-validated"];
       };
     };
     responses: {
@@ -62648,9 +65055,9 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a global security advisory that was reviewed by GitHub. A GitHub-reviewed global security advisory provides information about security vulnerabilities or malware that have been mapped to packages in ecosystems we support. For more information about global security advisories, see "[About global security advisories](https://docs.github.com/enterprise-server@3.9/code-security/security-advisories/working-with-global-security-advisories-from-the-github-advisory-database/about-global-security-advisories)." For information about the API to manage security advisories, see [the REST API documentation](https://docs.github.com/enterprise-server@3.9/rest/security-advisories/global-advisories) or [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#securityadvisory).
+   * This event occurs when there is activity relating to a global security advisory that was reviewed by GitHub. A GitHub-reviewed global security advisory provides information about security vulnerabilities or malware that have been mapped to packages in ecosystems we support. For more information about global security advisories, see "[About global security advisories](https://docs.github.com/enterprise-server@3.14/code-security/security-advisories/working-with-global-security-advisories-from-the-github-advisory-database/about-global-security-advisories)." For information about the API to manage security advisories, see [the REST API documentation](https://docs.github.com/enterprise-server@3.14/rest/security-advisories/global-advisories) or [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#securityadvisory).
    *
-   * GitHub Dependabot alerts are also powered by the security advisory dataset. For more information, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.9/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)."
+   * GitHub Dependabot alerts are also powered by the security advisory dataset. For more information, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.14/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)."
    * @description A security advisory was published to the GitHub community.
    */
   "security-advisory/published": {
@@ -62689,9 +65096,9 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a global security advisory that was reviewed by GitHub. A GitHub-reviewed global security advisory provides information about security vulnerabilities or malware that have been mapped to packages in ecosystems we support. For more information about global security advisories, see "[About global security advisories](https://docs.github.com/enterprise-server@3.9/code-security/security-advisories/working-with-global-security-advisories-from-the-github-advisory-database/about-global-security-advisories)." For information about the API to manage security advisories, see [the REST API documentation](https://docs.github.com/enterprise-server@3.9/rest/security-advisories/global-advisories) or [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#securityadvisory).
+   * This event occurs when there is activity relating to a global security advisory that was reviewed by GitHub. A GitHub-reviewed global security advisory provides information about security vulnerabilities or malware that have been mapped to packages in ecosystems we support. For more information about global security advisories, see "[About global security advisories](https://docs.github.com/enterprise-server@3.14/code-security/security-advisories/working-with-global-security-advisories-from-the-github-advisory-database/about-global-security-advisories)." For information about the API to manage security advisories, see [the REST API documentation](https://docs.github.com/enterprise-server@3.14/rest/security-advisories/global-advisories) or [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#securityadvisory).
    *
-   * GitHub Dependabot alerts are also powered by the security advisory dataset. For more information, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.9/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)."
+   * GitHub Dependabot alerts are also powered by the security advisory dataset. For more information, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.14/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)."
    * @description The metadata or description of a security advisory was changed.
    */
   "security-advisory/updated": {
@@ -62730,9 +65137,9 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a global security advisory that was reviewed by GitHub. A GitHub-reviewed global security advisory provides information about security vulnerabilities or malware that have been mapped to packages in ecosystems we support. For more information about global security advisories, see "[About global security advisories](https://docs.github.com/enterprise-server@3.9/code-security/security-advisories/working-with-global-security-advisories-from-the-github-advisory-database/about-global-security-advisories)." For information about the API to manage security advisories, see [the REST API documentation](https://docs.github.com/enterprise-server@3.9/rest/security-advisories/global-advisories) or [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#securityadvisory).
+   * This event occurs when there is activity relating to a global security advisory that was reviewed by GitHub. A GitHub-reviewed global security advisory provides information about security vulnerabilities or malware that have been mapped to packages in ecosystems we support. For more information about global security advisories, see "[About global security advisories](https://docs.github.com/enterprise-server@3.14/code-security/security-advisories/working-with-global-security-advisories-from-the-github-advisory-database/about-global-security-advisories)." For information about the API to manage security advisories, see [the REST API documentation](https://docs.github.com/enterprise-server@3.14/rest/security-advisories/global-advisories) or [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#securityadvisory).
    *
-   * GitHub Dependabot alerts are also powered by the security advisory dataset. For more information, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.9/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)."
+   * GitHub Dependabot alerts are also powered by the security advisory dataset. For more information, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.14/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)."
    * @description A previously published security advisory was withdrawn.
    */
   "security-advisory/withdrawn": {
@@ -62771,7 +65178,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when code security and analysis features are enabled or disabled for a repository. For more information, see "[GitHub security features](https://docs.github.com/enterprise-server@3.9/code-security/getting-started/github-security-features)."
+   * This event occurs when code security and analysis features are enabled or disabled for a repository. For more information, see "[GitHub security features](https://docs.github.com/enterprise-server@3.14/code-security/getting-started/github-security-features)."
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
    */
@@ -62811,9 +65218,9 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a sponsorship listing. For more information, see "[About GitHub Sponsors](https://docs.github.com/enterprise-server@3.9/sponsors/getting-started-with-github-sponsors/about-github-sponsors)." For information about the API to manage sponsors, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#sponsorship).
+   * This event occurs when there is activity relating to a sponsorship listing. For more information, see "[About GitHub Sponsors](https://docs.github.com/enterprise-server@3.14/sponsors/getting-started-with-github-sponsors/about-github-sponsors)." For information about the API to manage sponsors, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#sponsorship).
    *
-   * You can only create a sponsorship webhook on GitHub.com. For more information, see "[Configuring webhooks for events in your sponsored account](https://docs.github.com/enterprise-server@3.9/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)."
+   * You can only create a sponsorship webhook on GitHub.com. For more information, see "[Configuring webhooks for events in your sponsored account](https://docs.github.com/enterprise-server@3.14/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)."
    * @description A sponsorship was cancelled and the last billing cycle has ended.
    *
    * This event is only sent when a recurring (monthly) sponsorship is cancelled; it is not sent for one-time sponsorships.
@@ -62854,9 +65261,9 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a sponsorship listing. For more information, see "[About GitHub Sponsors](https://docs.github.com/enterprise-server@3.9/sponsors/getting-started-with-github-sponsors/about-github-sponsors)." For information about the API to manage sponsors, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#sponsorship).
+   * This event occurs when there is activity relating to a sponsorship listing. For more information, see "[About GitHub Sponsors](https://docs.github.com/enterprise-server@3.14/sponsors/getting-started-with-github-sponsors/about-github-sponsors)." For information about the API to manage sponsors, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#sponsorship).
    *
-   * You can only create a sponsorship webhook on GitHub.com. For more information, see "[Configuring webhooks for events in your sponsored account](https://docs.github.com/enterprise-server@3.9/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)."
+   * You can only create a sponsorship webhook on GitHub.com. For more information, see "[Configuring webhooks for events in your sponsored account](https://docs.github.com/enterprise-server@3.14/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)."
    * @description A sponsor created a sponsorship for a sponsored account. This event occurs once the payment is successfully processed.
    */
   "sponsorship/created": {
@@ -62895,9 +65302,9 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a sponsorship listing. For more information, see "[About GitHub Sponsors](https://docs.github.com/enterprise-server@3.9/sponsors/getting-started-with-github-sponsors/about-github-sponsors)." For information about the API to manage sponsors, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#sponsorship).
+   * This event occurs when there is activity relating to a sponsorship listing. For more information, see "[About GitHub Sponsors](https://docs.github.com/enterprise-server@3.14/sponsors/getting-started-with-github-sponsors/about-github-sponsors)." For information about the API to manage sponsors, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#sponsorship).
    *
-   * You can only create a sponsorship webhook on GitHub.com. For more information, see "[Configuring webhooks for events in your sponsored account](https://docs.github.com/enterprise-server@3.9/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)."
+   * You can only create a sponsorship webhook on GitHub.com. For more information, see "[Configuring webhooks for events in your sponsored account](https://docs.github.com/enterprise-server@3.14/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)."
    * @description A monthly sponsor changed who can see their sponsorship. If you recognize your sponsors publicly, you may want to update your sponsor recognition to reflect the change when this event occurs.
    */
   "sponsorship/edited": {
@@ -62936,9 +65343,9 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a sponsorship listing. For more information, see "[About GitHub Sponsors](https://docs.github.com/enterprise-server@3.9/sponsors/getting-started-with-github-sponsors/about-github-sponsors)." For information about the API to manage sponsors, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#sponsorship).
+   * This event occurs when there is activity relating to a sponsorship listing. For more information, see "[About GitHub Sponsors](https://docs.github.com/enterprise-server@3.14/sponsors/getting-started-with-github-sponsors/about-github-sponsors)." For information about the API to manage sponsors, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#sponsorship).
    *
-   * You can only create a sponsorship webhook on GitHub.com. For more information, see "[Configuring webhooks for events in your sponsored account](https://docs.github.com/enterprise-server@3.9/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)."
+   * You can only create a sponsorship webhook on GitHub.com. For more information, see "[Configuring webhooks for events in your sponsored account](https://docs.github.com/enterprise-server@3.14/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)."
    * @description A sponsor scheduled a cancellation for their sponsorship. The cancellation will become effective on their next billing date.
    *
    * This event is only sent when a recurring (monthly) sponsorship is cancelled; it is not sent for one-time sponsorships.
@@ -62979,9 +65386,9 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a sponsorship listing. For more information, see "[About GitHub Sponsors](https://docs.github.com/enterprise-server@3.9/sponsors/getting-started-with-github-sponsors/about-github-sponsors)." For information about the API to manage sponsors, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#sponsorship).
+   * This event occurs when there is activity relating to a sponsorship listing. For more information, see "[About GitHub Sponsors](https://docs.github.com/enterprise-server@3.14/sponsors/getting-started-with-github-sponsors/about-github-sponsors)." For information about the API to manage sponsors, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#sponsorship).
    *
-   * You can only create a sponsorship webhook on GitHub.com. For more information, see "[Configuring webhooks for events in your sponsored account](https://docs.github.com/enterprise-server@3.9/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)."
+   * You can only create a sponsorship webhook on GitHub.com. For more information, see "[Configuring webhooks for events in your sponsored account](https://docs.github.com/enterprise-server@3.14/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)."
    * @description A sponsor scheduled a downgrade to a lower sponsorship tier. The new tier will become effective on their next billing date.
    */
   "sponsorship/pending-tier-change": {
@@ -63020,9 +65427,9 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a sponsorship listing. For more information, see "[About GitHub Sponsors](https://docs.github.com/enterprise-server@3.9/sponsors/getting-started-with-github-sponsors/about-github-sponsors)." For information about the API to manage sponsors, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#sponsorship).
+   * This event occurs when there is activity relating to a sponsorship listing. For more information, see "[About GitHub Sponsors](https://docs.github.com/enterprise-server@3.14/sponsors/getting-started-with-github-sponsors/about-github-sponsors)." For information about the API to manage sponsors, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#sponsorship).
    *
-   * You can only create a sponsorship webhook on GitHub.com. For more information, see "[Configuring webhooks for events in your sponsored account](https://docs.github.com/enterprise-server@3.9/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)."
+   * You can only create a sponsorship webhook on GitHub.com. For more information, see "[Configuring webhooks for events in your sponsored account](https://docs.github.com/enterprise-server@3.14/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)."
    * @description A sponsor changed the tier of their sponsorship and the change has taken effect. If a sponsor upgraded their tier, the change took effect immediately. If a sponsor downgraded their tier, the change took effect at the beginning of the sponsor's next billing cycle.
    */
   "sponsorship/tier-changed": {
@@ -63061,7 +65468,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to repository stars. For more information about stars, see "[Saving repositories with stars](https://docs.github.com/enterprise-server@3.9/get-started/exploring-projects-on-github/saving-repositories-with-stars)." For information about the APIs to manage stars, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#starredrepositoryconnection) or "[Starring](https://docs.github.com/enterprise-server@3.9/rest/activity/starring)" in the REST API documentation.
+   * This event occurs when there is activity relating to repository stars. For more information about stars, see "[Saving repositories with stars](https://docs.github.com/enterprise-server@3.14/get-started/exploring-projects-on-github/saving-repositories-with-stars)." For information about the APIs to manage stars, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#starredrepositoryconnection) or "[Starring](https://docs.github.com/enterprise-server@3.14/rest/activity/starring)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
    * @description Someone starred a repository.
@@ -63102,7 +65509,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to repository stars. For more information about stars, see "[Saving repositories with stars](https://docs.github.com/enterprise-server@3.9/get-started/exploring-projects-on-github/saving-repositories-with-stars)." For information about the APIs to manage stars, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#starredrepositoryconnection) or "[Starring](https://docs.github.com/enterprise-server@3.9/rest/activity/starring)" in the REST API documentation.
+   * This event occurs when there is activity relating to repository stars. For more information about stars, see "[Saving repositories with stars](https://docs.github.com/enterprise-server@3.14/get-started/exploring-projects-on-github/saving-repositories-with-stars)." For information about the APIs to manage stars, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#starredrepositoryconnection) or "[Starring](https://docs.github.com/enterprise-server@3.14/rest/activity/starring)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
    * @description Someone unstarred the repository.
@@ -63143,7 +65550,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when the status of a Git commit changes. For example, commits can be marked as `error`, `failure`, `pending`, or `success`. For more information, see "[About status checks](https://docs.github.com/enterprise-server@3.9/pull-requests/collaborating-with-pull-requests/collaborating-on-repositories-with-code-quality-features/about-status-checks)." For information about the APIs to manage commit statuses, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#status) or "[Commit statuses](https://docs.github.com/enterprise-server@3.9/rest/commits/statuses)" in the REST API documentation.
+   * This event occurs when the status of a Git commit changes. For example, commits can be marked as `error`, `failure`, `pending`, or `success`. For more information, see "[About status checks](https://docs.github.com/enterprise-server@3.14/pull-requests/collaborating-with-pull-requests/collaborating-on-repositories-with-code-quality-features/about-status-checks)." For information about the APIs to manage commit statuses, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#status) or "[Commit statuses](https://docs.github.com/enterprise-server@3.14/rest/commits/statuses)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Commit statuses" repository permission.
    */
@@ -63184,7 +65591,7 @@ export interface operations {
   };
   /**
    * This event occurs when a team is added to a repository.
-   * For more information, see "[Managing teams and people with access to your repository](https://docs.github.com/enterprise-server@3.9/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/managing-teams-and-people-with-access-to-your-repository)."
+   * For more information, see "[Managing teams and people with access to your repository](https://docs.github.com/enterprise-server@3.14/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/managing-teams-and-people-with-access-to-your-repository)."
    *
    * For activity relating to teams, see the `teams` event.
    *
@@ -63227,7 +65634,7 @@ export interface operations {
   };
   /**
    * This event occurs when there is activity relating to teams in an organization.
-   * For more information, see "[About teams](https://docs.github.com/enterprise-server@3.9/organizations/organizing-members-into-teams/about-teams)."
+   * For more information, see "[About teams](https://docs.github.com/enterprise-server@3.14/organizations/organizing-members-into-teams/about-teams)."
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
    * @description A team was granted access to a repository.
@@ -63269,7 +65676,7 @@ export interface operations {
   };
   /**
    * This event occurs when there is activity relating to teams in an organization.
-   * For more information, see "[About teams](https://docs.github.com/enterprise-server@3.9/organizations/organizing-members-into-teams/about-teams)."
+   * For more information, see "[About teams](https://docs.github.com/enterprise-server@3.14/organizations/organizing-members-into-teams/about-teams)."
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
    * @description A team was created.
@@ -63311,7 +65718,7 @@ export interface operations {
   };
   /**
    * This event occurs when there is activity relating to teams in an organization.
-   * For more information, see "[About teams](https://docs.github.com/enterprise-server@3.9/organizations/organizing-members-into-teams/about-teams)."
+   * For more information, see "[About teams](https://docs.github.com/enterprise-server@3.14/organizations/organizing-members-into-teams/about-teams)."
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
    * @description A team was deleted.
@@ -63353,7 +65760,7 @@ export interface operations {
   };
   /**
    * This event occurs when there is activity relating to teams in an organization.
-   * For more information, see "[About teams](https://docs.github.com/enterprise-server@3.9/organizations/organizing-members-into-teams/about-teams)."
+   * For more information, see "[About teams](https://docs.github.com/enterprise-server@3.14/organizations/organizing-members-into-teams/about-teams)."
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
    * @description The name, description, or visibility of a team was changed.
@@ -63395,7 +65802,7 @@ export interface operations {
   };
   /**
    * This event occurs when there is activity relating to teams in an organization.
-   * For more information, see "[About teams](https://docs.github.com/enterprise-server@3.9/organizations/organizing-members-into-teams/about-teams)."
+   * For more information, see "[About teams](https://docs.github.com/enterprise-server@3.14/organizations/organizing-members-into-teams/about-teams)."
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Members" organization permission.
    * @description A team's access to a repository was removed.
@@ -63514,7 +65921,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to watching, or subscribing to, a repository. For more information about watching, see "[Managing your subscriptions](https://docs.github.com/enterprise-server@3.9/account-and-profile/managing-subscriptions-and-notifications-on-github/managing-subscriptions-for-activity-on-github/managing-your-subscriptions)." For information about the APIs to manage watching, see "[Watching](https://docs.github.com/enterprise-server@3.9/rest/activity/watching)" in the REST API documentation.
+   * This event occurs when there is activity relating to watching, or subscribing to, a repository. For more information about watching, see "[Managing your subscriptions](https://docs.github.com/enterprise-server@3.14/account-and-profile/managing-subscriptions-and-notifications-on-github/managing-subscriptions-for-activity-on-github/managing-your-subscriptions)." For information about the APIs to manage watching, see "[Watching](https://docs.github.com/enterprise-server@3.14/rest/activity/watching)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
    * @description Someone started watching the repository.
@@ -63555,7 +65962,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when a GitHub Actions workflow is manually triggered. For more information, see "[Manually running a workflow](https://docs.github.com/enterprise-server@3.9/actions/managing-workflow-runs/manually-running-a-workflow)."
+   * This event occurs when a GitHub Actions workflow is manually triggered. For more information, see "[Manually running a workflow](https://docs.github.com/enterprise-server@3.14/actions/managing-workflow-runs/manually-running-a-workflow)."
    *
    * For activity relating to workflow runs, use the `workflow_run` event.
    *
@@ -63597,7 +66004,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a job in a GitHub Actions workflow. For more information, see "[Using jobs in a workflow](https://docs.github.com/enterprise-server@3.9/actions/using-jobs/using-jobs-in-a-workflow)." For information about the API to manage workflow jobs, see "[Workflow jobs](https://docs.github.com/enterprise-server@3.9/rest/actions/workflow-jobs)" in the REST API documentation.
+   * This event occurs when there is activity relating to a job in a GitHub Actions workflow. For more information, see "[Using jobs in a workflow](https://docs.github.com/enterprise-server@3.14/actions/using-jobs/using-jobs-in-a-workflow)." For information about the API to manage workflow jobs, see "[Workflow jobs](https://docs.github.com/enterprise-server@3.14/rest/actions/workflow-jobs)" in the REST API documentation.
    *
    * For activity relating to a workflow run instead of a job in a workflow run, use the `workflow_run` event.
    *
@@ -63640,7 +66047,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a job in a GitHub Actions workflow. For more information, see "[Using jobs in a workflow](https://docs.github.com/enterprise-server@3.9/actions/using-jobs/using-jobs-in-a-workflow)." For information about the API to manage workflow jobs, see "[Workflow jobs](https://docs.github.com/enterprise-server@3.9/rest/actions/workflow-jobs)" in the REST API documentation.
+   * This event occurs when there is activity relating to a job in a GitHub Actions workflow. For more information, see "[Using jobs in a workflow](https://docs.github.com/enterprise-server@3.14/actions/using-jobs/using-jobs-in-a-workflow)." For information about the API to manage workflow jobs, see "[Workflow jobs](https://docs.github.com/enterprise-server@3.14/rest/actions/workflow-jobs)" in the REST API documentation.
    *
    * For activity relating to a workflow run instead of a job in a workflow run, use the `workflow_run` event.
    *
@@ -63683,7 +66090,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a job in a GitHub Actions workflow. For more information, see "[Using jobs in a workflow](https://docs.github.com/enterprise-server@3.9/actions/using-jobs/using-jobs-in-a-workflow)." For information about the API to manage workflow jobs, see "[Workflow jobs](https://docs.github.com/enterprise-server@3.9/rest/actions/workflow-jobs)" in the REST API documentation.
+   * This event occurs when there is activity relating to a job in a GitHub Actions workflow. For more information, see "[Using jobs in a workflow](https://docs.github.com/enterprise-server@3.14/actions/using-jobs/using-jobs-in-a-workflow)." For information about the API to manage workflow jobs, see "[Workflow jobs](https://docs.github.com/enterprise-server@3.14/rest/actions/workflow-jobs)" in the REST API documentation.
    *
    * For activity relating to a workflow run instead of a job in a workflow run, use the `workflow_run` event.
    *
@@ -63726,7 +66133,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a job in a GitHub Actions workflow. For more information, see "[Using jobs in a workflow](https://docs.github.com/enterprise-server@3.9/actions/using-jobs/using-jobs-in-a-workflow)." For information about the API to manage workflow jobs, see "[Workflow jobs](https://docs.github.com/enterprise-server@3.9/rest/actions/workflow-jobs)" in the REST API documentation.
+   * This event occurs when there is activity relating to a job in a GitHub Actions workflow. For more information, see "[Using jobs in a workflow](https://docs.github.com/enterprise-server@3.14/actions/using-jobs/using-jobs-in-a-workflow)." For information about the API to manage workflow jobs, see "[Workflow jobs](https://docs.github.com/enterprise-server@3.14/rest/actions/workflow-jobs)" in the REST API documentation.
    *
    * For activity relating to a workflow run instead of a job in a workflow run, use the `workflow_run` event.
    *
@@ -63769,7 +66176,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a run of a GitHub Actions workflow. For more information, see "[About workflows](https://docs.github.com/enterprise-server@3.9/actions/using-workflows/about-workflows)." For information about the APIs to manage workflow runs, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#workflowrun) or "[Workflow runs](https://docs.github.com/enterprise-server@3.9/rest/actions/workflow-runs)" in the REST API documentation.
+   * This event occurs when there is activity relating to a run of a GitHub Actions workflow. For more information, see "[About workflows](https://docs.github.com/enterprise-server@3.14/actions/using-workflows/about-workflows)." For information about the APIs to manage workflow runs, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#workflowrun) or "[Workflow runs](https://docs.github.com/enterprise-server@3.14/rest/actions/workflow-runs)" in the REST API documentation.
    *
    * For activity relating to a job in a workflow run, use the `workflow_job` event.
    *
@@ -63812,7 +66219,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a run of a GitHub Actions workflow. For more information, see "[About workflows](https://docs.github.com/enterprise-server@3.9/actions/using-workflows/about-workflows)." For information about the APIs to manage workflow runs, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#workflowrun) or "[Workflow runs](https://docs.github.com/enterprise-server@3.9/rest/actions/workflow-runs)" in the REST API documentation.
+   * This event occurs when there is activity relating to a run of a GitHub Actions workflow. For more information, see "[About workflows](https://docs.github.com/enterprise-server@3.14/actions/using-workflows/about-workflows)." For information about the APIs to manage workflow runs, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#workflowrun) or "[Workflow runs](https://docs.github.com/enterprise-server@3.14/rest/actions/workflow-runs)" in the REST API documentation.
    *
    * For activity relating to a job in a workflow run, use the `workflow_job` event.
    *
@@ -63855,7 +66262,7 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity relating to a run of a GitHub Actions workflow. For more information, see "[About workflows](https://docs.github.com/enterprise-server@3.9/actions/using-workflows/about-workflows)." For information about the APIs to manage workflow runs, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.9/graphql/reference/objects#workflowrun) or "[Workflow runs](https://docs.github.com/enterprise-server@3.9/rest/actions/workflow-runs)" in the REST API documentation.
+   * This event occurs when there is activity relating to a run of a GitHub Actions workflow. For more information, see "[About workflows](https://docs.github.com/enterprise-server@3.14/actions/using-workflows/about-workflows)." For information about the APIs to manage workflow runs, see [the GraphQL documentation](https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#workflowrun) or "[Workflow runs](https://docs.github.com/enterprise-server@3.14/rest/actions/workflow-runs)" in the REST API documentation.
    *
    * For activity relating to a job in a workflow run, use the `workflow_job` event.
    *
