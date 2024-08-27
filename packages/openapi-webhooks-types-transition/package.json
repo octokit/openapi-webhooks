@@ -1,0 +1,21 @@
+{
+  "name": "@octokit/openapi-webhooks-types-transition",
+  "description": "Transition package for OpenAPI Webhooks Types",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/octokit/openapi-webhooks.git",
+    "directory": "packages/openapi-webhooks-types-transition"
+  },
+  "dependencies": {
+    "@octokit/openapi-webhooks-types": "^0.0.0-development"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "version": "0.0.0-development",
+  "main": "",
+  "types": "types.d.ts",
+  "author": "wolfy1339 <webmaster@wolfy1339.com>",
+  "license": "MIT"
+}
