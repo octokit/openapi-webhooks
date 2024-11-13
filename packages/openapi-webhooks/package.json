@@ -1,8 +1,15 @@
 {
-  "name": "@octokit/openapi-webhooks",
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
   "version": "0.0.0-development",
-  "description": "GitHub's official Webhooks OpenAPI spec with Octokit extensions",
   "main": "index.js",
+  "types": "types.d.ts",
+  "author": "wolfy1339 <webmaster@wolfy1339.com>",
+  "license": "MIT",
+  "name": "@octokit/openapi-webhooks",
+  "description": "GitHub's official Webhooks OpenAPI spec with Octokit extensions",
   "files": [
     "generated/*",
     "index.js"
@@ -18,11 +25,5 @@
     "openapi",
     "octokit",
     "webhooks"
-  ],
-  "author": "wolfy1339 <webmaster@wolfy1339.com>",
-  "license": "MIT",
-  "publishConfig": {
-    "access": "public",
-    "provenance": true
-  }
+  ]
 }
