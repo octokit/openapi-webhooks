@@ -179,7 +179,7 @@
       "$ref": "#/components/schemas/repository-webhooks"
     },
     "sender": {
-      "$ref": "#/components/schemas/simple-user-webhooks"
+      "$ref": "#/components/schemas/simple-user"
     }
   },
   "required": ["action", "milestone", "repository", "sender"]
