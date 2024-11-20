@@ -38,7 +38,7 @@
       "$ref": "#/components/schemas/simple-installation"
     },
     "sender": {
-      "$ref": "#/components/schemas/simple-user-webhooks"
+      "$ref": "#/components/schemas/simple-user"
     }
   },
   "required": ["action", "repository", "sender"]

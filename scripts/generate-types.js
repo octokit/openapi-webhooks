@@ -48,7 +48,7 @@ async function run() {
           description: `Generated TypeScript definitions based on GitHub's OpenAPI spec for ${name}`,
           repository: {
             type: "git",
-            url: "https://github.com/octokit/openapi-webhooks.git",
+            url: "git+https://github.com/octokit/openapi-webhooks.git",
             directory: `packages/${packageName}`,
           },
           ...packageDefaults,

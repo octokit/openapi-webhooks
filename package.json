@@ -10,7 +10,7 @@
     "download": "node scripts/download.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
-    "generate-types": "node scripts/generate-types.js",
+    "generate-types": "node scripts/generate-types.js && node scripts/generate-transition-types.js",
     "update-package": "node scripts/update-package.js",
     "lint": "prettier --check '*.{md,json}' 'scripts/**/*.{js,json}' 'packages/**/*.{ts,md,json,d.ts}'",
     "lint:fix": "prettier --write '*.{md,json}' 'scripts/**/*.{js,json}' 'packages/**/*.{ts,md,json,d.ts}'"
@@ -24,7 +24,7 @@
   "author": "Wolfy1339 <webmaster@wolfy1339.com>",
   "license": "MIT",
   "devDependencies": {
-    "@octokit/core": "^5.0.0",
+    "@octokit/core": "^6.0.0",
     "deep-equal": "^2.0.5",
     "github-enterprise-server-versions": "^2.0.1",
     "lodash": "^4.17.21",
@@ -33,7 +33,7 @@
     "semantic-release-plugin-update-version-in-files": "^1.1.0"
   },
   "engines": {
-    "node": ">=16"
+    "node": ">=20"
   },
   "release": {
     "branches": [
@@ -46,7 +46,8 @@
         "semantic-release-plugin-update-version-in-files",
         {
           "files": [
-            "packages/openapi-webhooks/generated/*"
+            "packages/openapi-webhooks/generated/*",
+            "packages/openapi-webhooks-types-transition/package.json"
           ]
         }
       ],
@@ -60,6 +61,12 @@
         "@semantic-release/npm",
         {
           "pkgRoot": "packages/openapi-webhooks"
+        }
+      ],
+      [
+        "@semantic-release/npm",
+        {
+          "pkgRoot": "packages/openapi-webhooks-types-transition"
         }
       ],
       [
@@ -95,7 +102,13 @@
       [
         "@semantic-release/npm",
         {
-          "pkgRoot": "packages/openapi-webhooks-types-ghes-3.9"
+          "pkgRoot": "packages/openapi-webhooks-types-ghes-3.13"
+        }
+      ],
+      [
+        "@semantic-release/npm",
+        {
+          "pkgRoot": "packages/openapi-webhooks-types-ghes-3.14"
         }
       ],
       [

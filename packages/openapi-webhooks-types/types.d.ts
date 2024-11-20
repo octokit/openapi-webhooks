@@ -137,7 +137,8 @@ export interface webhooks {
      *
      *     Repository and organization webhooks only receive payloads for the `created` and `completed` event types in repositories.
      *
-     *     **Note**: The API only looks for pushes in the repository where the check run was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
+     *     > [!NOTE]
+     *     > The API only looks for pushes in the repository where the check run was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
      * @description A check run was completed, and a conclusion is available.
      */
     post: operations["check-run/completed"];
@@ -165,7 +166,8 @@ export interface webhooks {
      *
      *     Repository and organization webhooks only receive payloads for the `created` and `completed` event types in repositories.
      *
-     *     **Note**: The API only looks for pushes in the repository where the check run was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
+     *     > [!NOTE]
+     *     > The API only looks for pushes in the repository where the check run was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
      * @description A new check run was created.
      */
     post: operations["check-run/created"];
@@ -193,7 +195,8 @@ export interface webhooks {
      *
      *     Repository and organization webhooks only receive payloads for the `created` and `completed` event types in repositories.
      *
-     *     **Note**: The API only looks for pushes in the repository where the check run was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
+     *     > [!NOTE]
+     *     > The API only looks for pushes in the repository where the check run was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
      * @description A check run completed, and someone requested a followup action that your app provides. Only the GitHub App someone requests to perform an action will receive the `requested_action` payload. For more information, see "[Creating CI tests with the Checks API](https://docs.github.com/developers/apps/guides/creating-ci-tests-with-the-checks-api)."
      */
     post: operations["check-run/requested-action"];
@@ -221,7 +224,8 @@ export interface webhooks {
      *
      *     Repository and organization webhooks only receive payloads for the `created` and `completed` event types in repositories.
      *
-     *     **Note**: The API only looks for pushes in the repository where the check run was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
+     *     > [!NOTE]
+     *     > The API only looks for pushes in the repository where the check run was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
      * @description Someone requested to re-run a check run. Only the GitHub App that someone requests to re-run the check will receive the `rerequested` payload.
      */
     post: operations["check-run/rerequested"];
@@ -249,7 +253,8 @@ export interface webhooks {
      *
      *     Repository and organization webhooks only receive payloads for the `completed` event types in repositories.
      *
-     *     **Note**: The API only looks for pushes in the repository where the check suite was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
+     *     > [!NOTE]
+     *     > The API only looks for pushes in the repository where the check suite was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
      * @description All check runs in a check suite have completed, and a conclusion is available.
      */
     post: operations["check-suite/completed"];
@@ -277,7 +282,8 @@ export interface webhooks {
      *
      *     Repository and organization webhooks only receive payloads for the `completed` event types in repositories.
      *
-     *     **Note**: The API only looks for pushes in the repository where the check suite was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
+     *     > [!NOTE]
+     *     > The API only looks for pushes in the repository where the check suite was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
      * @description Someone requested to run a check suite. By default, check suites are automatically created when you create a check run. For more information, see [the GraphQL API documentation for creating a check run](https://docs.github.com/graphql/reference/mutations#createcheckrun) or "[Create a check run](https://docs.github.com/rest/checks/runs#create-a-check-run)" in the REST API documentation.
      */
     post: operations["check-suite/requested"];
@@ -305,7 +311,8 @@ export interface webhooks {
      *
      *     Repository and organization webhooks only receive payloads for the `completed` event types in repositories.
      *
-     *     **Note**: The API only looks for pushes in the repository where the check suite was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
+     *     > [!NOTE]
+     *     > The API only looks for pushes in the repository where the check suite was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
      * @description Someone requested to re-run the check runs in a check suite. For more information, see [the GraphQL API documentation for creating a check suite](https://docs.github.com/graphql/reference/mutations#createchecksuite) or "[Create a check suite](https://docs.github.com/rest/checks/suites#create-a-check-suite)" in the REST API documentation.
      */
     post: operations["check-suite/rerequested"];
@@ -604,7 +611,8 @@ export interface webhooks {
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
      *
-     *     **Note**: This event will not occur when more than three tags are deleted at once. */
+     *     > [!NOTE]
+     *     > This event will not occur when more than three tags are deleted at once. */
     post: operations["delete"];
     delete?: never;
     options?: never;
@@ -628,7 +636,8 @@ export interface webhooks {
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
      *
-     *     **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
+     *     > [!NOTE]
+     *     > Webhook events for Dependabot alerts are currently in beta and subject to change.
      * @description A Dependabot alert was automatically closed by a Dependabot auto-triage rule.
      */
     post: operations["dependabot-alert/auto-dismissed"];
@@ -654,7 +663,8 @@ export interface webhooks {
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
      *
-     *     **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
+     *     > [!NOTE]
+     *     > Webhook events for Dependabot alerts are currently in beta and subject to change.
      * @description A Dependabot alert, that had been automatically closed by a Dependabot auto-triage rule, was automatically reopened because the alert metadata or rule changed.
      */
     post: operations["dependabot-alert/auto-reopened"];
@@ -680,7 +690,8 @@ export interface webhooks {
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
      *
-     *     **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
+     *     > [!NOTE]
+     *     > Webhook events for Dependabot alerts are currently in beta and subject to change.
      * @description A manifest file change introduced a vulnerable dependency, or a GitHub Security Advisory was published and an existing dependency was found to be vulnerable.
      */
     post: operations["dependabot-alert/created"];
@@ -706,7 +717,8 @@ export interface webhooks {
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
      *
-     *     **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
+     *     > [!NOTE]
+     *     > Webhook events for Dependabot alerts are currently in beta and subject to change.
      * @description A Dependabot alert was manually closed.
      */
     post: operations["dependabot-alert/dismissed"];
@@ -732,7 +744,8 @@ export interface webhooks {
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
      *
-     *     **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
+     *     > [!NOTE]
+     *     > Webhook events for Dependabot alerts are currently in beta and subject to change.
      * @description A manifest file change removed a vulnerability.
      */
     post: operations["dependabot-alert/fixed"];
@@ -758,7 +771,8 @@ export interface webhooks {
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
      *
-     *     **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
+     *     > [!NOTE]
+     *     > Webhook events for Dependabot alerts are currently in beta and subject to change.
      * @description A manifest file change introduced a vulnerable dependency that had previously been fixed.
      */
     post: operations["dependabot-alert/reintroduced"];
@@ -784,7 +798,8 @@ export interface webhooks {
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
      *
-     *     **Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.
+     *     > [!NOTE]
+     *     > Webhook events for Dependabot alerts are currently in beta and subject to change.
      * @description A Dependabot alert was manually reopened.
      */
     post: operations["dependabot-alert/reopened"];
@@ -971,6 +986,9 @@ export interface webhooks {
      *     For activity relating to deployment creation, use the `deployment` event.
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Deployments" repository permission.
+     *
+     *     > [!NOTE]
+     *     > A webhook event is not fired for deployment statuses with an `inactive` state.
      * @description A new deployment status was created.
      */
     post: operations["deployment-status/created"];
@@ -996,7 +1014,8 @@ export interface webhooks {
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
      *
-     *     **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     *     > [!NOTE]
+     *     > Webhook events for GitHub Discussions are currently in beta and subject to change.
      * @description A comment on the discussion was marked as the answer.
      */
     post: operations["discussion/answered"];
@@ -1022,7 +1041,8 @@ export interface webhooks {
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
      *
-     *     **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     *     > [!NOTE]
+     *     > Webhook events for GitHub Discussions are currently in beta and subject to change.
      * @description The category of a discussion was changed.
      */
     post: operations["discussion/category-changed"];
@@ -1048,7 +1068,8 @@ export interface webhooks {
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
      *
-     *     **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     *     > [!NOTE]
+     *     > Webhook events for GitHub Discussions are currently in beta and subject to change.
      * @description A discussion was closed.
      */
     post: operations["discussion/closed"];
@@ -1074,7 +1095,8 @@ export interface webhooks {
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
      *
-     *     **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     *     > [!NOTE]
+     *     > Webhook events for GitHub Discussions are currently in beta and subject to change.
      * @description A comment on a discussion was created.
      */
     post: operations["discussion-comment/created"];
@@ -1100,7 +1122,8 @@ export interface webhooks {
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
      *
-     *     **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     *     > [!NOTE]
+     *     > Webhook events for GitHub Discussions are currently in beta and subject to change.
      * @description A comment on a discussion was deleted.
      */
     post: operations["discussion-comment/deleted"];
@@ -1126,7 +1149,8 @@ export interface webhooks {
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
      *
-     *     **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     *     > [!NOTE]
+     *     > Webhook events for GitHub Discussions are currently in beta and subject to change.
      * @description A comment on a discussion was edited.
      */
     post: operations["discussion-comment/edited"];
@@ -1152,7 +1176,8 @@ export interface webhooks {
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
      *
-     *     **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     *     > [!NOTE]
+     *     > Webhook events for GitHub Discussions are currently in beta and subject to change.
      * @description A discussion was created.
      */
     post: operations["discussion/created"];
@@ -1178,7 +1203,8 @@ export interface webhooks {
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
      *
-     *     **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     *     > [!NOTE]
+     *     > Webhook events for GitHub Discussions are currently in beta and subject to change.
      * @description A discussion was deleted.
      */
     post: operations["discussion/deleted"];
@@ -1204,7 +1230,8 @@ export interface webhooks {
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
      *
-     *     **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     *     > [!NOTE]
+     *     > Webhook events for GitHub Discussions are currently in beta and subject to change.
      * @description The title or body on a discussion was edited, or the category of the discussion was changed.
      */
     post: operations["discussion/edited"];
@@ -1230,7 +1257,8 @@ export interface webhooks {
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
      *
-     *     **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     *     > [!NOTE]
+     *     > Webhook events for GitHub Discussions are currently in beta and subject to change.
      * @description A label was added to a discussion.
      */
     post: operations["discussion/labeled"];
@@ -1256,7 +1284,8 @@ export interface webhooks {
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
      *
-     *     **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     *     > [!NOTE]
+     *     > Webhook events for GitHub Discussions are currently in beta and subject to change.
      * @description A discussion was locked.
      */
     post: operations["discussion/locked"];
@@ -1282,7 +1311,8 @@ export interface webhooks {
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
      *
-     *     **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     *     > [!NOTE]
+     *     > Webhook events for GitHub Discussions are currently in beta and subject to change.
      * @description A discussion was pinned.
      */
     post: operations["discussion/pinned"];
@@ -1308,7 +1338,8 @@ export interface webhooks {
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
      *
-     *     **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     *     > [!NOTE]
+     *     > Webhook events for GitHub Discussions are currently in beta and subject to change.
      * @description A discussion was reopened.
      */
     post: operations["discussion/reopened"];
@@ -1334,7 +1365,8 @@ export interface webhooks {
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
      *
-     *     **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     *     > [!NOTE]
+     *     > Webhook events for GitHub Discussions are currently in beta and subject to change.
      * @description A discussion was transferred to another repository.
      */
     post: operations["discussion/transferred"];
@@ -1360,7 +1392,8 @@ export interface webhooks {
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
      *
-     *     **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     *     > [!NOTE]
+     *     > Webhook events for GitHub Discussions are currently in beta and subject to change.
      * @description A comment on the discussion was unmarked as the answer.
      */
     post: operations["discussion/unanswered"];
@@ -1386,7 +1419,8 @@ export interface webhooks {
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
      *
-     *     **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     *     > [!NOTE]
+     *     > Webhook events for GitHub Discussions are currently in beta and subject to change.
      * @description A label was removed from a discussion.
      */
     post: operations["discussion/unlabeled"];
@@ -1412,7 +1446,8 @@ export interface webhooks {
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
      *
-     *     **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     *     > [!NOTE]
+     *     > Webhook events for GitHub Discussions are currently in beta and subject to change.
      * @description A discussion was unlocked.
      */
     post: operations["discussion/unlocked"];
@@ -1438,7 +1473,8 @@ export interface webhooks {
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Discussions" repository permission.
      *
-     *     **Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.
+     *     > [!NOTE]
+     *     > Webhook events for GitHub Discussions are currently in beta and subject to change.
      * @description A discussion was unpinned.
      */
     post: operations["discussion/unpinned"];
@@ -2857,7 +2893,8 @@ export interface webhooks {
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Personal access token requests" organization permission.
      *
-     *     **Note**: Fine-grained PATs are in public beta. Related APIs, events, and functionality are subject to change.
+     *     > [!NOTE]
+     *     > Fine-grained PATs are in public beta. Related APIs, events, and functionality are subject to change.
      * @description A fine-grained personal access token request was approved.
      */
     post: operations["personal-access-token-request/approved"];
@@ -2881,7 +2918,8 @@ export interface webhooks {
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Personal access token requests" organization permission.
      *
-     *     **Note**: Fine-grained PATs are in public beta. Related APIs, events, and functionality are subject to change.
+     *     > [!NOTE]
+     *     > Fine-grained PATs are in public beta. Related APIs, events, and functionality are subject to change.
      * @description A fine-grained personal access token request was cancelled by the requester.
      */
     post: operations["personal-access-token-request/cancelled"];
@@ -2905,7 +2943,8 @@ export interface webhooks {
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Personal access token requests" organization permission.
      *
-     *     **Note**: Fine-grained PATs are in public beta. Related APIs, events, and functionality are subject to change.
+     *     > [!NOTE]
+     *     > Fine-grained PATs are in public beta. Related APIs, events, and functionality are subject to change.
      * @description A fine-grained personal access token request was created.
      */
     post: operations["personal-access-token-request/created"];
@@ -2929,7 +2968,8 @@ export interface webhooks {
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Personal access token requests" organization permission.
      *
-     *     **Note**: Fine-grained PATs are in public beta. Related APIs, events, and functionality are subject to change.
+     *     > [!NOTE]
+     *     > Fine-grained PATs are in public beta. Related APIs, events, and functionality are subject to change.
      * @description A fine-grained personal access token request was denied.
      */
     post: operations["personal-access-token-request/denied"];
@@ -3336,7 +3376,8 @@ export interface webhooks {
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
      *
-     *     **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+     *     > [!NOTE]
+     *     > Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
      * @description A project in the organization was closed.
      */
     post: operations["projects-v2/closed"];
@@ -3362,7 +3403,8 @@ export interface webhooks {
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
      *
-     *     **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+     *     > [!NOTE]
+     *     > Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
      * @description A project in the organization was created.
      */
     post: operations["projects-v2/created"];
@@ -3388,7 +3430,8 @@ export interface webhooks {
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
      *
-     *     **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+     *     > [!NOTE]
+     *     > Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
      * @description A project in the organization was deleted.
      */
     post: operations["projects-v2/deleted"];
@@ -3414,7 +3457,8 @@ export interface webhooks {
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
      *
-     *     **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+     *     > [!NOTE]
+     *     > Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
      * @description The title, description, or README of a project in the organization was changed.
      */
     post: operations["projects-v2/edited"];
@@ -3440,7 +3484,8 @@ export interface webhooks {
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
      *
-     *     **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+     *     > [!NOTE]
+     *     > Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
      * @description An item on an organization project was archived. For more information, see "[Archiving items from your project](https://docs.github.com/issues/planning-and-tracking-with-projects/managing-items-in-your-project/archiving-items-from-your-project)."
      */
     post: operations["projects-v2-item/archived"];
@@ -3466,7 +3511,8 @@ export interface webhooks {
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
      *
-     *     **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+     *     > [!NOTE]
+     *     > Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
      * @description A draft issue in an organization project was converted to an issue.
      */
     post: operations["projects-v2-item/converted"];
@@ -3492,7 +3538,8 @@ export interface webhooks {
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
      *
-     *     **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+     *     > [!NOTE]
+     *     > Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
      * @description An item was added to a project in the organization.
      */
     post: operations["projects-v2-item/created"];
@@ -3518,7 +3565,8 @@ export interface webhooks {
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
      *
-     *     **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+     *     > [!NOTE]
+     *     > Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
      * @description An item was deleted from a project in the organization.
      */
     post: operations["projects-v2-item/deleted"];
@@ -3544,7 +3592,8 @@ export interface webhooks {
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
      *
-     *     **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+     *     > [!NOTE]
+     *     > Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
      * @description The values or state of an item in an organization project were changed. For example, the value of a field was updated, the body of a draft issue was changed, or a draft issue was converted to an issue.
      */
     post: operations["projects-v2-item/edited"];
@@ -3570,7 +3619,8 @@ export interface webhooks {
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
      *
-     *     **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+     *     > [!NOTE]
+     *     > Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
      * @description The position of an item in an organization project was changed. For example, an item was moved above or below another item in the table or board layout.
      */
     post: operations["projects-v2-item/reordered"];
@@ -3596,7 +3646,8 @@ export interface webhooks {
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
      *
-     *     **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+     *     > [!NOTE]
+     *     > Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
      * @description An archived item on an organization project was restored from the archive. For more information, see "[Archiving items from your project](https://docs.github.com/issues/planning-and-tracking-with-projects/managing-items-in-your-project/archiving-items-from-your-project)."
      */
     post: operations["projects-v2-item/restored"];
@@ -3622,10 +3673,92 @@ export interface webhooks {
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
      *
-     *     **Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+     *     > [!NOTE]
+     *     > Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
      * @description A project in the organization was reopened.
      */
     post: operations["projects-v2/reopened"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "projects-v2-status-update-created": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * This event occurs when there is activity relating to a status update on an organization-level project. For more information, see "[About Projects](https://docs.github.com/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)."
+     *
+     *     For activity relating to a project, use the `projects_v2` event.
+     *
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
+     *
+     *     > [!NOTE]
+     *     > To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+     * @description A status update was added to a project in the organization.
+     */
+    post: operations["projects-v2-status-update/created"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "projects-v2-status-update-deleted": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * This event occurs when there is activity relating to a status update on an organization-level project. For more information, see "[About Projects](https://docs.github.com/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)."
+     *
+     *     For activity relating to a project, use the `projects_v2` event.
+     *
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
+     *
+     *     > [!NOTE]
+     *     > To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+     * @description A status update was removed from a project in the organization.
+     */
+    post: operations["projects-v2-status-update/deleted"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "projects-v2-status-update-edited": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * This event occurs when there is activity relating to a status update on an organization-level project. For more information, see "[About Projects](https://docs.github.com/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)."
+     *
+     *     For activity relating to a project, use the `projects_v2` event.
+     *
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Projects" organization permission.
+     *
+     *     > [!NOTE]
+     *     > To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).
+     * @description A status update was edited on a project in the organization.
+     */
+    post: operations["projects-v2-status-update/edited"];
     delete?: never;
     options?: never;
     head?: never;
@@ -4362,7 +4495,8 @@ export interface webhooks {
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
      *
-     *     **Note**: Events will not be created if more than 5000 branches are pushed at once. Events will not be created for tags when more than three tags are pushed at once. */
+     *     > [!NOTE]
+     *     > Events will not be created if more than 5000 branches are pushed at once. Events will not be created for tags when more than three tags are pushed at once. */
     post: operations["push"];
     delete?: never;
     options?: never;
@@ -4384,7 +4518,8 @@ export interface webhooks {
      *
      *     To install this event on a GitHub App, the app must have at least read-level access for the "Packages" repository permission.
      *
-     *     **Note**: GitHub recommends that you use the newer `package` event instead.
+     *     > [!NOTE]
+     *     > GitHub recommends that you use the newer `package` event instead.
      * @description A package was published to a registry.
      */
     post: operations["registry-package/published"];
@@ -4408,7 +4543,8 @@ export interface webhooks {
      *
      *     To install this event on a GitHub App, the app must have at least read-level access for the "Packages" repository permission.
      *
-     *     **Note**: GitHub recommends that you use the newer `package` event instead.
+     *     > [!NOTE]
+     *     > GitHub recommends that you use the newer `package` event instead.
      * @description A package that was previously published to a registry was updated.
      */
     post: operations["registry-package/updated"];
@@ -4934,7 +5070,8 @@ export interface webhooks {
     /**
      * This event occurs when there is activity relating to a security vulnerability alert in a repository.
      *
-     *     **Note**: This event is deprecated. Use the `dependabot_alert` event instead.
+     *     > [!WARNING]
+     *     > **Deprecation notice:** This event is deprecated. Use the `dependabot_alert` event instead.
      * @description A repository vulnerability alert was created.
      */
     post: operations["repository-vulnerability-alert/create"];
@@ -4956,7 +5093,8 @@ export interface webhooks {
     /**
      * This event occurs when there is activity relating to a security vulnerability alert in a repository.
      *
-     *     **Note**: This event is deprecated. Use the `dependabot_alert` event instead.
+     *     > [!WARNING]
+     *     > **Deprecation notice:** This event is deprecated. Use the `dependabot_alert` event instead.
      * @description A repository vulnerability alert was dismissed.
      */
     post: operations["repository-vulnerability-alert/dismiss"];
@@ -4978,7 +5116,8 @@ export interface webhooks {
     /**
      * This event occurs when there is activity relating to a security vulnerability alert in a repository.
      *
-     *     **Note**: This event is deprecated. Use the `dependabot_alert` event instead.
+     *     > [!WARNING]
+     *     > **Deprecation notice:** This event is deprecated. Use the `dependabot_alert` event instead.
      * @description A previously dismissed or resolved repository vulnerability alert was reopened.
      */
     post: operations["repository-vulnerability-alert/reopen"];
@@ -5000,7 +5139,8 @@ export interface webhooks {
     /**
      * This event occurs when there is activity relating to a security vulnerability alert in a repository.
      *
-     *     **Note**: This event is deprecated. Use the `dependabot_alert` event instead.
+     *     > [!WARNING]
+     *     > **Deprecation notice:** This event is deprecated. Use the `dependabot_alert` event instead.
      * @description A repository vulnerability alert was marked as resolved.
      */
     post: operations["repository-vulnerability-alert/resolve"];
@@ -5102,30 +5242,6 @@ export interface webhooks {
      * @description A secret scanning alert was closed.
      */
     post: operations["secret-scanning-alert/resolved"];
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  "secret-scanning-alert-revoked": {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    get?: never;
-    put?: never;
-    /**
-     * This event occurs when there is activity relating to a secret scanning alert. For more information about secret scanning, see "[About secret scanning](https://docs.github.com/code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/rest/secret-scanning)" in the REST API documentation.
-     *
-     *     For activity relating to secret scanning alert locations, use the `secret_scanning_alert_location` event.
-     *
-     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
-     * @description A secret scanning alert was marked as revoked.
-     */
-    post: operations["secret-scanning-alert/revoked"];
     delete?: never;
     options?: never;
     head?: never;
@@ -5434,6 +5550,102 @@ export interface webhooks {
      *
      *     To subscribe to this event, a GitHub App must have at least read-level access for the "Commit statuses" repository permission. */
     post: operations["status"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "sub-issues-parent-issue-added": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * This event occurs when there is activity relating to sub-issues.
+     *
+     *     For activity relating to issues more generally, use the `issues` event instead.
+     *
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permissions.
+     * @description A parent issue was added to an issue.
+     */
+    post: operations["sub-issues/parent-issue-added"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "sub-issues-parent-issue-removed": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * This event occurs when there is activity relating to sub-issues.
+     *
+     *     For activity relating to issues more generally, use the `issues` event instead.
+     *
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permissions.
+     * @description A parent issue was removed from an issue.
+     */
+    post: operations["sub-issues/parent-issue-removed"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "sub-issues-sub-issue-added": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * This event occurs when there is activity relating to sub-issues.
+     *
+     *     For activity relating to issues more generally, use the `issues` event instead.
+     *
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permissions.
+     * @description A sub-issue was added to an issue.
+     */
+    post: operations["sub-issues/sub-issue-added"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "sub-issues-sub-issue-removed": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * This event occurs when there is activity relating to sub-issues.
+     *
+     *     For activity relating to issues more generally, use the `issues` event instead.
+     *
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permissions.
+     * @description A sub-issue was removed from an issue.
+     */
+    post: operations["sub-issues/sub-issue-removed"];
     delete?: never;
     options?: never;
     head?: never;
@@ -5840,7 +6052,10 @@ export interface components {
      *     when the event occurs from activity in a repository.
      */
     "repository-webhooks": {
-      /** @description Unique identifier of the repository */
+      /**
+       * Format: int64
+       * @description Unique identifier of the repository
+       */
       id: number;
       node_id: string;
       /** @description The name of the repository. */
@@ -6242,6 +6457,7 @@ export interface components {
       name?: string | null;
       email?: string | null;
       login: string;
+      /** Format: int64 */
       id: number;
       node_id: string;
       /** Format: uri */
@@ -6347,6 +6563,13 @@ export interface components {
         | "off"
         | "non_admins"
         | "everyone";
+      /**
+       * @description The enforcement level of the branch lock setting. `off` means the branch is not locked, `non_admins` means the branch is read-only for non_admins, and `everyone` means the branch is read-only for everyone.
+       * @enum {string}
+       */
+      lock_branch_enforcement_level: "off" | "non_admins" | "everyone";
+      /** @description Whether users can pull changes from upstream when the branch is locked. Set to `true` to allow users to pull changes from upstream when the branch is locked. This setting is only applicable for forks. */
+      lock_allows_fork_sync?: boolean;
       /** @enum {string} */
       merge_queue_enforcement_level: "off" | "non_admins" | "everyone";
       name: string;
@@ -6407,6 +6630,20 @@ export interface components {
         linear_history_requirement_enforcement_level?: {
           /** @enum {string} */
           from: "off" | "non_admins" | "everyone";
+        };
+        lock_branch_enforcement_level?: {
+          /** @enum {string} */
+          from: "off" | "non_admins" | "everyone";
+        };
+        lock_allows_fork_sync?: {
+          from: boolean | null;
+        };
+        pull_request_reviews_enforcement_level?: {
+          /** @enum {string} */
+          from: "off" | "non_admins" | "everyone";
+        };
+        require_last_push_approval?: {
+          from: boolean | null;
         };
         required_status_checks?: {
           from: string[];
@@ -6494,6 +6731,7 @@ export interface components {
       /** @description The slug name of the GitHub app */
       slug?: string;
       node_id: string;
+      client_id?: string;
       owner: null | components["schemas"]["simple-user"];
       /** @description The name of the GitHub app */
       name: string;
@@ -6526,7 +6764,6 @@ export interface components {
       events: string[];
       /** @description The number of installations associated with the GitHub app */
       installations_count?: number;
-      client_id?: string;
       client_secret?: string;
       webhook_secret?: string | null;
       pem?: string;
@@ -6565,6 +6802,7 @@ export interface components {
     };
     /** Pull Request Minimal */
     "pull-request-minimal": {
+      /** Format: int64 */
       id: number;
       number: number;
       url: string;
@@ -6572,6 +6810,7 @@ export interface components {
         ref: string;
         sha: string;
         repo: {
+          /** Format: int64 */
           id: number;
           url: string;
           name: string;
@@ -6581,6 +6820,7 @@ export interface components {
         ref: string;
         sha: string;
         repo: {
+          /** Format: int64 */
           id: number;
           url: string;
           name: string;
@@ -6592,6 +6832,7 @@ export interface components {
      * @description Minimal Repository
      */
     "minimal-repository": {
+      /** Format: int64 */
       id: number;
       node_id: string;
       name: string;
@@ -6745,6 +6986,10 @@ export interface components {
         /** @enum {string} */
         status?: "enabled" | "disabled";
       };
+      secret_scanning_non_provider_patterns?: {
+        /** @enum {string} */
+        status?: "enabled" | "disabled";
+      };
     } | null;
     /**
      * Deployment
@@ -6887,6 +7132,8 @@ export interface components {
           html_url: string;
           /** @description Unique identifier of the GitHub app */
           id: number | null;
+          /** @description The client ID of the GitHub app */
+          client_id?: string | null;
           /** @description The name of the GitHub app */
           name: string;
           node_id: string;
@@ -7197,6 +7444,8 @@ export interface components {
           html_url: string;
           /** @description Unique identifier of the GitHub app */
           id: number | null;
+          /** @description Client ID of the GitHub app */
+          client_id?: string | null;
           /** @description The name of the GitHub app */
           name: string;
           node_id: string;
@@ -7495,6 +7744,8 @@ export interface components {
           html_url: string;
           /** @description Unique identifier of the GitHub app */
           id: number | null;
+          /** @description The Client ID for the GitHub app */
+          client_id?: string | null;
           /** @description The name of the GitHub app */
           name: string;
           node_id: string;
@@ -8472,6 +8723,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -8524,23 +8776,28 @@ export interface components {
     "webhook-custom-property-created": {
       /** @enum {string} */
       action: "created";
-      definition: components["schemas"]["org-custom-property"];
+      definition: components["schemas"]["custom-property"];
       installation?: components["schemas"]["simple-installation"];
-      organization: components["schemas"]["organization-simple-webhooks"];
+      organization?: components["schemas"]["organization-simple-webhooks"];
       sender?: components["schemas"]["simple-user-webhooks"];
     };
     /**
      * Organization Custom Property
      * @description Custom property defined on an organization
      */
-    "org-custom-property": {
+    "custom-property": {
       /** @description The name of the property */
       property_name: string;
+      /**
+       * Format: uri
+       * @description The URL that can be used to fetch, update, or delete info about this property via the API.
+       */
+      url?: string;
       /**
        * @description The type of the value for the property
        * @enum {string}
        */
-      value_type: "string" | "single_select";
+      value_type: "string" | "single_select" | "multi_select" | "true_false";
       /** @description Whether the property is required. */
       required?: boolean;
       /** @description Default value of the property */
@@ -8565,16 +8822,16 @@ export interface components {
         property_name: string;
       };
       installation?: components["schemas"]["simple-installation"];
-      organization: components["schemas"]["organization-simple-webhooks"];
+      organization?: components["schemas"]["organization-simple-webhooks"];
       sender?: components["schemas"]["simple-user-webhooks"];
     };
     /** custom property updated event */
     "webhook-custom-property-updated": {
       /** @enum {string} */
       action: "updated";
-      definition: components["schemas"]["org-custom-property"];
+      definition: components["schemas"]["custom-property"];
       installation?: components["schemas"]["simple-installation"];
-      organization: components["schemas"]["organization-simple-webhooks"];
+      organization?: components["schemas"]["organization-simple-webhooks"];
       sender?: components["schemas"]["simple-user-webhooks"];
     };
     /** Custom property values updated event */
@@ -9474,7 +9731,7 @@ export interface components {
       repository: components["schemas"]["repository-webhooks"];
       organization?: components["schemas"]["organization-simple-webhooks"];
       installation?: components["schemas"]["simple-installation"];
-      sender: components["schemas"]["simple-user-webhooks"];
+      sender: components["schemas"]["simple-user"];
     };
     /**
      * Deployment
@@ -9483,7 +9740,10 @@ export interface components {
     deployment: {
       /** Format: uri */
       url: string;
-      /** @description Unique identifier of the deployment */
+      /**
+       * Format: int64
+       * @description Unique identifier of the deployment
+       */
       id: number;
       node_id: string;
       sha: string;
@@ -9522,6 +9782,7 @@ export interface components {
     "pull-request": {
       /** Format: uri */
       url: string;
+      /** Format: int64 */
       id: number;
       node_id: string;
       /** Format: uri */
@@ -9742,6 +10003,7 @@ export interface components {
           gravatar_id: string | null;
           /** Format: uri */
           html_url: string;
+          /** Format: int64 */
           id: number;
           node_id: string;
           login: string;
@@ -9917,6 +10179,7 @@ export interface components {
           gravatar_id: string | null;
           /** Format: uri */
           html_url: string;
+          /** Format: int64 */
           id: number;
           node_id: string;
           login: string;
@@ -11151,6 +11414,7 @@ export interface components {
       gravatar_id?: string;
       /** Format: uri */
       html_url?: string;
+      /** Format: int64 */
       id: number;
       login: string;
       name?: string;
@@ -12080,6 +12344,7 @@ export interface components {
         gravatar_id?: string;
         /** Format: uri */
         html_url?: string;
+        /** Format: int64 */
         id: number;
         login: string;
         name?: string;
@@ -12230,6 +12495,7 @@ export interface components {
         gravatar_id?: string;
         /** Format: uri */
         html_url?: string;
+        /** Format: int64 */
         id: number;
         login: string;
         name?: string;
@@ -12250,6 +12516,32 @@ export interface components {
         /** Format: uri */
         url?: string;
       } | null;
+      labels?: components["schemas"]["label"][];
+    };
+    /**
+     * Label
+     * @description Color-coded labels help you categorize and filter your issues (just like labels in Gmail).
+     */
+    label: {
+      /**
+       * Format: int64
+       * @description Unique identifier for the label.
+       */
+      id: number;
+      node_id: string;
+      /**
+       * Format: uri
+       * @description URL for the label
+       */
+      url: string;
+      /** @description The name of the label. */
+      name: string;
+      /** @description Optional description of the label, such as its purpose. */
+      description: string | null;
+      /** @description 6-character hex code, without the leading #, identifying the color */
+      color: string;
+      /** @description Whether this label comes by default in a new repository. */
+      default: boolean;
     };
     /** discussion category changed event */
     "webhook-discussion-category-changed": {
@@ -12355,6 +12647,7 @@ export interface components {
         gravatar_id?: string;
         /** Format: uri */
         html_url?: string;
+        /** Format: int64 */
         id: number;
         login: string;
         name?: string;
@@ -12611,10 +12904,6 @@ export interface components {
         /** Format: uri */
         contributors_url: string;
         created_at: number | string;
-        /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
-        custom_properties?: {
-          [key: string]: unknown;
-        };
         /** @description The default branch of the repository. */
         default_branch: string;
         /**
@@ -12671,7 +12960,10 @@ export interface components {
         hooks_url: string;
         /** Format: uri */
         html_url: string;
-        /** @description Unique identifier of the repository */
+        /**
+         * Format: int64
+         * @description Unique identifier of the repository
+         */
         id: number;
         is_template?: boolean;
         /** Format: uri-template */
@@ -13519,6 +13811,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -13988,6 +14281,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -14108,6 +14402,7 @@ export interface components {
           gists_url?: string;
           gravatar_id?: string;
           html_url?: string;
+          /** Format: int64 */
           id?: number;
           login?: string;
           node_id?: string;
@@ -14576,6 +14871,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -14696,6 +14992,7 @@ export interface components {
           gists_url?: string;
           gravatar_id?: string;
           html_url?: string;
+          /** Format: int64 */
           id?: number;
           login?: string;
           node_id?: string;
@@ -14785,6 +15082,7 @@ export interface components {
         gravatar_id?: string;
         /** Format: uri */
         html_url?: string;
+        /** Format: int64 */
         id: number;
         login: string;
         name?: string;
@@ -15260,6 +15558,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -15380,6 +15679,7 @@ export interface components {
           gists_url?: string;
           gravatar_id?: string;
           html_url?: string;
+          /** Format: int64 */
           id?: number;
           login?: string;
           node_id?: string;
@@ -15868,6 +16168,7 @@ export interface components {
         gravatar_id?: string;
         /** Format: uri */
         html_url?: string;
+        /** Format: int64 */
         id: number;
         login: string;
         name?: string;
@@ -16345,6 +16646,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -16412,6 +16714,7 @@ export interface components {
           gists_url?: string;
           gravatar_id?: string;
           html_url?: string;
+          /** Format: int64 */
           id?: number;
           login?: string;
           node_id?: string;
@@ -16883,6 +17186,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -17361,6 +17665,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -17925,6 +18230,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -18406,6 +18712,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -18888,6 +19195,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -19367,6 +19675,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -19846,6 +20155,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -19985,7 +20295,10 @@ export interface components {
           hooks_url: string;
           /** Format: uri */
           html_url: string;
-          /** @description Unique identifier of the repository */
+          /**
+           * Format: int64
+           * @description Unique identifier of the repository
+           */
           id: number;
           is_template?: boolean;
           /** Format: uri-template */
@@ -20563,6 +20876,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -21046,6 +21360,7 @@ export interface components {
         gravatar_id?: string;
         /** Format: uri */
         html_url?: string;
+        /** Format: int64 */
         id: number;
         login: string;
         name?: string;
@@ -21522,6 +21837,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -22000,6 +22316,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -22142,7 +22459,10 @@ export interface components {
           hooks_url: string;
           /** Format: uri */
           html_url: string;
-          /** @description Unique identifier of the repository */
+          /**
+           * Format: int64
+           * @description Unique identifier of the repository
+           */
           id: number;
           is_template?: boolean;
           /** Format: uri-template */
@@ -22790,6 +23110,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -23521,7 +23842,7 @@ export interface components {
       };
       organization?: components["schemas"]["organization-simple-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
-      sender: components["schemas"]["simple-user-webhooks"];
+      sender: components["schemas"]["simple-user"];
     };
     /** milestone created event */
     "webhook-milestone-created": {
@@ -23600,7 +23921,7 @@ export interface components {
       };
       organization?: components["schemas"]["organization-simple-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
-      sender: components["schemas"]["simple-user-webhooks"];
+      sender: components["schemas"]["simple-user"];
     };
     /** milestone deleted event */
     "webhook-milestone-deleted": {
@@ -23714,7 +24035,7 @@ export interface components {
       };
       organization?: components["schemas"]["organization-simple-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
-      sender: components["schemas"]["simple-user-webhooks"];
+      sender: components["schemas"]["simple-user"];
     };
     /** org_block blocked event */
     "webhook-org-block-blocked": {
@@ -23774,6 +24095,7 @@ export interface components {
         gravatar_id?: string;
         /** Format: uri */
         html_url?: string;
+        /** Format: int64 */
         id: number;
         login: string;
         name?: string;
@@ -24531,7 +24853,7 @@ export interface components {
       personal_access_token_request: components["schemas"]["personal-access-token-request"];
       organization: components["schemas"]["organization-simple-webhooks"];
       sender: components["schemas"]["simple-user-webhooks"];
-      installation: components["schemas"]["simple-installation"];
+      installation?: components["schemas"]["simple-installation"];
     };
     /** personal_access_token_request denied event */
     "webhook-personal-access-token-request-denied": {
@@ -25226,11 +25548,29 @@ export interface components {
     "webhook-projects-v2-item-edited": {
       /** @enum {string} */
       action: "edited";
+      /** @description The changes made to the item may involve modifications in the item's fields and draft issue body.
+       *     It includes altered values for text, number, date, single select, and iteration fields, along with the GraphQL node ID of the changed field. */
       changes?:
         | {
             field_value: {
               field_node_id?: string;
               field_type?: string;
+              field_name?: string;
+              project_number?: number;
+              from?: (null | Record<string, never>) &
+                (
+                  | string
+                  | number
+                  | components["schemas"]["projects-v2-single-select-option"]
+                  | components["schemas"]["projects-v2-iteration-setting"]
+                );
+              to?: (null | Record<string, never>) &
+                (
+                  | string
+                  | number
+                  | components["schemas"]["projects-v2-single-select-option"]
+                  | components["schemas"]["projects-v2-iteration-setting"]
+                );
             };
           }
         | {
@@ -25243,6 +25583,26 @@ export interface components {
       organization: components["schemas"]["organization-simple-webhooks"];
       projects_v2_item: components["schemas"]["projects-v2-item"];
       sender: components["schemas"]["simple-user-webhooks"];
+    };
+    /**
+     * Projects v2 Single Select Option
+     * @description An option for a single select field
+     */
+    "projects-v2-single-select-option": {
+      id: string;
+      name: string;
+      color?: string | null;
+      description?: string | null;
+    };
+    /**
+     * Projects v2 Iteration Setting
+     * @description An iteration setting for an iteration field
+     */
+    "projects-v2-iteration-setting": {
+      id: string;
+      title: string;
+      duration?: number | null;
+      start_date?: string | null;
     };
     /** Projects v2 Item Reordered Event */
     "webhook-projects-v2-item-reordered": {
@@ -25276,6 +25636,97 @@ export interface components {
       installation?: components["schemas"]["simple-installation"];
       organization: components["schemas"]["organization-simple-webhooks"];
       projects_v2: components["schemas"]["projects-v2"];
+      sender: components["schemas"]["simple-user-webhooks"];
+    };
+    /** Projects v2 Status Update Created Event */
+    "webhook-projects-v2-status-update-created": {
+      /** @enum {string} */
+      action: "created";
+      installation?: components["schemas"]["simple-installation"];
+      organization: components["schemas"]["organization-simple-webhooks"];
+      projects_v2_status_update: components["schemas"]["projects-v2-status-update"];
+      sender: components["schemas"]["simple-user-webhooks"];
+    };
+    /**
+     * Projects v2 Status Update
+     * @description An status update belonging to a project
+     */
+    "projects-v2-status-update": {
+      id: number;
+      node_id: string;
+      project_node_id?: string;
+      creator?: components["schemas"]["simple-user"];
+      /** Format: date-time */
+      created_at: string;
+      /** Format: date-time */
+      updated_at: string;
+      /** @enum {string|null} */
+      status?:
+        | "INACTIVE"
+        | "ON_TRACK"
+        | "AT_RISK"
+        | "OFF_TRACK"
+        | "COMPLETE"
+        | null;
+      /** Format: date */
+      start_date?: string;
+      /** Format: date */
+      target_date?: string;
+      /** @description Body of the status update */
+      body?: string | null;
+    };
+    /** Projects v2 Status Update Deleted Event */
+    "webhook-projects-v2-status-update-deleted": {
+      /** @enum {string} */
+      action: "deleted";
+      installation?: components["schemas"]["simple-installation"];
+      organization: components["schemas"]["organization-simple-webhooks"];
+      projects_v2_status_update: components["schemas"]["projects-v2-status-update"];
+      sender: components["schemas"]["simple-user-webhooks"];
+    };
+    /** Projects v2 Status Update Edited Event */
+    "webhook-projects-v2-status-update-edited": {
+      /** @enum {string} */
+      action: "edited";
+      changes?: {
+        body?: {
+          from?: string | null;
+          to?: string | null;
+        };
+        status?: {
+          /** @enum {string|null} */
+          from?:
+            | "INACTIVE"
+            | "ON_TRACK"
+            | "AT_RISK"
+            | "OFF_TRACK"
+            | "COMPLETE"
+            | null;
+          /** @enum {string|null} */
+          to?:
+            | "INACTIVE"
+            | "ON_TRACK"
+            | "AT_RISK"
+            | "OFF_TRACK"
+            | "COMPLETE"
+            | null;
+        };
+        start_date?: {
+          /** Format: date */
+          from?: string | null;
+          /** Format: date */
+          to?: string | null;
+        };
+        target_date?: {
+          /** Format: date */
+          from?: string | null;
+          /** Format: date */
+          to?: string | null;
+        };
+      };
+      installation?: components["schemas"]["simple-installation"];
+      organization: components["schemas"]["organization-simple-webhooks"];
+      projects_v2_status_update: components["schemas"]["projects-v2-status-update"];
       sender: components["schemas"]["simple-user-webhooks"];
     };
     /** public event */
@@ -25604,7 +26055,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -25789,6 +26243,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -25947,7 +26402,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -26132,6 +26590,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -26471,6 +26930,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -26815,7 +27275,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -27000,6 +27463,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -27158,7 +27622,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -27343,6 +27810,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -27682,6 +28150,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -28025,7 +28494,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -28210,6 +28682,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -28553,6 +29026,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -28892,6 +29366,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -29310,7 +29785,10 @@ export interface components {
           hooks_url: string;
           /** Format: uri */
           html_url: string;
-          /** @description Unique identifier of the repository */
+          /**
+           * Format: int64
+           * @description Unique identifier of the repository
+           */
           id: number;
           is_template?: boolean;
           /** Format: uri-template */
@@ -29492,6 +29970,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -29650,7 +30129,10 @@ export interface components {
           hooks_url: string;
           /** Format: uri */
           html_url: string;
-          /** @description Unique identifier of the repository */
+          /**
+           * Format: int64
+           * @description Unique identifier of the repository
+           */
           id: number;
           is_template?: boolean;
           /** Format: uri-template */
@@ -29832,6 +30314,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -30171,6 +30654,7 @@ export interface components {
         gravatar_id?: string;
         /** Format: uri */
         html_url?: string;
+        /** Format: int64 */
         id: number;
         login: string;
         name?: string;
@@ -30510,7 +30994,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -30695,6 +31182,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -30853,7 +31341,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -31038,6 +31529,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -31377,6 +31869,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -31750,7 +32243,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -31935,6 +32431,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -32093,7 +32590,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -32278,6 +32778,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -32617,6 +33118,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -32960,7 +33462,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -33145,6 +33650,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -33303,7 +33809,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -33488,6 +33997,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -33827,6 +34337,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -34169,7 +34680,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -34354,6 +34868,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -34512,7 +35027,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -34697,6 +35215,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -35036,6 +35555,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -35240,6 +35760,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -35572,7 +36093,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -35757,6 +36281,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -35908,7 +36433,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -36093,6 +36621,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -36381,6 +36910,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -36721,7 +37251,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -36906,6 +37439,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -37057,7 +37591,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -37242,6 +37779,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -37530,6 +38068,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -37686,6 +38225,7 @@ export interface components {
         gravatar_id?: string;
         /** Format: uri */
         html_url?: string;
+        /** Format: int64 */
         id: number;
         login: string;
         name?: string;
@@ -38024,7 +38564,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -38209,6 +38752,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -38360,7 +38904,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -38545,6 +39092,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -38833,6 +39381,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -39173,7 +39722,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -39358,6 +39910,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -39509,7 +40062,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -39694,6 +40250,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -39982,6 +40539,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -40064,6 +40622,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -40404,7 +40963,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -40545,6 +41107,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -40691,7 +41254,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -40832,6 +41398,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -41120,6 +41687,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -41204,6 +41772,7 @@ export interface components {
         gravatar_id?: string;
         /** Format: uri */
         html_url?: string;
+        /** Format: int64 */
         id: number;
         login: string;
         name?: string;
@@ -41545,7 +42114,10 @@ export interface components {
                 hooks_url: string;
                 /** Format: uri */
                 html_url: string;
-                /** @description Unique identifier of the repository */
+                /**
+                 * Format: int64
+                 * @description Unique identifier of the repository
+                 */
                 id: number;
                 is_template?: boolean;
                 /** Format: uri-template */
@@ -41723,6 +42295,7 @@ export interface components {
                 gravatar_id?: string;
                 /** Format: uri */
                 html_url?: string;
+                /** Format: int64 */
                 id: number;
                 login: string;
                 name?: string;
@@ -41881,7 +42454,10 @@ export interface components {
                 hooks_url: string;
                 /** Format: uri */
                 html_url: string;
-                /** @description Unique identifier of the repository */
+                /**
+                 * Format: int64
+                 * @description Unique identifier of the repository
+                 */
                 id: number;
                 is_template?: boolean;
                 /** Format: uri-template */
@@ -42066,6 +42642,7 @@ export interface components {
                 gravatar_id?: string;
                 /** Format: uri */
                 html_url?: string;
+                /** Format: int64 */
                 id: number;
                 login: string;
                 name?: string;
@@ -42405,6 +42982,7 @@ export interface components {
               gravatar_id?: string;
               /** Format: uri */
               html_url?: string;
+              /** Format: int64 */
               id: number;
               login: string;
               name?: string;
@@ -42784,7 +43362,10 @@ export interface components {
                 hooks_url: string;
                 /** Format: uri */
                 html_url: string;
-                /** @description Unique identifier of the repository */
+                /**
+                 * Format: int64
+                 * @description Unique identifier of the repository
+                 */
                 id: number;
                 is_template?: boolean;
                 /** Format: uri-template */
@@ -42969,6 +43550,7 @@ export interface components {
                 gravatar_id?: string;
                 /** Format: uri */
                 html_url?: string;
+                /** Format: int64 */
                 id: number;
                 login: string;
                 name?: string;
@@ -43127,7 +43709,10 @@ export interface components {
                 hooks_url: string;
                 /** Format: uri */
                 html_url: string;
-                /** @description Unique identifier of the repository */
+                /**
+                 * Format: int64
+                 * @description Unique identifier of the repository
+                 */
                 id: number;
                 is_template?: boolean;
                 /** Format: uri-template */
@@ -43312,6 +43897,7 @@ export interface components {
                 gravatar_id?: string;
                 /** Format: uri */
                 html_url?: string;
+                /** Format: int64 */
                 id: number;
                 login: string;
                 name?: string;
@@ -43651,6 +44237,7 @@ export interface components {
               gravatar_id?: string;
               /** Format: uri */
               html_url?: string;
+              /** Format: int64 */
               id: number;
               login: string;
               name?: string;
@@ -44050,7 +44637,10 @@ export interface components {
                 hooks_url: string;
                 /** Format: uri */
                 html_url: string;
-                /** @description Unique identifier of the repository */
+                /**
+                 * Format: int64
+                 * @description Unique identifier of the repository
+                 */
                 id: number;
                 is_template?: boolean;
                 /** Format: uri-template */
@@ -44235,6 +44825,7 @@ export interface components {
                 gravatar_id?: string;
                 /** Format: uri */
                 html_url?: string;
+                /** Format: int64 */
                 id: number;
                 login: string;
                 name?: string;
@@ -44393,7 +44984,10 @@ export interface components {
                 hooks_url: string;
                 /** Format: uri */
                 html_url: string;
-                /** @description Unique identifier of the repository */
+                /**
+                 * Format: int64
+                 * @description Unique identifier of the repository
+                 */
                 id: number;
                 is_template?: boolean;
                 /** Format: uri-template */
@@ -44578,6 +45172,7 @@ export interface components {
                 gravatar_id?: string;
                 /** Format: uri */
                 html_url?: string;
+                /** Format: int64 */
                 id: number;
                 login: string;
                 name?: string;
@@ -44917,6 +45512,7 @@ export interface components {
               gravatar_id?: string;
               /** Format: uri */
               html_url?: string;
+              /** Format: int64 */
               id: number;
               login: string;
               name?: string;
@@ -45296,7 +45892,10 @@ export interface components {
                 hooks_url: string;
                 /** Format: uri */
                 html_url: string;
-                /** @description Unique identifier of the repository */
+                /**
+                 * Format: int64
+                 * @description Unique identifier of the repository
+                 */
                 id: number;
                 is_template?: boolean;
                 /** Format: uri-template */
@@ -45481,6 +46080,7 @@ export interface components {
                 gravatar_id?: string;
                 /** Format: uri */
                 html_url?: string;
+                /** Format: int64 */
                 id: number;
                 login: string;
                 name?: string;
@@ -45639,7 +46239,10 @@ export interface components {
                 hooks_url: string;
                 /** Format: uri */
                 html_url: string;
-                /** @description Unique identifier of the repository */
+                /**
+                 * Format: int64
+                 * @description Unique identifier of the repository
+                 */
                 id: number;
                 is_template?: boolean;
                 /** Format: uri-template */
@@ -45824,6 +46427,7 @@ export interface components {
                 gravatar_id?: string;
                 /** Format: uri */
                 html_url?: string;
+                /** Format: int64 */
                 id: number;
                 login: string;
                 name?: string;
@@ -46163,6 +46767,7 @@ export interface components {
               gravatar_id?: string;
               /** Format: uri */
               html_url?: string;
+              /** Format: int64 */
               id: number;
               login: string;
               name?: string;
@@ -46558,7 +47163,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -46743,6 +47351,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -46894,7 +47503,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -47079,6 +47691,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -47367,6 +47980,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -47708,7 +48322,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -47851,6 +48468,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -48002,7 +48620,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -48145,6 +48766,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -48433,6 +49055,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -48585,6 +49208,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -48925,7 +49549,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -49068,6 +49695,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -49219,7 +49847,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -49362,6 +49993,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -49650,6 +50282,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -49802,6 +50435,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -50146,7 +50780,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -50331,6 +50968,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -50489,7 +51127,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -50667,6 +51308,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -51006,6 +51648,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -51349,7 +51992,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -51534,6 +52180,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -51692,7 +52339,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -51877,6 +52527,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -52216,6 +52867,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -52559,7 +53211,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -52744,6 +53399,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -52902,7 +53558,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -53080,6 +53739,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -53419,6 +54079,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -53761,7 +54422,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -53946,6 +54610,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -54104,7 +54769,10 @@ export interface components {
             hooks_url: string;
             /** Format: uri */
             html_url: string;
-            /** @description Unique identifier of the repository */
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
             id: number;
             is_template?: boolean;
             /** Format: uri-template */
@@ -54289,6 +54957,7 @@ export interface components {
             gravatar_id?: string;
             /** Format: uri */
             html_url?: string;
+            /** Format: int64 */
             id: number;
             login: string;
             name?: string;
@@ -54628,6 +55297,7 @@ export interface components {
           gravatar_id?: string;
           /** Format: uri */
           html_url?: string;
+          /** Format: int64 */
           id: number;
           login: string;
           name?: string;
@@ -54907,7 +55577,10 @@ export interface components {
         hooks_url: string;
         /** Format: uri */
         html_url: string;
-        /** @description Unique identifier of the repository */
+        /**
+         * Format: int64
+         * @description Unique identifier of the repository
+         */
         id: number;
         is_template?: boolean;
         /** Format: uri-template */
@@ -56111,7 +56784,10 @@ export interface components {
      * @description A GitHub repository.
      */
     "simple-repository": {
-      /** @description A unique identifier of the repository. */
+      /**
+       * Format: int64
+       * @description A unique identifier of the repository.
+       */
       id: number;
       /** @description The GraphQL identifier of the repository. */
       node_id: string;
@@ -56387,7 +57063,8 @@ export interface components {
       /**
        * @description The target of the ruleset
        *
-       *     **Note**: The `push` target is in beta and is subject to change.
+       *     > [!NOTE]
+       *     > The `push` target is in beta and is subject to change.
        * @enum {string}
        */
       target?: "branch" | "tag" | "push";
@@ -56457,7 +57134,8 @@ export interface components {
         | "OrganizationAdmin"
         | "RepositoryRole"
         | "Team"
-        | "DeployKey";
+        | "DeployKey"
+        | "EnterpriseTeam";
       /**
        * @description When the specified actor can bypass the ruleset. `pull_request` means that an actor can only bypass rules on pull requests. `pull_request` is not applicable for the `DeployKey` actor type.
        *
@@ -56534,6 +57212,11 @@ export interface components {
       name: string;
       /** @description The values to match for the repository property */
       property_values: string[];
+      /**
+       * @description The source of the repository property. Defaults to 'custom' if not specified.
+       * @enum {string}
+       */
+      source?: "custom" | "system";
     };
     /**
      * Repository Rule
@@ -56544,6 +57227,7 @@ export interface components {
       | components["schemas"]["repository-rule-update"]
       | components["schemas"]["repository-rule-deletion"]
       | components["schemas"]["repository-rule-required-linear-history"]
+      | components["schemas"]["repository-rule-merge-queue"]
       | components["schemas"]["repository-rule-required-deployments"]
       | components["schemas"]["repository-rule-required-signatures"]
       | components["schemas"]["repository-rule-pull-request"]
@@ -56625,6 +57309,36 @@ export interface components {
       type: "required_linear_history";
     };
     /**
+     * merge_queue
+     * @description Merges must be performed via a merge queue.
+     */
+    "repository-rule-merge-queue": {
+      /** @enum {string} */
+      type: "merge_queue";
+      parameters?: {
+        /** @description Maximum time for a required status check to report a conclusion. After this much time has elapsed, checks that have not reported a conclusion will be assumed to have failed */
+        check_response_timeout_minutes: number;
+        /**
+         * @description When set to ALLGREEN, the merge commit created by merge queue for each PR in the group must pass all required checks to merge. When set to HEADGREEN, only the commit at the head of the merge group, i.e. the commit containing changes from all of the PRs in the group, must pass its required checks to merge.
+         * @enum {string}
+         */
+        grouping_strategy: "ALLGREEN" | "HEADGREEN";
+        /** @description Limit the number of queued pull requests requesting checks and workflow runs at the same time. */
+        max_entries_to_build: number;
+        /** @description The maximum number of PRs that will be merged together in a group. */
+        max_entries_to_merge: number;
+        /**
+         * @description Method to use when merging changes from queued pull requests.
+         * @enum {string}
+         */
+        merge_method: "MERGE" | "SQUASH" | "REBASE";
+        /** @description The minimum number of PRs that will be merged together in a group. */
+        min_entries_to_merge: number;
+        /** @description The time merge queue should wait after the first PR is added to the queue for the minimum group size to be met. After this time has elapsed, the minimum group size will be ignored and a smaller group will be merged. */
+        min_entries_to_merge_wait_minutes: number;
+      };
+    };
+    /**
      * required_deployments
      * @description Choose which environments must be successfully deployed to before refs can be pushed into a ref that matches this rule.
      */
@@ -56672,6 +57386,8 @@ export interface components {
       /** @enum {string} */
       type: "required_status_checks";
       parameters?: {
+        /** @description Allow repositories and branches to be created if a check would otherwise prohibit it. */
+        do_not_enforce_on_create?: boolean;
         /** @description Status checks that are required. */
         required_status_checks: components["schemas"]["repository-rule-params-status-check-configuration"][];
         /** @description Whether pull requests targeting a matching branch must be tested with the latest code. This setting will not take effect unless at least one status check is enabled. */
@@ -56809,6 +57525,8 @@ export interface components {
       /** @enum {string} */
       type: "workflows";
       parameters?: {
+        /** @description Allow repositories and branches to be created if a check would otherwise prohibit it. */
+        do_not_enforce_on_create?: boolean;
         /** @description Workflows that must pass for this rule to pass. */
         workflows: components["schemas"]["repository-rule-params-workflow-file-reference"][];
       };
@@ -56978,6 +57696,7 @@ export interface components {
               gravatar_id?: string;
               /** Format: uri */
               html_url?: string;
+              /** Format: int64 */
               id: number;
               login: string;
               name?: string;
@@ -57272,6 +57991,9 @@ export interface components {
       resolution_comment?: string | null;
       /** @description The type of secret that secret scanning detected. */
       secret_type?: string;
+      /** @description User-friendly name for the detected secret, matching the `secret_type`.
+       *     For a list of built-in patterns, see "[Supported secret scanning patterns](https://docs.github.com/code-security/secret-scanning/introduction/supported-secret-scanning-patterns#supported-secrets)." */
+      secret_type_display_name?: string;
       /**
        * @description The token status as of the latest validity check.
        * @enum {string}
@@ -57493,16 +58215,6 @@ export interface components {
       repository: components["schemas"]["repository-webhooks"];
       sender?: components["schemas"]["simple-user-webhooks"];
     };
-    /** secret_scanning_alert revoked event */
-    "webhook-secret-scanning-alert-revoked": {
-      /** @enum {string} */
-      action: "revoked";
-      alert: components["schemas"]["secret-scanning-alert-webhook"];
-      installation?: components["schemas"]["simple-installation"];
-      organization?: components["schemas"]["organization-simple-webhooks"];
-      repository: components["schemas"]["repository-webhooks"];
-      sender?: components["schemas"]["simple-user-webhooks"];
-    };
     /** secret_scanning_alert validated event */
     "webhook-secret-scanning-alert-validated": {
       /** @enum {string} */
@@ -57633,6 +58345,7 @@ export interface components {
      * @description Full Repository
      */
     "full-repository": {
+      /** Format: int64 */
       id: number;
       node_id: string;
       name: string;
@@ -57809,7 +58522,10 @@ export interface components {
      * @description A repository on GitHub.
      */
     repository: {
-      /** @description Unique identifier of the repository */
+      /**
+       * Format: int64
+       * @description Unique identifier of the repository
+       */
       id: number;
       node_id: string;
       /** @description The name of the repository. */
@@ -58464,6 +59180,170 @@ export interface components {
       target_url: string | null;
       updated_at: string;
     };
+    /** parent issue added event */
+    "webhook-sub-issues-parent-issue-added": {
+      /** @enum {string} */
+      action: "parent_issue_added";
+      /** @description The ID of the parent issue. */
+      parent_issue_id: number;
+      parent_issue: components["schemas"]["issue"];
+      parent_issue_repo: components["schemas"]["repository"];
+      /** @description The ID of the sub-issue. */
+      sub_issue_id: number;
+      sub_issue: components["schemas"]["issue"];
+      installation?: components["schemas"]["simple-installation"];
+      organization?: components["schemas"]["organization-simple-webhooks"];
+      repository?: components["schemas"]["repository-webhooks"];
+      sender?: components["schemas"]["simple-user-webhooks"];
+    };
+    /**
+     * Issue
+     * @description Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.
+     */
+    issue: {
+      /** Format: int64 */
+      id: number;
+      node_id: string;
+      /**
+       * Format: uri
+       * @description URL for the issue
+       */
+      url: string;
+      /** Format: uri */
+      repository_url: string;
+      labels_url: string;
+      /** Format: uri */
+      comments_url: string;
+      /** Format: uri */
+      events_url: string;
+      /** Format: uri */
+      html_url: string;
+      /** @description Number uniquely identifying the issue within its repository */
+      number: number;
+      /** @description State of the issue; either 'open' or 'closed' */
+      state: string;
+      /**
+       * @description The reason for the current state
+       * @enum {string|null}
+       */
+      state_reason?: "completed" | "reopened" | "not_planned" | null;
+      /** @description Title of the issue */
+      title: string;
+      /** @description Contents of the issue */
+      body?: string | null;
+      user: null | components["schemas"]["simple-user"];
+      /** @description Labels to associate with this issue; pass one or more label names to replace the set of labels on this issue; send an empty array to clear all labels from the issue; note that the labels are silently dropped for users without push access to the repository */
+      labels: (
+        | string
+        | {
+            /** Format: int64 */
+            id?: number;
+            node_id?: string;
+            /** Format: uri */
+            url?: string;
+            name?: string;
+            description?: string | null;
+            color?: string | null;
+            default?: boolean;
+          }
+      )[];
+      assignee: null | components["schemas"]["simple-user"];
+      assignees?: components["schemas"]["simple-user"][] | null;
+      milestone: null | components["schemas"]["milestone"];
+      locked: boolean;
+      active_lock_reason?: string | null;
+      comments: number;
+      pull_request?: {
+        /** Format: date-time */
+        merged_at?: string | null;
+        /** Format: uri */
+        diff_url: string | null;
+        /** Format: uri */
+        html_url: string | null;
+        /** Format: uri */
+        patch_url: string | null;
+        /** Format: uri */
+        url: string | null;
+      };
+      /** Format: date-time */
+      closed_at: string | null;
+      /** Format: date-time */
+      created_at: string;
+      /** Format: date-time */
+      updated_at: string;
+      draft?: boolean;
+      closed_by?: null | components["schemas"]["simple-user"];
+      body_html?: string;
+      body_text?: string;
+      /** Format: uri */
+      timeline_url?: string;
+      repository?: components["schemas"]["repository"];
+      performed_via_github_app?: null | components["schemas"]["integration"];
+      author_association: components["schemas"]["author-association"];
+      reactions?: components["schemas"]["reaction-rollup"];
+    };
+    /** Reaction Rollup */
+    "reaction-rollup": {
+      /** Format: uri */
+      url: string;
+      total_count: number;
+      "+1": number;
+      "-1": number;
+      laugh: number;
+      confused: number;
+      heart: number;
+      hooray: number;
+      eyes: number;
+      rocket: number;
+    };
+    /** parent issue removed event */
+    "webhook-sub-issues-parent-issue-removed": {
+      /** @enum {string} */
+      action: "parent_issue_removed";
+      /** @description The ID of the parent issue. */
+      parent_issue_id: number;
+      parent_issue: components["schemas"]["issue"];
+      parent_issue_repo: components["schemas"]["repository"];
+      /** @description The ID of the sub-issue. */
+      sub_issue_id: number;
+      sub_issue: components["schemas"]["issue"];
+      installation?: components["schemas"]["simple-installation"];
+      organization?: components["schemas"]["organization-simple-webhooks"];
+      repository?: components["schemas"]["repository-webhooks"];
+      sender?: components["schemas"]["simple-user-webhooks"];
+    };
+    /** sub-issue added event */
+    "webhook-sub-issues-sub-issue-added": {
+      /** @enum {string} */
+      action: "sub_issue_added";
+      /** @description The ID of the sub-issue. */
+      sub_issue_id: number;
+      sub_issue: components["schemas"]["issue"];
+      sub_issue_repo: components["schemas"]["repository"];
+      /** @description The ID of the parent issue. */
+      parent_issue_id: number;
+      parent_issue: components["schemas"]["issue"];
+      installation?: components["schemas"]["simple-installation"];
+      organization?: components["schemas"]["organization-simple-webhooks"];
+      repository?: components["schemas"]["repository-webhooks"];
+      sender?: components["schemas"]["simple-user-webhooks"];
+    };
+    /** sub-issue removed event */
+    "webhook-sub-issues-sub-issue-removed": {
+      /** @enum {string} */
+      action: "sub_issue_removed";
+      /** @description The ID of the sub-issue. */
+      sub_issue_id: number;
+      sub_issue: components["schemas"]["issue"];
+      sub_issue_repo: components["schemas"]["repository"];
+      /** @description The ID of the parent issue. */
+      parent_issue_id: number;
+      parent_issue: components["schemas"]["issue"];
+      installation?: components["schemas"]["simple-installation"];
+      organization?: components["schemas"]["organization-simple-webhooks"];
+      repository?: components["schemas"]["repository-webhooks"];
+      sender?: components["schemas"]["simple-user-webhooks"];
+    };
     /** team_add event */
     "webhook-team-add": {
       installation?: components["schemas"]["simple-installation"];
@@ -58661,7 +59541,10 @@ export interface components {
         hooks_url: string;
         /** Format: uri */
         html_url: string;
-        /** @description Unique identifier of the repository */
+        /**
+         * Format: int64
+         * @description Unique identifier of the repository
+         */
         id: number;
         is_template?: boolean;
         /** Format: uri-template */
@@ -58909,7 +59792,10 @@ export interface components {
         hooks_url: string;
         /** Format: uri */
         html_url: string;
-        /** @description Unique identifier of the repository */
+        /**
+         * Format: int64
+         * @description Unique identifier of the repository
+         */
         id: number;
         is_template?: boolean;
         /** Format: uri-template */
@@ -59157,7 +60043,10 @@ export interface components {
         hooks_url: string;
         /** Format: uri */
         html_url: string;
-        /** @description Unique identifier of the repository */
+        /**
+         * Format: int64
+         * @description Unique identifier of the repository
+         */
         id: number;
         is_template?: boolean;
         /** Format: uri-template */
@@ -59436,7 +60325,10 @@ export interface components {
         hooks_url: string;
         /** Format: uri */
         html_url: string;
-        /** @description Unique identifier of the repository */
+        /**
+         * Format: int64
+         * @description Unique identifier of the repository
+         */
         id: number;
         is_template?: boolean;
         /** Format: uri-template */
@@ -59684,7 +60576,10 @@ export interface components {
         hooks_url: string;
         /** Format: uri */
         html_url: string;
-        /** @description Unique identifier of the repository */
+        /**
+         * Format: int64
+         * @description Unique identifier of the repository
+         */
         id: number;
         is_template?: boolean;
         /** Format: uri-template */
@@ -60209,6 +61104,7 @@ export interface components {
           | "stale"
           | "success"
           | "timed_out"
+          | "startup_failure"
           | null;
         /** Format: date-time */
         created_at: string;
@@ -67097,6 +67993,117 @@ export interface operations {
       };
     };
   };
+  "projects-v2-status-update/created": {
+    parameters: {
+      query?: never;
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example project-v2-status-update */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-projects-v2-status-update-created"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  "projects-v2-status-update/deleted": {
+    parameters: {
+      query?: never;
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example project-v2-status-update */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-projects-v2-status-update-deleted"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  "projects-v2-status-update/edited": {
+    parameters: {
+      query?: never;
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example project-v2-status-update */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-projects-v2-status-update-edited"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
   public: {
     parameters: {
       query?: never;
@@ -69465,43 +70472,6 @@ export interface operations {
       };
     };
   };
-  "secret-scanning-alert/revoked": {
-    parameters: {
-      query?: never;
-      header: {
-        /** @example GitHub-Hookshot/123abc */
-        "User-Agent": string;
-        /** @example 12312312 */
-        "X-Github-Hook-Id": string;
-        /** @example issues */
-        "X-Github-Event": string;
-        /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id": string;
-        /** @example repository */
-        "X-Github-Hook-Installation-Target-Type": string;
-        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery": string;
-        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256": string;
-      };
-      path?: never;
-      cookie?: never;
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["webhook-secret-scanning-alert-revoked"];
-      };
-    };
-    responses: {
-      /** @description Return a 200 status to indicate that the data was received successfully */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-    };
-  };
   "secret-scanning-alert/validated": {
     parameters: {
       query?: never;
@@ -70008,6 +70978,154 @@ export interface operations {
     requestBody: {
       content: {
         "application/json": components["schemas"]["webhook-status"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  "sub-issues/parent-issue-added": {
+    parameters: {
+      query?: never;
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-sub-issues-parent-issue-added"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  "sub-issues/parent-issue-removed": {
+    parameters: {
+      query?: never;
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-sub-issues-parent-issue-removed"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  "sub-issues/sub-issue-added": {
+    parameters: {
+      query?: never;
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-sub-issues-sub-issue-added"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  "sub-issues/sub-issue-removed": {
+    parameters: {
+      query?: never;
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-sub-issues-sub-issue-removed"];
       };
     };
     responses: {
