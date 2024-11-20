@@ -10,7 +10,7 @@
     "download": "node scripts/download.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
-    "generate-types": "node scripts/generate-types.js",
+    "generate-types": "node scripts/generate-types.js && node scripts/generate-types-transition.js",
     "update-package": "node scripts/update-package.js",
     "lint": "prettier --check '*.{md,json}' 'scripts/**/*.{js,json}' 'packages/**/*.{ts,md,json,d.ts}'",
     "lint:fix": "prettier --write '*.{md,json}' 'scripts/**/*.{js,json}' 'packages/**/*.{ts,md,json,d.ts}'"
@@ -60,6 +60,12 @@
         "@semantic-release/npm",
         {
           "pkgRoot": "packages/openapi-webhooks"
+        }
+      ],
+      [
+        "@semantic-release/npm",
+        {
+          "pkgRoot": "packages/openapi-webhooks-types-transition"
         }
       ],
       [
