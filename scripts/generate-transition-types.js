@@ -83,7 +83,10 @@ async function run() {
           .join(" | ")}`
     ),
     "};",
-    "export type WebhookEvent = WebhookEventMap;",
+    "export type WebhookEvent =",
+    Object.keys(eventsMap).map(
+      (eventName) => `${snakeToPascalCase(eventName)}Event`
+    ).join(" | "),
     "export type WebhookEventMap = EventPayloadMap;",
     "export type WebhookEventName = keyof EventPayloadMap;"
   );

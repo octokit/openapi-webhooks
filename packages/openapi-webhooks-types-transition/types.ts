@@ -1017,6 +1017,79 @@ export type EventPayloadMap = {
     | WebhookEventDefinition<"workflow_run.in_progress">
     | WebhookEventDefinition<"workflow_run.requested">;
 };
-export type WebhookEvent = WebhookEventMap;
+export type WebhookEvent =
+  | BranchProtectionConfigurationEvent
+  | BranchProtectionRuleEvent
+  | CheckRunEvent
+  | CheckSuiteEvent
+  | CodeScanningAlertEvent
+  | CommitCommentEvent
+  | CreateEvent
+  | CustomPropertyEvent
+  | CustomPropertyValuesEvent
+  | DeleteEvent
+  | DependabotAlertEvent
+  | DeployKeyEvent
+  | DeploymentEvent
+  | DeploymentProtectionRuleEvent
+  | DeploymentReviewEvent
+  | DeploymentStatusEvent
+  | DiscussionEvent
+  | DiscussionCommentEvent
+  | ForkEvent
+  | GithubAppAuthorizationEvent
+  | GollumEvent
+  | InstallationEvent
+  | InstallationRepositoriesEvent
+  | InstallationTargetEvent
+  | IssueCommentEvent
+  | IssuesEvent
+  | LabelEvent
+  | MarketplacePurchaseEvent
+  | MemberEvent
+  | MembershipEvent
+  | MergeGroupEvent
+  | MetaEvent
+  | MilestoneEvent
+  | OrgBlockEvent
+  | OrganizationEvent
+  | PackageEvent
+  | PageBuildEvent
+  | PersonalAccessTokenRequestEvent
+  | PingEvent
+  | ProjectCardEvent
+  | ProjectEvent
+  | ProjectColumnEvent
+  | ProjectsV2Event
+  | ProjectsV2ItemEvent
+  | ProjectsV2StatusUpdateEvent
+  | PublicEvent
+  | PullRequestEvent
+  | PullRequestReviewCommentEvent
+  | PullRequestReviewEvent
+  | PullRequestReviewThreadEvent
+  | PushEvent
+  | RegistryPackageEvent
+  | ReleaseEvent
+  | RepositoryAdvisoryEvent
+  | RepositoryEvent
+  | RepositoryDispatchEvent
+  | RepositoryImportEvent
+  | RepositoryRulesetEvent
+  | RepositoryVulnerabilityAlertEvent
+  | SecretScanningAlertEvent
+  | SecretScanningAlertLocationEvent
+  | SecurityAdvisoryEvent
+  | SecurityAndAnalysisEvent
+  | SponsorshipEvent
+  | StarEvent
+  | StatusEvent
+  | SubIssuesEvent
+  | TeamAddEvent
+  | TeamEvent
+  | WatchEvent
+  | WorkflowDispatchEvent
+  | WorkflowJobEvent
+  | WorkflowRunEvent;
 export type WebhookEventMap = EventPayloadMap;
 export type WebhookEventName = keyof EventPayloadMap;
