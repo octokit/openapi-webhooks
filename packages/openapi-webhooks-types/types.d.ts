@@ -6519,7 +6519,7 @@ export interface components {
       repository: components["schemas"]["repository-webhooks"];
       organization?: components["schemas"]["organization-simple-webhooks"];
       installation?: components["schemas"]["simple-installation"];
-      sender: components["schemas"]["simple-user-webhooks"];
+      sender: components["schemas"]["simple-user"];
     };
     /**
      * Deployment
@@ -20629,7 +20629,7 @@ export interface components {
       };
       organization?: components["schemas"]["organization-simple-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
-      sender: components["schemas"]["simple-user-webhooks"];
+      sender: components["schemas"]["simple-user"];
     };
     /** milestone created event */
     "webhook-milestone-created": {
@@ -20708,7 +20708,7 @@ export interface components {
       };
       organization?: components["schemas"]["organization-simple-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
-      sender: components["schemas"]["simple-user-webhooks"];
+      sender: components["schemas"]["simple-user"];
     };
     /** milestone deleted event */
     "webhook-milestone-deleted": {
@@ -20822,7 +20822,7 @@ export interface components {
       };
       organization?: components["schemas"]["organization-simple-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
-      sender: components["schemas"]["simple-user-webhooks"];
+      sender: components["schemas"]["simple-user"];
     };
     /** org_block blocked event */
     "webhook-org-block-blocked": {

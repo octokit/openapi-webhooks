@@ -90,7 +90,7 @@ async function run() {
 
   await writeFile(
     `packages/${packageName}/types.ts`,
-    /*await prettier.format(*/typeDefinitions.join("\n")/*, { parser: "typescript" })*/
+    await prettier.format(typeDefinitions.join("\n"), { parser: "typescript" })
   );
   await copyFile("LICENSE", `packages/${packageName}/LICENSE`);
   await writeFile(
