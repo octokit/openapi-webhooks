@@ -27,7 +27,7 @@ async function run() {
   const getDescriptionsOptions = {
     owner: "github",
     repo: "rest-api-description",
-    path: "descriptions",
+    path: "descriptions-next",
     ref: "main",
   };
 
