@@ -7,7 +7,10 @@ This package is continously updated based on [GitHub's OpenAPI specification](ht
 ## Usage
 
 ```typescript
-import { WebhookEvent, IssuesOpenedEvent } from "@octokit/openapi-webhooks-types-transition";
+import {
+  WebhookEvent,
+  IssuesOpenedEvent,
+} from "@octokit/openapi-webhooks-types-transition";
 
 const handleWebhookEvent = (event: WebhookEvent) => {
   if ("action" in event && event.action === "completed") {
@@ -22,7 +25,7 @@ const handleIssuesOpenedEvent = (event: IssuesOpenedEvent) => {
 };
 ```
 
->[!IMPORTANT]
+> [!IMPORTANT]
 > Webhooks Types are expected to be used with the [`strictNullChecks` option](https://www.typescriptlang.org/tsconfig#strictNullChecks) enabled in your `tsconfig`. If you don't have this option enabled, there's the possibility that you get `never` as the inferred type in some use cases. See [octokit/webhooks#395](https://github.com/octokit/webhooks/issues/395) for details.
 
 ## See also
