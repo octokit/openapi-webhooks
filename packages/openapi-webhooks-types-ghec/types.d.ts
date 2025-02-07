@@ -2607,6 +2607,18 @@ export interface webhooks {
      */
     post: operations["secret-scanning-alert/validated"];
   };
+  "secret-scanning-scan-completed": {
+    /**
+     * This event occurs when secret scanning completes certain scans on a repository. For more information about secret scanning, see "[About secret scanning](https://docs.github.com/enterprise-cloud@latest//code-security/secret-scanning/about-secret-scanning)."
+     *
+     * Scans can originate from multiple events such as updates to a custom pattern, a push to a repository, or updates
+     * to patterns from partners. For more information on custom patterns, see "[About custom patterns](https://docs.github.com/enterprise-cloud@latest//code-security/secret-scanning/using-advanced-secret-scanning-and-push-protection-features/custom-patterns)."
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
+     * @description A secret scanning scan was completed.
+     */
+    post: operations["secret-scanning-scan/completed"];
+  };
   "security-advisory-published": {
     /**
      * This event occurs when there is activity relating to a global security advisory that was reviewed by GitHub. A GitHub-reviewed global security advisory provides information about security vulnerabilities or malware that have been mapped to packages in ecosystems we support. For more information about global security advisories, see "[About global security advisories](https://docs.github.com/enterprise-cloud@latest//code-security/security-advisories/working-with-global-security-advisories-from-the-github-advisory-database/about-global-security-advisories)." For information about the API to manage security advisories, see [the REST API documentation](https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/global-advisories) or [the GraphQL documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#securityadvisory).
@@ -3730,6 +3742,8 @@ export interface components {
        * @enum {string}
        */
       status?: "approved" | "rejected" | "dismissed";
+      /** @description The comment the reviewer provided when responding to the exemption request. */
+      reviewer_comment?: string | null;
       /**
        * Format: date-time
        * @description The date and time the exemption request was created.
@@ -3855,7 +3869,9 @@ export interface components {
       slug?: string;
       node_id: string;
       client_id?: string;
-      owner: null | components["schemas"]["simple-user"];
+      owner:
+        | components["schemas"]["simple-user"]
+        | components["schemas"]["enterprise"];
       /** @description The name of the GitHub app */
       name: string;
       description: string | null;
@@ -3890,6 +3906,34 @@ export interface components {
       webhook_secret?: string | null;
       pem?: string;
     } | null;
+    /**
+     * Enterprise
+     * @description An enterprise on GitHub.
+     */
+    enterprise: {
+      /** @description A short description of the enterprise. */
+      description?: string | null;
+      /** Format: uri */
+      html_url: string;
+      /**
+       * Format: uri
+       * @description The enterprise's website URL.
+       */
+      website_url?: string | null;
+      /** @description Unique identifier of the enterprise */
+      id: number;
+      node_id: string;
+      /** @description The name of the enterprise. */
+      name: string;
+      /** @description The slug url identifier for the enterprise. */
+      slug: string;
+      /** Format: date-time */
+      created_at: string | null;
+      /** Format: date-time */
+      updated_at: string | null;
+      /** Format: uri */
+      avatar_url: string;
+    };
     /** @description A suite of checks performed on the code of a given code change */
     "simple-check-suite": {
       after?: string | null;
@@ -5161,6 +5205,7 @@ export interface components {
           url?: string;
           user_view_type?: string;
         } | null;
+        dismissed_comment?: components["schemas"]["code-scanning-alert-dismissed-comment"];
         /**
          * @description The reason for dismissing or closing the alert.
          * @enum {string|null}
@@ -5170,6 +5215,8 @@ export interface components {
           | "won't fix"
           | "used in tests"
           | null;
+        /** @description The time that the alert was fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`. */
+        fixed_at?: null;
         /**
          * Format: uri
          * @description The GitHub URL of the alert resource.
@@ -5217,10 +5264,10 @@ export interface components {
           severity: "none" | "note" | "warning" | "error" | null;
         };
         /**
-         * @description State of a code scanning alert.
-         * @enum {string}
+         * @description State of a code scanning alert. Events for alerts found outside the default branch will return a `null` value until they are dismissed or fixed.
+         * @enum {string|null}
          */
-        state: "open" | "dismissed" | "fixed";
+        state: "open" | "dismissed" | "fixed" | null;
         tool: {
           /** @description The name of the tool used to generate the code scanning analysis alert. */
           name: string;
@@ -5238,6 +5285,8 @@ export interface components {
       repository: components["schemas"]["repository-webhooks"];
       sender: components["schemas"]["simple-user"];
     };
+    /** @description The dismissal comment associated with the dismissal of the alert. */
+    "code-scanning-alert-dismissed-comment": string | null;
     /** @description The commit SHA of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty. */
     webhooks_code_scanning_commit_oid: string;
     /** @description The Git reference of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty. */
@@ -5296,6 +5345,7 @@ export interface components {
           url?: string;
           user_view_type?: string;
         } | null;
+        dismissed_comment?: components["schemas"]["code-scanning-alert-dismissed-comment"];
         /**
          * @description The reason for dismissing or closing the alert.
          * @enum {string|null}
@@ -5305,6 +5355,8 @@ export interface components {
           | "won't fix"
           | "used in tests"
           | null;
+        /** @description The time that the alert was fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`. */
+        fixed_at?: null;
         /**
          * Format: uri
          * @description The GitHub URL of the alert resource.
@@ -5397,6 +5449,7 @@ export interface components {
         dismissed_comment?: components["schemas"]["code-scanning-alert-dismissed-comment"];
         /** @description The reason for dismissing or closing the alert. Can be one of: `false positive`, `won't fix`, and `used in tests`. */
         dismissed_reason: null;
+        /** @description The time that the alert was fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`. */
         fixed_at?: null;
         /**
          * Format: uri
@@ -5452,7 +5505,7 @@ export interface components {
           tags?: string[] | null;
         };
         /**
-         * @description State of a code scanning alert.
+         * @description State of a code scanning alert. Events for alerts found outside the default branch will return a `null` value until they are dismissed or fixed.
          * @enum {string|null}
          */
         state: "open" | "dismissed" | null;
@@ -5475,8 +5528,6 @@ export interface components {
       repository: components["schemas"]["repository-webhooks"];
       sender: components["schemas"]["simple-user"];
     };
-    /** @description The dismissal comment associated with the dismissal of the alert. */
-    "code-scanning-alert-dismissed-comment": string | null;
     /** code_scanning_alert fixed event */
     "webhook-code-scanning-alert-fixed": {
       /** @enum {string} */
@@ -5531,6 +5582,7 @@ export interface components {
           url?: string;
           user_view_type?: string;
         } | null;
+        dismissed_comment?: components["schemas"]["code-scanning-alert-dismissed-comment"];
         /**
          * @description The reason for dismissing or closing the alert.
          * @enum {string|null}
@@ -5540,6 +5592,8 @@ export interface components {
           | "won't fix"
           | "used in tests"
           | null;
+        /** @description The time that the alert was fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`. */
+        fixed_at?: null;
         /**
          * Format: uri
          * @description The GitHub URL of the alert resource.
@@ -5595,10 +5649,10 @@ export interface components {
           tags?: string[] | null;
         };
         /**
-         * @description State of a code scanning alert.
-         * @enum {string}
+         * @description State of a code scanning alert. Events for alerts found outside the default branch will return a `null` value until they are dismissed or fixed.
+         * @enum {string|null}
          */
-        state: "fixed";
+        state: "fixed" | null;
         tool: {
           guid?: string | null;
           /** @description The name of the tool used to generate the code scanning analysis alert. */
@@ -5631,8 +5685,11 @@ export interface components {
         /** @description The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`. */
         dismissed_at: string | null;
         dismissed_by: Record<string, never> | null;
+        dismissed_comment?: components["schemas"]["code-scanning-alert-dismissed-comment"];
         /** @description The reason for dismissing or closing the alert. Can be one of: `false positive`, `won't fix`, and `used in tests`. */
         dismissed_reason: string | null;
+        /** @description The time that the alert was fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`. */
+        fixed_at?: null;
         /**
          * Format: uri
          * @description The GitHub URL of the alert resource.
@@ -5686,10 +5743,10 @@ export interface components {
           tags?: string[] | null;
         };
         /**
-         * @description State of a code scanning alert.
-         * @enum {string}
+         * @description State of a code scanning alert. Events for alerts found outside the default branch will return a `null` value until they are dismissed or fixed.
+         * @enum {string|null}
          */
-        state: "open" | "dismissed" | "fixed";
+        state: "open" | "dismissed" | "fixed" | null;
         tool: {
           guid?: string | null;
           /** @description The name of the tool used to generate the code scanning analysis alert. */
@@ -5724,8 +5781,11 @@ export interface components {
         /** @description The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`. */
         dismissed_at: null;
         dismissed_by: null;
+        dismissed_comment?: components["schemas"]["code-scanning-alert-dismissed-comment"];
         /** @description The reason for dismissing or closing the alert. Can be one of: `false positive`, `won't fix`, and `used in tests`. */
         dismissed_reason: null;
+        /** @description The time that the alert was fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`. */
+        fixed_at?: null;
         /**
          * Format: uri
          * @description The GitHub URL of the alert resource.
@@ -5773,10 +5833,10 @@ export interface components {
           severity: "none" | "note" | "warning" | "error" | null;
         };
         /**
-         * @description State of a code scanning alert.
-         * @enum {string}
+         * @description State of a code scanning alert. Events for alerts found outside the default branch will return a `null` value until they are dismissed or fixed.
+         * @enum {string|null}
          */
-        state: "open" | "fixed";
+        state: "open" | "fixed" | null;
         tool: {
           /** @description The name of the tool used to generate the code scanning analysis alert. */
           name: string;
@@ -6119,6 +6179,7 @@ export interface components {
         readonly vector_string: string | null;
       };
       readonly cvss_severities?: components["schemas"]["cvss-severities"];
+      readonly epss?: components["schemas"]["security-advisory-epss"];
       /** @description Details for the advisory pertaining to Common Weakness Enumeration. */
       readonly cwes: readonly {
         /** @description The unique CWE ID. */
@@ -6189,6 +6250,11 @@ export interface components {
         /** @description The CVSS 4 score. */
         score: number | null;
       } | null;
+    } | null;
+    /** @description The EPSS scores as calculated by the [Exploit Prediction Scoring System](https://www.first.org/epss). */
+    readonly "security-advisory-epss": {
+      readonly percentage?: number;
+      readonly percentile?: number;
     } | null;
     /**
      * Format: uri
@@ -10415,34 +10481,6 @@ export interface components {
       contact_email?: string | null;
     };
     /**
-     * Enterprise
-     * @description An enterprise on GitHub.
-     */
-    enterprise: {
-      /** @description A short description of the enterprise. */
-      description?: string | null;
-      /** Format: uri */
-      html_url: string;
-      /**
-       * Format: uri
-       * @description The enterprise's website URL.
-       */
-      website_url?: string | null;
-      /** @description Unique identifier of the enterprise */
-      id: number;
-      node_id: string;
-      /** @description The name of the enterprise. */
-      name: string;
-      /** @description The slug url identifier for the enterprise. */
-      slug: string;
-      /** Format: date-time */
-      created_at: string | null;
-      /** Format: date-time */
-      updated_at: string | null;
-      /** Format: uri */
-      avatar_url: string;
-    };
-    /**
      * App Permissions
      * @description The permissions granted to the user access token.
      * @example {
@@ -11392,6 +11430,12 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
+        /** Sub-issues Summary */
+        sub_issues_summary?: {
+          total: number;
+          completed: number;
+          percent_completed: number;
+        };
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -11989,6 +12033,12 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
+        /** Sub-issues Summary */
+        sub_issues_summary?: {
+          total: number;
+          completed: number;
+          percent_completed: number;
+        };
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -12685,6 +12735,12 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
+        /** Sub-issues Summary */
+        sub_issues_summary?: {
+          total: number;
+          completed: number;
+          percent_completed: number;
+        };
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -13302,6 +13358,12 @@ export interface components {
       };
       /** Format: uri */
       repository_url: string;
+      /** Sub-issues Summary */
+      sub_issues_summary?: {
+        total: number;
+        completed: number;
+        percent_completed: number;
+      };
       /**
        * @description State of the issue; either 'open' or 'closed'
        * @enum {string}
@@ -13786,6 +13848,12 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
+        /** Sub-issues Summary */
+        sub_issues_summary?: {
+          total: number;
+          completed: number;
+          percent_completed: number;
+        };
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -14332,6 +14400,12 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
+        /** Sub-issues Summary */
+        sub_issues_summary?: {
+          total: number;
+          completed: number;
+          percent_completed: number;
+        };
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -14815,6 +14889,12 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
+        /** Sub-issues Summary */
+        sub_issues_summary?: {
+          total: number;
+          completed: number;
+          percent_completed: number;
+        };
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -15386,6 +15466,12 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
+        /** Sub-issues Summary */
+        sub_issues_summary?: {
+          total: number;
+          completed: number;
+          percent_completed: number;
+        };
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -15873,6 +15959,12 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
+        /** Sub-issues Summary */
+        sub_issues_summary?: {
+          total: number;
+          completed: number;
+          percent_completed: number;
+        };
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -16362,6 +16454,12 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
+        /** Sub-issues Summary */
+        sub_issues_summary?: {
+          total: number;
+          completed: number;
+          percent_completed: number;
+        };
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -16846,6 +16944,12 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
+        /** Sub-issues Summary */
+        sub_issues_summary?: {
+          total: number;
+          completed: number;
+          percent_completed: number;
+        };
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -17331,6 +17435,12 @@ export interface components {
           };
           /** Format: uri */
           repository_url: string;
+          /** Sub-issues Summary */
+          sub_issues_summary?: {
+            total: number;
+            completed: number;
+            percent_completed: number;
+          };
           /**
            * @description State of the issue; either 'open' or 'closed'
            * @enum {string}
@@ -18059,6 +18169,12 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
+        /** Sub-issues Summary */
+        sub_issues_summary?: {
+          total: number;
+          completed: number;
+          percent_completed: number;
+        };
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -18549,6 +18665,12 @@ export interface components {
       };
       /** Format: uri */
       repository_url: string;
+      /** Sub-issues Summary */
+      sub_issues_summary?: {
+        total: number;
+        completed: number;
+        percent_completed: number;
+      };
       /**
        * @description State of the issue; either 'open' or 'closed'
        * @enum {string}
@@ -19030,6 +19152,12 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
+        /** Sub-issues Summary */
+        sub_issues_summary?: {
+          total: number;
+          completed: number;
+          percent_completed: number;
+        };
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -19514,6 +19642,12 @@ export interface components {
           };
           /** Format: uri */
           repository_url: string;
+          /** Sub-issues Summary */
+          sub_issues_summary?: {
+            total: number;
+            completed: number;
+            percent_completed: number;
+          };
           /**
            * @description State of the issue; either 'open' or 'closed'
            * @enum {string}
@@ -20319,6 +20453,12 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
+        /** Sub-issues Summary */
+        sub_issues_summary?: {
+          total: number;
+          completed: number;
+          percent_completed: number;
+        };
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -54758,12 +54898,12 @@ export interface components {
        * @description The target of the ruleset
        * @enum {string}
        */
-      target?: "branch" | "tag" | "push";
+      target?: "branch" | "tag" | "push" | "repository";
       /**
        * @description The type of the source of the ruleset
        * @enum {string}
        */
-      source_type?: "Repository" | "Organization";
+      source_type?: "Repository" | "Organization" | "Enterprise";
       /** @description The name of the source */
       source: string;
       enforcement: components["schemas"]["repository-rule-enforcement"];
@@ -54799,7 +54939,7 @@ export interface components {
       updated_at?: string;
     };
     /**
-     * @description The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page.
+     * @description The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page. `evaluate` is not available for the `repository` target.
      * @enum {string}
      */
     "repository-rule-enforcement": "disabled" | "active" | "evaluate";
@@ -54845,6 +54985,7 @@ export interface components {
      * @description Conditions for an organization ruleset.
      * The branch and tag rulesets conditions object should contain both `repository_name` and `ref_name` properties, or both `repository_id` and `ref_name` properties, or both `repository_property` and `ref_name` properties.
      * The push rulesets conditions object does not require the `ref_name` property.
+     * For repository policy rulesets, the conditions object should only contain the `repository_name`, the `repository_id`, or the `repository_property`.
      */
     "org-ruleset-conditions":
       | (components["schemas"]["repository-ruleset-conditions"] &
@@ -55052,6 +55193,8 @@ export interface components {
       /** @enum {string} */
       type: "pull_request";
       parameters?: {
+        /** @description When merging pull requests, you can allow any combination of merge commits, squashing, or rebasing. At least one option must be enabled. */
+        allowed_merge_methods?: string[];
         /** @description New, reviewable commits pushed will dismiss previous pull request review approvals. */
         dismiss_stale_reviews_on_push: boolean;
         /** @description Require an approving review in pull requests that modify files that have a designated code owner. */
@@ -55709,6 +55852,8 @@ export interface components {
       push_protection_bypass_request_reviewer?:
         | null
         | components["schemas"]["simple-user"];
+      /** @description An optional comment when reviewing a push protection bypass. */
+      push_protection_bypass_request_reviewer_comment?: string | null;
       /** @description An optional comment when requesting a push protection bypass. */
       push_protection_bypass_request_comment?: string | null;
       /**
@@ -55950,6 +56095,49 @@ export interface components {
       installation?: components["schemas"]["simple-installation"];
       organization?: components["schemas"]["organization-simple-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
+      sender?: components["schemas"]["simple-user"];
+    };
+    /** secret_scanning_scan completed event */
+    "webhook-secret-scanning-scan-completed": {
+      /** @enum {string} */
+      action: "completed";
+      /**
+       * @description What type of scan was completed
+       * @enum {string}
+       */
+      type: "backfill" | "custom-pattern-backfill" | "pattern-version-backfill";
+      /**
+       * @description What type of content was scanned
+       * @enum {string}
+       */
+      source: "git" | "issues" | "pull-requests" | "discussions" | "wiki";
+      /**
+       * Format: date-time
+       * @description The time that the alert was resolved in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+       */
+      started_at: string;
+      /**
+       * Format: date-time
+       * @description The time that the alert was resolved in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+       */
+      completed_at: string;
+      /** @description List of patterns that were updated. This will be empty for normal backfill scans or custom pattern updates */
+      secret_types?: string[] | null;
+      /** @description If the scan was triggered by a custom pattern update, this will be the name of the pattern that was updated */
+      custom_pattern_name?: string | null;
+      /**
+       * @description If the scan was triggered by a custom pattern update, this will be the scope of the pattern that was updated
+       * @enum {string|null}
+       */
+      custom_pattern_scope?:
+        | "repository"
+        | "organization"
+        | "enterprise"
+        | null;
+      repository?: components["schemas"]["repository-webhooks"];
+      enterprise?: components["schemas"]["enterprise-webhooks"];
+      installation?: components["schemas"]["simple-installation"];
+      organization?: components["schemas"]["organization-simple-webhooks"];
       sender?: components["schemas"]["simple-user"];
     };
     /** security_advisory published event */
@@ -56611,6 +56799,7 @@ export interface components {
               | "ocsp_pending";
             signature: string | null;
             verified: boolean;
+            verified_at: string | null;
           };
         };
         /** User */
@@ -56790,6 +56979,7 @@ export interface components {
       performed_via_github_app?: null | components["schemas"]["integration"];
       author_association: components["schemas"]["author-association"];
       reactions?: components["schemas"]["reaction-rollup"];
+      sub_issues_summary?: components["schemas"]["sub-issues-summary"];
     };
     /** Reaction Rollup */
     "reaction-rollup": {
@@ -56804,6 +56994,12 @@ export interface components {
       hooray: number;
       eyes: number;
       rocket: number;
+    };
+    /** Sub-issues Summary */
+    "sub-issues-summary": {
+      total: number;
+      completed: number;
+      percent_completed: number;
     };
     /** parent issue removed event */
     "webhook-sub-issues-parent-issue-removed": {
@@ -68977,6 +69173,46 @@ export interface operations {
     requestBody: {
       content: {
         "application/json": components["schemas"]["webhook-secret-scanning-alert-validated"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when secret scanning completes certain scans on a repository. For more information about secret scanning, see "[About secret scanning](https://docs.github.com/enterprise-cloud@latest//code-security/secret-scanning/about-secret-scanning)."
+   *
+   * Scans can originate from multiple events such as updates to a custom pattern, a push to a repository, or updates
+   * to patterns from partners. For more information on custom patterns, see "[About custom patterns](https://docs.github.com/enterprise-cloud@latest//code-security/secret-scanning/using-advanced-secret-scanning-and-push-protection-features/custom-patterns)."
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
+   * @description A secret scanning scan was completed.
+   */
+  "secret-scanning-scan/completed": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-secret-scanning-scan-completed"];
       };
     };
     responses: {

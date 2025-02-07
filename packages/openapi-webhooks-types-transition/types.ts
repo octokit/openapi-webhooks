@@ -630,6 +630,8 @@ export type SecretScanningAlertEvent =
   | WebhookEventDefinition<"secret-scanning-alert-validated">;
 export type SecretScanningAlertLocationEvent =
   WebhookEventDefinition<"secret-scanning-alert-location-created">;
+export type SecretScanningScanEvent =
+  WebhookEventDefinition<"secret-scanning-scan-completed">;
 export type SecurityAdvisoryPublishedEvent =
   WebhookEventDefinition<"security-advisory-published">;
 export type SecurityAdvisoryUpdatedEvent =
@@ -981,6 +983,7 @@ export type EventPayloadMap = {
     | WebhookEventDefinition<"secret_scanning_alert.resolved">
     | WebhookEventDefinition<"secret_scanning_alert.validated">;
   secret_scanning_alert_location: WebhookEventDefinition<"secret_scanning_alert_location.created">;
+  secret_scanning_scan: WebhookEventDefinition<"secret_scanning_scan.completed">;
   security_advisory:
     | WebhookEventDefinition<"security_advisory.published">
     | WebhookEventDefinition<"security_advisory.updated">
@@ -1083,6 +1086,7 @@ export type WebhookEvent =
   | RepositoryVulnerabilityAlertEvent
   | SecretScanningAlertEvent
   | SecretScanningAlertLocationEvent
+  | SecretScanningScanEvent
   | SecurityAdvisoryEvent
   | SecurityAndAnalysisEvent
   | SponsorshipEvent
