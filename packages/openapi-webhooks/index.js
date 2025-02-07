@@ -1,12 +1,24 @@
-module.exports = {
-  schemas: {
-    ["api.github.com"]: require("./generated/api.github.com.json"),
-    ["ghec"]: require("./generated/ghec.json"),
-    ["ghes-3.10"]: require("./generated/ghes-3.10.json"),
-    ["ghes-3.11"]: require("./generated/ghes-3.11.json"),
-    ["ghes-3.12"]: require("./generated/ghes-3.12.json"),
-    ["ghes-3.13"]: require("./generated/ghes-3.13.json"),
-    ["ghes-3.14"]: require("./generated/ghes-3.14.json"),
-    ["ghes-3.15"]: require("./generated/ghes-3.15.json"),
-  },
+export const schemas = {
+  ["api.github.com"]: await import("./generated/api.github.com.json", {
+    with: { type: "json" },
+  }),
+  ["ghec"]: await import("./generated/ghec.json", { with: { type: "json" } }),
+  ["ghes-3.10"]: await import("./generated/ghes-3.10.json", {
+    with: { type: "json" },
+  }),
+  ["ghes-3.11"]: await import("./generated/ghes-3.11.json", {
+    with: { type: "json" },
+  }),
+  ["ghes-3.12"]: await import("./generated/ghes-3.12.json", {
+    with: { type: "json" },
+  }),
+  ["ghes-3.13"]: await import("./generated/ghes-3.13.json", {
+    with: { type: "json" },
+  }),
+  ["ghes-3.14"]: await import("./generated/ghes-3.14.json", {
+    with: { type: "json" },
+  }),
+  ["ghes-3.15"]: await import("./generated/ghes-3.15.json", {
+    with: { type: "json" },
+  }),
 };

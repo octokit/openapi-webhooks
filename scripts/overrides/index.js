@@ -1,6 +1,6 @@
-import { readFileSync } from "fs";
-import { resolve, join, dirname } from "path";
-import { fileURLToPath } from "url";
+import { readFileSync } from "node:fs";
+import { resolve, join, dirname } from "node:path";
+import { fileURLToPath } from "node:url";
 
 const SUPPORTED_GHES_OPERATIONS = [
   "3.10",

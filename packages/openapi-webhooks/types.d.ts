@@ -1,0 +1,10 @@
+export declare const schemas: {
+  "api.github.com": Record<string, unknown>;
+  ghec: Record<string, unknown>;
+  "ghes-3.10": Record<string, unknown>;
+  "ghes-3.11": Record<string, unknown>;
+  "ghes-3.12": Record<string, unknown>;
+  "ghes-3.13": Record<string, unknown>;
+  "ghes-3.14": Record<string, unknown>;
+  "ghes-3.15": Record<string, unknown>;
+};
