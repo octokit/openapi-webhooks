@@ -128,12 +128,17 @@ async function run() {
   }
 
   let schemasCode = "";
+  let schemasTypes = "";
 
   for (const name of schemaFileNames) {
     schemasCode += `["${name.replace(
       ".json",
       "",
-    )}"]: require("./generated/${name}"),`;
+    )}"]: await import("./generated/${name}", { with: { type: "json" } }),`;
+    schemasTypes += `"${name.replace(
+      ".json",
+      "",
+    )}": Record<string, unknown>;`;
   }
 
   writeFileSync(
@@ -149,16 +154,25 @@ They are all generated, your changes would be overwritten with the next update. 
     "packages/openapi-webhooks/index.js",
     await prettier.format(
       `
-      module.exports = {
-        schemas: {
-          ${schemasCode}
-        }
+      export const schemas = {
+        ${schemasCode}
       }
     `,
       {
         parser: "babel",
       },
     ),
+  );
+  writeFileSync(`packages/openapi-webhooks/types.d.ts`, await prettier.format(
+    `
+    export declare const schemas: {
+      ${schemasTypes}
+    }
+    `,
+    {
+      parser: "typescript",
+    },
+  )
   );
   writeFileSync(
     `packages/openapi-webhooks/package.json`,
@@ -170,7 +184,7 @@ They are all generated, your changes would be overwritten with the next update. 
           "GitHub's official Webhooks OpenAPI spec with Octokit extensions",
         main: "index.js",
         files: ["generated/*", "index.js"],
-        type: "commonjs",
+        type: "module",
         repository: {
           type: "git",
           url: "git+https://github.com/octokit/openapi-webhooks.git",
@@ -183,6 +197,9 @@ They are all generated, your changes would be overwritten with the next update. 
           access: "public",
           provenance: true,
         },
+        engines: {
+          node: "^18.20.0 || >= 20.10.0",
+        }
       }),
       { parser: "json-stringify" },
     ),
