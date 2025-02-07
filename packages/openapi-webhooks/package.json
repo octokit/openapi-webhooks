@@ -3,11 +3,12 @@
   "version": "0.0.0-development",
   "description": "GitHub's official Webhooks OpenAPI spec with Octokit extensions",
   "main": "index.js",
+  "types": "types.d.ts",
   "files": [
     "generated/*",
     "index.js"
   ],
-  "type": "commonjs",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/octokit/openapi-webhooks.git",
@@ -24,5 +25,8 @@
   "publishConfig": {
     "access": "public",
     "provenance": true
+  },
+  "engines": {
+    "node": "^18.20.0 || >= 20.10.0"
   }
 }

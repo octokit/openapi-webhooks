@@ -1,5 +1,5 @@
-import { get } from "https";
-import fs from "fs";
+import { get } from "node:https";
+import fs from "node:fs";
 
 import { Octokit } from "@octokit/core";
 import { getCurrentVersions } from "github-enterprise-server-versions";
