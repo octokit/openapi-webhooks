@@ -3270,7 +3270,9 @@ export interface components {
       /** @description The slug name of the GitHub app */
       slug?: string;
       node_id: string;
-      owner: null | components["schemas"]["simple-user"];
+      owner:
+        | components["schemas"]["simple-user"]
+        | components["schemas"]["enterprise"];
       /** @description The name of the GitHub app */
       name: string;
       description: string | null;
@@ -3305,6 +3307,34 @@ export interface components {
       webhook_secret?: string | null;
       pem?: string;
     } | null;
+    /**
+     * Enterprise
+     * @description An enterprise on GitHub.
+     */
+    enterprise: {
+      /** @description A short description of the enterprise. */
+      description?: string | null;
+      /** Format: uri */
+      html_url: string;
+      /**
+       * Format: uri
+       * @description The enterprise's website URL.
+       */
+      website_url?: string | null;
+      /** @description Unique identifier of the enterprise */
+      id: number;
+      node_id: string;
+      /** @description The name of the enterprise. */
+      name: string;
+      /** @description The slug url identifier for the enterprise. */
+      slug: string;
+      /** Format: date-time */
+      created_at: string | null;
+      /** Format: date-time */
+      updated_at: string | null;
+      /** Format: uri */
+      avatar_url: string;
+    };
     /** @description A suite of checks performed on the code of a given code change */
     "simple-check-suite": {
       after?: string | null;
@@ -4564,6 +4594,7 @@ export interface components {
           url?: string;
           user_view_type?: string;
         } | null;
+        dismissed_comment?: components["schemas"]["code-scanning-alert-dismissed-comment"];
         /**
          * @description The reason for dismissing or closing the alert.
          * @enum {string|null}
@@ -4573,6 +4604,8 @@ export interface components {
           | "won't fix"
           | "used in tests"
           | null;
+        /** @description The time that the alert was fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`. */
+        fixed_at?: null;
         /**
          * Format: uri
          * @description The GitHub URL of the alert resource.
@@ -4620,10 +4653,10 @@ export interface components {
           severity: "none" | "note" | "warning" | "error" | null;
         };
         /**
-         * @description State of a code scanning alert.
-         * @enum {string}
+         * @description State of a code scanning alert. Events for alerts found outside the default branch will return a `null` value until they are dismissed or fixed.
+         * @enum {string|null}
          */
-        state: "open" | "dismissed" | "fixed";
+        state: "open" | "dismissed" | "fixed" | null;
         tool: {
           /** @description The name of the tool used to generate the code scanning analysis alert. */
           name: string;
@@ -4641,6 +4674,8 @@ export interface components {
       repository: components["schemas"]["repository-webhooks"];
       sender: components["schemas"]["simple-user"];
     };
+    /** @description The dismissal comment associated with the dismissal of the alert. */
+    "code-scanning-alert-dismissed-comment": string | null;
     /** @description The commit SHA of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty. */
     webhooks_code_scanning_commit_oid: string;
     /** @description The Git reference of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty. */
@@ -4699,6 +4734,7 @@ export interface components {
           url?: string;
           user_view_type?: string;
         } | null;
+        dismissed_comment?: components["schemas"]["code-scanning-alert-dismissed-comment"];
         /**
          * @description The reason for dismissing or closing the alert.
          * @enum {string|null}
@@ -4708,6 +4744,8 @@ export interface components {
           | "won't fix"
           | "used in tests"
           | null;
+        /** @description The time that the alert was fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`. */
+        fixed_at?: null;
         /**
          * Format: uri
          * @description The GitHub URL of the alert resource.
@@ -4800,6 +4838,7 @@ export interface components {
         dismissed_comment?: components["schemas"]["code-scanning-alert-dismissed-comment"];
         /** @description The reason for dismissing or closing the alert. Can be one of: `false positive`, `won't fix`, and `used in tests`. */
         dismissed_reason: null;
+        /** @description The time that the alert was fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`. */
         fixed_at?: null;
         /**
          * Format: uri
@@ -4855,7 +4894,7 @@ export interface components {
           tags?: string[] | null;
         };
         /**
-         * @description State of a code scanning alert.
+         * @description State of a code scanning alert. Events for alerts found outside the default branch will return a `null` value until they are dismissed or fixed.
          * @enum {string|null}
          */
         state: "open" | "dismissed" | null;
@@ -4878,8 +4917,6 @@ export interface components {
       repository: components["schemas"]["repository-webhooks"];
       sender: components["schemas"]["simple-user"];
     };
-    /** @description The dismissal comment associated with the dismissal of the alert. */
-    "code-scanning-alert-dismissed-comment": string | null;
     /** code_scanning_alert fixed event */
     "webhook-code-scanning-alert-fixed": {
       /** @enum {string} */
@@ -4934,6 +4971,7 @@ export interface components {
           url?: string;
           user_view_type?: string;
         } | null;
+        dismissed_comment?: components["schemas"]["code-scanning-alert-dismissed-comment"];
         /**
          * @description The reason for dismissing or closing the alert.
          * @enum {string|null}
@@ -4943,6 +4981,8 @@ export interface components {
           | "won't fix"
           | "used in tests"
           | null;
+        /** @description The time that the alert was fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`. */
+        fixed_at?: null;
         /**
          * Format: uri
          * @description The GitHub URL of the alert resource.
@@ -4998,10 +5038,10 @@ export interface components {
           tags?: string[] | null;
         };
         /**
-         * @description State of a code scanning alert.
-         * @enum {string}
+         * @description State of a code scanning alert. Events for alerts found outside the default branch will return a `null` value until they are dismissed or fixed.
+         * @enum {string|null}
          */
-        state: "fixed";
+        state: "fixed" | null;
         tool: {
           guid?: string | null;
           /** @description The name of the tool used to generate the code scanning analysis alert. */
@@ -5034,8 +5074,11 @@ export interface components {
         /** @description The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`. */
         dismissed_at: string | null;
         dismissed_by: Record<string, never> | null;
+        dismissed_comment?: components["schemas"]["code-scanning-alert-dismissed-comment"];
         /** @description The reason for dismissing or closing the alert. Can be one of: `false positive`, `won't fix`, and `used in tests`. */
         dismissed_reason: string | null;
+        /** @description The time that the alert was fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`. */
+        fixed_at?: null;
         /**
          * Format: uri
          * @description The GitHub URL of the alert resource.
@@ -5089,10 +5132,10 @@ export interface components {
           tags?: string[] | null;
         };
         /**
-         * @description State of a code scanning alert.
-         * @enum {string}
+         * @description State of a code scanning alert. Events for alerts found outside the default branch will return a `null` value until they are dismissed or fixed.
+         * @enum {string|null}
          */
-        state: "open" | "dismissed" | "fixed";
+        state: "open" | "dismissed" | "fixed" | null;
         tool: {
           guid?: string | null;
           /** @description The name of the tool used to generate the code scanning analysis alert. */
@@ -5127,8 +5170,11 @@ export interface components {
         /** @description The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`. */
         dismissed_at: null;
         dismissed_by: null;
+        dismissed_comment?: components["schemas"]["code-scanning-alert-dismissed-comment"];
         /** @description The reason for dismissing or closing the alert. Can be one of: `false positive`, `won't fix`, and `used in tests`. */
         dismissed_reason: null;
+        /** @description The time that the alert was fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`. */
+        fixed_at?: null;
         /**
          * Format: uri
          * @description The GitHub URL of the alert resource.
@@ -5176,10 +5222,10 @@ export interface components {
           severity: "none" | "note" | "warning" | "error" | null;
         };
         /**
-         * @description State of a code scanning alert.
-         * @enum {string}
+         * @description State of a code scanning alert. Events for alerts found outside the default branch will return a `null` value until they are dismissed or fixed.
+         * @enum {string|null}
          */
-        state: "open" | "fixed";
+        state: "open" | "fixed" | null;
         tool: {
           /** @description The name of the tool used to generate the code scanning analysis alert. */
           name: string;
@@ -9709,34 +9755,6 @@ export interface components {
       contact_email?: string | null;
     };
     /**
-     * Enterprise
-     * @description An enterprise on GitHub.
-     */
-    enterprise: {
-      /** @description A short description of the enterprise. */
-      description?: string | null;
-      /** Format: uri */
-      html_url: string;
-      /**
-       * Format: uri
-       * @description The enterprise's website URL.
-       */
-      website_url?: string | null;
-      /** @description Unique identifier of the enterprise */
-      id: number;
-      node_id: string;
-      /** @description The name of the enterprise. */
-      name: string;
-      /** @description The slug url identifier for the enterprise. */
-      slug: string;
-      /** Format: date-time */
-      created_at: string | null;
-      /** Format: date-time */
-      updated_at: string | null;
-      /** Format: uri */
-      avatar_url: string;
-    };
-    /**
      * App Permissions
      * @description The permissions granted to the user access token.
      * @example {
@@ -10671,6 +10689,12 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
+        /** Sub-issues Summary */
+        sub_issues_summary?: {
+          total: number;
+          completed: number;
+          percent_completed: number;
+        };
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -11268,6 +11292,12 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
+        /** Sub-issues Summary */
+        sub_issues_summary?: {
+          total: number;
+          completed: number;
+          percent_completed: number;
+        };
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -11964,6 +11994,12 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
+        /** Sub-issues Summary */
+        sub_issues_summary?: {
+          total: number;
+          completed: number;
+          percent_completed: number;
+        };
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -12581,6 +12617,12 @@ export interface components {
       };
       /** Format: uri */
       repository_url: string;
+      /** Sub-issues Summary */
+      sub_issues_summary?: {
+        total: number;
+        completed: number;
+        percent_completed: number;
+      };
       /**
        * @description State of the issue; either 'open' or 'closed'
        * @enum {string}
@@ -13065,6 +13107,12 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
+        /** Sub-issues Summary */
+        sub_issues_summary?: {
+          total: number;
+          completed: number;
+          percent_completed: number;
+        };
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -13611,6 +13659,12 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
+        /** Sub-issues Summary */
+        sub_issues_summary?: {
+          total: number;
+          completed: number;
+          percent_completed: number;
+        };
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -14094,6 +14148,12 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
+        /** Sub-issues Summary */
+        sub_issues_summary?: {
+          total: number;
+          completed: number;
+          percent_completed: number;
+        };
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -14665,6 +14725,12 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
+        /** Sub-issues Summary */
+        sub_issues_summary?: {
+          total: number;
+          completed: number;
+          percent_completed: number;
+        };
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -15152,6 +15218,12 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
+        /** Sub-issues Summary */
+        sub_issues_summary?: {
+          total: number;
+          completed: number;
+          percent_completed: number;
+        };
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -15641,6 +15713,12 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
+        /** Sub-issues Summary */
+        sub_issues_summary?: {
+          total: number;
+          completed: number;
+          percent_completed: number;
+        };
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -16125,6 +16203,12 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
+        /** Sub-issues Summary */
+        sub_issues_summary?: {
+          total: number;
+          completed: number;
+          percent_completed: number;
+        };
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -16610,6 +16694,12 @@ export interface components {
           };
           /** Format: uri */
           repository_url: string;
+          /** Sub-issues Summary */
+          sub_issues_summary?: {
+            total: number;
+            completed: number;
+            percent_completed: number;
+          };
           /**
            * @description State of the issue; either 'open' or 'closed'
            * @enum {string}
@@ -17334,6 +17424,12 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
+        /** Sub-issues Summary */
+        sub_issues_summary?: {
+          total: number;
+          completed: number;
+          percent_completed: number;
+        };
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -17824,6 +17920,12 @@ export interface components {
       };
       /** Format: uri */
       repository_url: string;
+      /** Sub-issues Summary */
+      sub_issues_summary?: {
+        total: number;
+        completed: number;
+        percent_completed: number;
+      };
       /**
        * @description State of the issue; either 'open' or 'closed'
        * @enum {string}
@@ -18305,6 +18407,12 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
+        /** Sub-issues Summary */
+        sub_issues_summary?: {
+          total: number;
+          completed: number;
+          percent_completed: number;
+        };
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -18789,6 +18897,12 @@ export interface components {
           };
           /** Format: uri */
           repository_url: string;
+          /** Sub-issues Summary */
+          sub_issues_summary?: {
+            total: number;
+            completed: number;
+            percent_completed: number;
+          };
           /**
            * @description State of the issue; either 'open' or 'closed'
            * @enum {string}
@@ -19590,6 +19704,12 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
+        /** Sub-issues Summary */
+        sub_issues_summary?: {
+          total: number;
+          completed: number;
+          percent_completed: number;
+        };
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -50804,7 +50924,7 @@ export interface components {
       updated_at?: string;
     };
     /**
-     * @description The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page.
+     * @description The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page. `evaluate` is not available for the `repository` target.
      * @enum {string}
      */
     "repository-rule-enforcement": "disabled" | "active" | "evaluate";
@@ -50848,6 +50968,7 @@ export interface components {
      * @description Conditions for an organization ruleset.
      * The branch and tag rulesets conditions object should contain both `repository_name` and `ref_name` properties, or both `repository_id` and `ref_name` properties, or both `repository_property` and `ref_name` properties.
      * The push rulesets conditions object does not require the `ref_name` property.
+     * For repository policy rulesets, the conditions object should only contain the `repository_name`, the `repository_id`, or the `repository_property`.
      */
     "org-ruleset-conditions":
       | (components["schemas"]["repository-ruleset-conditions"] &
@@ -50962,6 +51083,8 @@ export interface components {
       /** @enum {string} */
       type: "pull_request";
       parameters?: {
+        /** @description When merging pull requests, you can allow any combination of merge commits, squashing, or rebasing. At least one option must be enabled. */
+        allowed_merge_methods?: string[];
         /** @description New, reviewable commits pushed will dismiss previous pull request review approvals. */
         dismiss_stale_reviews_on_push: boolean;
         /** @description Require an approving review in pull requests that modify files that have a designated code owner. */
