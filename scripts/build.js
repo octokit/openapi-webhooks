@@ -134,7 +134,7 @@ async function run() {
     schemasCode += `["${name.replace(
       ".json",
       "",
-    )}"]: await import("./generated/${name}", { with: { type: "json" } }),`;
+    )}"]: (await import("./generated/${name}", { with: { type: "json" } })).default,`;
     schemasTypes += `"${name.replace(
       ".json",
       "",
