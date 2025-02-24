@@ -184,8 +184,8 @@ They are all generated, your changes would be overwritten with the next update. 
         description:
           "GitHub's official Webhooks OpenAPI spec with Octokit extensions",
         main: "index.js",
-        types:  "index.d.ts",
-        files: ["generated/*", "index.js", "index.d.ts"],
+        types:  "types.d.ts",
+        files: ["generated/*", "index.js", "types.d.ts"],
         type: "module",
         repository: {
           type: "git",
