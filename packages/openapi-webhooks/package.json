@@ -3,9 +3,11 @@
   "version": "0.0.0-development",
   "description": "GitHub's official Webhooks OpenAPI spec with Octokit extensions",
   "main": "index.js",
+  "types": "index.d.ts",
   "files": [
     "generated/*",
-    "index.js"
+    "index.js",
+    "index.d.ts"
   ],
   "type": "module",
   "repository": {

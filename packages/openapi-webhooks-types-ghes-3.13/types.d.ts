@@ -4855,6 +4855,44 @@ export interface components {
         };
         /** Format: uri */
         url: string;
+        /** User */
+        dismissal_approved_by?: {
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization";
+          /** Format: uri */
+          url?: string;
+          user_view_type?: string;
+        } | null;
       };
       commit_oid: components["schemas"]["webhooks_code_scanning_commit_oid"];
       enterprise?: components["schemas"]["enterprise-webhooks"];
@@ -4951,6 +4989,7 @@ export interface components {
         updated_at?: string | null;
         /** Format: uri */
         url: string;
+        dismissal_approved_by?: null;
       };
       commit_oid: components["schemas"]["webhooks_code_scanning_commit_oid"];
       enterprise?: components["schemas"]["enterprise-webhooks"];
