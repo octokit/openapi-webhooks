@@ -7,6 +7,7 @@ import {
 } from "node:fs";
 import * as prettier from "prettier";
 import overrides from "./overrides/index.js";
+import { types } from "node:util"
 
 /* if (!process.env.GITHUB_ACTIONS && !process.env.ANICCA_REPOSITORY_PATH) {
   throw new Error("Please set ANICCA_REPOSITORY_PATH");
@@ -183,7 +184,8 @@ They are all generated, your changes would be overwritten with the next update. 
         description:
           "GitHub's official Webhooks OpenAPI spec with Octokit extensions",
         main: "index.js",
-        files: ["generated/*", "index.js"],
+        types:  "index.d.ts",
+        files: ["generated/*", "index.js", "index.d.ts"],
         type: "module",
         repository: {
           type: "git",
