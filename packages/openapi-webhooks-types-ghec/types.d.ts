@@ -308,6 +308,66 @@ export interface webhooks {
      */
     post: operations["check-suite/rerequested"];
   };
+  "closure-request-secret-scanning-cancelled": {
+    /**
+     * This event occurs when there is activity related to a user's request to dismiss a secret scanning alert.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
+     *
+     * [!NOTE]
+     * Delegated alert dismissal for secret scanning is currently in public preview and subject to change.
+     * @description A secret scanning alert dismissal request was canceled.
+     */
+    post: operations["exemption-request-secret-scanning-closure/cancelled"];
+  };
+  "closure-request-secret-scanning-completed": {
+    /**
+     * This event occurs when there is activity related to a user's request to dismiss a secret scanning alert.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
+     *
+     * [!NOTE]
+     * Delegated alert dismissal for secret scanning is currently in public preview and subject to change.
+     * @description A secret scanning alert dismissal request was completed.
+     */
+    post: operations["exemption-request-secret-scanning-closure/completed"];
+  };
+  "closure-request-secret-scanning-created": {
+    /**
+     * This event occurs when there is activity related to a user's request to dismiss a secret scanning alert.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
+     *
+     * [!NOTE]
+     * Delegated alert dismissal for secret scanning is currently in public preview and subject to change.
+     * @description A secret scanning alert dismissal request was created.
+     */
+    post: operations["exemption-request-secret-scanning-closure/created"];
+  };
+  "closure-request-secret-scanning-response-dismissed": {
+    /**
+     * This event occurs when there is activity related to a user's request to dismiss a secret scanning alert.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
+     *
+     * [!NOTE]
+     * Delegated alert dismissal for secret scanning is currently in public preview and subject to change.
+     * @description A secret scanning alert dismissal response was dismissed.
+     */
+    post: operations["exemption-request-secret-scanning-closure/response-dismissed"];
+  };
+  "closure-request-secret-scanning-response-submitted": {
+    /**
+     * This event occurs when there is activity related to a user's request to dismiss a secret scanning alert.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
+     *
+     * [!NOTE]
+     * Delegated alert dismissal for secret scanning is currently in public preview and subject to change.
+     * @description A secret scanning alert dismissal response was submitted.
+     */
+    post: operations["exemption-request-secret-scanning-closure/response-submitted"];
+  };
   "code-scanning-alert-appeared-in-branch": {
     /**
      * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/enterprise-cloud@latest//code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/enterprise-cloud@latest//code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/enterprise-cloud@latest//rest/code-scanning)" in the REST API documentation.
@@ -3619,7 +3679,7 @@ export interface components {
       /** @description The ID of the exemption request. */
       id?: number;
       /** @description The number uniquely identifying the exemption request within it's repository. */
-      number?: number;
+      number?: number | null;
       /** @description The ID of the repository the exemption request is for. */
       repository_id?: number;
       /** @description The ID of the user who requested the exemption. */
@@ -3630,10 +3690,14 @@ export interface components {
        * @description The type of request.
        * @enum {string}
        */
-      request_type?: "push_ruleset_bypass" | "secret_scanning";
+      request_type?:
+        | "push_ruleset_bypass"
+        | "secret_scanning"
+        | "secret_scanning_closure";
       exemption_request_data?:
         | components["schemas"]["exemption-request-push-ruleset-bypass"]
-        | components["schemas"]["exemption-request-secret-scanning"];
+        | components["schemas"]["exemption-request-secret-scanning"]
+        | components["schemas"]["exemption-request-secret-scanning-closure"];
       /** @description The unique identifier for the request type of the exemption request. For example, a commit SHA. */
       resource_identifier?: string;
       /**
@@ -3646,6 +3710,7 @@ export interface components {
       /** @description Metadata about the exemption request. */
       metadata?:
         | components["schemas"]["exemption-request-secret-scanning-metadata"]
+        | components["schemas"]["exemption-request-secret-scanning-closure-metadata"]
         | Record<string, never>
         | null;
       /**
@@ -3714,6 +3779,24 @@ export interface components {
       }[];
     };
     /**
+     * Secret scanning alert dismissal request data
+     * @description Secret scanning alerts that have dismissal requests.
+     */
+    "exemption-request-secret-scanning-closure": {
+      /**
+       * @description The type of request
+       * @enum {string}
+       */
+      type?: "secret_scanning_closure";
+      /** @description The data related to the secret scanning alerts that have dismissal requests. */
+      data?: {
+        /** @description The type of secret that was detected */
+        secret_type?: string;
+        /** @description The number of the alert that was detected */
+        alert_number?: string;
+      }[];
+    };
+    /**
      * Secret Scanning Push Protection Exemption Request Metadata
      * @description Metadata for a secret scanning push protection exemption request.
      */
@@ -3725,6 +3808,19 @@ export interface components {
        * @enum {string}
        */
       reason?: "fixed_later" | "false_positive" | "tests";
+    };
+    /**
+     * Secret scanning alert dismissal request metadata
+     * @description Metadata for a secret scanning alert dismissal request.
+     */
+    "exemption-request-secret-scanning-closure-metadata": {
+      /** @description The title of the secret alert */
+      alert_title?: string;
+      /**
+       * @description The reason for the dismissal request
+       * @enum {string}
+       */
+      reason?: "fixed_later" | "false_positive" | "tests" | "revoked";
     };
     /**
      * Exemption response
@@ -54080,6 +54176,10 @@ export interface components {
           /** @description The previous version of the name if the action was `edited`. */
           from: string;
         };
+        tag_name?: {
+          /** @description The previous version of the tag_name if the action was `edited`. */
+          from: string;
+        };
         make_latest?: {
           /** @description Whether this release was explicitly `edited` to be the latest. */
           to: boolean;
@@ -61117,6 +61217,206 @@ export interface operations {
     requestBody: {
       content: {
         "application/json": components["schemas"]["webhook-check-suite-rerequested"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity related to a user's request to dismiss a secret scanning alert.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
+   *
+   * [!NOTE]
+   * Delegated alert dismissal for secret scanning is currently in public preview and subject to change.
+   * @description A secret scanning alert dismissal request was canceled.
+   */
+  "exemption-request-secret-scanning-closure/cancelled": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-exemption-request-cancelled"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity related to a user's request to dismiss a secret scanning alert.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
+   *
+   * [!NOTE]
+   * Delegated alert dismissal for secret scanning is currently in public preview and subject to change.
+   * @description A secret scanning alert dismissal request was completed.
+   */
+  "exemption-request-secret-scanning-closure/completed": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-exemption-request-completed"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity related to a user's request to dismiss a secret scanning alert.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
+   *
+   * [!NOTE]
+   * Delegated alert dismissal for secret scanning is currently in public preview and subject to change.
+   * @description A secret scanning alert dismissal request was created.
+   */
+  "exemption-request-secret-scanning-closure/created": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-exemption-request-created"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity related to a user's request to dismiss a secret scanning alert.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
+   *
+   * [!NOTE]
+   * Delegated alert dismissal for secret scanning is currently in public preview and subject to change.
+   * @description A secret scanning alert dismissal response was dismissed.
+   */
+  "exemption-request-secret-scanning-closure/response-dismissed": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-exemption-request-response-dismissed"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity related to a user's request to dismiss a secret scanning alert.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
+   *
+   * [!NOTE]
+   * Delegated alert dismissal for secret scanning is currently in public preview and subject to change.
+   * @description A secret scanning alert dismissal response was submitted.
+   */
+  "exemption-request-secret-scanning-closure/response-submitted": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-exemption-request-response-submitted"];
       };
     };
     responses: {

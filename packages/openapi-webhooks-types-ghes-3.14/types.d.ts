@@ -3314,7 +3314,7 @@ export interface components {
       /** @description The ID of the exemption request. */
       id?: number;
       /** @description The number uniquely identifying the exemption request within it's repository. */
-      number?: number;
+      number?: number | null;
       /** @description The ID of the repository the exemption request is for. */
       repository_id?: number;
       /** @description The ID of the user who requested the exemption. */
@@ -3325,10 +3325,14 @@ export interface components {
        * @description The type of request.
        * @enum {string}
        */
-      request_type?: "push_ruleset_bypass" | "secret_scanning";
+      request_type?:
+        | "push_ruleset_bypass"
+        | "secret_scanning"
+        | "secret_scanning_closure";
       exemption_request_data?:
         | components["schemas"]["exemption-request-push-ruleset-bypass"]
-        | components["schemas"]["exemption-request-secret-scanning"];
+        | components["schemas"]["exemption-request-secret-scanning"]
+        | components["schemas"]["exemption-request-secret-scanning-closure"];
       /** @description The unique identifier for the request type of the exemption request. For example, a commit SHA. */
       resource_identifier?: string;
       /**
@@ -3341,6 +3345,7 @@ export interface components {
       /** @description Metadata about the exemption request. */
       metadata?:
         | components["schemas"]["exemption-request-secret-scanning-metadata"]
+        | components["schemas"]["exemption-request-secret-scanning-closure-metadata"]
         | Record<string, never>
         | null;
       /**
@@ -3409,6 +3414,24 @@ export interface components {
       }[];
     };
     /**
+     * Secret scanning alert dismissal request data
+     * @description Secret scanning alerts that have dismissal requests.
+     */
+    "exemption-request-secret-scanning-closure": {
+      /**
+       * @description The type of request
+       * @enum {string}
+       */
+      type?: "secret_scanning_closure";
+      /** @description The data related to the secret scanning alerts that have dismissal requests. */
+      data?: {
+        /** @description The type of secret that was detected */
+        secret_type?: string;
+        /** @description The number of the alert that was detected */
+        alert_number?: string;
+      }[];
+    };
+    /**
      * Secret Scanning Push Protection Exemption Request Metadata
      * @description Metadata for a secret scanning push protection exemption request.
      */
@@ -3420,6 +3443,19 @@ export interface components {
        * @enum {string}
        */
       reason?: "fixed_later" | "false_positive" | "tests";
+    };
+    /**
+     * Secret scanning alert dismissal request metadata
+     * @description Metadata for a secret scanning alert dismissal request.
+     */
+    "exemption-request-secret-scanning-closure-metadata": {
+      /** @description The title of the secret alert */
+      alert_title?: string;
+      /**
+       * @description The reason for the dismissal request
+       * @enum {string}
+       */
+      reason?: "fixed_later" | "false_positive" | "tests" | "revoked";
     };
     /**
      * Exemption response
@@ -50817,6 +50853,10 @@ export interface components {
         };
         name?: {
           /** @description The previous version of the name if the action was `edited`. */
+          from: string;
+        };
+        tag_name?: {
+          /** @description The previous version of the tag_name if the action was `edited`. */
           from: string;
         };
         make_latest?: {
