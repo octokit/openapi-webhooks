@@ -6255,6 +6255,15 @@ export interface components {
          * @enum {string|null}
          */
         readonly scope?: "development" | "runtime" | null;
+        /**
+         * @description The vulnerable dependency's relationship to your project.
+         *
+         * > [!NOTE]
+         * > We are rolling out support for dependency relationship across ecosystems. This value will be "unknown" for all dependencies in unsupported ecosystems.
+         *
+         * @enum {string|null}
+         */
+        readonly relationship?: "unknown" | "direct" | "transitive" | null;
       };
       security_advisory: components["schemas"]["dependabot-alert-security-advisory"];
       security_vulnerability: components["schemas"]["dependabot-alert-security-vulnerability"];
