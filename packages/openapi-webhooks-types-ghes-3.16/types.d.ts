@@ -3423,7 +3423,7 @@ export interface components {
       exemption_request_data?:
         | components["schemas"]["exemption-request-push-ruleset-bypass"]
         | components["schemas"]["exemption-request-secret-scanning"]
-        | components["schemas"]["exemption-request-secret-scanning-closure"];
+        | components["schemas"]["dismissal-request-secret-scanning"];
       /** @description The unique identifier for the request type of the exemption request. For example, a commit SHA. */
       resource_identifier?: string;
       /**
@@ -3436,7 +3436,7 @@ export interface components {
       /** @description Metadata about the exemption request. */
       metadata?:
         | components["schemas"]["exemption-request-secret-scanning-metadata"]
-        | components["schemas"]["exemption-request-secret-scanning-closure-metadata"]
+        | components["schemas"]["dismissal-request-secret-scanning-metadata"]
         | Record<string, never>
         | null;
       /**
@@ -3508,7 +3508,7 @@ export interface components {
      * Secret scanning alert dismissal request data
      * @description Secret scanning alerts that have dismissal requests.
      */
-    "exemption-request-secret-scanning-closure": {
+    "dismissal-request-secret-scanning": {
       /**
        * @description The type of request
        * @enum {string}
@@ -3539,7 +3539,7 @@ export interface components {
      * Secret scanning alert dismissal request metadata
      * @description Metadata for a secret scanning alert dismissal request.
      */
-    "exemption-request-secret-scanning-closure-metadata": {
+    "dismissal-request-secret-scanning-metadata": {
       /** @description The title of the secret alert */
       alert_title?: string;
       /**
