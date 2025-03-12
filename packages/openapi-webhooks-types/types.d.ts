@@ -5777,6 +5777,15 @@ export interface components {
          * @enum {string|null}
          */
         readonly scope?: "development" | "runtime" | null;
+        /**
+         * @description The vulnerable dependency's relationship to your project.
+         *
+         * > [!NOTE]
+         * > We are rolling out support for dependency relationship across ecosystems. This value will be "unknown" for all dependencies in unsupported ecosystems.
+         *
+         * @enum {string|null}
+         */
+        readonly relationship?: "unknown" | "direct" | "transitive" | null;
       };
       security_advisory: components["schemas"]["dependabot-alert-security-advisory"];
       security_vulnerability: components["schemas"]["dependabot-alert-security-vulnerability"];
@@ -53555,6 +53564,10 @@ export interface components {
           /** @description The previous version of the name if the action was `edited`. */
           from: string;
         };
+        tag_name?: {
+          /** @description The previous version of the tag_name if the action was `edited`. */
+          from: string;
+        };
         make_latest?: {
           /** @description Whether this release was explicitly `edited` to be the latest. */
           to: boolean;
@@ -54689,7 +54702,7 @@ export interface components {
       /** @enum {string} */
       type: "pull_request";
       parameters?: {
-        /** @description When merging pull requests, you can allow any combination of merge commits, squashing, or rebasing. At least one option must be enabled. */
+        /** @description Array of allowed merge methods. Allowed values include `merge`, `squash`, and `rebase`. At least one option must be enabled. */
         allowed_merge_methods?: string[];
         /** @description New, reviewable commits pushed will dismiss previous pull request review approvals. */
         dismiss_stale_reviews_on_push: boolean;

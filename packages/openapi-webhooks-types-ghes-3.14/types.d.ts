@@ -3314,7 +3314,7 @@ export interface components {
       /** @description The ID of the exemption request. */
       id?: number;
       /** @description The number uniquely identifying the exemption request within it's repository. */
-      number?: number;
+      number?: number | null;
       /** @description The ID of the repository the exemption request is for. */
       repository_id?: number;
       /** @description The ID of the user who requested the exemption. */
@@ -3325,10 +3325,16 @@ export interface components {
        * @description The type of request.
        * @enum {string}
        */
-      request_type?: "push_ruleset_bypass" | "secret_scanning";
+      request_type?:
+        | "push_ruleset_bypass"
+        | "secret_scanning"
+        | "secret_scanning_closure"
+        | "code_scanning_alert_dismissal";
       exemption_request_data?:
         | components["schemas"]["exemption-request-push-ruleset-bypass"]
-        | components["schemas"]["exemption-request-secret-scanning"];
+        | components["schemas"]["exemption-request-secret-scanning"]
+        | components["schemas"]["dismissal-request-secret-scanning"]
+        | components["schemas"]["dismissal-request-code-scanning"];
       /** @description The unique identifier for the request type of the exemption request. For example, a commit SHA. */
       resource_identifier?: string;
       /**
@@ -3340,8 +3346,11 @@ export interface components {
       requester_comment?: string | null;
       /** @description Metadata about the exemption request. */
       metadata?:
-        | components["schemas"]["exemption-request-secret-scanning-metadata"]
-        | Record<string, never>
+        | (
+            | components["schemas"]["exemption-request-secret-scanning-metadata"]
+            | components["schemas"]["dismissal-request-secret-scanning-metadata"]
+            | components["schemas"]["dismissal-request-code-scanning-metadata"]
+          )
         | null;
       /**
        * Format: date-time
@@ -3409,6 +3418,40 @@ export interface components {
       }[];
     };
     /**
+     * Secret scanning alert dismissal request data
+     * @description Secret scanning alerts that have dismissal requests.
+     */
+    "dismissal-request-secret-scanning": {
+      /**
+       * @description The type of request
+       * @enum {string}
+       */
+      type?: "secret_scanning_closure";
+      /** @description The data related to the secret scanning alerts that have dismissal requests. */
+      data?: {
+        /** @description The type of secret that was detected */
+        secret_type?: string;
+        /** @description The number of the alert that was detected */
+        alert_number?: string;
+      }[];
+    };
+    /**
+     * Code scanning alert dismissal request data
+     * @description Code scanning alerts that have dismissal requests.
+     */
+    "dismissal-request-code-scanning": {
+      /**
+       * @description The type of request
+       * @enum {string}
+       */
+      type?: "code_scanning_alert_dismissal";
+      /** @description The data related to the code scanning alerts that have dismissal requests. */
+      data?: {
+        /** @description The number of the alert to be dismissed */
+        alert_number?: string;
+      }[];
+    };
+    /**
      * Secret Scanning Push Protection Exemption Request Metadata
      * @description Metadata for a secret scanning push protection exemption request.
      */
@@ -3420,6 +3463,32 @@ export interface components {
        * @enum {string}
        */
       reason?: "fixed_later" | "false_positive" | "tests";
+    };
+    /**
+     * Secret scanning alert dismissal request metadata
+     * @description Metadata for a secret scanning alert dismissal request.
+     */
+    "dismissal-request-secret-scanning-metadata": {
+      /** @description The title of the secret alert */
+      alert_title?: string;
+      /**
+       * @description The reason for the dismissal request
+       * @enum {string}
+       */
+      reason?: "fixed_later" | "false_positive" | "tests" | "revoked";
+    };
+    /**
+     * Code scanning alert dismissal request metadata
+     * @description Metadata for a code scanning alert dismissal request.
+     */
+    "dismissal-request-code-scanning-metadata": {
+      /** @description The title of the code scanning alert */
+      alert_title?: string;
+      /**
+       * @description The reason for the dismissal request
+       * @enum {string}
+       */
+      reason?: "false positive" | "won't fix" | "used in tests";
     };
     /**
      * Exemption response
@@ -50819,6 +50888,10 @@ export interface components {
           /** @description The previous version of the name if the action was `edited`. */
           from: string;
         };
+        tag_name?: {
+          /** @description The previous version of the tag_name if the action was `edited`. */
+          from: string;
+        };
         make_latest?: {
           /** @description Whether this release was explicitly `edited` to be the latest. */
           to: boolean;
@@ -51551,7 +51624,7 @@ export interface components {
       /** @enum {string} */
       type: "pull_request";
       parameters?: {
-        /** @description When merging pull requests, you can allow any combination of merge commits, squashing, or rebasing. At least one option must be enabled. */
+        /** @description Array of allowed merge methods. Allowed values include `merge`, `squash`, and `rebase`. At least one option must be enabled. */
         allowed_merge_methods?: string[];
         /** @description New, reviewable commits pushed will dismiss previous pull request review approvals. */
         dismiss_stale_reviews_on_push: boolean;
