@@ -936,6 +936,30 @@ export interface webhooks {
      */
     post: operations["discussion/unpinned"];
   };
+  "dismissal-request-code-scanning-created": {
+    /**
+     * This event occurs when there is activity related to a user's request to dismiss a code scanning alert.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "code scanning alerts" repository permission.
+     *
+     * > [!NOTE]
+     * > Delegated alert dismissal for code scanning is currently in public preview and subject to change.
+     * @description A code scanning alert dismissal request was created.
+     */
+    post: operations["dismissal-request-code-scanning/created"];
+  };
+  "dismissal-request-code-scanning-response-submitted": {
+    /**
+     * This event occurs when there is activity related to a user's request to dismiss a code scanning alert.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "code scanning alerts" repository permission.
+     *
+     * > [!NOTE]
+     * > Delegated alert dismissal for code scanning is currently in public preview and subject to change.
+     * @description A code scanning alert dismissal response was submitted.
+     */
+    post: operations["dismissal-request-code-scanning/response-submitted"];
+  };
   "dismissal-request-secret-scanning-cancelled": {
     /**
      * This event occurs when there is activity related to a user's request to dismiss a secret scanning alert.
@@ -3753,11 +3777,13 @@ export interface components {
       request_type?:
         | "push_ruleset_bypass"
         | "secret_scanning"
-        | "secret_scanning_closure";
+        | "secret_scanning_closure"
+        | "code_scanning_alert_dismissal";
       exemption_request_data?:
         | components["schemas"]["exemption-request-push-ruleset-bypass"]
         | components["schemas"]["exemption-request-secret-scanning"]
-        | components["schemas"]["dismissal-request-secret-scanning"];
+        | components["schemas"]["dismissal-request-secret-scanning"]
+        | components["schemas"]["dismissal-request-code-scanning"];
       /** @description The unique identifier for the request type of the exemption request. For example, a commit SHA. */
       resource_identifier?: string;
       /**
@@ -3769,9 +3795,11 @@ export interface components {
       requester_comment?: string | null;
       /** @description Metadata about the exemption request. */
       metadata?:
-        | components["schemas"]["exemption-request-secret-scanning-metadata"]
-        | components["schemas"]["dismissal-request-secret-scanning-metadata"]
-        | Record<string, never>
+        | (
+            | components["schemas"]["exemption-request-secret-scanning-metadata"]
+            | components["schemas"]["dismissal-request-secret-scanning-metadata"]
+            | components["schemas"]["dismissal-request-code-scanning-metadata"]
+          )
         | null;
       /**
        * Format: date-time
@@ -3857,6 +3885,22 @@ export interface components {
       }[];
     };
     /**
+     * Code scanning alert dismissal request data
+     * @description Code scanning alerts that have dismissal requests.
+     */
+    "dismissal-request-code-scanning": {
+      /**
+       * @description The type of request
+       * @enum {string}
+       */
+      type?: "code_scanning_alert_dismissal";
+      /** @description The data related to the code scanning alerts that have dismissal requests. */
+      data?: {
+        /** @description The number of the alert to be dismissed */
+        alert_number?: string;
+      }[];
+    };
+    /**
      * Secret Scanning Push Protection Exemption Request Metadata
      * @description Metadata for a secret scanning push protection exemption request.
      */
@@ -3881,6 +3925,19 @@ export interface components {
        * @enum {string}
        */
       reason?: "fixed_later" | "false_positive" | "tests" | "revoked";
+    };
+    /**
+     * Code scanning alert dismissal request metadata
+     * @description Metadata for a code scanning alert dismissal request.
+     */
+    "dismissal-request-code-scanning-metadata": {
+      /** @description The title of the code scanning alert */
+      alert_title?: string;
+      /**
+       * @description The reason for the dismissal request
+       * @enum {string}
+       */
+      reason?: "false positive" | "won't fix" | "used in tests";
     };
     /**
      * Exemption response
@@ -63342,6 +63399,86 @@ export interface operations {
     requestBody: {
       content: {
         "application/json": components["schemas"]["webhook-discussion-unpinned"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity related to a user's request to dismiss a code scanning alert.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "code scanning alerts" repository permission.
+   *
+   * > [!NOTE]
+   * > Delegated alert dismissal for code scanning is currently in public preview and subject to change.
+   * @description A code scanning alert dismissal request was created.
+   */
+  "dismissal-request-code-scanning/created": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-exemption-request-created"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity related to a user's request to dismiss a code scanning alert.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "code scanning alerts" repository permission.
+   *
+   * > [!NOTE]
+   * > Delegated alert dismissal for code scanning is currently in public preview and subject to change.
+   * @description A code scanning alert dismissal response was submitted.
+   */
+  "dismissal-request-code-scanning/response-submitted": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-exemption-request-response-submitted"];
       };
     };
     responses: {

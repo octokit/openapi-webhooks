@@ -3419,11 +3419,13 @@ export interface components {
       request_type?:
         | "push_ruleset_bypass"
         | "secret_scanning"
-        | "secret_scanning_closure";
+        | "secret_scanning_closure"
+        | "code_scanning_alert_dismissal";
       exemption_request_data?:
         | components["schemas"]["exemption-request-push-ruleset-bypass"]
         | components["schemas"]["exemption-request-secret-scanning"]
-        | components["schemas"]["dismissal-request-secret-scanning"];
+        | components["schemas"]["dismissal-request-secret-scanning"]
+        | components["schemas"]["dismissal-request-code-scanning"];
       /** @description The unique identifier for the request type of the exemption request. For example, a commit SHA. */
       resource_identifier?: string;
       /**
@@ -3435,9 +3437,11 @@ export interface components {
       requester_comment?: string | null;
       /** @description Metadata about the exemption request. */
       metadata?:
-        | components["schemas"]["exemption-request-secret-scanning-metadata"]
-        | components["schemas"]["dismissal-request-secret-scanning-metadata"]
-        | Record<string, never>
+        | (
+            | components["schemas"]["exemption-request-secret-scanning-metadata"]
+            | components["schemas"]["dismissal-request-secret-scanning-metadata"]
+            | components["schemas"]["dismissal-request-code-scanning-metadata"]
+          )
         | null;
       /**
        * Format: date-time
@@ -3523,6 +3527,22 @@ export interface components {
       }[];
     };
     /**
+     * Code scanning alert dismissal request data
+     * @description Code scanning alerts that have dismissal requests.
+     */
+    "dismissal-request-code-scanning": {
+      /**
+       * @description The type of request
+       * @enum {string}
+       */
+      type?: "code_scanning_alert_dismissal";
+      /** @description The data related to the code scanning alerts that have dismissal requests. */
+      data?: {
+        /** @description The number of the alert to be dismissed */
+        alert_number?: string;
+      }[];
+    };
+    /**
      * Secret Scanning Push Protection Exemption Request Metadata
      * @description Metadata for a secret scanning push protection exemption request.
      */
@@ -3547,6 +3567,19 @@ export interface components {
        * @enum {string}
        */
       reason?: "fixed_later" | "false_positive" | "tests" | "revoked";
+    };
+    /**
+     * Code scanning alert dismissal request metadata
+     * @description Metadata for a code scanning alert dismissal request.
+     */
+    "dismissal-request-code-scanning-metadata": {
+      /** @description The title of the code scanning alert */
+      alert_title?: string;
+      /**
+       * @description The reason for the dismissal request
+       * @enum {string}
+       */
+      reason?: "false positive" | "won't fix" | "used in tests";
     };
     /**
      * Exemption response
