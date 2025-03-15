@@ -10150,7 +10150,7 @@ export interface components {
        */
       contents?: "read" | "write";
       /**
-       * @description The leve of permission to grant the access token to manage Dependabot secrets.
+       * @description The level of permission to grant the access token to manage Dependabot secrets.
        * @enum {string}
        */
       dependabot_secrets?: "read" | "write";
