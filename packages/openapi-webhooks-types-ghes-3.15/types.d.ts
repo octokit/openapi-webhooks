@@ -10244,7 +10244,7 @@ export interface components {
        */
       contents?: "read" | "write";
       /**
-       * @description The leve of permission to grant the access token to manage Dependabot secrets.
+       * @description The level of permission to grant the access token to manage Dependabot secrets.
        * @enum {string}
        */
       dependabot_secrets?: "read" | "write";
@@ -11178,6 +11178,7 @@ export interface components {
         timeline_url?: string;
         /** @description Title of the issue */
         title: string;
+        type?: components["schemas"]["issue-type"];
         /** Format: date-time */
         updated_at: string;
         /**
@@ -11343,6 +11344,46 @@ export interface components {
       repository: components["schemas"]["repository-webhooks"];
       sender: components["schemas"]["simple-user"];
     };
+    /**
+     * Issue Type
+     * @description The type of issue.
+     */
+    "issue-type": {
+      /** @description The unique identifier of the issue type. */
+      id: number;
+      /** @description The node identifier of the issue type. */
+      node_id: string;
+      /** @description The name of the issue type. */
+      name: string;
+      /** @description The description of the issue type. */
+      description: string | null;
+      /**
+       * @description The color of the issue type.
+       * @enum {string|null}
+       */
+      color?:
+        | "gray"
+        | "blue"
+        | "green"
+        | "yellow"
+        | "orange"
+        | "red"
+        | "pink"
+        | "purple"
+        | null;
+      /**
+       * Format: date-time
+       * @description The time the issue type created.
+       */
+      created_at?: string;
+      /**
+       * Format: date-time
+       * @description The time the issue type last updated.
+       */
+      updated_at?: string;
+      /** @description The enabled state of the issue type. */
+      is_enabled?: boolean;
+    } | null;
     /** issue_comment deleted event */
     "webhook-issue-comment-deleted": {
       /** @enum {string} */
@@ -11781,6 +11822,7 @@ export interface components {
         timeline_url?: string;
         /** @description Title of the issue */
         title: string;
+        type?: components["schemas"]["issue-type"];
         /** Format: date-time */
         updated_at: string;
         /**
@@ -12483,6 +12525,7 @@ export interface components {
         timeline_url?: string;
         /** @description Title of the issue */
         title: string;
+        type?: components["schemas"]["issue-type"];
         /** Format: date-time */
         updated_at: string;
         /**
@@ -13106,6 +13149,7 @@ export interface components {
       timeline_url?: string;
       /** @description Title of the issue */
       title: string;
+      type?: components["schemas"]["issue-type"];
       /** Format: date-time */
       updated_at: string;
       /**
@@ -13596,6 +13640,7 @@ export interface components {
         timeline_url?: string;
         /** @description Title of the issue */
         title: string;
+        type?: components["schemas"]["issue-type"];
         /** Format: date-time */
         updated_at: string;
         /**
@@ -14148,6 +14193,7 @@ export interface components {
         timeline_url?: string;
         /** @description Title of the issue */
         title: string;
+        type?: components["schemas"]["issue-type"];
         /** Format: date-time */
         updated_at: string;
         /**
@@ -14637,6 +14683,7 @@ export interface components {
         timeline_url?: string;
         /** @description Title of the issue */
         title: string;
+        type?: components["schemas"]["issue-type"];
         /** Format: date-time */
         updated_at: string;
         /**
@@ -15212,6 +15259,7 @@ export interface components {
         state_reason?: string | null;
         /** Format: uri */
         timeline_url?: string;
+        type?: components["schemas"]["issue-type"];
         /** @description Title of the issue */
         title: string;
         /** Format: date-time */
@@ -15705,6 +15753,7 @@ export interface components {
         state_reason?: string | null;
         /** Format: uri */
         timeline_url?: string;
+        type?: components["schemas"]["issue-type"];
         /** @description Title of the issue */
         title: string;
         /** Format: date-time */
@@ -16200,6 +16249,7 @@ export interface components {
         state_reason?: string | null;
         /** Format: uri */
         timeline_url?: string;
+        type?: components["schemas"]["issue-type"];
         /** @description Title of the issue */
         title: string;
         /** Format: date-time */
@@ -16692,6 +16742,7 @@ export interface components {
         timeline_url?: string;
         /** @description Title of the issue */
         title: string;
+        type?: components["schemas"]["issue-type"];
         /** Format: date-time */
         updated_at: string;
         /**
@@ -17917,6 +17968,7 @@ export interface components {
         timeline_url?: string;
         /** @description Title of the issue */
         title: string;
+        type?: components["schemas"]["issue-type"];
         /** Format: date-time */
         updated_at: string;
         /**
@@ -18413,6 +18465,7 @@ export interface components {
       timeline_url?: string;
       /** @description Title of the issue */
       title: string;
+      type?: components["schemas"]["issue-type"];
       /** Format: date-time */
       updated_at: string;
       /**
@@ -18946,6 +18999,7 @@ export interface components {
           url?: string;
           user_view_type?: string;
         } | null;
+        type?: components["schemas"]["issue-type"];
       };
       organization?: components["schemas"]["organization-simple-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
@@ -19390,6 +19444,7 @@ export interface components {
           timeline_url?: string;
           /** @description Title of the issue */
           title: string;
+          type?: components["schemas"]["issue-type"];
           /** Format: date-time */
           updated_at: string;
           /**
@@ -20201,6 +20256,7 @@ export interface components {
         timeline_url?: string;
         /** @description Title of the issue */
         title: string;
+        type?: components["schemas"]["issue-type"];
         /** Format: date-time */
         updated_at: string;
         /**

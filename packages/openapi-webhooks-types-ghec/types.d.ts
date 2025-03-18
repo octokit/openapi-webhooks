@@ -308,66 +308,6 @@ export interface webhooks {
      */
     post: operations["check-suite/rerequested"];
   };
-  "closure-request-secret-scanning-cancelled": {
-    /**
-     * This event occurs when there is activity related to a user's request to dismiss a secret scanning alert.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
-     *
-     * [!NOTE]
-     * Delegated alert dismissal for secret scanning is currently in public preview and subject to change.
-     * @description A secret scanning alert dismissal request was canceled.
-     */
-    post: operations["exemption-request-secret-scanning-closure/cancelled"];
-  };
-  "closure-request-secret-scanning-completed": {
-    /**
-     * This event occurs when there is activity related to a user's request to dismiss a secret scanning alert.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
-     *
-     * [!NOTE]
-     * Delegated alert dismissal for secret scanning is currently in public preview and subject to change.
-     * @description A secret scanning alert dismissal request was completed.
-     */
-    post: operations["exemption-request-secret-scanning-closure/completed"];
-  };
-  "closure-request-secret-scanning-created": {
-    /**
-     * This event occurs when there is activity related to a user's request to dismiss a secret scanning alert.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
-     *
-     * [!NOTE]
-     * Delegated alert dismissal for secret scanning is currently in public preview and subject to change.
-     * @description A secret scanning alert dismissal request was created.
-     */
-    post: operations["exemption-request-secret-scanning-closure/created"];
-  };
-  "closure-request-secret-scanning-response-dismissed": {
-    /**
-     * This event occurs when there is activity related to a user's request to dismiss a secret scanning alert.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
-     *
-     * [!NOTE]
-     * Delegated alert dismissal for secret scanning is currently in public preview and subject to change.
-     * @description A secret scanning alert dismissal response was dismissed.
-     */
-    post: operations["exemption-request-secret-scanning-closure/response-dismissed"];
-  };
-  "closure-request-secret-scanning-response-submitted": {
-    /**
-     * This event occurs when there is activity related to a user's request to dismiss a secret scanning alert.
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
-     *
-     * [!NOTE]
-     * Delegated alert dismissal for secret scanning is currently in public preview and subject to change.
-     * @description A secret scanning alert dismissal response was submitted.
-     */
-    post: operations["exemption-request-secret-scanning-closure/response-submitted"];
-  };
   "code-scanning-alert-appeared-in-branch": {
     /**
      * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/enterprise-cloud@latest//code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/enterprise-cloud@latest//code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/enterprise-cloud@latest//rest/code-scanning)" in the REST API documentation.
@@ -10778,7 +10718,7 @@ export interface components {
        */
       contents?: "read" | "write";
       /**
-       * @description The leve of permission to grant the access token to manage Dependabot secrets.
+       * @description The level of permission to grant the access token to manage Dependabot secrets.
        * @enum {string}
        */
       dependabot_secrets?: "read" | "write";
@@ -11707,6 +11647,7 @@ export interface components {
         timeline_url?: string;
         /** @description Title of the issue */
         title: string;
+        type?: components["schemas"]["issue-type"];
         /** Format: date-time */
         updated_at: string;
         /**
@@ -11872,6 +11813,46 @@ export interface components {
       repository: components["schemas"]["repository-webhooks"];
       sender: components["schemas"]["simple-user"];
     };
+    /**
+     * Issue Type
+     * @description The type of issue.
+     */
+    "issue-type": {
+      /** @description The unique identifier of the issue type. */
+      id: number;
+      /** @description The node identifier of the issue type. */
+      node_id: string;
+      /** @description The name of the issue type. */
+      name: string;
+      /** @description The description of the issue type. */
+      description: string | null;
+      /**
+       * @description The color of the issue type.
+       * @enum {string|null}
+       */
+      color?:
+        | "gray"
+        | "blue"
+        | "green"
+        | "yellow"
+        | "orange"
+        | "red"
+        | "pink"
+        | "purple"
+        | null;
+      /**
+       * Format: date-time
+       * @description The time the issue type created.
+       */
+      created_at?: string;
+      /**
+       * Format: date-time
+       * @description The time the issue type last updated.
+       */
+      updated_at?: string;
+      /** @description The enabled state of the issue type. */
+      is_enabled?: boolean;
+    } | null;
     /** issue_comment deleted event */
     "webhook-issue-comment-deleted": {
       /** @enum {string} */
@@ -12310,6 +12291,7 @@ export interface components {
         timeline_url?: string;
         /** @description Title of the issue */
         title: string;
+        type?: components["schemas"]["issue-type"];
         /** Format: date-time */
         updated_at: string;
         /**
@@ -13012,6 +12994,7 @@ export interface components {
         timeline_url?: string;
         /** @description Title of the issue */
         title: string;
+        type?: components["schemas"]["issue-type"];
         /** Format: date-time */
         updated_at: string;
         /**
@@ -13635,6 +13618,7 @@ export interface components {
       timeline_url?: string;
       /** @description Title of the issue */
       title: string;
+      type?: components["schemas"]["issue-type"];
       /** Format: date-time */
       updated_at: string;
       /**
@@ -14125,6 +14109,7 @@ export interface components {
         timeline_url?: string;
         /** @description Title of the issue */
         title: string;
+        type?: components["schemas"]["issue-type"];
         /** Format: date-time */
         updated_at: string;
         /**
@@ -14677,6 +14662,7 @@ export interface components {
         timeline_url?: string;
         /** @description Title of the issue */
         title: string;
+        type?: components["schemas"]["issue-type"];
         /** Format: date-time */
         updated_at: string;
         /**
@@ -15166,6 +15152,7 @@ export interface components {
         timeline_url?: string;
         /** @description Title of the issue */
         title: string;
+        type?: components["schemas"]["issue-type"];
         /** Format: date-time */
         updated_at: string;
         /**
@@ -15741,6 +15728,7 @@ export interface components {
         state_reason?: string | null;
         /** Format: uri */
         timeline_url?: string;
+        type?: components["schemas"]["issue-type"];
         /** @description Title of the issue */
         title: string;
         /** Format: date-time */
@@ -16234,6 +16222,7 @@ export interface components {
         state_reason?: string | null;
         /** Format: uri */
         timeline_url?: string;
+        type?: components["schemas"]["issue-type"];
         /** @description Title of the issue */
         title: string;
         /** Format: date-time */
@@ -16729,6 +16718,7 @@ export interface components {
         state_reason?: string | null;
         /** Format: uri */
         timeline_url?: string;
+        type?: components["schemas"]["issue-type"];
         /** @description Title of the issue */
         title: string;
         /** Format: date-time */
@@ -17221,6 +17211,7 @@ export interface components {
         timeline_url?: string;
         /** @description Title of the issue */
         title: string;
+        type?: components["schemas"]["issue-type"];
         /** Format: date-time */
         updated_at: string;
         /**
@@ -18446,6 +18437,7 @@ export interface components {
         timeline_url?: string;
         /** @description Title of the issue */
         title: string;
+        type?: components["schemas"]["issue-type"];
         /** Format: date-time */
         updated_at: string;
         /**
@@ -18942,6 +18934,7 @@ export interface components {
       timeline_url?: string;
       /** @description Title of the issue */
       title: string;
+      type?: components["schemas"]["issue-type"];
       /** Format: date-time */
       updated_at: string;
       /**
@@ -19475,6 +19468,7 @@ export interface components {
           url?: string;
           user_view_type?: string;
         } | null;
+        type?: components["schemas"]["issue-type"];
       };
       organization?: components["schemas"]["organization-simple-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
@@ -19919,6 +19913,7 @@ export interface components {
           timeline_url?: string;
           /** @description Title of the issue */
           title: string;
+          type?: components["schemas"]["issue-type"];
           /** Format: date-time */
           updated_at: string;
           /**
@@ -20730,6 +20725,7 @@ export interface components {
         timeline_url?: string;
         /** @description Title of the issue */
         title: string;
+        type?: components["schemas"]["issue-type"];
         /** Format: date-time */
         updated_at: string;
         /**
@@ -55330,38 +55326,10 @@ export interface components {
       | components["schemas"]["repository-rule-committer-email-pattern"]
       | components["schemas"]["repository-rule-branch-name-pattern"]
       | components["schemas"]["repository-rule-tag-name-pattern"]
-      | {
-          /** @enum {string} */
-          type: "file_path_restriction";
-          parameters?: {
-            /** @description The file paths that are restricted from being pushed to the commit graph. */
-            restricted_file_paths: string[];
-          };
-        }
-      | {
-          /** @enum {string} */
-          type: "max_file_path_length";
-          parameters?: {
-            /** @description The maximum amount of characters allowed in file paths */
-            max_file_path_length: number;
-          };
-        }
-      | {
-          /** @enum {string} */
-          type: "file_extension_restriction";
-          parameters?: {
-            /** @description The file extensions that are restricted from being pushed to the commit graph. */
-            restricted_file_extensions: string[];
-          };
-        }
-      | {
-          /** @enum {string} */
-          type: "max_file_size";
-          parameters?: {
-            /** @description The maximum file size allowed in megabytes. This limit does not apply to Git Large File Storage (Git LFS). */
-            max_file_size: number;
-          };
-        }
+      | components["schemas"]["repository-rule-file-path-restriction"]
+      | components["schemas"]["repository-rule-max-file-path-length"]
+      | components["schemas"]["repository-rule-file-extension-restriction"]
+      | components["schemas"]["repository-rule-max-file-size"]
       | components["schemas"]["repository-rule-workflows"]
       | components["schemas"]["repository-rule-code-scanning"];
     /**
@@ -55609,6 +55577,54 @@ export interface components {
         operator: "starts_with" | "ends_with" | "contains" | "regex";
         /** @description The pattern to match with. */
         pattern: string;
+      };
+    };
+    /**
+     * file_path_restriction
+     * @description Prevent commits that include changes in specified file paths from being pushed to the commit graph.
+     */
+    "repository-rule-file-path-restriction": {
+      /** @enum {string} */
+      type: "file_path_restriction";
+      parameters?: {
+        /** @description The file paths that are restricted from being pushed to the commit graph. */
+        restricted_file_paths: string[];
+      };
+    };
+    /**
+     * max_file_path_length
+     * @description Prevent commits that include file paths that exceed a specified character limit from being pushed to the commit graph.
+     */
+    "repository-rule-max-file-path-length": {
+      /** @enum {string} */
+      type: "max_file_path_length";
+      parameters?: {
+        /** @description The maximum amount of characters allowed in file paths */
+        max_file_path_length: number;
+      };
+    };
+    /**
+     * file_extension_restriction
+     * @description Prevent commits that include files with specified file extensions from being pushed to the commit graph.
+     */
+    "repository-rule-file-extension-restriction": {
+      /** @enum {string} */
+      type: "file_extension_restriction";
+      parameters?: {
+        /** @description The file extensions that are restricted from being pushed to the commit graph. */
+        restricted_file_extensions: string[];
+      };
+    };
+    /**
+     * max_file_size
+     * @description Prevent commits that exceed a specified file size limit from being pushed to the commit graph.
+     */
+    "repository-rule-max-file-size": {
+      /** @enum {string} */
+      type: "max_file_size";
+      parameters?: {
+        /** @description The maximum file size allowed in megabytes. This limit does not apply to Git Large File Storage (Git LFS). */
+        max_file_size: number;
       };
     };
     /**
@@ -57240,6 +57256,7 @@ export interface components {
       body_text?: string;
       /** Format: uri */
       timeline_url?: string;
+      type?: components["schemas"]["issue-type"];
       repository?: components["schemas"]["repository"];
       performed_via_github_app?: null | components["schemas"]["integration"];
       author_association: components["schemas"]["author-association"];
@@ -61343,206 +61360,6 @@ export interface operations {
     requestBody: {
       content: {
         "application/json": components["schemas"]["webhook-check-suite-rerequested"];
-      };
-    };
-    responses: {
-      /** @description Return a 200 status to indicate that the data was received successfully */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /**
-   * This event occurs when there is activity related to a user's request to dismiss a secret scanning alert.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
-   *
-   * [!NOTE]
-   * Delegated alert dismissal for secret scanning is currently in public preview and subject to change.
-   * @description A secret scanning alert dismissal request was canceled.
-   */
-  "exemption-request-secret-scanning-closure/cancelled": {
-    parameters: {
-      header: {
-        /** @example GitHub-Hookshot/123abc */
-        "User-Agent": string;
-        /** @example 12312312 */
-        "X-Github-Hook-Id": string;
-        /** @example issues */
-        "X-Github-Event": string;
-        /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id": string;
-        /** @example repository */
-        "X-Github-Hook-Installation-Target-Type": string;
-        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery": string;
-        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256": string;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["webhook-exemption-request-cancelled"];
-      };
-    };
-    responses: {
-      /** @description Return a 200 status to indicate that the data was received successfully */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /**
-   * This event occurs when there is activity related to a user's request to dismiss a secret scanning alert.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
-   *
-   * [!NOTE]
-   * Delegated alert dismissal for secret scanning is currently in public preview and subject to change.
-   * @description A secret scanning alert dismissal request was completed.
-   */
-  "exemption-request-secret-scanning-closure/completed": {
-    parameters: {
-      header: {
-        /** @example GitHub-Hookshot/123abc */
-        "User-Agent": string;
-        /** @example 12312312 */
-        "X-Github-Hook-Id": string;
-        /** @example issues */
-        "X-Github-Event": string;
-        /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id": string;
-        /** @example repository */
-        "X-Github-Hook-Installation-Target-Type": string;
-        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery": string;
-        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256": string;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["webhook-exemption-request-completed"];
-      };
-    };
-    responses: {
-      /** @description Return a 200 status to indicate that the data was received successfully */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /**
-   * This event occurs when there is activity related to a user's request to dismiss a secret scanning alert.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
-   *
-   * [!NOTE]
-   * Delegated alert dismissal for secret scanning is currently in public preview and subject to change.
-   * @description A secret scanning alert dismissal request was created.
-   */
-  "exemption-request-secret-scanning-closure/created": {
-    parameters: {
-      header: {
-        /** @example GitHub-Hookshot/123abc */
-        "User-Agent": string;
-        /** @example 12312312 */
-        "X-Github-Hook-Id": string;
-        /** @example issues */
-        "X-Github-Event": string;
-        /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id": string;
-        /** @example repository */
-        "X-Github-Hook-Installation-Target-Type": string;
-        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery": string;
-        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256": string;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["webhook-exemption-request-created"];
-      };
-    };
-    responses: {
-      /** @description Return a 200 status to indicate that the data was received successfully */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /**
-   * This event occurs when there is activity related to a user's request to dismiss a secret scanning alert.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
-   *
-   * [!NOTE]
-   * Delegated alert dismissal for secret scanning is currently in public preview and subject to change.
-   * @description A secret scanning alert dismissal response was dismissed.
-   */
-  "exemption-request-secret-scanning-closure/response-dismissed": {
-    parameters: {
-      header: {
-        /** @example GitHub-Hookshot/123abc */
-        "User-Agent": string;
-        /** @example 12312312 */
-        "X-Github-Hook-Id": string;
-        /** @example issues */
-        "X-Github-Event": string;
-        /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id": string;
-        /** @example repository */
-        "X-Github-Hook-Installation-Target-Type": string;
-        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery": string;
-        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256": string;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["webhook-exemption-request-response-dismissed"];
-      };
-    };
-    responses: {
-      /** @description Return a 200 status to indicate that the data was received successfully */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /**
-   * This event occurs when there is activity related to a user's request to dismiss a secret scanning alert.
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
-   *
-   * [!NOTE]
-   * Delegated alert dismissal for secret scanning is currently in public preview and subject to change.
-   * @description A secret scanning alert dismissal response was submitted.
-   */
-  "exemption-request-secret-scanning-closure/response-submitted": {
-    parameters: {
-      header: {
-        /** @example GitHub-Hookshot/123abc */
-        "User-Agent": string;
-        /** @example 12312312 */
-        "X-Github-Hook-Id": string;
-        /** @example issues */
-        "X-Github-Event": string;
-        /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id": string;
-        /** @example repository */
-        "X-Github-Hook-Installation-Target-Type": string;
-        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery": string;
-        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256": string;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["webhook-exemption-request-response-submitted"];
       };
     };
     responses: {
