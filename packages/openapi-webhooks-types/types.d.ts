@@ -11071,6 +11071,7 @@ export interface components {
         timeline_url?: string;
         /** @description Title of the issue */
         title: string;
+        type?: components["schemas"]["issue-type"];
         /** Format: date-time */
         updated_at: string;
         /**
@@ -11236,6 +11237,46 @@ export interface components {
       repository: components["schemas"]["repository-webhooks"];
       sender: components["schemas"]["simple-user"];
     };
+    /**
+     * Issue Type
+     * @description The type of issue.
+     */
+    "issue-type": {
+      /** @description The unique identifier of the issue type. */
+      id: number;
+      /** @description The node identifier of the issue type. */
+      node_id: string;
+      /** @description The name of the issue type. */
+      name: string;
+      /** @description The description of the issue type. */
+      description: string | null;
+      /**
+       * @description The color of the issue type.
+       * @enum {string|null}
+       */
+      color?:
+        | "gray"
+        | "blue"
+        | "green"
+        | "yellow"
+        | "orange"
+        | "red"
+        | "pink"
+        | "purple"
+        | null;
+      /**
+       * Format: date-time
+       * @description The time the issue type created.
+       */
+      created_at?: string;
+      /**
+       * Format: date-time
+       * @description The time the issue type last updated.
+       */
+      updated_at?: string;
+      /** @description The enabled state of the issue type. */
+      is_enabled?: boolean;
+    } | null;
     /** issue_comment deleted event */
     "webhook-issue-comment-deleted": {
       /** @enum {string} */
@@ -11673,6 +11714,7 @@ export interface components {
         timeline_url?: string;
         /** @description Title of the issue */
         title: string;
+        type?: components["schemas"]["issue-type"];
         /** Format: date-time */
         updated_at: string;
         /**
@@ -12374,6 +12416,7 @@ export interface components {
         timeline_url?: string;
         /** @description Title of the issue */
         title: string;
+        type?: components["schemas"]["issue-type"];
         /** Format: date-time */
         updated_at: string;
         /**
@@ -12996,6 +13039,7 @@ export interface components {
       timeline_url?: string;
       /** @description Title of the issue */
       title: string;
+      type?: components["schemas"]["issue-type"];
       /** Format: date-time */
       updated_at: string;
       /**
@@ -13485,6 +13529,7 @@ export interface components {
         timeline_url?: string;
         /** @description Title of the issue */
         title: string;
+        type?: components["schemas"]["issue-type"];
         /** Format: date-time */
         updated_at: string;
         /**
@@ -14036,6 +14081,7 @@ export interface components {
         timeline_url?: string;
         /** @description Title of the issue */
         title: string;
+        type?: components["schemas"]["issue-type"];
         /** Format: date-time */
         updated_at: string;
         /**
@@ -14524,6 +14570,7 @@ export interface components {
         timeline_url?: string;
         /** @description Title of the issue */
         title: string;
+        type?: components["schemas"]["issue-type"];
         /** Format: date-time */
         updated_at: string;
         /**
@@ -15098,6 +15145,7 @@ export interface components {
         state_reason?: string | null;
         /** Format: uri */
         timeline_url?: string;
+        type?: components["schemas"]["issue-type"];
         /** @description Title of the issue */
         title: string;
         /** Format: date-time */
@@ -15590,6 +15638,7 @@ export interface components {
         state_reason?: string | null;
         /** Format: uri */
         timeline_url?: string;
+        type?: components["schemas"]["issue-type"];
         /** @description Title of the issue */
         title: string;
         /** Format: date-time */
@@ -16084,6 +16133,7 @@ export interface components {
         state_reason?: string | null;
         /** Format: uri */
         timeline_url?: string;
+        type?: components["schemas"]["issue-type"];
         /** @description Title of the issue */
         title: string;
         /** Format: date-time */
@@ -16575,6 +16625,7 @@ export interface components {
         timeline_url?: string;
         /** @description Title of the issue */
         title: string;
+        type?: components["schemas"]["issue-type"];
         /** Format: date-time */
         updated_at: string;
         /**
@@ -17799,6 +17850,7 @@ export interface components {
         timeline_url?: string;
         /** @description Title of the issue */
         title: string;
+        type?: components["schemas"]["issue-type"];
         /** Format: date-time */
         updated_at: string;
         /**
@@ -18294,6 +18346,7 @@ export interface components {
       timeline_url?: string;
       /** @description Title of the issue */
       title: string;
+      type?: components["schemas"]["issue-type"];
       /** Format: date-time */
       updated_at: string;
       /**
@@ -18826,6 +18879,7 @@ export interface components {
           url?: string;
           user_view_type?: string;
         } | null;
+        type?: components["schemas"]["issue-type"];
       };
       organization?: components["schemas"]["organization-simple-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
@@ -19270,6 +19324,7 @@ export interface components {
           timeline_url?: string;
           /** @description Title of the issue */
           title: string;
+          type?: components["schemas"]["issue-type"];
           /** Format: date-time */
           updated_at: string;
           /**
@@ -20077,6 +20132,7 @@ export interface components {
         timeline_url?: string;
         /** @description Title of the issue */
         title: string;
+        type?: components["schemas"]["issue-type"];
         /** Format: date-time */
         updated_at: string;
         /**
@@ -54574,38 +54630,10 @@ export interface components {
       | components["schemas"]["repository-rule-committer-email-pattern"]
       | components["schemas"]["repository-rule-branch-name-pattern"]
       | components["schemas"]["repository-rule-tag-name-pattern"]
-      | {
-          /** @enum {string} */
-          type: "file_path_restriction";
-          parameters?: {
-            /** @description The file paths that are restricted from being pushed to the commit graph. */
-            restricted_file_paths: string[];
-          };
-        }
-      | {
-          /** @enum {string} */
-          type: "max_file_path_length";
-          parameters?: {
-            /** @description The maximum amount of characters allowed in file paths */
-            max_file_path_length: number;
-          };
-        }
-      | {
-          /** @enum {string} */
-          type: "file_extension_restriction";
-          parameters?: {
-            /** @description The file extensions that are restricted from being pushed to the commit graph. */
-            restricted_file_extensions: string[];
-          };
-        }
-      | {
-          /** @enum {string} */
-          type: "max_file_size";
-          parameters?: {
-            /** @description The maximum file size allowed in megabytes. This limit does not apply to Git Large File Storage (Git LFS). */
-            max_file_size: number;
-          };
-        }
+      | components["schemas"]["repository-rule-file-path-restriction"]
+      | components["schemas"]["repository-rule-max-file-path-length"]
+      | components["schemas"]["repository-rule-file-extension-restriction"]
+      | components["schemas"]["repository-rule-max-file-size"]
       | components["schemas"]["repository-rule-workflows"]
       | components["schemas"]["repository-rule-code-scanning"];
     /**
@@ -54853,6 +54881,54 @@ export interface components {
         operator: "starts_with" | "ends_with" | "contains" | "regex";
         /** @description The pattern to match with. */
         pattern: string;
+      };
+    };
+    /**
+     * file_path_restriction
+     * @description Prevent commits that include changes in specified file paths from being pushed to the commit graph.
+     */
+    "repository-rule-file-path-restriction": {
+      /** @enum {string} */
+      type: "file_path_restriction";
+      parameters?: {
+        /** @description The file paths that are restricted from being pushed to the commit graph. */
+        restricted_file_paths: string[];
+      };
+    };
+    /**
+     * max_file_path_length
+     * @description Prevent commits that include file paths that exceed a specified character limit from being pushed to the commit graph.
+     */
+    "repository-rule-max-file-path-length": {
+      /** @enum {string} */
+      type: "max_file_path_length";
+      parameters?: {
+        /** @description The maximum amount of characters allowed in file paths */
+        max_file_path_length: number;
+      };
+    };
+    /**
+     * file_extension_restriction
+     * @description Prevent commits that include files with specified file extensions from being pushed to the commit graph.
+     */
+    "repository-rule-file-extension-restriction": {
+      /** @enum {string} */
+      type: "file_extension_restriction";
+      parameters?: {
+        /** @description The file extensions that are restricted from being pushed to the commit graph. */
+        restricted_file_extensions: string[];
+      };
+    };
+    /**
+     * max_file_size
+     * @description Prevent commits that exceed a specified file size limit from being pushed to the commit graph.
+     */
+    "repository-rule-max-file-size": {
+      /** @enum {string} */
+      type: "max_file_size";
+      parameters?: {
+        /** @description The maximum file size allowed in megabytes. This limit does not apply to Git Large File Storage (Git LFS). */
+        max_file_size: number;
       };
     };
     /**
@@ -56457,6 +56533,7 @@ export interface components {
       body_text?: string;
       /** Format: uri */
       timeline_url?: string;
+      type?: components["schemas"]["issue-type"];
       repository?: components["schemas"]["repository"];
       performed_via_github_app?: null | components["schemas"]["integration"];
       author_association: components["schemas"]["author-association"];
