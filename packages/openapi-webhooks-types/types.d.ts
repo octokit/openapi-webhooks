@@ -1359,9 +1359,6 @@ export interface webhooks {
      * This event occurs when there is activity relating to a request for a fine-grained personal access token to access resources that belong to a resource owner that requires approval for token access. For more information, see "[Creating a personal access token](https://docs.github.com/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)."
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Personal access token requests" organization permission.
-     *
-     * > [!NOTE]
-     * > Fine-grained PATs are in public preview. Related APIs, events, and functionality are subject to change.
      * @description A fine-grained personal access token request was approved.
      */
     post: operations["personal-access-token-request/approved"];
@@ -1371,9 +1368,6 @@ export interface webhooks {
      * This event occurs when there is activity relating to a request for a fine-grained personal access token to access resources that belong to a resource owner that requires approval for token access. For more information, see "[Creating a personal access token](https://docs.github.com/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)."
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Personal access token requests" organization permission.
-     *
-     * > [!NOTE]
-     * > Fine-grained PATs are in public preview. Related APIs, events, and functionality are subject to change.
      * @description A fine-grained personal access token request was cancelled by the requester.
      */
     post: operations["personal-access-token-request/cancelled"];
@@ -1383,9 +1377,6 @@ export interface webhooks {
      * This event occurs when there is activity relating to a request for a fine-grained personal access token to access resources that belong to a resource owner that requires approval for token access. For more information, see "[Creating a personal access token](https://docs.github.com/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)."
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Personal access token requests" organization permission.
-     *
-     * > [!NOTE]
-     * > Fine-grained PATs are in public preview. Related APIs, events, and functionality are subject to change.
      * @description A fine-grained personal access token request was created.
      */
     post: operations["personal-access-token-request/created"];
@@ -1395,9 +1386,6 @@ export interface webhooks {
      * This event occurs when there is activity relating to a request for a fine-grained personal access token to access resources that belong to a resource owner that requires approval for token access. For more information, see "[Creating a personal access token](https://docs.github.com/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)."
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Personal access token requests" organization permission.
-     *
-     * > [!NOTE]
-     * > Fine-grained PATs are in public preview. Related APIs, events, and functionality are subject to change.
      * @description A fine-grained personal access token request was denied.
      */
     post: operations["personal-access-token-request/denied"];
@@ -54731,7 +54719,7 @@ export interface components {
       type: "pull_request";
       parameters?: {
         /** @description Array of allowed merge methods. Allowed values include `merge`, `squash`, and `rebase`. At least one option must be enabled. */
-        allowed_merge_methods?: string[];
+        allowed_merge_methods?: ("merge" | "squash" | "rebase")[];
         /** @description New, reviewable commits pushed will dismiss previous pull request review approvals. */
         dismiss_stale_reviews_on_push: boolean;
         /** @description Require an approving review in pull requests that modify files that have a designated code owner. */
@@ -64397,9 +64385,6 @@ export interface operations {
    * This event occurs when there is activity relating to a request for a fine-grained personal access token to access resources that belong to a resource owner that requires approval for token access. For more information, see "[Creating a personal access token](https://docs.github.com/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)."
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Personal access token requests" organization permission.
-   *
-   * > [!NOTE]
-   * > Fine-grained PATs are in public preview. Related APIs, events, and functionality are subject to change.
    * @description A fine-grained personal access token request was approved.
    */
   "personal-access-token-request/approved": {
@@ -64437,9 +64422,6 @@ export interface operations {
    * This event occurs when there is activity relating to a request for a fine-grained personal access token to access resources that belong to a resource owner that requires approval for token access. For more information, see "[Creating a personal access token](https://docs.github.com/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)."
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Personal access token requests" organization permission.
-   *
-   * > [!NOTE]
-   * > Fine-grained PATs are in public preview. Related APIs, events, and functionality are subject to change.
    * @description A fine-grained personal access token request was cancelled by the requester.
    */
   "personal-access-token-request/cancelled": {
@@ -64477,9 +64459,6 @@ export interface operations {
    * This event occurs when there is activity relating to a request for a fine-grained personal access token to access resources that belong to a resource owner that requires approval for token access. For more information, see "[Creating a personal access token](https://docs.github.com/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)."
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Personal access token requests" organization permission.
-   *
-   * > [!NOTE]
-   * > Fine-grained PATs are in public preview. Related APIs, events, and functionality are subject to change.
    * @description A fine-grained personal access token request was created.
    */
   "personal-access-token-request/created": {
@@ -64517,9 +64496,6 @@ export interface operations {
    * This event occurs when there is activity relating to a request for a fine-grained personal access token to access resources that belong to a resource owner that requires approval for token access. For more information, see "[Creating a personal access token](https://docs.github.com/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)."
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Personal access token requests" organization permission.
-   *
-   * > [!NOTE]
-   * > Fine-grained PATs are in public preview. Related APIs, events, and functionality are subject to change.
    * @description A fine-grained personal access token request was denied.
    */
   "personal-access-token-request/denied": {
