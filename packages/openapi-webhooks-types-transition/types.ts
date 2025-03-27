@@ -71,11 +71,14 @@ export type CustomPropertyCreatedEvent =
   WebhookEventDefinition<"custom-property-created">;
 export type CustomPropertyDeletedEvent =
   WebhookEventDefinition<"custom-property-deleted">;
+export type CustomPropertyPromoteToEnterpriseEvent =
+  WebhookEventDefinition<"custom-property-promote-to-enterprise">;
 export type CustomPropertyUpdatedEvent =
   WebhookEventDefinition<"custom-property-updated">;
 export type CustomPropertyEvent =
   | WebhookEventDefinition<"custom-property-created">
   | WebhookEventDefinition<"custom-property-deleted">
+  | WebhookEventDefinition<"custom-property-promote-to-enterprise">
   | WebhookEventDefinition<"custom-property-updated">;
 export type CustomPropertyValuesEvent =
   WebhookEventDefinition<"custom-property-values-updated">;
@@ -229,10 +232,12 @@ export type IssuesPinnedEvent = WebhookEventDefinition<"issues-pinned">;
 export type IssuesReopenedEvent = WebhookEventDefinition<"issues-reopened">;
 export type IssuesTransferredEvent =
   WebhookEventDefinition<"issues-transferred">;
+export type IssuesTypedEvent = WebhookEventDefinition<"issues-typed">;
 export type IssuesUnassignedEvent = WebhookEventDefinition<"issues-unassigned">;
 export type IssuesUnlabeledEvent = WebhookEventDefinition<"issues-unlabeled">;
 export type IssuesUnlockedEvent = WebhookEventDefinition<"issues-unlocked">;
 export type IssuesUnpinnedEvent = WebhookEventDefinition<"issues-unpinned">;
+export type IssuesUntypedEvent = WebhookEventDefinition<"issues-untyped">;
 export type IssuesEvent =
   | WebhookEventDefinition<"issues-assigned">
   | WebhookEventDefinition<"issues-closed">
@@ -246,10 +251,12 @@ export type IssuesEvent =
   | WebhookEventDefinition<"issues-pinned">
   | WebhookEventDefinition<"issues-reopened">
   | WebhookEventDefinition<"issues-transferred">
+  | WebhookEventDefinition<"issues-typed">
   | WebhookEventDefinition<"issues-unassigned">
   | WebhookEventDefinition<"issues-unlabeled">
   | WebhookEventDefinition<"issues-unlocked">
-  | WebhookEventDefinition<"issues-unpinned">;
+  | WebhookEventDefinition<"issues-unpinned">
+  | WebhookEventDefinition<"issues-untyped">;
 export type LabelCreatedEvent = WebhookEventDefinition<"label-created">;
 export type LabelDeletedEvent = WebhookEventDefinition<"label-deleted">;
 export type LabelEditedEvent = WebhookEventDefinition<"label-edited">;
@@ -750,6 +757,7 @@ export type EventPayloadMap = {
   custom_property:
     | WebhookEventDefinition<"custom_property.created">
     | WebhookEventDefinition<"custom_property.deleted">
+    | WebhookEventDefinition<"custom_property.promote_to_enterprise">
     | WebhookEventDefinition<"custom_property.updated">;
   custom_property_values: WebhookEventDefinition<"custom_property_values.updated">;
   delete: WebhookEventDefinition<"delete">;
@@ -821,10 +829,12 @@ export type EventPayloadMap = {
     | WebhookEventDefinition<"issues.pinned">
     | WebhookEventDefinition<"issues.reopened">
     | WebhookEventDefinition<"issues.transferred">
+    | WebhookEventDefinition<"issues.typed">
     | WebhookEventDefinition<"issues.unassigned">
     | WebhookEventDefinition<"issues.unlabeled">
     | WebhookEventDefinition<"issues.unlocked">
-    | WebhookEventDefinition<"issues.unpinned">;
+    | WebhookEventDefinition<"issues.unpinned">
+    | WebhookEventDefinition<"issues.untyped">;
   label:
     | WebhookEventDefinition<"label.created">
     | WebhookEventDefinition<"label.deleted">

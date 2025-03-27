@@ -277,6 +277,17 @@ export interface webhooks {
      */
     post: operations["custom-property/deleted"];
   };
+  "custom-property-promoted-to-enterprise": {
+    /**
+     * This event occurs when there is activity relating to a custom property.
+     *
+     * For more information, see "[Managing custom properties for repositories in your organization](https://docs.github.com/organizations/managing-organization-settings/managing-custom-properties-for-repositories-in-your-organization)". For information about the APIs to manage custom properties, see "[Custom properties](https://docs.github.com/rest/orgs/custom-properties)" in the REST API documentation.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Custom properties" organization permission.
+     * @description A custom property was promoted to an enterprise.
+     */
+    post: operations["custom-property/promote-to-enterprise"];
+  };
   "custom-property-updated": {
     /**
      * This event occurs when there is activity relating to a custom property.
@@ -1008,6 +1019,17 @@ export interface webhooks {
      */
     post: operations["issues/transferred"];
   };
+  "issues-typed": {
+    /**
+     * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/rest/issues)" in the REST API documentation.
+     *
+     * For activity relating to a comment on an issue, use the `issue_comment` event.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
+     * @description An issue type was added to an issue.
+     */
+    post: operations["issues/typed"];
+  };
   "issues-unassigned": {
     /**
      * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/rest/issues)" in the REST API documentation.
@@ -1051,6 +1073,17 @@ export interface webhooks {
      * @description An issue was unpinned from a repository. For more information, see "[Pinning an issue to your repository](https://docs.github.com/issues/tracking-your-work-with-issues/pinning-an-issue-to-your-repository)."
      */
     post: operations["issues/unpinned"];
+  };
+  "issues-untyped": {
+    /**
+     * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/rest/issues)" in the REST API documentation.
+     *
+     * For activity relating to a comment on an issue, use the `issue_comment` event.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
+     * @description An issue type was removed from an issue.
+     */
+    post: operations["issues/untyped"];
   };
   "label-created": {
     /**
@@ -1359,9 +1392,6 @@ export interface webhooks {
      * This event occurs when there is activity relating to a request for a fine-grained personal access token to access resources that belong to a resource owner that requires approval for token access. For more information, see "[Creating a personal access token](https://docs.github.com/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)."
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Personal access token requests" organization permission.
-     *
-     * > [!NOTE]
-     * > Fine-grained PATs are in public preview. Related APIs, events, and functionality are subject to change.
      * @description A fine-grained personal access token request was approved.
      */
     post: operations["personal-access-token-request/approved"];
@@ -1371,9 +1401,6 @@ export interface webhooks {
      * This event occurs when there is activity relating to a request for a fine-grained personal access token to access resources that belong to a resource owner that requires approval for token access. For more information, see "[Creating a personal access token](https://docs.github.com/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)."
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Personal access token requests" organization permission.
-     *
-     * > [!NOTE]
-     * > Fine-grained PATs are in public preview. Related APIs, events, and functionality are subject to change.
      * @description A fine-grained personal access token request was cancelled by the requester.
      */
     post: operations["personal-access-token-request/cancelled"];
@@ -1383,9 +1410,6 @@ export interface webhooks {
      * This event occurs when there is activity relating to a request for a fine-grained personal access token to access resources that belong to a resource owner that requires approval for token access. For more information, see "[Creating a personal access token](https://docs.github.com/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)."
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Personal access token requests" organization permission.
-     *
-     * > [!NOTE]
-     * > Fine-grained PATs are in public preview. Related APIs, events, and functionality are subject to change.
      * @description A fine-grained personal access token request was created.
      */
     post: operations["personal-access-token-request/created"];
@@ -1395,9 +1419,6 @@ export interface webhooks {
      * This event occurs when there is activity relating to a request for a fine-grained personal access token to access resources that belong to a resource owner that requires approval for token access. For more information, see "[Creating a personal access token](https://docs.github.com/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)."
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Personal access token requests" organization permission.
-     *
-     * > [!NOTE]
-     * > Fine-grained PATs are in public preview. Related APIs, events, and functionality are subject to change.
      * @description A fine-grained personal access token request was denied.
      */
     post: operations["personal-access-token-request/denied"];
@@ -5699,6 +5720,15 @@ export interface components {
         /** @description The name of the property that was deleted. */
         property_name: string;
       };
+      installation?: components["schemas"]["simple-installation"];
+      organization?: components["schemas"]["organization-simple-webhooks"];
+      sender?: components["schemas"]["simple-user"];
+    };
+    /** custom property promoted to business event */
+    "webhook-custom-property-promoted-to-enterprise": {
+      /** @enum {string} */
+      action: "promote_to_enterprise";
+      definition: components["schemas"]["custom-property"];
       installation?: components["schemas"]["simple-installation"];
       organization?: components["schemas"]["organization-simple-webhooks"];
       sender?: components["schemas"]["simple-user"];
@@ -19629,6 +19659,17 @@ export interface components {
       repository: components["schemas"]["repository-webhooks"];
       sender: components["schemas"]["simple-user"];
     };
+    /** issues typed event */
+    "webhook-issues-typed": {
+      /** @enum {string} */
+      action: "typed";
+      installation?: components["schemas"]["simple-installation"];
+      issue: components["schemas"]["webhooks_issue"];
+      type: components["schemas"]["issue-type"];
+      organization?: components["schemas"]["organization-simple-webhooks"];
+      repository: components["schemas"]["repository-webhooks"];
+      sender: components["schemas"]["simple-user"];
+    };
     /** issues unassigned event */
     "webhook-issues-unassigned": {
       /**
@@ -20190,6 +20231,17 @@ export interface components {
       action: "unpinned";
       installation?: components["schemas"]["simple-installation"];
       issue: components["schemas"]["webhooks_issue_2"];
+      organization?: components["schemas"]["organization-simple-webhooks"];
+      repository: components["schemas"]["repository-webhooks"];
+      sender: components["schemas"]["simple-user"];
+    };
+    /** issues untyped event */
+    "webhook-issues-untyped": {
+      /** @enum {string} */
+      action: "untyped";
+      installation?: components["schemas"]["simple-installation"];
+      issue: components["schemas"]["webhooks_issue"];
+      type: components["schemas"]["issue-type"];
       organization?: components["schemas"]["organization-simple-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
       sender: components["schemas"]["simple-user"];
@@ -54731,7 +54783,14 @@ export interface components {
       type: "pull_request";
       parameters?: {
         /** @description Array of allowed merge methods. Allowed values include `merge`, `squash`, and `rebase`. At least one option must be enabled. */
-        allowed_merge_methods?: string[];
+        allowed_merge_methods?: ("merge" | "squash" | "rebase")[];
+        /**
+         * @description > [!NOTE]
+         * > `automatic_copilot_code_review_enabled` is in beta and subject to change.
+         *
+         * Automatically request review from Copilot for new pull requests, if the author has access to Copilot code review.
+         */
+        automatic_copilot_code_review_enabled?: boolean;
         /** @description New, reviewable commits pushed will dismiss previous pull request review approvals. */
         dismiss_stale_reviews_on_push: boolean;
         /** @description Require an approving review in pull requests that modify files that have a designated code owner. */
@@ -54885,7 +54944,7 @@ export interface components {
     };
     /**
      * file_path_restriction
-     * @description Prevent commits that include changes in specified file paths from being pushed to the commit graph.
+     * @description Prevent commits that include changes in specified file and folder paths from being pushed to the commit graph. This includes absolute paths that contain file names.
      */
     "repository-rule-file-path-restriction": {
       /** @enum {string} */
@@ -54897,13 +54956,13 @@ export interface components {
     };
     /**
      * max_file_path_length
-     * @description Prevent commits that include file paths that exceed a specified character limit from being pushed to the commit graph.
+     * @description Prevent commits that include file paths that exceed the specified character limit from being pushed to the commit graph.
      */
     "repository-rule-max-file-path-length": {
       /** @enum {string} */
       type: "max_file_path_length";
       parameters?: {
-        /** @description The maximum amount of characters allowed in file paths */
+        /** @description The maximum amount of characters allowed in file paths. */
         max_file_path_length: number;
       };
     };
@@ -54921,7 +54980,7 @@ export interface components {
     };
     /**
      * max_file_size
-     * @description Prevent commits that exceed a specified file size limit from being pushed to the commit graph.
+     * @description Prevent commits with individual files that exceed the specified limit from being pushed to the commit graph.
      */
     "repository-rule-max-file-size": {
       /** @enum {string} */
@@ -60606,6 +60665,45 @@ export interface operations {
    * For more information, see "[Managing custom properties for repositories in your organization](https://docs.github.com/organizations/managing-organization-settings/managing-custom-properties-for-repositories-in-your-organization)". For information about the APIs to manage custom properties, see "[Custom properties](https://docs.github.com/rest/orgs/custom-properties)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Custom properties" organization permission.
+   * @description A custom property was promoted to an enterprise.
+   */
+  "custom-property/promote-to-enterprise": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-custom-property-promoted-to-enterprise"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to a custom property.
+   *
+   * For more information, see "[Managing custom properties for repositories in your organization](https://docs.github.com/organizations/managing-organization-settings/managing-custom-properties-for-repositories-in-your-organization)". For information about the APIs to manage custom properties, see "[Custom properties](https://docs.github.com/rest/orgs/custom-properties)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Custom properties" organization permission.
    * @description A custom property was updated.
    */
   "custom-property/updated": {
@@ -63073,6 +63171,45 @@ export interface operations {
    * For activity relating to a comment on an issue, use the `issue_comment` event.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
+   * @description An issue type was added to an issue.
+   */
+  "issues/typed": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-issues-typed"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/rest/issues)" in the REST API documentation.
+   *
+   * For activity relating to a comment on an issue, use the `issue_comment` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
    * @description A user was unassigned from an issue.
    */
   "issues/unassigned": {
@@ -63214,6 +63351,45 @@ export interface operations {
     requestBody: {
       content: {
         "application/json": components["schemas"]["webhook-issues-unpinned"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/rest/issues)" in the REST API documentation.
+   *
+   * For activity relating to a comment on an issue, use the `issue_comment` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
+   * @description An issue type was removed from an issue.
+   */
+  "issues/untyped": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-issues-untyped"];
       };
     };
     responses: {
@@ -64397,9 +64573,6 @@ export interface operations {
    * This event occurs when there is activity relating to a request for a fine-grained personal access token to access resources that belong to a resource owner that requires approval for token access. For more information, see "[Creating a personal access token](https://docs.github.com/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)."
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Personal access token requests" organization permission.
-   *
-   * > [!NOTE]
-   * > Fine-grained PATs are in public preview. Related APIs, events, and functionality are subject to change.
    * @description A fine-grained personal access token request was approved.
    */
   "personal-access-token-request/approved": {
@@ -64437,9 +64610,6 @@ export interface operations {
    * This event occurs when there is activity relating to a request for a fine-grained personal access token to access resources that belong to a resource owner that requires approval for token access. For more information, see "[Creating a personal access token](https://docs.github.com/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)."
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Personal access token requests" organization permission.
-   *
-   * > [!NOTE]
-   * > Fine-grained PATs are in public preview. Related APIs, events, and functionality are subject to change.
    * @description A fine-grained personal access token request was cancelled by the requester.
    */
   "personal-access-token-request/cancelled": {
@@ -64477,9 +64647,6 @@ export interface operations {
    * This event occurs when there is activity relating to a request for a fine-grained personal access token to access resources that belong to a resource owner that requires approval for token access. For more information, see "[Creating a personal access token](https://docs.github.com/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)."
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Personal access token requests" organization permission.
-   *
-   * > [!NOTE]
-   * > Fine-grained PATs are in public preview. Related APIs, events, and functionality are subject to change.
    * @description A fine-grained personal access token request was created.
    */
   "personal-access-token-request/created": {
@@ -64517,9 +64684,6 @@ export interface operations {
    * This event occurs when there is activity relating to a request for a fine-grained personal access token to access resources that belong to a resource owner that requires approval for token access. For more information, see "[Creating a personal access token](https://docs.github.com/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)."
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Personal access token requests" organization permission.
-   *
-   * > [!NOTE]
-   * > Fine-grained PATs are in public preview. Related APIs, events, and functionality are subject to change.
    * @description A fine-grained personal access token request was denied.
    */
   "personal-access-token-request/denied": {
