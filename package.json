@@ -114,6 +114,12 @@
       [
         "@semantic-release/npm",
         {
+          "pkgRoot": "packages/openapi-webhooks-types-ghes-3.16"
+        }
+      ],
+      [
+        "@semantic-release/npm",
+        {
           "pkgRoot": "packages/openapi-webhooks-types-transition"
         }
       ]
