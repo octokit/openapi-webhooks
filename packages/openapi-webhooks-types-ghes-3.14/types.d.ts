@@ -51668,8 +51668,13 @@ export interface components {
       /** @enum {string} */
       type: "pull_request";
       parameters?: {
-        /** @description Array of allowed merge methods. Allowed values include `merge`, `squash`, and `rebase`. At least one option must be enabled. */
-        allowed_merge_methods?: ("merge" | "squash" | "rebase")[];
+        /**
+         * @description > [!NOTE]
+         * > `automatic_copilot_code_review_enabled` is in beta and subject to change.
+         *
+         * Automatically request review from Copilot for new pull requests, if the author has access to Copilot code review.
+         */
+        automatic_copilot_code_review_enabled?: boolean;
         /** @description New, reviewable commits pushed will dismiss previous pull request review approvals. */
         dismiss_stale_reviews_on_push: boolean;
         /** @description Require an approving review in pull requests that modify files that have a designated code owner. */
