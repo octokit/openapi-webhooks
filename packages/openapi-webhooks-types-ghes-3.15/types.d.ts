@@ -51723,12 +51723,7 @@ export interface components {
       /** @enum {string} */
       type: "pull_request";
       parameters?: {
-        /**
-         * @description > [!NOTE]
-         * > `automatic_copilot_code_review_enabled` is in beta and subject to change.
-         *
-         * Automatically request review from Copilot for new pull requests, if the author has access to Copilot code review.
-         */
+        /** @description Automatically request review from Copilot for new pull requests, if the author has access to Copilot code review. */
         automatic_copilot_code_review_enabled?: boolean;
         /** @description New, reviewable commits pushed will dismiss previous pull request review approvals. */
         dismiss_stale_reviews_on_push: boolean;
