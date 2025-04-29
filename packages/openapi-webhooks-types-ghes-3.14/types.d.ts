@@ -3417,6 +3417,11 @@ export interface components {
       type?: "secret_scanning_closure";
       /** @description The data related to the secret scanning alerts that have dismissal requests. */
       data?: {
+        /**
+         * @description The reason for the dismissal request
+         * @enum {string}
+         */
+        reason?: "fixed_later" | "false_positive" | "tests" | "revoked";
         /** @description The type of secret that was detected */
         secret_type?: string;
         /** @description The number of the alert that was detected */
