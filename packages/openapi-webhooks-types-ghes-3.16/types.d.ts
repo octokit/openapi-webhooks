@@ -7229,6 +7229,11 @@ export interface components {
       starred_at?: string;
       /** @description Whether anonymous git access is enabled for this repository */
       anonymous_access_enabled?: boolean;
+      /** @description The status of the code search index for this repository */
+      code_search_index_status?: {
+        lexical_search_ok?: boolean;
+        lexical_commit_sha?: string;
+      };
     };
     /**
      * Link
