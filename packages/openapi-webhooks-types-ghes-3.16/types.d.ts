@@ -3498,6 +3498,11 @@ export interface components {
       type?: "secret_scanning_closure";
       /** @description The data related to the secret scanning alerts that have dismissal requests. */
       data?: {
+        /**
+         * @description The reason for the dismissal request
+         * @enum {string}
+         */
+        reason?: "fixed_later" | "false_positive" | "tests" | "revoked";
         /** @description The type of secret that was detected */
         secret_type?: string;
         /** @description The number of the alert that was detected */
@@ -7224,6 +7229,11 @@ export interface components {
       starred_at?: string;
       /** @description Whether anonymous git access is enabled for this repository */
       anonymous_access_enabled?: boolean;
+      /** @description The status of the code search index for this repository */
+      code_search_index_status?: {
+        lexical_search_ok?: boolean;
+        lexical_commit_sha?: string;
+      };
     };
     /**
      * Link
@@ -13911,6 +13921,7 @@ export interface components {
           type?: "Bot" | "User" | "Organization";
           /** Format: uri */
           url?: string;
+          user_view_type?: string;
         } | null)[];
         /**
          * AuthorAssociation
@@ -16873,7 +16884,7 @@ export interface components {
          */
         old_issue: {
           /** @enum {string|null} */
-          active_lock_reason:
+          active_lock_reason?:
             | "resolved"
             | "off-topic"
             | "too heated"
@@ -16917,7 +16928,7 @@ export interface components {
             url?: string;
             user_view_type?: string;
           } | null;
-          assignees: ({
+          assignees?: ({
             /** Format: uri */
             avatar_url?: string;
             deleted?: boolean;
@@ -16959,7 +16970,7 @@ export interface components {
            * @description How the author is associated with the repository.
            * @enum {string}
            */
-          author_association:
+          author_association?:
             | "COLLABORATOR"
             | "CONTRIBUTOR"
             | "FIRST_TIMER"
@@ -16969,19 +16980,19 @@ export interface components {
             | "NONE"
             | "OWNER";
           /** @description Contents of the issue */
-          body: string | null;
+          body?: string | null;
           /** Format: date-time */
-          closed_at: string | null;
-          comments: number;
+          closed_at?: string | null;
+          comments?: number;
           /** Format: uri */
-          comments_url: string;
+          comments_url?: string;
           /** Format: date-time */
-          created_at: string;
+          created_at?: string;
           draft?: boolean;
           /** Format: uri */
-          events_url: string;
+          events_url?: string;
           /** Format: uri */
-          html_url: string;
+          html_url?: string;
           /** Format: int64 */
           id: number;
           labels?: {
@@ -17000,13 +17011,13 @@ export interface components {
             url: string;
           }[];
           /** Format: uri-template */
-          labels_url: string;
+          labels_url?: string;
           locked?: boolean;
           /**
            * Milestone
            * @description A collection of related issues and pull requests.
            */
-          milestone: {
+          milestone?: {
             /** Format: date-time */
             closed_at: string | null;
             closed_issues: number;
@@ -17074,7 +17085,7 @@ export interface components {
             /** Format: uri */
             url: string;
           } | null;
-          node_id: string;
+          node_id?: string;
           number: number;
           /**
            * App
@@ -17270,7 +17281,7 @@ export interface components {
             url?: string;
           };
           /** Reactions */
-          reactions: {
+          reactions?: {
             "+1": number;
             "-1": number;
             confused: number;
@@ -17284,7 +17295,7 @@ export interface components {
             url: string;
           };
           /** Format: uri */
-          repository_url: string;
+          repository_url?: string;
           /** Sub-issues Summary */
           sub_issues_summary?: {
             total: number;
@@ -17300,16 +17311,16 @@ export interface components {
           /** Format: uri */
           timeline_url?: string;
           /** @description Title of the issue */
-          title: string;
+          title?: string;
           /** Format: date-time */
-          updated_at: string;
+          updated_at?: string;
           /**
            * Format: uri
            * @description URL for the issue
            */
-          url: string;
+          url?: string;
           /** User */
-          user: {
+          user?: {
             /** Format: uri */
             avatar_url?: string;
             deleted?: boolean;
@@ -17347,6 +17358,7 @@ export interface components {
             url?: string;
             user_view_type?: string;
           } | null;
+          type?: components["schemas"]["issue-type"];
         } | null;
         /**
          * Repository
