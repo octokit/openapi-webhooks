@@ -7,7 +7,6 @@ import {
 } from "node:fs";
 import * as prettier from "prettier";
 import overrides from "./overrides/index.js";
-import { types } from "node:util";
 
 /* if (!process.env.GITHUB_ACTIONS && !process.env.ANICCA_REPOSITORY_PATH) {
   throw new Error("Please set ANICCA_REPOSITORY_PATH");
@@ -49,7 +48,6 @@ async function run() {
     /**
      *  Function to handle special cases:
      * Check all instances of `$ref` in the OpenAPI spec, and add them to the definitions
-     * Remove all instances of `enterprise` in the OpenAPI spec for GitHub.com
      * @param {object} obj - The object to check for special cases
      * @returns {object} - The object with any special cases handled
      */
@@ -57,9 +55,6 @@ async function run() {
       if (typeof obj !== "object" || obj === null) return obj;
 
       for (let key of Object.keys(obj)) {
-        if (key === "enterprise" && file === "api.github.com.json") {
-          delete obj[key];
-        }
         if (key === "$ref" && typeof obj[key] === "string") {
           const ref = obj[key].split("/").at(-1);
           const originalSchemaComponent = schema.components.schemas[ref];
@@ -67,7 +62,7 @@ async function run() {
             throw new Error(`Schema component ${obj[key]} not found`);
           }
           tempSchema.components.schemas[ref] = originalSchemaComponent;
-          // Call the function with the new definition to handle any of it's `$ref`s, and `enterprise` keys
+          // Call the function with the new definition to handle any of it's `$ref`s
           specialHandling(tempSchema.components.schemas[ref]);
         } else {
           obj[key] = specialHandling(obj[key]);
