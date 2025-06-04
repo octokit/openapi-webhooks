@@ -22,4 +22,7 @@ export const schemas = {
   ["ghes-3.16"]: (
     await import("./generated/ghes-3.16.json", { with: { type: "json" } })
   ).default,
+  ["ghes-3.17"]: (
+    await import("./generated/ghes-3.17.json", { with: { type: "json" } })
+  ).default,
 };

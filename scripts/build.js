@@ -7,7 +7,7 @@ import {
 } from "node:fs";
 import * as prettier from "prettier";
 import overrides from "./overrides/index.js";
-import { types } from "node:util"
+import { types } from "node:util";
 
 /* if (!process.env.GITHUB_ACTIONS && !process.env.ANICCA_REPOSITORY_PATH) {
   throw new Error("Please set ANICCA_REPOSITORY_PATH");
@@ -136,10 +136,7 @@ async function run() {
       ".json",
       "",
     )}"]: (await import("./generated/${name}", { with: { type: "json" } })).default,`;
-    schemasTypes += `"${name.replace(
-      ".json",
-      "",
-    )}": Record<string, unknown>;`;
+    schemasTypes += `"${name.replace(".json", "")}": Record<string, unknown>;`;
   }
 
   writeFileSync(
@@ -164,16 +161,18 @@ They are all generated, your changes would be overwritten with the next update. 
       },
     ),
   );
-  writeFileSync(`packages/openapi-webhooks/types.d.ts`, await prettier.format(
-    `
+  writeFileSync(
+    `packages/openapi-webhooks/types.d.ts`,
+    await prettier.format(
+      `
     export declare const schemas: {
       ${schemasTypes}
     }
     `,
-    {
-      parser: "typescript",
-    },
-  )
+      {
+        parser: "typescript",
+      },
+    ),
   );
   writeFileSync(
     `packages/openapi-webhooks/package.json`,
@@ -184,7 +183,7 @@ They are all generated, your changes would be overwritten with the next update. 
         description:
           "GitHub's official Webhooks OpenAPI spec with Octokit extensions",
         main: "index.js",
-        types:  "types.d.ts",
+        types: "types.d.ts",
         files: ["generated/*", "index.js", "types.d.ts"],
         type: "module",
         repository: {
@@ -201,7 +200,7 @@ They are all generated, your changes would be overwritten with the next update. 
         },
         engines: {
           node: "^18.20.0 || >= 20.10.0",
-        }
+        },
       }),
       { parser: "json-stringify" },
     ),
