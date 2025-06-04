@@ -4067,13 +4067,10 @@ export interface components {
         deployments?: string;
         [key: string]: string | undefined;
       };
-      /** @description The list of events for the GitHub app */
+      /** @description The list of events for the GitHub app. Note that the `installation_target`, `security_advisory`, and `meta` events are not included because they are global events and not specific to an installation. */
       events: string[];
-      /** @description The number of installations associated with the GitHub app */
+      /** @description The number of installations associated with the GitHub app. Only returned when the integration is requesting details about itself. */
       installations_count?: number;
-      client_secret?: string;
-      webhook_secret?: string | null;
-      pem?: string;
     } | null;
     /**
      * Enterprise
@@ -54205,6 +54202,7 @@ export interface components {
         name: string;
         node_id: string;
         size: number;
+        digest: string | null;
         /**
          * @description State of the release asset.
          * @enum {string}
@@ -54400,6 +54398,7 @@ export interface components {
           name: string;
           node_id: string;
           size: number;
+          digest: string | null;
           /**
            * @description State of the release asset.
            * @enum {string}
@@ -54565,6 +54564,7 @@ export interface components {
         name: string;
         node_id: string;
         size: number;
+        digest: string | null;
         /**
          * @description State of the release asset.
          * @enum {string}
