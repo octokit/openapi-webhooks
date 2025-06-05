@@ -34,9 +34,14 @@ async function run() {
   for (const webhookDefinitionKey of Object.keys(schema.webhooks)) {
     const webhookDefinition = schema.webhooks[webhookDefinitionKey];
     const operationDefinition = webhookDefinition.post;
-    const emitterEventName = operationDefinition.operationId
+    let emitterEventName = operationDefinition.operationId
       .replace(/-/g, "_")
       .replace("/", ".");
+
+    // Override these specific event names to fix a typo in the OpenAPI spec
+    if (emitterEventName === "custom_property.promote_to_enterprise") {
+      emitterEventName = "custom_property.promoted_to_enterprise";
+    }
 
     const [eventName] = emitterEventName.split(".");
 

@@ -71,14 +71,14 @@ export type CustomPropertyCreatedEvent =
   WebhookEventDefinition<"custom-property-created">;
 export type CustomPropertyDeletedEvent =
   WebhookEventDefinition<"custom-property-deleted">;
-export type CustomPropertyPromoteToEnterpriseEvent =
-  WebhookEventDefinition<"custom-property-promote-to-enterprise">;
+export type CustomPropertyPromotedToEnterpriseEvent =
+  WebhookEventDefinition<"custom-property-promoted-to-enterprise">;
 export type CustomPropertyUpdatedEvent =
   WebhookEventDefinition<"custom-property-updated">;
 export type CustomPropertyEvent =
   | WebhookEventDefinition<"custom-property-created">
   | WebhookEventDefinition<"custom-property-deleted">
-  | WebhookEventDefinition<"custom-property-promote-to-enterprise">
+  | WebhookEventDefinition<"custom-property-promoted-to-enterprise">
   | WebhookEventDefinition<"custom-property-updated">;
 export type CustomPropertyValuesEvent =
   WebhookEventDefinition<"custom-property-values-updated">;
@@ -757,7 +757,7 @@ export type EventPayloadMap = {
   custom_property:
     | WebhookEventDefinition<"custom-property-created">
     | WebhookEventDefinition<"custom-property-deleted">
-    | WebhookEventDefinition<"custom-property-promote-to-enterprise">
+    | WebhookEventDefinition<"custom-property-promoted-to-enterprise">
     | WebhookEventDefinition<"custom-property-updated">;
   custom_property_values: WebhookEventDefinition<"custom-property-values-updated">;
   delete: WebhookEventDefinition<"delete">;
