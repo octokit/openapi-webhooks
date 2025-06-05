@@ -81,6 +81,7 @@ async function run() {
     ...Object.entries(eventsMap).map(
       ([eventName, webhooks]) =>
         `"${eventName}": ${Array.from(webhooks)
+          .map((e) => e.replace(".", "-").replaceAll("_", "-"))
           .map((event) => `WebhookEventDefinition<"${event}">`)
           .join(" | ")}`,
     ),
