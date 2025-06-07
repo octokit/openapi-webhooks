@@ -4,9 +4,6 @@ export const schemas = {
   ).default,
   ["ghec"]: (await import("./generated/ghec.json", { with: { type: "json" } }))
     .default,
-  ["ghes-3.13"]: (
-    await import("./generated/ghes-3.13.json", { with: { type: "json" } })
-  ).default,
   ["ghes-3.14"]: (
     await import("./generated/ghes-3.14.json", { with: { type: "json" } })
   ).default,
