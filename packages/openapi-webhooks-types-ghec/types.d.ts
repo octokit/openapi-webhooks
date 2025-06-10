@@ -4283,6 +4283,10 @@ export interface components {
       allow_forking?: boolean;
       web_commit_signoff_required?: boolean;
       security_and_analysis?: components["schemas"]["security-and-analysis"];
+      /** @description The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
+      custom_properties?: {
+        [key: string]: unknown;
+      };
     };
     /**
      * Code Of Conduct
