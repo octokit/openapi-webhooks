@@ -20577,7 +20577,7 @@ export interface components {
       /** @enum {string} */
       action: "deleted";
       enterprise?: components["schemas"]["enterprise-webhooks"];
-      /** @description The modified webhook. This will contain different keys based on the type of webhook it is: repository, organization, business, app, or GitHub Marketplace. */
+      /** @description The deleted webhook. This will contain different keys based on the type of webhook it is: repository, organization, business, app, or GitHub Marketplace. */
       hook: {
         active: boolean;
         config: {
