@@ -3660,7 +3660,7 @@ export interface components {
      * @description A check performed on the code of a given code change
      */
     "check-run-with-simple-check-suite": {
-      app: null | components["schemas"]["integration"];
+      app: components["schemas"]["integration"];
       check_suite: components["schemas"]["simple-check-suite"];
       /** Format: date-time */
       completed_at: string | null;
