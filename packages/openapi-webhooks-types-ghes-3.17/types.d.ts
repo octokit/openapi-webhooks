@@ -831,9 +831,6 @@ export interface webhooks {
      * This event occurs when there is activity related to a user's request to dismiss a code scanning alert.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "code scanning alerts" repository permission.
-     *
-     * > [!NOTE]
-     * > Delegated alert dismissal for code scanning is currently in public preview and subject to change.
      * @description A code scanning alert dismissal request was created.
      */
     post: operations["dismissal-request-code-scanning/created"];
@@ -843,9 +840,6 @@ export interface webhooks {
      * This event occurs when there is activity related to a user's request to dismiss a code scanning alert.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "code scanning alerts" repository permission.
-     *
-     * > [!NOTE]
-     * > Delegated alert dismissal for code scanning is currently in public preview and subject to change.
      * @description A code scanning alert dismissal response was submitted.
      */
     post: operations["dismissal-request-code-scanning/response-submitted"];
@@ -59623,9 +59617,6 @@ export interface operations {
    * This event occurs when there is activity related to a user's request to dismiss a code scanning alert.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "code scanning alerts" repository permission.
-   *
-   * > [!NOTE]
-   * > Delegated alert dismissal for code scanning is currently in public preview and subject to change.
    * @description A code scanning alert dismissal request was created.
    */
   "dismissal-request-code-scanning/created": {
@@ -59663,9 +59654,6 @@ export interface operations {
    * This event occurs when there is activity related to a user's request to dismiss a code scanning alert.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "code scanning alerts" repository permission.
-   *
-   * > [!NOTE]
-   * > Delegated alert dismissal for code scanning is currently in public preview and subject to change.
    * @description A code scanning alert dismissal response was submitted.
    */
   "dismissal-request-code-scanning/response-submitted": {
