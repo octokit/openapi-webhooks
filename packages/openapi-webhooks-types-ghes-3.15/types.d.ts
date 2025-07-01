@@ -10184,6 +10184,7 @@ export interface components {
       /** Format: uri */
       html_url: string;
       app_id: number;
+      client_id?: string;
       /** @description The ID of the user or organization this token is being scoped to. */
       target_id: number;
       target_type: string;

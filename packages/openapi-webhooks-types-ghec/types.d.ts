@@ -10682,7 +10682,7 @@ export interface components {
             | components["schemas"]["enterprise"]
           );
       /**
-       * @description Describe whether all repositories have been selected or there's a selection involved
+       * @description Describe whether all repositories have been selected or there's a selection involved. For enterprise installations this is `selected`.
        * @enum {string}
        */
       repository_selection: "all" | "selected";
@@ -10693,6 +10693,7 @@ export interface components {
       /** Format: uri */
       html_url: string;
       app_id: number;
+      client_id?: string;
       /** @description The ID of the user or organization this token is being scoped to. */
       target_id: number;
       target_type: string;
