@@ -56790,7 +56790,12 @@ export interface components {
        * @description The reason for the current state
        * @enum {string|null}
        */
-      state_reason?: "completed" | "reopened" | "not_planned" | null;
+      state_reason?:
+        | "completed"
+        | "reopened"
+        | "not_planned"
+        | "duplicate"
+        | null;
       /** @description Title of the issue */
       title: string;
       /** @description Contents of the issue */
