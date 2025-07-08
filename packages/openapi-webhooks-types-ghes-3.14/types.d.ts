@@ -50886,6 +50886,8 @@ export interface components {
       /** Format: uri */
       html_url: string;
       id: number;
+      /** @description Whether or not the release is immutable. */
+      immutable: boolean;
       name: string | null;
       node_id: string;
       /** @description Whether the release is identified as a prerelease or a full release. */
@@ -51082,6 +51084,8 @@ export interface components {
         /** Format: uri */
         html_url: string;
         id: number;
+        /** @description Whether or not the release is immutable. */
+        immutable: boolean;
         name: string | null;
         node_id: string;
         /**
@@ -51248,6 +51252,8 @@ export interface components {
       /** Format: uri */
       html_url: string;
       id: number;
+      /** @description Whether or not the release is immutable. */
+      immutable: boolean;
       name: string | null;
       node_id: string;
       /** @description Whether the release is identified as a prerelease or a full release. */
