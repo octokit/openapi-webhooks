@@ -21325,6 +21325,13 @@ export interface components {
       /** Format: uri */
       organization_url: string;
       role: string;
+      /** @description Whether the user has direct membership in the organization. */
+      direct_membership?: boolean;
+      /**
+       * @description The slugs of the enterprise teams providing the user with indirect membership in the organization.
+       * A limit of 100 enterprise team slugs is returned.
+       */
+      enterprise_teams_providing_indirect_membership?: string[];
       state: string;
       /** Format: uri */
       url: string;
