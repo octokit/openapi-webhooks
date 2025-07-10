@@ -3896,6 +3896,11 @@ export interface components {
       html_url: string | null;
     };
     "security-and-analysis": {
+      /**
+       * @description Enable or disable GitHub Advanced Security for the repository.
+       *
+       * For standalone Code Scanning or Secret Protection products, this parameter cannot be used.
+       */
       advanced_security?: {
         /** @enum {string} */
         status?: "enabled" | "disabled";
