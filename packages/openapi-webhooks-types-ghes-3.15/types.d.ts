@@ -11303,12 +11303,7 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
-        /** Sub-issues Summary */
-        sub_issues_summary?: {
-          total: number;
-          completed: number;
-          percent_completed: number;
-        };
+        sub_issues_summary?: components["schemas"]["sub-issues-summary"];
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -11484,6 +11479,12 @@ export interface components {
       organization?: components["schemas"]["organization-simple-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
       sender: components["schemas"]["simple-user"];
+    };
+    /** Sub-issues Summary */
+    "sub-issues-summary": {
+      total: number;
+      completed: number;
+      percent_completed: number;
     };
     /**
      * Issue Type
@@ -11947,12 +11948,7 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
-        /** Sub-issues Summary */
-        sub_issues_summary?: {
-          total: number;
-          completed: number;
-          percent_completed: number;
-        };
+        sub_issues_summary?: components["schemas"]["sub-issues-summary"];
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -12650,12 +12646,7 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
-        /** Sub-issues Summary */
-        sub_issues_summary?: {
-          total: number;
-          completed: number;
-          percent_completed: number;
-        };
+        sub_issues_summary?: components["schemas"]["sub-issues-summary"];
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -13274,12 +13265,7 @@ export interface components {
       };
       /** Format: uri */
       repository_url: string;
-      /** Sub-issues Summary */
-      sub_issues_summary?: {
-        total: number;
-        completed: number;
-        percent_completed: number;
-      };
+      sub_issues_summary?: components["schemas"]["sub-issues-summary"];
       /**
        * @description State of the issue; either 'open' or 'closed'
        * @enum {string}
@@ -13765,12 +13751,7 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
-        /** Sub-issues Summary */
-        sub_issues_summary?: {
-          total: number;
-          completed: number;
-          percent_completed: number;
-        };
+        sub_issues_summary?: components["schemas"]["sub-issues-summary"];
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -14319,12 +14300,7 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
-        /** Sub-issues Summary */
-        sub_issues_summary?: {
-          total: number;
-          completed: number;
-          percent_completed: number;
-        };
+        sub_issues_summary?: components["schemas"]["sub-issues-summary"];
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -14809,12 +14785,7 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
-        /** Sub-issues Summary */
-        sub_issues_summary?: {
-          total: number;
-          completed: number;
-          percent_completed: number;
-        };
+        sub_issues_summary?: components["schemas"]["sub-issues-summary"];
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -15387,12 +15358,7 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
-        /** Sub-issues Summary */
-        sub_issues_summary?: {
-          total: number;
-          completed: number;
-          percent_completed: number;
-        };
+        sub_issues_summary?: components["schemas"]["sub-issues-summary"];
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -15881,12 +15847,7 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
-        /** Sub-issues Summary */
-        sub_issues_summary?: {
-          total: number;
-          completed: number;
-          percent_completed: number;
-        };
+        sub_issues_summary?: components["schemas"]["sub-issues-summary"];
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -16377,12 +16338,7 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
-        /** Sub-issues Summary */
-        sub_issues_summary?: {
-          total: number;
-          completed: number;
-          percent_completed: number;
-        };
+        sub_issues_summary?: components["schemas"]["sub-issues-summary"];
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -16868,12 +16824,7 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
-        /** Sub-issues Summary */
-        sub_issues_summary?: {
-          total: number;
-          completed: number;
-          percent_completed: number;
-        };
+        sub_issues_summary?: components["schemas"]["sub-issues-summary"];
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -17360,12 +17311,7 @@ export interface components {
           };
           /** Format: uri */
           repository_url?: string;
-          /** Sub-issues Summary */
-          sub_issues_summary?: {
-            total: number;
-            completed: number;
-            percent_completed: number;
-          };
+          sub_issues_summary?: components["schemas"]["sub-issues-summary"];
           /**
            * @description State of the issue; either 'open' or 'closed'
            * @enum {string}
@@ -18095,12 +18041,7 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
-        /** Sub-issues Summary */
-        sub_issues_summary?: {
-          total: number;
-          completed: number;
-          percent_completed: number;
-        };
+        sub_issues_summary?: components["schemas"]["sub-issues-summary"];
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -18592,12 +18533,7 @@ export interface components {
       };
       /** Format: uri */
       repository_url: string;
-      /** Sub-issues Summary */
-      sub_issues_summary?: {
-        total: number;
-        completed: number;
-        percent_completed: number;
-      };
+      sub_issues_summary?: components["schemas"]["sub-issues-summary"];
       /**
        * @description State of the issue; either 'open' or 'closed'
        * @enum {string}
@@ -19080,12 +19016,7 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
-        /** Sub-issues Summary */
-        sub_issues_summary?: {
-          total: number;
-          completed: number;
-          percent_completed: number;
-        };
+        sub_issues_summary?: components["schemas"]["sub-issues-summary"];
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -19571,12 +19502,7 @@ export interface components {
           };
           /** Format: uri */
           repository_url: string;
-          /** Sub-issues Summary */
-          sub_issues_summary?: {
-            total: number;
-            completed: number;
-            percent_completed: number;
-          };
+          sub_issues_summary?: components["schemas"]["sub-issues-summary"];
           /**
            * @description State of the issue; either 'open' or 'closed'
            * @enum {string}
@@ -20383,12 +20309,7 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
-        /** Sub-issues Summary */
-        sub_issues_summary?: {
-          total: number;
-          completed: number;
-          percent_completed: number;
-        };
+        sub_issues_summary?: components["schemas"]["sub-issues-summary"];
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
