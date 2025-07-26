@@ -1085,6 +1085,50 @@ export interface webhooks {
      */
     post: operations["issue-comment/edited"];
   };
+  "issue-dependencies-blocked-by-added": {
+    /**
+     * This event occurs when there is activity relating to issue dependencies, such as blocking or blocked-by relationships.
+     *
+     * For activity relating to issues more generally, use the `issues` event instead.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permissions.
+     * @description An issue was marked as blocked by another issue.
+     */
+    post: operations["issue-dependencies/blocked-by-added"];
+  };
+  "issue-dependencies-blocked-by-removed": {
+    /**
+     * This event occurs when there is activity relating to issue dependencies, such as blocking or blocked-by relationships.
+     *
+     * For activity relating to issues more generally, use the `issues` event instead.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permissions.
+     * @description The blocked by relationship between an issue and another issue was removed.
+     */
+    post: operations["issue-dependencies/blocked-by-removed"];
+  };
+  "issue-dependencies-blocking-added": {
+    /**
+     * This event occurs when there is activity relating to issue dependencies, such as blocking or blocked-by relationships.
+     *
+     * For activity relating to issues more generally, use the `issues` event instead.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permissions.
+     * @description An issue was marked as blocking another issue.
+     */
+    post: operations["issue-dependencies/blocking-added"];
+  };
+  "issue-dependencies-blocking-removed": {
+    /**
+     * This event occurs when there is activity relating to issue dependencies, such as blocking or blocked-by relationships.
+     *
+     * For activity relating to issues more generally, use the `issues` event instead.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permissions.
+     * @description The blocking relationship between an issue and another issue was removed.
+     */
+    post: operations["issue-dependencies/blocking-removed"];
+  };
   "issues-assigned": {
     /**
      * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/enterprise-cloud@latest//issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#issue) or "[Issues](https://docs.github.com/enterprise-cloud@latest//rest/issues)" in the REST API documentation.
@@ -13193,6 +13237,179 @@ export interface components {
         /** @description The previous version of the body. */
         from: string;
       };
+    };
+    /** blocked by issue added event */
+    "webhook-issue-dependencies-blocked-by-added": {
+      /** @enum {string} */
+      action: "blocked_by_added";
+      /** @description The ID of the blocked issue. */
+      blocked_issue_id: number;
+      blocked_issue: components["schemas"]["issue"];
+      /** @description The ID of the blocking issue. */
+      blocking_issue_id: number;
+      blocking_issue: components["schemas"]["issue"];
+      blocking_issue_repo: components["schemas"]["repository"];
+      installation?: components["schemas"]["simple-installation"];
+      organization: components["schemas"]["organization-simple-webhooks"];
+      repository: components["schemas"]["repository-webhooks"];
+      sender: components["schemas"]["simple-user"];
+    };
+    /**
+     * Issue
+     * @description Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.
+     */
+    issue: {
+      /** Format: int64 */
+      id: number;
+      node_id: string;
+      /**
+       * Format: uri
+       * @description URL for the issue
+       */
+      url: string;
+      /** Format: uri */
+      repository_url: string;
+      labels_url: string;
+      /** Format: uri */
+      comments_url: string;
+      /** Format: uri */
+      events_url: string;
+      /** Format: uri */
+      html_url: string;
+      /** @description Number uniquely identifying the issue within its repository */
+      number: number;
+      /** @description State of the issue; either 'open' or 'closed' */
+      state: string;
+      /**
+       * @description The reason for the current state
+       * @enum {string|null}
+       */
+      state_reason?:
+        | "completed"
+        | "reopened"
+        | "not_planned"
+        | "duplicate"
+        | null;
+      /** @description Title of the issue */
+      title: string;
+      /** @description Contents of the issue */
+      body?: string | null;
+      user: null | components["schemas"]["simple-user"];
+      /** @description Labels to associate with this issue; pass one or more label names to replace the set of labels on this issue; send an empty array to clear all labels from the issue; note that the labels are silently dropped for users without push access to the repository */
+      labels: OneOf<
+        [
+          string,
+          {
+            /** Format: int64 */
+            id?: number;
+            node_id?: string;
+            /** Format: uri */
+            url?: string;
+            name?: string;
+            description?: string | null;
+            color?: string | null;
+            default?: boolean;
+          },
+        ]
+      >[];
+      assignee: null | components["schemas"]["simple-user"];
+      assignees?: components["schemas"]["simple-user"][] | null;
+      milestone: null | components["schemas"]["milestone"];
+      locked: boolean;
+      active_lock_reason?: string | null;
+      comments: number;
+      pull_request?: {
+        /** Format: date-time */
+        merged_at?: string | null;
+        /** Format: uri */
+        diff_url: string | null;
+        /** Format: uri */
+        html_url: string | null;
+        /** Format: uri */
+        patch_url: string | null;
+        /** Format: uri */
+        url: string | null;
+      };
+      /** Format: date-time */
+      closed_at: string | null;
+      /** Format: date-time */
+      created_at: string;
+      /** Format: date-time */
+      updated_at: string;
+      draft?: boolean;
+      closed_by?: null | components["schemas"]["simple-user"];
+      body_html?: string;
+      body_text?: string;
+      /** Format: uri */
+      timeline_url?: string;
+      type?: components["schemas"]["issue-type"];
+      repository?: components["schemas"]["repository"];
+      performed_via_github_app?: null | components["schemas"]["integration"];
+      author_association: components["schemas"]["author-association"];
+      reactions?: components["schemas"]["reaction-rollup"];
+      sub_issues_summary?: components["schemas"]["sub-issues-summary"];
+    };
+    /** Reaction Rollup */
+    "reaction-rollup": {
+      /** Format: uri */
+      url: string;
+      total_count: number;
+      "+1": number;
+      "-1": number;
+      laugh: number;
+      confused: number;
+      heart: number;
+      hooray: number;
+      eyes: number;
+      rocket: number;
+    };
+    /** blocked by issue removed event */
+    "webhook-issue-dependencies-blocked-by-removed": {
+      /** @enum {string} */
+      action: "blocked_by_removed";
+      /** @description The ID of the blocked issue. */
+      blocked_issue_id: number;
+      blocked_issue: components["schemas"]["issue"];
+      /** @description The ID of the blocking issue. */
+      blocking_issue_id: number;
+      blocking_issue: components["schemas"]["issue"];
+      blocking_issue_repo: components["schemas"]["repository"];
+      installation?: components["schemas"]["simple-installation"];
+      organization: components["schemas"]["organization-simple-webhooks"];
+      repository: components["schemas"]["repository-webhooks"];
+      sender: components["schemas"]["simple-user"];
+    };
+    /** blocking issue added event */
+    "webhook-issue-dependencies-blocking-added": {
+      /** @enum {string} */
+      action: "blocking_added";
+      /** @description The ID of the blocked issue. */
+      blocked_issue_id: number;
+      blocked_issue: components["schemas"]["issue"];
+      blocked_issue_repo: components["schemas"]["repository"];
+      /** @description The ID of the blocking issue. */
+      blocking_issue_id: number;
+      blocking_issue: components["schemas"]["issue"];
+      installation?: components["schemas"]["simple-installation"];
+      organization: components["schemas"]["organization-simple-webhooks"];
+      repository: components["schemas"]["repository-webhooks"];
+      sender: components["schemas"]["simple-user"];
+    };
+    /** blocking issue removed event */
+    "webhook-issue-dependencies-blocking-removed": {
+      /** @enum {string} */
+      action: "blocking_removed";
+      /** @description The ID of the blocked issue. */
+      blocked_issue_id: number;
+      blocked_issue: components["schemas"]["issue"];
+      blocked_issue_repo: components["schemas"]["repository"];
+      /** @description The ID of the blocking issue. */
+      blocking_issue_id: number;
+      blocking_issue: components["schemas"]["issue"];
+      installation?: components["schemas"]["simple-installation"];
+      organization: components["schemas"]["organization-simple-webhooks"];
+      repository: components["schemas"]["repository-webhooks"];
+      sender: components["schemas"]["simple-user"];
     };
     /** issues assigned event */
     "webhook-issues-assigned": {
@@ -55427,7 +55644,7 @@ export interface components {
       parameters?: {
         /** @description Array of allowed merge methods. Allowed values include `merge`, `squash`, and `rebase`. At least one option must be enabled. */
         allowed_merge_methods?: ("merge" | "squash" | "rebase")[];
-        /** @description Automatically request review from Copilot for new pull requests, if the author has access to Copilot code review. */
+        /** @description Request Copilot code review for new pull requests automatically if the author has access to Copilot code review. */
         automatic_copilot_code_review_enabled?: boolean;
         /** @description New, reviewable commits pushed will dismiss previous pull request review approvals. */
         dismiss_stale_reviews_on_push: boolean;
@@ -57173,115 +57390,6 @@ export interface components {
       organization?: components["schemas"]["organization-simple-webhooks"];
       repository?: components["schemas"]["repository-webhooks"];
       sender?: components["schemas"]["simple-user"];
-    };
-    /**
-     * Issue
-     * @description Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.
-     */
-    issue: {
-      /** Format: int64 */
-      id: number;
-      node_id: string;
-      /**
-       * Format: uri
-       * @description URL for the issue
-       */
-      url: string;
-      /** Format: uri */
-      repository_url: string;
-      labels_url: string;
-      /** Format: uri */
-      comments_url: string;
-      /** Format: uri */
-      events_url: string;
-      /** Format: uri */
-      html_url: string;
-      /** @description Number uniquely identifying the issue within its repository */
-      number: number;
-      /** @description State of the issue; either 'open' or 'closed' */
-      state: string;
-      /**
-       * @description The reason for the current state
-       * @enum {string|null}
-       */
-      state_reason?:
-        | "completed"
-        | "reopened"
-        | "not_planned"
-        | "duplicate"
-        | null;
-      /** @description Title of the issue */
-      title: string;
-      /** @description Contents of the issue */
-      body?: string | null;
-      user: null | components["schemas"]["simple-user"];
-      /** @description Labels to associate with this issue; pass one or more label names to replace the set of labels on this issue; send an empty array to clear all labels from the issue; note that the labels are silently dropped for users without push access to the repository */
-      labels: OneOf<
-        [
-          string,
-          {
-            /** Format: int64 */
-            id?: number;
-            node_id?: string;
-            /** Format: uri */
-            url?: string;
-            name?: string;
-            description?: string | null;
-            color?: string | null;
-            default?: boolean;
-          },
-        ]
-      >[];
-      assignee: null | components["schemas"]["simple-user"];
-      assignees?: components["schemas"]["simple-user"][] | null;
-      milestone: null | components["schemas"]["milestone"];
-      locked: boolean;
-      active_lock_reason?: string | null;
-      comments: number;
-      pull_request?: {
-        /** Format: date-time */
-        merged_at?: string | null;
-        /** Format: uri */
-        diff_url: string | null;
-        /** Format: uri */
-        html_url: string | null;
-        /** Format: uri */
-        patch_url: string | null;
-        /** Format: uri */
-        url: string | null;
-      };
-      /** Format: date-time */
-      closed_at: string | null;
-      /** Format: date-time */
-      created_at: string;
-      /** Format: date-time */
-      updated_at: string;
-      draft?: boolean;
-      closed_by?: null | components["schemas"]["simple-user"];
-      body_html?: string;
-      body_text?: string;
-      /** Format: uri */
-      timeline_url?: string;
-      type?: components["schemas"]["issue-type"];
-      repository?: components["schemas"]["repository"];
-      performed_via_github_app?: null | components["schemas"]["integration"];
-      author_association: components["schemas"]["author-association"];
-      reactions?: components["schemas"]["reaction-rollup"];
-      sub_issues_summary?: components["schemas"]["sub-issues-summary"];
-    };
-    /** Reaction Rollup */
-    "reaction-rollup": {
-      /** Format: uri */
-      url: string;
-      total_count: number;
-      "+1": number;
-      "-1": number;
-      laugh: number;
-      confused: number;
-      heart: number;
-      hooray: number;
-      eyes: number;
-      rocket: number;
     };
     /** parent issue removed event */
     "webhook-sub-issues-parent-issue-removed": {
@@ -64041,6 +64149,162 @@ export interface operations {
     requestBody: {
       content: {
         "application/json": components["schemas"]["webhook-issue-comment-edited"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to issue dependencies, such as blocking or blocked-by relationships.
+   *
+   * For activity relating to issues more generally, use the `issues` event instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permissions.
+   * @description An issue was marked as blocked by another issue.
+   */
+  "issue-dependencies/blocked-by-added": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-issue-dependencies-blocked-by-added"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to issue dependencies, such as blocking or blocked-by relationships.
+   *
+   * For activity relating to issues more generally, use the `issues` event instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permissions.
+   * @description The blocked by relationship between an issue and another issue was removed.
+   */
+  "issue-dependencies/blocked-by-removed": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-issue-dependencies-blocked-by-removed"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to issue dependencies, such as blocking or blocked-by relationships.
+   *
+   * For activity relating to issues more generally, use the `issues` event instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permissions.
+   * @description An issue was marked as blocking another issue.
+   */
+  "issue-dependencies/blocking-added": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-issue-dependencies-blocking-added"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to issue dependencies, such as blocking or blocked-by relationships.
+   *
+   * For activity relating to issues more generally, use the `issues` event instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permissions.
+   * @description The blocking relationship between an issue and another issue was removed.
+   */
+  "issue-dependencies/blocking-removed": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-issue-dependencies-blocking-removed"];
       };
     };
     responses: {

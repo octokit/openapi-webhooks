@@ -51895,7 +51895,7 @@ export interface components {
       /** @enum {string} */
       type: "pull_request";
       parameters?: {
-        /** @description Automatically request review from Copilot for new pull requests, if the author has access to Copilot code review. */
+        /** @description Request Copilot code review for new pull requests automatically if the author has access to Copilot code review. */
         automatic_copilot_code_review_enabled?: boolean;
         /** @description New, reviewable commits pushed will dismiss previous pull request review approvals. */
         dismiss_stale_reviews_on_push: boolean;

@@ -51983,7 +51983,7 @@ export interface components {
       parameters?: {
         /** @description Array of allowed merge methods. Allowed values include `merge`, `squash`, and `rebase`. At least one option must be enabled. */
         allowed_merge_methods?: ("merge" | "squash" | "rebase")[];
-        /** @description Automatically request review from Copilot for new pull requests, if the author has access to Copilot code review. */
+        /** @description Request Copilot code review for new pull requests automatically if the author has access to Copilot code review. */
         automatic_copilot_code_review_enabled?: boolean;
         /** @description New, reviewable commits pushed will dismiss previous pull request review approvals. */
         dismiss_stale_reviews_on_push: boolean;

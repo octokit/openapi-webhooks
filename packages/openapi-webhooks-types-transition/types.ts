@@ -218,6 +218,19 @@ export type IssueCommentEvent =
   | WebhookEventDefinition<"issue-comment-created">
   | WebhookEventDefinition<"issue-comment-deleted">
   | WebhookEventDefinition<"issue-comment-edited">;
+export type IssueDependenciesBlockedByAddedEvent =
+  WebhookEventDefinition<"issue-dependencies-blocked-by-added">;
+export type IssueDependenciesBlockedByRemovedEvent =
+  WebhookEventDefinition<"issue-dependencies-blocked-by-removed">;
+export type IssueDependenciesBlockingAddedEvent =
+  WebhookEventDefinition<"issue-dependencies-blocking-added">;
+export type IssueDependenciesBlockingRemovedEvent =
+  WebhookEventDefinition<"issue-dependencies-blocking-removed">;
+export type IssueDependenciesEvent =
+  | WebhookEventDefinition<"issue-dependencies-blocked-by-added">
+  | WebhookEventDefinition<"issue-dependencies-blocked-by-removed">
+  | WebhookEventDefinition<"issue-dependencies-blocking-added">
+  | WebhookEventDefinition<"issue-dependencies-blocking-removed">;
 export type IssuesAssignedEvent = WebhookEventDefinition<"issues-assigned">;
 export type IssuesClosedEvent = WebhookEventDefinition<"issues-closed">;
 export type IssuesDeletedEvent = WebhookEventDefinition<"issues-deleted">;
@@ -816,6 +829,11 @@ export type EventPayloadMap = {
     | WebhookEventDefinition<"issue-comment-created">
     | WebhookEventDefinition<"issue-comment-deleted">
     | WebhookEventDefinition<"issue-comment-edited">;
+  issue_dependencies:
+    | WebhookEventDefinition<"issue-dependencies-blocked-by-added">
+    | WebhookEventDefinition<"issue-dependencies-blocked-by-removed">
+    | WebhookEventDefinition<"issue-dependencies-blocking-added">
+    | WebhookEventDefinition<"issue-dependencies-blocking-removed">;
   issues:
     | WebhookEventDefinition<"issues-assigned">
     | WebhookEventDefinition<"issues-closed">
@@ -1060,6 +1078,7 @@ export type WebhookEvent =
   | InstallationRepositoriesEvent
   | InstallationTargetEvent
   | IssueCommentEvent
+  | IssueDependenciesEvent
   | IssuesEvent
   | LabelEvent
   | MarketplacePurchaseEvent
