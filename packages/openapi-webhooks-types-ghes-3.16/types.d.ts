@@ -22546,6 +22546,41 @@ export interface components {
       /** Format: date-time */
       deleted_at: string | null;
       deleted_by: null | components["schemas"]["simple-user"];
+      /** @enum {string} */
+      state?: "open" | "closed";
+      latest_status_update?:
+        | null
+        | components["schemas"]["projects-v2-status-update"];
+      /** @description Whether this project is a template */
+      is_template?: boolean;
+    };
+    /**
+     * Projects v2 Status Update
+     * @description An status update belonging to a project
+     */
+    "projects-v2-status-update": {
+      id: number;
+      node_id: string;
+      project_node_id?: string;
+      creator?: components["schemas"]["simple-user"];
+      /** Format: date-time */
+      created_at: string;
+      /** Format: date-time */
+      updated_at: string;
+      /** @enum {string|null} */
+      status?:
+        | "INACTIVE"
+        | "ON_TRACK"
+        | "AT_RISK"
+        | "OFF_TRACK"
+        | "COMPLETE"
+        | null;
+      /** Format: date */
+      start_date?: string;
+      /** Format: date */
+      target_date?: string;
+      /** @description Body of the status update */
+      body?: string | null;
     };
     /** @description A project was created */
     "webhook-projects-v2-project-created": {
