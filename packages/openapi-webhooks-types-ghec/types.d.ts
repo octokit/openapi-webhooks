@@ -23585,8 +23585,10 @@ export interface components {
     "projects-v2-iteration-setting": {
       id: string;
       title: string;
+      title_html?: string;
       duration?: number | null;
       start_date?: string | null;
+      completed?: boolean;
     };
     /** Projects v2 Item Reordered Event */
     "webhook-projects-v2-item-reordered": {
