@@ -35461,6 +35461,8 @@ export interface components {
         state: "dismissed" | "approved" | "changes_requested";
         /** Format: date-time */
         submitted_at: string;
+        /** Format: date-time */
+        updated_at?: string | null;
         /** User */
         user: {
           /** Format: uri */
@@ -36624,6 +36626,8 @@ export interface components {
       state: string;
       /** Format: date-time */
       submitted_at: string | null;
+      /** Format: date-time */
+      updated_at?: string | null;
       /** User */
       user: {
         /** Format: uri */
@@ -44191,6 +44195,8 @@ export interface components {
         }[];
         node_id: string;
       };
+      /** Format: date-time */
+      updated_at?: string | null;
     };
     /** pull_request_review_thread unresolved event */
     "webhook-pull-request-review-thread-unresolved": {
@@ -45431,6 +45437,8 @@ export interface components {
         }[];
         node_id: string;
       };
+      /** Format: date-time */
+      updated_at?: string | null;
     };
     /** pull_request synchronize event */
     "webhook-pull-request-synchronize": {
