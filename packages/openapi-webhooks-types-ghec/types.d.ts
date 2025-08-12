@@ -54484,6 +54484,8 @@ export interface components {
       body: string | null;
       /** Format: date-time */
       created_at: string | null;
+      /** Format: date-time */
+      updated_at: string | null;
       /** Format: uri */
       discussion_url?: string;
       /** @description Whether the release is a draft or published */
@@ -54722,6 +54724,8 @@ export interface components {
         target_commitish: string;
         /** Format: uri-template */
         upload_url: string;
+        /** Format: date-time */
+        updated_at: string | null;
         /** Format: uri */
         url: string;
         /** Format: uri */
@@ -54885,6 +54889,8 @@ export interface components {
       tarball_url: string | null;
       /** @description Specifies the commitish value that determines where the Git tag is created from. */
       target_commitish: string;
+      /** Format: date-time */
+      updated_at: string | null;
       /** Format: uri-template */
       upload_url: string;
       /** Format: uri */
