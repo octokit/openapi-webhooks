@@ -13438,6 +13438,7 @@ export interface components {
       repository_url: string;
       sub_issues_summary?: components["schemas"]["sub-issues-summary"];
       issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
+      issue_field_values?: components["schemas"]["issue-field-value"][];
       /**
        * @description State of the issue; either 'open' or 'closed'
        * @enum {string}
@@ -13494,6 +13495,37 @@ export interface components {
         /** Format: uri */
         url?: string;
         user_view_type?: string;
+      } | null;
+    };
+    /**
+     * Issue Field Value
+     * @description A value assigned to an issue field
+     */
+    "issue-field-value": {
+      /**
+       * Format: int64
+       * @description Unique identifier for the issue field.
+       */
+      issue_field_id: number;
+      node_id: string;
+      /**
+       * @description The data type of the issue field
+       * @enum {string}
+       */
+      data_type: "text" | "single_select" | "number" | "date";
+      /** @description The value of the issue field */
+      value: null | string | number;
+      /** @description Details about the selected option (only present for single_select fields) */
+      single_select_option?: {
+        /**
+         * Format: int64
+         * @description Unique identifier for the option.
+         */
+        id: number;
+        /** @description The name of the option */
+        name: string;
+        /** @description The color of the option */
+        color: string;
       } | null;
     };
     /** issues closed event */
@@ -13925,6 +13957,7 @@ export interface components {
         repository_url: string;
         sub_issues_summary?: components["schemas"]["sub-issues-summary"];
         issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
+        issue_field_values?: components["schemas"]["issue-field-value"][];
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -14475,6 +14508,7 @@ export interface components {
         repository_url: string;
         sub_issues_summary?: components["schemas"]["sub-issues-summary"];
         issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
+        issue_field_values?: components["schemas"]["issue-field-value"][];
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -14961,6 +14995,7 @@ export interface components {
         repository_url: string;
         sub_issues_summary?: components["schemas"]["sub-issues-summary"];
         issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
+        issue_field_values?: components["schemas"]["issue-field-value"][];
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -15535,6 +15570,7 @@ export interface components {
         repository_url: string;
         sub_issues_summary?: components["schemas"]["sub-issues-summary"];
         issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
+        issue_field_values?: components["schemas"]["issue-field-value"][];
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -16025,6 +16061,7 @@ export interface components {
         repository_url: string;
         sub_issues_summary?: components["schemas"]["sub-issues-summary"];
         issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
+        issue_field_values?: components["schemas"]["issue-field-value"][];
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -16517,6 +16554,7 @@ export interface components {
         repository_url: string;
         sub_issues_summary?: components["schemas"]["sub-issues-summary"];
         issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
+        issue_field_values?: components["schemas"]["issue-field-value"][];
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -17004,6 +17042,7 @@ export interface components {
         repository_url: string;
         sub_issues_summary?: components["schemas"]["sub-issues-summary"];
         issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
+        issue_field_values?: components["schemas"]["issue-field-value"][];
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -17492,6 +17531,7 @@ export interface components {
           repository_url?: string;
           sub_issues_summary?: components["schemas"]["sub-issues-summary"];
           issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
+          issue_field_values?: components["schemas"]["issue-field-value"][];
           /**
            * @description State of the issue; either 'open' or 'closed'
            * @enum {string}
@@ -18223,6 +18263,7 @@ export interface components {
         repository_url: string;
         sub_issues_summary?: components["schemas"]["sub-issues-summary"];
         issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
+        issue_field_values?: components["schemas"]["issue-field-value"][];
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -18716,6 +18757,7 @@ export interface components {
       repository_url: string;
       sub_issues_summary?: components["schemas"]["sub-issues-summary"];
       issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
+      issue_field_values?: components["schemas"]["issue-field-value"][];
       /**
        * @description State of the issue; either 'open' or 'closed'
        * @enum {string}
@@ -19200,6 +19242,7 @@ export interface components {
         repository_url: string;
         sub_issues_summary?: components["schemas"]["sub-issues-summary"];
         issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
+        issue_field_values?: components["schemas"]["issue-field-value"][];
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -19687,6 +19730,7 @@ export interface components {
           repository_url: string;
           sub_issues_summary?: components["schemas"]["sub-issues-summary"];
           issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
+          issue_field_values?: components["schemas"]["issue-field-value"][];
           /**
            * @description State of the issue; either 'open' or 'closed'
            * @enum {string}
@@ -20495,6 +20539,7 @@ export interface components {
         repository_url: string;
         sub_issues_summary?: components["schemas"]["sub-issues-summary"];
         issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
+        issue_field_values?: components["schemas"]["issue-field-value"][];
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -51840,7 +51885,7 @@ export interface components {
      * @description An actor that can bypass rules in a ruleset
      */
     "repository-ruleset-bypass-actor": {
-      /** @description The ID of the actor that can bypass a ruleset. If `actor_type` is `OrganizationAdmin`, this should be `1`. If `actor_type` is `DeployKey`, this should be null. If `actor_type` is `EnterpriseOwner`, `actor_id` is ignored. `OrganizationAdmin` and `EnterpriseOwner` are not applicable for personal repositories. */
+      /** @description The ID of the actor that can bypass a ruleset. Required for `Integration`, `RepositoryRole`, and `Team` actor types. If `actor_type` is `OrganizationAdmin`, this should be `1`. If `actor_type` is `DeployKey`, this should be null. If `actor_type` is `EnterpriseOwner`, `actor_id` is ignored. `OrganizationAdmin` and `EnterpriseOwner` are not applicable for personal repositories. */
       actor_id?: number | null;
       /**
        * @description The type of actor that can bypass a ruleset
