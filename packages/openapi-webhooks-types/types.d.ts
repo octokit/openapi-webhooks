@@ -12886,6 +12886,11 @@ export interface components {
       author_association: components["schemas"]["author-association"];
       reactions?: components["schemas"]["reaction-rollup"];
       sub_issues_summary?: components["schemas"]["sub-issues-summary"];
+      /**
+       * Format: uri
+       * @description URL to get the parent issue of this issue, if it is a sub-issue
+       */
+      parent_issue_url?: string | null;
       issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
       issue_field_values?: components["schemas"]["issue-field-value"][];
     };
