@@ -3541,6 +3541,7 @@ export interface components {
       action: "completed";
       check_run: components["schemas"]["check-run-with-simple-check-suite"];
       installation?: components["schemas"]["simple-installation"];
+      enterprise?: components["schemas"]["enterprise-webhooks"];
       organization?: components["schemas"]["organization-simple-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
       sender: components["schemas"]["simple-user"];
@@ -3946,6 +3947,7 @@ export interface components {
       action: "created";
       check_run: components["schemas"]["check-run-with-simple-check-suite"];
       installation?: components["schemas"]["simple-installation"];
+      enterprise?: components["schemas"]["enterprise-webhooks"];
       organization?: components["schemas"]["organization-simple-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
       sender: components["schemas"]["simple-user"];
@@ -3956,6 +3958,7 @@ export interface components {
       action: "requested_action";
       check_run: components["schemas"]["check-run-with-simple-check-suite"];
       installation?: components["schemas"]["simple-installation"];
+      enterprise?: components["schemas"]["enterprise-webhooks"];
       organization?: components["schemas"]["organization-simple-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
       /** @description The action requested by the user. */
@@ -3971,6 +3974,7 @@ export interface components {
       action: "rerequested";
       check_run: components["schemas"]["check-run-with-simple-check-suite"];
       installation?: components["schemas"]["simple-installation"];
+      enterprise?: components["schemas"]["enterprise-webhooks"];
       organization?: components["schemas"]["organization-simple-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
       sender: components["schemas"]["simple-user"];
@@ -12883,7 +12887,7 @@ export interface components {
       type?: components["schemas"]["issue-type"];
       repository?: components["schemas"]["repository"];
       performed_via_github_app?: null | components["schemas"]["integration"];
-      author_association: components["schemas"]["author-association"];
+      author_association?: components["schemas"]["author-association"];
       reactions?: components["schemas"]["reaction-rollup"];
       sub_issues_summary?: components["schemas"]["sub-issues-summary"];
       /**

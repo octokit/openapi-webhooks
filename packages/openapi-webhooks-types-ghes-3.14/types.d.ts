@@ -3614,6 +3614,7 @@ export interface components {
       action: "completed";
       check_run: components["schemas"]["check-run-with-simple-check-suite"];
       installation?: components["schemas"]["simple-installation"];
+      enterprise?: components["schemas"]["enterprise-webhooks"];
       organization?: components["schemas"]["organization-simple-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
       sender: components["schemas"]["simple-user"];
@@ -4002,6 +4003,7 @@ export interface components {
       action: "created";
       check_run: components["schemas"]["check-run-with-simple-check-suite"];
       installation?: components["schemas"]["simple-installation"];
+      enterprise?: components["schemas"]["enterprise-webhooks"];
       organization?: components["schemas"]["organization-simple-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
       sender: components["schemas"]["simple-user"];
@@ -4012,6 +4014,7 @@ export interface components {
       action: "requested_action";
       check_run: components["schemas"]["check-run-with-simple-check-suite"];
       installation?: components["schemas"]["simple-installation"];
+      enterprise?: components["schemas"]["enterprise-webhooks"];
       organization?: components["schemas"]["organization-simple-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
       /** @description The action requested by the user. */
@@ -4027,6 +4030,7 @@ export interface components {
       action: "rerequested";
       check_run: components["schemas"]["check-run-with-simple-check-suite"];
       installation?: components["schemas"]["simple-installation"];
+      enterprise?: components["schemas"]["enterprise-webhooks"];
       organization?: components["schemas"]["organization-simple-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
       sender: components["schemas"]["simple-user"];

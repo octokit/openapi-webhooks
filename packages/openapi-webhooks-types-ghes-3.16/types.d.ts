@@ -3695,6 +3695,7 @@ export interface components {
       action: "completed";
       check_run: components["schemas"]["check-run-with-simple-check-suite"];
       installation?: components["schemas"]["simple-installation"];
+      enterprise?: components["schemas"]["enterprise-webhooks"];
       organization?: components["schemas"]["organization-simple-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
       sender: components["schemas"]["simple-user"];
@@ -4088,6 +4089,7 @@ export interface components {
       action: "created";
       check_run: components["schemas"]["check-run-with-simple-check-suite"];
       installation?: components["schemas"]["simple-installation"];
+      enterprise?: components["schemas"]["enterprise-webhooks"];
       organization?: components["schemas"]["organization-simple-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
       sender: components["schemas"]["simple-user"];
@@ -4098,6 +4100,7 @@ export interface components {
       action: "requested_action";
       check_run: components["schemas"]["check-run-with-simple-check-suite"];
       installation?: components["schemas"]["simple-installation"];
+      enterprise?: components["schemas"]["enterprise-webhooks"];
       organization?: components["schemas"]["organization-simple-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
       /** @description The action requested by the user. */
@@ -4113,6 +4116,7 @@ export interface components {
       action: "rerequested";
       check_run: components["schemas"]["check-run-with-simple-check-suite"];
       installation?: components["schemas"]["simple-installation"];
+      enterprise?: components["schemas"]["enterprise-webhooks"];
       organization?: components["schemas"]["organization-simple-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
       sender: components["schemas"]["simple-user"];
@@ -10674,7 +10678,7 @@ export interface components {
        */
       starring?: "read" | "write";
       /**
-       * @description The level of permission to grant the access token to list and manage repositories a user is starring.
+       * @description The level of permission to grant the access token to administer an enterprise account.
        * @enum {string}
        */
       enterprise_administration?: "read" | "write";
