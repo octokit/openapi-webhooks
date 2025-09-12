@@ -55567,7 +55567,11 @@ export interface components {
        * querying the repository-level endpoint.
        * @enum {string}
        */
-      current_user_can_bypass?: "always" | "pull_requests_only" | "never";
+      current_user_can_bypass?:
+        | "always"
+        | "pull_requests_only"
+        | "never"
+        | "exempt";
       node_id?: string;
       _links?: {
         self?: {
@@ -55615,11 +55619,11 @@ export interface components {
         | "DeployKey"
         | "EnterpriseOwner";
       /**
-       * @description When the specified actor can bypass the ruleset. `pull_request` means that an actor can only bypass rules on pull requests. `pull_request` is not applicable for the `DeployKey` actor type. Also, `pull_request` is only applicable to branch rulesets.
+       * @description When the specified actor can bypass the ruleset. `pull_request` means that an actor can only bypass rules on pull requests. `pull_request` is not applicable for the `DeployKey` actor type. Also, `pull_request` is only applicable to branch rulesets. When `bypass_mode` is `exempt`, rules will not be run for that actor and a bypass audit entry will not be created.
        * @default always
        * @enum {string}
        */
-      bypass_mode?: "always" | "pull_request";
+      bypass_mode?: "always" | "pull_request" | "exempt";
     };
     /**
      * Repository ruleset conditions for ref names
