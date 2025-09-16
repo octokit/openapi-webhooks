@@ -55727,7 +55727,8 @@ export interface components {
       | components["schemas"]["repository-rule-file-extension-restriction"]
       | components["schemas"]["repository-rule-max-file-size"]
       | components["schemas"]["repository-rule-workflows"]
-      | components["schemas"]["repository-rule-code-scanning"];
+      | components["schemas"]["repository-rule-code-scanning"]
+      | components["schemas"]["repository-rule-copilot-code-review"];
     /**
      * creation
      * @description Only allow users with bypass permission to create matching refs.
@@ -56087,6 +56088,20 @@ export interface components {
         | "all";
       /** @description The name of a code scanning tool */
       tool: string;
+    };
+    /**
+     * copilot_code_review
+     * @description Request Copilot code review for new pull requests automatically if the author has access to Copilot code review.
+     */
+    "repository-rule-copilot-code-review": {
+      /** @enum {string} */
+      type: "copilot_code_review";
+      parameters?: {
+        /** @description Copilot automatically reviews draft pull requests before they are marked as ready for review. */
+        review_draft_pull_requests?: boolean;
+        /** @description Copilot automatically reviews each new push to the pull request. */
+        review_on_push?: boolean;
+      };
     };
     /** repository ruleset deleted event */
     "webhook-repository-ruleset-deleted": {
