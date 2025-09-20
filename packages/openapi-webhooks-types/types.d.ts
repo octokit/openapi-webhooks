@@ -7014,6 +7014,15 @@ export interface components {
       slug: string;
       /** @description Distinguished Name (DN) that team maps to within LDAP environment */
       ldap_dn?: string;
+      /**
+       * @description The ownership type of the team
+       * @enum {string}
+       */
+      type: "enterprise" | "organization";
+      /** @description Unique identifier of the organization to which this team belongs */
+      organization_id?: number;
+      /** @description Unique identifier of the enterprise to which this team belongs */
+      enterprise_id?: number;
     };
     /**
      * Repository
@@ -21003,6 +21012,15 @@ export interface components {
          * @description URL for the team
          */
         url: string;
+        /**
+         * @description The ownership type of the team
+         * @enum {string}
+         */
+        type: "enterprise" | "organization";
+        /** @description Unique identifier of the organization to which this team belongs */
+        organization_id?: number;
+        /** @description Unique identifier of the enterprise to which this team belongs */
+        enterprise_id?: number;
       } | null;
       /** @description Permission that the team will have for its repositories */
       permission?: string;
@@ -21018,6 +21036,15 @@ export interface components {
        * @description URL for the team
        */
       url?: string;
+      /**
+       * @description The ownership type of the team
+       * @enum {string}
+       */
+      type?: "enterprise" | "organization";
+      /** @description Unique identifier of the organization to which this team belongs */
+      organization_id?: number;
+      /** @description Unique identifier of the enterprise to which this team belongs */
+      enterprise_id?: number;
     };
     /** membership removed event */
     "webhook-membership-removed": {
@@ -54769,6 +54796,15 @@ export interface components {
       members_url: string;
       /** Format: uri */
       repositories_url: string;
+      /**
+       * @description The ownership type of the team
+       * @enum {string}
+       */
+      type: "enterprise" | "organization";
+      /** @description Unique identifier of the organization to which this team belongs */
+      organization_id?: number;
+      /** @description Unique identifier of the enterprise to which this team belongs */
+      enterprise_id?: number;
       parent: null | components["schemas"]["team-simple"];
     };
     /**
@@ -57206,6 +57242,15 @@ export interface components {
          * @description URL for the team
          */
         url: string;
+        /**
+         * @description The ownership type of the team
+         * @enum {string}
+         */
+        type: "enterprise" | "organization";
+        /** @description Unique identifier of the organization to which this team belongs */
+        organization_id?: number;
+        /** @description Unique identifier of the enterprise to which this team belongs */
+        enterprise_id?: number;
       } | null;
       /** @description Permission that the team will have for its repositories */
       permission?: string;
@@ -57224,6 +57269,15 @@ export interface components {
        * @description URL for the team
        */
       url?: string;
+      /**
+       * @description The ownership type of the team
+       * @enum {string}
+       */
+      type?: "enterprise" | "organization";
+      /** @description Unique identifier of the organization to which this team belongs */
+      organization_id?: number;
+      /** @description Unique identifier of the enterprise to which this team belongs */
+      enterprise_id?: number;
     };
     /** team added_to_repository event */
     "webhook-team-added-to-repository": {
