@@ -4981,6 +4981,7 @@ export interface components {
       action: "appeared_in_branch";
       /** @description The code scanning alert involved in the event. */
       alert: {
+        assignees?: components["schemas"]["simple-user"][];
         /**
          * Format: date-time
          * @description The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ.`
@@ -5121,6 +5122,7 @@ export interface components {
       action: "closed_by_user";
       /** @description The code scanning alert involved in the event. */
       alert: {
+        assignees?: components["schemas"]["simple-user"][];
         /**
          * Format: date-time
          * @description The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ.`
@@ -5382,6 +5384,7 @@ export interface components {
         /** Format: uri */
         url: string;
         dismissal_approved_by?: null;
+        assignees?: components["schemas"]["simple-user"][];
       };
       commit_oid: components["schemas"]["webhooks_code_scanning_commit_oid"];
       enterprise?: components["schemas"]["enterprise-webhooks"];
@@ -5397,6 +5400,7 @@ export interface components {
       action: "fixed";
       /** @description The code scanning alert involved in the event. */
       alert: {
+        assignees?: components["schemas"]["simple-user"][];
         /**
          * Format: date-time
          * @description The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ.`
@@ -5540,6 +5544,7 @@ export interface components {
       action: "reopened";
       /** @description The code scanning alert involved in the event. */
       alert: {
+        assignees?: components["schemas"]["simple-user"][];
         /**
          * Format: date-time
          * @description The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ.`
@@ -5636,6 +5641,7 @@ export interface components {
       action: "reopened_by_user";
       /** @description The code scanning alert involved in the event. */
       alert: {
+        assignees?: components["schemas"]["simple-user"][];
         /**
          * Format: date-time
          * @description The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ.`
