@@ -10588,7 +10588,7 @@ export interface components {
        */
       organization_custom_org_roles?: "read" | "write";
       /**
-       * @description The level of permission to grant the access token for custom property management.
+       * @description The level of permission to grant the access token for repository custom properties management at the organization level.
        * @enum {string}
        */
       organization_custom_properties?: "read" | "write" | "admin";
@@ -10698,7 +10698,7 @@ export interface components {
        */
       enterprise_administration?: "read" | "write";
       /**
-       * @description The level of permission to grant the access token to view and edit custom properties defined for a enterprise
+       * @description The level of permission to grant the access token for repository custom properties management at the enterprise level.
        * @enum {string}
        */
       enterprise_custom_properties?: "read" | "write";

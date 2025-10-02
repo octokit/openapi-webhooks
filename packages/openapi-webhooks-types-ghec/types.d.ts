@@ -10927,7 +10927,7 @@ export interface components {
        */
       organization_custom_org_roles?: "read" | "write";
       /**
-       * @description The level of permission to grant the access token for custom property management.
+       * @description The level of permission to grant the access token for repository custom properties management at the organization level.
        * @enum {string}
        */
       organization_custom_properties?: "read" | "write" | "admin";
@@ -56601,6 +56601,7 @@ export interface components {
       publicly_leaked?: boolean | null;
       /** @description Whether the detected secret was found in multiple repositories in the same organization or business. */
       multi_repo?: boolean | null;
+      assigned_to?: null | components["schemas"]["simple-user"];
     };
     /**
      * @description The reason for resolving the alert.
