@@ -4494,11 +4494,17 @@ export interface components {
             /** @enum {string} */
             administration?: "read" | "write";
             /** @enum {string} */
+            artifact_metadata?: "read" | "write";
+            /** @enum {string} */
+            attestations?: "read" | "write";
+            /** @enum {string} */
             checks?: "read" | "write";
             /** @enum {string} */
             content_references?: "read" | "write";
             /** @enum {string} */
             contents?: "read" | "write";
+            /** @enum {string} */
+            copilot_requests?: "write";
             /** @enum {string} */
             deployments?: "read" | "write";
             /** @enum {string} */
@@ -4514,7 +4520,11 @@ export interface components {
             /** @enum {string} */
             members?: "read" | "write";
             /** @enum {string} */
+            merge_queues?: "read" | "write";
+            /** @enum {string} */
             metadata?: "read" | "write";
+            /** @enum {string} */
+            models?: "read" | "write";
             /** @enum {string} */
             organization_administration?: "read" | "write";
             /** @enum {string} */
@@ -4796,11 +4806,17 @@ export interface components {
             /** @enum {string} */
             administration?: "read" | "write";
             /** @enum {string} */
+            artifact_metadata?: "read" | "write";
+            /** @enum {string} */
+            attestations?: "read" | "write";
+            /** @enum {string} */
             checks?: "read" | "write";
             /** @enum {string} */
             content_references?: "read" | "write";
             /** @enum {string} */
             contents?: "read" | "write";
+            /** @enum {string} */
+            copilot_requests?: "write";
             /** @enum {string} */
             deployments?: "read" | "write";
             /** @enum {string} */
@@ -4816,7 +4832,11 @@ export interface components {
             /** @enum {string} */
             members?: "read" | "write";
             /** @enum {string} */
+            merge_queues?: "read" | "write";
+            /** @enum {string} */
             metadata?: "read" | "write";
+            /** @enum {string} */
+            models?: "read" | "write";
             /** @enum {string} */
             organization_administration?: "read" | "write";
             /** @enum {string} */
@@ -5563,6 +5583,7 @@ export interface components {
          * @description The GitHub URL of the alert resource.
          */
         html_url: string;
+        instances_url?: string;
         /** Alert Instance */
         most_recent_instance?: {
           /** @description Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name. */
@@ -5622,9 +5643,11 @@ export interface components {
           /** @description The version of the tool used to detect the alert. */
           version: string | null;
         };
+        updated_at?: string | null;
         /** Format: uri */
         url: string;
-      } | null;
+        dismissal_approved_by?: null;
+      };
       /** @description The commit SHA of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty. */
       commit_oid: string | null;
       enterprise?: components["schemas"]["enterprise-webhooks"];
@@ -10389,6 +10412,16 @@ export interface components {
        */
       administration?: "read" | "write";
       /**
+       * @description The level of permission to grant the access token to create and retrieve build artifact metadata records.
+       * @enum {string}
+       */
+      artifact_metadata?: "read" | "write";
+      /**
+       * @description The level of permission to create and retrieve the access token for repository attestations.
+       * @enum {string}
+       */
+      attestations?: "read" | "write";
+      /**
        * @description The level of permission to grant the access token for checks on code.
        * @enum {string}
        */
@@ -10414,6 +10447,11 @@ export interface components {
        */
       deployments?: "read" | "write";
       /**
+       * @description The level of permission to grant the access token for discussions and related comments and labels.
+       * @enum {string}
+       */
+      discussions?: "read" | "write";
+      /**
        * @description The level of permission to grant the access token for managing repository environments.
        * @enum {string}
        */
@@ -10423,6 +10461,11 @@ export interface components {
        * @enum {string}
        */
       issues?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token to manage the merge queues for a repository.
+       * @enum {string}
+       */
+      merge_queues?: "read" | "write";
       /**
        * @description The level of permission to grant the access token to search repositories, list collaborators, and access repository metadata.
        * @enum {string}
@@ -52036,7 +52079,7 @@ export interface components {
       /** @enum {string} */
       type: "pull_request";
       parameters?: {
-        /** @description Request Copilot code review for new pull requests automatically if the author has access to Copilot code review. */
+        /** @description Request Copilot code review for new pull requests automatically if the author has access to Copilot code review and their premium requests quota has not reached the limit. */
         automatic_copilot_code_review_enabled?: boolean;
         /** @description New, reviewable commits pushed will dismiss previous pull request review approvals. */
         dismiss_stale_reviews_on_push: boolean;
@@ -52048,7 +52091,38 @@ export interface components {
         required_approving_review_count: number;
         /** @description All conversations on code must be resolved before a pull request can be merged. */
         required_review_thread_resolution: boolean;
+        /**
+         * @description > [!NOTE]
+         * > `required_reviewers` is in beta and subject to change.
+         *
+         * A collection of reviewers and associated file patterns. Each reviewer has a list of file patterns which determine the files that reviewer is required to review.
+         */
+        required_reviewers?: components["schemas"]["repository-rule-params-required-reviewer-configuration"][];
       };
+    };
+    /**
+     * RequiredReviewerConfiguration
+     * @description A reviewing team, and file patterns describing which files they must approve changes to.
+     */
+    "repository-rule-params-required-reviewer-configuration": {
+      /** @description Array of file patterns. Pull requests which change matching files must be approved by the specified team. File patterns use fnmatch syntax. */
+      file_patterns: string[];
+      /** @description Minimum number of approvals required from the specified team. If set to zero, the team will be added to the pull request but approval is optional. */
+      minimum_approvals: number;
+      reviewer: components["schemas"]["repository-rule-params-reviewer"];
+    };
+    /**
+     * Reviewer
+     * @description A required reviewing team
+     */
+    "repository-rule-params-reviewer": {
+      /** @description ID of the reviewer which must review changes to matching files. */
+      id: number;
+      /**
+       * @description The type of the reviewer
+       * @enum {string}
+       */
+      type: "Team";
     };
     /**
      * required_status_checks
@@ -52254,7 +52328,7 @@ export interface components {
     };
     /**
      * copilot_code_review
-     * @description Request Copilot code review for new pull requests automatically if the author has access to Copilot code review.
+     * @description Request Copilot code review for new pull requests automatically if the author has access to Copilot code review and their premium requests quota has not reached the limit.
      */
     "repository-rule-copilot-code-review": {
       /** @enum {string} */

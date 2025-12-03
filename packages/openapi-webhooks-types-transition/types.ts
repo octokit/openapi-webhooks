@@ -632,6 +632,8 @@ export type RepositoryVulnerabilityAlertEvent =
   | WebhookEventDefinition<"repository-vulnerability-alert-dismiss">
   | WebhookEventDefinition<"repository-vulnerability-alert-reopen">
   | WebhookEventDefinition<"repository-vulnerability-alert-resolve">;
+export type SecretScanningAlertAssignedEvent =
+  WebhookEventDefinition<"secret-scanning-alert-assigned">;
 export type SecretScanningAlertCreatedEvent =
   WebhookEventDefinition<"secret-scanning-alert-created">;
 export type SecretScanningAlertPubliclyLeakedEvent =
@@ -640,13 +642,17 @@ export type SecretScanningAlertReopenedEvent =
   WebhookEventDefinition<"secret-scanning-alert-reopened">;
 export type SecretScanningAlertResolvedEvent =
   WebhookEventDefinition<"secret-scanning-alert-resolved">;
+export type SecretScanningAlertUnassignedEvent =
+  WebhookEventDefinition<"secret-scanning-alert-unassigned">;
 export type SecretScanningAlertValidatedEvent =
   WebhookEventDefinition<"secret-scanning-alert-validated">;
 export type SecretScanningAlertEvent =
+  | WebhookEventDefinition<"secret-scanning-alert-assigned">
   | WebhookEventDefinition<"secret-scanning-alert-created">
   | WebhookEventDefinition<"secret-scanning-alert-publicly-leaked">
   | WebhookEventDefinition<"secret-scanning-alert-reopened">
   | WebhookEventDefinition<"secret-scanning-alert-resolved">
+  | WebhookEventDefinition<"secret-scanning-alert-unassigned">
   | WebhookEventDefinition<"secret-scanning-alert-validated">;
 export type SecretScanningAlertLocationEvent =
   WebhookEventDefinition<"secret-scanning-alert-location-created">;
@@ -1005,10 +1011,12 @@ export type EventPayloadMap = {
     | WebhookEventDefinition<"repository-vulnerability-alert-reopen">
     | WebhookEventDefinition<"repository-vulnerability-alert-resolve">;
   secret_scanning_alert:
+    | WebhookEventDefinition<"secret-scanning-alert-assigned">
     | WebhookEventDefinition<"secret-scanning-alert-created">
     | WebhookEventDefinition<"secret-scanning-alert-publicly-leaked">
     | WebhookEventDefinition<"secret-scanning-alert-reopened">
     | WebhookEventDefinition<"secret-scanning-alert-resolved">
+    | WebhookEventDefinition<"secret-scanning-alert-unassigned">
     | WebhookEventDefinition<"secret-scanning-alert-validated">;
   secret_scanning_alert_location: WebhookEventDefinition<"secret-scanning-alert-location-created">;
   secret_scanning_scan: WebhookEventDefinition<"secret-scanning-scan-completed">;

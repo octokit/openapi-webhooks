@@ -66,61 +66,6 @@ export interface webhooks {
      */
     post: operations["branch-protection-rule/edited"];
   };
-  "bypass-request-push-ruleset-cancelled": {
-    /**
-     * This event occurs when there is activity related to a user's request to bypass a set of push rules.
-     *
-     * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-cloud@latest//repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
-     * @description A push ruleset bypass request was cancelled.
-     */
-    post: operations["exemption-request-push-ruleset/cancelled"];
-  };
-  "bypass-request-push-ruleset-completed": {
-    /**
-     * This event occurs when there is activity related to a user's request to bypass a set of push rules.
-     *
-     * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-cloud@latest//repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
-     * @description A push ruleset bypass request was completed.
-     */
-    post: operations["exemption-request-push-ruleset/completed"];
-  };
-  "bypass-request-push-ruleset-created": {
-    /**
-     * This event occurs when there is activity related to a user's request to bypass a set of push rules.
-     *
-     * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-cloud@latest//repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
-     * @description A push ruleset bypass request was created.
-     */
-    post: operations["exemption-request-push-ruleset/created"];
-  };
-  "bypass-request-push-ruleset-response-dismissed": {
-    /**
-     * This event occurs when there is activity related to a user's request to bypass a set of push rules.
-     *
-     * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-cloud@latest//repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
-     * @description A push ruleset bypass response was dismissed.
-     */
-    post: operations["exemption-request-push-ruleset/response-dismissed"];
-  };
-  "bypass-request-push-ruleset-response-submitted": {
-    /**
-     * This event occurs when there is activity related to a user's request to bypass a set of push rules.
-     *
-     * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-cloud@latest//repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
-     * @description A response either approving or rejecting the push ruleset bypass request was submitted.
-     */
-    post: operations["exemption-request-push-ruleset/response-submitted"];
-  };
   "bypass-request-secret-scanning-cancelled": {
     /**
      * This event occurs when there is activity related to a user's request to bypass secret scanning push protection.
@@ -955,6 +900,61 @@ export interface webhooks {
      */
     post: operations["dismissal-request-secret-scanning/response-submitted"];
   };
+  "exemption-request-push-ruleset-cancelled": {
+    /**
+     * This event occurs when there is activity related to a user's request to bypass a set of push rules.
+     *
+     * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-cloud@latest//repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+     * @description A push ruleset bypass request was cancelled.
+     */
+    post: operations["exemption-request-push-ruleset/cancelled"];
+  };
+  "exemption-request-push-ruleset-completed": {
+    /**
+     * This event occurs when there is activity related to a user's request to bypass a set of push rules.
+     *
+     * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-cloud@latest//repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+     * @description A push ruleset bypass request was completed.
+     */
+    post: operations["exemption-request-push-ruleset/completed"];
+  };
+  "exemption-request-push-ruleset-created": {
+    /**
+     * This event occurs when there is activity related to a user's request to bypass a set of push rules.
+     *
+     * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-cloud@latest//repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+     * @description A push ruleset bypass request was created.
+     */
+    post: operations["exemption-request-push-ruleset/created"];
+  };
+  "exemption-request-push-ruleset-response-dismissed": {
+    /**
+     * This event occurs when there is activity related to a user's request to bypass a set of push rules.
+     *
+     * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-cloud@latest//repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+     * @description A push ruleset bypass response was dismissed.
+     */
+    post: operations["exemption-request-push-ruleset/response-dismissed"];
+  };
+  "exemption-request-push-ruleset-response-submitted": {
+    /**
+     * This event occurs when there is activity related to a user's request to bypass a set of push rules.
+     *
+     * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-cloud@latest//repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+     * @description A response either approving or rejecting the push ruleset bypass request was submitted.
+     */
+    post: operations["exemption-request-push-ruleset/response-submitted"];
+  };
   fork: {
     /**
      * This event occurs when someone forks a repository. For more information, see "[Fork a repo](https://docs.github.com/enterprise-cloud@latest//get-started/quickstart/fork-a-repo)." For information about the API to manage forks, see "[Forks](https://docs.github.com/enterprise-cloud@latest//rest/repos/forks)" in the REST API documentation.
@@ -1547,6 +1547,34 @@ export interface webhooks {
      * @description A previously blocked user was unblocked from the organization.
      */
     post: operations["org-block/unblocked"];
+  };
+  "organization-custom-property-created": {
+    /**
+     * This event occurs when there is activity relating to an organization custom property.
+     * @description A new organization custom property was created.
+     */
+    post: operations["organization-custom-property/created"];
+  };
+  "organization-custom-property-deleted": {
+    /**
+     * This event occurs when there is activity relating to an organization custom property.
+     * @description An organization custom property was deleted.
+     */
+    post: operations["organization-custom-property/deleted"];
+  };
+  "organization-custom-property-updated": {
+    /**
+     * This event occurs when there is activity relating to an organization custom property.
+     * @description An organization custom property was updated.
+     */
+    post: operations["organization-custom-property/updated"];
+  };
+  "organization-custom-property-values-updated": {
+    /**
+     * This event occurs when there is activity relating to custom property values for an organization.
+     * @description The custom property values of an organization were updated.
+     */
+    post: operations["organization-custom-property-values/updated"];
   };
   "organization-deleted": {
     /**
@@ -2672,6 +2700,17 @@ export interface webhooks {
      */
     post: operations["repository-vulnerability-alert/resolve"];
   };
+  "secret-scanning-alert-assigned": {
+    /**
+     * This event occurs when there is activity relating to a secret scanning alert. For more information about secret scanning, see "[About secret scanning](https://docs.github.com/enterprise-cloud@latest//code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning)" in the REST API documentation.
+     *
+     * For activity relating to secret scanning alert locations, use the `secret_scanning_alert_location` event.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
+     * @description A secret scanning alert was assigned.
+     */
+    post: operations["secret-scanning-alert/assigned"];
+  };
   "secret-scanning-alert-created": {
     /**
      * This event occurs when there is activity relating to a secret scanning alert. For more information about secret scanning, see "[About secret scanning](https://docs.github.com/enterprise-cloud@latest//code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning)" in the REST API documentation.
@@ -2728,6 +2767,17 @@ export interface webhooks {
      * @description A secret scanning alert was closed.
      */
     post: operations["secret-scanning-alert/resolved"];
+  };
+  "secret-scanning-alert-unassigned": {
+    /**
+     * This event occurs when there is activity relating to a secret scanning alert. For more information about secret scanning, see "[About secret scanning](https://docs.github.com/enterprise-cloud@latest//code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning)" in the REST API documentation.
+     *
+     * For activity relating to secret scanning alert locations, use the `secret_scanning_alert_location` event.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
+     * @description A secret scanning alert was unassigned.
+     */
+    post: operations["secret-scanning-alert/unassigned"];
   };
   "secret-scanning-alert-validated": {
     /**
@@ -4891,11 +4941,17 @@ export interface components {
             /** @enum {string} */
             administration?: "read" | "write";
             /** @enum {string} */
+            artifact_metadata?: "read" | "write";
+            /** @enum {string} */
+            attestations?: "read" | "write";
+            /** @enum {string} */
             checks?: "read" | "write";
             /** @enum {string} */
             content_references?: "read" | "write";
             /** @enum {string} */
             contents?: "read" | "write";
+            /** @enum {string} */
+            copilot_requests?: "write";
             /** @enum {string} */
             deployments?: "read" | "write";
             /** @enum {string} */
@@ -4911,7 +4967,11 @@ export interface components {
             /** @enum {string} */
             members?: "read" | "write";
             /** @enum {string} */
+            merge_queues?: "read" | "write";
+            /** @enum {string} */
             metadata?: "read" | "write";
+            /** @enum {string} */
+            models?: "read" | "write";
             /** @enum {string} */
             organization_administration?: "read" | "write";
             /** @enum {string} */
@@ -5193,11 +5253,17 @@ export interface components {
             /** @enum {string} */
             administration?: "read" | "write";
             /** @enum {string} */
+            artifact_metadata?: "read" | "write";
+            /** @enum {string} */
+            attestations?: "read" | "write";
+            /** @enum {string} */
             checks?: "read" | "write";
             /** @enum {string} */
             content_references?: "read" | "write";
             /** @enum {string} */
             contents?: "read" | "write";
+            /** @enum {string} */
+            copilot_requests?: "write";
             /** @enum {string} */
             deployments?: "read" | "write";
             /** @enum {string} */
@@ -5213,7 +5279,11 @@ export interface components {
             /** @enum {string} */
             members?: "read" | "write";
             /** @enum {string} */
+            merge_queues?: "read" | "write";
+            /** @enum {string} */
             metadata?: "read" | "write";
+            /** @enum {string} */
+            models?: "read" | "write";
             /** @enum {string} */
             organization_administration?: "read" | "write";
             /** @enum {string} */
@@ -5960,6 +6030,7 @@ export interface components {
          * @description The GitHub URL of the alert resource.
          */
         html_url: string;
+        instances_url?: string;
         /** Alert Instance */
         most_recent_instance?: {
           /** @description Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name. */
@@ -6019,9 +6090,11 @@ export interface components {
           /** @description The version of the tool used to detect the alert. */
           version: string | null;
         };
+        updated_at?: string | null;
         /** Format: uri */
         url: string;
-      } | null;
+        dismissal_approved_by?: null;
+      };
       /** @description The commit SHA of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty. */
       commit_oid: string | null;
       enterprise?: components["schemas"]["enterprise-webhooks"];
@@ -10802,6 +10875,16 @@ export interface components {
        */
       administration?: "read" | "write";
       /**
+       * @description The level of permission to grant the access token to create and retrieve build artifact metadata records.
+       * @enum {string}
+       */
+      artifact_metadata?: "read" | "write";
+      /**
+       * @description The level of permission to create and retrieve the access token for repository attestations.
+       * @enum {string}
+       */
+      attestations?: "read" | "write";
+      /**
        * @description The level of permission to grant the access token for checks on code.
        * @enum {string}
        */
@@ -10827,6 +10910,11 @@ export interface components {
        */
       deployments?: "read" | "write";
       /**
+       * @description The level of permission to grant the access token for discussions and related comments and labels.
+       * @enum {string}
+       */
+      discussions?: "read" | "write";
+      /**
        * @description The level of permission to grant the access token for managing repository environments.
        * @enum {string}
        */
@@ -10836,6 +10924,11 @@ export interface components {
        * @enum {string}
        */
       issues?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token to manage the merge queues for a repository.
+       * @enum {string}
+       */
+      merge_queues?: "read" | "write";
       /**
        * @description The level of permission to grant the access token to search repositories, list collaborators, and access repository metadata.
        * @enum {string}
@@ -10906,6 +10999,11 @@ export interface components {
        * @enum {string}
        */
       workflows?: "write";
+      /**
+       * @description The level of permission to grant the access token to view and edit custom properties for an organization, when allowed by the property.
+       * @enum {string}
+       */
+      custom_properties_for_organizations?: "read" | "write";
       /**
        * @description The level of permission to grant the access token for organization teams and members.
        * @enum {string}
@@ -11031,6 +11129,14 @@ export interface components {
        * @enum {string}
        */
       starring?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token for organization custom properties management at the enterprise level.
+       * @enum {string}
+       */
+      enterprise_custom_properties_for_organizations?:
+        | "read"
+        | "write"
+        | "admin";
       /**
        * @description The level of permission to grant the access token to manage installation of GitHub Apps on Enterprise-owned organizations.
        * @enum {string}
@@ -22045,6 +22151,92 @@ export interface components {
       organization: components["schemas"]["organization-simple-webhooks"];
       repository?: components["schemas"]["repository-webhooks"];
       sender: components["schemas"]["simple-user"];
+    };
+    /** organization custom property created event */
+    "webhook-organization-custom-property-created": {
+      /** @enum {string} */
+      action: "created";
+      definition: components["schemas"]["organization-custom-property"];
+      enterprise: components["schemas"]["enterprise-webhooks"];
+      sender?: components["schemas"]["simple-user"];
+    };
+    /**
+     * Custom Property for Organization
+     * @description Custom property defined for an organization
+     */
+    "organization-custom-property": components["schemas"]["custom-property-base"] & {
+      /**
+       * @description Who can edit the values of the property
+       * @enum {string|null}
+       */
+      values_editable_by?:
+        | "enterprise_actors"
+        | "enterprise_and_org_actors"
+        | null;
+    };
+    "custom-property-base": {
+      /** @description The name of the property */
+      property_name?: string;
+      /**
+       * Format: uri
+       * @description The URL that can be used to fetch, update, or delete info about this property via the API.
+       */
+      url?: string;
+      /**
+       * @description The source type of the property
+       * @enum {string}
+       */
+      source_type?: "organization" | "enterprise";
+      /**
+       * @description The type of the value for the property
+       * @enum {string}
+       */
+      value_type?: "string" | "single_select" | "multi_select" | "true_false";
+      /** @description Whether the property is required. */
+      required?: boolean;
+      /** @description Default value of the property */
+      default_value?: string | string[] | null | unknown[];
+      /** @description Short description of the property */
+      description?: string | null;
+      /**
+       * @description An ordered list of the allowed values of the property.
+       * The property can have up to 200 allowed values.
+       */
+      allowed_values?: string[] | null;
+    };
+    /** organization custom property deleted event */
+    "webhook-organization-custom-property-deleted": {
+      /** @enum {string} */
+      action: "deleted";
+      definition: {
+        /** @description The name of the property that was deleted. */
+        property_name: string;
+      };
+      enterprise: components["schemas"]["enterprise-webhooks"];
+      installation?: components["schemas"]["simple-installation"];
+      sender?: components["schemas"]["simple-user"];
+    };
+    /** organization custom property updated event */
+    "webhook-organization-custom-property-updated": {
+      /** @enum {string} */
+      action: "updated";
+      definition: components["schemas"]["organization-custom-property"];
+      enterprise: components["schemas"]["enterprise-webhooks"];
+      installation?: components["schemas"]["simple-installation"];
+      sender?: components["schemas"]["simple-user"];
+    };
+    /** Custom property values updated event */
+    "webhook-organization-custom-property-values-updated": {
+      /** @enum {string} */
+      action: "updated";
+      enterprise: components["schemas"]["enterprise-webhooks"];
+      installation?: components["schemas"]["simple-installation"];
+      organization: components["schemas"]["organization-simple-webhooks"];
+      sender?: components["schemas"]["simple-user"];
+      /** @description The new custom property values. */
+      new_property_values: components["schemas"]["custom-property-value"][];
+      /** @description The old custom property values. */
+      old_property_values: components["schemas"]["custom-property-value"][];
     };
     /** organization deleted event */
     "webhook-organization-deleted": {
@@ -55867,7 +56059,7 @@ export interface components {
       parameters?: {
         /** @description Array of allowed merge methods. Allowed values include `merge`, `squash`, and `rebase`. At least one option must be enabled. */
         allowed_merge_methods?: ("merge" | "squash" | "rebase")[];
-        /** @description Request Copilot code review for new pull requests automatically if the author has access to Copilot code review. */
+        /** @description Request Copilot code review for new pull requests automatically if the author has access to Copilot code review and their premium requests quota has not reached the limit. */
         automatic_copilot_code_review_enabled?: boolean;
         /** @description New, reviewable commits pushed will dismiss previous pull request review approvals. */
         dismiss_stale_reviews_on_push: boolean;
@@ -55879,7 +56071,38 @@ export interface components {
         required_approving_review_count: number;
         /** @description All conversations on code must be resolved before a pull request can be merged. */
         required_review_thread_resolution: boolean;
+        /**
+         * @description > [!NOTE]
+         * > `required_reviewers` is in beta and subject to change.
+         *
+         * A collection of reviewers and associated file patterns. Each reviewer has a list of file patterns which determine the files that reviewer is required to review.
+         */
+        required_reviewers?: components["schemas"]["repository-rule-params-required-reviewer-configuration"][];
       };
+    };
+    /**
+     * RequiredReviewerConfiguration
+     * @description A reviewing team, and file patterns describing which files they must approve changes to.
+     */
+    "repository-rule-params-required-reviewer-configuration": {
+      /** @description Array of file patterns. Pull requests which change matching files must be approved by the specified team. File patterns use fnmatch syntax. */
+      file_patterns: string[];
+      /** @description Minimum number of approvals required from the specified team. If set to zero, the team will be added to the pull request but approval is optional. */
+      minimum_approvals: number;
+      reviewer: components["schemas"]["repository-rule-params-reviewer"];
+    };
+    /**
+     * Reviewer
+     * @description A required reviewing team
+     */
+    "repository-rule-params-reviewer": {
+      /** @description ID of the reviewer which must review changes to matching files. */
+      id: number;
+      /**
+       * @description The type of the reviewer
+       * @enum {string}
+       */
+      type: "Team";
     };
     /**
      * required_status_checks
@@ -56133,7 +56356,7 @@ export interface components {
     };
     /**
      * copilot_code_review
-     * @description Request Copilot code review for new pull requests automatically if the author has access to Copilot code review.
+     * @description Request Copilot code review for new pull requests automatically if the author has access to Copilot code review and their premium requests quota has not reached the limit.
      */
     "repository-rule-copilot-code-review": {
       /** @enum {string} */
@@ -56534,11 +56757,12 @@ export interface components {
       repository: components["schemas"]["repository-webhooks"];
       sender: components["schemas"]["simple-user"];
     };
-    /** secret_scanning_alert created event */
-    "webhook-secret-scanning-alert-created": {
+    /** secret_scanning_alert assigned event */
+    "webhook-secret-scanning-alert-assigned": {
       /** @enum {string} */
-      action: "created";
+      action: "assigned";
       alert: components["schemas"]["secret-scanning-alert-webhook"];
+      assignee?: components["schemas"]["simple-user"];
       enterprise?: components["schemas"]["enterprise-webhooks"];
       installation?: components["schemas"]["simple-installation"];
       organization?: components["schemas"]["organization-simple-webhooks"];
@@ -56615,6 +56839,17 @@ export interface components {
       | "pattern_deleted"
       | "pattern_edited"
       | null;
+    /** secret_scanning_alert created event */
+    "webhook-secret-scanning-alert-created": {
+      /** @enum {string} */
+      action: "created";
+      alert: components["schemas"]["secret-scanning-alert-webhook"];
+      enterprise?: components["schemas"]["enterprise-webhooks"];
+      installation?: components["schemas"]["simple-installation"];
+      organization?: components["schemas"]["organization-simple-webhooks"];
+      repository: components["schemas"]["repository-webhooks"];
+      sender?: components["schemas"]["simple-user"];
+    };
     /** Secret Scanning Alert Location Created Event */
     "webhook-secret-scanning-alert-location-created": {
       /** @enum {string} */
@@ -56817,6 +57052,18 @@ export interface components {
       /** @enum {string} */
       action: "resolved";
       alert: components["schemas"]["secret-scanning-alert-webhook"];
+      enterprise?: components["schemas"]["enterprise-webhooks"];
+      installation?: components["schemas"]["simple-installation"];
+      organization?: components["schemas"]["organization-simple-webhooks"];
+      repository: components["schemas"]["repository-webhooks"];
+      sender?: components["schemas"]["simple-user"];
+    };
+    /** secret_scanning_alert unassigned event */
+    "webhook-secret-scanning-alert-unassigned": {
+      /** @enum {string} */
+      action: "unassigned";
+      alert: components["schemas"]["secret-scanning-alert-webhook"];
+      assignee?: components["schemas"]["simple-user"];
       enterprise?: components["schemas"]["enterprise-webhooks"];
       installation?: components["schemas"]["simple-installation"];
       organization?: components["schemas"]["organization-simple-webhooks"];
@@ -61016,201 +61263,6 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity related to a user's request to bypass a set of push rules.
-   *
-   * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-cloud@latest//repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
-   * @description A push ruleset bypass request was cancelled.
-   */
-  "exemption-request-push-ruleset/cancelled": {
-    parameters: {
-      header: {
-        /** @example GitHub-Hookshot/123abc */
-        "User-Agent": string;
-        /** @example 12312312 */
-        "X-Github-Hook-Id": string;
-        /** @example issues */
-        "X-Github-Event": string;
-        /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id": string;
-        /** @example repository */
-        "X-Github-Hook-Installation-Target-Type": string;
-        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery": string;
-        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256": string;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["webhook-exemption-request-cancelled"];
-      };
-    };
-    responses: {
-      /** @description Return a 200 status to indicate that the data was received successfully */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /**
-   * This event occurs when there is activity related to a user's request to bypass a set of push rules.
-   *
-   * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-cloud@latest//repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
-   * @description A push ruleset bypass request was completed.
-   */
-  "exemption-request-push-ruleset/completed": {
-    parameters: {
-      header: {
-        /** @example GitHub-Hookshot/123abc */
-        "User-Agent": string;
-        /** @example 12312312 */
-        "X-Github-Hook-Id": string;
-        /** @example issues */
-        "X-Github-Event": string;
-        /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id": string;
-        /** @example repository */
-        "X-Github-Hook-Installation-Target-Type": string;
-        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery": string;
-        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256": string;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["webhook-exemption-request-completed"];
-      };
-    };
-    responses: {
-      /** @description Return a 200 status to indicate that the data was received successfully */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /**
-   * This event occurs when there is activity related to a user's request to bypass a set of push rules.
-   *
-   * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-cloud@latest//repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
-   * @description A push ruleset bypass request was created.
-   */
-  "exemption-request-push-ruleset/created": {
-    parameters: {
-      header: {
-        /** @example GitHub-Hookshot/123abc */
-        "User-Agent": string;
-        /** @example 12312312 */
-        "X-Github-Hook-Id": string;
-        /** @example issues */
-        "X-Github-Event": string;
-        /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id": string;
-        /** @example repository */
-        "X-Github-Hook-Installation-Target-Type": string;
-        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery": string;
-        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256": string;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["webhook-exemption-request-created"];
-      };
-    };
-    responses: {
-      /** @description Return a 200 status to indicate that the data was received successfully */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /**
-   * This event occurs when there is activity related to a user's request to bypass a set of push rules.
-   *
-   * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-cloud@latest//repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
-   * @description A push ruleset bypass response was dismissed.
-   */
-  "exemption-request-push-ruleset/response-dismissed": {
-    parameters: {
-      header: {
-        /** @example GitHub-Hookshot/123abc */
-        "User-Agent": string;
-        /** @example 12312312 */
-        "X-Github-Hook-Id": string;
-        /** @example issues */
-        "X-Github-Event": string;
-        /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id": string;
-        /** @example repository */
-        "X-Github-Hook-Installation-Target-Type": string;
-        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery": string;
-        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256": string;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["webhook-exemption-request-response-dismissed"];
-      };
-    };
-    responses: {
-      /** @description Return a 200 status to indicate that the data was received successfully */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /**
-   * This event occurs when there is activity related to a user's request to bypass a set of push rules.
-   *
-   * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-cloud@latest//repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
-   * @description A response either approving or rejecting the push ruleset bypass request was submitted.
-   */
-  "exemption-request-push-ruleset/response-submitted": {
-    parameters: {
-      header: {
-        /** @example GitHub-Hookshot/123abc */
-        "User-Agent": string;
-        /** @example 12312312 */
-        "X-Github-Hook-Id": string;
-        /** @example issues */
-        "X-Github-Event": string;
-        /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id": string;
-        /** @example repository */
-        "X-Github-Hook-Installation-Target-Type": string;
-        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery": string;
-        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256": string;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["webhook-exemption-request-response-submitted"];
-      };
-    };
-    responses: {
-      /** @description Return a 200 status to indicate that the data was received successfully */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /**
    * This event occurs when there is activity related to a user's request to bypass secret scanning push protection.
    *
    * For more information, see "[Enabling delegated bypass for push protection](https://docs.github.com/enterprise-cloud@latest//code-security/secret-scanning/using-advanced-secret-scanning-and-push-protection-features/delegated-bypass-for-push-protection/about-delegated-bypass-for-push-protection#enabling-delegated-bypass-for-push-protection)."
@@ -63893,6 +63945,201 @@ export interface operations {
     };
   };
   /**
+   * This event occurs when there is activity related to a user's request to bypass a set of push rules.
+   *
+   * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-cloud@latest//repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+   * @description A push ruleset bypass request was cancelled.
+   */
+  "exemption-request-push-ruleset/cancelled": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-exemption-request-cancelled"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity related to a user's request to bypass a set of push rules.
+   *
+   * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-cloud@latest//repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+   * @description A push ruleset bypass request was completed.
+   */
+  "exemption-request-push-ruleset/completed": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-exemption-request-completed"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity related to a user's request to bypass a set of push rules.
+   *
+   * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-cloud@latest//repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+   * @description A push ruleset bypass request was created.
+   */
+  "exemption-request-push-ruleset/created": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-exemption-request-created"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity related to a user's request to bypass a set of push rules.
+   *
+   * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-cloud@latest//repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+   * @description A push ruleset bypass response was dismissed.
+   */
+  "exemption-request-push-ruleset/response-dismissed": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-exemption-request-response-dismissed"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity related to a user's request to bypass a set of push rules.
+   *
+   * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-cloud@latest//repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+   * @description A response either approving or rejecting the push ruleset bypass request was submitted.
+   */
+  "exemption-request-push-ruleset/response-submitted": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-exemption-request-response-submitted"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
    * This event occurs when someone forks a repository. For more information, see "[Fork a repo](https://docs.github.com/enterprise-cloud@latest//get-started/quickstart/fork-a-repo)." For information about the API to manage forks, see "[Forks](https://docs.github.com/enterprise-cloud@latest//rest/repos/forks)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Contents" repository permission.
@@ -66128,6 +66375,146 @@ export interface operations {
     requestBody: {
       content: {
         "application/json": components["schemas"]["webhook-org-block-unblocked"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to an organization custom property.
+   * @description A new organization custom property was created.
+   */
+  "organization-custom-property/created": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-organization-custom-property-created"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to an organization custom property.
+   * @description An organization custom property was deleted.
+   */
+  "organization-custom-property/deleted": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-organization-custom-property-deleted"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to an organization custom property.
+   * @description An organization custom property was updated.
+   */
+  "organization-custom-property/updated": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-organization-custom-property-updated"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to custom property values for an organization.
+   * @description The custom property values of an organization were updated.
+   */
+  "organization-custom-property-values/updated": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-organization-custom-property-values-updated"];
       };
     };
     responses: {
@@ -70123,6 +70510,45 @@ export interface operations {
    * For activity relating to secret scanning alert locations, use the `secret_scanning_alert_location` event.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
+   * @description A secret scanning alert was assigned.
+   */
+  "secret-scanning-alert/assigned": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-secret-scanning-alert-assigned"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to a secret scanning alert. For more information about secret scanning, see "[About secret scanning](https://docs.github.com/enterprise-cloud@latest//code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning)" in the REST API documentation.
+   *
+   * For activity relating to secret scanning alert locations, use the `secret_scanning_alert_location` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
    * @description A secret scanning alert was created.
    */
   "secret-scanning-alert/created": {
@@ -70305,6 +70731,45 @@ export interface operations {
     requestBody: {
       content: {
         "application/json": components["schemas"]["webhook-secret-scanning-alert-resolved"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to a secret scanning alert. For more information about secret scanning, see "[About secret scanning](https://docs.github.com/enterprise-cloud@latest//code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning)" in the REST API documentation.
+   *
+   * For activity relating to secret scanning alert locations, use the `secret_scanning_alert_location` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
+   * @description A secret scanning alert was unassigned.
+   */
+  "secret-scanning-alert/unassigned": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-secret-scanning-alert-unassigned"];
       };
     };
     responses: {

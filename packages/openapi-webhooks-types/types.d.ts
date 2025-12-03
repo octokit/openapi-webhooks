@@ -2474,6 +2474,17 @@ export interface webhooks {
      */
     post: operations["repository-vulnerability-alert/resolve"];
   };
+  "secret-scanning-alert-assigned": {
+    /**
+     * This event occurs when there is activity relating to a secret scanning alert. For more information about secret scanning, see "[About secret scanning](https://docs.github.com/code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/rest/secret-scanning)" in the REST API documentation.
+     *
+     * For activity relating to secret scanning alert locations, use the `secret_scanning_alert_location` event.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
+     * @description A secret scanning alert was assigned.
+     */
+    post: operations["secret-scanning-alert/assigned"];
+  };
   "secret-scanning-alert-created": {
     /**
      * This event occurs when there is activity relating to a secret scanning alert. For more information about secret scanning, see "[About secret scanning](https://docs.github.com/code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/rest/secret-scanning)" in the REST API documentation.
@@ -2530,6 +2541,17 @@ export interface webhooks {
      * @description A secret scanning alert was closed.
      */
     post: operations["secret-scanning-alert/resolved"];
+  };
+  "secret-scanning-alert-unassigned": {
+    /**
+     * This event occurs when there is activity relating to a secret scanning alert. For more information about secret scanning, see "[About secret scanning](https://docs.github.com/code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/rest/secret-scanning)" in the REST API documentation.
+     *
+     * For activity relating to secret scanning alert locations, use the `secret_scanning_alert_location` event.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
+     * @description A secret scanning alert was unassigned.
+     */
+    post: operations["secret-scanning-alert/unassigned"];
   };
   "secret-scanning-alert-validated": {
     /**
@@ -4419,11 +4441,17 @@ export interface components {
             /** @enum {string} */
             administration?: "read" | "write";
             /** @enum {string} */
+            artifact_metadata?: "read" | "write";
+            /** @enum {string} */
+            attestations?: "read" | "write";
+            /** @enum {string} */
             checks?: "read" | "write";
             /** @enum {string} */
             content_references?: "read" | "write";
             /** @enum {string} */
             contents?: "read" | "write";
+            /** @enum {string} */
+            copilot_requests?: "write";
             /** @enum {string} */
             deployments?: "read" | "write";
             /** @enum {string} */
@@ -4439,7 +4467,11 @@ export interface components {
             /** @enum {string} */
             members?: "read" | "write";
             /** @enum {string} */
+            merge_queues?: "read" | "write";
+            /** @enum {string} */
             metadata?: "read" | "write";
+            /** @enum {string} */
+            models?: "read" | "write";
             /** @enum {string} */
             organization_administration?: "read" | "write";
             /** @enum {string} */
@@ -4721,11 +4753,17 @@ export interface components {
             /** @enum {string} */
             administration?: "read" | "write";
             /** @enum {string} */
+            artifact_metadata?: "read" | "write";
+            /** @enum {string} */
+            attestations?: "read" | "write";
+            /** @enum {string} */
             checks?: "read" | "write";
             /** @enum {string} */
             content_references?: "read" | "write";
             /** @enum {string} */
             contents?: "read" | "write";
+            /** @enum {string} */
+            copilot_requests?: "write";
             /** @enum {string} */
             deployments?: "read" | "write";
             /** @enum {string} */
@@ -4741,7 +4779,11 @@ export interface components {
             /** @enum {string} */
             members?: "read" | "write";
             /** @enum {string} */
+            merge_queues?: "read" | "write";
+            /** @enum {string} */
             metadata?: "read" | "write";
+            /** @enum {string} */
+            models?: "read" | "write";
             /** @enum {string} */
             organization_administration?: "read" | "write";
             /** @enum {string} */
@@ -5488,6 +5530,7 @@ export interface components {
          * @description The GitHub URL of the alert resource.
          */
         html_url: string;
+        instances_url?: string;
         /** Alert Instance */
         most_recent_instance?: {
           /** @description Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name. */
@@ -5547,9 +5590,11 @@ export interface components {
           /** @description The version of the tool used to detect the alert. */
           version: string | null;
         };
+        updated_at?: string | null;
         /** Format: uri */
         url: string;
-      } | null;
+        dismissal_approved_by?: null;
+      };
       /** @description The commit SHA of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty. */
       commit_oid: string | null;
       enterprise?: components["schemas"]["enterprise-webhooks"];
@@ -10330,6 +10375,16 @@ export interface components {
        */
       administration?: "read" | "write";
       /**
+       * @description The level of permission to grant the access token to create and retrieve build artifact metadata records.
+       * @enum {string}
+       */
+      artifact_metadata?: "read" | "write";
+      /**
+       * @description The level of permission to create and retrieve the access token for repository attestations.
+       * @enum {string}
+       */
+      attestations?: "read" | "write";
+      /**
        * @description The level of permission to grant the access token for checks on code.
        * @enum {string}
        */
@@ -10355,6 +10410,11 @@ export interface components {
        */
       deployments?: "read" | "write";
       /**
+       * @description The level of permission to grant the access token for discussions and related comments and labels.
+       * @enum {string}
+       */
+      discussions?: "read" | "write";
+      /**
        * @description The level of permission to grant the access token for managing repository environments.
        * @enum {string}
        */
@@ -10364,6 +10424,11 @@ export interface components {
        * @enum {string}
        */
       issues?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token to manage the merge queues for a repository.
+       * @enum {string}
+       */
+      merge_queues?: "read" | "write";
       /**
        * @description The level of permission to grant the access token to search repositories, list collaborators, and access repository metadata.
        * @enum {string}
@@ -10434,6 +10499,11 @@ export interface components {
        * @enum {string}
        */
       workflows?: "write";
+      /**
+       * @description The level of permission to grant the access token to view and edit custom properties for an organization, when allowed by the property.
+       * @enum {string}
+       */
+      custom_properties_for_organizations?: "read" | "write";
       /**
        * @description The level of permission to grant the access token for organization teams and members.
        * @enum {string}
@@ -10559,6 +10629,14 @@ export interface components {
        * @enum {string}
        */
       starring?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token for organization custom properties management at the enterprise level.
+       * @enum {string}
+       */
+      enterprise_custom_properties_for_organizations?:
+        | "read"
+        | "write"
+        | "admin";
     };
     /** @description An array of repository objects that the installation can access. */
     webhooks_repositories: {
@@ -55382,7 +55460,7 @@ export interface components {
       parameters?: {
         /** @description Array of allowed merge methods. Allowed values include `merge`, `squash`, and `rebase`. At least one option must be enabled. */
         allowed_merge_methods?: ("merge" | "squash" | "rebase")[];
-        /** @description Request Copilot code review for new pull requests automatically if the author has access to Copilot code review. */
+        /** @description Request Copilot code review for new pull requests automatically if the author has access to Copilot code review and their premium requests quota has not reached the limit. */
         automatic_copilot_code_review_enabled?: boolean;
         /** @description New, reviewable commits pushed will dismiss previous pull request review approvals. */
         dismiss_stale_reviews_on_push: boolean;
@@ -55394,7 +55472,38 @@ export interface components {
         required_approving_review_count: number;
         /** @description All conversations on code must be resolved before a pull request can be merged. */
         required_review_thread_resolution: boolean;
+        /**
+         * @description > [!NOTE]
+         * > `required_reviewers` is in beta and subject to change.
+         *
+         * A collection of reviewers and associated file patterns. Each reviewer has a list of file patterns which determine the files that reviewer is required to review.
+         */
+        required_reviewers?: components["schemas"]["repository-rule-params-required-reviewer-configuration"][];
       };
+    };
+    /**
+     * RequiredReviewerConfiguration
+     * @description A reviewing team, and file patterns describing which files they must approve changes to.
+     */
+    "repository-rule-params-required-reviewer-configuration": {
+      /** @description Array of file patterns. Pull requests which change matching files must be approved by the specified team. File patterns use fnmatch syntax. */
+      file_patterns: string[];
+      /** @description Minimum number of approvals required from the specified team. If set to zero, the team will be added to the pull request but approval is optional. */
+      minimum_approvals: number;
+      reviewer: components["schemas"]["repository-rule-params-reviewer"];
+    };
+    /**
+     * Reviewer
+     * @description A required reviewing team
+     */
+    "repository-rule-params-reviewer": {
+      /** @description ID of the reviewer which must review changes to matching files. */
+      id: number;
+      /**
+       * @description The type of the reviewer
+       * @enum {string}
+       */
+      type: "Team";
     };
     /**
      * required_status_checks
@@ -55648,7 +55757,7 @@ export interface components {
     };
     /**
      * copilot_code_review
-     * @description Request Copilot code review for new pull requests automatically if the author has access to Copilot code review.
+     * @description Request Copilot code review for new pull requests automatically if the author has access to Copilot code review and their premium requests quota has not reached the limit.
      */
     "repository-rule-copilot-code-review": {
       /** @enum {string} */
@@ -56049,11 +56158,12 @@ export interface components {
       repository: components["schemas"]["repository-webhooks"];
       sender: components["schemas"]["simple-user"];
     };
-    /** secret_scanning_alert created event */
-    "webhook-secret-scanning-alert-created": {
+    /** secret_scanning_alert assigned event */
+    "webhook-secret-scanning-alert-assigned": {
       /** @enum {string} */
-      action: "created";
+      action: "assigned";
       alert: components["schemas"]["secret-scanning-alert-webhook"];
+      assignee?: components["schemas"]["simple-user"];
       enterprise?: components["schemas"]["enterprise-webhooks"];
       installation?: components["schemas"]["simple-installation"];
       organization?: components["schemas"]["organization-simple-webhooks"];
@@ -56130,6 +56240,17 @@ export interface components {
       | "pattern_deleted"
       | "pattern_edited"
       | null;
+    /** secret_scanning_alert created event */
+    "webhook-secret-scanning-alert-created": {
+      /** @enum {string} */
+      action: "created";
+      alert: components["schemas"]["secret-scanning-alert-webhook"];
+      enterprise?: components["schemas"]["enterprise-webhooks"];
+      installation?: components["schemas"]["simple-installation"];
+      organization?: components["schemas"]["organization-simple-webhooks"];
+      repository: components["schemas"]["repository-webhooks"];
+      sender?: components["schemas"]["simple-user"];
+    };
     /** Secret Scanning Alert Location Created Event */
     "webhook-secret-scanning-alert-location-created": {
       /** @enum {string} */
@@ -56332,6 +56453,18 @@ export interface components {
       /** @enum {string} */
       action: "resolved";
       alert: components["schemas"]["secret-scanning-alert-webhook"];
+      enterprise?: components["schemas"]["enterprise-webhooks"];
+      installation?: components["schemas"]["simple-installation"];
+      organization?: components["schemas"]["organization-simple-webhooks"];
+      repository: components["schemas"]["repository-webhooks"];
+      sender?: components["schemas"]["simple-user"];
+    };
+    /** secret_scanning_alert unassigned event */
+    "webhook-secret-scanning-alert-unassigned": {
+      /** @enum {string} */
+      action: "unassigned";
+      alert: components["schemas"]["secret-scanning-alert-webhook"];
+      assignee?: components["schemas"]["simple-user"];
       enterprise?: components["schemas"]["enterprise-webhooks"];
       installation?: components["schemas"]["simple-installation"];
       organization?: components["schemas"]["organization-simple-webhooks"];
@@ -68964,6 +69097,45 @@ export interface operations {
    * For activity relating to secret scanning alert locations, use the `secret_scanning_alert_location` event.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
+   * @description A secret scanning alert was assigned.
+   */
+  "secret-scanning-alert/assigned": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-secret-scanning-alert-assigned"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to a secret scanning alert. For more information about secret scanning, see "[About secret scanning](https://docs.github.com/code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/rest/secret-scanning)" in the REST API documentation.
+   *
+   * For activity relating to secret scanning alert locations, use the `secret_scanning_alert_location` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
    * @description A secret scanning alert was created.
    */
   "secret-scanning-alert/created": {
@@ -69146,6 +69318,45 @@ export interface operations {
     requestBody: {
       content: {
         "application/json": components["schemas"]["webhook-secret-scanning-alert-resolved"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to a secret scanning alert. For more information about secret scanning, see "[About secret scanning](https://docs.github.com/code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/rest/secret-scanning)" in the REST API documentation.
+   *
+   * For activity relating to secret scanning alert locations, use the `secret_scanning_alert_location` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
+   * @description A secret scanning alert was unassigned.
+   */
+  "secret-scanning-alert/unassigned": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-secret-scanning-alert-unassigned"];
       };
     };
     responses: {

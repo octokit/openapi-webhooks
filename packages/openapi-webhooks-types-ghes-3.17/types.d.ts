@@ -66,61 +66,6 @@ export interface webhooks {
      */
     post: operations["branch-protection-rule/edited"];
   };
-  "bypass-request-push-ruleset-cancelled": {
-    /**
-     * This event occurs when there is activity related to a user's request to bypass a set of push rules.
-     *
-     * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-server@3.17/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
-     * @description A push ruleset bypass request was cancelled.
-     */
-    post: operations["exemption-request-push-ruleset/cancelled"];
-  };
-  "bypass-request-push-ruleset-completed": {
-    /**
-     * This event occurs when there is activity related to a user's request to bypass a set of push rules.
-     *
-     * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-server@3.17/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
-     * @description A push ruleset bypass request was completed.
-     */
-    post: operations["exemption-request-push-ruleset/completed"];
-  };
-  "bypass-request-push-ruleset-created": {
-    /**
-     * This event occurs when there is activity related to a user's request to bypass a set of push rules.
-     *
-     * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-server@3.17/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
-     * @description A push ruleset bypass request was created.
-     */
-    post: operations["exemption-request-push-ruleset/created"];
-  };
-  "bypass-request-push-ruleset-response-dismissed": {
-    /**
-     * This event occurs when there is activity related to a user's request to bypass a set of push rules.
-     *
-     * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-server@3.17/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
-     * @description A push ruleset bypass response was dismissed.
-     */
-    post: operations["exemption-request-push-ruleset/response-dismissed"];
-  };
-  "bypass-request-push-ruleset-response-submitted": {
-    /**
-     * This event occurs when there is activity related to a user's request to bypass a set of push rules.
-     *
-     * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-server@3.17/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
-     * @description A response either approving or rejecting the push ruleset bypass request was submitted.
-     */
-    post: operations["exemption-request-push-ruleset/response-submitted"];
-  };
   "bypass-request-secret-scanning-cancelled": {
     /**
      * This event occurs when there is activity related to a user's request to bypass secret scanning push protection.
@@ -961,6 +906,61 @@ export interface webhooks {
      * @description Anonymous Git read access was enabled.
      */
     post: operations["enterprise/anonymous-access-enabled"];
+  };
+  "exemption-request-push-ruleset-cancelled": {
+    /**
+     * This event occurs when there is activity related to a user's request to bypass a set of push rules.
+     *
+     * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-server@3.17/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+     * @description A push ruleset bypass request was cancelled.
+     */
+    post: operations["exemption-request-push-ruleset/cancelled"];
+  };
+  "exemption-request-push-ruleset-completed": {
+    /**
+     * This event occurs when there is activity related to a user's request to bypass a set of push rules.
+     *
+     * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-server@3.17/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+     * @description A push ruleset bypass request was completed.
+     */
+    post: operations["exemption-request-push-ruleset/completed"];
+  };
+  "exemption-request-push-ruleset-created": {
+    /**
+     * This event occurs when there is activity related to a user's request to bypass a set of push rules.
+     *
+     * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-server@3.17/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+     * @description A push ruleset bypass request was created.
+     */
+    post: operations["exemption-request-push-ruleset/created"];
+  };
+  "exemption-request-push-ruleset-response-dismissed": {
+    /**
+     * This event occurs when there is activity related to a user's request to bypass a set of push rules.
+     *
+     * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-server@3.17/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+     * @description A push ruleset bypass response was dismissed.
+     */
+    post: operations["exemption-request-push-ruleset/response-dismissed"];
+  };
+  "exemption-request-push-ruleset-response-submitted": {
+    /**
+     * This event occurs when there is activity related to a user's request to bypass a set of push rules.
+     *
+     * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-server@3.17/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+     * @description A response either approving or rejecting the push ruleset bypass request was submitted.
+     */
+    post: operations["exemption-request-push-ruleset/response-submitted"];
   };
   fork: {
     /**
@@ -4643,11 +4643,17 @@ export interface components {
             /** @enum {string} */
             administration?: "read" | "write";
             /** @enum {string} */
+            artifact_metadata?: "read" | "write";
+            /** @enum {string} */
+            attestations?: "read" | "write";
+            /** @enum {string} */
             checks?: "read" | "write";
             /** @enum {string} */
             content_references?: "read" | "write";
             /** @enum {string} */
             contents?: "read" | "write";
+            /** @enum {string} */
+            copilot_requests?: "write";
             /** @enum {string} */
             deployments?: "read" | "write";
             /** @enum {string} */
@@ -4663,7 +4669,11 @@ export interface components {
             /** @enum {string} */
             members?: "read" | "write";
             /** @enum {string} */
+            merge_queues?: "read" | "write";
+            /** @enum {string} */
             metadata?: "read" | "write";
+            /** @enum {string} */
+            models?: "read" | "write";
             /** @enum {string} */
             organization_administration?: "read" | "write";
             /** @enum {string} */
@@ -4945,11 +4955,17 @@ export interface components {
             /** @enum {string} */
             administration?: "read" | "write";
             /** @enum {string} */
+            artifact_metadata?: "read" | "write";
+            /** @enum {string} */
+            attestations?: "read" | "write";
+            /** @enum {string} */
             checks?: "read" | "write";
             /** @enum {string} */
             content_references?: "read" | "write";
             /** @enum {string} */
             contents?: "read" | "write";
+            /** @enum {string} */
+            copilot_requests?: "write";
             /** @enum {string} */
             deployments?: "read" | "write";
             /** @enum {string} */
@@ -4965,7 +4981,11 @@ export interface components {
             /** @enum {string} */
             members?: "read" | "write";
             /** @enum {string} */
+            merge_queues?: "read" | "write";
+            /** @enum {string} */
             metadata?: "read" | "write";
+            /** @enum {string} */
+            models?: "read" | "write";
             /** @enum {string} */
             organization_administration?: "read" | "write";
             /** @enum {string} */
@@ -5712,6 +5732,7 @@ export interface components {
          * @description The GitHub URL of the alert resource.
          */
         html_url: string;
+        instances_url?: string;
         /** Alert Instance */
         most_recent_instance?: {
           /** @description Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name. */
@@ -5771,9 +5792,11 @@ export interface components {
           /** @description The version of the tool used to detect the alert. */
           version: string | null;
         };
+        updated_at?: string | null;
         /** Format: uri */
         url: string;
-      } | null;
+        dismissal_approved_by?: null;
+      };
       /** @description The commit SHA of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty. */
       commit_oid: string | null;
       enterprise?: components["schemas"]["enterprise-webhooks"];
@@ -10545,6 +10568,16 @@ export interface components {
        */
       administration?: "read" | "write";
       /**
+       * @description The level of permission to grant the access token to create and retrieve build artifact metadata records.
+       * @enum {string}
+       */
+      artifact_metadata?: "read" | "write";
+      /**
+       * @description The level of permission to create and retrieve the access token for repository attestations.
+       * @enum {string}
+       */
+      attestations?: "read" | "write";
+      /**
        * @description The level of permission to grant the access token for checks on code.
        * @enum {string}
        */
@@ -10570,6 +10603,11 @@ export interface components {
        */
       deployments?: "read" | "write";
       /**
+       * @description The level of permission to grant the access token for discussions and related comments and labels.
+       * @enum {string}
+       */
+      discussions?: "read" | "write";
+      /**
        * @description The level of permission to grant the access token for managing repository environments.
        * @enum {string}
        */
@@ -10579,6 +10617,11 @@ export interface components {
        * @enum {string}
        */
       issues?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token to manage the merge queues for a repository.
+       * @enum {string}
+       */
+      merge_queues?: "read" | "write";
       /**
        * @description The level of permission to grant the access token to search repositories, list collaborators, and access repository metadata.
        * @enum {string}
@@ -52204,7 +52247,7 @@ export interface components {
       parameters?: {
         /** @description Array of allowed merge methods. Allowed values include `merge`, `squash`, and `rebase`. At least one option must be enabled. */
         allowed_merge_methods?: ("merge" | "squash" | "rebase")[];
-        /** @description Request Copilot code review for new pull requests automatically if the author has access to Copilot code review. */
+        /** @description Request Copilot code review for new pull requests automatically if the author has access to Copilot code review and their premium requests quota has not reached the limit. */
         automatic_copilot_code_review_enabled?: boolean;
         /** @description New, reviewable commits pushed will dismiss previous pull request review approvals. */
         dismiss_stale_reviews_on_push: boolean;
@@ -52216,7 +52259,38 @@ export interface components {
         required_approving_review_count: number;
         /** @description All conversations on code must be resolved before a pull request can be merged. */
         required_review_thread_resolution: boolean;
+        /**
+         * @description > [!NOTE]
+         * > `required_reviewers` is in beta and subject to change.
+         *
+         * A collection of reviewers and associated file patterns. Each reviewer has a list of file patterns which determine the files that reviewer is required to review.
+         */
+        required_reviewers?: components["schemas"]["repository-rule-params-required-reviewer-configuration"][];
       };
+    };
+    /**
+     * RequiredReviewerConfiguration
+     * @description A reviewing team, and file patterns describing which files they must approve changes to.
+     */
+    "repository-rule-params-required-reviewer-configuration": {
+      /** @description Array of file patterns. Pull requests which change matching files must be approved by the specified team. File patterns use fnmatch syntax. */
+      file_patterns: string[];
+      /** @description Minimum number of approvals required from the specified team. If set to zero, the team will be added to the pull request but approval is optional. */
+      minimum_approvals: number;
+      reviewer: components["schemas"]["repository-rule-params-reviewer"];
+    };
+    /**
+     * Reviewer
+     * @description A required reviewing team
+     */
+    "repository-rule-params-reviewer": {
+      /** @description ID of the reviewer which must review changes to matching files. */
+      id: number;
+      /**
+       * @description The type of the reviewer
+       * @enum {string}
+       */
+      type: "Team";
     };
     /**
      * required_status_checks
@@ -52470,7 +52544,7 @@ export interface components {
     };
     /**
      * copilot_code_review
-     * @description Request Copilot code review for new pull requests automatically if the author has access to Copilot code review.
+     * @description Request Copilot code review for new pull requests automatically if the author has access to Copilot code review and their premium requests quota has not reached the limit.
      */
     "repository-rule-copilot-code-review": {
       /** @enum {string} */
@@ -57307,201 +57381,6 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity related to a user's request to bypass a set of push rules.
-   *
-   * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-server@3.17/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
-   * @description A push ruleset bypass request was cancelled.
-   */
-  "exemption-request-push-ruleset/cancelled": {
-    parameters: {
-      header: {
-        /** @example GitHub-Hookshot/123abc */
-        "User-Agent": string;
-        /** @example 12312312 */
-        "X-Github-Hook-Id": string;
-        /** @example issues */
-        "X-Github-Event": string;
-        /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id": string;
-        /** @example repository */
-        "X-Github-Hook-Installation-Target-Type": string;
-        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery": string;
-        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256": string;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["webhook-exemption-request-cancelled"];
-      };
-    };
-    responses: {
-      /** @description Return a 200 status to indicate that the data was received successfully */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /**
-   * This event occurs when there is activity related to a user's request to bypass a set of push rules.
-   *
-   * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-server@3.17/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
-   * @description A push ruleset bypass request was completed.
-   */
-  "exemption-request-push-ruleset/completed": {
-    parameters: {
-      header: {
-        /** @example GitHub-Hookshot/123abc */
-        "User-Agent": string;
-        /** @example 12312312 */
-        "X-Github-Hook-Id": string;
-        /** @example issues */
-        "X-Github-Event": string;
-        /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id": string;
-        /** @example repository */
-        "X-Github-Hook-Installation-Target-Type": string;
-        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery": string;
-        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256": string;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["webhook-exemption-request-completed"];
-      };
-    };
-    responses: {
-      /** @description Return a 200 status to indicate that the data was received successfully */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /**
-   * This event occurs when there is activity related to a user's request to bypass a set of push rules.
-   *
-   * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-server@3.17/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
-   * @description A push ruleset bypass request was created.
-   */
-  "exemption-request-push-ruleset/created": {
-    parameters: {
-      header: {
-        /** @example GitHub-Hookshot/123abc */
-        "User-Agent": string;
-        /** @example 12312312 */
-        "X-Github-Hook-Id": string;
-        /** @example issues */
-        "X-Github-Event": string;
-        /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id": string;
-        /** @example repository */
-        "X-Github-Hook-Installation-Target-Type": string;
-        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery": string;
-        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256": string;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["webhook-exemption-request-created"];
-      };
-    };
-    responses: {
-      /** @description Return a 200 status to indicate that the data was received successfully */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /**
-   * This event occurs when there is activity related to a user's request to bypass a set of push rules.
-   *
-   * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-server@3.17/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
-   * @description A push ruleset bypass response was dismissed.
-   */
-  "exemption-request-push-ruleset/response-dismissed": {
-    parameters: {
-      header: {
-        /** @example GitHub-Hookshot/123abc */
-        "User-Agent": string;
-        /** @example 12312312 */
-        "X-Github-Hook-Id": string;
-        /** @example issues */
-        "X-Github-Event": string;
-        /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id": string;
-        /** @example repository */
-        "X-Github-Hook-Installation-Target-Type": string;
-        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery": string;
-        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256": string;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["webhook-exemption-request-response-dismissed"];
-      };
-    };
-    responses: {
-      /** @description Return a 200 status to indicate that the data was received successfully */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /**
-   * This event occurs when there is activity related to a user's request to bypass a set of push rules.
-   *
-   * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-server@3.17/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
-   * @description A response either approving or rejecting the push ruleset bypass request was submitted.
-   */
-  "exemption-request-push-ruleset/response-submitted": {
-    parameters: {
-      header: {
-        /** @example GitHub-Hookshot/123abc */
-        "User-Agent": string;
-        /** @example 12312312 */
-        "X-Github-Hook-Id": string;
-        /** @example issues */
-        "X-Github-Event": string;
-        /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id": string;
-        /** @example repository */
-        "X-Github-Hook-Installation-Target-Type": string;
-        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery": string;
-        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256": string;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["webhook-exemption-request-response-submitted"];
-      };
-    };
-    responses: {
-      /** @description Return a 200 status to indicate that the data was received successfully */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /**
    * This event occurs when there is activity related to a user's request to bypass secret scanning push protection.
    *
    * For more information, see "[Enabling delegated bypass for push protection](https://docs.github.com/enterprise-server@3.17/code-security/secret-scanning/using-advanced-secret-scanning-and-push-protection-features/delegated-bypass-for-push-protection/about-delegated-bypass-for-push-protection#enabling-delegated-bypass-for-push-protection)."
@@ -60445,6 +60324,201 @@ export interface operations {
     requestBody: {
       content: {
         "application/json": components["schemas"]["webhook-enterprise-anonymous-access-enabled"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity related to a user's request to bypass a set of push rules.
+   *
+   * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-server@3.17/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+   * @description A push ruleset bypass request was cancelled.
+   */
+  "exemption-request-push-ruleset/cancelled": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-exemption-request-cancelled"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity related to a user's request to bypass a set of push rules.
+   *
+   * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-server@3.17/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+   * @description A push ruleset bypass request was completed.
+   */
+  "exemption-request-push-ruleset/completed": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-exemption-request-completed"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity related to a user's request to bypass a set of push rules.
+   *
+   * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-server@3.17/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+   * @description A push ruleset bypass request was created.
+   */
+  "exemption-request-push-ruleset/created": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-exemption-request-created"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity related to a user's request to bypass a set of push rules.
+   *
+   * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-server@3.17/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+   * @description A push ruleset bypass response was dismissed.
+   */
+  "exemption-request-push-ruleset/response-dismissed": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-exemption-request-response-dismissed"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity related to a user's request to bypass a set of push rules.
+   *
+   * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-server@3.17/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+   * @description A response either approving or rejecting the push ruleset bypass request was submitted.
+   */
+  "exemption-request-push-ruleset/response-submitted": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-exemption-request-response-submitted"];
       };
     };
     responses: {

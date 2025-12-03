@@ -2,7 +2,14 @@ import { readFileSync } from "node:fs";
 import { resolve, join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
-const SUPPORTED_GHES_OPERATIONS = ["3.13", "3.14", "3.15", "3.16", "3.17"];
+const SUPPORTED_GHES_OPERATIONS = [
+  "3.14",
+  "3.15",
+  "3.16",
+  "3.17",
+  "3.18",
+  "3.19",
+];
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 // Updates the operation ID for a specific operation. Useful if you want to maintain

@@ -5,4 +5,6 @@ export declare const schemas: {
   "ghes-3.15": Record<string, unknown>;
   "ghes-3.16": Record<string, unknown>;
   "ghes-3.17": Record<string, unknown>;
+  "ghes-3.18": Record<string, unknown>;
+  "ghes-3.19": Record<string, unknown>;
 };
