@@ -66,61 +66,6 @@ export interface webhooks {
      */
     post: operations["branch-protection-rule/edited"];
   };
-  "bypass-request-push-ruleset-cancelled": {
-    /**
-     * This event occurs when there is activity related to a user's request to bypass a set of push rules.
-     *
-     * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-server@3.17/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
-     * @description A push ruleset bypass request was cancelled.
-     */
-    post: operations["exemption-request-push-ruleset/cancelled"];
-  };
-  "bypass-request-push-ruleset-completed": {
-    /**
-     * This event occurs when there is activity related to a user's request to bypass a set of push rules.
-     *
-     * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-server@3.17/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
-     * @description A push ruleset bypass request was completed.
-     */
-    post: operations["exemption-request-push-ruleset/completed"];
-  };
-  "bypass-request-push-ruleset-created": {
-    /**
-     * This event occurs when there is activity related to a user's request to bypass a set of push rules.
-     *
-     * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-server@3.17/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
-     * @description A push ruleset bypass request was created.
-     */
-    post: operations["exemption-request-push-ruleset/created"];
-  };
-  "bypass-request-push-ruleset-response-dismissed": {
-    /**
-     * This event occurs when there is activity related to a user's request to bypass a set of push rules.
-     *
-     * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-server@3.17/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
-     * @description A push ruleset bypass response was dismissed.
-     */
-    post: operations["exemption-request-push-ruleset/response-dismissed"];
-  };
-  "bypass-request-push-ruleset-response-submitted": {
-    /**
-     * This event occurs when there is activity related to a user's request to bypass a set of push rules.
-     *
-     * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-server@3.17/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
-     *
-     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
-     * @description A response either approving or rejecting the push ruleset bypass request was submitted.
-     */
-    post: operations["exemption-request-push-ruleset/response-submitted"];
-  };
   "bypass-request-secret-scanning-cancelled": {
     /**
      * This event occurs when there is activity related to a user's request to bypass secret scanning push protection.
@@ -378,6 +323,50 @@ export interface webhooks {
      * - Payloads are capped at 25 MB. If an event generates a larger payload, GitHub will not deliver a payload for that webhook event. This may happen, for example, if many branches or tags are pushed at once. We suggest monitoring your payload size to ensure delivery.
      */
     post: operations["create"];
+  };
+  "custom-property-created": {
+    /**
+     * This event occurs when there is activity relating to a custom property.
+     *
+     * For more information, see "[Managing custom properties for repositories in your organization](https://docs.github.com/enterprise-server@3.17/organizations/managing-organization-settings/managing-custom-properties-for-repositories-in-your-organization)". For information about the APIs to manage custom properties, see "[Custom properties](https://docs.github.com/enterprise-server@3.17/rest/orgs/custom-properties)" in the REST API documentation.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Custom properties" organization permission.
+     * @description A new custom property was created.
+     */
+    post: operations["custom-property/created"];
+  };
+  "custom-property-deleted": {
+    /**
+     * This event occurs when there is activity relating to a custom property.
+     *
+     * For more information, see "[Managing custom properties for repositories in your organization](https://docs.github.com/enterprise-server@3.17/organizations/managing-organization-settings/managing-custom-properties-for-repositories-in-your-organization)". For information about the APIs to manage custom properties, see "[Custom properties](https://docs.github.com/enterprise-server@3.17/rest/orgs/custom-properties)" in the REST API documentation.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Custom properties" organization permission.
+     * @description A custom property was deleted.
+     */
+    post: operations["custom-property/deleted"];
+  };
+  "custom-property-updated": {
+    /**
+     * This event occurs when there is activity relating to a custom property.
+     *
+     * For more information, see "[Managing custom properties for repositories in your organization](https://docs.github.com/enterprise-server@3.17/organizations/managing-organization-settings/managing-custom-properties-for-repositories-in-your-organization)". For information about the APIs to manage custom properties, see "[Custom properties](https://docs.github.com/enterprise-server@3.17/rest/orgs/custom-properties)" in the REST API documentation.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Custom properties" organization permission.
+     * @description A custom property was updated.
+     */
+    post: operations["custom-property/updated"];
+  };
+  "custom-property-values-updated": {
+    /**
+     * This event occurs when there is activity relating to custom property values for a repository.
+     *
+     * For more information, see "[Managing custom properties for repositories in your organization](https://docs.github.com/enterprise-server@3.17/organizations/managing-organization-settings/managing-custom-properties-for-repositories-in-your-organization)". For information about the APIs to manage custom properties for a repository, see "[Custom properties](https://docs.github.com/enterprise-server@3.17/rest/repos/custom-properties)" in the REST API documentation.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Custom properties" organization permission.
+     * @description The custom property values of a repository were updated.
+     */
+    post: operations["custom-property-values/updated"];
   };
   delete: {
     /**
@@ -831,9 +820,6 @@ export interface webhooks {
      * This event occurs when there is activity related to a user's request to dismiss a code scanning alert.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "code scanning alerts" repository permission.
-     *
-     * > [!NOTE]
-     * > Delegated alert dismissal for code scanning is currently in public preview and subject to change.
      * @description A code scanning alert dismissal request was created.
      */
     post: operations["dismissal-request-code-scanning/created"];
@@ -843,9 +829,6 @@ export interface webhooks {
      * This event occurs when there is activity related to a user's request to dismiss a code scanning alert.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "code scanning alerts" repository permission.
-     *
-     * > [!NOTE]
-     * > Delegated alert dismissal for code scanning is currently in public preview and subject to change.
      * @description A code scanning alert dismissal response was submitted.
      */
     post: operations["dismissal-request-code-scanning/response-submitted"];
@@ -923,6 +906,61 @@ export interface webhooks {
      * @description Anonymous Git read access was enabled.
      */
     post: operations["enterprise/anonymous-access-enabled"];
+  };
+  "exemption-request-push-ruleset-cancelled": {
+    /**
+     * This event occurs when there is activity related to a user's request to bypass a set of push rules.
+     *
+     * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-server@3.17/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+     * @description A push ruleset bypass request was cancelled.
+     */
+    post: operations["exemption-request-push-ruleset/cancelled"];
+  };
+  "exemption-request-push-ruleset-completed": {
+    /**
+     * This event occurs when there is activity related to a user's request to bypass a set of push rules.
+     *
+     * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-server@3.17/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+     * @description A push ruleset bypass request was completed.
+     */
+    post: operations["exemption-request-push-ruleset/completed"];
+  };
+  "exemption-request-push-ruleset-created": {
+    /**
+     * This event occurs when there is activity related to a user's request to bypass a set of push rules.
+     *
+     * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-server@3.17/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+     * @description A push ruleset bypass request was created.
+     */
+    post: operations["exemption-request-push-ruleset/created"];
+  };
+  "exemption-request-push-ruleset-response-dismissed": {
+    /**
+     * This event occurs when there is activity related to a user's request to bypass a set of push rules.
+     *
+     * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-server@3.17/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+     * @description A push ruleset bypass response was dismissed.
+     */
+    post: operations["exemption-request-push-ruleset/response-dismissed"];
+  };
+  "exemption-request-push-ruleset-response-submitted": {
+    /**
+     * This event occurs when there is activity related to a user's request to bypass a set of push rules.
+     *
+     * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-server@3.17/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+     * @description A response either approving or rejecting the push ruleset bypass request was submitted.
+     */
+    post: operations["exemption-request-push-ruleset/response-submitted"];
   };
   fork: {
     /**
@@ -3735,6 +3773,7 @@ export interface components {
       action: "completed";
       check_run: components["schemas"]["check-run-with-simple-check-suite"];
       installation?: components["schemas"]["simple-installation"];
+      enterprise?: components["schemas"]["enterprise-webhooks"];
       organization?: components["schemas"]["organization-simple-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
       sender: components["schemas"]["simple-user"];
@@ -3744,7 +3783,7 @@ export interface components {
      * @description A check performed on the code of a given code change
      */
     "check-run-with-simple-check-suite": {
-      app: null | components["schemas"]["integration"];
+      app: components["schemas"]["integration"];
       check_suite: components["schemas"]["simple-check-suite"];
       /** Format: date-time */
       completed_at: string | null;
@@ -4062,6 +4101,11 @@ export interface components {
       html_url: string | null;
     };
     "security-and-analysis": {
+      /**
+       * @description Enable or disable GitHub Advanced Security for the repository.
+       *
+       * For standalone Code Scanning or Secret Protection products, this parameter cannot be used.
+       */
       advanced_security?: {
         /** @enum {string} */
         status?: "enabled" | "disabled";
@@ -4127,6 +4171,7 @@ export interface components {
       action: "created";
       check_run: components["schemas"]["check-run-with-simple-check-suite"];
       installation?: components["schemas"]["simple-installation"];
+      enterprise?: components["schemas"]["enterprise-webhooks"];
       organization?: components["schemas"]["organization-simple-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
       sender: components["schemas"]["simple-user"];
@@ -4137,6 +4182,7 @@ export interface components {
       action: "requested_action";
       check_run: components["schemas"]["check-run-with-simple-check-suite"];
       installation?: components["schemas"]["simple-installation"];
+      enterprise?: components["schemas"]["enterprise-webhooks"];
       organization?: components["schemas"]["organization-simple-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
       /** @description The action requested by the user. */
@@ -4152,6 +4198,7 @@ export interface components {
       action: "rerequested";
       check_run: components["schemas"]["check-run-with-simple-check-suite"];
       installation?: components["schemas"]["simple-installation"];
+      enterprise?: components["schemas"]["enterprise-webhooks"];
       organization?: components["schemas"]["organization-simple-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
       sender: components["schemas"]["simple-user"];
@@ -4596,11 +4643,17 @@ export interface components {
             /** @enum {string} */
             administration?: "read" | "write";
             /** @enum {string} */
+            artifact_metadata?: "read" | "write";
+            /** @enum {string} */
+            attestations?: "read" | "write";
+            /** @enum {string} */
             checks?: "read" | "write";
             /** @enum {string} */
             content_references?: "read" | "write";
             /** @enum {string} */
             contents?: "read" | "write";
+            /** @enum {string} */
+            copilot_requests?: "write";
             /** @enum {string} */
             deployments?: "read" | "write";
             /** @enum {string} */
@@ -4616,7 +4669,11 @@ export interface components {
             /** @enum {string} */
             members?: "read" | "write";
             /** @enum {string} */
+            merge_queues?: "read" | "write";
+            /** @enum {string} */
             metadata?: "read" | "write";
+            /** @enum {string} */
+            models?: "read" | "write";
             /** @enum {string} */
             organization_administration?: "read" | "write";
             /** @enum {string} */
@@ -4898,11 +4955,17 @@ export interface components {
             /** @enum {string} */
             administration?: "read" | "write";
             /** @enum {string} */
+            artifact_metadata?: "read" | "write";
+            /** @enum {string} */
+            attestations?: "read" | "write";
+            /** @enum {string} */
             checks?: "read" | "write";
             /** @enum {string} */
             content_references?: "read" | "write";
             /** @enum {string} */
             contents?: "read" | "write";
+            /** @enum {string} */
+            copilot_requests?: "write";
             /** @enum {string} */
             deployments?: "read" | "write";
             /** @enum {string} */
@@ -4918,7 +4981,11 @@ export interface components {
             /** @enum {string} */
             members?: "read" | "write";
             /** @enum {string} */
+            merge_queues?: "read" | "write";
+            /** @enum {string} */
             metadata?: "read" | "write";
+            /** @enum {string} */
+            models?: "read" | "write";
             /** @enum {string} */
             organization_administration?: "read" | "write";
             /** @enum {string} */
@@ -5083,6 +5150,7 @@ export interface components {
       action: "appeared_in_branch";
       /** @description The code scanning alert involved in the event. */
       alert: {
+        assignees?: components["schemas"]["simple-user"][];
         /**
          * Format: date-time
          * @description The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ.`
@@ -5223,6 +5291,7 @@ export interface components {
       action: "closed_by_user";
       /** @description The code scanning alert involved in the event. */
       alert: {
+        assignees?: components["schemas"]["simple-user"][];
         /**
          * Format: date-time
          * @description The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ.`
@@ -5484,6 +5553,7 @@ export interface components {
         /** Format: uri */
         url: string;
         dismissal_approved_by?: null;
+        assignees?: components["schemas"]["simple-user"][];
       };
       commit_oid: components["schemas"]["webhooks_code_scanning_commit_oid"];
       enterprise?: components["schemas"]["enterprise-webhooks"];
@@ -5499,6 +5569,7 @@ export interface components {
       action: "fixed";
       /** @description The code scanning alert involved in the event. */
       alert: {
+        assignees?: components["schemas"]["simple-user"][];
         /**
          * Format: date-time
          * @description The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ.`
@@ -5642,6 +5713,7 @@ export interface components {
       action: "reopened";
       /** @description The code scanning alert involved in the event. */
       alert: {
+        assignees?: components["schemas"]["simple-user"][];
         /**
          * Format: date-time
          * @description The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ.`
@@ -5660,6 +5732,7 @@ export interface components {
          * @description The GitHub URL of the alert resource.
          */
         html_url: string;
+        instances_url?: string;
         /** Alert Instance */
         most_recent_instance?: {
           /** @description Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name. */
@@ -5719,9 +5792,11 @@ export interface components {
           /** @description The version of the tool used to detect the alert. */
           version: string | null;
         };
+        updated_at?: string | null;
         /** Format: uri */
         url: string;
-      } | null;
+        dismissal_approved_by?: null;
+      };
       /** @description The commit SHA of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty. */
       commit_oid: string | null;
       enterprise?: components["schemas"]["enterprise-webhooks"];
@@ -5738,6 +5813,7 @@ export interface components {
       action: "reopened_by_user";
       /** @description The code scanning alert involved in the event. */
       alert: {
+        assignees?: components["schemas"]["simple-user"][];
         /**
          * Format: date-time
          * @description The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ.`
@@ -5945,6 +6021,102 @@ export interface components {
     webhooks_deploy_pusher_type: string;
     /** @description The [`git ref`](https://docs.github.com/enterprise-server@3.17/rest/git/refs#get-a-reference) resource. */
     webhooks_ref_0: string;
+    /** custom property created event */
+    "webhook-custom-property-created": {
+      /** @enum {string} */
+      action: "created";
+      definition: components["schemas"]["custom-property"];
+      enterprise?: components["schemas"]["enterprise-webhooks"];
+      installation?: components["schemas"]["simple-installation"];
+      organization?: components["schemas"]["organization-simple-webhooks"];
+      sender?: components["schemas"]["simple-user"];
+    };
+    /**
+     * Organization Custom Property
+     * @description Custom property defined on an organization
+     */
+    "custom-property": {
+      /** @description The name of the property */
+      property_name: string;
+      /**
+       * Format: uri
+       * @description The URL that can be used to fetch, update, or delete info about this property via the API.
+       */
+      url?: string;
+      /**
+       * @description The source type of the property
+       * @enum {string}
+       */
+      source_type?: "organization" | "enterprise";
+      /**
+       * @description The type of the value for the property
+       * @enum {string}
+       */
+      value_type: "string" | "single_select" | "multi_select" | "true_false";
+      /** @description Whether the property is required. */
+      required?: boolean;
+      /** @description Default value of the property */
+      default_value?: string | string[] | null | unknown[];
+      /** @description Short description of the property */
+      description?: string | null;
+      /**
+       * @description An ordered list of the allowed values of the property.
+       * The property can have up to 200 allowed values.
+       */
+      allowed_values?: string[] | null;
+      /**
+       * @description Who can edit the values of the property
+       * @enum {string|null}
+       */
+      values_editable_by?: "org_actors" | "org_and_repo_actors" | null;
+    };
+    /** custom property deleted event */
+    "webhook-custom-property-deleted": {
+      /** @enum {string} */
+      action: "deleted";
+      definition: {
+        /** @description The name of the property that was deleted. */
+        property_name: string;
+      };
+      enterprise?: components["schemas"]["enterprise-webhooks"];
+      installation?: components["schemas"]["simple-installation"];
+      organization?: components["schemas"]["organization-simple-webhooks"];
+      sender?: components["schemas"]["simple-user"];
+    };
+    /** custom property updated event */
+    "webhook-custom-property-updated": {
+      /** @enum {string} */
+      action: "updated";
+      definition: components["schemas"]["custom-property"];
+      enterprise?: components["schemas"]["enterprise-webhooks"];
+      installation?: components["schemas"]["simple-installation"];
+      organization?: components["schemas"]["organization-simple-webhooks"];
+      sender?: components["schemas"]["simple-user"];
+    };
+    /** Custom property values updated event */
+    "webhook-custom-property-values-updated": {
+      /** @enum {string} */
+      action: "updated";
+      enterprise?: components["schemas"]["enterprise-webhooks"];
+      installation?: components["schemas"]["simple-installation"];
+      repository: components["schemas"]["repository-webhooks"];
+      organization: components["schemas"]["organization-simple-webhooks"];
+      sender?: components["schemas"]["simple-user"];
+      /** @description The new custom property values for the repository. */
+      new_property_values: components["schemas"]["custom-property-value"][];
+      /** @description The old custom property values for the repository. */
+      old_property_values: components["schemas"]["custom-property-value"][];
+    };
+    /**
+     * Custom Property Value
+     * @description Custom property name and associated value
+     */
+    "custom-property-value": {
+      /** @description The name of the property */
+      property_name: string;
+      /** @description The value assigned to the property */
+      value: string | string[] | null | unknown[];
+    };
     /** delete event */
     "webhook-delete": {
       enterprise?: components["schemas"]["enterprise-webhooks"];
@@ -7076,6 +7248,15 @@ export interface components {
       slug: string;
       /** @description Distinguished Name (DN) that team maps to within LDAP environment */
       ldap_dn?: string;
+      /**
+       * @description The ownership type of the team
+       * @enum {string}
+       */
+      type: "enterprise" | "organization";
+      /** @description Unique identifier of the organization to which this team belongs */
+      organization_id?: number;
+      /** @description Unique identifier of the enterprise to which this team belongs */
+      enterprise_id?: number;
     };
     /**
      * Repository
@@ -10346,6 +10527,7 @@ export interface components {
       /** Format: uri */
       html_url: string;
       app_id: number;
+      client_id?: string;
       /** @description The ID of the user or organization this token is being scoped to. */
       target_id: number;
       target_type: string;
@@ -10386,6 +10568,16 @@ export interface components {
        */
       administration?: "read" | "write";
       /**
+       * @description The level of permission to grant the access token to create and retrieve build artifact metadata records.
+       * @enum {string}
+       */
+      artifact_metadata?: "read" | "write";
+      /**
+       * @description The level of permission to create and retrieve the access token for repository attestations.
+       * @enum {string}
+       */
+      attestations?: "read" | "write";
+      /**
        * @description The level of permission to grant the access token for checks on code.
        * @enum {string}
        */
@@ -10411,6 +10603,11 @@ export interface components {
        */
       deployments?: "read" | "write";
       /**
+       * @description The level of permission to grant the access token for discussions and related comments and labels.
+       * @enum {string}
+       */
+      discussions?: "read" | "write";
+      /**
        * @description The level of permission to grant the access token for managing repository environments.
        * @enum {string}
        */
@@ -10420,6 +10617,11 @@ export interface components {
        * @enum {string}
        */
       issues?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token to manage the merge queues for a repository.
+       * @enum {string}
+       */
+      merge_queues?: "read" | "write";
       /**
        * @description The level of permission to grant the access token to search repositories, list collaborators, and access repository metadata.
        * @enum {string}
@@ -10511,7 +10713,7 @@ export interface components {
        */
       organization_custom_org_roles?: "read" | "write";
       /**
-       * @description The level of permission to grant the access token for custom property management.
+       * @description The level of permission to grant the access token for repository custom properties management at the organization level.
        * @enum {string}
        */
       organization_custom_properties?: "read" | "write" | "admin";
@@ -10616,12 +10818,12 @@ export interface components {
        */
       starring?: "read" | "write";
       /**
-       * @description The level of permission to grant the access token to list and manage repositories a user is starring.
+       * @description The level of permission to grant the access token to administer an enterprise account.
        * @enum {string}
        */
       enterprise_administration?: "read" | "write";
       /**
-       * @description The level of permission to grant the access token to view and edit custom properties defined for a enterprise
+       * @description The level of permission to grant the access token for repository custom properties management at the enterprise level.
        * @enum {string}
        */
       enterprise_custom_properties?: "read" | "write";
@@ -11324,12 +11526,8 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
-        /** Sub-issues Summary */
-        sub_issues_summary?: {
-          total: number;
-          completed: number;
-          percent_completed: number;
-        };
+        sub_issues_summary?: components["schemas"]["sub-issues-summary"];
+        issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -11505,6 +11703,19 @@ export interface components {
       organization?: components["schemas"]["organization-simple-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
       sender: components["schemas"]["simple-user"];
+    };
+    /** Sub-issues Summary */
+    "sub-issues-summary": {
+      total: number;
+      completed: number;
+      percent_completed: number;
+    };
+    /** Issue Dependencies Summary */
+    "issue-dependencies-summary": {
+      blocked_by: number;
+      blocking: number;
+      total_blocked_by: number;
+      total_blocking: number;
     };
     /**
      * Issue Type
@@ -11968,12 +12179,8 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
-        /** Sub-issues Summary */
-        sub_issues_summary?: {
-          total: number;
-          completed: number;
-          percent_completed: number;
-        };
+        sub_issues_summary?: components["schemas"]["sub-issues-summary"];
+        issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -12671,12 +12878,8 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
-        /** Sub-issues Summary */
-        sub_issues_summary?: {
-          total: number;
-          completed: number;
-          percent_completed: number;
-        };
+        sub_issues_summary?: components["schemas"]["sub-issues-summary"];
+        issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -13295,12 +13498,9 @@ export interface components {
       };
       /** Format: uri */
       repository_url: string;
-      /** Sub-issues Summary */
-      sub_issues_summary?: {
-        total: number;
-        completed: number;
-        percent_completed: number;
-      };
+      sub_issues_summary?: components["schemas"]["sub-issues-summary"];
+      issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
+      issue_field_values?: components["schemas"]["issue-field-value"][];
       /**
        * @description State of the issue; either 'open' or 'closed'
        * @enum {string}
@@ -13357,6 +13557,37 @@ export interface components {
         /** Format: uri */
         url?: string;
         user_view_type?: string;
+      } | null;
+    };
+    /**
+     * Issue Field Value
+     * @description A value assigned to an issue field
+     */
+    "issue-field-value": {
+      /**
+       * Format: int64
+       * @description Unique identifier for the issue field.
+       */
+      issue_field_id: number;
+      node_id: string;
+      /**
+       * @description The data type of the issue field
+       * @enum {string}
+       */
+      data_type: "text" | "single_select" | "number" | "date";
+      /** @description The value of the issue field */
+      value: null | string | number;
+      /** @description Details about the selected option (only present for single_select fields) */
+      single_select_option?: {
+        /**
+         * Format: int64
+         * @description Unique identifier for the option.
+         */
+        id: number;
+        /** @description The name of the option */
+        name: string;
+        /** @description The color of the option */
+        color: string;
       } | null;
     };
     /** issues closed event */
@@ -13786,12 +14017,9 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
-        /** Sub-issues Summary */
-        sub_issues_summary?: {
-          total: number;
-          completed: number;
-          percent_completed: number;
-        };
+        sub_issues_summary?: components["schemas"]["sub-issues-summary"];
+        issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
+        issue_field_values?: components["schemas"]["issue-field-value"][];
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -14340,12 +14568,9 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
-        /** Sub-issues Summary */
-        sub_issues_summary?: {
-          total: number;
-          completed: number;
-          percent_completed: number;
-        };
+        sub_issues_summary?: components["schemas"]["sub-issues-summary"];
+        issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
+        issue_field_values?: components["schemas"]["issue-field-value"][];
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -14830,12 +15055,9 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
-        /** Sub-issues Summary */
-        sub_issues_summary?: {
-          total: number;
-          completed: number;
-          percent_completed: number;
-        };
+        sub_issues_summary?: components["schemas"]["sub-issues-summary"];
+        issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
+        issue_field_values?: components["schemas"]["issue-field-value"][];
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -15408,12 +15630,9 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
-        /** Sub-issues Summary */
-        sub_issues_summary?: {
-          total: number;
-          completed: number;
-          percent_completed: number;
-        };
+        sub_issues_summary?: components["schemas"]["sub-issues-summary"];
+        issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
+        issue_field_values?: components["schemas"]["issue-field-value"][];
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -15902,12 +16121,9 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
-        /** Sub-issues Summary */
-        sub_issues_summary?: {
-          total: number;
-          completed: number;
-          percent_completed: number;
-        };
+        sub_issues_summary?: components["schemas"]["sub-issues-summary"];
+        issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
+        issue_field_values?: components["schemas"]["issue-field-value"][];
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -16398,12 +16614,9 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
-        /** Sub-issues Summary */
-        sub_issues_summary?: {
-          total: number;
-          completed: number;
-          percent_completed: number;
-        };
+        sub_issues_summary?: components["schemas"]["sub-issues-summary"];
+        issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
+        issue_field_values?: components["schemas"]["issue-field-value"][];
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -16889,12 +17102,9 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
-        /** Sub-issues Summary */
-        sub_issues_summary?: {
-          total: number;
-          completed: number;
-          percent_completed: number;
-        };
+        sub_issues_summary?: components["schemas"]["sub-issues-summary"];
+        issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
+        issue_field_values?: components["schemas"]["issue-field-value"][];
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -17381,12 +17591,9 @@ export interface components {
           };
           /** Format: uri */
           repository_url?: string;
-          /** Sub-issues Summary */
-          sub_issues_summary?: {
-            total: number;
-            completed: number;
-            percent_completed: number;
-          };
+          sub_issues_summary?: components["schemas"]["sub-issues-summary"];
+          issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
+          issue_field_values?: components["schemas"]["issue-field-value"][];
           /**
            * @description State of the issue; either 'open' or 'closed'
            * @enum {string}
@@ -18116,12 +18323,9 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
-        /** Sub-issues Summary */
-        sub_issues_summary?: {
-          total: number;
-          completed: number;
-          percent_completed: number;
-        };
+        sub_issues_summary?: components["schemas"]["sub-issues-summary"];
+        issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
+        issue_field_values?: components["schemas"]["issue-field-value"][];
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -18613,12 +18817,9 @@ export interface components {
       };
       /** Format: uri */
       repository_url: string;
-      /** Sub-issues Summary */
-      sub_issues_summary?: {
-        total: number;
-        completed: number;
-        percent_completed: number;
-      };
+      sub_issues_summary?: components["schemas"]["sub-issues-summary"];
+      issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
+      issue_field_values?: components["schemas"]["issue-field-value"][];
       /**
        * @description State of the issue; either 'open' or 'closed'
        * @enum {string}
@@ -19101,12 +19302,9 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
-        /** Sub-issues Summary */
-        sub_issues_summary?: {
-          total: number;
-          completed: number;
-          percent_completed: number;
-        };
+        sub_issues_summary?: components["schemas"]["sub-issues-summary"];
+        issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
+        issue_field_values?: components["schemas"]["issue-field-value"][];
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -19592,12 +19790,9 @@ export interface components {
           };
           /** Format: uri */
           repository_url: string;
-          /** Sub-issues Summary */
-          sub_issues_summary?: {
-            total: number;
-            completed: number;
-            percent_completed: number;
-          };
+          sub_issues_summary?: components["schemas"]["sub-issues-summary"];
+          issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
+          issue_field_values?: components["schemas"]["issue-field-value"][];
           /**
            * @description State of the issue; either 'open' or 'closed'
            * @enum {string}
@@ -20404,12 +20599,9 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
-        /** Sub-issues Summary */
-        sub_issues_summary?: {
-          total: number;
-          completed: number;
-          percent_completed: number;
-        };
+        sub_issues_summary?: components["schemas"]["sub-issues-summary"];
+        issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
+        issue_field_values?: components["schemas"]["issue-field-value"][];
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -20693,6 +20885,15 @@ export interface components {
          * @description URL for the team
          */
         url: string;
+        /**
+         * @description The ownership type of the team
+         * @enum {string}
+         */
+        type: "enterprise" | "organization";
+        /** @description Unique identifier of the organization to which this team belongs */
+        organization_id?: number;
+        /** @description Unique identifier of the enterprise to which this team belongs */
+        enterprise_id?: number;
       } | null;
       /** @description Permission that the team will have for its repositories */
       permission?: string;
@@ -20708,6 +20909,15 @@ export interface components {
        * @description URL for the team
        */
       url?: string;
+      /**
+       * @description The ownership type of the team
+       * @enum {string}
+       */
+      type?: "enterprise" | "organization";
+      /** @description Unique identifier of the organization to which this team belongs */
+      organization_id?: number;
+      /** @description Unique identifier of the enterprise to which this team belongs */
+      enterprise_id?: number;
     };
     /** membership removed event */
     "webhook-membership-removed": {
@@ -20768,7 +20978,7 @@ export interface components {
       /** @enum {string} */
       action: "deleted";
       enterprise?: components["schemas"]["enterprise-webhooks"];
-      /** @description The modified webhook. This will contain different keys based on the type of webhook it is: repository, organization, business, app, or GitHub Marketplace. */
+      /** @description The deleted webhook. This will contain different keys based on the type of webhook it is: repository, organization, business, app, or GitHub Marketplace. */
       hook: {
         active: boolean;
         config: {
@@ -21143,6 +21353,13 @@ export interface components {
       /** Format: uri */
       organization_url: string;
       role: string;
+      /** @description Whether the user has direct membership in the organization. */
+      direct_membership?: boolean;
+      /**
+       * @description The slugs of the enterprise teams providing the user with indirect membership in the organization.
+       * A limit of 100 enterprise team slugs is returned.
+       */
+      enterprise_teams_providing_indirect_membership?: string[];
       state: string;
       /** Format: uri */
       url: string;
@@ -22518,24 +22735,99 @@ export interface components {
      * @description A projects v2 project
      */
     "projects-v2": {
+      /** @description The unique identifier of the project. */
       id: number;
+      /** @description The node ID of the project. */
       node_id: string;
       owner: components["schemas"]["simple-user"];
       creator: components["schemas"]["simple-user"];
+      /** @description The project title. */
       title: string;
+      /** @description A short description of the project. */
       description: string | null;
+      /** @description Whether the project is visible to anyone with access to the owner. */
       public: boolean;
-      /** Format: date-time */
+      /**
+       * Format: date-time
+       * @description The time when the project was closed.
+       */
       closed_at: string | null;
-      /** Format: date-time */
+      /**
+       * Format: date-time
+       * @description The time when the project was created.
+       */
       created_at: string;
-      /** Format: date-time */
+      /**
+       * Format: date-time
+       * @description The time when the project was last updated.
+       */
       updated_at: string;
+      /** @description The project number. */
       number: number;
+      /** @description A concise summary of the project. */
       short_description: string | null;
-      /** Format: date-time */
+      /**
+       * Format: date-time
+       * @description The time when the project was deleted.
+       */
       deleted_at: string | null;
       deleted_by: null | components["schemas"]["simple-user"];
+      /**
+       * @description The current state of the project.
+       * @enum {string}
+       */
+      state?: "open" | "closed";
+      latest_status_update?:
+        | null
+        | components["schemas"]["projects-v2-status-update"];
+      /** @description Whether this project is a template */
+      is_template?: boolean;
+    };
+    /**
+     * Projects v2 Status Update
+     * @description An status update belonging to a project
+     */
+    "projects-v2-status-update": {
+      /** @description The unique identifier of the status update. */
+      id: number;
+      /** @description The node ID of the status update. */
+      node_id: string;
+      /** @description The node ID of the project that this status update belongs to. */
+      project_node_id?: string;
+      creator?: components["schemas"]["simple-user"];
+      /**
+       * Format: date-time
+       * @description The time when the status update was created.
+       */
+      created_at: string;
+      /**
+       * Format: date-time
+       * @description The time when the status update was last updated.
+       */
+      updated_at: string;
+      /**
+       * @description The current status.
+       * @enum {string|null}
+       */
+      status?:
+        | "INACTIVE"
+        | "ON_TRACK"
+        | "AT_RISK"
+        | "OFF_TRACK"
+        | "COMPLETE"
+        | null;
+      /**
+       * Format: date
+       * @description The start date of the period covered by the update.
+       */
+      start_date?: string;
+      /**
+       * Format: date
+       * @description The target date associated with the update.
+       */
+      target_date?: string;
+      /** @description Body of the status update */
+      body?: string | null;
     };
     /** @description A project was created */
     "webhook-projects-v2-project-created": {
@@ -22605,17 +22897,30 @@ export interface components {
      * @description An item belonging to a project
      */
     "projects-v2-item": {
+      /** @description The unique identifier of the project item. */
       id: number;
+      /** @description The node ID of the project item. */
       node_id?: string;
+      /** @description The node ID of the project that contains this item. */
       project_node_id?: string;
+      /** @description The node ID of the content represented by this item. */
       content_node_id: string;
       content_type: components["schemas"]["projects-v2-item-content-type"];
       creator?: components["schemas"]["simple-user"];
-      /** Format: date-time */
+      /**
+       * Format: date-time
+       * @description The time when the item was created.
+       */
       created_at: string;
-      /** Format: date-time */
+      /**
+       * Format: date-time
+       * @description The time when the item was last updated.
+       */
       updated_at: string;
-      /** Format: date-time */
+      /**
+       * Format: date-time
+       * @description The time when the item was archived.
+       */
       archived_at: string | null;
     };
     /**
@@ -22707,9 +23012,13 @@ export interface components {
      * @description An option for a single select field
      */
     "projects-v2-single-select-option": {
+      /** @description The unique identifier of the option. */
       id: string;
+      /** @description The display name of the option. */
       name: string;
+      /** @description The color associated with the option. */
       color?: string | null;
+      /** @description A short description of the option. */
       description?: string | null;
     };
     /**
@@ -22717,10 +23026,18 @@ export interface components {
      * @description An iteration setting for an iteration field
      */
     "projects-v2-iteration-setting": {
+      /** @description The unique identifier of the iteration setting. */
       id: string;
+      /** @description The iteration title. */
       title: string;
+      /** @description The iteration title, rendered as HTML. */
+      title_html?: string;
+      /** @description The duration of the iteration in days. */
       duration?: number | null;
+      /** @description The start date of the iteration. */
       start_date?: string | null;
+      /** @description Whether the iteration has been completed. */
+      completed?: boolean;
     };
     /** Projects v2 Item Reordered Event */
     "webhook-projects-v2-item-reordered": {
@@ -35332,6 +35649,8 @@ export interface components {
         state: "dismissed" | "approved" | "changes_requested";
         /** Format: date-time */
         submitted_at: string;
+        /** Format: date-time */
+        updated_at?: string | null;
         /** User */
         user: {
           /** Format: uri */
@@ -36495,6 +36814,8 @@ export interface components {
       state: string;
       /** Format: date-time */
       submitted_at: string | null;
+      /** Format: date-time */
+      updated_at?: string | null;
       /** User */
       user: {
         /** Format: uri */
@@ -44062,6 +44383,8 @@ export interface components {
         }[];
         node_id: string;
       };
+      /** Format: date-time */
+      updated_at?: string | null;
     };
     /** pull_request_review_thread unresolved event */
     "webhook-pull-request-review-thread-unresolved": {
@@ -45302,6 +45625,8 @@ export interface components {
         }[];
         node_id: string;
       };
+      /** Format: date-time */
+      updated_at?: string | null;
     };
     /** pull_request synchronize event */
     "webhook-pull-request-synchronize": {
@@ -51069,6 +51394,8 @@ export interface components {
       body: string | null;
       /** Format: date-time */
       created_at: string | null;
+      /** Format: date-time */
+      updated_at: string | null;
       /** Format: uri */
       discussion_url?: string;
       /** @description Whether the release is a draft or published */
@@ -51076,6 +51403,8 @@ export interface components {
       /** Format: uri */
       html_url: string;
       id: number;
+      /** @description Whether or not the release is immutable. */
+      immutable: boolean;
       name: string | null;
       node_id: string;
       /** @description Whether the release is identified as a prerelease or a full release. */
@@ -51272,6 +51601,8 @@ export interface components {
         /** Format: uri */
         html_url: string;
         id: number;
+        /** @description Whether or not the release is immutable. */
+        immutable: boolean;
         name: string | null;
         node_id: string;
         /**
@@ -51303,6 +51634,8 @@ export interface components {
         target_commitish: string;
         /** Format: uri-template */
         upload_url: string;
+        /** Format: date-time */
+        updated_at: string | null;
         /** Format: uri */
         url: string;
         /** Format: uri */
@@ -51438,6 +51771,8 @@ export interface components {
       /** Format: uri */
       html_url: string;
       id: number;
+      /** @description Whether or not the release is immutable. */
+      immutable: boolean;
       name: string | null;
       node_id: string;
       /** @description Whether the release is identified as a prerelease or a full release. */
@@ -51464,6 +51799,8 @@ export interface components {
       tarball_url: string | null;
       /** @description Specifies the commitish value that determines where the Git tag is created from. */
       target_commitish: string;
+      /** Format: date-time */
+      updated_at: string | null;
       /** Format: uri-template */
       upload_url: string;
       /** Format: uri */
@@ -51691,7 +52028,7 @@ export interface components {
      * @description An actor that can bypass rules in a ruleset
      */
     "repository-ruleset-bypass-actor": {
-      /** @description The ID of the actor that can bypass a ruleset. If `actor_type` is `OrganizationAdmin`, this should be `1`. If `actor_type` is `DeployKey`, this should be null. If `actor_type` is `EnterpriseOwner`, `actor_id` is ignored. `OrganizationAdmin` and `EnterpriseOwner` are not applicable for personal repositories. */
+      /** @description The ID of the actor that can bypass a ruleset. Required for `Integration`, `RepositoryRole`, and `Team` actor types. If `actor_type` is `OrganizationAdmin`, this should be `1`. If `actor_type` is `DeployKey`, this should be null. If `actor_type` is `EnterpriseOwner`, `actor_id` is ignored. `OrganizationAdmin` and `EnterpriseOwner` are not applicable for personal repositories. */
       actor_id?: number | null;
       /**
        * @description The type of actor that can bypass a ruleset
@@ -51812,7 +52149,8 @@ export interface components {
       | components["schemas"]["repository-rule-file-extension-restriction"]
       | components["schemas"]["repository-rule-max-file-size"]
       | components["schemas"]["repository-rule-workflows"]
-      | components["schemas"]["repository-rule-code-scanning"];
+      | components["schemas"]["repository-rule-code-scanning"]
+      | components["schemas"]["repository-rule-copilot-code-review"];
     /**
      * creation
      * @description Only allow users with bypass permission to create matching refs.
@@ -51909,7 +52247,7 @@ export interface components {
       parameters?: {
         /** @description Array of allowed merge methods. Allowed values include `merge`, `squash`, and `rebase`. At least one option must be enabled. */
         allowed_merge_methods?: ("merge" | "squash" | "rebase")[];
-        /** @description Automatically request review from Copilot for new pull requests, if the author has access to Copilot code review. */
+        /** @description Request Copilot code review for new pull requests automatically if the author has access to Copilot code review and their premium requests quota has not reached the limit. */
         automatic_copilot_code_review_enabled?: boolean;
         /** @description New, reviewable commits pushed will dismiss previous pull request review approvals. */
         dismiss_stale_reviews_on_push: boolean;
@@ -51921,7 +52259,38 @@ export interface components {
         required_approving_review_count: number;
         /** @description All conversations on code must be resolved before a pull request can be merged. */
         required_review_thread_resolution: boolean;
+        /**
+         * @description > [!NOTE]
+         * > `required_reviewers` is in beta and subject to change.
+         *
+         * A collection of reviewers and associated file patterns. Each reviewer has a list of file patterns which determine the files that reviewer is required to review.
+         */
+        required_reviewers?: components["schemas"]["repository-rule-params-required-reviewer-configuration"][];
       };
+    };
+    /**
+     * RequiredReviewerConfiguration
+     * @description A reviewing team, and file patterns describing which files they must approve changes to.
+     */
+    "repository-rule-params-required-reviewer-configuration": {
+      /** @description Array of file patterns. Pull requests which change matching files must be approved by the specified team. File patterns use fnmatch syntax. */
+      file_patterns: string[];
+      /** @description Minimum number of approvals required from the specified team. If set to zero, the team will be added to the pull request but approval is optional. */
+      minimum_approvals: number;
+      reviewer: components["schemas"]["repository-rule-params-reviewer"];
+    };
+    /**
+     * Reviewer
+     * @description A required reviewing team
+     */
+    "repository-rule-params-reviewer": {
+      /** @description ID of the reviewer which must review changes to matching files. */
+      id: number;
+      /**
+       * @description The type of the reviewer
+       * @enum {string}
+       */
+      type: "Team";
     };
     /**
      * required_status_checks
@@ -52172,6 +52541,20 @@ export interface components {
         | "all";
       /** @description The name of a code scanning tool */
       tool: string;
+    };
+    /**
+     * copilot_code_review
+     * @description Request Copilot code review for new pull requests automatically if the author has access to Copilot code review and their premium requests quota has not reached the limit.
+     */
+    "repository-rule-copilot-code-review": {
+      /** @enum {string} */
+      type: "copilot_code_review";
+      parameters?: {
+        /** @description Copilot automatically reviews draft pull requests before they are marked as ready for review. */
+        review_draft_pull_requests?: boolean;
+        /** @description Copilot automatically reviews each new push to the pull request. */
+        review_on_push?: boolean;
+      };
     };
     /** repository ruleset deleted event */
     "webhook-repository-ruleset-deleted": {
@@ -53684,6 +54067,15 @@ export interface components {
          * @description URL for the team
          */
         url: string;
+        /**
+         * @description The ownership type of the team
+         * @enum {string}
+         */
+        type: "enterprise" | "organization";
+        /** @description Unique identifier of the organization to which this team belongs */
+        organization_id?: number;
+        /** @description Unique identifier of the enterprise to which this team belongs */
+        enterprise_id?: number;
       } | null;
       /** @description Permission that the team will have for its repositories */
       permission?: string;
@@ -53702,6 +54094,15 @@ export interface components {
        * @description URL for the team
        */
       url?: string;
+      /**
+       * @description The ownership type of the team
+       * @enum {string}
+       */
+      type?: "enterprise" | "organization";
+      /** @description Unique identifier of the organization to which this team belongs */
+      organization_id?: number;
+      /** @description Unique identifier of the enterprise to which this team belongs */
+      enterprise_id?: number;
     };
     /** team added_to_repository event */
     "webhook-team-added-to-repository": {
@@ -56980,201 +57381,6 @@ export interface operations {
     };
   };
   /**
-   * This event occurs when there is activity related to a user's request to bypass a set of push rules.
-   *
-   * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-server@3.17/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
-   * @description A push ruleset bypass request was cancelled.
-   */
-  "exemption-request-push-ruleset/cancelled": {
-    parameters: {
-      header: {
-        /** @example GitHub-Hookshot/123abc */
-        "User-Agent": string;
-        /** @example 12312312 */
-        "X-Github-Hook-Id": string;
-        /** @example issues */
-        "X-Github-Event": string;
-        /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id": string;
-        /** @example repository */
-        "X-Github-Hook-Installation-Target-Type": string;
-        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery": string;
-        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256": string;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["webhook-exemption-request-cancelled"];
-      };
-    };
-    responses: {
-      /** @description Return a 200 status to indicate that the data was received successfully */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /**
-   * This event occurs when there is activity related to a user's request to bypass a set of push rules.
-   *
-   * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-server@3.17/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
-   * @description A push ruleset bypass request was completed.
-   */
-  "exemption-request-push-ruleset/completed": {
-    parameters: {
-      header: {
-        /** @example GitHub-Hookshot/123abc */
-        "User-Agent": string;
-        /** @example 12312312 */
-        "X-Github-Hook-Id": string;
-        /** @example issues */
-        "X-Github-Event": string;
-        /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id": string;
-        /** @example repository */
-        "X-Github-Hook-Installation-Target-Type": string;
-        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery": string;
-        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256": string;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["webhook-exemption-request-completed"];
-      };
-    };
-    responses: {
-      /** @description Return a 200 status to indicate that the data was received successfully */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /**
-   * This event occurs when there is activity related to a user's request to bypass a set of push rules.
-   *
-   * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-server@3.17/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
-   * @description A push ruleset bypass request was created.
-   */
-  "exemption-request-push-ruleset/created": {
-    parameters: {
-      header: {
-        /** @example GitHub-Hookshot/123abc */
-        "User-Agent": string;
-        /** @example 12312312 */
-        "X-Github-Hook-Id": string;
-        /** @example issues */
-        "X-Github-Event": string;
-        /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id": string;
-        /** @example repository */
-        "X-Github-Hook-Installation-Target-Type": string;
-        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery": string;
-        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256": string;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["webhook-exemption-request-created"];
-      };
-    };
-    responses: {
-      /** @description Return a 200 status to indicate that the data was received successfully */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /**
-   * This event occurs when there is activity related to a user's request to bypass a set of push rules.
-   *
-   * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-server@3.17/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
-   * @description A push ruleset bypass response was dismissed.
-   */
-  "exemption-request-push-ruleset/response-dismissed": {
-    parameters: {
-      header: {
-        /** @example GitHub-Hookshot/123abc */
-        "User-Agent": string;
-        /** @example 12312312 */
-        "X-Github-Hook-Id": string;
-        /** @example issues */
-        "X-Github-Event": string;
-        /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id": string;
-        /** @example repository */
-        "X-Github-Hook-Installation-Target-Type": string;
-        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery": string;
-        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256": string;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["webhook-exemption-request-response-dismissed"];
-      };
-    };
-    responses: {
-      /** @description Return a 200 status to indicate that the data was received successfully */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /**
-   * This event occurs when there is activity related to a user's request to bypass a set of push rules.
-   *
-   * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-server@3.17/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
-   *
-   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
-   * @description A response either approving or rejecting the push ruleset bypass request was submitted.
-   */
-  "exemption-request-push-ruleset/response-submitted": {
-    parameters: {
-      header: {
-        /** @example GitHub-Hookshot/123abc */
-        "User-Agent": string;
-        /** @example 12312312 */
-        "X-Github-Hook-Id": string;
-        /** @example issues */
-        "X-Github-Event": string;
-        /** @example 123123 */
-        "X-Github-Hook-Installation-Target-Id": string;
-        /** @example repository */
-        "X-Github-Hook-Installation-Target-Type": string;
-        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
-        "X-GitHub-Delivery": string;
-        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
-        "X-Hub-Signature-256": string;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["webhook-exemption-request-response-submitted"];
-      };
-    };
-    responses: {
-      /** @description Return a 200 status to indicate that the data was received successfully */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /**
    * This event occurs when there is activity related to a user's request to bypass secret scanning push protection.
    *
    * For more information, see "[Enabling delegated bypass for push protection](https://docs.github.com/enterprise-server@3.17/code-security/secret-scanning/using-advanced-secret-scanning-and-push-protection-features/delegated-bypass-for-push-protection/about-delegated-bypass-for-push-protection#enabling-delegated-bypass-for-push-protection)."
@@ -58075,6 +58281,162 @@ export interface operations {
     requestBody: {
       content: {
         "application/json": components["schemas"]["webhook-create"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to a custom property.
+   *
+   * For more information, see "[Managing custom properties for repositories in your organization](https://docs.github.com/enterprise-server@3.17/organizations/managing-organization-settings/managing-custom-properties-for-repositories-in-your-organization)". For information about the APIs to manage custom properties, see "[Custom properties](https://docs.github.com/enterprise-server@3.17/rest/orgs/custom-properties)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Custom properties" organization permission.
+   * @description A new custom property was created.
+   */
+  "custom-property/created": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-custom-property-created"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to a custom property.
+   *
+   * For more information, see "[Managing custom properties for repositories in your organization](https://docs.github.com/enterprise-server@3.17/organizations/managing-organization-settings/managing-custom-properties-for-repositories-in-your-organization)". For information about the APIs to manage custom properties, see "[Custom properties](https://docs.github.com/enterprise-server@3.17/rest/orgs/custom-properties)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Custom properties" organization permission.
+   * @description A custom property was deleted.
+   */
+  "custom-property/deleted": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-custom-property-deleted"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to a custom property.
+   *
+   * For more information, see "[Managing custom properties for repositories in your organization](https://docs.github.com/enterprise-server@3.17/organizations/managing-organization-settings/managing-custom-properties-for-repositories-in-your-organization)". For information about the APIs to manage custom properties, see "[Custom properties](https://docs.github.com/enterprise-server@3.17/rest/orgs/custom-properties)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Custom properties" organization permission.
+   * @description A custom property was updated.
+   */
+  "custom-property/updated": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-custom-property-updated"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to custom property values for a repository.
+   *
+   * For more information, see "[Managing custom properties for repositories in your organization](https://docs.github.com/enterprise-server@3.17/organizations/managing-organization-settings/managing-custom-properties-for-repositories-in-your-organization)". For information about the APIs to manage custom properties for a repository, see "[Custom properties](https://docs.github.com/enterprise-server@3.17/rest/repos/custom-properties)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Custom properties" organization permission.
+   * @description The custom property values of a repository were updated.
+   */
+  "custom-property-values/updated": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-custom-property-values-updated"];
       };
     };
     responses: {
@@ -59623,9 +59985,6 @@ export interface operations {
    * This event occurs when there is activity related to a user's request to dismiss a code scanning alert.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "code scanning alerts" repository permission.
-   *
-   * > [!NOTE]
-   * > Delegated alert dismissal for code scanning is currently in public preview and subject to change.
    * @description A code scanning alert dismissal request was created.
    */
   "dismissal-request-code-scanning/created": {
@@ -59663,9 +60022,6 @@ export interface operations {
    * This event occurs when there is activity related to a user's request to dismiss a code scanning alert.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "code scanning alerts" repository permission.
-   *
-   * > [!NOTE]
-   * > Delegated alert dismissal for code scanning is currently in public preview and subject to change.
    * @description A code scanning alert dismissal response was submitted.
    */
   "dismissal-request-code-scanning/response-submitted": {
@@ -59968,6 +60324,201 @@ export interface operations {
     requestBody: {
       content: {
         "application/json": components["schemas"]["webhook-enterprise-anonymous-access-enabled"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity related to a user's request to bypass a set of push rules.
+   *
+   * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-server@3.17/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+   * @description A push ruleset bypass request was cancelled.
+   */
+  "exemption-request-push-ruleset/cancelled": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-exemption-request-cancelled"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity related to a user's request to bypass a set of push rules.
+   *
+   * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-server@3.17/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+   * @description A push ruleset bypass request was completed.
+   */
+  "exemption-request-push-ruleset/completed": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-exemption-request-completed"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity related to a user's request to bypass a set of push rules.
+   *
+   * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-server@3.17/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+   * @description A push ruleset bypass request was created.
+   */
+  "exemption-request-push-ruleset/created": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-exemption-request-created"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity related to a user's request to bypass a set of push rules.
+   *
+   * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-server@3.17/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+   * @description A push ruleset bypass response was dismissed.
+   */
+  "exemption-request-push-ruleset/response-dismissed": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-exemption-request-response-dismissed"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity related to a user's request to bypass a set of push rules.
+   *
+   * For more information, see "[Managing requests to bypass push rulesets](https://docs.github.com/enterprise-server@3.17/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#managing-requests-to-bypass-push-rules)."
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Administration" repository permission.
+   * @description A response either approving or rejecting the push ruleset bypass request was submitted.
+   */
+  "exemption-request-push-ruleset/response-submitted": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-exemption-request-response-submitted"];
       };
     };
     responses: {
