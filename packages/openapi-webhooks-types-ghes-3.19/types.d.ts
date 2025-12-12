@@ -844,6 +844,33 @@ export interface webhooks {
      */
     post: operations["dismissal-request-code-scanning/response-submitted"];
   };
+  "dismissal-request-dependabot-cancelled": {
+    /**
+     * This event occurs when there is activity related to a user's request to dismiss a Dependabot alert.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
+     * @description A Dependabot alert dismissal request was canceled.
+     */
+    post: operations["dismissal-request-dependabot/cancelled"];
+  };
+  "dismissal-request-dependabot-created": {
+    /**
+     * This event occurs when there is activity related to a user's request to dismiss a Dependabot alert.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
+     * @description A Dependabot alert dismissal request was created.
+     */
+    post: operations["dismissal-request-dependabot/created"];
+  };
+  "dismissal-request-dependabot-response-submitted": {
+    /**
+     * This event occurs when there is activity related to a user's request to dismiss a Dependabot alert.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
+     * @description A Dependabot alert dismissal request received a response.
+     */
+    post: operations["dismissal-request-dependabot/response-submitted"];
+  };
   "dismissal-request-secret-scanning-cancelled": {
     /**
      * This event occurs when there is activity related to a user's request to dismiss a secret scanning alert.
@@ -3575,12 +3602,14 @@ export interface components {
         | "push_ruleset_bypass"
         | "secret_scanning"
         | "secret_scanning_closure"
-        | "code_scanning_alert_dismissal";
+        | "code_scanning_alert_dismissal"
+        | "dependabot_alert_dismissal";
       exemption_request_data?:
         | components["schemas"]["exemption-request-push-ruleset-bypass"]
         | components["schemas"]["exemption-request-secret-scanning"]
         | components["schemas"]["dismissal-request-secret-scanning"]
-        | components["schemas"]["dismissal-request-code-scanning"];
+        | components["schemas"]["dismissal-request-code-scanning"]
+        | components["schemas"]["dismissal-request-dependabot"];
       /** @description The unique identifier for the request type of the exemption request. For example, a commit SHA. */
       resource_identifier?: string;
       /**
@@ -3596,6 +3625,7 @@ export interface components {
             | components["schemas"]["exemption-request-secret-scanning-metadata"]
             | components["schemas"]["dismissal-request-secret-scanning-metadata"]
             | components["schemas"]["dismissal-request-code-scanning-metadata"]
+            | components["schemas"]["dismissal-request-dependabot-metadata"]
           )
         | null;
       /**
@@ -3703,6 +3733,22 @@ export interface components {
       }[];
     };
     /**
+     * Dependabot alert dismissal request data
+     * @description Dependabot alerts that have dismissal requests.
+     */
+    "dismissal-request-dependabot": {
+      /**
+       * @description The type of request
+       * @enum {string}
+       */
+      type?: "dependabot_alert_dismissal";
+      /** @description The data related to the Dependabot alerts that have dismissal requests. */
+      data?: {
+        /** @description The number of the alert to be dismissed */
+        alert_number?: string;
+      }[];
+    };
+    /**
      * Secret Scanning Push Protection Exemption Request Metadata
      * @description Metadata for a secret scanning push protection exemption request.
      */
@@ -3740,6 +3786,24 @@ export interface components {
        * @enum {string}
        */
       reason?: "false positive" | "won't fix" | "used in tests";
+    };
+    /**
+     * Dependabot alert dismissal request metadata
+     * @description Metadata for a Dependabot alert dismissal request.
+     */
+    "dismissal-request-dependabot-metadata": {
+      /** @description The title of the Dependabot alert */
+      alert_title?: string;
+      /**
+       * @description The reason for the dismissal request
+       * @enum {string}
+       */
+      reason?:
+        | "fix_started"
+        | "inaccurate"
+        | "no_bandwidth"
+        | "not_used"
+        | "tolerable_risk";
     };
     /**
      * Exemption response
@@ -6254,6 +6318,7 @@ export interface components {
       dismissed_comment: string | null;
       fixed_at: components["schemas"]["alert-fixed-at"];
       auto_dismissed_at?: components["schemas"]["alert-auto-dismissed-at"];
+      dismissal_request?: components["schemas"]["dependabot-alert-dismissal-request-simple"];
     };
     /** @description The security alert number. */
     readonly "alert-number": number;
@@ -6401,6 +6466,36 @@ export interface components {
      * @description The time that the alert was auto-dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
      */
     readonly "alert-auto-dismissed-at": string | null;
+    /**
+     * Dependabot alert dismissal request
+     * @description Information about an active dismissal request for this Dependabot alert.
+     */
+    "dependabot-alert-dismissal-request-simple": {
+      /** @description The unique identifier of the dismissal request. */
+      id?: number;
+      /**
+       * @description The current status of the dismissal request.
+       * @enum {string}
+       */
+      status?: "pending" | "approved" | "rejected" | "cancelled";
+      /** @description The user who requested the dismissal. */
+      requester?: {
+        /** @description The unique identifier of the user. */
+        id?: number;
+        /** @description The login name of the user. */
+        login?: string;
+      };
+      /**
+       * Format: date-time
+       * @description The date and time when the dismissal request was created.
+       */
+      created_at?: string;
+      /**
+       * Format: uri
+       * @description The API URL to get more information about this dismissal request.
+       */
+      url?: string;
+    } | null;
     /** Dependabot alert auto-reopened event */
     "webhook-dependabot-alert-auto-reopened": {
       /** @enum {string} */
@@ -9719,7 +9814,7 @@ export interface components {
        * @description How the author is associated with the repository.
        * @enum {string}
        */
-      author_association:
+      author_association?:
         | "COLLABORATOR"
         | "CONTRIBUTOR"
         | "FIRST_TIMER"
@@ -13147,12 +13242,12 @@ export interface components {
       /** @enum {string} */
       action: "blocked_by_added";
       /** @description The ID of the blocked issue. */
-      blocked_issue_id: number;
-      blocked_issue: components["schemas"]["issue"];
+      blocked_issue_id?: number;
+      blocked_issue?: components["schemas"]["issue"];
       /** @description The ID of the blocking issue. */
-      blocking_issue_id: number;
-      blocking_issue: components["schemas"]["issue"];
-      blocking_issue_repo: components["schemas"]["repository"];
+      blocking_issue_id?: number;
+      blocking_issue?: components["schemas"]["issue"];
+      blocking_issue_repo?: components["schemas"]["repository"];
       installation?: components["schemas"]["simple-installation"];
       organization: components["schemas"]["organization-simple-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
@@ -13310,12 +13405,12 @@ export interface components {
       /** @enum {string} */
       action: "blocked_by_removed";
       /** @description The ID of the blocked issue. */
-      blocked_issue_id: number;
-      blocked_issue: components["schemas"]["issue"];
+      blocked_issue_id?: number;
+      blocked_issue?: components["schemas"]["issue"];
       /** @description The ID of the blocking issue. */
-      blocking_issue_id: number;
-      blocking_issue: components["schemas"]["issue"];
-      blocking_issue_repo: components["schemas"]["repository"];
+      blocking_issue_id?: number;
+      blocking_issue?: components["schemas"]["issue"];
+      blocking_issue_repo?: components["schemas"]["repository"];
       installation?: components["schemas"]["simple-installation"];
       organization: components["schemas"]["organization-simple-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
@@ -13326,12 +13421,12 @@ export interface components {
       /** @enum {string} */
       action: "blocking_added";
       /** @description The ID of the blocked issue. */
-      blocked_issue_id: number;
-      blocked_issue: components["schemas"]["issue"];
-      blocked_issue_repo: components["schemas"]["repository"];
+      blocked_issue_id?: number;
+      blocked_issue?: components["schemas"]["issue"];
+      blocked_issue_repo?: components["schemas"]["repository"];
       /** @description The ID of the blocking issue. */
-      blocking_issue_id: number;
-      blocking_issue: components["schemas"]["issue"];
+      blocking_issue_id?: number;
+      blocking_issue?: components["schemas"]["issue"];
       installation?: components["schemas"]["simple-installation"];
       organization: components["schemas"]["organization-simple-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
@@ -13342,12 +13437,12 @@ export interface components {
       /** @enum {string} */
       action: "blocking_removed";
       /** @description The ID of the blocked issue. */
-      blocked_issue_id: number;
-      blocked_issue: components["schemas"]["issue"];
-      blocked_issue_repo: components["schemas"]["repository"];
+      blocked_issue_id?: number;
+      blocked_issue?: components["schemas"]["issue"];
+      blocked_issue_repo?: components["schemas"]["repository"];
       /** @description The ID of the blocking issue. */
-      blocking_issue_id: number;
-      blocking_issue: components["schemas"]["issue"];
+      blocking_issue_id?: number;
+      blocking_issue?: components["schemas"]["issue"];
       installation?: components["schemas"]["simple-installation"];
       organization: components["schemas"]["organization-simple-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
@@ -52506,8 +52601,6 @@ export interface components {
       parameters?: {
         /** @description Array of allowed merge methods. Allowed values include `merge`, `squash`, and `rebase`. At least one option must be enabled. */
         allowed_merge_methods?: ("merge" | "squash" | "rebase")[];
-        /** @description Request Copilot code review for new pull requests automatically if the author has access to Copilot code review and their premium requests quota has not reached the limit. */
-        automatic_copilot_code_review_enabled?: boolean;
         /** @description New, reviewable commits pushed will dismiss previous pull request review approvals. */
         dismiss_stale_reviews_on_push: boolean;
         /** @description Require an approving review in pull requests that modify files that have a designated code owner. */
@@ -60331,6 +60424,117 @@ export interface operations {
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
         /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-exemption-request-response-submitted"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity related to a user's request to dismiss a Dependabot alert.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
+   * @description A Dependabot alert dismissal request was canceled.
+   */
+  "dismissal-request-dependabot/cancelled": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example dismissal_request_dependabot */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-exemption-request-cancelled"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity related to a user's request to dismiss a Dependabot alert.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
+   * @description A Dependabot alert dismissal request was created.
+   */
+  "dismissal-request-dependabot/created": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example dismissal_request_dependabot */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-exemption-request-created"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity related to a user's request to dismiss a Dependabot alert.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
+   * @description A Dependabot alert dismissal request received a response.
+   */
+  "dismissal-request-dependabot/response-submitted": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example dismissal_request_dependabot */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;

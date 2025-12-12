@@ -6002,6 +6002,7 @@ export interface components {
       dismissed_comment: string | null;
       fixed_at: components["schemas"]["alert-fixed-at"];
       auto_dismissed_at?: components["schemas"]["alert-auto-dismissed-at"];
+      dismissal_request?: components["schemas"]["dependabot-alert-dismissal-request-simple"];
     };
     /** @description The security alert number. */
     readonly "alert-number": number;
@@ -6149,6 +6150,36 @@ export interface components {
      * @description The time that the alert was auto-dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
      */
     readonly "alert-auto-dismissed-at": string | null;
+    /**
+     * Dependabot alert dismissal request
+     * @description Information about an active dismissal request for this Dependabot alert.
+     */
+    "dependabot-alert-dismissal-request-simple": {
+      /** @description The unique identifier of the dismissal request. */
+      id?: number;
+      /**
+       * @description The current status of the dismissal request.
+       * @enum {string}
+       */
+      status?: "pending" | "approved" | "rejected" | "cancelled";
+      /** @description The user who requested the dismissal. */
+      requester?: {
+        /** @description The unique identifier of the user. */
+        id?: number;
+        /** @description The login name of the user. */
+        login?: string;
+      };
+      /**
+       * Format: date-time
+       * @description The date and time when the dismissal request was created.
+       */
+      created_at?: string;
+      /**
+       * Format: uri
+       * @description The API URL to get more information about this dismissal request.
+       */
+      url?: string;
+    } | null;
     /** Dependabot alert auto-reopened event */
     "webhook-dependabot-alert-auto-reopened": {
       /** @enum {string} */
@@ -9467,7 +9498,7 @@ export interface components {
        * @description How the author is associated with the repository.
        * @enum {string}
        */
-      author_association:
+      author_association?:
         | "COLLABORATOR"
         | "CONTRIBUTOR"
         | "FIRST_TIMER"
@@ -12878,12 +12909,12 @@ export interface components {
       /** @enum {string} */
       action: "blocked_by_added";
       /** @description The ID of the blocked issue. */
-      blocked_issue_id: number;
-      blocked_issue: components["schemas"]["issue"];
+      blocked_issue_id?: number;
+      blocked_issue?: components["schemas"]["issue"];
       /** @description The ID of the blocking issue. */
-      blocking_issue_id: number;
-      blocking_issue: components["schemas"]["issue"];
-      blocking_issue_repo: components["schemas"]["repository"];
+      blocking_issue_id?: number;
+      blocking_issue?: components["schemas"]["issue"];
+      blocking_issue_repo?: components["schemas"]["repository"];
       installation?: components["schemas"]["simple-installation"];
       organization: components["schemas"]["organization-simple-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
@@ -13041,12 +13072,12 @@ export interface components {
       /** @enum {string} */
       action: "blocked_by_removed";
       /** @description The ID of the blocked issue. */
-      blocked_issue_id: number;
-      blocked_issue: components["schemas"]["issue"];
+      blocked_issue_id?: number;
+      blocked_issue?: components["schemas"]["issue"];
       /** @description The ID of the blocking issue. */
-      blocking_issue_id: number;
-      blocking_issue: components["schemas"]["issue"];
-      blocking_issue_repo: components["schemas"]["repository"];
+      blocking_issue_id?: number;
+      blocking_issue?: components["schemas"]["issue"];
+      blocking_issue_repo?: components["schemas"]["repository"];
       installation?: components["schemas"]["simple-installation"];
       organization: components["schemas"]["organization-simple-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
@@ -13057,12 +13088,12 @@ export interface components {
       /** @enum {string} */
       action: "blocking_added";
       /** @description The ID of the blocked issue. */
-      blocked_issue_id: number;
-      blocked_issue: components["schemas"]["issue"];
-      blocked_issue_repo: components["schemas"]["repository"];
+      blocked_issue_id?: number;
+      blocked_issue?: components["schemas"]["issue"];
+      blocked_issue_repo?: components["schemas"]["repository"];
       /** @description The ID of the blocking issue. */
-      blocking_issue_id: number;
-      blocking_issue: components["schemas"]["issue"];
+      blocking_issue_id?: number;
+      blocking_issue?: components["schemas"]["issue"];
       installation?: components["schemas"]["simple-installation"];
       organization: components["schemas"]["organization-simple-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
@@ -13073,12 +13104,12 @@ export interface components {
       /** @enum {string} */
       action: "blocking_removed";
       /** @description The ID of the blocked issue. */
-      blocked_issue_id: number;
-      blocked_issue: components["schemas"]["issue"];
-      blocked_issue_repo: components["schemas"]["repository"];
+      blocked_issue_id?: number;
+      blocked_issue?: components["schemas"]["issue"];
+      blocked_issue_repo?: components["schemas"]["repository"];
       /** @description The ID of the blocking issue. */
-      blocking_issue_id: number;
-      blocking_issue: components["schemas"]["issue"];
+      blocking_issue_id?: number;
+      blocking_issue?: components["schemas"]["issue"];
       installation?: components["schemas"]["simple-installation"];
       organization: components["schemas"]["organization-simple-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
@@ -55460,8 +55491,6 @@ export interface components {
       parameters?: {
         /** @description Array of allowed merge methods. Allowed values include `merge`, `squash`, and `rebase`. At least one option must be enabled. */
         allowed_merge_methods?: ("merge" | "squash" | "rebase")[];
-        /** @description Request Copilot code review for new pull requests automatically if the author has access to Copilot code review and their premium requests quota has not reached the limit. */
-        automatic_copilot_code_review_enabled?: boolean;
         /** @description New, reviewable commits pushed will dismiss previous pull request review approvals. */
         dismiss_stale_reviews_on_push: boolean;
         /** @description Require an approving review in pull requests that modify files that have a designated code owner. */
