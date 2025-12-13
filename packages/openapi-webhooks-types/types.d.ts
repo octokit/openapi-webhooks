@@ -5850,7 +5850,12 @@ export interface components {
        * @description The type of the value for the property
        * @enum {string}
        */
-      value_type: "string" | "single_select" | "multi_select" | "true_false";
+      value_type:
+        | "string"
+        | "single_select"
+        | "multi_select"
+        | "true_false"
+        | "url";
       /** @description Whether the property is required. */
       required?: boolean;
       /** @description Default value of the property */
