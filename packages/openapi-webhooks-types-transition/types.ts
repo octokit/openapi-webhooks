@@ -57,13 +57,16 @@ export type CodeScanningAlertReopenedEvent =
   WebhookEventDefinition<"code-scanning-alert-reopened">;
 export type CodeScanningAlertReopenedByUserEvent =
   WebhookEventDefinition<"code-scanning-alert-reopened-by-user">;
+export type CodeScanningAlertUpdatedAssignmentEvent =
+  WebhookEventDefinition<"code-scanning-alert-updated-assignment">;
 export type CodeScanningAlertEvent =
   | WebhookEventDefinition<"code-scanning-alert-appeared-in-branch">
   | WebhookEventDefinition<"code-scanning-alert-closed-by-user">
   | WebhookEventDefinition<"code-scanning-alert-created">
   | WebhookEventDefinition<"code-scanning-alert-fixed">
   | WebhookEventDefinition<"code-scanning-alert-reopened">
-  | WebhookEventDefinition<"code-scanning-alert-reopened-by-user">;
+  | WebhookEventDefinition<"code-scanning-alert-reopened-by-user">
+  | WebhookEventDefinition<"code-scanning-alert-updated-assignment">;
 export type CommitCommentEvent =
   WebhookEventDefinition<"commit-comment-created">;
 export type CreateEvent = WebhookEventDefinition<"create">;
@@ -770,7 +773,8 @@ export type EventPayloadMap = {
     | WebhookEventDefinition<"code-scanning-alert-created">
     | WebhookEventDefinition<"code-scanning-alert-fixed">
     | WebhookEventDefinition<"code-scanning-alert-reopened">
-    | WebhookEventDefinition<"code-scanning-alert-reopened-by-user">;
+    | WebhookEventDefinition<"code-scanning-alert-reopened-by-user">
+    | WebhookEventDefinition<"code-scanning-alert-updated-assignment">;
   commit_comment: WebhookEventDefinition<"commit-comment-created">;
   create: WebhookEventDefinition<"create">;
   custom_property:

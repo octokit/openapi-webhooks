@@ -232,6 +232,15 @@ export interface webhooks {
      */
     post: operations["code-scanning-alert/reopened-by-user"];
   };
+  "code-scanning-alert-updated-assignment": {
+    /**
+     * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/rest/code-scanning)" in the REST API documentation.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Code scanning alerts" repository permission.
+     * @description The assignees list of a code scanning alert has been updated.
+     */
+    post: operations["code-scanning-alert/updated-assignment"];
+  };
   "commit-comment-created": {
     /**
      * This event occurs when there is activity relating to commit comments. For more information about commit comments, see "[Commenting on a pull request](https://docs.github.com/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request)." For information about the APIs to manage commit comments, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#commitcomment) or "[Commit comments](https://docs.github.com/rest/commits/comments)" in the REST API documentation.
@@ -5690,6 +5699,139 @@ export interface components {
       installation?: components["schemas"]["simple-installation"];
       organization?: components["schemas"]["organization-simple-webhooks"];
       ref: components["schemas"]["webhooks_code_scanning_ref"];
+      repository: components["schemas"]["repository-webhooks"];
+      sender: components["schemas"]["simple-user"];
+    };
+    /** code_scanning_alert updated_assignment event */
+    "webhook-code-scanning-alert-updated-assignment": {
+      /** @enum {string} */
+      action: "updated_assignment";
+      /** @description The code scanning alert involved in the event. */
+      alert: {
+        assignees?: components["schemas"]["simple-user"][];
+        /**
+         * Format: date-time
+         * @description The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ.`
+         */
+        created_at: string;
+        /**
+         * Format: date-time
+         * @description The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+         */
+        dismissed_at: string | null;
+        /** User */
+        dismissed_by: {
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization";
+          /** Format: uri */
+          url?: string;
+          user_view_type?: string;
+        } | null;
+        dismissed_comment?: components["schemas"]["code-scanning-alert-dismissed-comment"];
+        /**
+         * @description The reason for dismissing or closing the alert.
+         * @enum {string|null}
+         */
+        dismissed_reason:
+          | "false positive"
+          | "won't fix"
+          | "used in tests"
+          | null;
+        /** @description The time that the alert was fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`. */
+        fixed_at?: null;
+        /**
+         * Format: uri
+         * @description The GitHub URL of the alert resource.
+         */
+        html_url: string;
+        /** Alert Instance */
+        most_recent_instance?: {
+          /** @description Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name. */
+          analysis_key: string;
+          /** @description Identifies the configuration under which the analysis was executed. */
+          category?: string;
+          classifications?: string[];
+          commit_sha?: string;
+          /** @description Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed. */
+          environment: string;
+          location?: {
+            end_column?: number;
+            end_line?: number;
+            path?: string;
+            start_column?: number;
+            start_line?: number;
+          };
+          message?: {
+            text?: string;
+          };
+          /** @description The full Git reference, formatted as `refs/heads/<branch name>`. */
+          ref: string;
+          /**
+           * @description State of a code scanning alert.
+           * @enum {string}
+           */
+          state: "open" | "dismissed" | "fixed";
+        } | null;
+        /** @description The code scanning alert number. */
+        number: number;
+        rule: {
+          /** @description A short description of the rule used to detect the alert. */
+          description: string;
+          /** @description A unique identifier for the rule used to detect the alert. */
+          id: string;
+          /**
+           * @description The severity of the alert.
+           * @enum {string|null}
+           */
+          severity: "none" | "note" | "warning" | "error" | null;
+        };
+        /**
+         * @description State of a code scanning alert. Events for alerts found outside the default branch will return a `null` value until they are dismissed or fixed.
+         * @enum {string|null}
+         */
+        state: "open" | "dismissed" | "fixed" | null;
+        tool: {
+          /** @description The name of the tool used to generate the code scanning analysis alert. */
+          name: string;
+          /** @description The version of the tool used to detect the alert. */
+          version: string | null;
+        };
+        /** Format: uri */
+        url: string;
+      };
+      enterprise?: components["schemas"]["enterprise-webhooks"];
+      installation?: components["schemas"]["simple-installation"];
+      organization?: components["schemas"]["organization-simple-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
       sender: components["schemas"]["simple-user"];
     };
@@ -61218,6 +61360,43 @@ export interface operations {
     requestBody: {
       content: {
         "application/json": components["schemas"]["webhook-code-scanning-alert-reopened-by-user"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/rest/code-scanning)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Code scanning alerts" repository permission.
+   * @description The assignees list of a code scanning alert has been updated.
+   */
+  "code-scanning-alert/updated-assignment": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-code-scanning-alert-updated-assignment"];
       };
     };
     responses: {

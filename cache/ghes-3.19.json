@@ -27266,6 +27266,11 @@
             "description": "The enablement status of Dependabot security updates",
             "enum": ["enabled", "disabled", "not_set"]
           },
+          "dependabot_delegated_alert_dismissal": {
+            "type": ["string", "null"],
+            "description": "The enablement status of Dependabot delegated alert dismissal",
+            "enum": ["enabled", "disabled", "not_set", null]
+          },
           "code_scanning_options": {
             "type": ["object", "null"],
             "description": "Feature options for code scanning",

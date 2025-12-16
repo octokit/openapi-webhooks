@@ -1567,6 +1567,81 @@
         }
       }
     },
+    "code-scanning-alert-updated-assignment": {
+      "post": {
+        "summary": "This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see \"[About code scanning](https://docs.github.com/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)\" and \"[About code scanning alerts](https://docs.github.com/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts).\" For information about the API to manage code scanning, see \"[Code scanning](https://docs.github.com/rest/code-scanning)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Code scanning alerts\" repository permission.",
+        "description": "The assignees list of a code scanning alert has been updated.",
+        "operationId": "code-scanning-alert/updated-assignment",
+        "externalDocs": {
+          "url": "https://docs.github.com/webhooks/webhook-events-and-payloads#code_scanning_alert"
+        },
+        "parameters": [
+          {
+            "name": "User-Agent",
+            "in": "header",
+            "example": "GitHub-Hookshot/123abc",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "X-Github-Hook-Id",
+            "in": "header",
+            "example": 12312312,
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "X-Github-Event",
+            "in": "header",
+            "example": "issues",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "X-Github-Hook-Installation-Target-Id",
+            "in": "header",
+            "example": 123123,
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "X-Github-Hook-Installation-Target-Type",
+            "in": "header",
+            "example": "repository",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "X-GitHub-Delivery",
+            "in": "header",
+            "example": "0b989ba4-242f-11e5-81e1-c7b6966d2516",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "X-Hub-Signature-256",
+            "in": "header",
+            "example": "sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e",
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/webhook-code-scanning-alert-updated-assignment"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Return a 200 status to indicate that the data was received successfully"
+          }
+        },
+        "x-github": {
+          "githubCloudOnly": false,
+          "category": "webhooks",
+          "subcategory": "code_scanning_alert",
+          "supported-webhook-types": ["repository", "organization", "app"]
+        }
+      }
+    },
     "commit-comment-created": {
       "post": {
         "summary": "This event occurs when there is activity relating to commit comments. For more information about commit comments, see \"[Commenting on a pull request](https://docs.github.com/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request).\" For information about the APIs to manage commit comments, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#commitcomment) or \"[Commit comments](https://docs.github.com/rest/commits/comments)\" in the REST API documentation.\n\nFor activity relating to comments on pull request reviews, use the `pull_request_review_comment` event. For activity relating to issue comments, use the `issue_comment` event. For activity relating to discussion comments, use the `discussion_comment` event.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Contents\" repository permission.",
@@ -22608,6 +22683,11 @@
             "type": "string",
             "description": "The enablement status of Dependabot security updates",
             "enum": ["enabled", "disabled", "not_set"]
+          },
+          "dependabot_delegated_alert_dismissal": {
+            "type": ["string", "null"],
+            "description": "The enablement status of Dependabot delegated alert dismissal",
+            "enum": ["enabled", "disabled", "not_set", null]
           },
           "code_scanning_options": {
             "type": ["object", "null"],
@@ -55703,6 +55783,197 @@
           "repository",
           "sender"
         ]
+      },
+      "webhook-code-scanning-alert-updated-assignment": {
+        "title": "code_scanning_alert updated_assignment event",
+        "type": "object",
+        "properties": {
+          "action": { "type": "string", "enum": ["updated_assignment"] },
+          "alert": {
+            "description": "The code scanning alert involved in the event.",
+            "type": "object",
+            "properties": {
+              "assignees": {
+                "type": "array",
+                "items": { "$ref": "#/components/schemas/simple-user" }
+              },
+              "created_at": {
+                "description": "The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ.`",
+                "type": "string",
+                "format": "date-time"
+              },
+              "dismissed_at": {
+                "description": "The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+                "type": ["string", "null"],
+                "format": "date-time"
+              },
+              "dismissed_by": {
+                "title": "User",
+                "type": ["object", "null"],
+                "properties": {
+                  "avatar_url": { "type": "string", "format": "uri" },
+                  "deleted": { "type": "boolean" },
+                  "email": { "type": ["string", "null"] },
+                  "events_url": { "type": "string", "format": "uri-template" },
+                  "followers_url": { "type": "string", "format": "uri" },
+                  "following_url": {
+                    "type": "string",
+                    "format": "uri-template"
+                  },
+                  "gists_url": { "type": "string", "format": "uri-template" },
+                  "gravatar_id": { "type": "string" },
+                  "html_url": { "type": "string", "format": "uri" },
+                  "id": { "type": "integer" },
+                  "login": { "type": "string" },
+                  "name": { "type": "string" },
+                  "node_id": { "type": "string" },
+                  "organizations_url": { "type": "string", "format": "uri" },
+                  "received_events_url": { "type": "string", "format": "uri" },
+                  "repos_url": { "type": "string", "format": "uri" },
+                  "site_admin": { "type": "boolean" },
+                  "starred_url": { "type": "string", "format": "uri-template" },
+                  "subscriptions_url": { "type": "string", "format": "uri" },
+                  "type": {
+                    "type": "string",
+                    "enum": ["Bot", "User", "Organization"]
+                  },
+                  "url": { "type": "string", "format": "uri" },
+                  "user_view_type": { "type": "string" }
+                },
+                "required": ["login", "id"]
+              },
+              "dismissed_comment": {
+                "$ref": "#/components/schemas/code-scanning-alert-dismissed-comment"
+              },
+              "dismissed_reason": {
+                "description": "The reason for dismissing or closing the alert.",
+                "type": ["string", "null"],
+                "enum": ["false positive", "won't fix", "used in tests", null]
+              },
+              "fixed_at": {
+                "description": "The time that the alert was fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+                "type": ["null"]
+              },
+              "html_url": {
+                "description": "The GitHub URL of the alert resource.",
+                "type": "string",
+                "format": "uri"
+              },
+              "most_recent_instance": {
+                "title": "Alert Instance",
+                "type": ["object", "null"],
+                "properties": {
+                  "analysis_key": {
+                    "description": "Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name.",
+                    "type": "string"
+                  },
+                  "category": {
+                    "description": "Identifies the configuration under which the analysis was executed.",
+                    "type": "string"
+                  },
+                  "classifications": {
+                    "type": "array",
+                    "items": { "type": "string" }
+                  },
+                  "commit_sha": { "type": "string" },
+                  "environment": {
+                    "description": "Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed.",
+                    "type": "string"
+                  },
+                  "location": {
+                    "type": "object",
+                    "properties": {
+                      "end_column": { "type": "integer" },
+                      "end_line": { "type": "integer" },
+                      "path": { "type": "string" },
+                      "start_column": { "type": "integer" },
+                      "start_line": { "type": "integer" }
+                    }
+                  },
+                  "message": {
+                    "type": "object",
+                    "properties": { "text": { "type": "string" } }
+                  },
+                  "ref": {
+                    "description": "The full Git reference, formatted as `refs/heads/<branch name>`.",
+                    "type": "string"
+                  },
+                  "state": {
+                    "description": "State of a code scanning alert.",
+                    "type": "string",
+                    "enum": ["open", "dismissed", "fixed"]
+                  }
+                },
+                "required": ["ref", "analysis_key", "environment", "state"]
+              },
+              "number": {
+                "description": "The code scanning alert number.",
+                "type": "integer"
+              },
+              "rule": {
+                "type": "object",
+                "properties": {
+                  "description": {
+                    "description": "A short description of the rule used to detect the alert.",
+                    "type": "string"
+                  },
+                  "id": {
+                    "description": "A unique identifier for the rule used to detect the alert.",
+                    "type": "string"
+                  },
+                  "severity": {
+                    "description": "The severity of the alert.",
+                    "type": ["string", "null"],
+                    "enum": ["none", "note", "warning", "error", null]
+                  }
+                },
+                "required": ["id", "severity", "description"]
+              },
+              "state": {
+                "description": "State of a code scanning alert. Events for alerts found outside the default branch will return a `null` value until they are dismissed or fixed.",
+                "type": ["string", "null"],
+                "enum": ["open", "dismissed", "fixed", null]
+              },
+              "tool": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "description": "The name of the tool used to generate the code scanning analysis alert.",
+                    "type": "string"
+                  },
+                  "version": {
+                    "description": "The version of the tool used to detect the alert.",
+                    "type": ["string", "null"]
+                  }
+                },
+                "required": ["name", "version"]
+              },
+              "url": { "type": "string", "format": "uri" }
+            },
+            "required": [
+              "number",
+              "created_at",
+              "url",
+              "html_url",
+              "state",
+              "dismissed_by",
+              "dismissed_at",
+              "dismissed_reason",
+              "rule",
+              "tool"
+            ]
+          },
+          "enterprise": { "$ref": "#/components/schemas/enterprise-webhooks" },
+          "installation": {
+            "$ref": "#/components/schemas/simple-installation"
+          },
+          "organization": {
+            "$ref": "#/components/schemas/organization-simple-webhooks"
+          },
+          "repository": { "$ref": "#/components/schemas/repository-webhooks" },
+          "sender": { "$ref": "#/components/schemas/simple-user" }
+        },
+        "required": ["action", "alert", "repository", "sender"]
       },
       "webhook-commit-comment-created": {
         "title": "commit_comment created event",
@@ -135849,7 +136120,7 @@
             "dependabot_alerts": "enabled",
             "dependabot_security_updates": "not_set",
             "code_scanning_default_setup": "enabled",
-            "code_scanning_delagated_alert_dismissal": "enabled",
+            "code_scanning_delegated_alert_dismissal": "enabled",
             "secret_scanning": "enabled",
             "secret_scanning_push_protection": "enabled",
             "secret_scanning_delegated_bypass": "enabled",
@@ -135886,7 +136157,7 @@
             "dependabot_alerts": "enabled",
             "dependabot_security_updates": "enabled",
             "code_scanning_default_setup": "enabled",
-            "code_scanning_delagated_alert_dismissal": "enabled",
+            "code_scanning_delegated_alert_dismissal": "enabled",
             "secret_scanning": "enabled",
             "secret_scanning_push_protection": "enabled",
             "secret_scanning_delegated_bypass": "disabled",
@@ -145391,14 +145662,12 @@
               "repositories": [
                 {
                   "id": 1,
-                  "node_id": "MDQ6VXNlcjE=",
                   "name": "octo-repo1",
                   "full_name": "octo-org/octo-repo1",
                   "private": false
                 },
                 {
                   "id": 2,
-                  "node_id": "MDQ6VXNlcjE=",
                   "name": "octo-repo2",
                   "full_name": "octo-org/octo-repo2",
                   "private": false
@@ -145418,14 +145687,12 @@
               "repositories": [
                 {
                   "id": 7,
-                  "node_id": "MDQ6VXNlcjE=",
                   "name": "octo-repo7",
                   "full_name": "octo-org/octo-repo7",
                   "private": false
                 },
                 {
                   "id": 8,
-                  "node_id": "MDQ6VXNlcjE=",
                   "name": "octo-repo8",
                   "full_name": "octo-org/octo-repo8",
                   "private": false
@@ -145437,14 +145704,12 @@
               "repositories": [
                 {
                   "id": 9,
-                  "node_id": "MDQ6VXNlcjE=",
                   "name": "octo-repo9",
                   "full_name": "octo-org/octo-repo9",
                   "private": false
                 },
                 {
                   "id": 10,
-                  "node_id": "MDQ6VXNlcjE=",
                   "name": "octo-repo10",
                   "full_name": "octo-org/octo-repo10",
                   "private": false
