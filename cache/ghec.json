@@ -145057,6 +145057,11 @@
           "state": "active",
           "role": "admin",
           "organization_url": "https://api.github.com/orgs/octocat",
+          "direct_membership": true,
+          "enterprise_teams_providing_indirect_membership": [
+            "ent:justice-league",
+            "ent:security-managers"
+          ],
           "organization": {
             "login": "github",
             "id": 1,
@@ -164577,6 +164582,8 @@
             "state": "active",
             "role": "admin",
             "organization_url": "https://api.github.com/orgs/octocat",
+            "direct_membership": true,
+            "enterprise_teams_providing_indirect_membership": [],
             "organization": {
               "login": "github",
               "id": 1,
@@ -164617,6 +164624,11 @@
             "state": "pending",
             "role": "admin",
             "organization_url": "https://api.github.com/orgs/invitocat",
+            "direct_membership": false,
+            "enterprise_teams_providing_indirect_membership": [
+              "ent:justice-league",
+              "ent:security-managers"
+            ],
             "organization": {
               "login": "github",
               "id": 1,
@@ -164660,6 +164672,11 @@
           "state": "pending",
           "role": "admin",
           "organization_url": "https://api.github.com/orgs/invitocat",
+          "direct_membership": true,
+          "enterprise_teams_providing_indirect_membership": [
+            "ent:justice-league",
+            "ent:security-managers"
+          ],
           "organization": {
             "login": "github",
             "id": 1,
@@ -164702,6 +164719,11 @@
           "state": "active",
           "role": "admin",
           "organization_url": "https://api.github.com/orgs/octocat",
+          "direct_membership": true,
+          "enterprise_teams_providing_indirect_membership": [
+            "ent:justice-league",
+            "ent:security-managers"
+          ],
           "organization": {
             "login": "github",
             "id": 1,
