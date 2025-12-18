@@ -36227,42 +36227,6 @@
           "url"
         ]
       },
-      "reaction": {
-        "title": "Reaction",
-        "description": "Reactions to conversations provide a way to help people express their feelings more simply and effectively.",
-        "type": "object",
-        "properties": {
-          "id": { "type": "integer", "examples": [1] },
-          "node_id": { "type": "string", "examples": ["MDg6UmVhY3Rpb24x"] },
-          "user": {
-            "anyOf": [
-              { "type": "null" },
-              { "$ref": "#/components/schemas/simple-user" }
-            ]
-          },
-          "content": {
-            "description": "The reaction to use",
-            "type": "string",
-            "enum": [
-              "+1",
-              "-1",
-              "laugh",
-              "confused",
-              "heart",
-              "hooray",
-              "rocket",
-              "eyes"
-            ],
-            "examples": ["heart"]
-          },
-          "created_at": {
-            "type": "string",
-            "format": "date-time",
-            "examples": ["2016-05-20T20:09:31Z"]
-          }
-        },
-        "required": ["id", "node_id", "user", "content", "created_at"]
-      },
       "team-membership": {
         "title": "Team Membership",
         "description": "Team Membership",
@@ -40027,6 +39991,42 @@
           "created_at",
           "updated_at"
         ]
+      },
+      "reaction": {
+        "title": "Reaction",
+        "description": "Reactions to conversations provide a way to help people express their feelings more simply and effectively.",
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer", "examples": [1] },
+          "node_id": { "type": "string", "examples": ["MDg6UmVhY3Rpb24x"] },
+          "user": {
+            "anyOf": [
+              { "type": "null" },
+              { "$ref": "#/components/schemas/simple-user" }
+            ]
+          },
+          "content": {
+            "description": "The reaction to use",
+            "type": "string",
+            "enum": [
+              "+1",
+              "-1",
+              "laugh",
+              "confused",
+              "heart",
+              "hooray",
+              "rocket",
+              "eyes"
+            ],
+            "examples": ["heart"]
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "examples": ["2016-05-20T20:09:31Z"]
+          }
+        },
+        "required": ["id", "node_id", "user", "content", "created_at"]
       },
       "branch-short": {
         "title": "Branch Short",
@@ -136324,64 +136324,6 @@
           }
         }
       },
-      "reaction-items": {
-        "value": [
-          {
-            "id": 1,
-            "node_id": "MDg6UmVhY3Rpb24x",
-            "user": {
-              "login": "octocat",
-              "id": 1,
-              "node_id": "MDQ6VXNlcjE=",
-              "avatar_url": "https://github.com/images/error/octocat_happy.gif",
-              "gravatar_id": "",
-              "url": "https://api.github.com/users/octocat",
-              "html_url": "https://github.com/octocat",
-              "followers_url": "https://api.github.com/users/octocat/followers",
-              "following_url": "https://api.github.com/users/octocat/following{/other_user}",
-              "gists_url": "https://api.github.com/users/octocat/gists{/gist_id}",
-              "starred_url": "https://api.github.com/users/octocat/starred{/owner}{/repo}",
-              "subscriptions_url": "https://api.github.com/users/octocat/subscriptions",
-              "organizations_url": "https://api.github.com/users/octocat/orgs",
-              "repos_url": "https://api.github.com/users/octocat/repos",
-              "events_url": "https://api.github.com/users/octocat/events{/privacy}",
-              "received_events_url": "https://api.github.com/users/octocat/received_events",
-              "type": "User",
-              "site_admin": false
-            },
-            "content": "heart",
-            "created_at": "2016-05-20T20:09:31Z"
-          }
-        ]
-      },
-      "reaction": {
-        "value": {
-          "id": 1,
-          "node_id": "MDg6UmVhY3Rpb24x",
-          "user": {
-            "login": "octocat",
-            "id": 1,
-            "node_id": "MDQ6VXNlcjE=",
-            "avatar_url": "https://github.com/images/error/octocat_happy.gif",
-            "gravatar_id": "",
-            "url": "https://api.github.com/users/octocat",
-            "html_url": "https://github.com/octocat",
-            "followers_url": "https://api.github.com/users/octocat/followers",
-            "following_url": "https://api.github.com/users/octocat/following{/other_user}",
-            "gists_url": "https://api.github.com/users/octocat/gists{/gist_id}",
-            "starred_url": "https://api.github.com/users/octocat/starred{/owner}{/repo}",
-            "subscriptions_url": "https://api.github.com/users/octocat/subscriptions",
-            "organizations_url": "https://api.github.com/users/octocat/orgs",
-            "repos_url": "https://api.github.com/users/octocat/repos",
-            "events_url": "https://api.github.com/users/octocat/events{/privacy}",
-            "received_events_url": "https://api.github.com/users/octocat/received_events",
-            "type": "User",
-            "site_admin": false
-          },
-          "content": "heart",
-          "created_at": "2016-05-20T20:09:31Z"
-        }
-      },
       "team-membership-response-if-user-is-a-team-maintainer": {
         "summary": "Response if user is a team maintainer",
         "value": {
@@ -140449,6 +140391,64 @@
           },
           "created_at": "2011-04-14T16:00:49Z",
           "updated_at": "2011-04-14T16:00:49Z"
+        }
+      },
+      "reaction-items": {
+        "value": [
+          {
+            "id": 1,
+            "node_id": "MDg6UmVhY3Rpb24x",
+            "user": {
+              "login": "octocat",
+              "id": 1,
+              "node_id": "MDQ6VXNlcjE=",
+              "avatar_url": "https://github.com/images/error/octocat_happy.gif",
+              "gravatar_id": "",
+              "url": "https://api.github.com/users/octocat",
+              "html_url": "https://github.com/octocat",
+              "followers_url": "https://api.github.com/users/octocat/followers",
+              "following_url": "https://api.github.com/users/octocat/following{/other_user}",
+              "gists_url": "https://api.github.com/users/octocat/gists{/gist_id}",
+              "starred_url": "https://api.github.com/users/octocat/starred{/owner}{/repo}",
+              "subscriptions_url": "https://api.github.com/users/octocat/subscriptions",
+              "organizations_url": "https://api.github.com/users/octocat/orgs",
+              "repos_url": "https://api.github.com/users/octocat/repos",
+              "events_url": "https://api.github.com/users/octocat/events{/privacy}",
+              "received_events_url": "https://api.github.com/users/octocat/received_events",
+              "type": "User",
+              "site_admin": false
+            },
+            "content": "heart",
+            "created_at": "2016-05-20T20:09:31Z"
+          }
+        ]
+      },
+      "reaction": {
+        "value": {
+          "id": 1,
+          "node_id": "MDg6UmVhY3Rpb24x",
+          "user": {
+            "login": "octocat",
+            "id": 1,
+            "node_id": "MDQ6VXNlcjE=",
+            "avatar_url": "https://github.com/images/error/octocat_happy.gif",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/octocat",
+            "html_url": "https://github.com/octocat",
+            "followers_url": "https://api.github.com/users/octocat/followers",
+            "following_url": "https://api.github.com/users/octocat/following{/other_user}",
+            "gists_url": "https://api.github.com/users/octocat/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/octocat/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/octocat/subscriptions",
+            "organizations_url": "https://api.github.com/users/octocat/orgs",
+            "repos_url": "https://api.github.com/users/octocat/repos",
+            "events_url": "https://api.github.com/users/octocat/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/octocat/received_events",
+            "type": "User",
+            "site_admin": false
+          },
+          "content": "heart",
+          "created_at": "2016-05-20T20:09:31Z"
         }
       },
       "commit-items": {
@@ -153697,13 +153697,6 @@
         "required": true,
         "schema": { "type": "integer" }
       },
-      "reaction-id": {
-        "name": "reaction_id",
-        "description": "The unique identifier of the reaction.",
-        "in": "path",
-        "required": true,
-        "schema": { "type": "integer" }
-      },
       "security-product": {
         "name": "security_product",
         "in": "path",
@@ -153949,6 +153942,13 @@
         "description": "The number that identifies an alert. You can find this at the end of the URL for a code scanning alert within GitHub, and in the `number` field in the response from the `GET /repos/{owner}/{repo}/code-scanning/alerts` operation.",
         "required": true,
         "schema": { "$ref": "#/components/schemas/alert-number" }
+      },
+      "reaction-id": {
+        "name": "reaction_id",
+        "description": "The unique identifier of the reaction.",
+        "in": "path",
+        "required": true,
+        "schema": { "type": "integer" }
       },
       "commit-sha": {
         "name": "commit_sha",
