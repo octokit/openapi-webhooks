@@ -32432,14 +32432,6 @@
             "type": "string",
             "examples": ["0307116bbf7ced493b8d8a346c650b71"]
           },
-          "comments_count": { "type": "integer", "examples": [0] },
-          "comments_url": {
-            "type": "string",
-            "format": "uri",
-            "examples": [
-              "https://api.github.com/organizations/1/team/2343027/discussions/1/comments"
-            ]
-          },
           "created_at": {
             "type": "string",
             "format": "date-time",
@@ -32504,8 +32496,6 @@
           "body",
           "body_html",
           "body_version",
-          "comments_count",
-          "comments_url",
           "created_at",
           "last_edited_at",
           "html_url",
@@ -32515,92 +32505,6 @@
           "number",
           "team_url",
           "title",
-          "updated_at",
-          "url"
-        ]
-      },
-      "team-discussion-comment": {
-        "title": "Team Discussion Comment",
-        "description": "A reply to a discussion within a team.",
-        "type": "object",
-        "properties": {
-          "author": {
-            "anyOf": [
-              { "type": "null" },
-              { "$ref": "#/components/schemas/simple-user" }
-            ]
-          },
-          "body": {
-            "description": "The main text of the comment.",
-            "type": "string",
-            "examples": ["I agree with this suggestion."]
-          },
-          "body_html": {
-            "type": "string",
-            "examples": ["<p>Do you like apples?</p>"]
-          },
-          "body_version": {
-            "description": "The current version of the body content. If provided, this update operation will be rejected if the given version does not match the latest version on the server.",
-            "type": "string",
-            "examples": ["0307116bbf7ced493b8d8a346c650b71"]
-          },
-          "created_at": {
-            "type": "string",
-            "format": "date-time",
-            "examples": ["2018-01-15T23:53:58Z"]
-          },
-          "last_edited_at": {
-            "type": ["string", "null"],
-            "format": "date-time"
-          },
-          "discussion_url": {
-            "type": "string",
-            "format": "uri",
-            "examples": [
-              "https://api.github.com/organizations/1/team/2403582/discussions/1"
-            ]
-          },
-          "html_url": {
-            "type": "string",
-            "format": "uri",
-            "examples": [
-              "https://github.com/orgs/github/teams/justice-league/discussions/1/comments/1"
-            ]
-          },
-          "node_id": {
-            "type": "string",
-            "examples": ["MDIxOlRlYW1EaXNjdXNzaW9uQ29tbWVudDE="]
-          },
-          "number": {
-            "description": "The unique sequence number of a team discussion comment.",
-            "type": "integer",
-            "examples": [42]
-          },
-          "updated_at": {
-            "type": "string",
-            "format": "date-time",
-            "examples": ["2018-01-15T23:53:58Z"]
-          },
-          "url": {
-            "type": "string",
-            "format": "uri",
-            "examples": [
-              "https://api.github.com/organizations/1/team/2403582/discussions/1/comments/1"
-            ]
-          },
-          "reactions": { "$ref": "#/components/schemas/reaction-rollup" }
-        },
-        "required": [
-          "author",
-          "body",
-          "body_html",
-          "body_version",
-          "created_at",
-          "last_edited_at",
-          "discussion_url",
-          "html_url",
-          "node_id",
-          "number",
           "updated_at",
           "url"
         ]
@@ -131860,8 +131764,6 @@
             "body": "Hi! This is an area for us to collaborate as a team.",
             "body_html": "<p>Hi! This is an area for us to collaborate as a team</p>",
             "body_version": "0d495416a700fb06133c612575d92bfb",
-            "comments_count": 0,
-            "comments_url": "https://api.github.com/teams/2343027/discussions/1/comments",
             "created_at": "2018-01-25T18:56:31Z",
             "last_edited_at": null,
             "html_url": "https://github.com/orgs/github/teams/justice-league/discussions/1",
@@ -131913,8 +131815,6 @@
           "body": "Hi! This is an area for us to collaborate as a team.",
           "body_html": "<p>Hi! This is an area for us to collaborate as a team</p>",
           "body_version": "0d495416a700fb06133c612575d92bfb",
-          "comments_count": 0,
-          "comments_url": "https://api.github.com/teams/2343027/discussions/1/comments",
           "created_at": "2018-01-25T18:56:31Z",
           "last_edited_at": null,
           "html_url": "https://github.com/orgs/github/teams/justice-league/discussions/1",
@@ -131965,8 +131865,6 @@
           "body": "Hi! This is an area for us to collaborate as a team.",
           "body_html": "<p>Hi! This is an area for us to collaborate as a team</p>",
           "body_version": "0d495416a700fb06133c612575d92bfb",
-          "comments_count": 1,
-          "comments_url": "https://api.github.com/teams/2343027/discussions/1/comments",
           "created_at": "2018-01-25T18:56:31Z",
           "last_edited_at": "2018-01-26T18:22:20Z",
           "html_url": "https://github.com/orgs/github/teams/justice-league/discussions/1",
@@ -131980,149 +131878,6 @@
           "url": "https://api.github.com/teams/2343027/discussions/1",
           "reactions": {
             "url": "https://api.github.com/teams/2343027/discussions/1/reactions",
-            "total_count": 5,
-            "+1": 3,
-            "-1": 1,
-            "laugh": 0,
-            "confused": 0,
-            "heart": 1,
-            "hooray": 0,
-            "eyes": 1,
-            "rocket": 1
-          }
-        }
-      },
-      "team-discussion-comment-items": {
-        "value": [
-          {
-            "author": {
-              "login": "octocat",
-              "id": 1,
-              "node_id": "MDQ6VXNlcjE=",
-              "avatar_url": "https://github.com/images/error/octocat_happy.gif",
-              "gravatar_id": "",
-              "url": "https://api.github.com/users/octocat",
-              "html_url": "https://github.com/octocat",
-              "followers_url": "https://api.github.com/users/octocat/followers",
-              "following_url": "https://api.github.com/users/octocat/following{/other_user}",
-              "gists_url": "https://api.github.com/users/octocat/gists{/gist_id}",
-              "starred_url": "https://api.github.com/users/octocat/starred{/owner}{/repo}",
-              "subscriptions_url": "https://api.github.com/users/octocat/subscriptions",
-              "organizations_url": "https://api.github.com/users/octocat/orgs",
-              "repos_url": "https://api.github.com/users/octocat/repos",
-              "events_url": "https://api.github.com/users/octocat/events{/privacy}",
-              "received_events_url": "https://api.github.com/users/octocat/received_events",
-              "type": "User",
-              "site_admin": false
-            },
-            "body": "Do you like apples?",
-            "body_html": "<p>Do you like apples?</p>",
-            "body_version": "5eb32b219cdc6a5a9b29ba5d6caa9c51",
-            "created_at": "2018-01-15T23:53:58Z",
-            "last_edited_at": null,
-            "discussion_url": "https://api.github.com/teams/2403582/discussions/1",
-            "html_url": "https://github.com/orgs/github/teams/justice-league/discussions/1/comments/1",
-            "node_id": "MDIxOlRlYW1EaXNjdXNzaW9uQ29tbWVudDE=",
-            "number": 1,
-            "updated_at": "2018-01-15T23:53:58Z",
-            "url": "https://api.github.com/teams/2403582/discussions/1/comments/1",
-            "reactions": {
-              "url": "https://api.github.com/teams/2403582/discussions/1/reactions",
-              "total_count": 5,
-              "+1": 3,
-              "-1": 1,
-              "laugh": 0,
-              "confused": 0,
-              "heart": 1,
-              "hooray": 0,
-              "eyes": 1,
-              "rocket": 1
-            }
-          }
-        ]
-      },
-      "team-discussion-comment": {
-        "value": {
-          "author": {
-            "login": "octocat",
-            "id": 1,
-            "node_id": "MDQ6VXNlcjE=",
-            "avatar_url": "https://github.com/images/error/octocat_happy.gif",
-            "gravatar_id": "",
-            "url": "https://api.github.com/users/octocat",
-            "html_url": "https://github.com/octocat",
-            "followers_url": "https://api.github.com/users/octocat/followers",
-            "following_url": "https://api.github.com/users/octocat/following{/other_user}",
-            "gists_url": "https://api.github.com/users/octocat/gists{/gist_id}",
-            "starred_url": "https://api.github.com/users/octocat/starred{/owner}{/repo}",
-            "subscriptions_url": "https://api.github.com/users/octocat/subscriptions",
-            "organizations_url": "https://api.github.com/users/octocat/orgs",
-            "repos_url": "https://api.github.com/users/octocat/repos",
-            "events_url": "https://api.github.com/users/octocat/events{/privacy}",
-            "received_events_url": "https://api.github.com/users/octocat/received_events",
-            "type": "User",
-            "site_admin": false
-          },
-          "body": "Do you like apples?",
-          "body_html": "<p>Do you like apples?</p>",
-          "body_version": "5eb32b219cdc6a5a9b29ba5d6caa9c51",
-          "created_at": "2018-01-15T23:53:58Z",
-          "last_edited_at": null,
-          "discussion_url": "https://api.github.com/teams/2403582/discussions/1",
-          "html_url": "https://github.com/orgs/github/teams/justice-league/discussions/1/comments/1",
-          "node_id": "MDIxOlRlYW1EaXNjdXNzaW9uQ29tbWVudDE=",
-          "number": 1,
-          "updated_at": "2018-01-15T23:53:58Z",
-          "url": "https://api.github.com/teams/2403582/discussions/1/comments/1",
-          "reactions": {
-            "url": "https://api.github.com/teams/2403582/discussions/1/reactions",
-            "total_count": 5,
-            "+1": 3,
-            "-1": 1,
-            "laugh": 0,
-            "confused": 0,
-            "heart": 1,
-            "hooray": 0,
-            "eyes": 1,
-            "rocket": 1
-          }
-        }
-      },
-      "team-discussion-comment-2": {
-        "value": {
-          "author": {
-            "login": "octocat",
-            "id": 1,
-            "node_id": "MDQ6VXNlcjE=",
-            "avatar_url": "https://github.com/images/error/octocat_happy.gif",
-            "gravatar_id": "",
-            "url": "https://api.github.com/users/octocat",
-            "html_url": "https://github.com/octocat",
-            "followers_url": "https://api.github.com/users/octocat/followers",
-            "following_url": "https://api.github.com/users/octocat/following{/other_user}",
-            "gists_url": "https://api.github.com/users/octocat/gists{/gist_id}",
-            "starred_url": "https://api.github.com/users/octocat/starred{/owner}{/repo}",
-            "subscriptions_url": "https://api.github.com/users/octocat/subscriptions",
-            "organizations_url": "https://api.github.com/users/octocat/orgs",
-            "repos_url": "https://api.github.com/users/octocat/repos",
-            "events_url": "https://api.github.com/users/octocat/events{/privacy}",
-            "received_events_url": "https://api.github.com/users/octocat/received_events",
-            "type": "User",
-            "site_admin": false
-          },
-          "body": "Do you like pineapples?",
-          "body_html": "<p>Do you like pineapples?</p>",
-          "body_version": "e6907b24d9c93cc0c5024a7af5888116",
-          "created_at": "2018-01-15T23:53:58Z",
-          "last_edited_at": "2018-01-26T18:22:20Z",
-          "discussion_url": "https://api.github.com/teams/2403582/discussions/1",
-          "html_url": "https://github.com/orgs/github/teams/justice-league/discussions/1/comments/1",
-          "node_id": "MDIxOlRlYW1EaXNjdXNzaW9uQ29tbWVudDE=",
-          "number": 1,
-          "updated_at": "2018-01-26T18:22:20Z",
-          "url": "https://api.github.com/teams/2403582/discussions/1/comments/1",
-          "reactions": {
-            "url": "https://api.github.com/teams/2403582/discussions/1/reactions",
             "total_count": 5,
             "+1": 3,
             "-1": 1,
@@ -149355,13 +149110,6 @@
       "discussion-number": {
         "name": "discussion_number",
         "description": "The number that identifies the discussion.",
-        "in": "path",
-        "required": true,
-        "schema": { "type": "integer" }
-      },
-      "comment-number": {
-        "name": "comment_number",
-        "description": "The number that identifies the comment.",
         "in": "path",
         "required": true,
         "schema": { "type": "integer" }
