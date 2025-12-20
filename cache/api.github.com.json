@@ -41892,7 +41892,12 @@
             "type": "integer",
             "examples": [8]
           },
-          "user": { "$ref": "#/components/schemas/simple-user" },
+          "user": {
+            "anyOf": [
+              { "type": "null" },
+              { "$ref": "#/components/schemas/simple-user" }
+            ]
+          },
           "body": {
             "description": "The text of the comment.",
             "type": "string",

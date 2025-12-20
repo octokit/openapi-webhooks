@@ -34382,18 +34382,24 @@
       },
       "workflow-run-id": {
         "title": "Workflow Run ID",
-        "description": "The unique identifier for a workflow run",
+        "description": "The ID of the workflow run.",
         "type": "integer",
         "format": "int64"
       },
       "workflow-dispatch-response": {
         "title": "Workflow Dispatch Response",
-        "description": "Response containing the workflow run ID",
+        "description": "Response containing the workflow run ID and URLs.",
         "type": "object",
         "properties": {
-          "workflow_run_id": { "$ref": "#/components/schemas/workflow-run-id" }
+          "workflow_run_id": { "$ref": "#/components/schemas/workflow-run-id" },
+          "run_url": {
+            "type": "string",
+            "format": "uri",
+            "description": "The URL to the workflow run."
+          },
+          "html_url": { "type": "string", "format": "uri" }
         },
-        "required": ["workflow_run_id"]
+        "required": ["workflow_run_id", "run_url", "html_url"]
       },
       "activity": {
         "title": "Activity",
@@ -39780,7 +39786,12 @@
             "type": "integer",
             "examples": [8]
           },
-          "user": { "$ref": "#/components/schemas/simple-user" },
+          "user": {
+            "anyOf": [
+              { "type": "null" },
+              { "$ref": "#/components/schemas/simple-user" }
+            ]
+          },
           "body": {
             "description": "The text of the comment.",
             "type": "string",
@@ -133870,7 +133881,13 @@
           "badge_url": "https://github.com/octo-org/octo-repo/workflows/CI/badge.svg"
         }
       },
-      "workflow-dispatch-response": { "value": { "workflow_run_id": 1 } },
+      "workflow-dispatch-response": {
+        "value": {
+          "workflow_run_id": 1,
+          "run_url": "https://api.github.com/repos/octo-org/octo-repo/actions/runs/1",
+          "html_url": "https://github.com/octo-org/octo-repo/actions/runs/1"
+        }
+      },
       "activity-items": {
         "value": [
           {
