@@ -28346,6 +28346,17 @@
             "items": { "type": "string" },
             "examples": ["123ABC456DEF789"]
           },
+          "failover_network_settings_ids": {
+            "description": "The unique identifier of each failover network settings in the configuration.",
+            "type": "array",
+            "items": { "type": "string" },
+            "examples": ["123ABC456DEF789"]
+          },
+          "failover_network_enabled": {
+            "description": "Indicates whether the failover network resource is enabled.",
+            "type": "boolean",
+            "examples": [true]
+          },
           "created_on": {
             "description": "The time at which the network configuration was created, in ISO 8601 format.",
             "type": ["string", "null"],
