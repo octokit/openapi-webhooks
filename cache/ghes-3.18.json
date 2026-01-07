@@ -146503,7 +146503,7 @@
           "emails": [
             { "value": "mlisa@example.com", "type": "work", "primary": true }
           ],
-          "roles": [{ "value": "User", "primary": false }]
+          "roles": [{ "value": "user", "primary": false }]
         }
       },
       "in-user-owner": {
@@ -146523,7 +146523,7 @@
           "emails": [
             { "value": "mlisa@example.com", "type": "work", "primary": true }
           ],
-          "roles": [{ "value": "Enterprise Owner", "primary": false }]
+          "roles": [{ "value": "enterprise_owner", "primary": false }]
         }
       },
       "scim-enterprise-user": {
