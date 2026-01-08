@@ -28892,7 +28892,7 @@
       "enterprise-ruleset-conditions": {
         "title": "Enterprise ruleset conditions",
         "type": "object",
-        "description": "Conditions for an enterprise ruleset. The conditions object should contain either the `organization_id` or `organization_name` property and the `repository_name` or `repository_property` property. For branch and tag rulesets, the conditions object should also contain the `ref_name` property.",
+        "description": "Conditions for an enterprise ruleset.\nThe `conditions` object supports either of the following combinations: - `organization_id` and `repository_name` - `organization_id` and `repository_property` - `organization_name` and `repository_name` - `organization_name` and `repository_property` - `organization_property` and `repository_name` - `organization_property` and `repository_property`\nFor branch and tag rulesets, the `conditions` object should also contain the `ref_name` property.",
         "oneOf": [
           {
             "type": "object",
@@ -30966,7 +30966,7 @@
           },
           "enterprise": {
             "type": "string",
-            "description": "The unique identifier of the enterprise."
+            "description": "The name of the enterprise for the usage report."
           },
           "user": {
             "type": "string",
@@ -31143,7 +31143,7 @@
           },
           "enterprise": {
             "type": "string",
-            "description": "The unique identifier of the enterprise."
+            "description": "The name of the enterprise for the usage report."
           },
           "organization": {
             "type": "string",

@@ -26176,26 +26176,6 @@
         },
         "additionalProperties": false
       },
-      "custom-property-value": {
-        "title": "Custom Property Value",
-        "description": "Custom property name and associated value",
-        "type": "object",
-        "properties": {
-          "property_name": {
-            "type": "string",
-            "description": "The name of the property"
-          },
-          "value": {
-            "oneOf": [
-              { "type": "string" },
-              { "type": "array", "items": { "type": "string" } }
-            ],
-            "description": "The value assigned to the property",
-            "type": ["null", "string", "array"]
-          }
-        },
-        "required": ["property_name", "value"]
-      },
       "budget": {
         "type": "object",
         "properties": {
@@ -31209,6 +31189,26 @@
           }
         },
         "required": ["value_type"]
+      },
+      "custom-property-value": {
+        "title": "Custom Property Value",
+        "description": "Custom property name and associated value",
+        "type": "object",
+        "properties": {
+          "property_name": {
+            "type": "string",
+            "description": "The name of the property"
+          },
+          "value": {
+            "oneOf": [
+              { "type": "string" },
+              { "type": "array", "items": { "type": "string" } }
+            ],
+            "description": "The value assigned to the property",
+            "type": ["null", "string", "array"]
+          }
+        },
+        "required": ["property_name", "value"]
       },
       "org-repo-custom-property-values": {
         "title": "Organization Repository Custom Property Values",
@@ -134156,22 +134156,6 @@
           ]
         }
       },
-      "custom-property-values": {
-        "value": [
-          { "property_name": "environment", "value": "production" },
-          { "property_name": "service", "value": "web" },
-          { "property_name": "team", "value": "octocat" }
-        ]
-      },
-      "create-or-update-custom-properties-values": {
-        "value": {
-          "properties": [
-            { "property_name": "environment", "value": "production" },
-            { "property_name": "service", "value": "web" },
-            { "property_name": "team", "value": "octocat" }
-          ]
-        }
-      },
       "get_all_budgets": {
         "value": {
           "budgets": [
@@ -150841,6 +150825,22 @@
             "is_https_eligible": true,
             "caa_error": null
           }
+        }
+      },
+      "custom-property-values": {
+        "value": [
+          { "property_name": "environment", "value": "production" },
+          { "property_name": "service", "value": "web" },
+          { "property_name": "team", "value": "octocat" }
+        ]
+      },
+      "create-or-update-custom-properties-values": {
+        "value": {
+          "properties": [
+            { "property_name": "environment", "value": "production" },
+            { "property_name": "service", "value": "web" },
+            { "property_name": "team", "value": "octocat" }
+          ]
         }
       },
       "pull-request": {
