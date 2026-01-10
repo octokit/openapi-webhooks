@@ -37616,6 +37616,105 @@
           "archived_at"
         ]
       },
+      "projects-v2-view": {
+        "title": "Projects v2 View",
+        "description": "A view inside a projects v2 project",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The unique identifier of the view."
+          },
+          "number": {
+            "type": "integer",
+            "description": "The number of the view within the project."
+          },
+          "name": { "type": "string", "description": "The name of the view." },
+          "layout": {
+            "type": "string",
+            "description": "The layout of the view.",
+            "enum": ["table", "board", "roadmap"]
+          },
+          "node_id": {
+            "type": "string",
+            "description": "The node ID of the view."
+          },
+          "project_url": {
+            "type": "string",
+            "description": "The API URL of the project that contains the view.",
+            "examples": ["https://api.github.com/orgs/octocat/projectsV2/1"]
+          },
+          "html_url": {
+            "type": "string",
+            "format": "uri",
+            "description": "The web URL of the view.",
+            "examples": ["https://github.com/orgs/octocat/projects/1/views/1"]
+          },
+          "creator": {
+            "allOf": [{ "$ref": "#/components/schemas/simple-user" }]
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The time when the view was created.",
+            "examples": ["2022-04-28T12:00:00Z"]
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The time when the view was last updated.",
+            "examples": ["2022-04-28T12:00:00Z"]
+          },
+          "filter": {
+            "type": ["string", "null"],
+            "description": "The filter query for the view.",
+            "examples": ["is:issue is:open"]
+          },
+          "visible_fields": {
+            "type": "array",
+            "description": "The list of field IDs that are visible in the view.",
+            "items": { "type": "integer" }
+          },
+          "sort_by": {
+            "type": "array",
+            "description": "The sorting configuration for the view. Each element is a tuple of [field_id, direction] where direction is \"asc\" or \"desc\".",
+            "items": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "items": {
+                "oneOf": [{ "type": "integer" }, { "type": "string" }]
+              }
+            }
+          },
+          "group_by": {
+            "type": "array",
+            "description": "The list of field IDs used for horizontal grouping.",
+            "items": { "type": "integer" }
+          },
+          "vertical_group_by": {
+            "type": "array",
+            "description": "The list of field IDs used for vertical grouping (board layout).",
+            "items": { "type": "integer" }
+          }
+        },
+        "required": [
+          "id",
+          "number",
+          "name",
+          "layout",
+          "node_id",
+          "project_url",
+          "html_url",
+          "creator",
+          "created_at",
+          "updated_at",
+          "visible_fields",
+          "sort_by",
+          "group_by",
+          "vertical_group_by"
+        ]
+      },
       "org-repo-custom-property-values": {
         "title": "Organization Repository Custom Property Values",
         "description": "List of custom property values for a repository",
@@ -147002,6 +147101,47 @@
               "value": null
             }
           ]
+        }
+      },
+      "projects-v2-view": {
+        "value": {
+          "id": 1,
+          "number": 1,
+          "name": "Sprint Board",
+          "layout": "board",
+          "node_id": "PVTV_lADOANN5s84ACbL0zgBueEI",
+          "project_url": "https://api.github.com/orgs/octocat/projectsV2/1",
+          "html_url": "https://github.com/orgs/octocat/projects/1/views/1",
+          "creator": {
+            "login": "octocat",
+            "id": 1,
+            "node_id": "MDQ6VXNlcjE=",
+            "avatar_url": "https://github.com/images/error/octocat_happy.gif",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/octocat",
+            "html_url": "https://github.com/octocat",
+            "followers_url": "https://api.github.com/users/octocat/followers",
+            "following_url": "https://api.github.com/users/octocat/following{/other_user}",
+            "gists_url": "https://api.github.com/users/octocat/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/octocat/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/octocat/subscriptions",
+            "organizations_url": "https://api.github.com/users/octocat/orgs",
+            "repos_url": "https://api.github.com/users/octocat/repos",
+            "events_url": "https://api.github.com/users/octocat/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/octocat/received_events",
+            "type": "User",
+            "site_admin": false
+          },
+          "created_at": "2022-04-28T12:00:00Z",
+          "updated_at": "2022-04-28T12:00:00Z",
+          "filter": "is:issue is:open",
+          "visible_fields": [123, 456, 789],
+          "sort_by": [
+            [123, "asc"],
+            [456, "desc"]
+          ],
+          "group_by": [123],
+          "vertical_group_by": [456]
         }
       },
       "org-repo-custom-property-values": {
