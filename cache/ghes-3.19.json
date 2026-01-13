@@ -139605,7 +139605,7 @@
         }
       },
       "code-scanning-analysis-sarif": {
-        "summary": "application/json+sarif response",
+        "summary": "application/sarif+json response",
         "value": {
           "runs": [
             {
