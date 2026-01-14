@@ -30916,6 +30916,47 @@
               },
               "required": ["type", "name"]
             }
+          },
+          "has_next_page": {
+            "type": "boolean",
+            "description": "Indicates if there are more resources available for pagination. Only present when pagination is used."
+          }
+        },
+        "required": ["id", "name", "resources"]
+      },
+      "update-cost-center": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string", "description": "ID of the cost center." },
+          "name": {
+            "type": "string",
+            "description": "Name of the cost center."
+          },
+          "azure_subscription": {
+            "type": ["string", "null"],
+            "description": "Azure subscription ID associated with the cost center. Only present for cost centers linked to Azure subscriptions."
+          },
+          "state": {
+            "type": "string",
+            "description": "State of the cost center.",
+            "enum": ["active", "deleted"]
+          },
+          "resources": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "description": "Type of the resource."
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Name of the resource."
+                }
+              },
+              "required": ["type", "name"]
+            }
           }
         },
         "required": ["id", "name", "resources"]
@@ -33451,7 +33492,7 @@
               "key": { "type": "string" },
               "name": { "type": "string" },
               "spdx_id": { "type": "string" },
-              "url": { "type": "string" },
+              "url": { "type": ["string", "null"] },
               "node_id": { "type": "string" }
             }
           },
@@ -169396,7 +169437,7 @@
         "description": "Response when updating a cost center",
         "content": {
           "application/json": {
-            "schema": { "$ref": "#/components/schemas/get-cost-center" },
+            "schema": { "$ref": "#/components/schemas/update-cost-center" },
             "examples": {
               "default": { "$ref": "#/components/examples/get-cost-center" }
             }

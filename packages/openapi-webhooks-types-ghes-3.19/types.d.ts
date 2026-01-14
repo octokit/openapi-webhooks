@@ -4196,7 +4196,7 @@ export interface components {
         key?: string;
         name?: string;
         spdx_id?: string;
-        url?: string;
+        url?: string | null;
         node_id?: string;
       } | null;
       forks?: number;
