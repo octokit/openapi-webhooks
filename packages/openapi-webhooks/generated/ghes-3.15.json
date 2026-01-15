@@ -11033,7 +11033,7 @@
     },
     "package-published": {
       "post": {
-        "summary": "This event occurs when there is activity relating to GitHub Packages. For more information, see \"[Introduction to GitHub Packages](https://docs.github.com/enterprise-server@3.15/packages/learn-github-packages/introduction-to-github-packages).\" For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.15/graphql/reference/objects#package) or \"[Packages](https://docs.github.com/enterprise-server@3.15/rest/packages)\" in the REST API documentation.\n\nTo install this event on a GitHub App, the app must have at least read-level access for the \"Packages\" repository permission.",
+        "summary": "This event occurs when there is activity relating to GitHub Packages. For more information, see \"[Introduction to GitHub Packages](https://docs.github.com/enterprise-server@3.15/packages/learn-github-packages/introduction-to-github-packages).\" For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.15/graphql/reference/objects#package) or \"[Packages](https://docs.github.com/enterprise-server@3.15/rest/packages)\" in the REST API documentation.",
         "description": "A package was published to a registry.",
         "operationId": "package/published",
         "externalDocs": {
@@ -11123,13 +11123,13 @@
           "githubCloudOnly": false,
           "category": "webhooks",
           "subcategory": "package",
-          "supported-webhook-types": ["repository", "organization", "app"]
+          "supported-webhook-types": ["repository", "organization"]
         }
       }
     },
     "package-updated": {
       "post": {
-        "summary": "This event occurs when there is activity relating to GitHub Packages. For more information, see \"[Introduction to GitHub Packages](https://docs.github.com/enterprise-server@3.15/packages/learn-github-packages/introduction-to-github-packages).\" For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.15/graphql/reference/objects#package) or \"[Packages](https://docs.github.com/enterprise-server@3.15/rest/packages)\" in the REST API documentation.\n\nTo install this event on a GitHub App, the app must have at least read-level access for the \"Packages\" repository permission.",
+        "summary": "This event occurs when there is activity relating to GitHub Packages. For more information, see \"[Introduction to GitHub Packages](https://docs.github.com/enterprise-server@3.15/packages/learn-github-packages/introduction-to-github-packages).\" For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.15/graphql/reference/objects#package) or \"[Packages](https://docs.github.com/enterprise-server@3.15/rest/packages)\" in the REST API documentation.",
         "description": "A previously published package was updated.",
         "operationId": "package/updated",
         "externalDocs": {
@@ -11219,7 +11219,7 @@
           "githubCloudOnly": false,
           "category": "webhooks",
           "subcategory": "package",
-          "supported-webhook-types": ["repository", "organization", "app"]
+          "supported-webhook-types": ["repository", "organization"]
         }
       }
     },

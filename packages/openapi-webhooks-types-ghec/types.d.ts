@@ -1670,8 +1670,6 @@ export interface webhooks {
   "package-published": {
     /**
      * This event occurs when there is activity relating to GitHub Packages. For more information, see "[Introduction to GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/introduction-to-github-packages)." For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#package) or "[Packages](https://docs.github.com/enterprise-cloud@latest//rest/packages)" in the REST API documentation.
-     *
-     * To install this event on a GitHub App, the app must have at least read-level access for the "Packages" repository permission.
      * @description A package was published to a registry.
      */
     post: operations["package/published"];
@@ -1679,8 +1677,6 @@ export interface webhooks {
   "package-updated": {
     /**
      * This event occurs when there is activity relating to GitHub Packages. For more information, see "[Introduction to GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/introduction-to-github-packages)." For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#package) or "[Packages](https://docs.github.com/enterprise-cloud@latest//rest/packages)" in the REST API documentation.
-     *
-     * To install this event on a GitHub App, the app must have at least read-level access for the "Packages" repository permission.
      * @description A previously published package was updated.
      */
     post: operations["package/updated"];
@@ -67114,8 +67110,6 @@ export interface operations {
   };
   /**
    * This event occurs when there is activity relating to GitHub Packages. For more information, see "[Introduction to GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/introduction-to-github-packages)." For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#package) or "[Packages](https://docs.github.com/enterprise-cloud@latest//rest/packages)" in the REST API documentation.
-   *
-   * To install this event on a GitHub App, the app must have at least read-level access for the "Packages" repository permission.
    * @description A package was published to a registry.
    */
   "package/published": {
@@ -67151,8 +67145,6 @@ export interface operations {
   };
   /**
    * This event occurs when there is activity relating to GitHub Packages. For more information, see "[Introduction to GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/introduction-to-github-packages)." For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest//graphql/reference/objects#package) or "[Packages](https://docs.github.com/enterprise-cloud@latest//rest/packages)" in the REST API documentation.
-   *
-   * To install this event on a GitHub App, the app must have at least read-level access for the "Packages" repository permission.
    * @description A previously published package was updated.
    */
   "package/updated": {
