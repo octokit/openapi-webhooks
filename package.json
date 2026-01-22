@@ -27,7 +27,7 @@
     "@octokit/core": "^6.0.0",
     "deep-equal": "^2.0.5",
     "github-enterprise-server-versions": "^2.0.1",
-    "lodash": "^4.17.21",
+    "lodash": "^4.17.23",
     "openapi-typescript": "^6.2.1",
     "prettier": "^3.0.0",
     "semantic-release-plugin-update-version-in-files": "^1.1.0"
