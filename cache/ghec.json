@@ -28684,7 +28684,7 @@
         "properties": {
           "actor_id": {
             "type": ["integer", "null"],
-            "description": "The ID of the actor that can bypass a ruleset. Required for `Integration`, `RepositoryRole`, and `Team` actor types. If `actor_type` is `OrganizationAdmin`, this should be `1`. If `actor_type` is `DeployKey`, this should be null. If `actor_type` is `EnterpriseOwner`, `actor_id` is ignored. `OrganizationAdmin` and `EnterpriseOwner` are not applicable for personal repositories."
+            "description": "The ID of the actor that can bypass a ruleset. Required for `Integration`, `RepositoryRole`, and `Team` actor types. If `actor_type` is `OrganizationAdmin`, `actor_id` is ignored. If `actor_type` is `DeployKey`, this should be null. If `actor_type` is `EnterpriseOwner`, `actor_id` is ignored. `OrganizationAdmin` and `EnterpriseOwner` are not applicable for personal repositories."
           },
           "actor_type": {
             "type": "string",
@@ -29216,7 +29216,7 @@
             "properties": {
               "name": {
                 "type": "string",
-                "description": "How this rule will appear to users."
+                "description": "How this rule appears when configuring it."
               },
               "negate": {
                 "type": "boolean",
@@ -29248,7 +29248,7 @@
             "properties": {
               "name": {
                 "type": "string",
-                "description": "How this rule will appear to users."
+                "description": "How this rule appears when configuring it."
               },
               "negate": {
                 "type": "boolean",
@@ -29280,7 +29280,7 @@
             "properties": {
               "name": {
                 "type": "string",
-                "description": "How this rule will appear to users."
+                "description": "How this rule appears when configuring it."
               },
               "negate": {
                 "type": "boolean",
@@ -29312,7 +29312,7 @@
             "properties": {
               "name": {
                 "type": "string",
-                "description": "How this rule will appear to users."
+                "description": "How this rule appears when configuring it."
               },
               "negate": {
                 "type": "boolean",
@@ -29344,7 +29344,7 @@
             "properties": {
               "name": {
                 "type": "string",
-                "description": "How this rule will appear to users."
+                "description": "How this rule appears when configuring it."
               },
               "negate": {
                 "type": "boolean",
@@ -137907,81 +137907,85 @@
         }
       },
       "server-statistics": {
-        "value": {
-          "server_id": "ea6088f3-f095-4bf2-8d7f-c573819e8768",
-          "collection_date": "2021-12-14T23:59:59Z",
-          "schema_version": "20230306",
-          "ghes_version": "3.9.0",
-          "host_name": "github.example.com",
-          "github_connect": {
-            "features_enabled": [
-              "license_usage_sync",
-              "content_analysis",
-              "content_analysis_notifications"
-            ]
-          },
-          "ghe_stats": {
-            "comments": {
-              "total_commit_comments": 1000,
-              "total_gist_comments": 1000,
-              "total_issue_comments": 0,
-              "total_pull_request_comments": 0
+        "value": [
+          {
+            "server_id": "ea6088f3-f095-4bf2-8d7f-c573819e8768",
+            "collection_date": "2021-12-14T23:59:59Z",
+            "schema_version": "20230306",
+            "ghes_version": "3.9.0",
+            "host_name": "github.example.com",
+            "github_connect": {
+              "features_enabled": [
+                "license_usage_sync",
+                "content_analysis",
+                "content_analysis_notifications"
+              ]
             },
-            "gists": {
-              "total_gists": 100,
-              "private_gists": 59,
-              "public_gists": 41
+            "ghe_stats": {
+              "comments": {
+                "total_commit_comments": 1000,
+                "total_gist_comments": 1000,
+                "total_issue_comments": 0,
+                "total_pull_request_comments": 0
+              },
+              "gists": {
+                "total_gists": 100,
+                "private_gists": 59,
+                "public_gists": 41
+              },
+              "hooks": {
+                "total_hooks": 2,
+                "active_hooks": 1,
+                "inactive_hooks": 1
+              },
+              "issues": {
+                "total_issues": 3421,
+                "open_issues": 1234,
+                "closed_issues": 1222
+              },
+              "milestones": {
+                "total_milestones": 50,
+                "open_milestones": 20,
+                "closed_milestones": 30
+              },
+              "orgs": {
+                "total_orgs": 100,
+                "disabled_orgs": 22,
+                "total_teams": 299,
+                "total_team_members": 400
+              },
+              "pages": { "total_pages": 10 },
+              "pulls": {
+                "total_pulls": 1232,
+                "merged_pulls": 223,
+                "mergeable_pulls": 435,
+                "unmergeable_pulls": 0
+              },
+              "repos": {
+                "total_repos": 12,
+                "root_repos": 1,
+                "fork_repos": 2,
+                "org_repos": 1,
+                "total_pushes": 42,
+                "total_wikis": 1
+              },
+              "users": {
+                "total_users": 2000,
+                "admin_users": 299,
+                "suspended_users": 423
+              }
             },
-            "hooks": {
-              "total_hooks": 2,
-              "active_hooks": 1,
-              "inactive_hooks": 1
+            "dormant_users": {
+              "total_dormant_users": 5,
+              "dormancy_threshold": "90 days"
             },
-            "issues": {
-              "total_issues": 3421,
-              "open_issues": 1234,
-              "closed_issues": 1222
-            },
-            "milestones": {
-              "total_milestones": 50,
-              "open_milestones": 20,
-              "closed_milestones": 30
-            },
-            "orgs": {
-              "total_orgs": 100,
-              "disabled_orgs": 22,
-              "total_teams": 299,
-              "total_team_members": 400
-            },
-            "pages": { "total_pages": 10 },
-            "pulls": {
-              "total_pulls": 1232,
-              "merged_pulls": 223,
-              "mergeable_pulls": 435,
-              "unmergeable_pulls": 0
-            },
-            "repos": {
-              "total_repos": 12,
-              "root_repos": 1,
-              "fork_repos": 2,
-              "org_repos": 1,
-              "total_pushes": 42,
-              "total_wikis": 1
-            },
-            "users": {
-              "total_users": 2000,
-              "admin_users": 299,
-              "suspended_users": 423
+            "actions_stats": { "$ref": "server-statistics-actions.yaml" },
+            "packages_stats": { "$ref": "server-statistics-packages.yaml" },
+            "advisory_db_stats": {
+              "$ref": "server-statistics-advisory-db.yaml"
             }
-          },
-          "dormant_users": {
-            "total_dormant_users": 5,
-            "dormancy_threshold": "90 days"
-          },
-          "actions_stats": { "$ref": "server-statistics-actions.yaml" },
-          "packages_stats": { "$ref": "server-statistics-packages.yaml" },
-          "advisory_db_stats": { "$ref": "server-statistics-advisory-db.yaml" }
-        }
+          }
+        ]
       },
       "actions-cache-retention-limit": {
         "value": { "max_cache_retention_days": 80 }
@@ -139797,7 +139801,7 @@
                 "write_enterprise_security_configuration"
               ],
               "enterprise": {
-                "id": "1,",
+                "id": 1,
                 "slug": "github-inc",
                 "name": "GitHub, Inc",
                 "node_id": "E_kgAB",
@@ -139821,7 +139825,7 @@
                 "read_enterprise_security_configuration"
               ],
               "enterprise": {
-                "id": "1,",
+                "id": 1,
                 "slug": "github-inc",
                 "name": "GitHub, Inc",
                 "node_id": "E_kgAB",
@@ -139849,7 +139853,7 @@
             "write_enterprise_security_configuration"
           ],
           "enterprise": {
-            "id": "1,",
+            "id": 1,
             "slug": "github-inc",
             "name": "GitHub, Inc",
             "node_id": "E_kgAB",
@@ -140147,7 +140151,7 @@
           {
             "version_id": 3,
             "actor": { "id": 1, "type": "User" },
-            "updated_at": "2024-010-23T16:29:47Z"
+            "updated_at": "2024-10-23T16:29:47Z"
           },
           {
             "version_id": 2,
@@ -140162,26 +140166,24 @@
         ]
       },
       "enterprise-ruleset-version-with-state": {
-        "value": [
-          {
-            "version_id": 3,
-            "actor": { "id": 1, "type": "User" },
-            "updated_at": "2024-010-23T16:29:47Z",
-            "state": {
-              "id": 21,
-              "name": "super cool ruleset",
-              "target": "repository",
-              "source_type": "Enterprise",
-              "source": "my-enterprise",
-              "enforcement": "active",
-              "conditions": {
-                "organization_name": { "include": ["important_organization"] },
-                "repository_name": { "include": ["~ALL"] }
-              },
-              "rules": [{ "type": "repository_delete" }]
-            }
+        "value": {
+          "version_id": 3,
+          "actor": { "id": 1, "type": "User" },
+          "updated_at": "2024-10-23T16:29:47Z",
+          "state": {
+            "id": 21,
+            "name": "super cool ruleset",
+            "target": "repository",
+            "source_type": "Enterprise",
+            "source": "my-enterprise",
+            "enforcement": "active",
+            "conditions": {
+              "organization_name": { "include": ["important_organization"] },
+              "repository_name": { "include": ["~ALL"] }
+            },
+            "rules": [{ "type": "repository_delete" }]
           }
-        ]
+        }
       },
       "organization-secret-scanning-alert-list": {
         "value": [
@@ -140622,6 +140624,20 @@
               "netAmount": 8
             }
           ]
+        }
+      },
+      "enterprise-teams-item": {
+        "value": {
+          "id": 1,
+          "name": "Justice League",
+          "description": "A great team.",
+          "slug": "justice-league",
+          "url": "https://api.github.com/enterprises/dc/teams/justice-league",
+          "group_id": "62ab9291-fae2-468e-974b-7e45096d5021",
+          "html_url": "https://github.com/enterprises/dc/teams/justice-league",
+          "members_url": "https://api.github.com/enterprises/dc/teams/justice-league/members{/member}",
+          "created_at": "2019-01-26T19:01:12Z",
+          "updated_at": "2019-01-26T19:14:43Z"
         }
       },
       "simple-user-items": {
@@ -147843,48 +147859,42 @@
         }
       },
       "org-ruleset-version-with-state": {
-        "value": [
-          {
-            "version_id": 3,
-            "actor": { "id": 1, "type": "User" },
-            "updated_at": "2024-010-23T16:29:47Z",
-            "state": {
-              "id": 21,
-              "name": "super cool ruleset",
-              "target": "branch",
-              "source_type": "Organization",
-              "source": "my-org",
-              "enforcement": "active",
-              "bypass_actors": [
-                {
-                  "actor_id": 234,
-                  "actor_type": "Team",
-                  "bypass_mode": "always"
-                }
-              ],
-              "conditions": {
-                "ref_name": {
-                  "include": ["refs/heads/main", "refs/heads/master"],
-                  "exclude": ["refs/heads/dev*"]
-                },
-                "repository_name": {
-                  "include": [
-                    "important_repository",
-                    "another_important_repository"
-                  ],
-                  "exclude": ["unimportant_repository"],
-                  "protected": true
-                }
+        "value": {
+          "version_id": 3,
+          "actor": { "id": 1, "type": "User" },
+          "updated_at": "2024-10-23T16:29:47Z",
+          "state": {
+            "id": 21,
+            "name": "super cool ruleset",
+            "target": "branch",
+            "source_type": "Organization",
+            "source": "my-org",
+            "enforcement": "active",
+            "bypass_actors": [
+              { "actor_id": 234, "actor_type": "Team", "bypass_mode": "always" }
+            ],
+            "conditions": {
+              "ref_name": {
+                "include": ["refs/heads/main", "refs/heads/master"],
+                "exclude": ["refs/heads/dev*"]
               },
-              "rules": [
-                {
-                  "type": "commit_author_email_pattern",
-                  "parameters": { "operator": "contains", "pattern": "github" }
-                }
-              ]
-            }
+              "repository_name": {
+                "include": [
+                  "important_repository",
+                  "another_important_repository"
+                ],
+                "exclude": ["unimportant_repository"],
+                "protected": true
+              }
+            },
+            "rules": [
+              {
+                "type": "commit_author_email_pattern",
+                "parameters": { "operator": "contains", "pattern": "github" }
+              }
+            ]
           }
-        ]
+        }
       },
       "list-repository-advisories": {
         "value": [
@@ -160845,40 +160855,34 @@
         }
       },
       "repository-ruleset-version-with-state": {
-        "value": [
-          {
-            "version_id": 3,
-            "actor": { "id": 1, "type": "User" },
-            "updated_at": "2024-010-23T16:29:47Z",
-            "state": {
-              "id": 42,
-              "name": "super cool ruleset",
-              "target": "branch",
-              "source_type": "Repository",
-              "source": "monalisa/my-repo",
-              "enforcement": "active",
-              "bypass_actors": [
-                {
-                  "actor_id": 234,
-                  "actor_type": "Team",
-                  "bypass_mode": "always"
-                }
-              ],
-              "conditions": {
-                "ref_name": {
-                  "include": ["refs/heads/main", "refs/heads/master"],
-                  "exclude": ["refs/heads/dev*"]
-                }
-              },
-              "rules": [
-                {
-                  "type": "commit_author_email_pattern",
-                  "parameters": { "operator": "contains", "pattern": "github" }
-                }
-              ]
-            }
+        "value": {
+          "version_id": 3,
+          "actor": { "id": 1, "type": "User" },
+          "updated_at": "2024-10-23T16:29:47Z",
+          "state": {
+            "id": 42,
+            "name": "super cool ruleset",
+            "target": "branch",
+            "source_type": "Repository",
+            "source": "monalisa/my-repo",
+            "enforcement": "active",
+            "bypass_actors": [
+              { "actor_id": 234, "actor_type": "Team", "bypass_mode": "always" }
+            ],
+            "conditions": {
+              "ref_name": {
+                "include": ["refs/heads/main", "refs/heads/master"],
+                "exclude": ["refs/heads/dev*"]
+              }
+            },
+            "rules": [
+              {
+                "type": "commit_author_email_pattern",
+                "parameters": { "operator": "contains", "pattern": "github" }
+              }
+            ]
           }
-        ]
+        }
       },
       "secret-scanning-alert-list": {
         "value": [

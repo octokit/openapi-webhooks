@@ -34466,7 +34466,7 @@
         "properties": {
           "actor_id": {
             "type": ["integer", "null"],
-            "description": "The ID of the actor that can bypass a ruleset. Required for `Integration`, `RepositoryRole`, and `Team` actor types. If `actor_type` is `OrganizationAdmin`, this should be `1`. If `actor_type` is `DeployKey`, this should be null. If `actor_type` is `EnterpriseOwner`, `actor_id` is ignored. `OrganizationAdmin` and `EnterpriseOwner` are not applicable for personal repositories."
+            "description": "The ID of the actor that can bypass a ruleset. Required for `Integration`, `RepositoryRole`, and `Team` actor types. If `actor_type` is `OrganizationAdmin`, `actor_id` is ignored. If `actor_type` is `DeployKey`, this should be null. If `actor_type` is `EnterpriseOwner`, `actor_id` is ignored. `OrganizationAdmin` and `EnterpriseOwner` are not applicable for personal repositories."
           },
           "actor_type": {
             "type": "string",
@@ -34943,7 +34943,7 @@
             "properties": {
               "name": {
                 "type": "string",
-                "description": "How this rule will appear to users."
+                "description": "How this rule appears when configuring it."
               },
               "negate": {
                 "type": "boolean",
@@ -34975,7 +34975,7 @@
             "properties": {
               "name": {
                 "type": "string",
-                "description": "How this rule will appear to users."
+                "description": "How this rule appears when configuring it."
               },
               "negate": {
                 "type": "boolean",
@@ -35007,7 +35007,7 @@
             "properties": {
               "name": {
                 "type": "string",
-                "description": "How this rule will appear to users."
+                "description": "How this rule appears when configuring it."
               },
               "negate": {
                 "type": "boolean",
@@ -35039,7 +35039,7 @@
             "properties": {
               "name": {
                 "type": "string",
-                "description": "How this rule will appear to users."
+                "description": "How this rule appears when configuring it."
               },
               "negate": {
                 "type": "boolean",
@@ -35071,7 +35071,7 @@
             "properties": {
               "name": {
                 "type": "string",
-                "description": "How this rule will appear to users."
+                "description": "How this rule appears when configuring it."
               },
               "negate": {
                 "type": "boolean",
@@ -130571,7 +130571,7 @@
           {
             "version_id": 3,
             "actor": { "id": 1, "type": "User" },
-            "updated_at": "2024-010-23T16:29:47Z"
+            "updated_at": "2024-10-23T16:29:47Z"
           },
           {
             "version_id": 2,
@@ -130586,26 +130586,24 @@
         ]
       },
       "enterprise-ruleset-version-with-state": {
-        "value": [
-          {
-            "version_id": 3,
-            "actor": { "id": 1, "type": "User" },
-            "updated_at": "2024-010-23T16:29:47Z",
-            "state": {
-              "id": 21,
-              "name": "super cool ruleset",
-              "target": "repository",
-              "source_type": "Enterprise",
-              "source": "my-enterprise",
-              "enforcement": "active",
-              "conditions": {
-                "organization_name": { "include": ["important_organization"] },
-                "repository_name": { "include": ["~ALL"] }
-              },
-              "rules": [{ "type": "repository_delete" }]
-            }
+        "value": {
+          "version_id": 3,
+          "actor": { "id": 1, "type": "User" },
+          "updated_at": "2024-10-23T16:29:47Z",
+          "state": {
+            "id": 21,
+            "name": "super cool ruleset",
+            "target": "repository",
+            "source_type": "Enterprise",
+            "source": "my-enterprise",
+            "enforcement": "active",
+            "conditions": {
+              "organization_name": { "include": ["important_organization"] },
+              "repository_name": { "include": ["~ALL"] }
+            },
+            "rules": [{ "type": "repository_delete" }]
           }
-        ]
+        }
       },
       "organization-secret-scanning-alert-list": {
         "value": [
@@ -135739,48 +135737,42 @@
         }
       },
       "org-ruleset-version-with-state": {
-        "value": [
-          {
-            "version_id": 3,
-            "actor": { "id": 1, "type": "User" },
-            "updated_at": "2024-010-23T16:29:47Z",
-            "state": {
-              "id": 21,
-              "name": "super cool ruleset",
-              "target": "branch",
-              "source_type": "Organization",
-              "source": "my-org",
-              "enforcement": "active",
-              "bypass_actors": [
-                {
-                  "actor_id": 234,
-                  "actor_type": "Team",
-                  "bypass_mode": "always"
-                }
-              ],
-              "conditions": {
-                "ref_name": {
-                  "include": ["refs/heads/main", "refs/heads/master"],
-                  "exclude": ["refs/heads/dev*"]
-                },
-                "repository_name": {
-                  "include": [
-                    "important_repository",
-                    "another_important_repository"
-                  ],
-                  "exclude": ["unimportant_repository"],
-                  "protected": true
-                }
+        "value": {
+          "version_id": 3,
+          "actor": { "id": 1, "type": "User" },
+          "updated_at": "2024-10-23T16:29:47Z",
+          "state": {
+            "id": 21,
+            "name": "super cool ruleset",
+            "target": "branch",
+            "source_type": "Organization",
+            "source": "my-org",
+            "enforcement": "active",
+            "bypass_actors": [
+              { "actor_id": 234, "actor_type": "Team", "bypass_mode": "always" }
+            ],
+            "conditions": {
+              "ref_name": {
+                "include": ["refs/heads/main", "refs/heads/master"],
+                "exclude": ["refs/heads/dev*"]
               },
-              "rules": [
-                {
-                  "type": "commit_author_email_pattern",
-                  "parameters": { "operator": "contains", "pattern": "github" }
-                }
-              ]
-            }
+              "repository_name": {
+                "include": [
+                  "important_repository",
+                  "another_important_repository"
+                ],
+                "exclude": ["unimportant_repository"],
+                "protected": true
+              }
+            },
+            "rules": [
+              {
+                "type": "commit_author_email_pattern",
+                "parameters": { "operator": "contains", "pattern": "github" }
+              }
+            ]
           }
-        ]
+        }
       },
       "team-full": {
         "value": {
@@ -147111,40 +147103,34 @@
         }
       },
       "repository-ruleset-version-with-state": {
-        "value": [
-          {
-            "version_id": 3,
-            "actor": { "id": 1, "type": "User" },
-            "updated_at": "2024-010-23T16:29:47Z",
-            "state": {
-              "id": 42,
-              "name": "super cool ruleset",
-              "target": "branch",
-              "source_type": "Repository",
-              "source": "monalisa/my-repo",
-              "enforcement": "active",
-              "bypass_actors": [
-                {
-                  "actor_id": 234,
-                  "actor_type": "Team",
-                  "bypass_mode": "always"
-                }
-              ],
-              "conditions": {
-                "ref_name": {
-                  "include": ["refs/heads/main", "refs/heads/master"],
-                  "exclude": ["refs/heads/dev*"]
-                }
-              },
-              "rules": [
-                {
-                  "type": "commit_author_email_pattern",
-                  "parameters": { "operator": "contains", "pattern": "github" }
-                }
-              ]
-            }
+        "value": {
+          "version_id": 3,
+          "actor": { "id": 1, "type": "User" },
+          "updated_at": "2024-10-23T16:29:47Z",
+          "state": {
+            "id": 42,
+            "name": "super cool ruleset",
+            "target": "branch",
+            "source_type": "Repository",
+            "source": "monalisa/my-repo",
+            "enforcement": "active",
+            "bypass_actors": [
+              { "actor_id": 234, "actor_type": "Team", "bypass_mode": "always" }
+            ],
+            "conditions": {
+              "ref_name": {
+                "include": ["refs/heads/main", "refs/heads/master"],
+                "exclude": ["refs/heads/dev*"]
+              }
+            },
+            "rules": [
+              {
+                "type": "commit_author_email_pattern",
+                "parameters": { "operator": "contains", "pattern": "github" }
+              }
+            ]
           }
-        ]
+        }
       },
       "secret-scanning-alert-list": {
         "value": [
