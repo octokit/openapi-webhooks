@@ -34788,7 +34788,7 @@
           },
           "cli": {
             "type": "string",
-            "description": "The organization policy for allowing or disallowing Copilot in the CLI.",
+            "description": "The organization policy for allowing or disallowing Copilot CLI.",
             "enum": ["enabled", "disabled", "unconfigured"]
           },
           "seat_management_setting": {
