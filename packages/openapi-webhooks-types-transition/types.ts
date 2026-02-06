@@ -217,10 +217,16 @@ export type IssueCommentDeletedEvent =
   WebhookEventDefinition<"issue-comment-deleted">;
 export type IssueCommentEditedEvent =
   WebhookEventDefinition<"issue-comment-edited">;
+export type IssueCommentPinnedEvent =
+  WebhookEventDefinition<"issue-comment-pinned">;
+export type IssueCommentUnpinnedEvent =
+  WebhookEventDefinition<"issue-comment-unpinned">;
 export type IssueCommentEvent =
   | WebhookEventDefinition<"issue-comment-created">
   | WebhookEventDefinition<"issue-comment-deleted">
-  | WebhookEventDefinition<"issue-comment-edited">;
+  | WebhookEventDefinition<"issue-comment-edited">
+  | WebhookEventDefinition<"issue-comment-pinned">
+  | WebhookEventDefinition<"issue-comment-unpinned">;
 export type IssueDependenciesBlockedByAddedEvent =
   WebhookEventDefinition<"issue-dependencies-blocked-by-added">;
 export type IssueDependenciesBlockedByRemovedEvent =
@@ -838,7 +844,9 @@ export type EventPayloadMap = {
   issue_comment:
     | WebhookEventDefinition<"issue-comment-created">
     | WebhookEventDefinition<"issue-comment-deleted">
-    | WebhookEventDefinition<"issue-comment-edited">;
+    | WebhookEventDefinition<"issue-comment-edited">
+    | WebhookEventDefinition<"issue-comment-pinned">
+    | WebhookEventDefinition<"issue-comment-unpinned">;
   issue_dependencies:
     | WebhookEventDefinition<"issue-dependencies-blocked-by-added">
     | WebhookEventDefinition<"issue-dependencies-blocked-by-removed">
