@@ -26448,6 +26448,10 @@
                       "type": "string",
                       "description": "The type of the bypass reviewer",
                       "enum": ["TEAM", "ROLE"]
+                    },
+                    "security_configuration_id": {
+                      "type": "integer",
+                      "description": "The ID of the security configuration associated with this bypass reviewer"
                     }
                   }
                 }
@@ -128494,8 +128498,6 @@
             "description": "This is a code security configuration for octo-enterprise high risk repositories",
             "advanced_security": "enabled",
             "dependency_graph": "enabled",
-            "dependency_graph_autosubmit_action": null,
-            "dependency_graph_autosubmit_action_options": null,
             "dependabot_alerts": "enabled",
             "dependabot_security_updates": "enabled",
             "code_scanning_default_setup": "enabled",
@@ -128519,8 +128521,6 @@
             "description": "This is a code security configuration for octo-enterprise low risk repositories",
             "advanced_security": "enabled",
             "dependency_graph": "enabled",
-            "dependency_graph_autosubmit_action": null,
-            "dependency_graph_autosubmit_action_options": null,
             "dependabot_alerts": "enabled",
             "dependabot_security_updates": "enabled",
             "code_scanning_default_setup": "enabled",
@@ -134108,6 +134108,26 @@
             }
           ]
         }
+      },
+      "team-simple-items": {
+        "value": [
+          {
+            "id": 1,
+            "node_id": "MDQ6VGVhbTE=",
+            "url": "https://api.github.com/organizations/1/team/1",
+            "html_url": "https://github.com/orgs/github/teams/justice-league",
+            "name": "Justice League",
+            "slug": "justice-league",
+            "description": "A great team.",
+            "privacy": "closed",
+            "notification_setting": "notifications_enabled",
+            "permission": "admin",
+            "members_url": "https://api.github.com/organizations/1/team/1/members{/member}",
+            "repositories_url": "https://api.github.com/organizations/1/team/1/repos",
+            "type": "organization",
+            "organization_id": 1
+          }
+        ]
       },
       "team-full": {
         "value": {

@@ -130323,7 +130323,8 @@
             "security_and_analysis": {
               "advanced_security": { "status": "enabled" },
               "secret_scanning": { "status": "enabled" },
-              "secret_scanning_push_protection": { "status": "disabled" }
+              "secret_scanning_push_protection": { "status": "disabled" },
+              "secret_scanning_non_provider_patterns": { "status": "disabled" }
             }
           }
         ]
@@ -131418,6 +131419,26 @@
             }
           ]
         }
+      },
+      "team-simple-items": {
+        "value": [
+          {
+            "id": 1,
+            "node_id": "MDQ6VGVhbTE=",
+            "url": "https://api.github.com/organizations/1/team/1",
+            "html_url": "https://github.com/orgs/github/teams/justice-league",
+            "name": "Justice League",
+            "slug": "justice-league",
+            "description": "A great team.",
+            "privacy": "closed",
+            "notification_setting": "notifications_enabled",
+            "permission": "admin",
+            "members_url": "https://api.github.com/organizations/1/team/1/members{/member}",
+            "repositories_url": "https://api.github.com/organizations/1/team/1/repos",
+            "type": "organization",
+            "organization_id": 1
+          }
+        ]
       },
       "team-full": {
         "value": {

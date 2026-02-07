@@ -4529,6 +4529,10 @@ export interface components {
         /** @enum {string} */
         status?: "enabled" | "disabled";
       };
+      secret_scanning_delegated_alert_dismissal?: {
+        /** @enum {string} */
+        status?: "enabled" | "disabled";
+      };
     } | null;
     /**
      * Deployment

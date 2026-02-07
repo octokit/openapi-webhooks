@@ -24029,6 +24029,12 @@
             "properties": {
               "status": { "type": "string", "enum": ["enabled", "disabled"] }
             }
+          },
+          "secret_scanning_delegated_alert_dismissal": {
+            "type": "object",
+            "properties": {
+              "status": { "type": "string", "enum": ["enabled", "disabled"] }
+            }
           }
         }
       },
