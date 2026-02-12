@@ -21901,6 +21901,12 @@
             "type": "boolean",
             "examples": [true]
           },
+          "pull_request_creation_policy": {
+            "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+            "type": "string",
+            "enum": ["all", "collaborators_only"],
+            "examples": ["all"]
+          },
           "archived": {
             "description": "Whether the repository is archived.",
             "default": false,
@@ -26132,6 +26138,11 @@
           "has_downloads": { "type": "boolean" },
           "has_discussions": { "type": "boolean" },
           "has_pull_requests": { "type": "boolean" },
+          "pull_request_creation_policy": {
+            "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+            "type": "string",
+            "enum": ["all", "collaborators_only"]
+          },
           "archived": { "type": "boolean" },
           "disabled": { "type": "boolean" },
           "visibility": { "type": "string" },
@@ -31859,6 +31870,12 @@
           "has_downloads": { "type": "boolean", "examples": [true] },
           "has_discussions": { "type": "boolean", "examples": [true] },
           "has_pull_requests": { "type": "boolean", "examples": [true] },
+          "pull_request_creation_policy": {
+            "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+            "type": "string",
+            "enum": ["all", "collaborators_only"],
+            "examples": ["all"]
+          },
           "archived": { "type": "boolean" },
           "disabled": {
             "type": "boolean",
@@ -44738,6 +44755,11 @@
           "has_downloads": { "type": "boolean" },
           "has_discussions": { "type": "boolean" },
           "has_pull_requests": { "type": "boolean" },
+          "pull_request_creation_policy": {
+            "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+            "type": "string",
+            "enum": ["all", "collaborators_only"]
+          },
           "archived": { "type": "boolean" },
           "disabled": {
             "type": "boolean",
@@ -46537,6 +46559,11 @@
             "default": true,
             "type": "boolean",
             "examples": [true]
+          },
+          "pull_request_creation_policy": {
+            "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+            "type": "string",
+            "enum": ["all", "collaborators_only"]
           },
           "archived": {
             "description": "Whether the repository is archived.",
@@ -50325,6 +50352,11 @@
                     "type": "boolean",
                     "default": true
                   },
+                  "pull_request_creation_policy": {
+                    "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                    "type": "string",
+                    "enum": ["all", "collaborators_only"]
+                  },
                   "homepage": { "type": ["string", "null"] },
                   "hooks_url": { "type": "string", "format": "uri" },
                   "html_url": { "type": "string", "format": "uri" },
@@ -50782,6 +50814,11 @@
                     "description": "Whether pull requests are enabled.",
                     "type": "boolean",
                     "default": true
+                  },
+                  "pull_request_creation_policy": {
+                    "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                    "type": "string",
+                    "enum": ["all", "collaborators_only"]
                   },
                   "homepage": { "type": ["string", "null"] },
                   "hooks_url": { "type": "string", "format": "uri" },
@@ -71917,6 +71954,11 @@
                     "type": "boolean",
                     "default": true
                   },
+                  "pull_request_creation_policy": {
+                    "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                    "type": "string",
+                    "enum": ["all", "collaborators_only"]
+                  },
                   "has_downloads": {
                     "description": "Whether downloads are enabled.",
                     "type": "boolean",
@@ -74486,6 +74528,11 @@
                     "description": "Whether pull requests are enabled.",
                     "type": "boolean",
                     "default": true
+                  },
+                  "pull_request_creation_policy": {
+                    "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                    "type": "string",
+                    "enum": ["all", "collaborators_only"]
                   },
                   "homepage": { "type": ["string", "null"] },
                   "hooks_url": { "type": "string", "format": "uri" },
@@ -79177,6 +79224,11 @@
                         "type": "boolean",
                         "default": true
                       },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
+                      },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
                       "html_url": { "type": "string", "format": "uri" },
@@ -79691,6 +79743,11 @@
                         "description": "Whether pull requests are enabled.",
                         "type": "boolean",
                         "default": true
+                      },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
                       },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
@@ -81032,6 +81089,11 @@
                         "type": "boolean",
                         "default": true
                       },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
+                      },
                       "has_pages": { "type": "boolean" },
                       "has_projects": {
                         "description": "Whether projects are enabled.",
@@ -81557,6 +81619,11 @@
                         "description": "Whether pull requests are enabled.",
                         "type": "boolean",
                         "default": true
+                      },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
                       },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
@@ -82910,6 +82977,11 @@
                         "type": "boolean",
                         "default": true
                       },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
+                      },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
                       "html_url": { "type": "string", "format": "uri" },
@@ -83424,6 +83496,11 @@
                         "description": "Whether pull requests are enabled.",
                         "type": "boolean",
                         "default": true
+                      },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
                       },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
@@ -84830,6 +84907,11 @@
                         "type": "boolean",
                         "default": true
                       },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
+                      },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
                       "html_url": { "type": "string", "format": "uri" },
@@ -85344,6 +85426,11 @@
                         "description": "Whether pull requests are enabled.",
                         "type": "boolean",
                         "default": true
+                      },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
                       },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
@@ -86770,6 +86857,11 @@
                         "type": "boolean",
                         "default": true
                       },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
+                      },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
                       "html_url": { "type": "string", "format": "uri" },
@@ -87284,6 +87376,11 @@
                         "description": "Whether pull requests are enabled.",
                         "type": "boolean",
                         "default": true
+                      },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
                       },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
@@ -88618,6 +88715,11 @@
                         "type": "boolean",
                         "default": true
                       },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
+                      },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
                       "html_url": { "type": "string", "format": "uri" },
@@ -89132,6 +89234,11 @@
                         "description": "Whether pull requests are enabled.",
                         "type": "boolean",
                         "default": true
+                      },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
                       },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
@@ -90477,6 +90584,11 @@
                         "type": "boolean",
                         "default": true
                       },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
+                      },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
                       "html_url": { "type": "string", "format": "uri" },
@@ -90991,6 +91103,11 @@
                         "description": "Whether pull requests are enabled.",
                         "type": "boolean",
                         "default": true
+                      },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
                       },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
@@ -92650,6 +92767,11 @@
                         "type": "boolean",
                         "default": true
                       },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
+                      },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
                       "html_url": { "type": "string", "format": "uri" },
@@ -93154,6 +93276,11 @@
                         "description": "Whether pull requests are enabled.",
                         "type": "boolean",
                         "default": true
+                      },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
                       },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
@@ -94443,6 +94570,11 @@
                         "type": "boolean",
                         "default": true
                       },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
+                      },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
                       "html_url": { "type": "string", "format": "uri" },
@@ -94947,6 +95079,11 @@
                         "description": "Whether pull requests are enabled.",
                         "type": "boolean",
                         "default": true
+                      },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
                       },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
@@ -96227,6 +96364,11 @@
                         "type": "boolean",
                         "default": true
                       },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
+                      },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
                       "html_url": { "type": "string", "format": "uri" },
@@ -96731,6 +96873,11 @@
                         "description": "Whether pull requests are enabled.",
                         "type": "boolean",
                         "default": true
+                      },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
                       },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
@@ -98010,6 +98157,11 @@
                         "type": "boolean",
                         "default": true
                       },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
+                      },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
                       "html_url": { "type": "string", "format": "uri" },
@@ -98514,6 +98666,11 @@
                         "description": "Whether pull requests are enabled.",
                         "type": "boolean",
                         "default": true
+                      },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
                       },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
@@ -101706,6 +101863,11 @@
                             "type": "boolean",
                             "default": true
                           },
+                          "pull_request_creation_policy": {
+                            "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                            "type": "string",
+                            "enum": ["all", "collaborators_only"]
+                          },
                           "homepage": { "type": ["string", "null"] },
                           "hooks_url": { "type": "string", "format": "uri" },
                           "html_url": { "type": "string", "format": "uri" },
@@ -102262,6 +102424,11 @@
                             "description": "Whether pull requests are enabled.",
                             "type": "boolean",
                             "default": true
+                          },
+                          "pull_request_creation_policy": {
+                            "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                            "type": "string",
+                            "enum": ["all", "collaborators_only"]
                           },
                           "homepage": { "type": ["string", "null"] },
                           "hooks_url": { "type": "string", "format": "uri" },
@@ -103797,6 +103964,11 @@
                             "type": "boolean",
                             "default": true
                           },
+                          "pull_request_creation_policy": {
+                            "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                            "type": "string",
+                            "enum": ["all", "collaborators_only"]
+                          },
                           "homepage": { "type": ["string", "null"] },
                           "hooks_url": { "type": "string", "format": "uri" },
                           "html_url": { "type": "string", "format": "uri" },
@@ -104353,6 +104525,11 @@
                             "description": "Whether pull requests are enabled.",
                             "type": "boolean",
                             "default": true
+                          },
+                          "pull_request_creation_policy": {
+                            "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                            "type": "string",
+                            "enum": ["all", "collaborators_only"]
                           },
                           "homepage": { "type": ["string", "null"] },
                           "hooks_url": { "type": "string", "format": "uri" },
@@ -105957,6 +106134,11 @@
                             "type": "boolean",
                             "default": true
                           },
+                          "pull_request_creation_policy": {
+                            "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                            "type": "string",
+                            "enum": ["all", "collaborators_only"]
+                          },
                           "homepage": { "type": ["string", "null"] },
                           "hooks_url": { "type": "string", "format": "uri" },
                           "html_url": { "type": "string", "format": "uri" },
@@ -106513,6 +106695,11 @@
                             "description": "Whether pull requests are enabled.",
                             "type": "boolean",
                             "default": true
+                          },
+                          "pull_request_creation_policy": {
+                            "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                            "type": "string",
+                            "enum": ["all", "collaborators_only"]
                           },
                           "homepage": { "type": ["string", "null"] },
                           "hooks_url": { "type": "string", "format": "uri" },
@@ -108033,6 +108220,11 @@
                             "type": "boolean",
                             "default": true
                           },
+                          "pull_request_creation_policy": {
+                            "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                            "type": "string",
+                            "enum": ["all", "collaborators_only"]
+                          },
                           "homepage": { "type": ["string", "null"] },
                           "hooks_url": { "type": "string", "format": "uri" },
                           "html_url": { "type": "string", "format": "uri" },
@@ -108589,6 +108781,11 @@
                             "description": "Whether pull requests are enabled.",
                             "type": "boolean",
                             "default": true
+                          },
+                          "pull_request_creation_policy": {
+                            "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                            "type": "string",
+                            "enum": ["all", "collaborators_only"]
                           },
                           "homepage": { "type": ["string", "null"] },
                           "hooks_url": { "type": "string", "format": "uri" },
@@ -110102,6 +110299,11 @@
                         "type": "boolean",
                         "default": true
                       },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
+                      },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
                       "html_url": { "type": "string", "format": "uri" },
@@ -110606,6 +110808,11 @@
                         "description": "Whether pull requests are enabled.",
                         "type": "boolean",
                         "default": true
+                      },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
                       },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
@@ -111893,6 +112100,11 @@
                         "type": "boolean",
                         "default": true
                       },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
+                      },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
                       "html_url": { "type": "string", "format": "uri" },
@@ -112372,6 +112584,11 @@
                         "description": "Whether pull requests are enabled.",
                         "type": "boolean",
                         "default": true
+                      },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
                       },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
@@ -113906,6 +114123,11 @@
                         "type": "boolean",
                         "default": true
                       },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
+                      },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
                       "html_url": { "type": "string", "format": "uri" },
@@ -114385,6 +114607,11 @@
                         "description": "Whether pull requests are enabled.",
                         "type": "boolean",
                         "default": true
+                      },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
                       },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
@@ -115911,6 +116138,11 @@
                         "type": "boolean",
                         "default": true
                       },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
+                      },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
                       "html_url": { "type": "string", "format": "uri" },
@@ -116425,6 +116657,11 @@
                         "description": "Whether pull requests are enabled.",
                         "type": "boolean",
                         "default": true
+                      },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
                       },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
@@ -117781,6 +118018,11 @@
                         "type": "boolean",
                         "default": true
                       },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
+                      },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
                       "html_url": { "type": "string", "format": "uri" },
@@ -118295,6 +118537,11 @@
                         "description": "Whether pull requests are enabled.",
                         "type": "boolean",
                         "default": true
+                      },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
                       },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
@@ -119641,6 +119888,11 @@
                         "type": "boolean",
                         "default": true
                       },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
+                      },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
                       "html_url": { "type": "string", "format": "uri" },
@@ -120155,6 +120407,11 @@
                         "description": "Whether pull requests are enabled.",
                         "type": "boolean",
                         "default": true
+                      },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
                       },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
@@ -121500,6 +121757,11 @@
                         "type": "boolean",
                         "default": true
                       },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
+                      },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
                       "html_url": { "type": "string", "format": "uri" },
@@ -122014,6 +122276,11 @@
                         "description": "Whether pull requests are enabled.",
                         "type": "boolean",
                         "default": true
+                      },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
                       },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
@@ -123260,6 +123527,11 @@
                 "description": "Whether pull requests are enabled.",
                 "type": "boolean",
                 "default": true
+              },
+              "pull_request_creation_policy": {
+                "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                "type": "string",
+                "enum": ["all", "collaborators_only"]
               },
               "homepage": { "type": ["string", "null"] },
               "hooks_url": { "type": "string", "format": "uri" },
@@ -131137,6 +131409,11 @@
               "has_pages": { "type": "boolean" },
               "has_discussions": { "type": "boolean" },
               "has_pull_requests": { "type": "boolean" },
+              "pull_request_creation_policy": {
+                "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                "type": "string",
+                "enum": ["all", "collaborators_only"]
+              },
               "forks_count": { "type": "integer" },
               "mirror_url": { "type": ["string", "null"] },
               "archived": { "type": "boolean" },
@@ -152301,7 +152578,64 @@
           "created_at": "2011-04-14T16:00:49Z",
           "updated_at": "2011-04-14T16:00:49Z",
           "issue_url": "https://api.github.com/repos/octocat/Hello-World/issues/1347",
-          "author_association": "COLLABORATOR"
+          "author_association": "COLLABORATOR",
+          "pin": null
+        }
+      },
+      "issue-comment-pinned": {
+        "value": {
+          "id": 1,
+          "node_id": "MDEyOklzc3VlQ29tbWVudDE=",
+          "url": "https://api.github.com/repos/octocat/Hello-World/issues/comments/1",
+          "html_url": "https://github.com/octocat/Hello-World/issues/1347#issuecomment-1",
+          "body": "Me too",
+          "user": {
+            "login": "octocat",
+            "id": 1,
+            "node_id": "MDQ6VXNlcjE=",
+            "avatar_url": "https://github.com/images/error/octocat_happy.gif",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/octocat",
+            "html_url": "https://github.com/octocat",
+            "followers_url": "https://api.github.com/users/octocat/followers",
+            "following_url": "https://api.github.com/users/octocat/following{/other_user}",
+            "gists_url": "https://api.github.com/users/octocat/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/octocat/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/octocat/subscriptions",
+            "organizations_url": "https://api.github.com/users/octocat/orgs",
+            "repos_url": "https://api.github.com/users/octocat/repos",
+            "events_url": "https://api.github.com/users/octocat/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/octocat/received_events",
+            "type": "User",
+            "site_admin": false
+          },
+          "created_at": "2011-04-14T16:00:49Z",
+          "updated_at": "2011-04-14T16:00:49Z",
+          "issue_url": "https://api.github.com/repos/octocat/Hello-World/issues/1347",
+          "author_association": "COLLABORATOR",
+          "pin": {
+            "pinned_at": "2021-01-01T00:00:00Z",
+            "pinned_by": {
+              "login": "octocat",
+              "id": 1,
+              "node_id": "MDQ6VXNlcjE=",
+              "avatar_url": "https://github.com/images/error/octocat_happy.gif",
+              "gravatar_id": "",
+              "url": "https://api.github.com/users/octocat",
+              "html_url": "https://github.com/octocat",
+              "followers_url": "https://api.github.com/users/octocat/followers",
+              "following_url": "https://api.github.com/users/octocat/following{/other_user}",
+              "gists_url": "https://api.github.com/users/octocat/gists{/gist_id}",
+              "starred_url": "https://api.github.com/users/octocat/starred{/owner}{/repo}",
+              "subscriptions_url": "https://api.github.com/users/octocat/subscriptions",
+              "organizations_url": "https://api.github.com/users/octocat/orgs",
+              "repos_url": "https://api.github.com/users/octocat/repos",
+              "events_url": "https://api.github.com/users/octocat/events{/privacy}",
+              "received_events_url": "https://api.github.com/users/octocat/received_events",
+              "type": "User",
+              "site_admin": false
+            }
+          }
         }
       },
       "issue-event-items": {
