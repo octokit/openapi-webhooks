@@ -27439,6 +27439,100 @@
         },
         "required": ["issue_field_id", "node_id", "data_type", "value"]
       },
+      "pinned-issue-comment": {
+        "title": "Pinned Issue Comment",
+        "description": "Context around who pinned an issue comment and when it was pinned.",
+        "type": "object",
+        "properties": {
+          "pinned_at": {
+            "type": "string",
+            "format": "date-time",
+            "examples": ["2011-04-14T16:00:49Z"]
+          },
+          "pinned_by": {
+            "anyOf": [
+              { "type": "null" },
+              { "$ref": "#/components/schemas/simple-user" }
+            ]
+          }
+        },
+        "required": ["pinned_at", "pinned_by"]
+      },
+      "issue-comment": {
+        "title": "Issue Comment",
+        "description": "Comments provide a way for people to collaborate on an issue.",
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "Unique identifier of the issue comment",
+            "type": "integer",
+            "format": "int64",
+            "examples": [42]
+          },
+          "node_id": { "type": "string" },
+          "url": {
+            "description": "URL for the issue comment",
+            "type": "string",
+            "format": "uri",
+            "examples": [
+              "https://api.github.com/repositories/42/issues/comments/1"
+            ]
+          },
+          "body": {
+            "description": "Contents of the issue comment",
+            "type": "string",
+            "examples": [
+              "What version of Safari were you using when you observed this bug?"
+            ]
+          },
+          "body_text": { "type": "string" },
+          "body_html": { "type": "string" },
+          "html_url": { "type": "string", "format": "uri" },
+          "user": {
+            "anyOf": [
+              { "type": "null" },
+              { "$ref": "#/components/schemas/simple-user" }
+            ]
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "examples": ["2011-04-14T16:00:49Z"]
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "examples": ["2011-04-14T16:00:49Z"]
+          },
+          "issue_url": { "type": "string", "format": "uri" },
+          "author_association": {
+            "$ref": "#/components/schemas/author-association"
+          },
+          "performed_via_github_app": {
+            "anyOf": [
+              { "type": "null" },
+              { "$ref": "#/components/schemas/integration" }
+            ]
+          },
+          "reactions": { "$ref": "#/components/schemas/reaction-rollup" },
+          "pin": {
+            "anyOf": [
+              { "type": "null" },
+              { "$ref": "#/components/schemas/pinned-issue-comment" }
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "node_id",
+          "html_url",
+          "issue_url",
+          "user",
+          "url",
+          "created_at",
+          "updated_at"
+        ]
+      },
       "issue": {
         "title": "Issue",
         "description": "Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
@@ -27585,6 +27679,12 @@
           "issue_field_values": {
             "type": "array",
             "items": { "$ref": "#/components/schemas/issue-field-value" }
+          },
+          "pinned_comment": {
+            "anyOf": [
+              { "type": "null" },
+              { "$ref": "#/components/schemas/issue-comment" }
+            ]
           }
         },
         "required": [
@@ -27660,100 +27760,6 @@
           "description",
           "color",
           "default"
-        ]
-      },
-      "pinned-issue-comment": {
-        "title": "Pinned Issue Comment",
-        "description": "Context around who pinned an issue comment and when it was pinned.",
-        "type": "object",
-        "properties": {
-          "pinned_at": {
-            "type": "string",
-            "format": "date-time",
-            "examples": ["2011-04-14T16:00:49Z"]
-          },
-          "pinned_by": {
-            "anyOf": [
-              { "type": "null" },
-              { "$ref": "#/components/schemas/simple-user" }
-            ]
-          }
-        },
-        "required": ["pinned_at", "pinned_by"]
-      },
-      "issue-comment": {
-        "title": "Issue Comment",
-        "description": "Comments provide a way for people to collaborate on an issue.",
-        "type": "object",
-        "properties": {
-          "id": {
-            "description": "Unique identifier of the issue comment",
-            "type": "integer",
-            "format": "int64",
-            "examples": [42]
-          },
-          "node_id": { "type": "string" },
-          "url": {
-            "description": "URL for the issue comment",
-            "type": "string",
-            "format": "uri",
-            "examples": [
-              "https://api.github.com/repositories/42/issues/comments/1"
-            ]
-          },
-          "body": {
-            "description": "Contents of the issue comment",
-            "type": "string",
-            "examples": [
-              "What version of Safari were you using when you observed this bug?"
-            ]
-          },
-          "body_text": { "type": "string" },
-          "body_html": { "type": "string" },
-          "html_url": { "type": "string", "format": "uri" },
-          "user": {
-            "anyOf": [
-              { "type": "null" },
-              { "$ref": "#/components/schemas/simple-user" }
-            ]
-          },
-          "created_at": {
-            "type": "string",
-            "format": "date-time",
-            "examples": ["2011-04-14T16:00:49Z"]
-          },
-          "updated_at": {
-            "type": "string",
-            "format": "date-time",
-            "examples": ["2011-04-14T16:00:49Z"]
-          },
-          "issue_url": { "type": "string", "format": "uri" },
-          "author_association": {
-            "$ref": "#/components/schemas/author-association"
-          },
-          "performed_via_github_app": {
-            "anyOf": [
-              { "type": "null" },
-              { "$ref": "#/components/schemas/integration" }
-            ]
-          },
-          "reactions": { "$ref": "#/components/schemas/reaction-rollup" },
-          "pin": {
-            "anyOf": [
-              { "type": "null" },
-              { "$ref": "#/components/schemas/pinned-issue-comment" }
-            ]
-          }
-        },
-        "required": [
-          "id",
-          "node_id",
-          "html_url",
-          "issue_url",
-          "user",
-          "url",
-          "created_at",
-          "updated_at"
         ]
       },
       "team-simple": {
@@ -44181,6 +44187,12 @@
               { "$ref": "#/components/schemas/integration" }
             ]
           },
+          "pinned_comment": {
+            "anyOf": [
+              { "type": "null" },
+              { "$ref": "#/components/schemas/issue-comment" }
+            ]
+          },
           "reactions": { "$ref": "#/components/schemas/reaction-rollup" }
         },
         "required": [
@@ -47818,6 +47830,12 @@
             ]
           },
           "repository_url": { "type": "string", "format": "uri" },
+          "pinned_comment": {
+            "anyOf": [
+              { "type": "null" },
+              { "$ref": "#/components/schemas/issue-comment" }
+            ]
+          },
           "sub_issues_summary": {
             "$ref": "#/components/schemas/sub-issues-summary"
           },
@@ -48488,6 +48506,12 @@
             ]
           },
           "repository_url": { "type": "string", "format": "uri" },
+          "pinned_comment": {
+            "anyOf": [
+              { "type": "null" },
+              { "$ref": "#/components/schemas/issue-comment" }
+            ]
+          },
           "sub_issues_summary": {
             "$ref": "#/components/schemas/sub-issues-summary"
           },
@@ -64169,6 +64193,12 @@
                     ]
                   },
                   "repository_url": { "type": "string", "format": "uri" },
+                  "pinned_comment": {
+                    "anyOf": [
+                      { "type": "null" },
+                      { "$ref": "#/components/schemas/issue-comment" }
+                    ]
+                  },
                   "sub_issues_summary": {
                     "$ref": "#/components/schemas/sub-issues-summary"
                   },
@@ -64963,6 +64993,12 @@
                 ]
               },
               "repository_url": { "type": "string", "format": "uri" },
+              "pinned_comment": {
+                "anyOf": [
+                  { "type": "null" },
+                  { "$ref": "#/components/schemas/issue-comment" }
+                ]
+              },
               "sub_issues_summary": {
                 "$ref": "#/components/schemas/sub-issues-summary"
               },
@@ -65679,6 +65715,12 @@
                 }
               },
               "repository_url": { "type": "string", "format": "uri" },
+              "pinned_comment": {
+                "anyOf": [
+                  { "type": "null" },
+                  { "$ref": "#/components/schemas/issue-comment" }
+                ]
+              },
               "sub_issues_summary": {
                 "$ref": "#/components/schemas/sub-issues-summary"
               },
@@ -66380,6 +66422,12 @@
                 ]
               },
               "repository_url": { "type": "string", "format": "uri" },
+              "pinned_comment": {
+                "anyOf": [
+                  { "type": "null" },
+                  { "$ref": "#/components/schemas/issue-comment" }
+                ]
+              },
               "sub_issues_summary": {
                 "$ref": "#/components/schemas/sub-issues-summary"
               },
@@ -67077,6 +67125,12 @@
                 ]
               },
               "repository_url": { "type": "string", "format": "uri" },
+              "pinned_comment": {
+                "anyOf": [
+                  { "type": "null" },
+                  { "$ref": "#/components/schemas/issue-comment" }
+                ]
+              },
               "sub_issues_summary": {
                 "$ref": "#/components/schemas/sub-issues-summary"
               },
@@ -67799,6 +67853,12 @@
                 }
               },
               "repository_url": { "type": "string", "format": "uri" },
+              "pinned_comment": {
+                "anyOf": [
+                  { "type": "null" },
+                  { "$ref": "#/components/schemas/issue-comment" }
+                ]
+              },
               "sub_issues_summary": {
                 "$ref": "#/components/schemas/sub-issues-summary"
               },
@@ -68493,6 +68553,12 @@
                 }
               },
               "repository_url": { "type": "string", "format": "uri" },
+              "pinned_comment": {
+                "anyOf": [
+                  { "type": "null" },
+                  { "$ref": "#/components/schemas/issue-comment" }
+                ]
+              },
               "sub_issues_summary": {
                 "$ref": "#/components/schemas/sub-issues-summary"
               },
@@ -69247,6 +69313,12 @@
                     "description": "URL for the issue",
                     "type": "string",
                     "format": "uri"
+                  },
+                  "pinned_comment": {
+                    "anyOf": [
+                      { "type": "null" },
+                      { "$ref": "#/components/schemas/issue-comment" }
+                    ]
                   },
                   "user": {
                     "title": "User",
@@ -70316,6 +70388,12 @@
                 "type": "string",
                 "format": "uri"
               },
+              "pinned_comment": {
+                "anyOf": [
+                  { "type": "null" },
+                  { "$ref": "#/components/schemas/issue-comment" }
+                ]
+              },
               "user": {
                 "title": "User",
                 "type": ["object", "null"],
@@ -71025,6 +71103,12 @@
                 }
               },
               "repository_url": { "type": "string", "format": "uri" },
+              "pinned_comment": {
+                "anyOf": [
+                  { "type": "null" },
+                  { "$ref": "#/components/schemas/issue-comment" }
+                ]
+              },
               "sub_issues_summary": {
                 "$ref": "#/components/schemas/sub-issues-summary"
               },
@@ -71750,6 +71834,12 @@
                     ]
                   },
                   "repository_url": { "type": "string", "format": "uri" },
+                  "pinned_comment": {
+                    "anyOf": [
+                      { "type": "null" },
+                      { "$ref": "#/components/schemas/issue-comment" }
+                    ]
+                  },
                   "sub_issues_summary": {
                     "$ref": "#/components/schemas/sub-issues-summary"
                   },
@@ -72926,6 +73016,12 @@
                 }
               },
               "repository_url": { "type": "string", "format": "uri" },
+              "pinned_comment": {
+                "anyOf": [
+                  { "type": "null" },
+                  { "$ref": "#/components/schemas/issue-comment" }
+                ]
+              },
               "sub_issues_summary": {
                 "$ref": "#/components/schemas/sub-issues-summary"
               },
@@ -138109,7 +138205,6 @@
             "environment": "",
             "category": ".github/workflows/codeql-analysis.yml:CodeQL-Build",
             "state": "open",
-            "fixed_at": null,
             "commit_sha": "39406e42cb832f683daa691dd652a8dc36ee8930",
             "message": {
               "text": "This path depends on a user-provided value."
@@ -138129,7 +138224,6 @@
             "environment": "",
             "category": ".github/workflows/codeql-analysis.yml:CodeQL-Build",
             "state": "fixed",
-            "fixed_at": "2020-02-14T12:29:18Z",
             "commit_sha": "b09da05606e27f463a2b49287684b4ae777092f2",
             "message": {
               "text": "This suffix check is missing a length comparison to correctly handle lastIndexOf returning -1."
