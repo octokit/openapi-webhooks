@@ -6325,6 +6325,8 @@ export interface components {
       fixed_at: components["schemas"]["alert-fixed-at"];
       auto_dismissed_at?: components["schemas"]["alert-auto-dismissed-at"];
       dismissal_request?: components["schemas"]["dependabot-alert-dismissal-request-simple"];
+      /** @description The users assigned to this alert. */
+      assignees?: readonly components["schemas"]["simple-user"][];
     };
     /** @description The security alert number. */
     readonly "alert-number": number;
@@ -13362,6 +13364,7 @@ export interface components {
        * @description URL to get the parent issue of this issue, if it is a sub-issue
        */
       parent_issue_url?: string | null;
+      pinned_comment?: null | components["schemas"]["issue-comment"];
       issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
       issue_field_values?: components["schemas"]["issue-field-value"][];
       pinned_comment?: null | components["schemas"]["issue-comment"];
@@ -13379,6 +13382,40 @@ export interface components {
       hooray: number;
       eyes: number;
       rocket: number;
+    };
+    /**
+     * Issue Comment
+     * @description Comments provide a way for people to collaborate on an issue.
+     */
+    "issue-comment": {
+      /**
+       * Format: int64
+       * @description Unique identifier of the issue comment
+       */
+      id: number;
+      node_id: string;
+      /**
+       * Format: uri
+       * @description URL for the issue comment
+       */
+      url: string;
+      /** @description Contents of the issue comment */
+      body?: string;
+      body_text?: string;
+      body_html?: string;
+      /** Format: uri */
+      html_url: string;
+      user: null | components["schemas"]["simple-user"];
+      /** Format: date-time */
+      created_at: string;
+      /** Format: date-time */
+      updated_at: string;
+      /** Format: uri */
+      issue_url: string;
+      author_association?: components["schemas"]["author-association"];
+      performed_via_github_app?: null | components["schemas"]["integration"];
+      reactions?: components["schemas"]["reaction-rollup"];
+      pin?: null | components["schemas"]["pinned-issue-comment"];
     };
     /**
      * Issue Field Value

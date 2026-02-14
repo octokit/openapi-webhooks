@@ -29585,6 +29585,12 @@
           },
           "dismissal_request": {
             "$ref": "#/components/schemas/dependabot-alert-dismissal-request-simple"
+          },
+          "assignees": {
+            "type": "array",
+            "description": "The users assigned to this alert.",
+            "readOnly": true,
+            "items": { "$ref": "#/components/schemas/simple-user" }
           }
         },
         "required": [

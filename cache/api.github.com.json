@@ -23793,6 +23793,12 @@
           "dismissal_request": {
             "$ref": "#/components/schemas/dependabot-alert-dismissal-request-simple"
           },
+          "assignees": {
+            "type": "array",
+            "description": "The users assigned to this alert.",
+            "readOnly": true,
+            "items": { "$ref": "#/components/schemas/simple-user" }
+          },
           "repository": { "$ref": "#/components/schemas/simple-repository" }
         },
         "required": [
@@ -24397,6 +24403,100 @@
         },
         "required": ["total", "completed", "percent_completed"]
       },
+      "pinned-issue-comment": {
+        "title": "Pinned Issue Comment",
+        "description": "Context around who pinned an issue comment and when it was pinned.",
+        "type": "object",
+        "properties": {
+          "pinned_at": {
+            "type": "string",
+            "format": "date-time",
+            "examples": ["2011-04-14T16:00:49Z"]
+          },
+          "pinned_by": {
+            "anyOf": [
+              { "type": "null" },
+              { "$ref": "#/components/schemas/simple-user" }
+            ]
+          }
+        },
+        "required": ["pinned_at", "pinned_by"]
+      },
+      "issue-comment": {
+        "title": "Issue Comment",
+        "description": "Comments provide a way for people to collaborate on an issue.",
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "Unique identifier of the issue comment",
+            "type": "integer",
+            "format": "int64",
+            "examples": [42]
+          },
+          "node_id": { "type": "string" },
+          "url": {
+            "description": "URL for the issue comment",
+            "type": "string",
+            "format": "uri",
+            "examples": [
+              "https://api.github.com/repositories/42/issues/comments/1"
+            ]
+          },
+          "body": {
+            "description": "Contents of the issue comment",
+            "type": "string",
+            "examples": [
+              "What version of Safari were you using when you observed this bug?"
+            ]
+          },
+          "body_text": { "type": "string" },
+          "body_html": { "type": "string" },
+          "html_url": { "type": "string", "format": "uri" },
+          "user": {
+            "anyOf": [
+              { "type": "null" },
+              { "$ref": "#/components/schemas/simple-user" }
+            ]
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "examples": ["2011-04-14T16:00:49Z"]
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "examples": ["2011-04-14T16:00:49Z"]
+          },
+          "issue_url": { "type": "string", "format": "uri" },
+          "author_association": {
+            "$ref": "#/components/schemas/author-association"
+          },
+          "performed_via_github_app": {
+            "anyOf": [
+              { "type": "null" },
+              { "$ref": "#/components/schemas/integration" }
+            ]
+          },
+          "reactions": { "$ref": "#/components/schemas/reaction-rollup" },
+          "pin": {
+            "anyOf": [
+              { "type": "null" },
+              { "$ref": "#/components/schemas/pinned-issue-comment" }
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "node_id",
+          "html_url",
+          "issue_url",
+          "user",
+          "url",
+          "created_at",
+          "updated_at"
+        ]
+      },
       "issue-dependencies-summary": {
         "title": "Issue Dependencies Summary",
         "type": "object",
@@ -24700,6 +24800,12 @@
             "type": ["string", "null"],
             "format": "uri"
           },
+          "pinned_comment": {
+            "anyOf": [
+              { "type": "null" },
+              { "$ref": "#/components/schemas/issue-comment" }
+            ]
+          },
           "issue_dependencies_summary": {
             "$ref": "#/components/schemas/issue-dependencies-summary"
           },
@@ -24735,184 +24841,6 @@
           "user",
           "created_at",
           "updated_at"
-        ]
-      },
-      "pull-request-minimal": {
-        "title": "Pull Request Minimal",
-        "type": "object",
-        "properties": {
-          "id": { "type": "integer", "format": "int64" },
-          "number": { "type": "integer" },
-          "url": { "type": "string" },
-          "head": {
-            "type": "object",
-            "properties": {
-              "ref": { "type": "string" },
-              "sha": { "type": "string" },
-              "repo": {
-                "type": "object",
-                "properties": {
-                  "id": { "type": "integer", "format": "int64" },
-                  "url": { "type": "string" },
-                  "name": { "type": "string" }
-                },
-                "required": ["id", "url", "name"]
-              }
-            },
-            "required": ["ref", "sha", "repo"]
-          },
-          "base": {
-            "type": "object",
-            "properties": {
-              "ref": { "type": "string" },
-              "sha": { "type": "string" },
-              "repo": {
-                "type": "object",
-                "properties": {
-                  "id": { "type": "integer", "format": "int64" },
-                  "url": { "type": "string" },
-                  "name": { "type": "string" }
-                },
-                "required": ["id", "url", "name"]
-              }
-            },
-            "required": ["ref", "sha", "repo"]
-          }
-        },
-        "required": ["id", "number", "url", "head", "base"]
-      },
-      "release-asset": {
-        "title": "Release Asset",
-        "description": "Data related to a release.",
-        "type": "object",
-        "properties": {
-          "url": { "type": "string", "format": "uri" },
-          "browser_download_url": { "type": "string", "format": "uri" },
-          "id": { "type": "integer" },
-          "node_id": { "type": "string" },
-          "name": {
-            "description": "The file name of the asset.",
-            "type": "string",
-            "examples": ["Team Environment"]
-          },
-          "label": { "type": ["string", "null"] },
-          "state": {
-            "description": "State of the release asset.",
-            "type": "string",
-            "enum": ["uploaded", "open"]
-          },
-          "content_type": { "type": "string" },
-          "size": { "type": "integer" },
-          "digest": { "type": ["string", "null"] },
-          "download_count": { "type": "integer" },
-          "created_at": { "type": "string", "format": "date-time" },
-          "updated_at": { "type": "string", "format": "date-time" },
-          "uploader": {
-            "anyOf": [
-              { "type": "null" },
-              { "$ref": "#/components/schemas/simple-user" }
-            ]
-          }
-        },
-        "required": [
-          "id",
-          "name",
-          "content_type",
-          "size",
-          "digest",
-          "state",
-          "url",
-          "node_id",
-          "download_count",
-          "label",
-          "uploader",
-          "browser_download_url",
-          "created_at",
-          "updated_at"
-        ]
-      },
-      "release": {
-        "title": "Release",
-        "description": "A release.",
-        "type": "object",
-        "properties": {
-          "url": { "type": "string", "format": "uri" },
-          "html_url": { "type": "string", "format": "uri" },
-          "assets_url": { "type": "string", "format": "uri" },
-          "upload_url": { "type": "string" },
-          "tarball_url": { "type": ["string", "null"], "format": "uri" },
-          "zipball_url": { "type": ["string", "null"], "format": "uri" },
-          "id": { "type": "integer" },
-          "node_id": { "type": "string" },
-          "tag_name": {
-            "description": "The name of the tag.",
-            "type": "string",
-            "examples": ["v1.0.0"]
-          },
-          "target_commitish": {
-            "description": "Specifies the commitish value that determines where the Git tag is created from.",
-            "type": "string",
-            "examples": ["master"]
-          },
-          "name": { "type": ["string", "null"] },
-          "body": { "type": ["string", "null"] },
-          "draft": {
-            "description": "true to create a draft (unpublished) release, false to create a published one.",
-            "type": "boolean",
-            "examples": [false]
-          },
-          "prerelease": {
-            "description": "Whether to identify the release as a prerelease or a full release.",
-            "type": "boolean",
-            "examples": [false]
-          },
-          "immutable": {
-            "description": "Whether or not the release is immutable.",
-            "type": "boolean",
-            "examples": [false]
-          },
-          "created_at": { "type": "string", "format": "date-time" },
-          "published_at": { "type": ["string", "null"], "format": "date-time" },
-          "updated_at": { "type": ["string", "null"], "format": "date-time" },
-          "author": { "$ref": "#/components/schemas/simple-user" },
-          "assets": {
-            "type": "array",
-            "items": { "$ref": "#/components/schemas/release-asset" }
-          },
-          "body_html": { "type": "string" },
-          "body_text": { "type": "string" },
-          "mentions_count": { "type": "integer" },
-          "discussion_url": {
-            "description": "The URL of the release discussion.",
-            "type": "string",
-            "format": "uri"
-          },
-          "reactions": { "$ref": "#/components/schemas/reaction-rollup" },
-          "pin": {
-            "anyOf": [
-              { "type": "null" },
-              { "$ref": "#/components/schemas/pinned-issue-comment" }
-            ]
-          }
-        },
-        "required": [
-          "assets_url",
-          "upload_url",
-          "tarball_url",
-          "zipball_url",
-          "created_at",
-          "published_at",
-          "draft",
-          "id",
-          "node_id",
-          "author",
-          "html_url",
-          "name",
-          "prerelease",
-          "tag_name",
-          "target_commitish",
-          "assets",
-          "url"
         ]
       },
       "pull-request-minimal": {
@@ -39815,6 +39743,12 @@
           },
           "dismissal_request": {
             "$ref": "#/components/schemas/dependabot-alert-dismissal-request-simple"
+          },
+          "assignees": {
+            "type": "array",
+            "description": "The users assigned to this alert.",
+            "readOnly": true,
+            "items": { "$ref": "#/components/schemas/simple-user" }
           }
         },
         "required": [
@@ -136278,6 +136212,7 @@
               "type": "User",
               "site_admin": false
             },
+            "pinned_comment": null,
             "labels": [
               {
                 "id": 208045946,
@@ -141773,6 +141708,7 @@
               "user_view_type": "public",
               "site_admin": false
             },
+            "pinned_comment": null,
             "body": "Issue body",
             "created_at": "2025-08-01T18:44:50Z",
             "updated_at": "2025-08-06T19:25:18Z",
@@ -152499,6 +152435,7 @@
               "type": "User",
               "site_admin": false
             },
+            "pinned_comment": null,
             "labels": [
               {
                 "id": 208045946,
@@ -152660,6 +152597,7 @@
             "type": "User",
             "site_admin": false
           },
+          "pinned_comment": null,
           "labels": [
             {
               "id": 208045946,
@@ -152974,6 +152912,7 @@
                 "type": "User",
                 "site_admin": false
               },
+              "pinned_comment": null,
               "labels": [
                 {
                   "id": 208045946,
@@ -153144,6 +153083,7 @@
               "type": "User",
               "site_admin": false
             },
+            "pinned_comment": null,
             "labels": [
               {
                 "id": 208045946,
@@ -153285,6 +153225,220 @@
             "author_association": "COLLABORATOR",
             "state_reason": "completed"
           }
+        }
+      },
+      "issue-with-pinned-comment": {
+        "value": {
+          "id": 1,
+          "node_id": "MDU6SXNzdWUx",
+          "url": "https://api.github.com/repos/octocat/Hello-World/issues/1347",
+          "repository_url": "https://api.github.com/repos/octocat/Hello-World",
+          "labels_url": "https://api.github.com/repos/octocat/Hello-World/issues/1347/labels{/name}",
+          "comments_url": "https://api.github.com/repos/octocat/Hello-World/issues/1347/comments",
+          "events_url": "https://api.github.com/repos/octocat/Hello-World/issues/1347/events",
+          "html_url": "https://github.com/octocat/Hello-World/issues/1347",
+          "number": 1347,
+          "state": "open",
+          "title": "Found a bug",
+          "body": "I'm having a problem with this.",
+          "user": {
+            "login": "octocat",
+            "id": 1,
+            "node_id": "MDQ6VXNlcjE=",
+            "avatar_url": "https://github.com/images/error/octocat_happy.gif",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/octocat",
+            "html_url": "https://github.com/octocat",
+            "followers_url": "https://api.github.com/users/octocat/followers",
+            "following_url": "https://api.github.com/users/octocat/following{/other_user}",
+            "gists_url": "https://api.github.com/users/octocat/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/octocat/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/octocat/subscriptions",
+            "organizations_url": "https://api.github.com/users/octocat/orgs",
+            "repos_url": "https://api.github.com/users/octocat/repos",
+            "events_url": "https://api.github.com/users/octocat/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/octocat/received_events",
+            "type": "User",
+            "site_admin": false
+          },
+          "pinned_comment": {
+            "id": 1,
+            "node_id": "MDEyOklzc3VlQ29tbWVudDE=",
+            "url": "https://api.github.com/repos/octocat/Hello-World/issues/comments/1",
+            "html_url": "https://github.com/octocat/Hello-World/issues/1347#issuecomment-1",
+            "body": "Me too",
+            "user": {
+              "login": "octocat",
+              "id": 1,
+              "node_id": "MDQ6VXNlcjE=",
+              "avatar_url": "https://github.com/images/error/octocat_happy.gif",
+              "gravatar_id": "",
+              "url": "https://api.github.com/users/octocat",
+              "html_url": "https://github.com/octocat",
+              "followers_url": "https://api.github.com/users/octocat/followers",
+              "following_url": "https://api.github.com/users/octocat/following{/other_user}",
+              "gists_url": "https://api.github.com/users/octocat/gists{/gist_id}",
+              "starred_url": "https://api.github.com/users/octocat/starred{/owner}{/repo}",
+              "subscriptions_url": "https://api.github.com/users/octocat/subscriptions",
+              "organizations_url": "https://api.github.com/users/octocat/orgs",
+              "repos_url": "https://api.github.com/users/octocat/repos",
+              "events_url": "https://api.github.com/users/octocat/events{/privacy}",
+              "received_events_url": "https://api.github.com/users/octocat/received_events",
+              "type": "User",
+              "site_admin": false
+            },
+            "pin": {
+              "pinned_at": "2021-01-01T00:00:00Z",
+              "pinned_by": {
+                "login": "octocat",
+                "id": 1,
+                "node_id": "MDQ6VXNlcjE=",
+                "avatar_url": "https://github.com/images/error/octocat_happy.gif",
+                "gravatar_id": "",
+                "url": "https://api.github.com/users/octocat",
+                "html_url": "https://github.com/octocat",
+                "followers_url": "https://api.github.com/users/octocat/followers",
+                "following_url": "https://api.github.com/users/octocat/following{/other_user}",
+                "gists_url": "https://api.github.com/users/octocat/gists{/gist_id}",
+                "starred_url": "https://api.github.com/users/octocat/starred{/owner}{/repo}",
+                "subscriptions_url": "https://api.github.com/users/octocat/subscriptions",
+                "organizations_url": "https://api.github.com/users/octocat/orgs",
+                "repos_url": "https://api.github.com/users/octocat/repos",
+                "events_url": "https://api.github.com/users/octocat/events{/privacy}",
+                "received_events_url": "https://api.github.com/users/octocat/received_events",
+                "type": "User",
+                "site_admin": false
+              }
+            },
+            "created_at": "2011-04-14T16:00:49Z",
+            "updated_at": "2011-04-14T16:00:49Z",
+            "issue_url": "https://api.github.com/repos/octocat/Hello-World/issues/1347",
+            "author_association": "COLLABORATOR"
+          },
+          "labels": [
+            {
+              "id": 208045946,
+              "node_id": "MDU6TGFiZWwyMDgwNDU5NDY=",
+              "url": "https://api.github.com/repos/octocat/Hello-World/labels/bug",
+              "name": "bug",
+              "description": "Something isn't working",
+              "color": "f29513",
+              "default": true
+            }
+          ],
+          "assignee": {
+            "login": "octocat",
+            "id": 1,
+            "node_id": "MDQ6VXNlcjE=",
+            "avatar_url": "https://github.com/images/error/octocat_happy.gif",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/octocat",
+            "html_url": "https://github.com/octocat",
+            "followers_url": "https://api.github.com/users/octocat/followers",
+            "following_url": "https://api.github.com/users/octocat/following{/other_user}",
+            "gists_url": "https://api.github.com/users/octocat/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/octocat/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/octocat/subscriptions",
+            "organizations_url": "https://api.github.com/users/octocat/orgs",
+            "repos_url": "https://api.github.com/users/octocat/repos",
+            "events_url": "https://api.github.com/users/octocat/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/octocat/received_events",
+            "type": "User",
+            "site_admin": false
+          },
+          "assignees": [
+            {
+              "login": "octocat",
+              "id": 1,
+              "node_id": "MDQ6VXNlcjE=",
+              "avatar_url": "https://github.com/images/error/octocat_happy.gif",
+              "gravatar_id": "",
+              "url": "https://api.github.com/users/octocat",
+              "html_url": "https://github.com/octocat",
+              "followers_url": "https://api.github.com/users/octocat/followers",
+              "following_url": "https://api.github.com/users/octocat/following{/other_user}",
+              "gists_url": "https://api.github.com/users/octocat/gists{/gist_id}",
+              "starred_url": "https://api.github.com/users/octocat/starred{/owner}{/repo}",
+              "subscriptions_url": "https://api.github.com/users/octocat/subscriptions",
+              "organizations_url": "https://api.github.com/users/octocat/orgs",
+              "repos_url": "https://api.github.com/users/octocat/repos",
+              "events_url": "https://api.github.com/users/octocat/events{/privacy}",
+              "received_events_url": "https://api.github.com/users/octocat/received_events",
+              "type": "User",
+              "site_admin": false
+            }
+          ],
+          "milestone": {
+            "url": "https://api.github.com/repos/octocat/Hello-World/milestones/1",
+            "html_url": "https://github.com/octocat/Hello-World/milestones/v1.0",
+            "labels_url": "https://api.github.com/repos/octocat/Hello-World/milestones/1/labels",
+            "id": 1002604,
+            "node_id": "MDk6TWlsZXN0b25lMTAwMjYwNA==",
+            "number": 1,
+            "state": "open",
+            "title": "v1.0",
+            "description": "Tracking milestone for version 1.0",
+            "creator": {
+              "login": "octocat",
+              "id": 1,
+              "node_id": "MDQ6VXNlcjE=",
+              "avatar_url": "https://github.com/images/error/octocat_happy.gif",
+              "gravatar_id": "",
+              "url": "https://api.github.com/users/octocat",
+              "html_url": "https://github.com/octocat",
+              "followers_url": "https://api.github.com/users/octocat/followers",
+              "following_url": "https://api.github.com/users/octocat/following{/other_user}",
+              "gists_url": "https://api.github.com/users/octocat/gists{/gist_id}",
+              "starred_url": "https://api.github.com/users/octocat/starred{/owner}{/repo}",
+              "subscriptions_url": "https://api.github.com/users/octocat/subscriptions",
+              "organizations_url": "https://api.github.com/users/octocat/orgs",
+              "repos_url": "https://api.github.com/users/octocat/repos",
+              "events_url": "https://api.github.com/users/octocat/events{/privacy}",
+              "received_events_url": "https://api.github.com/users/octocat/received_events",
+              "type": "User",
+              "site_admin": false
+            },
+            "open_issues": 4,
+            "closed_issues": 8,
+            "created_at": "2011-04-10T20:09:31Z",
+            "updated_at": "2014-03-03T18:58:10Z",
+            "closed_at": "2013-02-12T13:22:01Z",
+            "due_on": "2012-10-09T23:39:01Z"
+          },
+          "locked": true,
+          "active_lock_reason": "too heated",
+          "comments": 1,
+          "pull_request": {
+            "url": "https://api.github.com/repos/octocat/Hello-World/pulls/1347",
+            "html_url": "https://github.com/octocat/Hello-World/pull/1347",
+            "diff_url": "https://github.com/octocat/Hello-World/pull/1347.diff",
+            "patch_url": "https://github.com/octocat/Hello-World/pull/1347.patch"
+          },
+          "closed_at": null,
+          "created_at": "2011-04-22T13:33:48Z",
+          "updated_at": "2011-04-22T13:33:48Z",
+          "closed_by": {
+            "login": "octocat",
+            "id": 1,
+            "node_id": "MDQ6VXNlcjE=",
+            "avatar_url": "https://github.com/images/error/octocat_happy.gif",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/octocat",
+            "html_url": "https://github.com/octocat",
+            "followers_url": "https://api.github.com/users/octocat/followers",
+            "following_url": "https://api.github.com/users/octocat/following{/other_user}",
+            "gists_url": "https://api.github.com/users/octocat/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/octocat/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/octocat/subscriptions",
+            "organizations_url": "https://api.github.com/users/octocat/orgs",
+            "repos_url": "https://api.github.com/users/octocat/repos",
+            "events_url": "https://api.github.com/users/octocat/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/octocat/received_events",
+            "type": "User",
+            "site_admin": false
+          },
+          "author_association": "COLLABORATOR",
+          "state_reason": "completed"
         }
       },
       "issue-event-for-issue-items": {

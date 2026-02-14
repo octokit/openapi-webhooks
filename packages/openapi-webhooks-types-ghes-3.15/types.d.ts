@@ -6080,6 +6080,8 @@ export interface components {
       fixed_at: components["schemas"]["alert-fixed-at"];
       auto_dismissed_at?: components["schemas"]["alert-auto-dismissed-at"];
       dismissal_request?: components["schemas"]["dependabot-alert-dismissal-request-simple"];
+      /** @description The users assigned to this alert. */
+      assignees?: readonly components["schemas"]["simple-user"][];
     };
     /** @description The security alert number. */
     readonly "alert-number": number;
