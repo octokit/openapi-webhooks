@@ -2618,9 +2618,84 @@
         }
       }
     },
+    "dependabot-alert-assignees-changed": {
+      "post": {
+        "summary": "This event occurs when there is activity relating to Dependabot alerts.\n\nFor more information about Dependabot alerts, see \"[About Dependabot alerts](https://docs.github.com/enterprise-cloud@latest//code-security/dependabot/dependabot-alerts/about-dependabot-alerts).\" For information about the API to manage Dependabot alerts, see \"[Dependabot alerts](https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alerts)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.",
+        "description": "The assignees for a Dependabot alert were updated.",
+        "operationId": "dependabot-alert/assignees-changed",
+        "externalDocs": {
+          "url": "https://docs.github.com/enterprise-cloud@latest//webhooks/webhook-events-and-payloads#dependabot_alert"
+        },
+        "parameters": [
+          {
+            "name": "User-Agent",
+            "in": "header",
+            "example": "GitHub-Hookshot/123abc",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "X-Github-Hook-Id",
+            "in": "header",
+            "example": 12312312,
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "X-Github-Event",
+            "in": "header",
+            "example": "issues",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "X-Github-Hook-Installation-Target-Id",
+            "in": "header",
+            "example": 123123,
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "X-Github-Hook-Installation-Target-Type",
+            "in": "header",
+            "example": "repository",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "X-GitHub-Delivery",
+            "in": "header",
+            "example": "0b989ba4-242f-11e5-81e1-c7b6966d2516",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "X-Hub-Signature-256",
+            "in": "header",
+            "example": "sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e",
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/webhook-dependabot-alert-assignees-changed"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Return a 200 status to indicate that the data was received successfully"
+          }
+        },
+        "x-github": {
+          "githubCloudOnly": false,
+          "category": "webhooks",
+          "subcategory": "dependabot_alert",
+          "supported-webhook-types": ["repository", "organization", "app"]
+        }
+      }
+    },
     "dependabot-alert-auto-dismissed": {
       "post": {
-        "summary": "This event occurs when there is activity relating to Dependabot alerts.\n\nFor more information about Dependabot alerts, see \"[About Dependabot alerts](https://docs.github.com/enterprise-cloud@latest//code-security/dependabot/dependabot-alerts/about-dependabot-alerts).\" For information about the API to manage Dependabot alerts, see \"[Dependabot alerts](https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alerts)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.\n\n> [!NOTE]\n> Webhook events for Dependabot alerts are currently in public preview and subject to change.",
+        "summary": "This event occurs when there is activity relating to Dependabot alerts.\n\nFor more information about Dependabot alerts, see \"[About Dependabot alerts](https://docs.github.com/enterprise-cloud@latest//code-security/dependabot/dependabot-alerts/about-dependabot-alerts).\" For information about the API to manage Dependabot alerts, see \"[Dependabot alerts](https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alerts)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.",
         "description": "A Dependabot alert was automatically closed by a Dependabot auto-triage rule.",
         "operationId": "dependabot-alert/auto-dismissed",
         "externalDocs": {
@@ -2695,7 +2770,7 @@
     },
     "dependabot-alert-auto-reopened": {
       "post": {
-        "summary": "This event occurs when there is activity relating to Dependabot alerts.\n\nFor more information about Dependabot alerts, see \"[About Dependabot alerts](https://docs.github.com/enterprise-cloud@latest//code-security/dependabot/dependabot-alerts/about-dependabot-alerts).\" For information about the API to manage Dependabot alerts, see \"[Dependabot alerts](https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alerts)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.\n\n> [!NOTE]\n> Webhook events for Dependabot alerts are currently in public preview and subject to change.",
+        "summary": "This event occurs when there is activity relating to Dependabot alerts.\n\nFor more information about Dependabot alerts, see \"[About Dependabot alerts](https://docs.github.com/enterprise-cloud@latest//code-security/dependabot/dependabot-alerts/about-dependabot-alerts).\" For information about the API to manage Dependabot alerts, see \"[Dependabot alerts](https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alerts)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.",
         "description": "A Dependabot alert, that had been automatically closed by a Dependabot auto-triage rule, was automatically reopened because the alert metadata or rule changed.",
         "operationId": "dependabot-alert/auto-reopened",
         "externalDocs": {
@@ -2770,7 +2845,7 @@
     },
     "dependabot-alert-created": {
       "post": {
-        "summary": "This event occurs when there is activity relating to Dependabot alerts.\n\nFor more information about Dependabot alerts, see \"[About Dependabot alerts](https://docs.github.com/enterprise-cloud@latest//code-security/dependabot/dependabot-alerts/about-dependabot-alerts).\" For information about the API to manage Dependabot alerts, see \"[Dependabot alerts](https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alerts)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.\n\n> [!NOTE]\n> Webhook events for Dependabot alerts are currently in public preview and subject to change.",
+        "summary": "This event occurs when there is activity relating to Dependabot alerts.\n\nFor more information about Dependabot alerts, see \"[About Dependabot alerts](https://docs.github.com/enterprise-cloud@latest//code-security/dependabot/dependabot-alerts/about-dependabot-alerts).\" For information about the API to manage Dependabot alerts, see \"[Dependabot alerts](https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alerts)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.",
         "description": "A manifest file change introduced a vulnerable dependency, or a GitHub Security Advisory was published and an existing dependency was found to be vulnerable.",
         "operationId": "dependabot-alert/created",
         "externalDocs": {
@@ -2845,7 +2920,7 @@
     },
     "dependabot-alert-dismissed": {
       "post": {
-        "summary": "This event occurs when there is activity relating to Dependabot alerts.\n\nFor more information about Dependabot alerts, see \"[About Dependabot alerts](https://docs.github.com/enterprise-cloud@latest//code-security/dependabot/dependabot-alerts/about-dependabot-alerts).\" For information about the API to manage Dependabot alerts, see \"[Dependabot alerts](https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alerts)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.\n\n> [!NOTE]\n> Webhook events for Dependabot alerts are currently in public preview and subject to change.",
+        "summary": "This event occurs when there is activity relating to Dependabot alerts.\n\nFor more information about Dependabot alerts, see \"[About Dependabot alerts](https://docs.github.com/enterprise-cloud@latest//code-security/dependabot/dependabot-alerts/about-dependabot-alerts).\" For information about the API to manage Dependabot alerts, see \"[Dependabot alerts](https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alerts)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.",
         "description": "A Dependabot alert was manually closed.",
         "operationId": "dependabot-alert/dismissed",
         "externalDocs": {
@@ -2920,7 +2995,7 @@
     },
     "dependabot-alert-fixed": {
       "post": {
-        "summary": "This event occurs when there is activity relating to Dependabot alerts.\n\nFor more information about Dependabot alerts, see \"[About Dependabot alerts](https://docs.github.com/enterprise-cloud@latest//code-security/dependabot/dependabot-alerts/about-dependabot-alerts).\" For information about the API to manage Dependabot alerts, see \"[Dependabot alerts](https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alerts)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.\n\n> [!NOTE]\n> Webhook events for Dependabot alerts are currently in public preview and subject to change.",
+        "summary": "This event occurs when there is activity relating to Dependabot alerts.\n\nFor more information about Dependabot alerts, see \"[About Dependabot alerts](https://docs.github.com/enterprise-cloud@latest//code-security/dependabot/dependabot-alerts/about-dependabot-alerts).\" For information about the API to manage Dependabot alerts, see \"[Dependabot alerts](https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alerts)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.",
         "description": "A manifest file change removed a vulnerability.",
         "operationId": "dependabot-alert/fixed",
         "externalDocs": {
@@ -2995,7 +3070,7 @@
     },
     "dependabot-alert-reintroduced": {
       "post": {
-        "summary": "This event occurs when there is activity relating to Dependabot alerts.\n\nFor more information about Dependabot alerts, see \"[About Dependabot alerts](https://docs.github.com/enterprise-cloud@latest//code-security/dependabot/dependabot-alerts/about-dependabot-alerts).\" For information about the API to manage Dependabot alerts, see \"[Dependabot alerts](https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alerts)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.\n\n> [!NOTE]\n> Webhook events for Dependabot alerts are currently in public preview and subject to change.",
+        "summary": "This event occurs when there is activity relating to Dependabot alerts.\n\nFor more information about Dependabot alerts, see \"[About Dependabot alerts](https://docs.github.com/enterprise-cloud@latest//code-security/dependabot/dependabot-alerts/about-dependabot-alerts).\" For information about the API to manage Dependabot alerts, see \"[Dependabot alerts](https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alerts)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.",
         "description": "A manifest file change introduced a vulnerable dependency that had previously been fixed.",
         "operationId": "dependabot-alert/reintroduced",
         "externalDocs": {
@@ -3070,7 +3145,7 @@
     },
     "dependabot-alert-reopened": {
       "post": {
-        "summary": "This event occurs when there is activity relating to Dependabot alerts.\n\nFor more information about Dependabot alerts, see \"[About Dependabot alerts](https://docs.github.com/enterprise-cloud@latest//code-security/dependabot/dependabot-alerts/about-dependabot-alerts).\" For information about the API to manage Dependabot alerts, see \"[Dependabot alerts](https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alerts)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.\n\n> [!NOTE]\n> Webhook events for Dependabot alerts are currently in public preview and subject to change.",
+        "summary": "This event occurs when there is activity relating to Dependabot alerts.\n\nFor more information about Dependabot alerts, see \"[About Dependabot alerts](https://docs.github.com/enterprise-cloud@latest//code-security/dependabot/dependabot-alerts/about-dependabot-alerts).\" For information about the API to manage Dependabot alerts, see \"[Dependabot alerts](https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alerts)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.",
         "description": "A Dependabot alert was manually reopened.",
         "operationId": "dependabot-alert/reopened",
         "externalDocs": {
@@ -28787,6 +28862,10 @@
             "enum": ["org_actors", "org_and_repo_actors", null],
             "description": "Who can edit the values of the property",
             "examples": ["org_actors"]
+          },
+          "require_explicit_values": {
+            "type": "boolean",
+            "description": "Whether setting properties values is mandatory"
           }
         },
         "required": ["property_name", "value_type"]
@@ -28834,6 +28913,10 @@
             "enum": ["org_actors", "org_and_repo_actors", null],
             "description": "Who can edit the values of the property",
             "examples": ["org_actors"]
+          },
+          "require_explicit_values": {
+            "type": "boolean",
+            "description": "Whether setting properties values is mandatory"
           }
         },
         "required": ["value_type"]
@@ -31269,6 +31352,100 @@
         },
         "required": ["timePeriod", "enterprise", "usageItems"]
       },
+      "usage-report-export": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Unique identifier for the usage report export",
+            "examples": ["a1b2c3d4-e5f6-7890-abcd-ef1234567890"]
+          },
+          "report_type": {
+            "type": "string",
+            "description": "The type of usage report",
+            "enum": ["detailed", "summarized", "premium_request"],
+            "examples": ["detailed"]
+          },
+          "start_date": {
+            "type": "string",
+            "format": "date",
+            "description": "The start date for the report",
+            "examples": ["2024-01-01"]
+          },
+          "end_date": {
+            "type": "string",
+            "format": "date",
+            "description": "The end date for the report",
+            "examples": ["2024-01-31"]
+          },
+          "status": {
+            "type": "string",
+            "description": "The current status of the report export",
+            "enum": ["processing", "completed", "failed"],
+            "examples": ["completed"]
+          },
+          "download_urls": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "URLs to download the completed report. Only present when the report status is `completed`.",
+            "examples": [
+              "https://github.com/enterprises/github/metered_exports/1234"
+            ]
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "When the report export was created",
+            "examples": ["2024-01-15T10:30:00Z"]
+          },
+          "actor": {
+            "type": "string",
+            "description": "The login of the user who requested the export",
+            "examples": ["monalisa"]
+          }
+        },
+        "required": ["id", "report_type", "start_date", "end_date", "status"]
+      },
+      "usage-report-export-list": {
+        "type": "object",
+        "properties": {
+          "usage_report_exports": {
+            "type": "array",
+            "description": "List of usage report exports",
+            "items": { "$ref": "#/components/schemas/usage-report-export" }
+          }
+        },
+        "required": ["usage_report_exports"]
+      },
+      "usage-report-export-request": {
+        "type": "object",
+        "required": ["report_type", "start_date"],
+        "properties": {
+          "report_type": {
+            "type": "string",
+            "description": "The type of usage report to generate",
+            "enum": ["detailed", "summarized", "premium_request"]
+          },
+          "start_date": {
+            "type": "string",
+            "format": "date",
+            "description": "The start date for the report in YYYY-MM-DD format",
+            "examples": ["2024-01-01"]
+          },
+          "end_date": {
+            "type": "string",
+            "format": "date",
+            "description": "The end date for the report in YYYY-MM-DD format. Defaults to today (UTC) if not provided.",
+            "examples": ["2024-01-31"]
+          },
+          "send_email": {
+            "type": "boolean",
+            "default": false,
+            "description": "Whether to send an email notification to the requester when the report is ready. Defaults to false."
+          }
+        }
+      },
       "billing-usage-report": {
         "type": "object",
         "properties": {
@@ -33473,6 +33650,36 @@
             "type": "object",
             "properties": {
               "status": { "type": "string", "enum": ["enabled", "disabled"] }
+            }
+          },
+          "secret_scanning_delegated_bypass": {
+            "type": "object",
+            "properties": {
+              "status": { "type": "string", "enum": ["enabled", "disabled"] }
+            }
+          },
+          "secret_scanning_delegated_bypass_options": {
+            "type": "object",
+            "properties": {
+              "reviewers": {
+                "type": "array",
+                "description": "The bypass reviewers for secret scanning delegated bypass",
+                "items": {
+                  "type": "object",
+                  "required": ["reviewer_id", "reviewer_type"],
+                  "properties": {
+                    "reviewer_id": {
+                      "type": "integer",
+                      "description": "The ID of the team or role selected as a bypass reviewer"
+                    },
+                    "reviewer_type": {
+                      "type": "string",
+                      "description": "The type of the bypass reviewer",
+                      "enum": ["TEAM", "ROLE"]
+                    }
+                  }
+                }
+              }
             }
           }
         }
@@ -62389,6 +62596,24 @@
           "sender": { "$ref": "#/components/schemas/simple-user" }
         },
         "required": ["ref", "ref_type", "pusher_type", "repository", "sender"]
+      },
+      "webhook-dependabot-alert-assignees-changed": {
+        "title": "Dependabot alert assignees changed event",
+        "type": "object",
+        "properties": {
+          "action": { "type": "string", "enum": ["assignees_changed"] },
+          "alert": { "$ref": "#/components/schemas/dependabot-alert" },
+          "installation": {
+            "$ref": "#/components/schemas/simple-installation"
+          },
+          "organization": {
+            "$ref": "#/components/schemas/organization-simple-webhooks"
+          },
+          "enterprise": { "$ref": "#/components/schemas/enterprise-webhooks" },
+          "repository": { "$ref": "#/components/schemas/repository-webhooks" },
+          "sender": { "$ref": "#/components/schemas/simple-user" }
+        },
+        "required": ["action", "alert", "repository", "sender"]
       },
       "webhook-dependabot-alert-auto-dismissed": {
         "title": "Dependabot alert auto-dismissed event",
@@ -142881,7 +143106,8 @@
             "default_value": "production",
             "description": "Prod or dev environment",
             "allowed_values": ["production", "development"],
-            "values_editable_by": "org_actors"
+            "values_editable_by": "org_actors",
+            "require_explicit_values": true
           },
           {
             "property_name": "service",
@@ -143375,6 +143601,63 @@
               "netAmount": 4
             }
           ]
+        }
+      },
+      "usage-report-export-list": {
+        "value": {
+          "usage_report_exports": [
+            {
+              "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+              "report_type": "detailed",
+              "start_date": "2024-01-01",
+              "end_date": "2024-01-31",
+              "status": "completed",
+              "download_urls": [
+                "https://github.com/enterprises/github/metered_exports/1234"
+              ],
+              "created_at": "2024-01-15T10:30:00Z",
+              "actor": "monalisa"
+            },
+            {
+              "id": "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+              "report_type": "summarized",
+              "start_date": "2024-01-01",
+              "end_date": "2024-01-31",
+              "status": "processing",
+              "created_at": "2024-01-14T09:00:00Z",
+              "actor": "monalisa"
+            },
+            {
+              "id": "c3d4e5f6-a7b8-9012-cdef-123456789012",
+              "report_type": "premium_request",
+              "start_date": "2024-01-01",
+              "end_date": "2024-01-31",
+              "status": "processing",
+              "created_at": "2024-01-13T08:00:00Z",
+              "actor": "octocat"
+            }
+          ]
+        }
+      },
+      "usage-report-export-request": {
+        "value": {
+          "report_type": "detailed",
+          "start_date": "2024-01-01",
+          "end_date": "2024-01-31"
+        }
+      },
+      "usage-report-export": {
+        "value": {
+          "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+          "report_type": "detailed",
+          "start_date": "2024-01-01",
+          "end_date": "2024-01-31",
+          "status": "completed",
+          "download_urls": [
+            "https://github.com/enterprises/github/metered_exports/1234"
+          ],
+          "created_at": "2024-01-15T10:30:00Z",
+          "actor": "monalisa"
         }
       },
       "billing-usage-report": {
@@ -151856,6 +152139,7 @@
               "secret_scanning": { "status": "enabled" },
               "secret_scanning_push_protection": { "status": "disabled" },
               "secret_scanning_non_provider_patterns": { "status": "disabled" },
+              "secret_scanning_delegated_bypass": { "status": "disabled" },
               "secret_scanning_validity_checks": { "status": "disabled" },
               "secret_scanning_delegated_alert_dismissal": {
                 "status": "disabled"
@@ -171029,6 +171313,13 @@
         "in": "query",
         "required": false,
         "schema": { "type": "string" }
+      },
+      "usage-report-export-id": {
+        "name": "report_id",
+        "description": "The unique identifier (UUID) for the usage report export.",
+        "in": "path",
+        "required": true,
+        "schema": { "type": "string", "format": "uuid" }
       },
       "billing-usage-report-month": {
         "name": "month",

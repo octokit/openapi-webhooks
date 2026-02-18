@@ -86,6 +86,8 @@ export type CustomPropertyEvent =
 export type CustomPropertyValuesEvent =
   WebhookEventDefinition<"custom-property-values-updated">;
 export type DeleteEvent = WebhookEventDefinition<"delete">;
+export type DependabotAlertAssigneesChangedEvent =
+  WebhookEventDefinition<"dependabot-alert-assignees-changed">;
 export type DependabotAlertAutoDismissedEvent =
   WebhookEventDefinition<"dependabot-alert-auto-dismissed">;
 export type DependabotAlertAutoReopenedEvent =
@@ -101,6 +103,7 @@ export type DependabotAlertReintroducedEvent =
 export type DependabotAlertReopenedEvent =
   WebhookEventDefinition<"dependabot-alert-reopened">;
 export type DependabotAlertEvent =
+  | WebhookEventDefinition<"dependabot-alert-assignees-changed">
   | WebhookEventDefinition<"dependabot-alert-auto-dismissed">
   | WebhookEventDefinition<"dependabot-alert-auto-reopened">
   | WebhookEventDefinition<"dependabot-alert-created">
@@ -791,6 +794,7 @@ export type EventPayloadMap = {
   custom_property_values: WebhookEventDefinition<"custom-property-values-updated">;
   delete: WebhookEventDefinition<"delete">;
   dependabot_alert:
+    | WebhookEventDefinition<"dependabot-alert-assignees-changed">
     | WebhookEventDefinition<"dependabot-alert-auto-dismissed">
     | WebhookEventDefinition<"dependabot-alert-auto-reopened">
     | WebhookEventDefinition<"dependabot-alert-created">

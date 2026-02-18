@@ -2753,7 +2753,7 @@
     },
     "dependabot-alert-auto-dismissed": {
       "post": {
-        "summary": "This event occurs when there is activity relating to Dependabot alerts.\n\nFor more information about Dependabot alerts, see \"[About Dependabot alerts](https://docs.github.com/enterprise-server@3.14/code-security/dependabot/dependabot-alerts/about-dependabot-alerts).\" For information about the API to manage Dependabot alerts, see \"[Dependabot alerts](https://docs.github.com/enterprise-server@3.14/rest/dependabot/alerts)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.\n\n> [!NOTE]\n> Webhook events for Dependabot alerts are currently in public preview and subject to change.",
+        "summary": "This event occurs when there is activity relating to Dependabot alerts.\n\nFor more information about Dependabot alerts, see \"[About Dependabot alerts](https://docs.github.com/enterprise-server@3.14/code-security/dependabot/dependabot-alerts/about-dependabot-alerts).\" For information about the API to manage Dependabot alerts, see \"[Dependabot alerts](https://docs.github.com/enterprise-server@3.14/rest/dependabot/alerts)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.",
         "description": "A Dependabot alert was automatically closed by a Dependabot auto-triage rule.",
         "operationId": "dependabot-alert/auto-dismissed",
         "externalDocs": {
@@ -2840,7 +2840,7 @@
     },
     "dependabot-alert-auto-reopened": {
       "post": {
-        "summary": "This event occurs when there is activity relating to Dependabot alerts.\n\nFor more information about Dependabot alerts, see \"[About Dependabot alerts](https://docs.github.com/enterprise-server@3.14/code-security/dependabot/dependabot-alerts/about-dependabot-alerts).\" For information about the API to manage Dependabot alerts, see \"[Dependabot alerts](https://docs.github.com/enterprise-server@3.14/rest/dependabot/alerts)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.\n\n> [!NOTE]\n> Webhook events for Dependabot alerts are currently in public preview and subject to change.",
+        "summary": "This event occurs when there is activity relating to Dependabot alerts.\n\nFor more information about Dependabot alerts, see \"[About Dependabot alerts](https://docs.github.com/enterprise-server@3.14/code-security/dependabot/dependabot-alerts/about-dependabot-alerts).\" For information about the API to manage Dependabot alerts, see \"[Dependabot alerts](https://docs.github.com/enterprise-server@3.14/rest/dependabot/alerts)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.",
         "description": "A Dependabot alert, that had been automatically closed by a Dependabot auto-triage rule, was automatically reopened because the alert metadata or rule changed.",
         "operationId": "dependabot-alert/auto-reopened",
         "externalDocs": {
@@ -2927,7 +2927,7 @@
     },
     "dependabot-alert-created": {
       "post": {
-        "summary": "This event occurs when there is activity relating to Dependabot alerts.\n\nFor more information about Dependabot alerts, see \"[About Dependabot alerts](https://docs.github.com/enterprise-server@3.14/code-security/dependabot/dependabot-alerts/about-dependabot-alerts).\" For information about the API to manage Dependabot alerts, see \"[Dependabot alerts](https://docs.github.com/enterprise-server@3.14/rest/dependabot/alerts)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.\n\n> [!NOTE]\n> Webhook events for Dependabot alerts are currently in public preview and subject to change.",
+        "summary": "This event occurs when there is activity relating to Dependabot alerts.\n\nFor more information about Dependabot alerts, see \"[About Dependabot alerts](https://docs.github.com/enterprise-server@3.14/code-security/dependabot/dependabot-alerts/about-dependabot-alerts).\" For information about the API to manage Dependabot alerts, see \"[Dependabot alerts](https://docs.github.com/enterprise-server@3.14/rest/dependabot/alerts)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.",
         "description": "A manifest file change introduced a vulnerable dependency, or a GitHub Security Advisory was published and an existing dependency was found to be vulnerable.",
         "operationId": "dependabot-alert/created",
         "externalDocs": {
@@ -3014,7 +3014,7 @@
     },
     "dependabot-alert-dismissed": {
       "post": {
-        "summary": "This event occurs when there is activity relating to Dependabot alerts.\n\nFor more information about Dependabot alerts, see \"[About Dependabot alerts](https://docs.github.com/enterprise-server@3.14/code-security/dependabot/dependabot-alerts/about-dependabot-alerts).\" For information about the API to manage Dependabot alerts, see \"[Dependabot alerts](https://docs.github.com/enterprise-server@3.14/rest/dependabot/alerts)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.\n\n> [!NOTE]\n> Webhook events for Dependabot alerts are currently in public preview and subject to change.",
+        "summary": "This event occurs when there is activity relating to Dependabot alerts.\n\nFor more information about Dependabot alerts, see \"[About Dependabot alerts](https://docs.github.com/enterprise-server@3.14/code-security/dependabot/dependabot-alerts/about-dependabot-alerts).\" For information about the API to manage Dependabot alerts, see \"[Dependabot alerts](https://docs.github.com/enterprise-server@3.14/rest/dependabot/alerts)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.",
         "description": "A Dependabot alert was manually closed.",
         "operationId": "dependabot-alert/dismissed",
         "externalDocs": {
@@ -3101,7 +3101,7 @@
     },
     "dependabot-alert-fixed": {
       "post": {
-        "summary": "This event occurs when there is activity relating to Dependabot alerts.\n\nFor more information about Dependabot alerts, see \"[About Dependabot alerts](https://docs.github.com/enterprise-server@3.14/code-security/dependabot/dependabot-alerts/about-dependabot-alerts).\" For information about the API to manage Dependabot alerts, see \"[Dependabot alerts](https://docs.github.com/enterprise-server@3.14/rest/dependabot/alerts)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.\n\n> [!NOTE]\n> Webhook events for Dependabot alerts are currently in public preview and subject to change.",
+        "summary": "This event occurs when there is activity relating to Dependabot alerts.\n\nFor more information about Dependabot alerts, see \"[About Dependabot alerts](https://docs.github.com/enterprise-server@3.14/code-security/dependabot/dependabot-alerts/about-dependabot-alerts).\" For information about the API to manage Dependabot alerts, see \"[Dependabot alerts](https://docs.github.com/enterprise-server@3.14/rest/dependabot/alerts)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.",
         "description": "A manifest file change removed a vulnerability.",
         "operationId": "dependabot-alert/fixed",
         "externalDocs": {
@@ -3188,7 +3188,7 @@
     },
     "dependabot-alert-reintroduced": {
       "post": {
-        "summary": "This event occurs when there is activity relating to Dependabot alerts.\n\nFor more information about Dependabot alerts, see \"[About Dependabot alerts](https://docs.github.com/enterprise-server@3.14/code-security/dependabot/dependabot-alerts/about-dependabot-alerts).\" For information about the API to manage Dependabot alerts, see \"[Dependabot alerts](https://docs.github.com/enterprise-server@3.14/rest/dependabot/alerts)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.\n\n> [!NOTE]\n> Webhook events for Dependabot alerts are currently in public preview and subject to change.",
+        "summary": "This event occurs when there is activity relating to Dependabot alerts.\n\nFor more information about Dependabot alerts, see \"[About Dependabot alerts](https://docs.github.com/enterprise-server@3.14/code-security/dependabot/dependabot-alerts/about-dependabot-alerts).\" For information about the API to manage Dependabot alerts, see \"[Dependabot alerts](https://docs.github.com/enterprise-server@3.14/rest/dependabot/alerts)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.",
         "description": "A manifest file change introduced a vulnerable dependency that had previously been fixed.",
         "operationId": "dependabot-alert/reintroduced",
         "externalDocs": {
@@ -3275,7 +3275,7 @@
     },
     "dependabot-alert-reopened": {
       "post": {
-        "summary": "This event occurs when there is activity relating to Dependabot alerts.\n\nFor more information about Dependabot alerts, see \"[About Dependabot alerts](https://docs.github.com/enterprise-server@3.14/code-security/dependabot/dependabot-alerts/about-dependabot-alerts).\" For information about the API to manage Dependabot alerts, see \"[Dependabot alerts](https://docs.github.com/enterprise-server@3.14/rest/dependabot/alerts)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.\n\n> [!NOTE]\n> Webhook events for Dependabot alerts are currently in public preview and subject to change.",
+        "summary": "This event occurs when there is activity relating to Dependabot alerts.\n\nFor more information about Dependabot alerts, see \"[About Dependabot alerts](https://docs.github.com/enterprise-server@3.14/code-security/dependabot/dependabot-alerts/about-dependabot-alerts).\" For information about the API to manage Dependabot alerts, see \"[Dependabot alerts](https://docs.github.com/enterprise-server@3.14/rest/dependabot/alerts)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.",
         "description": "A Dependabot alert was manually reopened.",
         "operationId": "dependabot-alert/reopened",
         "externalDocs": {
@@ -25226,12 +25226,6 @@
           "dismissal_request": {
             "$ref": "#/components/schemas/dependabot-alert-dismissal-request-simple"
           },
-          "assignees": {
-            "type": "array",
-            "description": "The users assigned to this alert.",
-            "readOnly": true,
-            "items": { "$ref": "#/components/schemas/simple-user" }
-          },
           "repository": { "$ref": "#/components/schemas/simple-repository" }
         },
         "required": [
@@ -37135,12 +37129,6 @@
           },
           "dismissal_request": {
             "$ref": "#/components/schemas/dependabot-alert-dismissal-request-simple"
-          },
-          "assignees": {
-            "type": "array",
-            "description": "The users assigned to this alert.",
-            "readOnly": true,
-            "items": { "$ref": "#/components/schemas/simple-user" }
           }
         },
         "required": [
@@ -131203,7 +131191,8 @@
             "default_value": "production",
             "description": "Prod or dev environment",
             "allowed_values": ["production", "development"],
-            "values_editable_by": "org_actors"
+            "values_editable_by": "org_actors",
+            "require_explicit_values": true
           },
           {
             "property_name": "service",
