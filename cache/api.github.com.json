@@ -44497,25 +44497,6 @@
         },
         "required": ["name", "node_id", "commit", "zipball_url", "tarball_url"]
       },
-      "tag-protection": {
-        "title": "Tag protection",
-        "description": "Tag protection",
-        "type": "object",
-        "properties": {
-          "id": { "type": "integer", "examples": [2] },
-          "created_at": {
-            "type": "string",
-            "examples": ["2011-01-26T19:01:12Z"]
-          },
-          "updated_at": {
-            "type": "string",
-            "examples": ["2011-01-26T19:01:12Z"]
-          },
-          "enabled": { "type": "boolean", "examples": [true] },
-          "pattern": { "type": "string", "examples": ["v1.*"] }
-        },
-        "required": ["pattern"]
-      },
       "topic": {
         "title": "Topic",
         "description": "A topic aggregates entities that are related to a subject.",
@@ -157609,8 +157590,6 @@
           }
         ]
       },
-      "tag-protection-items": { "value": [{ "id": 2, "pattern": "v1.*" }] },
-      "tag-protection": { "value": { "enabled": true } },
       "topic": { "value": { "names": ["octocat", "atom", "electron", "api"] } },
       "clone-traffic": {
         "value": {
@@ -164387,13 +164366,6 @@
       "release-id": {
         "name": "release_id",
         "description": "The unique identifier of the release.",
-        "in": "path",
-        "required": true,
-        "schema": { "type": "integer" }
-      },
-      "tag-protection-id": {
-        "name": "tag_protection_id",
-        "description": "The unique identifier of the tag protection.",
         "in": "path",
         "required": true,
         "schema": { "type": "integer" }
