@@ -138528,8 +138528,7 @@
             "site_admin": false
           },
           "dismissed_reason": "tolerable_risk",
-          "dismissed_comment": "This alert is accurate but we use a sanitizer.",
-          "fixed_at": null
+          "dismissed_comment": "This alert is accurate but we use a sanitizer."
         }
       },
       "dependabot-secret-paginated": {

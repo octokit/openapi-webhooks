@@ -142515,6 +142515,28 @@
             "dismissed_reason": "tolerable_risk",
             "dismissed_comment": "This alert is accurate but we use a sanitizer.",
             "fixed_at": null,
+            "assignees": [
+              {
+                "login": "octocat",
+                "id": 1,
+                "node_id": "MDQ6VXNlcjE=",
+                "avatar_url": "https://github.com/images/error/octocat_happy.gif",
+                "gravatar_id": "",
+                "url": "https://api.github.com/users/octocat",
+                "html_url": "https://github.com/octocat",
+                "followers_url": "https://api.github.com/users/octocat/followers",
+                "following_url": "https://api.github.com/users/octocat/following{/other_user}",
+                "gists_url": "https://api.github.com/users/octocat/gists{/gist_id}",
+                "starred_url": "https://api.github.com/users/octocat/starred{/owner}{/repo}",
+                "subscriptions_url": "https://api.github.com/users/octocat/subscriptions",
+                "organizations_url": "https://api.github.com/users/octocat/orgs",
+                "repos_url": "https://api.github.com/users/octocat/repos",
+                "events_url": "https://api.github.com/users/octocat/events{/privacy}",
+                "received_events_url": "https://api.github.com/users/octocat/received_events",
+                "type": "User",
+                "site_admin": false
+              }
+            ],
             "repository": {
               "id": 217723378,
               "node_id": "MDEwOlJlcG9zaXRvcnkyMTc3MjMzNzg=",
@@ -142667,6 +142689,7 @@
             "dismissed_reason": null,
             "dismissed_comment": null,
             "fixed_at": null,
+            "assignees": [],
             "repository": {
               "id": 664700648,
               "node_id": "MDEwOlJlcG9zaXRvcnk2NjQ3MDA2NDg=",
@@ -158252,7 +158275,29 @@
             },
             "dismissed_reason": "tolerable_risk",
             "dismissed_comment": "This alert is accurate but we use a sanitizer.",
-            "fixed_at": null
+            "fixed_at": null,
+            "assignees": [
+              {
+                "login": "octocat",
+                "id": 1,
+                "node_id": "MDQ6VXNlcjE=",
+                "avatar_url": "https://github.com/images/error/octocat_happy.gif",
+                "gravatar_id": "",
+                "url": "https://api.github.com/users/octocat",
+                "html_url": "https://github.com/octocat",
+                "followers_url": "https://api.github.com/users/octocat/followers",
+                "following_url": "https://api.github.com/users/octocat/following{/other_user}",
+                "gists_url": "https://api.github.com/users/octocat/gists{/gist_id}",
+                "starred_url": "https://api.github.com/users/octocat/starred{/owner}{/repo}",
+                "subscriptions_url": "https://api.github.com/users/octocat/subscriptions",
+                "organizations_url": "https://api.github.com/users/octocat/orgs",
+                "repos_url": "https://api.github.com/users/octocat/repos",
+                "events_url": "https://api.github.com/users/octocat/events{/privacy}",
+                "received_events_url": "https://api.github.com/users/octocat/received_events",
+                "type": "User",
+                "site_admin": false
+              }
+            ]
           },
           {
             "number": 1,
@@ -158337,7 +158382,8 @@
             "dismissed_by": null,
             "dismissed_reason": null,
             "dismissed_comment": null,
-            "fixed_at": null
+            "fixed_at": null,
+            "assignees": []
           }
         ]
       },
@@ -158426,7 +158472,29 @@
           "dismissed_by": null,
           "dismissed_reason": null,
           "dismissed_comment": null,
-          "fixed_at": null
+          "fixed_at": null,
+          "assignees": [
+            {
+              "login": "octocat",
+              "id": 1,
+              "node_id": "MDQ6VXNlcjE=",
+              "avatar_url": "https://github.com/images/error/octocat_happy.gif",
+              "gravatar_id": "",
+              "url": "https://api.github.com/users/octocat",
+              "html_url": "https://github.com/octocat",
+              "followers_url": "https://api.github.com/users/octocat/followers",
+              "following_url": "https://api.github.com/users/octocat/following{/other_user}",
+              "gists_url": "https://api.github.com/users/octocat/gists{/gist_id}",
+              "starred_url": "https://api.github.com/users/octocat/starred{/owner}{/repo}",
+              "subscriptions_url": "https://api.github.com/users/octocat/subscriptions",
+              "organizations_url": "https://api.github.com/users/octocat/orgs",
+              "repos_url": "https://api.github.com/users/octocat/repos",
+              "events_url": "https://api.github.com/users/octocat/events{/privacy}",
+              "received_events_url": "https://api.github.com/users/octocat/received_events",
+              "type": "User",
+              "site_admin": false
+            }
+          ]
         }
       },
       "dependabot-alert-dismissed": {
@@ -158528,7 +158596,8 @@
           },
           "dismissed_reason": "tolerable_risk",
           "dismissed_comment": "This alert is accurate but we use a sanitizer.",
-          "fixed_at": null
+          "fixed_at": null,
+          "assignees": []
         }
       },
       "dependabot-secret-paginated": {
@@ -171073,6 +171142,12 @@
             }
           ]
         }
+      },
+      "dependabot-alert-comma-separated-assignees": {
+        "name": "assignee",
+        "in": "query",
+        "description": "Filter alerts by assignees.\nProvide a comma-separated list of user handles (e.g., `octocat` or `octocat,hubot`) to return alerts assigned to any of the specified users.\nUse `*` to list alerts with at least one assignee or `none` to list alerts with no assignees.",
+        "schema": { "type": "string" }
       },
       "dependabot-alert-scope": {
         "name": "scope",
