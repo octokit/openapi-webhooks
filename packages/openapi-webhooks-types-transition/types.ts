@@ -57,13 +57,16 @@ export type CodeScanningAlertReopenedEvent =
   WebhookEventDefinition<"code-scanning-alert-reopened">;
 export type CodeScanningAlertReopenedByUserEvent =
   WebhookEventDefinition<"code-scanning-alert-reopened-by-user">;
+export type CodeScanningAlertUpdatedAssignmentEvent =
+  WebhookEventDefinition<"code-scanning-alert-updated-assignment">;
 export type CodeScanningAlertEvent =
   | WebhookEventDefinition<"code-scanning-alert-appeared-in-branch">
   | WebhookEventDefinition<"code-scanning-alert-closed-by-user">
   | WebhookEventDefinition<"code-scanning-alert-created">
   | WebhookEventDefinition<"code-scanning-alert-fixed">
   | WebhookEventDefinition<"code-scanning-alert-reopened">
-  | WebhookEventDefinition<"code-scanning-alert-reopened-by-user">;
+  | WebhookEventDefinition<"code-scanning-alert-reopened-by-user">
+  | WebhookEventDefinition<"code-scanning-alert-updated-assignment">;
 export type CommitCommentEvent =
   WebhookEventDefinition<"commit-comment-created">;
 export type CreateEvent = WebhookEventDefinition<"create">;
@@ -83,6 +86,8 @@ export type CustomPropertyEvent =
 export type CustomPropertyValuesEvent =
   WebhookEventDefinition<"custom-property-values-updated">;
 export type DeleteEvent = WebhookEventDefinition<"delete">;
+export type DependabotAlertAssigneesChangedEvent =
+  WebhookEventDefinition<"dependabot-alert-assignees-changed">;
 export type DependabotAlertAutoDismissedEvent =
   WebhookEventDefinition<"dependabot-alert-auto-dismissed">;
 export type DependabotAlertAutoReopenedEvent =
@@ -98,6 +103,7 @@ export type DependabotAlertReintroducedEvent =
 export type DependabotAlertReopenedEvent =
   WebhookEventDefinition<"dependabot-alert-reopened">;
 export type DependabotAlertEvent =
+  | WebhookEventDefinition<"dependabot-alert-assignees-changed">
   | WebhookEventDefinition<"dependabot-alert-auto-dismissed">
   | WebhookEventDefinition<"dependabot-alert-auto-reopened">
   | WebhookEventDefinition<"dependabot-alert-created">
@@ -214,10 +220,16 @@ export type IssueCommentDeletedEvent =
   WebhookEventDefinition<"issue-comment-deleted">;
 export type IssueCommentEditedEvent =
   WebhookEventDefinition<"issue-comment-edited">;
+export type IssueCommentPinnedEvent =
+  WebhookEventDefinition<"issue-comment-pinned">;
+export type IssueCommentUnpinnedEvent =
+  WebhookEventDefinition<"issue-comment-unpinned">;
 export type IssueCommentEvent =
   | WebhookEventDefinition<"issue-comment-created">
   | WebhookEventDefinition<"issue-comment-deleted">
-  | WebhookEventDefinition<"issue-comment-edited">;
+  | WebhookEventDefinition<"issue-comment-edited">
+  | WebhookEventDefinition<"issue-comment-pinned">
+  | WebhookEventDefinition<"issue-comment-unpinned">;
 export type IssueDependenciesBlockedByAddedEvent =
   WebhookEventDefinition<"issue-dependencies-blocked-by-added">;
 export type IssueDependenciesBlockedByRemovedEvent =
@@ -770,7 +782,8 @@ export type EventPayloadMap = {
     | WebhookEventDefinition<"code-scanning-alert-created">
     | WebhookEventDefinition<"code-scanning-alert-fixed">
     | WebhookEventDefinition<"code-scanning-alert-reopened">
-    | WebhookEventDefinition<"code-scanning-alert-reopened-by-user">;
+    | WebhookEventDefinition<"code-scanning-alert-reopened-by-user">
+    | WebhookEventDefinition<"code-scanning-alert-updated-assignment">;
   commit_comment: WebhookEventDefinition<"commit-comment-created">;
   create: WebhookEventDefinition<"create">;
   custom_property:
@@ -781,6 +794,7 @@ export type EventPayloadMap = {
   custom_property_values: WebhookEventDefinition<"custom-property-values-updated">;
   delete: WebhookEventDefinition<"delete">;
   dependabot_alert:
+    | WebhookEventDefinition<"dependabot-alert-assignees-changed">
     | WebhookEventDefinition<"dependabot-alert-auto-dismissed">
     | WebhookEventDefinition<"dependabot-alert-auto-reopened">
     | WebhookEventDefinition<"dependabot-alert-created">
@@ -834,7 +848,9 @@ export type EventPayloadMap = {
   issue_comment:
     | WebhookEventDefinition<"issue-comment-created">
     | WebhookEventDefinition<"issue-comment-deleted">
-    | WebhookEventDefinition<"issue-comment-edited">;
+    | WebhookEventDefinition<"issue-comment-edited">
+    | WebhookEventDefinition<"issue-comment-pinned">
+    | WebhookEventDefinition<"issue-comment-unpinned">;
   issue_dependencies:
     | WebhookEventDefinition<"issue-dependencies-blocked-by-added">
     | WebhookEventDefinition<"issue-dependencies-blocked-by-removed">

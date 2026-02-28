@@ -2975,7 +2975,7 @@
     },
     "dependabot-alert-auto-dismissed": {
       "post": {
-        "summary": "This event occurs when there is activity relating to Dependabot alerts.\n\nFor more information about Dependabot alerts, see \"[About Dependabot alerts](https://docs.github.com/enterprise-server@3.16/code-security/dependabot/dependabot-alerts/about-dependabot-alerts).\" For information about the API to manage Dependabot alerts, see \"[Dependabot alerts](https://docs.github.com/enterprise-server@3.16/rest/dependabot/alerts)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.\n\n> [!NOTE]\n> Webhook events for Dependabot alerts are currently in public preview and subject to change.",
+        "summary": "This event occurs when there is activity relating to Dependabot alerts.\n\nFor more information about Dependabot alerts, see \"[About Dependabot alerts](https://docs.github.com/enterprise-server@3.16/code-security/dependabot/dependabot-alerts/about-dependabot-alerts).\" For information about the API to manage Dependabot alerts, see \"[Dependabot alerts](https://docs.github.com/enterprise-server@3.16/rest/dependabot/alerts)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.",
         "description": "A Dependabot alert was automatically closed by a Dependabot auto-triage rule.",
         "operationId": "dependabot-alert/auto-dismissed",
         "externalDocs": {
@@ -3071,7 +3071,7 @@
     },
     "dependabot-alert-auto-reopened": {
       "post": {
-        "summary": "This event occurs when there is activity relating to Dependabot alerts.\n\nFor more information about Dependabot alerts, see \"[About Dependabot alerts](https://docs.github.com/enterprise-server@3.16/code-security/dependabot/dependabot-alerts/about-dependabot-alerts).\" For information about the API to manage Dependabot alerts, see \"[Dependabot alerts](https://docs.github.com/enterprise-server@3.16/rest/dependabot/alerts)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.\n\n> [!NOTE]\n> Webhook events for Dependabot alerts are currently in public preview and subject to change.",
+        "summary": "This event occurs when there is activity relating to Dependabot alerts.\n\nFor more information about Dependabot alerts, see \"[About Dependabot alerts](https://docs.github.com/enterprise-server@3.16/code-security/dependabot/dependabot-alerts/about-dependabot-alerts).\" For information about the API to manage Dependabot alerts, see \"[Dependabot alerts](https://docs.github.com/enterprise-server@3.16/rest/dependabot/alerts)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.",
         "description": "A Dependabot alert, that had been automatically closed by a Dependabot auto-triage rule, was automatically reopened because the alert metadata or rule changed.",
         "operationId": "dependabot-alert/auto-reopened",
         "externalDocs": {
@@ -3167,7 +3167,7 @@
     },
     "dependabot-alert-created": {
       "post": {
-        "summary": "This event occurs when there is activity relating to Dependabot alerts.\n\nFor more information about Dependabot alerts, see \"[About Dependabot alerts](https://docs.github.com/enterprise-server@3.16/code-security/dependabot/dependabot-alerts/about-dependabot-alerts).\" For information about the API to manage Dependabot alerts, see \"[Dependabot alerts](https://docs.github.com/enterprise-server@3.16/rest/dependabot/alerts)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.\n\n> [!NOTE]\n> Webhook events for Dependabot alerts are currently in public preview and subject to change.",
+        "summary": "This event occurs when there is activity relating to Dependabot alerts.\n\nFor more information about Dependabot alerts, see \"[About Dependabot alerts](https://docs.github.com/enterprise-server@3.16/code-security/dependabot/dependabot-alerts/about-dependabot-alerts).\" For information about the API to manage Dependabot alerts, see \"[Dependabot alerts](https://docs.github.com/enterprise-server@3.16/rest/dependabot/alerts)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.",
         "description": "A manifest file change introduced a vulnerable dependency, or a GitHub Security Advisory was published and an existing dependency was found to be vulnerable.",
         "operationId": "dependabot-alert/created",
         "externalDocs": {
@@ -3263,7 +3263,7 @@
     },
     "dependabot-alert-dismissed": {
       "post": {
-        "summary": "This event occurs when there is activity relating to Dependabot alerts.\n\nFor more information about Dependabot alerts, see \"[About Dependabot alerts](https://docs.github.com/enterprise-server@3.16/code-security/dependabot/dependabot-alerts/about-dependabot-alerts).\" For information about the API to manage Dependabot alerts, see \"[Dependabot alerts](https://docs.github.com/enterprise-server@3.16/rest/dependabot/alerts)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.\n\n> [!NOTE]\n> Webhook events for Dependabot alerts are currently in public preview and subject to change.",
+        "summary": "This event occurs when there is activity relating to Dependabot alerts.\n\nFor more information about Dependabot alerts, see \"[About Dependabot alerts](https://docs.github.com/enterprise-server@3.16/code-security/dependabot/dependabot-alerts/about-dependabot-alerts).\" For information about the API to manage Dependabot alerts, see \"[Dependabot alerts](https://docs.github.com/enterprise-server@3.16/rest/dependabot/alerts)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.",
         "description": "A Dependabot alert was manually closed.",
         "operationId": "dependabot-alert/dismissed",
         "externalDocs": {
@@ -3359,7 +3359,7 @@
     },
     "dependabot-alert-fixed": {
       "post": {
-        "summary": "This event occurs when there is activity relating to Dependabot alerts.\n\nFor more information about Dependabot alerts, see \"[About Dependabot alerts](https://docs.github.com/enterprise-server@3.16/code-security/dependabot/dependabot-alerts/about-dependabot-alerts).\" For information about the API to manage Dependabot alerts, see \"[Dependabot alerts](https://docs.github.com/enterprise-server@3.16/rest/dependabot/alerts)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.\n\n> [!NOTE]\n> Webhook events for Dependabot alerts are currently in public preview and subject to change.",
+        "summary": "This event occurs when there is activity relating to Dependabot alerts.\n\nFor more information about Dependabot alerts, see \"[About Dependabot alerts](https://docs.github.com/enterprise-server@3.16/code-security/dependabot/dependabot-alerts/about-dependabot-alerts).\" For information about the API to manage Dependabot alerts, see \"[Dependabot alerts](https://docs.github.com/enterprise-server@3.16/rest/dependabot/alerts)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.",
         "description": "A manifest file change removed a vulnerability.",
         "operationId": "dependabot-alert/fixed",
         "externalDocs": {
@@ -3455,7 +3455,7 @@
     },
     "dependabot-alert-reintroduced": {
       "post": {
-        "summary": "This event occurs when there is activity relating to Dependabot alerts.\n\nFor more information about Dependabot alerts, see \"[About Dependabot alerts](https://docs.github.com/enterprise-server@3.16/code-security/dependabot/dependabot-alerts/about-dependabot-alerts).\" For information about the API to manage Dependabot alerts, see \"[Dependabot alerts](https://docs.github.com/enterprise-server@3.16/rest/dependabot/alerts)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.\n\n> [!NOTE]\n> Webhook events for Dependabot alerts are currently in public preview and subject to change.",
+        "summary": "This event occurs when there is activity relating to Dependabot alerts.\n\nFor more information about Dependabot alerts, see \"[About Dependabot alerts](https://docs.github.com/enterprise-server@3.16/code-security/dependabot/dependabot-alerts/about-dependabot-alerts).\" For information about the API to manage Dependabot alerts, see \"[Dependabot alerts](https://docs.github.com/enterprise-server@3.16/rest/dependabot/alerts)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.",
         "description": "A manifest file change introduced a vulnerable dependency that had previously been fixed.",
         "operationId": "dependabot-alert/reintroduced",
         "externalDocs": {
@@ -3551,7 +3551,7 @@
     },
     "dependabot-alert-reopened": {
       "post": {
-        "summary": "This event occurs when there is activity relating to Dependabot alerts.\n\nFor more information about Dependabot alerts, see \"[About Dependabot alerts](https://docs.github.com/enterprise-server@3.16/code-security/dependabot/dependabot-alerts/about-dependabot-alerts).\" For information about the API to manage Dependabot alerts, see \"[Dependabot alerts](https://docs.github.com/enterprise-server@3.16/rest/dependabot/alerts)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.\n\n> [!NOTE]\n> Webhook events for Dependabot alerts are currently in public preview and subject to change.",
+        "summary": "This event occurs when there is activity relating to Dependabot alerts.\n\nFor more information about Dependabot alerts, see \"[About Dependabot alerts](https://docs.github.com/enterprise-server@3.16/code-security/dependabot/dependabot-alerts/about-dependabot-alerts).\" For information about the API to manage Dependabot alerts, see \"[Dependabot alerts](https://docs.github.com/enterprise-server@3.16/rest/dependabot/alerts)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.",
         "description": "A Dependabot alert was manually reopened.",
         "operationId": "dependabot-alert/reopened",
         "externalDocs": {
@@ -11447,7 +11447,7 @@
     },
     "package-published": {
       "post": {
-        "summary": "This event occurs when there is activity relating to GitHub Packages. For more information, see \"[Introduction to GitHub Packages](https://docs.github.com/enterprise-server@3.16/packages/learn-github-packages/introduction-to-github-packages).\" For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.16/graphql/reference/objects#package) or \"[Packages](https://docs.github.com/enterprise-server@3.16/rest/packages)\" in the REST API documentation.\n\nTo install this event on a GitHub App, the app must have at least read-level access for the \"Packages\" repository permission.",
+        "summary": "This event occurs when there is activity relating to GitHub Packages. For more information, see \"[Introduction to GitHub Packages](https://docs.github.com/enterprise-server@3.16/packages/learn-github-packages/introduction-to-github-packages).\" For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.16/graphql/reference/objects#package) or \"[Packages](https://docs.github.com/enterprise-server@3.16/rest/packages)\" in the REST API documentation.",
         "description": "A package was published to a registry.",
         "operationId": "package/published",
         "externalDocs": {
@@ -11537,13 +11537,13 @@
           "githubCloudOnly": false,
           "category": "webhooks",
           "subcategory": "package",
-          "supported-webhook-types": ["repository", "organization", "app"]
+          "supported-webhook-types": ["repository", "organization"]
         }
       }
     },
     "package-updated": {
       "post": {
-        "summary": "This event occurs when there is activity relating to GitHub Packages. For more information, see \"[Introduction to GitHub Packages](https://docs.github.com/enterprise-server@3.16/packages/learn-github-packages/introduction-to-github-packages).\" For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.16/graphql/reference/objects#package) or \"[Packages](https://docs.github.com/enterprise-server@3.16/rest/packages)\" in the REST API documentation.\n\nTo install this event on a GitHub App, the app must have at least read-level access for the \"Packages\" repository permission.",
+        "summary": "This event occurs when there is activity relating to GitHub Packages. For more information, see \"[Introduction to GitHub Packages](https://docs.github.com/enterprise-server@3.16/packages/learn-github-packages/introduction-to-github-packages).\" For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.16/graphql/reference/objects#package) or \"[Packages](https://docs.github.com/enterprise-server@3.16/rest/packages)\" in the REST API documentation.",
         "description": "A previously published package was updated.",
         "operationId": "package/updated",
         "externalDocs": {
@@ -11633,7 +11633,7 @@
           "githubCloudOnly": false,
           "category": "webhooks",
           "subcategory": "package",
-          "supported-webhook-types": ["repository", "organization", "app"]
+          "supported-webhook-types": ["repository", "organization"]
         }
       }
     },
@@ -24154,6 +24154,17 @@
             "type": "boolean",
             "examples": [true]
           },
+          "has_pull_requests": {
+            "description": "Whether pull requests are enabled.",
+            "default": true,
+            "type": "boolean",
+            "examples": [true]
+          },
+          "pull_request_creation_policy": {
+            "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+            "type": "string",
+            "enum": ["all", "collaborators_only"]
+          },
           "archived": {
             "description": "Whether the repository is archived.",
             "default": false,
@@ -24920,7 +24931,8 @@
               "push_ruleset_bypass",
               "secret_scanning",
               "secret_scanning_closure",
-              "code_scanning_alert_dismissal"
+              "code_scanning_alert_dismissal",
+              "dependabot_alert_dismissal"
             ]
           },
           "exemption_request_data": {
@@ -24934,7 +24946,10 @@
               {
                 "$ref": "#/components/schemas/dismissal-request-secret-scanning"
               },
-              { "$ref": "#/components/schemas/dismissal-request-code-scanning" }
+              {
+                "$ref": "#/components/schemas/dismissal-request-code-scanning"
+              },
+              { "$ref": "#/components/schemas/dismissal-request-dependabot" }
             ]
           },
           "resource_identifier": {
@@ -24963,6 +24978,9 @@
               },
               {
                 "$ref": "#/components/schemas/dismissal-request-code-scanning-metadata"
+              },
+              {
+                "$ref": "#/components/schemas/dismissal-request-dependabot-metadata"
               }
             ]
           },
@@ -25131,6 +25149,31 @@
           }
         }
       },
+      "dismissal-request-dependabot": {
+        "title": "Dependabot alert dismissal request data",
+        "description": "Dependabot alerts that have dismissal requests.",
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "The type of request",
+            "enum": ["dependabot_alert_dismissal"]
+          },
+          "data": {
+            "type": "array",
+            "description": "The data related to the Dependabot alerts that have dismissal requests.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "alert_number": {
+                  "type": "string",
+                  "description": "The number of the alert to be dismissed"
+                }
+              }
+            }
+          }
+        }
+      },
       "exemption-request-secret-scanning-metadata": {
         "title": "Secret Scanning Push Protection Exemption Request Metadata",
         "description": "Metadata for a secret scanning push protection exemption request.",
@@ -25176,6 +25219,28 @@
             "type": "string",
             "description": "The reason for the dismissal request",
             "enum": ["false positive", "won't fix", "used in tests"]
+          }
+        }
+      },
+      "dismissal-request-dependabot-metadata": {
+        "title": "Dependabot alert dismissal request metadata",
+        "description": "Metadata for a Dependabot alert dismissal request.",
+        "type": "object",
+        "properties": {
+          "alert_title": {
+            "type": "string",
+            "description": "The title of the Dependabot alert"
+          },
+          "reason": {
+            "type": "string",
+            "description": "The reason for the dismissal request",
+            "enum": [
+              "fix_started",
+              "inaccurate",
+              "no_bandwidth",
+              "not_used",
+              "tolerable_risk"
+            ]
           }
         }
       },
@@ -26009,6 +26074,12 @@
           "has_pages": { "type": "boolean" },
           "has_downloads": { "type": "boolean" },
           "has_discussions": { "type": "boolean" },
+          "has_pull_requests": { "type": "boolean" },
+          "pull_request_creation_policy": {
+            "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+            "type": "string",
+            "enum": ["all", "collaborators_only"]
+          },
           "archived": { "type": "boolean" },
           "disabled": { "type": "boolean" },
           "visibility": { "type": "string" },
@@ -26049,7 +26120,7 @@
               "key": { "type": "string" },
               "name": { "type": "string" },
               "spdx_id": { "type": "string" },
-              "url": { "type": "string" },
+              "url": { "type": ["string", "null"] },
               "node_id": { "type": "string" }
             }
           },
@@ -26603,10 +26674,6 @@
                         "type": "string",
                         "enum": ["read", "write"]
                       },
-                      "team_discussions": {
-                        "type": "string",
-                        "enum": ["read", "write"]
-                      },
                       "vulnerability_alerts": {
                         "type": "string",
                         "enum": ["read", "write"]
@@ -27111,10 +27178,6 @@
                         "type": "string",
                         "enum": ["read", "write"]
                       },
-                      "team_discussions": {
-                        "type": "string",
-                        "enum": ["read", "write"]
-                      },
                       "vulnerability_alerts": {
                         "type": "string",
                         "enum": ["read", "write"]
@@ -27609,10 +27672,6 @@
                         "enum": ["read", "write"]
                       },
                       "statuses": {
-                        "type": "string",
-                        "enum": ["read", "write"]
-                      },
-                      "team_discussions": {
                         "type": "string",
                         "enum": ["read", "write"]
                       },
@@ -29523,6 +29582,9 @@
           "fixed_at": { "$ref": "#/components/schemas/alert-fixed-at" },
           "auto_dismissed_at": {
             "$ref": "#/components/schemas/alert-auto-dismissed-at"
+          },
+          "dismissal_request": {
+            "$ref": "#/components/schemas/dependabot-alert-dismissal-request-simple"
           }
         },
         "required": [
@@ -29866,6 +29928,46 @@
         "description": "The time that the alert was auto-dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
         "format": "date-time",
         "readOnly": true
+      },
+      "dependabot-alert-dismissal-request-simple": {
+        "title": "Dependabot alert dismissal request",
+        "description": "Information about an active dismissal request for this Dependabot alert.",
+        "type": ["object", "null"],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The unique identifier of the dismissal request."
+          },
+          "status": {
+            "type": "string",
+            "description": "The current status of the dismissal request.",
+            "enum": ["pending", "approved", "rejected", "cancelled"]
+          },
+          "requester": {
+            "type": "object",
+            "description": "The user who requested the dismissal.",
+            "properties": {
+              "id": {
+                "type": "integer",
+                "description": "The unique identifier of the user."
+              },
+              "login": {
+                "type": "string",
+                "description": "The login name of the user."
+              }
+            }
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The date and time when the dismissal request was created."
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "description": "The API URL to get more information about this dismissal request."
+          }
+        }
       },
       "webhook-dependabot-alert-auto-reopened": {
         "title": "Dependabot alert auto-reopened event",
@@ -30340,10 +30442,6 @@
                         "enum": ["read", "write"]
                       },
                       "statuses": {
-                        "type": "string",
-                        "enum": ["read", "write"]
-                      },
-                      "team_discussions": {
                         "type": "string",
                         "enum": ["read", "write"]
                       },
@@ -31817,6 +31915,18 @@
             "default": false,
             "type": "boolean",
             "examples": [true]
+          },
+          "has_pull_requests": {
+            "description": "Whether pull requests are enabled.",
+            "default": true,
+            "type": "boolean",
+            "examples": [true]
+          },
+          "pull_request_creation_policy": {
+            "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+            "type": "string",
+            "enum": ["all", "collaborators_only"],
+            "examples": ["all"]
           },
           "archived": {
             "description": "Whether the repository is archived.",
@@ -33836,10 +33946,6 @@
                         "type": "string",
                         "enum": ["read", "write"]
                       },
-                      "team_discussions": {
-                        "type": "string",
-                        "enum": ["read", "write"]
-                      },
                       "vulnerability_alerts": {
                         "type": "string",
                         "enum": ["read", "write"]
@@ -34199,10 +34305,6 @@
                         "enum": ["read", "write"]
                       },
                       "statuses": {
-                        "type": "string",
-                        "enum": ["read", "write"]
-                      },
-                      "team_discussions": {
                         "type": "string",
                         "enum": ["read", "write"]
                       },
@@ -34953,7 +35055,6 @@
           "comments",
           "created_at",
           "updated_at",
-          "author_association",
           "active_lock_reason",
           "body"
         ]
@@ -36450,11 +36551,6 @@
             "description": "The level of permission to grant the access token to view and manage users blocked by the organization.",
             "enum": ["read", "write"]
           },
-          "team_discussions": {
-            "type": "string",
-            "description": "The level of permission to grant the access token to manage team discussions and related comments.",
-            "enum": ["read", "write"]
-          },
           "email_addresses": {
             "type": "string",
             "description": "The level of permission to grant the access token to manage the email addresses belonging to a user.",
@@ -36902,6 +36998,12 @@
                 "description": "URL for the issue comment",
                 "type": "string",
                 "format": "uri"
+              },
+              "pin": {
+                "anyOf": [
+                  { "type": "null" },
+                  { "$ref": "#/components/schemas/pinned-issue-comment" }
+                ]
               },
               "user": {
                 "title": "User",
@@ -37534,10 +37636,6 @@
                             "type": "string",
                             "enum": ["read", "write"]
                           },
-                          "team_discussions": {
-                            "type": "string",
-                            "enum": ["read", "write"]
-                          },
                           "vulnerability_alerts": {
                             "type": "string",
                             "enum": ["read", "write"]
@@ -37884,6 +37982,25 @@
           "sender": { "$ref": "#/components/schemas/simple-user" }
         },
         "required": ["action", "issue", "comment", "repository", "sender"]
+      },
+      "pinned-issue-comment": {
+        "title": "Pinned Issue Comment",
+        "description": "Context around who pinned an issue comment and when it was pinned.",
+        "type": "object",
+        "properties": {
+          "pinned_at": {
+            "type": "string",
+            "format": "date-time",
+            "examples": ["2011-04-14T16:00:49Z"]
+          },
+          "pinned_by": {
+            "anyOf": [
+              { "type": "null" },
+              { "$ref": "#/components/schemas/simple-user" }
+            ]
+          }
+        },
+        "required": ["pinned_at", "pinned_by"]
       },
       "sub-issues-summary": {
         "title": "Sub-issues Summary",
@@ -38548,10 +38665,6 @@
                             "type": "string",
                             "enum": ["read", "write"]
                           },
-                          "team_discussions": {
-                            "type": "string",
-                            "enum": ["read", "write"]
-                          },
                           "vulnerability_alerts": {
                             "type": "string",
                             "enum": ["read", "write"]
@@ -39001,6 +39114,12 @@
               "user_view_type": { "type": "string" }
             },
             "required": ["login", "id"]
+          },
+          "pin": {
+            "anyOf": [
+              { "type": "null" },
+              { "$ref": "#/components/schemas/pinned-issue-comment" }
+            ]
           }
         },
         "required": [
@@ -39602,10 +39721,6 @@
                             "enum": ["read", "write"]
                           },
                           "statuses": {
-                            "type": "string",
-                            "enum": ["read", "write"]
-                          },
-                          "team_discussions": {
                             "type": "string",
                             "enum": ["read", "write"]
                           },
@@ -40440,10 +40555,6 @@
                     "enum": ["read", "write"]
                   },
                   "statuses": { "type": "string", "enum": ["read", "write"] },
-                  "team_discussions": {
-                    "type": "string",
-                    "enum": ["read", "write"]
-                  },
                   "vulnerability_alerts": {
                     "type": "string",
                     "enum": ["read", "write"]
@@ -40514,6 +40625,12 @@
             ]
           },
           "repository_url": { "type": "string", "format": "uri" },
+          "pinned_comment": {
+            "anyOf": [
+              { "type": "null" },
+              { "$ref": "#/components/schemas/issue-comment" }
+            ]
+          },
           "sub_issues_summary": {
             "$ref": "#/components/schemas/sub-issues-summary"
           },
@@ -40594,6 +40711,109 @@
           "active_lock_reason",
           "body",
           "reactions"
+        ]
+      },
+      "issue-comment": {
+        "title": "Issue Comment",
+        "description": "Comments provide a way for people to collaborate on an issue.",
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "Unique identifier of the issue comment",
+            "type": "integer",
+            "format": "int64",
+            "examples": [42]
+          },
+          "node_id": { "type": "string" },
+          "url": {
+            "description": "URL for the issue comment",
+            "type": "string",
+            "format": "uri",
+            "examples": [
+              "https://api.github.com/repositories/42/issues/comments/1"
+            ]
+          },
+          "body": {
+            "description": "Contents of the issue comment",
+            "type": "string",
+            "examples": [
+              "What version of Safari were you using when you observed this bug?"
+            ]
+          },
+          "body_text": { "type": "string" },
+          "body_html": { "type": "string" },
+          "html_url": { "type": "string", "format": "uri" },
+          "user": {
+            "anyOf": [
+              { "type": "null" },
+              { "$ref": "#/components/schemas/simple-user" }
+            ]
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "examples": ["2011-04-14T16:00:49Z"]
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "examples": ["2011-04-14T16:00:49Z"]
+          },
+          "issue_url": { "type": "string", "format": "uri" },
+          "author_association": {
+            "$ref": "#/components/schemas/author-association"
+          },
+          "performed_via_github_app": {
+            "anyOf": [
+              { "type": "null" },
+              { "$ref": "#/components/schemas/integration" }
+            ]
+          },
+          "reactions": { "$ref": "#/components/schemas/reaction-rollup" },
+          "pin": {
+            "anyOf": [
+              { "type": "null" },
+              { "$ref": "#/components/schemas/pinned-issue-comment" }
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "node_id",
+          "html_url",
+          "issue_url",
+          "user",
+          "url",
+          "created_at",
+          "updated_at"
+        ]
+      },
+      "reaction-rollup": {
+        "title": "Reaction Rollup",
+        "type": "object",
+        "properties": {
+          "url": { "type": "string", "format": "uri" },
+          "total_count": { "type": "integer" },
+          "+1": { "type": "integer" },
+          "-1": { "type": "integer" },
+          "laugh": { "type": "integer" },
+          "confused": { "type": "integer" },
+          "heart": { "type": "integer" },
+          "hooray": { "type": "integer" },
+          "eyes": { "type": "integer" },
+          "rocket": { "type": "integer" }
+        },
+        "required": [
+          "url",
+          "total_count",
+          "+1",
+          "-1",
+          "laugh",
+          "confused",
+          "heart",
+          "hooray",
+          "eyes",
+          "rocket"
         ]
       },
       "issue-field-value": {
@@ -41239,10 +41459,6 @@
                             "type": "string",
                             "enum": ["read", "write"]
                           },
-                          "team_discussions": {
-                            "type": "string",
-                            "enum": ["read", "write"]
-                          },
                           "vulnerability_alerts": {
                             "type": "string",
                             "enum": ["read", "write"]
@@ -41316,6 +41532,12 @@
                     ]
                   },
                   "repository_url": { "type": "string", "format": "uri" },
+                  "pinned_comment": {
+                    "anyOf": [
+                      { "type": "null" },
+                      { "$ref": "#/components/schemas/issue-comment" }
+                    ]
+                  },
                   "sub_issues_summary": {
                     "$ref": "#/components/schemas/sub-issues-summary"
                   },
@@ -42037,10 +42259,6 @@
                         "type": "string",
                         "enum": ["read", "write"]
                       },
-                      "team_discussions": {
-                        "type": "string",
-                        "enum": ["read", "write"]
-                      },
                       "vulnerability_alerts": {
                         "type": "string",
                         "enum": ["read", "write"]
@@ -42114,6 +42332,12 @@
                 ]
               },
               "repository_url": { "type": "string", "format": "uri" },
+              "pinned_comment": {
+                "anyOf": [
+                  { "type": "null" },
+                  { "$ref": "#/components/schemas/issue-comment" }
+                ]
+              },
               "sub_issues_summary": {
                 "$ref": "#/components/schemas/sub-issues-summary"
               },
@@ -42768,10 +42992,6 @@
                         "type": "string",
                         "enum": ["read", "write"]
                       },
-                      "team_discussions": {
-                        "type": "string",
-                        "enum": ["read", "write"]
-                      },
                       "vulnerability_alerts": {
                         "type": "string",
                         "enum": ["read", "write"]
@@ -42834,6 +43054,12 @@
                 }
               },
               "repository_url": { "type": "string", "format": "uri" },
+              "pinned_comment": {
+                "anyOf": [
+                  { "type": "null" },
+                  { "$ref": "#/components/schemas/issue-comment" }
+                ]
+              },
               "sub_issues_summary": {
                 "$ref": "#/components/schemas/sub-issues-summary"
               },
@@ -43544,10 +43770,6 @@
                         "type": "string",
                         "enum": ["read", "write"]
                       },
-                      "team_discussions": {
-                        "type": "string",
-                        "enum": ["read", "write"]
-                      },
                       "vulnerability_alerts": {
                         "type": "string",
                         "enum": ["read", "write"]
@@ -43621,6 +43843,12 @@
                 ]
               },
               "repository_url": { "type": "string", "format": "uri" },
+              "pinned_comment": {
+                "anyOf": [
+                  { "type": "null" },
+                  { "$ref": "#/components/schemas/issue-comment" }
+                ]
+              },
               "sub_issues_summary": {
                 "$ref": "#/components/schemas/sub-issues-summary"
               },
@@ -44245,10 +44473,6 @@
                         "type": "string",
                         "enum": ["read", "write"]
                       },
-                      "team_discussions": {
-                        "type": "string",
-                        "enum": ["read", "write"]
-                      },
                       "vulnerability_alerts": {
                         "type": "string",
                         "enum": ["read", "write"]
@@ -44322,6 +44546,12 @@
                 ]
               },
               "repository_url": { "type": "string", "format": "uri" },
+              "pinned_comment": {
+                "anyOf": [
+                  { "type": "null" },
+                  { "$ref": "#/components/schemas/issue-comment" }
+                ]
+              },
               "sub_issues_summary": {
                 "$ref": "#/components/schemas/sub-issues-summary"
               },
@@ -44982,10 +45212,6 @@
                         "type": "string",
                         "enum": ["read", "write"]
                       },
-                      "team_discussions": {
-                        "type": "string",
-                        "enum": ["read", "write"]
-                      },
                       "vulnerability_alerts": {
                         "type": "string",
                         "enum": ["read", "write"]
@@ -45048,6 +45274,12 @@
                 }
               },
               "repository_url": { "type": "string", "format": "uri" },
+              "pinned_comment": {
+                "anyOf": [
+                  { "type": "null" },
+                  { "$ref": "#/components/schemas/issue-comment" }
+                ]
+              },
               "sub_issues_summary": {
                 "$ref": "#/components/schemas/sub-issues-summary"
               },
@@ -45680,10 +45912,6 @@
                         "type": "string",
                         "enum": ["read", "write"]
                       },
-                      "team_discussions": {
-                        "type": "string",
-                        "enum": ["read", "write"]
-                      },
                       "vulnerability_alerts": {
                         "type": "string",
                         "enum": ["read", "write"]
@@ -45746,6 +45974,12 @@
                 }
               },
               "repository_url": { "type": "string", "format": "uri" },
+              "pinned_comment": {
+                "anyOf": [
+                  { "type": "null" },
+                  { "$ref": "#/components/schemas/issue-comment" }
+                ]
+              },
               "sub_issues_summary": {
                 "$ref": "#/components/schemas/sub-issues-summary"
               },
@@ -46399,10 +46633,6 @@
                             "type": "string",
                             "enum": ["read", "write"]
                           },
-                          "team_discussions": {
-                            "type": "string",
-                            "enum": ["read", "write"]
-                          },
                           "vulnerability_alerts": {
                             "type": "string",
                             "enum": ["read", "write"]
@@ -46504,6 +46734,12 @@
                     "description": "URL for the issue",
                     "type": "string",
                     "format": "uri"
+                  },
+                  "pinned_comment": {
+                    "anyOf": [
+                      { "type": "null" },
+                      { "$ref": "#/components/schemas/issue-comment" }
+                    ]
                   },
                   "user": {
                     "title": "User",
@@ -46672,6 +46908,16 @@
                   "has_discussions": {
                     "description": "Whether the repository has discussions enabled.",
                     "type": "boolean"
+                  },
+                  "has_pull_requests": {
+                    "description": "Whether pull requests are enabled.",
+                    "type": "boolean",
+                    "default": true
+                  },
+                  "pull_request_creation_policy": {
+                    "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                    "type": "string",
+                    "enum": ["all", "collaborators_only"]
                   },
                   "has_downloads": {
                     "description": "Whether downloads are enabled.",
@@ -47462,10 +47708,6 @@
                         "type": "string",
                         "enum": ["read", "write"]
                       },
-                      "team_discussions": {
-                        "type": "string",
-                        "enum": ["read", "write"]
-                      },
                       "vulnerability_alerts": {
                         "type": "string",
                         "enum": ["read", "write"]
@@ -47566,6 +47808,12 @@
                 "description": "URL for the issue",
                 "type": "string",
                 "format": "uri"
+              },
+              "pinned_comment": {
+                "anyOf": [
+                  { "type": "null" },
+                  { "$ref": "#/components/schemas/issue-comment" }
+                ]
               },
               "user": {
                 "title": "User",
@@ -48089,10 +48337,6 @@
                     "enum": ["read", "write"]
                   },
                   "statuses": { "type": "string", "enum": ["read", "write"] },
-                  "team_discussions": {
-                    "type": "string",
-                    "enum": ["read", "write"]
-                  },
                   "vulnerability_alerts": {
                     "type": "string",
                     "enum": ["read", "write"]
@@ -48163,6 +48407,12 @@
             ]
           },
           "repository_url": { "type": "string", "format": "uri" },
+          "pinned_comment": {
+            "anyOf": [
+              { "type": "null" },
+              { "$ref": "#/components/schemas/issue-comment" }
+            ]
+          },
           "sub_issues_summary": {
             "$ref": "#/components/schemas/sub-issues-summary"
           },
@@ -48806,10 +49056,6 @@
                         "type": "string",
                         "enum": ["read", "write"]
                       },
-                      "team_discussions": {
-                        "type": "string",
-                        "enum": ["read", "write"]
-                      },
                       "vulnerability_alerts": {
                         "type": "string",
                         "enum": ["read", "write"]
@@ -48872,6 +49118,12 @@
                 }
               },
               "repository_url": { "type": "string", "format": "uri" },
+              "pinned_comment": {
+                "anyOf": [
+                  { "type": "null" },
+                  { "$ref": "#/components/schemas/issue-comment" }
+                ]
+              },
               "sub_issues_summary": {
                 "$ref": "#/components/schemas/sub-issues-summary"
               },
@@ -49524,10 +49776,6 @@
                             "type": "string",
                             "enum": ["read", "write"]
                           },
-                          "team_discussions": {
-                            "type": "string",
-                            "enum": ["read", "write"]
-                          },
                           "vulnerability_alerts": {
                             "type": "string",
                             "enum": ["read", "write"]
@@ -49601,6 +49849,12 @@
                     ]
                   },
                   "repository_url": { "type": "string", "format": "uri" },
+                  "pinned_comment": {
+                    "anyOf": [
+                      { "type": "null" },
+                      { "$ref": "#/components/schemas/issue-comment" }
+                    ]
+                  },
                   "sub_issues_summary": {
                     "$ref": "#/components/schemas/sub-issues-summary"
                   },
@@ -49841,6 +50095,16 @@
                     "description": "Whether discussions are enabled.",
                     "type": "boolean",
                     "default": false
+                  },
+                  "has_pull_requests": {
+                    "description": "Whether pull requests are enabled.",
+                    "type": "boolean",
+                    "default": true
+                  },
+                  "pull_request_creation_policy": {
+                    "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                    "type": "string",
+                    "enum": ["all", "collaborators_only"]
                   },
                   "homepage": { "type": ["string", "null"] },
                   "hooks_url": { "type": "string", "format": "uri" },
@@ -50737,10 +51001,6 @@
                         "type": "string",
                         "enum": ["read", "write"]
                       },
-                      "team_discussions": {
-                        "type": "string",
-                        "enum": ["read", "write"]
-                      },
                       "vulnerability_alerts": {
                         "type": "string",
                         "enum": ["read", "write"]
@@ -50803,6 +51063,12 @@
                 }
               },
               "repository_url": { "type": "string", "format": "uri" },
+              "pinned_comment": {
+                "anyOf": [
+                  { "type": "null" },
+                  { "$ref": "#/components/schemas/issue-comment" }
+                ]
+              },
               "sub_issues_summary": {
                 "$ref": "#/components/schemas/sub-issues-summary"
               },
@@ -55036,6 +55302,16 @@
                         "type": "boolean",
                         "default": false
                       },
+                      "has_pull_requests": {
+                        "description": "Whether pull requests are enabled.",
+                        "type": "boolean",
+                        "default": true
+                      },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
+                      },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
                       "html_url": { "type": "string", "format": "uri" },
@@ -55545,6 +55821,16 @@
                         "description": "Whether discussions are enabled.",
                         "type": "boolean",
                         "default": false
+                      },
+                      "has_pull_requests": {
+                        "description": "Whether pull requests are enabled.",
+                        "type": "boolean",
+                        "default": true
+                      },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
                       },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
@@ -56885,6 +57171,16 @@
                         "type": "boolean",
                         "default": false
                       },
+                      "has_pull_requests": {
+                        "description": "Whether pull requests are enabled.",
+                        "type": "boolean",
+                        "default": true
+                      },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
+                      },
                       "has_pages": { "type": "boolean" },
                       "has_projects": {
                         "description": "Whether projects are enabled.",
@@ -57405,6 +57701,16 @@
                         "description": "Whether discussions are enabled.",
                         "type": "boolean",
                         "default": false
+                      },
+                      "has_pull_requests": {
+                        "description": "Whether pull requests are enabled.",
+                        "type": "boolean",
+                        "default": true
+                      },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
                       },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
@@ -58753,6 +59059,16 @@
                         "type": "boolean",
                         "default": false
                       },
+                      "has_pull_requests": {
+                        "description": "Whether pull requests are enabled.",
+                        "type": "boolean",
+                        "default": true
+                      },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
+                      },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
                       "html_url": { "type": "string", "format": "uri" },
@@ -59262,6 +59578,16 @@
                         "description": "Whether discussions are enabled.",
                         "type": "boolean",
                         "default": false
+                      },
+                      "has_pull_requests": {
+                        "description": "Whether pull requests are enabled.",
+                        "type": "boolean",
+                        "default": true
+                      },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
                       },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
@@ -60654,6 +60980,16 @@
                     "type": "boolean",
                     "default": false
                   },
+                  "has_pull_requests": {
+                    "description": "Whether pull requests are enabled.",
+                    "type": "boolean",
+                    "default": true
+                  },
+                  "pull_request_creation_policy": {
+                    "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                    "type": "string",
+                    "enum": ["all", "collaborators_only"]
+                  },
                   "homepage": { "type": ["string", "null"] },
                   "hooks_url": { "type": "string", "format": "uri" },
                   "html_url": { "type": "string", "format": "uri" },
@@ -61106,6 +61442,16 @@
                     "description": "Whether discussions are enabled.",
                     "type": "boolean",
                     "default": false
+                  },
+                  "has_pull_requests": {
+                    "description": "Whether pull requests are enabled.",
+                    "type": "boolean",
+                    "default": true
+                  },
+                  "pull_request_creation_policy": {
+                    "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                    "type": "string",
+                    "enum": ["all", "collaborators_only"]
                   },
                   "homepage": { "type": ["string", "null"] },
                   "hooks_url": { "type": "string", "format": "uri" },
@@ -62402,6 +62748,16 @@
                         "type": "boolean",
                         "default": false
                       },
+                      "has_pull_requests": {
+                        "description": "Whether pull requests are enabled.",
+                        "type": "boolean",
+                        "default": true
+                      },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
+                      },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
                       "html_url": { "type": "string", "format": "uri" },
@@ -62911,6 +63267,16 @@
                         "description": "Whether discussions are enabled.",
                         "type": "boolean",
                         "default": false
+                      },
+                      "has_pull_requests": {
+                        "description": "Whether pull requests are enabled.",
+                        "type": "boolean",
+                        "default": true
+                      },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
                       },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
@@ -64251,6 +64617,16 @@
                         "type": "boolean",
                         "default": false
                       },
+                      "has_pull_requests": {
+                        "description": "Whether pull requests are enabled.",
+                        "type": "boolean",
+                        "default": true
+                      },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
+                      },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
                       "html_url": { "type": "string", "format": "uri" },
@@ -64760,6 +65136,16 @@
                         "description": "Whether discussions are enabled.",
                         "type": "boolean",
                         "default": false
+                      },
+                      "has_pull_requests": {
+                        "description": "Whether pull requests are enabled.",
+                        "type": "boolean",
+                        "default": true
+                      },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
                       },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
@@ -66414,6 +66800,16 @@
                         "type": "boolean",
                         "default": false
                       },
+                      "has_pull_requests": {
+                        "description": "Whether pull requests are enabled.",
+                        "type": "boolean",
+                        "default": true
+                      },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
+                      },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
                       "html_url": { "type": "string", "format": "uri" },
@@ -66913,6 +67309,16 @@
                         "description": "Whether discussions are enabled.",
                         "type": "boolean",
                         "default": false
+                      },
+                      "has_pull_requests": {
+                        "description": "Whether pull requests are enabled.",
+                        "type": "boolean",
+                        "default": true
+                      },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
                       },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
@@ -68197,6 +68603,16 @@
                         "type": "boolean",
                         "default": false
                       },
+                      "has_pull_requests": {
+                        "description": "Whether pull requests are enabled.",
+                        "type": "boolean",
+                        "default": true
+                      },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
+                      },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
                       "html_url": { "type": "string", "format": "uri" },
@@ -68696,6 +69112,16 @@
                         "description": "Whether discussions are enabled.",
                         "type": "boolean",
                         "default": false
+                      },
+                      "has_pull_requests": {
+                        "description": "Whether pull requests are enabled.",
+                        "type": "boolean",
+                        "default": true
+                      },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
                       },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
@@ -70203,6 +70629,16 @@
                         "type": "boolean",
                         "default": false
                       },
+                      "has_pull_requests": {
+                        "description": "Whether pull requests are enabled.",
+                        "type": "boolean",
+                        "default": true
+                      },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
+                      },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
                       "html_url": { "type": "string", "format": "uri" },
@@ -70702,6 +71138,16 @@
                         "description": "Whether discussions are enabled.",
                         "type": "boolean",
                         "default": false
+                      },
+                      "has_pull_requests": {
+                        "description": "Whether pull requests are enabled.",
+                        "type": "boolean",
+                        "default": true
+                      },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
                       },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
@@ -71976,6 +72422,16 @@
                         "type": "boolean",
                         "default": false
                       },
+                      "has_pull_requests": {
+                        "description": "Whether pull requests are enabled.",
+                        "type": "boolean",
+                        "default": true
+                      },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
+                      },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
                       "html_url": { "type": "string", "format": "uri" },
@@ -72475,6 +72931,16 @@
                         "description": "Whether discussions are enabled.",
                         "type": "boolean",
                         "default": false
+                      },
+                      "has_pull_requests": {
+                        "description": "Whether pull requests are enabled.",
+                        "type": "boolean",
+                        "default": true
+                      },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
                       },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
@@ -75768,6 +76234,16 @@
                             "type": "boolean",
                             "default": false
                           },
+                          "has_pull_requests": {
+                            "description": "Whether pull requests are enabled.",
+                            "type": "boolean",
+                            "default": true
+                          },
+                          "pull_request_creation_policy": {
+                            "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                            "type": "string",
+                            "enum": ["all", "collaborators_only"]
+                          },
                           "homepage": { "type": ["string", "null"] },
                           "hooks_url": { "type": "string", "format": "uri" },
                           "html_url": { "type": "string", "format": "uri" },
@@ -76319,6 +76795,16 @@
                             "description": "Whether discussions are enabled.",
                             "type": "boolean",
                             "default": false
+                          },
+                          "has_pull_requests": {
+                            "description": "Whether pull requests are enabled.",
+                            "type": "boolean",
+                            "default": true
+                          },
+                          "pull_request_creation_policy": {
+                            "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                            "type": "string",
+                            "enum": ["all", "collaborators_only"]
                           },
                           "homepage": { "type": ["string", "null"] },
                           "hooks_url": { "type": "string", "format": "uri" },
@@ -77849,6 +78335,16 @@
                             "type": "boolean",
                             "default": false
                           },
+                          "has_pull_requests": {
+                            "description": "Whether pull requests are enabled.",
+                            "type": "boolean",
+                            "default": true
+                          },
+                          "pull_request_creation_policy": {
+                            "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                            "type": "string",
+                            "enum": ["all", "collaborators_only"]
+                          },
                           "homepage": { "type": ["string", "null"] },
                           "hooks_url": { "type": "string", "format": "uri" },
                           "html_url": { "type": "string", "format": "uri" },
@@ -78400,6 +78896,16 @@
                             "description": "Whether discussions are enabled.",
                             "type": "boolean",
                             "default": false
+                          },
+                          "has_pull_requests": {
+                            "description": "Whether pull requests are enabled.",
+                            "type": "boolean",
+                            "default": true
+                          },
+                          "pull_request_creation_policy": {
+                            "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                            "type": "string",
+                            "enum": ["all", "collaborators_only"]
                           },
                           "homepage": { "type": ["string", "null"] },
                           "hooks_url": { "type": "string", "format": "uri" },
@@ -79999,6 +80505,16 @@
                             "type": "boolean",
                             "default": false
                           },
+                          "has_pull_requests": {
+                            "description": "Whether pull requests are enabled.",
+                            "type": "boolean",
+                            "default": true
+                          },
+                          "pull_request_creation_policy": {
+                            "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                            "type": "string",
+                            "enum": ["all", "collaborators_only"]
+                          },
                           "homepage": { "type": ["string", "null"] },
                           "hooks_url": { "type": "string", "format": "uri" },
                           "html_url": { "type": "string", "format": "uri" },
@@ -80550,6 +81066,16 @@
                             "description": "Whether discussions are enabled.",
                             "type": "boolean",
                             "default": false
+                          },
+                          "has_pull_requests": {
+                            "description": "Whether pull requests are enabled.",
+                            "type": "boolean",
+                            "default": true
+                          },
+                          "pull_request_creation_policy": {
+                            "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                            "type": "string",
+                            "enum": ["all", "collaborators_only"]
                           },
                           "homepage": { "type": ["string", "null"] },
                           "hooks_url": { "type": "string", "format": "uri" },
@@ -82065,6 +82591,16 @@
                             "type": "boolean",
                             "default": false
                           },
+                          "has_pull_requests": {
+                            "description": "Whether pull requests are enabled.",
+                            "type": "boolean",
+                            "default": true
+                          },
+                          "pull_request_creation_policy": {
+                            "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                            "type": "string",
+                            "enum": ["all", "collaborators_only"]
+                          },
                           "homepage": { "type": ["string", "null"] },
                           "hooks_url": { "type": "string", "format": "uri" },
                           "html_url": { "type": "string", "format": "uri" },
@@ -82616,6 +83152,16 @@
                             "description": "Whether discussions are enabled.",
                             "type": "boolean",
                             "default": false
+                          },
+                          "has_pull_requests": {
+                            "description": "Whether pull requests are enabled.",
+                            "type": "boolean",
+                            "default": true
+                          },
+                          "pull_request_creation_policy": {
+                            "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                            "type": "string",
+                            "enum": ["all", "collaborators_only"]
                           },
                           "homepage": { "type": ["string", "null"] },
                           "hooks_url": { "type": "string", "format": "uri" },
@@ -84124,6 +84670,16 @@
                         "type": "boolean",
                         "default": false
                       },
+                      "has_pull_requests": {
+                        "description": "Whether pull requests are enabled.",
+                        "type": "boolean",
+                        "default": true
+                      },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
+                      },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
                       "html_url": { "type": "string", "format": "uri" },
@@ -84623,6 +85179,16 @@
                         "description": "Whether discussions are enabled.",
                         "type": "boolean",
                         "default": false
+                      },
+                      "has_pull_requests": {
+                        "description": "Whether pull requests are enabled.",
+                        "type": "boolean",
+                        "default": true
+                      },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
                       },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
@@ -85905,6 +86471,16 @@
                         "type": "boolean",
                         "default": false
                       },
+                      "has_pull_requests": {
+                        "description": "Whether pull requests are enabled.",
+                        "type": "boolean",
+                        "default": true
+                      },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
+                      },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
                       "html_url": { "type": "string", "format": "uri" },
@@ -86379,6 +86955,16 @@
                         "description": "Whether discussions are enabled.",
                         "type": "boolean",
                         "default": false
+                      },
+                      "has_pull_requests": {
+                        "description": "Whether pull requests are enabled.",
+                        "type": "boolean",
+                        "default": true
+                      },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
                       },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
@@ -87908,6 +88494,16 @@
                         "type": "boolean",
                         "default": false
                       },
+                      "has_pull_requests": {
+                        "description": "Whether pull requests are enabled.",
+                        "type": "boolean",
+                        "default": true
+                      },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
+                      },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
                       "html_url": { "type": "string", "format": "uri" },
@@ -88382,6 +88978,16 @@
                         "description": "Whether discussions are enabled.",
                         "type": "boolean",
                         "default": false
+                      },
+                      "has_pull_requests": {
+                        "description": "Whether pull requests are enabled.",
+                        "type": "boolean",
+                        "default": true
+                      },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
                       },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
@@ -89903,6 +90509,16 @@
                         "type": "boolean",
                         "default": false
                       },
+                      "has_pull_requests": {
+                        "description": "Whether pull requests are enabled.",
+                        "type": "boolean",
+                        "default": true
+                      },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
+                      },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
                       "html_url": { "type": "string", "format": "uri" },
@@ -90412,6 +91028,16 @@
                         "description": "Whether discussions are enabled.",
                         "type": "boolean",
                         "default": false
+                      },
+                      "has_pull_requests": {
+                        "description": "Whether pull requests are enabled.",
+                        "type": "boolean",
+                        "default": true
+                      },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
                       },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
@@ -91763,6 +92389,16 @@
                         "type": "boolean",
                         "default": false
                       },
+                      "has_pull_requests": {
+                        "description": "Whether pull requests are enabled.",
+                        "type": "boolean",
+                        "default": true
+                      },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
+                      },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
                       "html_url": { "type": "string", "format": "uri" },
@@ -92272,6 +92908,16 @@
                         "description": "Whether discussions are enabled.",
                         "type": "boolean",
                         "default": false
+                      },
+                      "has_pull_requests": {
+                        "description": "Whether pull requests are enabled.",
+                        "type": "boolean",
+                        "default": true
+                      },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
                       },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
@@ -93613,6 +94259,16 @@
                         "type": "boolean",
                         "default": false
                       },
+                      "has_pull_requests": {
+                        "description": "Whether pull requests are enabled.",
+                        "type": "boolean",
+                        "default": true
+                      },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
+                      },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
                       "html_url": { "type": "string", "format": "uri" },
@@ -94122,6 +94778,16 @@
                         "description": "Whether discussions are enabled.",
                         "type": "boolean",
                         "default": false
+                      },
+                      "has_pull_requests": {
+                        "description": "Whether pull requests are enabled.",
+                        "type": "boolean",
+                        "default": true
+                      },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
                       },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
@@ -95462,6 +96128,16 @@
                         "type": "boolean",
                         "default": false
                       },
+                      "has_pull_requests": {
+                        "description": "Whether pull requests are enabled.",
+                        "type": "boolean",
+                        "default": true
+                      },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
+                      },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
                       "html_url": { "type": "string", "format": "uri" },
@@ -95971,6 +96647,16 @@
                         "description": "Whether discussions are enabled.",
                         "type": "boolean",
                         "default": false
+                      },
+                      "has_pull_requests": {
+                        "description": "Whether pull requests are enabled.",
+                        "type": "boolean",
+                        "default": true
+                      },
+                      "pull_request_creation_policy": {
+                        "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                        "type": "string",
+                        "enum": ["all", "collaborators_only"]
                       },
                       "homepage": { "type": ["string", "null"] },
                       "hooks_url": { "type": "string", "format": "uri" },
@@ -97212,6 +97898,16 @@
                 "description": "Whether discussions are enabled.",
                 "type": "boolean",
                 "default": false
+              },
+              "has_pull_requests": {
+                "description": "Whether pull requests are enabled.",
+                "type": "boolean",
+                "default": true
+              },
+              "pull_request_creation_policy": {
+                "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+                "type": "string",
+                "enum": ["all", "collaborators_only"]
               },
               "homepage": { "type": ["string", "null"] },
               "hooks_url": { "type": "string", "format": "uri" },
@@ -99292,7 +99988,7 @@
         "properties": {
           "actor_id": {
             "type": ["integer", "null"],
-            "description": "The ID of the actor that can bypass a ruleset. Required for `Integration`, `RepositoryRole`, and `Team` actor types. If `actor_type` is `OrganizationAdmin`, this should be `1`. If `actor_type` is `DeployKey`, this should be null. If `actor_type` is `EnterpriseOwner`, `actor_id` is ignored. `OrganizationAdmin` and `EnterpriseOwner` are not applicable for personal repositories."
+            "description": "The ID of the actor that can bypass a ruleset. Required for `Integration`, `RepositoryRole`, and `Team` actor types. If `actor_type` is `OrganizationAdmin`, `actor_id` is ignored. If `actor_type` is `DeployKey`, this should be null. If `actor_type` is `EnterpriseOwner`, `actor_id` is ignored. `OrganizationAdmin` and `EnterpriseOwner` are not applicable for personal repositories."
           },
           "actor_type": {
             "type": "string",
@@ -99655,10 +100351,6 @@
           "parameters": {
             "type": "object",
             "properties": {
-              "automatic_copilot_code_review_enabled": {
-                "type": "boolean",
-                "description": "Request Copilot code review for new pull requests automatically if the author has access to Copilot code review and their premium requests quota has not reached the limit."
-              },
               "dismiss_stale_reviews_on_push": {
                 "type": "boolean",
                 "description": "New, reviewable commits pushed will dismiss previous pull request review approvals."
@@ -99806,7 +100498,7 @@
             "properties": {
               "name": {
                 "type": "string",
-                "description": "How this rule will appear to users."
+                "description": "How this rule appears when configuring it."
               },
               "negate": {
                 "type": "boolean",
@@ -99838,7 +100530,7 @@
             "properties": {
               "name": {
                 "type": "string",
-                "description": "How this rule will appear to users."
+                "description": "How this rule appears when configuring it."
               },
               "negate": {
                 "type": "boolean",
@@ -99870,7 +100562,7 @@
             "properties": {
               "name": {
                 "type": "string",
-                "description": "How this rule will appear to users."
+                "description": "How this rule appears when configuring it."
               },
               "negate": {
                 "type": "boolean",
@@ -99902,7 +100594,7 @@
             "properties": {
               "name": {
                 "type": "string",
-                "description": "How this rule will appear to users."
+                "description": "How this rule appears when configuring it."
               },
               "negate": {
                 "type": "boolean",
@@ -99934,7 +100626,7 @@
             "properties": {
               "name": {
                 "type": "string",
-                "description": "How this rule will appear to users."
+                "description": "How this rule appears when configuring it."
               },
               "negate": {
                 "type": "boolean",
@@ -100457,7 +101149,7 @@
           "node_id": { "type": "string" },
           "number": { "type": "integer" },
           "severity": { "type": "string" },
-          "state": { "type": "string", "enum": ["open"] }
+          "state": { "type": "string", "enum": ["auto_dismissed", "open"] }
         }
       },
       "webhook-repository-vulnerability-alert-dismiss": {
@@ -101862,6 +102554,13 @@
           "has_pages": { "type": "boolean" },
           "has_downloads": { "type": "boolean", "examples": [true] },
           "has_discussions": { "type": "boolean", "examples": [true] },
+          "has_pull_requests": { "type": "boolean", "examples": [true] },
+          "pull_request_creation_policy": {
+            "description": "The policy controlling who can create pull requests: all or collaborators_only.",
+            "type": "string",
+            "enum": ["all", "collaborators_only"],
+            "examples": ["all"]
+          },
           "archived": { "type": "boolean" },
           "disabled": {
             "type": "boolean",
@@ -107583,7 +108282,6 @@
                   "repository_hooks": "write",
                   "repository_projects": "write",
                   "statuses": "write",
-                  "team_discussions": "write",
                   "vulnerability_alerts": "read"
                 },
                 "events": []
@@ -107638,7 +108336,6 @@
                 "repository_hooks": "write",
                 "repository_projects": "write",
                 "statuses": "write",
-                "team_discussions": "write",
                 "vulnerability_alerts": "read"
               },
               "events": []
@@ -107904,7 +108601,6 @@
                   "repository_hooks": "write",
                   "repository_projects": "write",
                   "statuses": "write",
-                  "team_discussions": "write",
                   "vulnerability_alerts": "read"
                 },
                 "events": []
@@ -107959,7 +108655,6 @@
                 "repository_hooks": "write",
                 "repository_projects": "write",
                 "statuses": "write",
-                "team_discussions": "write",
                 "vulnerability_alerts": "read"
               },
               "events": []
@@ -108212,7 +108907,6 @@
                   "repository_hooks": "write",
                   "repository_projects": "write",
                   "statuses": "write",
-                  "team_discussions": "write",
                   "vulnerability_alerts": "read"
                 },
                 "events": []
@@ -108267,7 +108961,6 @@
                 "repository_hooks": "write",
                 "repository_projects": "write",
                 "statuses": "write",
-                "team_discussions": "write",
                 "vulnerability_alerts": "read"
               },
               "events": []
@@ -108546,7 +109239,6 @@
                   "repository_hooks": "write",
                   "repository_projects": "write",
                   "statuses": "write",
-                  "team_discussions": "write",
                   "vulnerability_alerts": "read"
                 },
                 "events": []
@@ -108601,7 +109293,6 @@
                 "repository_hooks": "write",
                 "repository_projects": "write",
                 "statuses": "write",
-                "team_discussions": "write",
                 "vulnerability_alerts": "read"
               },
               "events": []

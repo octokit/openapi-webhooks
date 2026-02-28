@@ -387,9 +387,6 @@ export interface webhooks {
      * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.15/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.15/rest/dependabot/alerts)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
-     *
-     * > [!NOTE]
-     * > Webhook events for Dependabot alerts are currently in public preview and subject to change.
      * @description A Dependabot alert was automatically closed by a Dependabot auto-triage rule.
      */
     post: operations["dependabot-alert/auto-dismissed"];
@@ -401,9 +398,6 @@ export interface webhooks {
      * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.15/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.15/rest/dependabot/alerts)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
-     *
-     * > [!NOTE]
-     * > Webhook events for Dependabot alerts are currently in public preview and subject to change.
      * @description A Dependabot alert, that had been automatically closed by a Dependabot auto-triage rule, was automatically reopened because the alert metadata or rule changed.
      */
     post: operations["dependabot-alert/auto-reopened"];
@@ -415,9 +409,6 @@ export interface webhooks {
      * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.15/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.15/rest/dependabot/alerts)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
-     *
-     * > [!NOTE]
-     * > Webhook events for Dependabot alerts are currently in public preview and subject to change.
      * @description A manifest file change introduced a vulnerable dependency, or a GitHub Security Advisory was published and an existing dependency was found to be vulnerable.
      */
     post: operations["dependabot-alert/created"];
@@ -429,9 +420,6 @@ export interface webhooks {
      * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.15/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.15/rest/dependabot/alerts)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
-     *
-     * > [!NOTE]
-     * > Webhook events for Dependabot alerts are currently in public preview and subject to change.
      * @description A Dependabot alert was manually closed.
      */
     post: operations["dependabot-alert/dismissed"];
@@ -443,9 +431,6 @@ export interface webhooks {
      * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.15/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.15/rest/dependabot/alerts)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
-     *
-     * > [!NOTE]
-     * > Webhook events for Dependabot alerts are currently in public preview and subject to change.
      * @description A manifest file change removed a vulnerability.
      */
     post: operations["dependabot-alert/fixed"];
@@ -457,9 +442,6 @@ export interface webhooks {
      * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.15/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.15/rest/dependabot/alerts)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
-     *
-     * > [!NOTE]
-     * > Webhook events for Dependabot alerts are currently in public preview and subject to change.
      * @description A manifest file change introduced a vulnerable dependency that had previously been fixed.
      */
     post: operations["dependabot-alert/reintroduced"];
@@ -471,9 +453,6 @@ export interface webhooks {
      * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.15/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.15/rest/dependabot/alerts)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
-     *
-     * > [!NOTE]
-     * > Webhook events for Dependabot alerts are currently in public preview and subject to change.
      * @description A Dependabot alert was manually reopened.
      */
     post: operations["dependabot-alert/reopened"];
@@ -1335,8 +1314,6 @@ export interface webhooks {
   "package-published": {
     /**
      * This event occurs when there is activity relating to GitHub Packages. For more information, see "[Introduction to GitHub Packages](https://docs.github.com/enterprise-server@3.15/packages/learn-github-packages/introduction-to-github-packages)." For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.15/graphql/reference/objects#package) or "[Packages](https://docs.github.com/enterprise-server@3.15/rest/packages)" in the REST API documentation.
-     *
-     * To install this event on a GitHub App, the app must have at least read-level access for the "Packages" repository permission.
      * @description A package was published to a registry.
      */
     post: operations["package/published"];
@@ -1344,8 +1321,6 @@ export interface webhooks {
   "package-updated": {
     /**
      * This event occurs when there is activity relating to GitHub Packages. For more information, see "[Introduction to GitHub Packages](https://docs.github.com/enterprise-server@3.15/packages/learn-github-packages/introduction-to-github-packages)." For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.15/graphql/reference/objects#package) or "[Packages](https://docs.github.com/enterprise-server@3.15/rest/packages)" in the REST API documentation.
-     *
-     * To install this event on a GitHub App, the app must have at least read-level access for the "Packages" repository permission.
      * @description A previously published package was updated.
      */
     post: operations["package/updated"];
@@ -2899,6 +2874,16 @@ export interface components {
        */
       has_discussions?: boolean;
       /**
+       * @description Whether pull requests are enabled.
+       * @default true
+       */
+      has_pull_requests?: boolean;
+      /**
+       * @description The policy controlling who can create pull requests: all or collaborators_only.
+       * @enum {string}
+       */
+      pull_request_creation_policy?: "all" | "collaborators_only";
+      /**
        * @description Whether the repository is archived.
        * @default false
        */
@@ -3375,12 +3360,14 @@ export interface components {
         | "push_ruleset_bypass"
         | "secret_scanning"
         | "secret_scanning_closure"
-        | "code_scanning_alert_dismissal";
+        | "code_scanning_alert_dismissal"
+        | "dependabot_alert_dismissal";
       exemption_request_data?:
         | components["schemas"]["exemption-request-push-ruleset-bypass"]
         | components["schemas"]["exemption-request-secret-scanning"]
         | components["schemas"]["dismissal-request-secret-scanning"]
-        | components["schemas"]["dismissal-request-code-scanning"];
+        | components["schemas"]["dismissal-request-code-scanning"]
+        | components["schemas"]["dismissal-request-dependabot"];
       /** @description The unique identifier for the request type of the exemption request. For example, a commit SHA. */
       resource_identifier?: string;
       /**
@@ -3396,6 +3383,7 @@ export interface components {
             | components["schemas"]["exemption-request-secret-scanning-metadata"]
             | components["schemas"]["dismissal-request-secret-scanning-metadata"]
             | components["schemas"]["dismissal-request-code-scanning-metadata"]
+            | components["schemas"]["dismissal-request-dependabot-metadata"]
           )
         | null;
       /**
@@ -3503,6 +3491,22 @@ export interface components {
       }[];
     };
     /**
+     * Dependabot alert dismissal request data
+     * @description Dependabot alerts that have dismissal requests.
+     */
+    "dismissal-request-dependabot": {
+      /**
+       * @description The type of request
+       * @enum {string}
+       */
+      type?: "dependabot_alert_dismissal";
+      /** @description The data related to the Dependabot alerts that have dismissal requests. */
+      data?: {
+        /** @description The number of the alert to be dismissed */
+        alert_number?: string;
+      }[];
+    };
+    /**
      * Secret Scanning Push Protection Exemption Request Metadata
      * @description Metadata for a secret scanning push protection exemption request.
      */
@@ -3540,6 +3544,24 @@ export interface components {
        * @enum {string}
        */
       reason?: "false positive" | "won't fix" | "used in tests";
+    };
+    /**
+     * Dependabot alert dismissal request metadata
+     * @description Metadata for a Dependabot alert dismissal request.
+     */
+    "dismissal-request-dependabot-metadata": {
+      /** @description The title of the Dependabot alert */
+      alert_title?: string;
+      /**
+       * @description The reason for the dismissal request
+       * @enum {string}
+       */
+      reason?:
+        | "fix_started"
+        | "inaccurate"
+        | "no_bandwidth"
+        | "not_used"
+        | "tolerable_risk";
     };
     /**
      * Exemption response
@@ -3906,6 +3928,12 @@ export interface components {
       has_pages?: boolean;
       has_downloads?: boolean;
       has_discussions?: boolean;
+      has_pull_requests?: boolean;
+      /**
+       * @description The policy controlling who can create pull requests: all or collaborators_only.
+       * @enum {string}
+       */
+      pull_request_creation_policy?: "all" | "collaborators_only";
       archived?: boolean;
       disabled?: boolean;
       visibility?: string;
@@ -3932,7 +3960,7 @@ export interface components {
         key?: string;
         name?: string;
         spdx_id?: string;
-        url?: string;
+        url?: string | null;
         node_id?: string;
       } | null;
       forks?: number;
@@ -4239,8 +4267,6 @@ export interface components {
             single_file?: "read" | "write";
             /** @enum {string} */
             statuses?: "read" | "write";
-            /** @enum {string} */
-            team_discussions?: "read" | "write";
             /** @enum {string} */
             vulnerability_alerts?: "read" | "write";
             /** @enum {string} */
@@ -4564,8 +4590,6 @@ export interface components {
             /** @enum {string} */
             statuses?: "read" | "write";
             /** @enum {string} */
-            team_discussions?: "read" | "write";
-            /** @enum {string} */
             vulnerability_alerts?: "read" | "write";
             /** @enum {string} */
             workflows?: "read" | "write";
@@ -4875,8 +4899,6 @@ export interface components {
             single_file?: "read" | "write";
             /** @enum {string} */
             statuses?: "read" | "write";
-            /** @enum {string} */
-            team_discussions?: "read" | "write";
             /** @enum {string} */
             vulnerability_alerts?: "read" | "write";
             /** @enum {string} */
@@ -6036,6 +6058,7 @@ export interface components {
       dismissed_comment: string | null;
       fixed_at: components["schemas"]["alert-fixed-at"];
       auto_dismissed_at?: components["schemas"]["alert-auto-dismissed-at"];
+      dismissal_request?: components["schemas"]["dependabot-alert-dismissal-request-simple"];
     };
     /** @description The security alert number. */
     readonly "alert-number": number;
@@ -6177,6 +6200,36 @@ export interface components {
      * @description The time that the alert was auto-dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
      */
     readonly "alert-auto-dismissed-at": string | null;
+    /**
+     * Dependabot alert dismissal request
+     * @description Information about an active dismissal request for this Dependabot alert.
+     */
+    "dependabot-alert-dismissal-request-simple": {
+      /** @description The unique identifier of the dismissal request. */
+      id?: number;
+      /**
+       * @description The current status of the dismissal request.
+       * @enum {string}
+       */
+      status?: "pending" | "approved" | "rejected" | "cancelled";
+      /** @description The user who requested the dismissal. */
+      requester?: {
+        /** @description The unique identifier of the user. */
+        id?: number;
+        /** @description The login name of the user. */
+        login?: string;
+      };
+      /**
+       * Format: date-time
+       * @description The date and time when the dismissal request was created.
+       */
+      created_at?: string;
+      /**
+       * Format: uri
+       * @description The API URL to get more information about this dismissal request.
+       */
+      url?: string;
+    } | null;
     /** Dependabot alert auto-reopened event */
     "webhook-dependabot-alert-auto-reopened": {
       /** @enum {string} */
@@ -6506,8 +6559,6 @@ export interface components {
             single_file?: "read" | "write";
             /** @enum {string} */
             statuses?: "read" | "write";
-            /** @enum {string} */
-            team_discussions?: "read" | "write";
             /** @enum {string} */
             vulnerability_alerts?: "read" | "write";
             /** @enum {string} */
@@ -7237,6 +7288,16 @@ export interface components {
        * @default false
        */
       has_discussions?: boolean;
+      /**
+       * @description Whether pull requests are enabled.
+       * @default true
+       */
+      has_pull_requests?: boolean;
+      /**
+       * @description The policy controlling who can create pull requests: all or collaborators_only.
+       * @enum {string}
+       */
+      pull_request_creation_policy?: "all" | "collaborators_only";
       /**
        * @description Whether the repository is archived.
        * @default false
@@ -8772,8 +8833,6 @@ export interface components {
             /** @enum {string} */
             statuses?: "read" | "write";
             /** @enum {string} */
-            team_discussions?: "read" | "write";
-            /** @enum {string} */
             vulnerability_alerts?: "read" | "write";
             /** @enum {string} */
             workflows?: "read" | "write";
@@ -9022,8 +9081,6 @@ export interface components {
             single_file?: "read" | "write";
             /** @enum {string} */
             statuses?: "read" | "write";
-            /** @enum {string} */
-            team_discussions?: "read" | "write";
             /** @enum {string} */
             vulnerability_alerts?: "read" | "write";
             /** @enum {string} */
@@ -9494,7 +9551,7 @@ export interface components {
        * @description How the author is associated with the repository.
        * @enum {string}
        */
-      author_association:
+      author_association?:
         | "COLLABORATOR"
         | "CONTRIBUTOR"
         | "FIRST_TIMER"
@@ -10622,11 +10679,6 @@ export interface components {
        */
       organization_user_blocking?: "read" | "write";
       /**
-       * @description The level of permission to grant the access token to manage team discussions and related comments.
-       * @enum {string}
-       */
-      team_discussions?: "read" | "write";
-      /**
        * @description The level of permission to grant the access token to manage the email addresses belonging to a user.
        * @enum {string}
        */
@@ -10906,6 +10958,7 @@ export interface components {
          * @description URL for the issue comment
          */
         url: string;
+        pin?: null | components["schemas"]["pinned-issue-comment"];
         /** User */
         user: {
           /** Format: uri */
@@ -11326,8 +11379,6 @@ export interface components {
             /** @enum {string} */
             statuses?: "read" | "write";
             /** @enum {string} */
-            team_discussions?: "read" | "write";
-            /** @enum {string} */
             vulnerability_alerts?: "read" | "write";
             /** @enum {string} */
             workflows?: "read" | "write";
@@ -11542,6 +11593,15 @@ export interface components {
       organization?: components["schemas"]["organization-simple-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
       sender: components["schemas"]["simple-user"];
+    };
+    /**
+     * Pinned Issue Comment
+     * @description Context around who pinned an issue comment and when it was pinned.
+     */
+    "pinned-issue-comment": {
+      /** Format: date-time */
+      pinned_at: string;
+      pinned_by: null | components["schemas"]["simple-user"];
     };
     /** Sub-issues Summary */
     "sub-issues-summary": {
@@ -11979,8 +12039,6 @@ export interface components {
             /** @enum {string} */
             statuses?: "read" | "write";
             /** @enum {string} */
-            team_discussions?: "read" | "write";
-            /** @enum {string} */
             vulnerability_alerts?: "read" | "write";
             /** @enum {string} */
             workflows?: "read" | "write";
@@ -12291,6 +12349,7 @@ export interface components {
         url?: string;
         user_view_type?: string;
       } | null;
+      pin?: null | components["schemas"]["pinned-issue-comment"];
     };
     /** issue_comment edited event */
     "webhook-issue-comment-edited": {
@@ -12677,8 +12736,6 @@ export interface components {
             single_file?: "read" | "write";
             /** @enum {string} */
             statuses?: "read" | "write";
-            /** @enum {string} */
-            team_discussions?: "read" | "write";
             /** @enum {string} */
             vulnerability_alerts?: "read" | "write";
             /** @enum {string} */
@@ -13298,8 +13355,6 @@ export interface components {
           /** @enum {string} */
           statuses?: "read" | "write";
           /** @enum {string} */
-          team_discussions?: "read" | "write";
-          /** @enum {string} */
           vulnerability_alerts?: "read" | "write";
           /** @enum {string} */
           workflows?: "read" | "write";
@@ -13337,6 +13392,7 @@ export interface components {
       };
       /** Format: uri */
       repository_url: string;
+      pinned_comment?: null | components["schemas"]["issue-comment"];
       sub_issues_summary?: components["schemas"]["sub-issues-summary"];
       issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
       issue_field_values?: components["schemas"]["issue-field-value"][];
@@ -13397,6 +13453,54 @@ export interface components {
         url?: string;
         user_view_type?: string;
       } | null;
+    };
+    /**
+     * Issue Comment
+     * @description Comments provide a way for people to collaborate on an issue.
+     */
+    "issue-comment": {
+      /**
+       * Format: int64
+       * @description Unique identifier of the issue comment
+       */
+      id: number;
+      node_id: string;
+      /**
+       * Format: uri
+       * @description URL for the issue comment
+       */
+      url: string;
+      /** @description Contents of the issue comment */
+      body?: string;
+      body_text?: string;
+      body_html?: string;
+      /** Format: uri */
+      html_url: string;
+      user: null | components["schemas"]["simple-user"];
+      /** Format: date-time */
+      created_at: string;
+      /** Format: date-time */
+      updated_at: string;
+      /** Format: uri */
+      issue_url: string;
+      author_association?: components["schemas"]["author-association"];
+      performed_via_github_app?: null | components["schemas"]["integration"];
+      reactions?: components["schemas"]["reaction-rollup"];
+      pin?: null | components["schemas"]["pinned-issue-comment"];
+    };
+    /** Reaction Rollup */
+    "reaction-rollup": {
+      /** Format: uri */
+      url: string;
+      total_count: number;
+      "+1": number;
+      "-1": number;
+      laugh: number;
+      confused: number;
+      heart: number;
+      hooray: number;
+      eyes: number;
+      rocket: number;
     };
     /**
      * Issue Field Value
@@ -13817,8 +13921,6 @@ export interface components {
             /** @enum {string} */
             statuses?: "read" | "write";
             /** @enum {string} */
-            team_discussions?: "read" | "write";
-            /** @enum {string} */
             vulnerability_alerts?: "read" | "write";
             /** @enum {string} */
             workflows?: "read" | "write";
@@ -13856,6 +13958,7 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
+        pinned_comment?: null | components["schemas"]["issue-comment"];
         sub_issues_summary?: components["schemas"]["sub-issues-summary"];
         issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
         issue_field_values?: components["schemas"]["issue-field-value"][];
@@ -14368,8 +14471,6 @@ export interface components {
             /** @enum {string} */
             statuses?: "read" | "write";
             /** @enum {string} */
-            team_discussions?: "read" | "write";
-            /** @enum {string} */
             vulnerability_alerts?: "read" | "write";
             /** @enum {string} */
             workflows?: "read" | "write";
@@ -14407,6 +14508,7 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
+        pinned_comment?: null | components["schemas"]["issue-comment"];
         sub_issues_summary?: components["schemas"]["sub-issues-summary"];
         issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
         issue_field_values?: components["schemas"]["issue-field-value"][];
@@ -14855,8 +14957,6 @@ export interface components {
             /** @enum {string} */
             statuses?: "read" | "write";
             /** @enum {string} */
-            team_discussions?: "read" | "write";
-            /** @enum {string} */
             vulnerability_alerts?: "read" | "write";
             /** @enum {string} */
             workflows?: "read" | "write";
@@ -14894,6 +14994,7 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
+        pinned_comment?: null | components["schemas"]["issue-comment"];
         sub_issues_summary?: components["schemas"]["sub-issues-summary"];
         issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
         issue_field_values?: components["schemas"]["issue-field-value"][];
@@ -15430,8 +15531,6 @@ export interface components {
             /** @enum {string} */
             statuses?: "read" | "write";
             /** @enum {string} */
-            team_discussions?: "read" | "write";
-            /** @enum {string} */
             vulnerability_alerts?: "read" | "write";
             /** @enum {string} */
             workflows?: "read" | "write";
@@ -15469,6 +15568,7 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
+        pinned_comment?: null | components["schemas"]["issue-comment"];
         sub_issues_summary?: components["schemas"]["sub-issues-summary"];
         issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
         issue_field_values?: components["schemas"]["issue-field-value"][];
@@ -15921,8 +16021,6 @@ export interface components {
             /** @enum {string} */
             statuses?: "read" | "write";
             /** @enum {string} */
-            team_discussions?: "read" | "write";
-            /** @enum {string} */
             vulnerability_alerts?: "read" | "write";
             /** @enum {string} */
             workflows?: "read" | "write";
@@ -15960,6 +16058,7 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
+        pinned_comment?: null | components["schemas"]["issue-comment"];
         sub_issues_summary?: components["schemas"]["sub-issues-summary"];
         issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
         issue_field_values?: components["schemas"]["issue-field-value"][];
@@ -16414,8 +16513,6 @@ export interface components {
             /** @enum {string} */
             statuses?: "read" | "write";
             /** @enum {string} */
-            team_discussions?: "read" | "write";
-            /** @enum {string} */
             vulnerability_alerts?: "read" | "write";
             /** @enum {string} */
             workflows?: "read" | "write";
@@ -16453,6 +16550,7 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
+        pinned_comment?: null | components["schemas"]["issue-comment"];
         sub_issues_summary?: components["schemas"]["sub-issues-summary"];
         issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
         issue_field_values?: components["schemas"]["issue-field-value"][];
@@ -16902,8 +17000,6 @@ export interface components {
             /** @enum {string} */
             statuses?: "read" | "write";
             /** @enum {string} */
-            team_discussions?: "read" | "write";
-            /** @enum {string} */
             vulnerability_alerts?: "read" | "write";
             /** @enum {string} */
             workflows?: "read" | "write";
@@ -16941,6 +17037,7 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
+        pinned_comment?: null | components["schemas"]["issue-comment"];
         sub_issues_summary?: components["schemas"]["sub-issues-summary"];
         issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
         issue_field_values?: components["schemas"]["issue-field-value"][];
@@ -17391,8 +17488,6 @@ export interface components {
               /** @enum {string} */
               statuses?: "read" | "write";
               /** @enum {string} */
-              team_discussions?: "read" | "write";
-              /** @enum {string} */
               vulnerability_alerts?: "read" | "write";
               /** @enum {string} */
               workflows?: "read" | "write";
@@ -17450,6 +17545,7 @@ export interface components {
            * @description URL for the issue
            */
           url?: string;
+          pinned_comment?: null | components["schemas"]["issue-comment"];
           /** User */
           user?: {
             /** Format: uri */
@@ -17583,6 +17679,16 @@ export interface components {
           git_url: string;
           /** @description Whether the repository has discussions enabled. */
           has_discussions?: boolean;
+          /**
+           * @description Whether pull requests are enabled.
+           * @default true
+           */
+          has_pull_requests?: boolean;
+          /**
+           * @description The policy controlling who can create pull requests: all or collaborators_only.
+           * @enum {string}
+           */
+          pull_request_creation_policy?: "all" | "collaborators_only";
           /**
            * @description Whether downloads are enabled.
            * @default true
@@ -18123,8 +18229,6 @@ export interface components {
             /** @enum {string} */
             statuses?: "read" | "write";
             /** @enum {string} */
-            team_discussions?: "read" | "write";
-            /** @enum {string} */
             vulnerability_alerts?: "read" | "write";
             /** @enum {string} */
             workflows?: "read" | "write";
@@ -18183,6 +18287,7 @@ export interface components {
          * @description URL for the issue
          */
         url: string;
+        pinned_comment?: null | components["schemas"]["issue-comment"];
         /** User */
         user: {
           /** Format: uri */
@@ -18617,8 +18722,6 @@ export interface components {
           /** @enum {string} */
           statuses?: "read" | "write";
           /** @enum {string} */
-          team_discussions?: "read" | "write";
-          /** @enum {string} */
           vulnerability_alerts?: "read" | "write";
           /** @enum {string} */
           workflows?: "read" | "write";
@@ -18656,6 +18759,7 @@ export interface components {
       };
       /** Format: uri */
       repository_url: string;
+      pinned_comment?: null | components["schemas"]["issue-comment"];
       sub_issues_summary?: components["schemas"]["sub-issues-summary"];
       issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
       issue_field_values?: components["schemas"]["issue-field-value"][];
@@ -19102,8 +19206,6 @@ export interface components {
             /** @enum {string} */
             statuses?: "read" | "write";
             /** @enum {string} */
-            team_discussions?: "read" | "write";
-            /** @enum {string} */
             vulnerability_alerts?: "read" | "write";
             /** @enum {string} */
             workflows?: "read" | "write";
@@ -19141,6 +19243,7 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
+        pinned_comment?: null | components["schemas"]["issue-comment"];
         sub_issues_summary?: components["schemas"]["sub-issues-summary"];
         issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
         issue_field_values?: components["schemas"]["issue-field-value"][];
@@ -19590,8 +19693,6 @@ export interface components {
               /** @enum {string} */
               statuses?: "read" | "write";
               /** @enum {string} */
-              team_discussions?: "read" | "write";
-              /** @enum {string} */
               vulnerability_alerts?: "read" | "write";
               /** @enum {string} */
               workflows?: "read" | "write";
@@ -19629,6 +19730,7 @@ export interface components {
           };
           /** Format: uri */
           repository_url: string;
+          pinned_comment?: null | components["schemas"]["issue-comment"];
           sub_issues_summary?: components["schemas"]["sub-issues-summary"];
           issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
           issue_field_values?: components["schemas"]["issue-field-value"][];
@@ -19806,6 +19908,16 @@ export interface components {
            * @default false
            */
           has_discussions: boolean;
+          /**
+           * @description Whether pull requests are enabled.
+           * @default true
+           */
+          has_pull_requests?: boolean;
+          /**
+           * @description The policy controlling who can create pull requests: all or collaborators_only.
+           * @enum {string}
+           */
+          pull_request_creation_policy?: "all" | "collaborators_only";
           homepage: string | null;
           /** Format: uri */
           hooks_url: string;
@@ -20399,8 +20511,6 @@ export interface components {
             /** @enum {string} */
             statuses?: "read" | "write";
             /** @enum {string} */
-            team_discussions?: "read" | "write";
-            /** @enum {string} */
             vulnerability_alerts?: "read" | "write";
             /** @enum {string} */
             workflows?: "read" | "write";
@@ -20438,6 +20548,7 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
+        pinned_comment?: null | components["schemas"]["issue-comment"];
         sub_issues_summary?: components["schemas"]["sub-issues-summary"];
         issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
         issue_field_values?: components["schemas"]["issue-field-value"][];
@@ -23238,6 +23349,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -23587,6 +23708,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -24460,6 +24591,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             has_pages: boolean;
             /**
              * @description Whether projects are enabled.
@@ -24820,6 +24961,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -25703,6 +25854,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -26052,6 +26213,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -27009,6 +27180,16 @@ export interface components {
            * @default false
            */
           has_discussions: boolean;
+          /**
+           * @description Whether pull requests are enabled.
+           * @default true
+           */
+          has_pull_requests?: boolean;
+          /**
+           * @description The policy controlling who can create pull requests: all or collaborators_only.
+           * @enum {string}
+           */
+          pull_request_creation_policy?: "all" | "collaborators_only";
           homepage: string | null;
           /** Format: uri */
           hooks_url: string;
@@ -27355,6 +27536,16 @@ export interface components {
            * @default false
            */
           has_discussions: boolean;
+          /**
+           * @description Whether pull requests are enabled.
+           * @default true
+           */
+          has_pull_requests?: boolean;
+          /**
+           * @description The policy controlling who can create pull requests: all or collaborators_only.
+           * @enum {string}
+           */
+          pull_request_creation_policy?: "all" | "collaborators_only";
           homepage: string | null;
           /** Format: uri */
           hooks_url: string;
@@ -28262,6 +28453,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -28611,6 +28812,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -29493,6 +29704,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -29842,6 +30063,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -30924,6 +31155,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -31266,6 +31507,16 @@ export interface components {
              * @default false
              */
             has_discussions?: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -32094,6 +32345,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -32436,6 +32697,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -33421,6 +33692,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -33763,6 +34044,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -34591,6 +34882,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -34933,6 +35234,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -37015,6 +37326,16 @@ export interface components {
                  * @default false
                  */
                 has_discussions: boolean;
+                /**
+                 * @description Whether pull requests are enabled.
+                 * @default true
+                 */
+                has_pull_requests?: boolean;
+                /**
+                 * @description The policy controlling who can create pull requests: all or collaborators_only.
+                 * @enum {string}
+                 */
+                pull_request_creation_policy?: "all" | "collaborators_only";
                 homepage: string | null;
                 /** Format: uri */
                 hooks_url: string;
@@ -37357,6 +37678,16 @@ export interface components {
                  * @default false
                  */
                 has_discussions: boolean;
+                /**
+                 * @description Whether pull requests are enabled.
+                 * @default true
+                 */
+                has_pull_requests?: boolean;
+                /**
+                 * @description The policy controlling who can create pull requests: all or collaborators_only.
+                 * @enum {string}
+                 */
+                pull_request_creation_policy?: "all" | "collaborators_only";
                 homepage: string | null;
                 /** Format: uri */
                 hooks_url: string;
@@ -38278,6 +38609,16 @@ export interface components {
                  * @default false
                  */
                 has_discussions: boolean;
+                /**
+                 * @description Whether pull requests are enabled.
+                 * @default true
+                 */
+                has_pull_requests?: boolean;
+                /**
+                 * @description The policy controlling who can create pull requests: all or collaborators_only.
+                 * @enum {string}
+                 */
+                pull_request_creation_policy?: "all" | "collaborators_only";
                 homepage: string | null;
                 /** Format: uri */
                 hooks_url: string;
@@ -38627,6 +38968,16 @@ export interface components {
                  * @default false
                  */
                 has_discussions: boolean;
+                /**
+                 * @description Whether pull requests are enabled.
+                 * @default true
+                 */
+                has_pull_requests?: boolean;
+                /**
+                 * @description The policy controlling who can create pull requests: all or collaborators_only.
+                 * @enum {string}
+                 */
+                pull_request_creation_policy?: "all" | "collaborators_only";
                 homepage: string | null;
                 /** Format: uri */
                 hooks_url: string;
@@ -39570,6 +39921,16 @@ export interface components {
                  * @default false
                  */
                 has_discussions: boolean;
+                /**
+                 * @description Whether pull requests are enabled.
+                 * @default true
+                 */
+                has_pull_requests?: boolean;
+                /**
+                 * @description The policy controlling who can create pull requests: all or collaborators_only.
+                 * @enum {string}
+                 */
+                pull_request_creation_policy?: "all" | "collaborators_only";
                 homepage: string | null;
                 /** Format: uri */
                 hooks_url: string;
@@ -39919,6 +40280,16 @@ export interface components {
                  * @default false
                  */
                 has_discussions: boolean;
+                /**
+                 * @description Whether pull requests are enabled.
+                 * @default true
+                 */
+                has_pull_requests?: boolean;
+                /**
+                 * @description The policy controlling who can create pull requests: all or collaborators_only.
+                 * @enum {string}
+                 */
+                pull_request_creation_policy?: "all" | "collaborators_only";
                 homepage: string | null;
                 /** Format: uri */
                 hooks_url: string;
@@ -40840,6 +41211,16 @@ export interface components {
                  * @default false
                  */
                 has_discussions: boolean;
+                /**
+                 * @description Whether pull requests are enabled.
+                 * @default true
+                 */
+                has_pull_requests?: boolean;
+                /**
+                 * @description The policy controlling who can create pull requests: all or collaborators_only.
+                 * @enum {string}
+                 */
+                pull_request_creation_policy?: "all" | "collaborators_only";
                 homepage: string | null;
                 /** Format: uri */
                 hooks_url: string;
@@ -41189,6 +41570,16 @@ export interface components {
                  * @default false
                  */
                 has_discussions: boolean;
+                /**
+                 * @description Whether pull requests are enabled.
+                 * @default true
+                 */
+                has_pull_requests?: boolean;
+                /**
+                 * @description The policy controlling who can create pull requests: all or collaborators_only.
+                 * @enum {string}
+                 */
+                pull_request_creation_policy?: "all" | "collaborators_only";
                 homepage: string | null;
                 /** Format: uri */
                 hooks_url: string;
@@ -42126,6 +42517,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -42468,6 +42869,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -43297,6 +43708,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -43597,6 +44018,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -44539,6 +44970,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -44839,6 +45280,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -45785,6 +46236,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -46134,6 +46595,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -47010,6 +47481,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -47359,6 +47840,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -48242,6 +48733,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -48591,6 +49092,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -49466,6 +49977,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -49815,6 +50336,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -50632,6 +51163,16 @@ export interface components {
          * @default false
          */
         has_discussions: boolean;
+        /**
+         * @description Whether pull requests are enabled.
+         * @default true
+         */
+        has_pull_requests?: boolean;
+        /**
+         * @description The policy controlling who can create pull requests: all or collaborators_only.
+         * @enum {string}
+         */
+        pull_request_creation_policy?: "all" | "collaborators_only";
         homepage: string | null;
         /** Format: uri */
         hooks_url: string;
@@ -51867,7 +52408,7 @@ export interface components {
      * @description An actor that can bypass rules in a ruleset
      */
     "repository-ruleset-bypass-actor": {
-      /** @description The ID of the actor that can bypass a ruleset. Required for `Integration`, `RepositoryRole`, and `Team` actor types. If `actor_type` is `OrganizationAdmin`, this should be `1`. If `actor_type` is `DeployKey`, this should be null. `OrganizationAdmin` is not applicable for personal repositories. */
+      /** @description The ID of the actor that can bypass a ruleset. Required for `Integration`, `RepositoryRole`, and `Team` actor types. If `actor_type` is `OrganizationAdmin`, `actor_id` is ignored. If `actor_type` is `DeployKey`, this should be null. `OrganizationAdmin` is not applicable for personal repositories. */
       actor_id?: number | null;
       /**
        * @description The type of actor that can bypass a ruleset
@@ -52079,8 +52620,6 @@ export interface components {
       /** @enum {string} */
       type: "pull_request";
       parameters?: {
-        /** @description Request Copilot code review for new pull requests automatically if the author has access to Copilot code review and their premium requests quota has not reached the limit. */
-        automatic_copilot_code_review_enabled?: boolean;
         /** @description New, reviewable commits pushed will dismiss previous pull request review approvals. */
         dismiss_stale_reviews_on_push: boolean;
         /** @description Require an approving review in pull requests that modify files that have a designated code owner. */
@@ -52166,7 +52705,7 @@ export interface components {
       /** @enum {string} */
       type: "commit_message_pattern";
       parameters?: {
-        /** @description How this rule will appear to users. */
+        /** @description How this rule appears when configuring it. */
         name?: string;
         /** @description If true, the rule will fail if the pattern matches. */
         negate?: boolean;
@@ -52187,7 +52726,7 @@ export interface components {
       /** @enum {string} */
       type: "commit_author_email_pattern";
       parameters?: {
-        /** @description How this rule will appear to users. */
+        /** @description How this rule appears when configuring it. */
         name?: string;
         /** @description If true, the rule will fail if the pattern matches. */
         negate?: boolean;
@@ -52208,7 +52747,7 @@ export interface components {
       /** @enum {string} */
       type: "committer_email_pattern";
       parameters?: {
-        /** @description How this rule will appear to users. */
+        /** @description How this rule appears when configuring it. */
         name?: string;
         /** @description If true, the rule will fail if the pattern matches. */
         negate?: boolean;
@@ -52229,7 +52768,7 @@ export interface components {
       /** @enum {string} */
       type: "branch_name_pattern";
       parameters?: {
-        /** @description How this rule will appear to users. */
+        /** @description How this rule appears when configuring it. */
         name?: string;
         /** @description If true, the rule will fail if the pattern matches. */
         negate?: boolean;
@@ -52250,7 +52789,7 @@ export interface components {
       /** @enum {string} */
       type: "tag_name_pattern";
       parameters?: {
-        /** @description How this rule will appear to users. */
+        /** @description How this rule appears when configuring it. */
         name?: string;
         /** @description If true, the rule will fail if the pattern matches. */
         negate?: boolean;
@@ -52570,7 +53109,7 @@ export interface components {
       number: number;
       severity: string;
       /** @enum {string} */
-      state: "open";
+      state: "auto_dismissed" | "open";
     };
     /** repository_vulnerability_alert dismiss event */
     "webhook-repository-vulnerability-alert-dismiss": {
@@ -53214,6 +53753,12 @@ export interface components {
       has_pages: boolean;
       has_downloads?: boolean;
       has_discussions: boolean;
+      has_pull_requests?: boolean;
+      /**
+       * @description The policy controlling who can create pull requests: all or collaborators_only.
+       * @enum {string}
+       */
+      pull_request_creation_policy?: "all" | "collaborators_only";
       archived: boolean;
       /** @description Returns whether or not this repository disabled. */
       disabled: boolean;
@@ -58222,9 +58767,6 @@ export interface operations {
    * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.15/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.15/rest/dependabot/alerts)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
-   *
-   * > [!NOTE]
-   * > Webhook events for Dependabot alerts are currently in public preview and subject to change.
    * @description A Dependabot alert was automatically closed by a Dependabot auto-triage rule.
    */
   "dependabot-alert/auto-dismissed": {
@@ -58268,9 +58810,6 @@ export interface operations {
    * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.15/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.15/rest/dependabot/alerts)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
-   *
-   * > [!NOTE]
-   * > Webhook events for Dependabot alerts are currently in public preview and subject to change.
    * @description A Dependabot alert, that had been automatically closed by a Dependabot auto-triage rule, was automatically reopened because the alert metadata or rule changed.
    */
   "dependabot-alert/auto-reopened": {
@@ -58314,9 +58853,6 @@ export interface operations {
    * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.15/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.15/rest/dependabot/alerts)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
-   *
-   * > [!NOTE]
-   * > Webhook events for Dependabot alerts are currently in public preview and subject to change.
    * @description A manifest file change introduced a vulnerable dependency, or a GitHub Security Advisory was published and an existing dependency was found to be vulnerable.
    */
   "dependabot-alert/created": {
@@ -58360,9 +58896,6 @@ export interface operations {
    * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.15/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.15/rest/dependabot/alerts)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
-   *
-   * > [!NOTE]
-   * > Webhook events for Dependabot alerts are currently in public preview and subject to change.
    * @description A Dependabot alert was manually closed.
    */
   "dependabot-alert/dismissed": {
@@ -58406,9 +58939,6 @@ export interface operations {
    * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.15/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.15/rest/dependabot/alerts)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
-   *
-   * > [!NOTE]
-   * > Webhook events for Dependabot alerts are currently in public preview and subject to change.
    * @description A manifest file change removed a vulnerability.
    */
   "dependabot-alert/fixed": {
@@ -58452,9 +58982,6 @@ export interface operations {
    * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.15/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.15/rest/dependabot/alerts)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
-   *
-   * > [!NOTE]
-   * > Webhook events for Dependabot alerts are currently in public preview and subject to change.
    * @description A manifest file change introduced a vulnerable dependency that had previously been fixed.
    */
   "dependabot-alert/reintroduced": {
@@ -58498,9 +59025,6 @@ export interface operations {
    * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/enterprise-server@3.15/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/enterprise-server@3.15/rest/dependabot/alerts)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
-   *
-   * > [!NOTE]
-   * > Webhook events for Dependabot alerts are currently in public preview and subject to change.
    * @description A Dependabot alert was manually reopened.
    */
   "dependabot-alert/reopened": {
@@ -61858,8 +62382,6 @@ export interface operations {
   };
   /**
    * This event occurs when there is activity relating to GitHub Packages. For more information, see "[Introduction to GitHub Packages](https://docs.github.com/enterprise-server@3.15/packages/learn-github-packages/introduction-to-github-packages)." For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.15/graphql/reference/objects#package) or "[Packages](https://docs.github.com/enterprise-server@3.15/rest/packages)" in the REST API documentation.
-   *
-   * To install this event on a GitHub App, the app must have at least read-level access for the "Packages" repository permission.
    * @description A package was published to a registry.
    */
   "package/published": {
@@ -61899,8 +62421,6 @@ export interface operations {
   };
   /**
    * This event occurs when there is activity relating to GitHub Packages. For more information, see "[Introduction to GitHub Packages](https://docs.github.com/enterprise-server@3.15/packages/learn-github-packages/introduction-to-github-packages)." For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/enterprise-server@3.15/graphql/reference/objects#package) or "[Packages](https://docs.github.com/enterprise-server@3.15/rest/packages)" in the REST API documentation.
-   *
-   * To install this event on a GitHub App, the app must have at least read-level access for the "Packages" repository permission.
    * @description A previously published package was updated.
    */
   "package/updated": {
