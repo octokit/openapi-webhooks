@@ -232,6 +232,15 @@ export interface webhooks {
      */
     post: operations["code-scanning-alert/reopened-by-user"];
   };
+  "code-scanning-alert-updated-assignment": {
+    /**
+     * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/rest/code-scanning)" in the REST API documentation.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Code scanning alerts" repository permission.
+     * @description The assignees list of a code scanning alert has been updated.
+     */
+    post: operations["code-scanning-alert/updated-assignment"];
+  };
   "commit-comment-created": {
     /**
      * This event occurs when there is activity relating to commit comments. For more information about commit comments, see "[Commenting on a pull request](https://docs.github.com/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request)." For information about the APIs to manage commit comments, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#commitcomment) or "[Commit comments](https://docs.github.com/rest/commits/comments)" in the REST API documentation.
@@ -322,6 +331,17 @@ export interface webhooks {
      */
     post: operations["delete"];
   };
+  "dependabot-alert-assignees-changed": {
+    /**
+     * This event occurs when there is activity relating to Dependabot alerts.
+     *
+     * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/rest/dependabot/alerts)" in the REST API documentation.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
+     * @description The assignees for a Dependabot alert were updated.
+     */
+    post: operations["dependabot-alert/assignees-changed"];
+  };
   "dependabot-alert-auto-dismissed": {
     /**
      * This event occurs when there is activity relating to Dependabot alerts.
@@ -329,9 +349,6 @@ export interface webhooks {
      * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/rest/dependabot/alerts)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
-     *
-     * > [!NOTE]
-     * > Webhook events for Dependabot alerts are currently in public preview and subject to change.
      * @description A Dependabot alert was automatically closed by a Dependabot auto-triage rule.
      */
     post: operations["dependabot-alert/auto-dismissed"];
@@ -343,9 +360,6 @@ export interface webhooks {
      * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/rest/dependabot/alerts)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
-     *
-     * > [!NOTE]
-     * > Webhook events for Dependabot alerts are currently in public preview and subject to change.
      * @description A Dependabot alert, that had been automatically closed by a Dependabot auto-triage rule, was automatically reopened because the alert metadata or rule changed.
      */
     post: operations["dependabot-alert/auto-reopened"];
@@ -357,9 +371,6 @@ export interface webhooks {
      * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/rest/dependabot/alerts)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
-     *
-     * > [!NOTE]
-     * > Webhook events for Dependabot alerts are currently in public preview and subject to change.
      * @description A manifest file change introduced a vulnerable dependency, or a GitHub Security Advisory was published and an existing dependency was found to be vulnerable.
      */
     post: operations["dependabot-alert/created"];
@@ -371,9 +382,6 @@ export interface webhooks {
      * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/rest/dependabot/alerts)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
-     *
-     * > [!NOTE]
-     * > Webhook events for Dependabot alerts are currently in public preview and subject to change.
      * @description A Dependabot alert was manually closed.
      */
     post: operations["dependabot-alert/dismissed"];
@@ -385,9 +393,6 @@ export interface webhooks {
      * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/rest/dependabot/alerts)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
-     *
-     * > [!NOTE]
-     * > Webhook events for Dependabot alerts are currently in public preview and subject to change.
      * @description A manifest file change removed a vulnerability.
      */
     post: operations["dependabot-alert/fixed"];
@@ -399,9 +404,6 @@ export interface webhooks {
      * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/rest/dependabot/alerts)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
-     *
-     * > [!NOTE]
-     * > Webhook events for Dependabot alerts are currently in public preview and subject to change.
      * @description A manifest file change introduced a vulnerable dependency that had previously been fixed.
      */
     post: operations["dependabot-alert/reintroduced"];
@@ -413,9 +415,6 @@ export interface webhooks {
      * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/rest/dependabot/alerts)" in the REST API documentation.
      *
      * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
-     *
-     * > [!NOTE]
-     * > Webhook events for Dependabot alerts are currently in public preview and subject to change.
      * @description A Dependabot alert was manually reopened.
      */
     post: operations["dependabot-alert/reopened"];
@@ -887,6 +886,28 @@ export interface webhooks {
      */
     post: operations["issue-comment/edited"];
   };
+  "issue-comment-pinned": {
+    /**
+     * This event occurs when there is activity relating to a comment on an issue or pull request. For more information about issues and pull requests, see "[About issues](https://docs.github.com/issues/tracking-your-work-with-issues/about-issues)" and "[About pull requests](https://docs.github.com/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage issue comments, see [the GraphQL documentation](https://docs.github.com/graphql/reference/objects#issuecomment) or "[Issue comments](https://docs.github.com/rest/issues/comments)" in the REST API documentation.
+     *
+     * For activity relating to an issue as opposed to comments on an issue, use the `issue` event. For activity related to pull request reviews or pull request review comments, use the `pull_request_review` or `pull_request_review_comment` events. For more information about the different types of pull request comments, see "[Working with comments](https://docs.github.com/rest/guides/working-with-comments)."
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
+     * @description A comment on an issue was pinned.
+     */
+    post: operations["issue-comment/pinned"];
+  };
+  "issue-comment-unpinned": {
+    /**
+     * This event occurs when there is activity relating to a comment on an issue or pull request. For more information about issues and pull requests, see "[About issues](https://docs.github.com/issues/tracking-your-work-with-issues/about-issues)" and "[About pull requests](https://docs.github.com/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage issue comments, see [the GraphQL documentation](https://docs.github.com/graphql/reference/objects#issuecomment) or "[Issue comments](https://docs.github.com/rest/issues/comments)" in the REST API documentation.
+     *
+     * For activity relating to an issue as opposed to comments on an issue, use the `issue` event. For activity related to pull request reviews or pull request review comments, use the `pull_request_review` or `pull_request_review_comment` events. For more information about the different types of pull request comments, see "[Working with comments](https://docs.github.com/rest/guides/working-with-comments)."
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
+     * @description A comment on an issue was unpinned.
+     */
+    post: operations["issue-comment/unpinned"];
+  };
   "issue-dependencies-blocked-by-added": {
     /**
      * This event occurs when there is activity relating to issue dependencies, such as blocking or blocked-by relationships.
@@ -930,6 +951,32 @@ export interface webhooks {
      * @description The blocking relationship between an issue and another issue was removed.
      */
     post: operations["issue-dependencies/blocking-removed"];
+  };
+  "issue-relates-to-added": {
+    /**
+     * This event occurs when there is activity relating to a "relates to" relationship between two issues.
+     *
+     * For relationships between issues in the same repository, GitHub sends one delivery containing both issues. For relationships between issues in different repositories, GitHub sends one delivery for each repository. Each cross-repository delivery contains only the issue in the repository receiving the delivery and omits the related issue, its ID, and its repository details.
+     *
+     * For activity relating to issues more generally, use the `issues` event instead.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permissions.
+     * @description An issue was marked as related to another issue.
+     */
+    post: operations["issue-relates-to/relates-to-added"];
+  };
+  "issue-relates-to-removed": {
+    /**
+     * This event occurs when there is activity relating to a "relates to" relationship between two issues.
+     *
+     * For relationships between issues in the same repository, GitHub sends one delivery containing both issues. For relationships between issues in different repositories, GitHub sends one delivery for each repository. Each cross-repository delivery contains only the issue in the repository receiving the delivery and omits the related issue, its ID, and its repository details.
+     *
+     * For activity relating to issues more generally, use the `issues` event instead.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permissions.
+     * @description An issue's relationship to another issue was removed.
+     */
+    post: operations["issue-relates-to/relates-to-removed"];
   };
   "issues-assigned": {
     /**
@@ -985,6 +1032,28 @@ export interface webhooks {
      * @description The title or body on an issue was edited.
      */
     post: operations["issues/edited"];
+  };
+  "issues-field-added": {
+    /**
+     * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/rest/issues)" in the REST API documentation.
+     *
+     * For activity relating to a comment on an issue, use the `issue_comment` event.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
+     * @description An issue field value was set or updated on an issue.
+     */
+    post: operations["issues/field-added"];
+  };
+  "issues-field-removed": {
+    /**
+     * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/rest/issues)" in the REST API documentation.
+     *
+     * For activity relating to a comment on an issue, use the `issue_comment` event.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
+     * @description An issue field value was cleared from an issue.
+     */
+    post: operations["issues/field-removed"];
   };
   "issues-labeled": {
     /**
@@ -1129,6 +1198,17 @@ export interface webhooks {
      */
     post: operations["issues/untyped"];
   };
+  "label-archived": {
+    /**
+     * This event occurs when there is activity relating to labels. For more information, see "[Managing labels](https://docs.github.com/issues/using-labels-and-milestones-to-track-work/managing-labels)." For information about the APIs to manage labels, see [the GraphQL documentation](https://docs.github.com/graphql/reference/objects#label) or "[Labels](https://docs.github.com/rest/issues/labels)" in the REST API documentation.
+     *
+     * If you want to receive an event when a label is added to or removed from an issue, pull request, or discussion, use the `labeled` or `unlabeled` action type for the `issues`, `pull_request`, or `discussion` events instead.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
+     * @description A label was archived.
+     */
+    post: operations["label/archived"];
+  };
   "label-created": {
     /**
      * This event occurs when there is activity relating to labels. For more information, see "[Managing labels](https://docs.github.com/issues/using-labels-and-milestones-to-track-work/managing-labels)." For information about the APIs to manage labels, see [the GraphQL documentation](https://docs.github.com/graphql/reference/objects#label) or "[Labels](https://docs.github.com/rest/issues/labels)" in the REST API documentation.
@@ -1161,6 +1241,17 @@ export interface webhooks {
      * @description A label's name, description, or color was changed.
      */
     post: operations["label/edited"];
+  };
+  "label-unarchived": {
+    /**
+     * This event occurs when there is activity relating to labels. For more information, see "[Managing labels](https://docs.github.com/issues/using-labels-and-milestones-to-track-work/managing-labels)." For information about the APIs to manage labels, see [the GraphQL documentation](https://docs.github.com/graphql/reference/objects#label) or "[Labels](https://docs.github.com/rest/issues/labels)" in the REST API documentation.
+     *
+     * If you want to receive an event when a label is added to or removed from an issue, pull request, or discussion, use the `labeled` or `unlabeled` action type for the `issues`, `pull_request`, or `discussion` events instead.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
+     * @description A label was unarchived.
+     */
+    post: operations["label/unarchived"];
   };
   "marketplace-purchase-cancelled": {
     /**
@@ -1408,8 +1499,6 @@ export interface webhooks {
   "package-published": {
     /**
      * This event occurs when there is activity relating to GitHub Packages. For more information, see "[Introduction to GitHub Packages](https://docs.github.com/packages/learn-github-packages/introduction-to-github-packages)." For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#package) or "[Packages](https://docs.github.com/rest/packages)" in the REST API documentation.
-     *
-     * To install this event on a GitHub App, the app must have at least read-level access for the "Packages" repository permission.
      * @description A package was published to a registry.
      */
     post: operations["package/published"];
@@ -1417,8 +1506,6 @@ export interface webhooks {
   "package-updated": {
     /**
      * This event occurs when there is activity relating to GitHub Packages. For more information, see "[Introduction to GitHub Packages](https://docs.github.com/packages/learn-github-packages/introduction-to-github-packages)." For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#package) or "[Packages](https://docs.github.com/rest/packages)" in the REST API documentation.
-     *
-     * To install this event on a GitHub App, the app must have at least read-level access for the "Packages" repository permission.
      * @description A previously published package was updated.
      */
     post: operations["package/updated"];
@@ -2146,6 +2233,17 @@ export interface webhooks {
      */
     post: operations["pull-request-review-thread/unresolved"];
   };
+  "pull-request-stacked": {
+    /**
+     * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/rest/pulls/pulls)" in the REST API documentation.
+     *
+     * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+     * @description A pull request was added to a stack.
+     */
+    post: operations["pull-request/stacked"];
+  };
   "pull-request-synchronize": {
     /**
      * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/rest/pulls/pulls)" in the REST API documentation.
@@ -2508,6 +2606,28 @@ export interface webhooks {
      * @description A new instance of a previously detected secret was detected in a repository, and the location of the secret was added to the existing alert.
      */
     post: operations["secret-scanning-alert-location/created"];
+  };
+  "secret-scanning-alert-metadata-created": {
+    /**
+     * This event occurs when there is activity relating to a secret scanning alert. For more information about secret scanning, see "[About secret scanning](https://docs.github.com/code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/rest/secret-scanning)" in the REST API documentation.
+     *
+     * For activity relating to secret scanning alert locations, use the `secret_scanning_alert_location` event.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
+     * @description Metadata was created for a secret scanning alert.
+     */
+    post: operations["secret-scanning-alert/metadata-created"];
+  };
+  "secret-scanning-alert-metadata-removed": {
+    /**
+     * This event occurs when there is activity relating to a secret scanning alert. For more information about secret scanning, see "[About secret scanning](https://docs.github.com/code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/rest/secret-scanning)" in the REST API documentation.
+     *
+     * For activity relating to secret scanning alert locations, use the `secret_scanning_alert_location` event.
+     *
+     * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
+     * @description Metadata was removed from a secret scanning alert.
+     */
+    post: operations["secret-scanning-alert/metadata-removed"];
   };
   "secret-scanning-alert-publicly-leaked": {
     /**
@@ -3114,6 +3234,16 @@ export interface components {
        * @default false
        */
       has_discussions?: boolean;
+      /**
+       * @description Whether pull requests are enabled.
+       * @default true
+       */
+      has_pull_requests?: boolean;
+      /**
+       * @description The policy controlling who can create pull requests: all or collaborators_only.
+       * @enum {string}
+       */
+      pull_request_creation_policy?: "all" | "collaborators_only";
       /**
        * @description Whether the repository is archived.
        * @default false
@@ -3841,6 +3971,12 @@ export interface components {
       has_pages?: boolean;
       has_downloads?: boolean;
       has_discussions?: boolean;
+      has_pull_requests?: boolean;
+      /**
+       * @description The policy controlling who can create pull requests: all or collaborators_only.
+       * @enum {string}
+       */
+      pull_request_creation_policy?: "all" | "collaborators_only";
       archived?: boolean;
       disabled?: boolean;
       visibility?: string;
@@ -3867,7 +4003,7 @@ export interface components {
         key?: string;
         name?: string;
         spdx_id?: string;
-        url?: string;
+        url?: string | null;
         node_id?: string;
       } | null;
       forks?: number;
@@ -3931,6 +4067,32 @@ export interface components {
       secret_scanning_ai_detection?: {
         /** @enum {string} */
         status?: "enabled" | "disabled";
+      };
+      secret_scanning_delegated_alert_dismissal?: {
+        /** @enum {string} */
+        status?: "enabled" | "disabled";
+      };
+      secret_scanning_delegated_bypass?: {
+        /** @enum {string} */
+        status?: "enabled" | "disabled";
+      };
+      secret_scanning_delegated_bypass_options?: {
+        /** @description The bypass reviewers for secret scanning delegated bypass */
+        reviewers?: {
+          /** @description The ID of the team or role selected as a bypass reviewer */
+          reviewer_id: number;
+          /**
+           * @description The type of the bypass reviewer
+           * @enum {string}
+           */
+          reviewer_type: "TEAM" | "ROLE";
+          /**
+           * @description The bypass mode for the reviewer
+           * @default ALWAYS
+           * @enum {string}
+           */
+          mode?: "ALWAYS" | "EXEMPT";
+        }[];
       };
     } | null;
     /**
@@ -4186,8 +4348,6 @@ export interface components {
             single_file?: "read" | "write";
             /** @enum {string} */
             statuses?: "read" | "write";
-            /** @enum {string} */
-            team_discussions?: "read" | "write";
             /** @enum {string} */
             vulnerability_alerts?: "read" | "write";
             /** @enum {string} */
@@ -4447,6 +4607,8 @@ export interface components {
             /** @enum {string} */
             checks?: "read" | "write";
             /** @enum {string} */
+            code_quality?: "read" | "write";
+            /** @enum {string} */
             content_references?: "read" | "write";
             /** @enum {string} */
             contents?: "read" | "write";
@@ -4456,6 +4618,8 @@ export interface components {
             deployments?: "read" | "write";
             /** @enum {string} */
             discussions?: "read" | "write";
+            /** @enum {string} */
+            drives?: "read" | "write";
             /** @enum {string} */
             emails?: "read" | "write";
             /** @enum {string} */
@@ -4510,8 +4674,6 @@ export interface components {
             single_file?: "read" | "write";
             /** @enum {string} */
             statuses?: "read" | "write";
-            /** @enum {string} */
-            team_discussions?: "read" | "write";
             /** @enum {string} */
             vulnerability_alerts?: "read" | "write";
             /** @enum {string} */
@@ -4759,6 +4921,8 @@ export interface components {
             /** @enum {string} */
             checks?: "read" | "write";
             /** @enum {string} */
+            code_quality?: "read" | "write";
+            /** @enum {string} */
             content_references?: "read" | "write";
             /** @enum {string} */
             contents?: "read" | "write";
@@ -4768,6 +4932,8 @@ export interface components {
             deployments?: "read" | "write";
             /** @enum {string} */
             discussions?: "read" | "write";
+            /** @enum {string} */
+            drives?: "read" | "write";
             /** @enum {string} */
             emails?: "read" | "write";
             /** @enum {string} */
@@ -4822,8 +4988,6 @@ export interface components {
             single_file?: "read" | "write";
             /** @enum {string} */
             statuses?: "read" | "write";
-            /** @enum {string} */
-            team_discussions?: "read" | "write";
             /** @enum {string} */
             vulnerability_alerts?: "read" | "write";
             /** @enum {string} */
@@ -5006,6 +5170,7 @@ export interface components {
           | "false positive"
           | "won't fix"
           | "used in tests"
+          | "mitigated"
           | null;
         /** @description The time that the alert was fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`. */
         fixed_at?: null;
@@ -5147,6 +5312,7 @@ export interface components {
           | "false positive"
           | "won't fix"
           | "used in tests"
+          | "mitigated"
           | null;
         /** @description The time that the alert was fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`. */
         fixed_at?: null;
@@ -5278,7 +5444,7 @@ export interface components {
         dismissed_at: null;
         dismissed_by: null;
         dismissed_comment?: components["schemas"]["code-scanning-alert-dismissed-comment"];
-        /** @description The reason for dismissing or closing the alert. Can be one of: `false positive`, `won't fix`, and `used in tests`. */
+        /** @description The reason for dismissing or closing the alert. Can be one of: `false positive`, `won't fix`, `used in tests`, and `mitigated`. */
         dismissed_reason: null;
         /** @description The time that the alert was fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`. */
         fixed_at?: null;
@@ -5425,6 +5591,7 @@ export interface components {
           | "false positive"
           | "won't fix"
           | "used in tests"
+          | "mitigated"
           | null;
         /** @description The time that the alert was fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`. */
         fixed_at?: null;
@@ -5521,7 +5688,7 @@ export interface components {
         dismissed_at: string | null;
         dismissed_by: Record<string, never> | null;
         dismissed_comment?: components["schemas"]["code-scanning-alert-dismissed-comment"];
-        /** @description The reason for dismissing or closing the alert. Can be one of: `false positive`, `won't fix`, and `used in tests`. */
+        /** @description The reason for dismissing or closing the alert. Can be one of: `false positive`, `won't fix`, `used in tests`, and `mitigated`. */
         dismissed_reason: string | null;
         /** @description The time that the alert was fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`. */
         fixed_at?: null;
@@ -5621,7 +5788,7 @@ export interface components {
         dismissed_at: null;
         dismissed_by: null;
         dismissed_comment?: components["schemas"]["code-scanning-alert-dismissed-comment"];
-        /** @description The reason for dismissing or closing the alert. Can be one of: `false positive`, `won't fix`, and `used in tests`. */
+        /** @description The reason for dismissing or closing the alert. Can be one of: `false positive`, `won't fix`, `used in tests`, and `mitigated`. */
         dismissed_reason: null;
         /** @description The time that the alert was fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`. */
         fixed_at?: null;
@@ -5690,6 +5857,140 @@ export interface components {
       installation?: components["schemas"]["simple-installation"];
       organization?: components["schemas"]["organization-simple-webhooks"];
       ref: components["schemas"]["webhooks_code_scanning_ref"];
+      repository: components["schemas"]["repository-webhooks"];
+      sender: components["schemas"]["simple-user"];
+    };
+    /** code_scanning_alert updated_assignment event */
+    "webhook-code-scanning-alert-updated-assignment": {
+      /** @enum {string} */
+      action: "updated_assignment";
+      /** @description The code scanning alert involved in the event. */
+      alert: {
+        assignees?: components["schemas"]["simple-user"][];
+        /**
+         * Format: date-time
+         * @description The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ.`
+         */
+        created_at: string;
+        /**
+         * Format: date-time
+         * @description The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+         */
+        dismissed_at: string | null;
+        /** User */
+        dismissed_by: {
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization";
+          /** Format: uri */
+          url?: string;
+          user_view_type?: string;
+        } | null;
+        dismissed_comment?: components["schemas"]["code-scanning-alert-dismissed-comment"];
+        /**
+         * @description The reason for dismissing or closing the alert.
+         * @enum {string|null}
+         */
+        dismissed_reason:
+          | "false positive"
+          | "won't fix"
+          | "used in tests"
+          | "mitigated"
+          | null;
+        /** @description The time that the alert was fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`. */
+        fixed_at?: null;
+        /**
+         * Format: uri
+         * @description The GitHub URL of the alert resource.
+         */
+        html_url: string;
+        /** Alert Instance */
+        most_recent_instance?: {
+          /** @description Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name. */
+          analysis_key: string;
+          /** @description Identifies the configuration under which the analysis was executed. */
+          category?: string;
+          classifications?: string[];
+          commit_sha?: string;
+          /** @description Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed. */
+          environment: string;
+          location?: {
+            end_column?: number;
+            end_line?: number;
+            path?: string;
+            start_column?: number;
+            start_line?: number;
+          };
+          message?: {
+            text?: string;
+          };
+          /** @description The full Git reference, formatted as `refs/heads/<branch name>`. */
+          ref: string;
+          /**
+           * @description State of a code scanning alert.
+           * @enum {string}
+           */
+          state: "open" | "dismissed" | "fixed";
+        } | null;
+        /** @description The code scanning alert number. */
+        number: number;
+        rule: {
+          /** @description A short description of the rule used to detect the alert. */
+          description: string;
+          /** @description A unique identifier for the rule used to detect the alert. */
+          id: string;
+          /**
+           * @description The severity of the alert.
+           * @enum {string|null}
+           */
+          severity: "none" | "note" | "warning" | "error" | null;
+        };
+        /**
+         * @description State of a code scanning alert. Events for alerts found outside the default branch will return a `null` value until they are dismissed or fixed.
+         * @enum {string|null}
+         */
+        state: "open" | "dismissed" | "fixed" | null;
+        tool: {
+          /** @description The name of the tool used to generate the code scanning analysis alert. */
+          name: string;
+          /** @description The version of the tool used to detect the alert. */
+          version: string | null;
+        };
+        /** Format: uri */
+        url: string;
+      };
+      enterprise?: components["schemas"]["enterprise-webhooks"];
+      installation?: components["schemas"]["simple-installation"];
+      organization?: components["schemas"]["organization-simple-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
       sender: components["schemas"]["simple-user"];
     };
@@ -5850,7 +6151,12 @@ export interface components {
        * @description The type of the value for the property
        * @enum {string}
        */
-      value_type: "string" | "single_select" | "multi_select" | "true_false";
+      value_type:
+        | "string"
+        | "single_select"
+        | "multi_select"
+        | "true_false"
+        | "url";
       /** @description Whether the property is required. */
       required?: boolean;
       /** @description Default value of the property */
@@ -5867,6 +6173,8 @@ export interface components {
        * @enum {string|null}
        */
       values_editable_by?: "org_actors" | "org_and_repo_actors" | null;
+      /** @description Whether setting properties values is mandatory */
+      require_explicit_values?: boolean;
     };
     /** custom property deleted event */
     "webhook-custom-property-deleted": {
@@ -5923,7 +6231,7 @@ export interface components {
       /** @description The name of the property */
       property_name: string;
       /** @description The value assigned to the property */
-      value: string | string[] | null | unknown[];
+      value: (string | null) | string[] | null | string | unknown[];
     };
     /** delete event */
     "webhook-delete": {
@@ -5940,10 +6248,10 @@ export interface components {
       repository: components["schemas"]["repository-webhooks"];
       sender: components["schemas"]["simple-user"];
     };
-    /** Dependabot alert auto-dismissed event */
-    "webhook-dependabot-alert-auto-dismissed": {
+    /** Dependabot alert assignees changed event */
+    "webhook-dependabot-alert-assignees-changed": {
       /** @enum {string} */
-      action: "auto_dismissed";
+      action: "assignees_changed";
       alert: components["schemas"]["dependabot-alert"];
       installation?: components["schemas"]["simple-installation"];
       organization?: components["schemas"]["organization-simple-webhooks"];
@@ -5977,7 +6285,12 @@ export interface components {
          *
          * @enum {string|null}
          */
-        readonly relationship?: "unknown" | "direct" | "transitive" | null;
+        readonly relationship?:
+          | "unknown"
+          | "direct"
+          | "transitive"
+          | "inconclusive"
+          | null;
       };
       security_advisory: components["schemas"]["dependabot-alert-security-advisory"];
       security_vulnerability: components["schemas"]["dependabot-alert-security-vulnerability"];
@@ -6002,6 +6315,9 @@ export interface components {
       dismissed_comment: string | null;
       fixed_at: components["schemas"]["alert-fixed-at"];
       auto_dismissed_at?: components["schemas"]["alert-auto-dismissed-at"];
+      dismissal_request?: components["schemas"]["dependabot-alert-dismissal-request-simple"];
+      /** @description The users assigned to this alert. */
+      assignees?: readonly components["schemas"]["simple-user"][];
     };
     /** @description The security alert number. */
     readonly "alert-number": number;
@@ -6029,6 +6345,11 @@ export interface components {
        * @enum {string}
        */
       readonly severity: "low" | "medium" | "high" | "critical";
+      /**
+       * @description The classification of the advisory.
+       * @enum {string}
+       */
+      readonly classification?: "general" | "malware";
       /** @description Details for the advisory pertaining to the Common Vulnerability Scoring System. */
       readonly cvss: {
         /** @description The overall CVSS score of the advisory. */
@@ -6149,6 +6470,47 @@ export interface components {
      * @description The time that the alert was auto-dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
      */
     readonly "alert-auto-dismissed-at": string | null;
+    /**
+     * Dependabot alert dismissal request
+     * @description Information about an active dismissal request for this Dependabot alert.
+     */
+    "dependabot-alert-dismissal-request-simple": {
+      /** @description The unique identifier of the dismissal request. */
+      id?: number;
+      /**
+       * @description The current status of the dismissal request.
+       * @enum {string}
+       */
+      status?: "pending" | "approved" | "rejected" | "cancelled";
+      /** @description The user who requested the dismissal. */
+      requester?: {
+        /** @description The unique identifier of the user. */
+        id?: number;
+        /** @description The login name of the user. */
+        login?: string;
+      };
+      /**
+       * Format: date-time
+       * @description The date and time when the dismissal request was created.
+       */
+      created_at?: string;
+      /**
+       * Format: uri
+       * @description The API URL to get more information about this dismissal request.
+       */
+      url?: string;
+    } | null;
+    /** Dependabot alert auto-dismissed event */
+    "webhook-dependabot-alert-auto-dismissed": {
+      /** @enum {string} */
+      action: "auto_dismissed";
+      alert: components["schemas"]["dependabot-alert"];
+      installation?: components["schemas"]["simple-installation"];
+      organization?: components["schemas"]["organization-simple-webhooks"];
+      enterprise?: components["schemas"]["enterprise-webhooks"];
+      repository: components["schemas"]["repository-webhooks"];
+      sender: components["schemas"]["simple-user"];
+    };
     /** Dependabot alert auto-reopened event */
     "webhook-dependabot-alert-auto-reopened": {
       /** @enum {string} */
@@ -6479,8 +6841,6 @@ export interface components {
             single_file?: "read" | "write";
             /** @enum {string} */
             statuses?: "read" | "write";
-            /** @enum {string} */
-            team_discussions?: "read" | "write";
             /** @enum {string} */
             vulnerability_alerts?: "read" | "write";
             /** @enum {string} */
@@ -6940,6 +7300,8 @@ export interface components {
         description: string | null;
         color: string;
         default: boolean;
+        /** @description The user who archived the label, or `null` if it has not been archived. */
+        archived_by: null;
       }[];
       milestone: null | components["schemas"]["milestone"];
       active_lock_reason?: string | null;
@@ -6953,9 +7315,9 @@ export interface components {
       merged_at: string | null;
       merge_commit_sha: string | null;
       assignee: null | components["schemas"]["simple-user"];
-      assignees?: components["schemas"]["simple-user"][] | null;
-      requested_reviewers?: components["schemas"]["simple-user"][] | null;
-      requested_teams?: components["schemas"]["team-simple"][] | null;
+      assignees?: components["schemas"]["simple-user"][];
+      requested_reviewers?: components["schemas"]["simple-user"][];
+      requested_teams?: components["schemas"]["team-simple"][];
       head: {
         label: string;
         ref: string;
@@ -6982,6 +7344,7 @@ export interface components {
       };
       author_association: components["schemas"]["author-association"];
       auto_merge: components["schemas"]["auto-merge"];
+      stack?: components["schemas"]["pull-request-stack"];
       /** @description Indicates whether or not the pull request is a draft. */
       draft?: boolean;
       merged: boolean;
@@ -7211,6 +7574,16 @@ export interface components {
        */
       has_discussions?: boolean;
       /**
+       * @description Whether pull requests are enabled.
+       * @default true
+       */
+      has_pull_requests?: boolean;
+      /**
+       * @description The policy controlling who can create pull requests: all or collaborators_only.
+       * @enum {string}
+       */
+      pull_request_creation_policy?: "all" | "collaborators_only";
+      /**
        * @description Whether the repository is archived.
        * @default false
        */
@@ -7354,6 +7727,26 @@ export interface components {
       commit_title: string;
       /** @description Commit message for the merge commit. */
       commit_message: string;
+    } | null;
+    /**
+     * Pull Request Stack
+     * @description The stack information associated with a pull request.
+     */
+    "pull-request-stack": {
+      base: {
+        /** @description The base ref of the stack this pull request belongs to. */
+        ref: string;
+        /** @description The base SHA of the stack this pull request belongs to. */
+        sha: string;
+      };
+      /** @description The total number of pull requests in the stack. */
+      size?: number;
+      /** @description The one-based position of this pull request within the stack, where 1 is the bottom of the stack. */
+      position?: number;
+      /** @description The ID of the stack that this pull request belongs to. */
+      id?: number;
+      /** @description The number of the stack that this pull request belongs to. */
+      number?: number;
     } | null;
     "webhook-deployment-review-approved": {
       /** @enum {string} */
@@ -8745,8 +9138,6 @@ export interface components {
             /** @enum {string} */
             statuses?: "read" | "write";
             /** @enum {string} */
-            team_discussions?: "read" | "write";
-            /** @enum {string} */
             vulnerability_alerts?: "read" | "write";
             /** @enum {string} */
             workflows?: "read" | "write";
@@ -8995,8 +9386,6 @@ export interface components {
             single_file?: "read" | "write";
             /** @enum {string} */
             statuses?: "read" | "write";
-            /** @enum {string} */
-            team_discussions?: "read" | "write";
             /** @enum {string} */
             vulnerability_alerts?: "read" | "write";
             /** @enum {string} */
@@ -9467,7 +9856,7 @@ export interface components {
        * @description How the author is associated with the repository.
        * @enum {string}
        */
-      author_association:
+      author_association?:
         | "COLLABORATOR"
         | "CONTRIBUTOR"
         | "FIRST_TIMER"
@@ -9594,6 +9983,13 @@ export interface components {
       color: string;
       /** @description Whether this label comes by default in a new repository. */
       default: boolean;
+      /**
+       * Format: date-time
+       * @description Timestamp indicating when the label was archived, or `null` if it has not been archived.
+       */
+      archived_at: string | null;
+      /** @description The user who archived the label, or `null` if it has not been archived. */
+      archived_by: null;
     };
     /** discussion category changed event */
     "webhook-discussion-category-changed": {
@@ -9813,6 +10209,13 @@ export interface components {
       color: string;
       default: boolean;
       description: string | null;
+      /**
+       * Format: date-time
+       * @description Timestamp indicating when the label was archived, or `null` if it has not been archived.
+       */
+      archived_at: string | null;
+      /** @description The user who archived the label, or `null` if it has not been archived. */
+      archived_by: null;
       id: number;
       /** @description The name of the label. */
       name: string;
@@ -10355,7 +10758,7 @@ export interface components {
     };
     /**
      * App Permissions
-     * @description The permissions granted to the user access token.
+     * @description The permissions granted to the fine-grained access token.
      * @example {
      *   "contents": "read",
      *   "issues": "read",
@@ -10389,6 +10792,11 @@ export interface components {
        * @enum {string}
        */
       checks?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token to view and manage code quality data.
+       * @enum {string}
+       */
+      code_quality?: "read" | "write";
       /**
        * @description The level of permission to grant the access token to create, edit, delete, and list Codespaces.
        * @enum {string}
@@ -10533,7 +10941,17 @@ export interface components {
        * @description The level of permission to grant the access token for managing access to GitHub Copilot for members of an organization with a Copilot Business subscription. This property is in public preview and is subject to change.
        * @enum {string}
        */
-      organization_copilot_seat_management?: "write";
+      organization_copilot_seat_management?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token to view and manage Copilot cloud agent settings for an organization.
+       * @enum {string}
+       */
+      organization_copilot_agent_settings?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token for managing external custom properties for repositories in an organization.
+       * @enum {string}
+       */
+      organization_external_properties_for_repos?: "read" | "write" | "admin";
       /**
        * @description The level of permission to grant the access token to view and manage announcement banners for an organization.
        * @enum {string}
@@ -10589,11 +11007,6 @@ export interface components {
        * @enum {string}
        */
       organization_user_blocking?: "read" | "write";
-      /**
-       * @description The level of permission to grant the access token to manage team discussions and related comments.
-       * @enum {string}
-       */
-      team_discussions?: "read" | "write";
       /**
        * @description The level of permission to grant the access token to manage the email addresses belonging to a user.
        * @enum {string}
@@ -10681,7 +11094,7 @@ export interface components {
       installation: components["schemas"]["installation"];
       organization?: components["schemas"]["organization-simple-webhooks"];
       repositories_added: components["schemas"]["webhooks_repositories_added"];
-      /** @description An array of repository objects, which were removed from the installation. */
+      /** @description An array of repository objects, which were removed from the installation. When `repository_selection` changes from `all` to `selected`, this array is empty. */
       repositories_removed: {
         full_name?: string;
         /** @description Unique identifier of the repository */
@@ -10721,7 +11134,7 @@ export interface components {
       installation: components["schemas"]["installation"];
       organization?: components["schemas"]["organization-simple-webhooks"];
       repositories_added: components["schemas"]["webhooks_repositories_added"];
-      /** @description An array of repository objects, which were removed from the installation. */
+      /** @description An array of repository objects, which were removed from the installation. When `repository_selection` changes from `all` to `selected`, this array is empty. */
       repositories_removed: {
         full_name: string;
         /** @description Unique identifier of the repository */
@@ -10877,6 +11290,8 @@ export interface components {
          * @description URL for the issue comment
          */
         url: string;
+        pin?: null | components["schemas"]["pinned-issue-comment"];
+        minimized?: null | components["schemas"]["issue-comment-minimized"];
         /** User */
         user: {
           /** Format: uri */
@@ -11297,7 +11712,1372 @@ export interface components {
             /** @enum {string} */
             statuses?: "read" | "write";
             /** @enum {string} */
-            team_discussions?: "read" | "write";
+            vulnerability_alerts?: "read" | "write";
+            /** @enum {string} */
+            workflows?: "read" | "write";
+          };
+          /** @description The slug name of the GitHub app */
+          slug?: string;
+          /** Format: date-time */
+          updated_at: string | null;
+        } | null;
+        pull_request?: {
+          /** Format: uri */
+          diff_url?: string;
+          /** Format: uri */
+          html_url?: string;
+          /** Format: date-time */
+          merged_at?: string | null;
+          /** Format: uri */
+          patch_url?: string;
+          /** Format: uri */
+          url?: string;
+        };
+        /** Reactions */
+        reactions: {
+          "+1": number;
+          "-1": number;
+          confused: number;
+          eyes: number;
+          heart: number;
+          hooray: number;
+          laugh: number;
+          rocket: number;
+          total_count: number;
+          /** Format: uri */
+          url: string;
+        };
+        /** Format: uri */
+        repository_url: string;
+        sub_issues_summary?: components["schemas"]["sub-issues-summary"];
+        issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
+        /**
+         * @description State of the issue; either 'open' or 'closed'
+         * @enum {string}
+         */
+        state?: "open" | "closed";
+        state_reason?: string | null;
+        /** Format: uri */
+        timeline_url?: string;
+        /** @description Title of the issue */
+        title: string;
+        type?: components["schemas"]["issue-type"];
+        /** Format: date-time */
+        updated_at: string;
+        /**
+         * Format: uri
+         * @description URL for the issue
+         */
+        url: string;
+        /** User */
+        user: {
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          /** Format: int64 */
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization" | "Mannequin";
+          /** Format: uri */
+          url?: string;
+          user_view_type?: string;
+        } | null;
+      } & {
+        active_lock_reason?: string | null;
+        /** User */
+        assignee: {
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization" | "Mannequin";
+          /** Format: uri */
+          url?: string;
+          user_view_type?: string;
+        } | null;
+        assignees?: (Record<string, never> | null)[];
+        author_association?: string;
+        body?: string | null;
+        closed_at?: string | null;
+        comments?: number;
+        comments_url?: string;
+        created_at?: string;
+        events_url?: string;
+        html_url?: string;
+        id?: number;
+        labels: {
+          /** @description 6-character hex code, without the leading #, identifying the color */
+          color: string;
+          default: boolean;
+          description: string | null;
+          id: number;
+          /** @description The name of the label. */
+          name: string;
+          node_id: string;
+          /**
+           * Format: uri
+           * @description URL for the label
+           */
+          url: string;
+        }[];
+        labels_url?: string;
+        locked: boolean;
+        milestone?: Record<string, never> | null;
+        node_id?: string;
+        number?: number;
+        performed_via_github_app?: Record<string, never> | null;
+        reactions?: {
+          "+1"?: number;
+          "-1"?: number;
+          confused?: number;
+          eyes?: number;
+          heart?: number;
+          hooray?: number;
+          laugh?: number;
+          rocket?: number;
+          total_count?: number;
+          url?: string;
+        };
+        repository_url?: string;
+        /**
+         * @description State of the issue; either 'open' or 'closed'
+         * @enum {string}
+         */
+        state: "open" | "closed";
+        timeline_url?: string;
+        title?: string;
+        updated_at?: string;
+        url?: string;
+        user?: {
+          avatar_url?: string;
+          events_url?: string;
+          followers_url?: string;
+          following_url?: string;
+          gists_url?: string;
+          gravatar_id?: string;
+          html_url?: string;
+          /** Format: int64 */
+          id?: number;
+          login?: string;
+          node_id?: string;
+          organizations_url?: string;
+          received_events_url?: string;
+          repos_url?: string;
+          site_admin?: boolean;
+          starred_url?: string;
+          subscriptions_url?: string;
+          type?: string;
+          url?: string;
+        };
+      };
+      organization?: components["schemas"]["organization-simple-webhooks"];
+      repository: components["schemas"]["repository-webhooks"];
+      sender: components["schemas"]["simple-user"];
+    };
+    /**
+     * Pinned Issue Comment
+     * @description Context around who pinned an issue comment and when it was pinned.
+     */
+    "pinned-issue-comment": {
+      /** Format: date-time */
+      pinned_at: string;
+      pinned_by: null | components["schemas"]["simple-user"];
+    };
+    /**
+     * Minimized Issue Comment
+     * @description Details about why an issue comment was minimized.
+     */
+    "issue-comment-minimized": {
+      /** @description The reason the comment was minimized. */
+      reason: string | null;
+    };
+    /** Sub-issues Summary */
+    "sub-issues-summary": {
+      total: number;
+      completed: number;
+      percent_completed: number;
+    };
+    /** Issue Dependencies Summary */
+    "issue-dependencies-summary": {
+      blocked_by: number;
+      blocking: number;
+      total_blocked_by: number;
+      total_blocking: number;
+    };
+    /**
+     * Issue Type
+     * @description The type assigned to the issue. This is only present for issues in repositories where issue types are supported.
+     */
+    "issue-type": {
+      /** @description The unique identifier of the issue type. */
+      id: number;
+      /** @description The node identifier of the issue type. */
+      node_id: string;
+      /** @description The name of the issue type. */
+      name: string;
+      /** @description The description of the issue type. */
+      description: string | null;
+      /**
+       * @description The color of the issue type.
+       * @enum {string|null}
+       */
+      color?:
+        | "gray"
+        | "blue"
+        | "green"
+        | "yellow"
+        | "orange"
+        | "red"
+        | "pink"
+        | "purple"
+        | null;
+      /**
+       * Format: date-time
+       * @description The time the issue type created.
+       */
+      created_at?: string;
+      /**
+       * Format: date-time
+       * @description The time the issue type last updated.
+       */
+      updated_at?: string;
+      /** @description The enabled state of the issue type. */
+      is_enabled?: boolean;
+    } | null;
+    /** issue_comment deleted event */
+    "webhook-issue-comment-deleted": {
+      /** @enum {string} */
+      action: "deleted";
+      comment: components["schemas"]["webhooks_issue_comment"];
+      enterprise?: components["schemas"]["enterprise-webhooks"];
+      installation?: components["schemas"]["simple-installation"];
+      /** @description The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) the comment belongs to. */
+      issue: {
+        /** @enum {string|null} */
+        active_lock_reason:
+          | "resolved"
+          | "off-topic"
+          | "too heated"
+          | "spam"
+          | null;
+        /** User */
+        assignee?: {
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization" | "Mannequin";
+          /** Format: uri */
+          url?: string;
+          user_view_type?: string;
+        } | null;
+        assignees: ({
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization" | "Mannequin";
+          /** Format: uri */
+          url?: string;
+          user_view_type?: string;
+        } | null)[];
+        /**
+         * AuthorAssociation
+         * @description How the author is associated with the repository.
+         * @enum {string}
+         */
+        author_association:
+          | "COLLABORATOR"
+          | "CONTRIBUTOR"
+          | "FIRST_TIMER"
+          | "FIRST_TIME_CONTRIBUTOR"
+          | "MANNEQUIN"
+          | "MEMBER"
+          | "NONE"
+          | "OWNER";
+        /** @description Contents of the issue */
+        body: string | null;
+        /** Format: date-time */
+        closed_at: string | null;
+        comments: number;
+        /** Format: uri */
+        comments_url: string;
+        /** Format: date-time */
+        created_at: string;
+        draft?: boolean;
+        /** Format: uri */
+        events_url: string;
+        /** Format: uri */
+        html_url: string;
+        /** Format: int64 */
+        id: number;
+        labels?: {
+          /** @description 6-character hex code, without the leading #, identifying the color */
+          color: string;
+          default: boolean;
+          description: string | null;
+          id: number;
+          /** @description The name of the label. */
+          name: string;
+          node_id: string;
+          /**
+           * Format: uri
+           * @description URL for the label
+           */
+          url: string;
+        }[];
+        /** Format: uri-template */
+        labels_url: string;
+        locked?: boolean;
+        /**
+         * Milestone
+         * @description A collection of related issues and pull requests.
+         */
+        milestone: {
+          /** Format: date-time */
+          closed_at: string | null;
+          closed_issues: number;
+          /** Format: date-time */
+          created_at: string;
+          /** User */
+          creator: {
+            /** Format: uri */
+            avatar_url?: string;
+            deleted?: boolean;
+            email?: string | null;
+            /** Format: uri-template */
+            events_url?: string;
+            /** Format: uri */
+            followers_url?: string;
+            /** Format: uri-template */
+            following_url?: string;
+            /** Format: uri-template */
+            gists_url?: string;
+            gravatar_id?: string;
+            /** Format: uri */
+            html_url?: string;
+            id: number;
+            login: string;
+            name?: string;
+            node_id?: string;
+            /** Format: uri */
+            organizations_url?: string;
+            /** Format: uri */
+            received_events_url?: string;
+            /** Format: uri */
+            repos_url?: string;
+            site_admin?: boolean;
+            /** Format: uri-template */
+            starred_url?: string;
+            /** Format: uri */
+            subscriptions_url?: string;
+            /** @enum {string} */
+            type?: "Bot" | "User" | "Organization" | "Mannequin";
+            /** Format: uri */
+            url?: string;
+            user_view_type?: string;
+          } | null;
+          description: string | null;
+          /** Format: date-time */
+          due_on: string | null;
+          /** Format: uri */
+          html_url: string;
+          id: number;
+          /** Format: uri */
+          labels_url: string;
+          node_id: string;
+          /** @description The number of the milestone. */
+          number: number;
+          open_issues: number;
+          /**
+           * @description The state of the milestone.
+           * @enum {string}
+           */
+          state: "open" | "closed";
+          /** @description The title of the milestone. */
+          title: string;
+          /** Format: date-time */
+          updated_at: string;
+          /** Format: uri */
+          url: string;
+        } | null;
+        node_id: string;
+        number: number;
+        /**
+         * App
+         * @description GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
+         */
+        performed_via_github_app?: {
+          /** Format: date-time */
+          created_at: string | null;
+          description: string | null;
+          /** @description The list of events for the GitHub app */
+          events?: (
+            | "branch_protection_rule"
+            | "check_run"
+            | "check_suite"
+            | "code_scanning_alert"
+            | "commit_comment"
+            | "content_reference"
+            | "create"
+            | "delete"
+            | "deployment"
+            | "deployment_review"
+            | "deployment_status"
+            | "deploy_key"
+            | "discussion"
+            | "discussion_comment"
+            | "fork"
+            | "gollum"
+            | "issues"
+            | "issue_comment"
+            | "label"
+            | "member"
+            | "membership"
+            | "milestone"
+            | "organization"
+            | "org_block"
+            | "page_build"
+            | "project"
+            | "project_card"
+            | "project_column"
+            | "public"
+            | "pull_request"
+            | "pull_request_review"
+            | "pull_request_review_comment"
+            | "push"
+            | "registry_package"
+            | "release"
+            | "repository"
+            | "repository_dispatch"
+            | "secret_scanning_alert"
+            | "star"
+            | "status"
+            | "team"
+            | "team_add"
+            | "watch"
+            | "workflow_dispatch"
+            | "workflow_run"
+          )[];
+          /** Format: uri */
+          external_url: string | null;
+          /** Format: uri */
+          html_url: string;
+          /** @description Unique identifier of the GitHub app */
+          id: number | null;
+          /** @description The name of the GitHub app */
+          name: string;
+          node_id: string;
+          /** User */
+          owner: {
+            /** Format: uri */
+            avatar_url?: string;
+            deleted?: boolean;
+            email?: string | null;
+            /** Format: uri-template */
+            events_url?: string;
+            /** Format: uri */
+            followers_url?: string;
+            /** Format: uri-template */
+            following_url?: string;
+            /** Format: uri-template */
+            gists_url?: string;
+            gravatar_id?: string;
+            /** Format: uri */
+            html_url?: string;
+            id: number;
+            login: string;
+            name?: string;
+            node_id?: string;
+            /** Format: uri */
+            organizations_url?: string;
+            /** Format: uri */
+            received_events_url?: string;
+            /** Format: uri */
+            repos_url?: string;
+            site_admin?: boolean;
+            /** Format: uri-template */
+            starred_url?: string;
+            /** Format: uri */
+            subscriptions_url?: string;
+            /** @enum {string} */
+            type?: "Bot" | "User" | "Organization";
+            /** Format: uri */
+            url?: string;
+            user_view_type?: string;
+          } | null;
+          /** @description The set of permissions for the GitHub app */
+          permissions?: {
+            /** @enum {string} */
+            actions?: "read" | "write";
+            /** @enum {string} */
+            administration?: "read" | "write";
+            /** @enum {string} */
+            checks?: "read" | "write";
+            /** @enum {string} */
+            content_references?: "read" | "write";
+            /** @enum {string} */
+            contents?: "read" | "write";
+            /** @enum {string} */
+            deployments?: "read" | "write";
+            /** @enum {string} */
+            discussions?: "read" | "write";
+            /** @enum {string} */
+            emails?: "read" | "write";
+            /** @enum {string} */
+            environments?: "read" | "write";
+            /** @enum {string} */
+            issues?: "read" | "write";
+            /** @enum {string} */
+            keys?: "read" | "write";
+            /** @enum {string} */
+            members?: "read" | "write";
+            /** @enum {string} */
+            metadata?: "read" | "write";
+            /** @enum {string} */
+            organization_administration?: "read" | "write";
+            /** @enum {string} */
+            organization_hooks?: "read" | "write";
+            /** @enum {string} */
+            organization_packages?: "read" | "write";
+            /** @enum {string} */
+            organization_plan?: "read" | "write";
+            /** @enum {string} */
+            organization_projects?: "read" | "write";
+            /** @enum {string} */
+            organization_secrets?: "read" | "write";
+            /** @enum {string} */
+            organization_self_hosted_runners?: "read" | "write";
+            /** @enum {string} */
+            organization_user_blocking?: "read" | "write";
+            /** @enum {string} */
+            packages?: "read" | "write";
+            /** @enum {string} */
+            pages?: "read" | "write";
+            /** @enum {string} */
+            pull_requests?: "read" | "write";
+            /** @enum {string} */
+            repository_hooks?: "read" | "write";
+            /** @enum {string} */
+            repository_projects?: "read" | "write";
+            /** @enum {string} */
+            secret_scanning_alerts?: "read" | "write";
+            /** @enum {string} */
+            secrets?: "read" | "write";
+            /** @enum {string} */
+            security_events?: "read" | "write";
+            /** @enum {string} */
+            security_scanning_alert?: "read" | "write";
+            /** @enum {string} */
+            single_file?: "read" | "write";
+            /** @enum {string} */
+            statuses?: "read" | "write";
+            /** @enum {string} */
+            vulnerability_alerts?: "read" | "write";
+            /** @enum {string} */
+            workflows?: "read" | "write";
+          };
+          /** @description The slug name of the GitHub app */
+          slug?: string;
+          /** Format: date-time */
+          updated_at: string | null;
+        } | null;
+        pull_request?: {
+          /** Format: uri */
+          diff_url?: string;
+          /** Format: uri */
+          html_url?: string;
+          /** Format: date-time */
+          merged_at?: string | null;
+          /** Format: uri */
+          patch_url?: string;
+          /** Format: uri */
+          url?: string;
+        };
+        /** Reactions */
+        reactions: {
+          "+1": number;
+          "-1": number;
+          confused: number;
+          eyes: number;
+          heart: number;
+          hooray: number;
+          laugh: number;
+          rocket: number;
+          total_count: number;
+          /** Format: uri */
+          url: string;
+        };
+        /** Format: uri */
+        repository_url: string;
+        sub_issues_summary?: components["schemas"]["sub-issues-summary"];
+        issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
+        /**
+         * @description State of the issue; either 'open' or 'closed'
+         * @enum {string}
+         */
+        state?: "open" | "closed";
+        state_reason?: string | null;
+        /** Format: uri */
+        timeline_url?: string;
+        /** @description Title of the issue */
+        title: string;
+        type?: components["schemas"]["issue-type"];
+        /** Format: date-time */
+        updated_at: string;
+        /**
+         * Format: uri
+         * @description URL for the issue
+         */
+        url: string;
+        /** User */
+        user: {
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          /** Format: int64 */
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization" | "Mannequin";
+          /** Format: uri */
+          url?: string;
+          user_view_type?: string;
+        } | null;
+      } & {
+        active_lock_reason?: string | null;
+        /** User */
+        assignee: {
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization" | "Mannequin";
+          /** Format: uri */
+          url?: string;
+          user_view_type?: string;
+        } | null;
+        assignees?: (Record<string, never> | null)[];
+        author_association?: string;
+        body?: string | null;
+        closed_at?: string | null;
+        comments?: number;
+        comments_url?: string;
+        created_at?: string;
+        events_url?: string;
+        html_url?: string;
+        id?: number;
+        labels: {
+          /** @description 6-character hex code, without the leading #, identifying the color */
+          color: string;
+          default: boolean;
+          description: string | null;
+          id: number;
+          /** @description The name of the label. */
+          name: string;
+          node_id: string;
+          /**
+           * Format: uri
+           * @description URL for the label
+           */
+          url: string;
+        }[];
+        labels_url?: string;
+        locked: boolean;
+        milestone?: Record<string, never> | null;
+        node_id?: string;
+        number?: number;
+        performed_via_github_app?: Record<string, never> | null;
+        reactions?: {
+          "+1"?: number;
+          "-1"?: number;
+          confused?: number;
+          eyes?: number;
+          heart?: number;
+          hooray?: number;
+          laugh?: number;
+          rocket?: number;
+          total_count?: number;
+          url?: string;
+        };
+        repository_url?: string;
+        /**
+         * @description State of the issue; either 'open' or 'closed'
+         * @enum {string}
+         */
+        state: "open" | "closed";
+        timeline_url?: string;
+        title?: string;
+        updated_at?: string;
+        url?: string;
+        user?: {
+          avatar_url?: string;
+          events_url?: string;
+          followers_url?: string;
+          following_url?: string;
+          gists_url?: string;
+          gravatar_id?: string;
+          html_url?: string;
+          /** Format: int64 */
+          id?: number;
+          login?: string;
+          node_id?: string;
+          organizations_url?: string;
+          received_events_url?: string;
+          repos_url?: string;
+          site_admin?: boolean;
+          starred_url?: string;
+          subscriptions_url?: string;
+          type?: string;
+          url?: string;
+          user_view_type?: string;
+        };
+      };
+      organization?: components["schemas"]["organization-simple-webhooks"];
+      repository: components["schemas"]["repository-webhooks"];
+      sender: components["schemas"]["simple-user"];
+    };
+    /**
+     * issue comment
+     * @description The [comment](https://docs.github.com/rest/issues/comments#get-an-issue-comment) itself.
+     */
+    webhooks_issue_comment: {
+      /**
+       * AuthorAssociation
+       * @description How the author is associated with the repository.
+       * @enum {string}
+       */
+      author_association:
+        | "COLLABORATOR"
+        | "CONTRIBUTOR"
+        | "FIRST_TIMER"
+        | "FIRST_TIME_CONTRIBUTOR"
+        | "MANNEQUIN"
+        | "MEMBER"
+        | "NONE"
+        | "OWNER";
+      /** @description Contents of the issue comment */
+      body: string;
+      /** Format: date-time */
+      created_at: string;
+      /** Format: uri */
+      html_url: string;
+      /**
+       * Format: int64
+       * @description Unique identifier of the issue comment
+       */
+      id: number;
+      /** Format: uri */
+      issue_url: string;
+      node_id: string;
+      performed_via_github_app: components["schemas"]["integration"];
+      /** Reactions */
+      reactions: {
+        "+1": number;
+        "-1": number;
+        confused: number;
+        eyes: number;
+        heart: number;
+        hooray: number;
+        laugh: number;
+        rocket: number;
+        total_count: number;
+        /** Format: uri */
+        url: string;
+      };
+      /** Format: date-time */
+      updated_at: string;
+      /**
+       * Format: uri
+       * @description URL for the issue comment
+       */
+      url: string;
+      /** User */
+      user: {
+        /** Format: uri */
+        avatar_url?: string;
+        deleted?: boolean;
+        email?: string | null;
+        /** Format: uri-template */
+        events_url?: string;
+        /** Format: uri */
+        followers_url?: string;
+        /** Format: uri-template */
+        following_url?: string;
+        /** Format: uri-template */
+        gists_url?: string;
+        gravatar_id?: string;
+        /** Format: uri */
+        html_url?: string;
+        /** Format: int64 */
+        id: number;
+        login: string;
+        name?: string;
+        node_id?: string;
+        /** Format: uri */
+        organizations_url?: string;
+        /** Format: uri */
+        received_events_url?: string;
+        /** Format: uri */
+        repos_url?: string;
+        site_admin?: boolean;
+        /** Format: uri-template */
+        starred_url?: string;
+        /** Format: uri */
+        subscriptions_url?: string;
+        /** @enum {string} */
+        type?: "Bot" | "User" | "Organization" | "Mannequin";
+        /** Format: uri */
+        url?: string;
+        user_view_type?: string;
+      } | null;
+      pin?: null | components["schemas"]["pinned-issue-comment"];
+      minimized?: null | components["schemas"]["issue-comment-minimized"];
+    };
+    /** issue_comment edited event */
+    "webhook-issue-comment-edited": {
+      /** @enum {string} */
+      action: "edited";
+      changes: components["schemas"]["webhooks_changes"];
+      comment: components["schemas"]["webhooks_issue_comment"];
+      enterprise?: components["schemas"]["enterprise-webhooks"];
+      installation?: components["schemas"]["simple-installation"];
+      /** @description The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) the comment belongs to. */
+      issue: {
+        /** @enum {string|null} */
+        active_lock_reason:
+          | "resolved"
+          | "off-topic"
+          | "too heated"
+          | "spam"
+          | null;
+        /** User */
+        assignee?: {
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization" | "Mannequin";
+          /** Format: uri */
+          url?: string;
+          user_view_type?: string;
+        } | null;
+        assignees: ({
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization" | "Mannequin";
+          /** Format: uri */
+          url?: string;
+          user_view_type?: string;
+        } | null)[];
+        /**
+         * AuthorAssociation
+         * @description How the author is associated with the repository.
+         * @enum {string}
+         */
+        author_association:
+          | "COLLABORATOR"
+          | "CONTRIBUTOR"
+          | "FIRST_TIMER"
+          | "FIRST_TIME_CONTRIBUTOR"
+          | "MANNEQUIN"
+          | "MEMBER"
+          | "NONE"
+          | "OWNER";
+        /** @description Contents of the issue */
+        body: string | null;
+        /** Format: date-time */
+        closed_at: string | null;
+        comments: number;
+        /** Format: uri */
+        comments_url: string;
+        /** Format: date-time */
+        created_at: string;
+        draft?: boolean;
+        /** Format: uri */
+        events_url: string;
+        /** Format: uri */
+        html_url: string;
+        /** Format: int64 */
+        id: number;
+        labels?: {
+          /** @description 6-character hex code, without the leading #, identifying the color */
+          color: string;
+          default: boolean;
+          description: string | null;
+          id: number;
+          /** @description The name of the label. */
+          name: string;
+          node_id: string;
+          /**
+           * Format: uri
+           * @description URL for the label
+           */
+          url: string;
+        }[];
+        /** Format: uri-template */
+        labels_url: string;
+        locked?: boolean;
+        /**
+         * Milestone
+         * @description A collection of related issues and pull requests.
+         */
+        milestone: {
+          /** Format: date-time */
+          closed_at: string | null;
+          closed_issues: number;
+          /** Format: date-time */
+          created_at: string;
+          /** User */
+          creator: {
+            /** Format: uri */
+            avatar_url?: string;
+            deleted?: boolean;
+            email?: string | null;
+            /** Format: uri-template */
+            events_url?: string;
+            /** Format: uri */
+            followers_url?: string;
+            /** Format: uri-template */
+            following_url?: string;
+            /** Format: uri-template */
+            gists_url?: string;
+            gravatar_id?: string;
+            /** Format: uri */
+            html_url?: string;
+            id: number;
+            login: string;
+            name?: string;
+            node_id?: string;
+            /** Format: uri */
+            organizations_url?: string;
+            /** Format: uri */
+            received_events_url?: string;
+            /** Format: uri */
+            repos_url?: string;
+            site_admin?: boolean;
+            /** Format: uri-template */
+            starred_url?: string;
+            /** Format: uri */
+            subscriptions_url?: string;
+            /** @enum {string} */
+            type?: "Bot" | "User" | "Organization" | "Mannequin";
+            /** Format: uri */
+            url?: string;
+            user_view_type?: string;
+          } | null;
+          description: string | null;
+          /** Format: date-time */
+          due_on: string | null;
+          /** Format: uri */
+          html_url: string;
+          id: number;
+          /** Format: uri */
+          labels_url: string;
+          node_id: string;
+          /** @description The number of the milestone. */
+          number: number;
+          open_issues: number;
+          /**
+           * @description The state of the milestone.
+           * @enum {string}
+           */
+          state: "open" | "closed";
+          /** @description The title of the milestone. */
+          title: string;
+          /** Format: date-time */
+          updated_at: string;
+          /** Format: uri */
+          url: string;
+        } | null;
+        node_id: string;
+        number: number;
+        /**
+         * App
+         * @description GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
+         */
+        performed_via_github_app?: {
+          /** Format: date-time */
+          created_at: string | null;
+          description: string | null;
+          /** @description The list of events for the GitHub app */
+          events?: (
+            | "branch_protection_rule"
+            | "check_run"
+            | "check_suite"
+            | "code_scanning_alert"
+            | "commit_comment"
+            | "content_reference"
+            | "create"
+            | "delete"
+            | "deployment"
+            | "deployment_review"
+            | "deployment_status"
+            | "deploy_key"
+            | "discussion"
+            | "discussion_comment"
+            | "fork"
+            | "gollum"
+            | "issues"
+            | "issue_comment"
+            | "label"
+            | "member"
+            | "membership"
+            | "milestone"
+            | "organization"
+            | "org_block"
+            | "page_build"
+            | "project"
+            | "project_card"
+            | "project_column"
+            | "public"
+            | "pull_request"
+            | "pull_request_review"
+            | "pull_request_review_comment"
+            | "push"
+            | "registry_package"
+            | "release"
+            | "repository"
+            | "repository_dispatch"
+            | "secret_scanning_alert"
+            | "star"
+            | "status"
+            | "team"
+            | "team_add"
+            | "watch"
+            | "workflow_dispatch"
+            | "workflow_run"
+            | "reminder"
+            | "pull_request_review_thread"
+          )[];
+          /** Format: uri */
+          external_url: string | null;
+          /** Format: uri */
+          html_url: string;
+          /** @description Unique identifier of the GitHub app */
+          id: number | null;
+          /** @description The name of the GitHub app */
+          name: string;
+          node_id: string;
+          /** User */
+          owner: {
+            /** Format: uri */
+            avatar_url?: string;
+            deleted?: boolean;
+            email?: string | null;
+            /** Format: uri-template */
+            events_url?: string;
+            /** Format: uri */
+            followers_url?: string;
+            /** Format: uri-template */
+            following_url?: string;
+            /** Format: uri-template */
+            gists_url?: string;
+            gravatar_id?: string;
+            /** Format: uri */
+            html_url?: string;
+            id: number;
+            login: string;
+            name?: string;
+            node_id?: string;
+            /** Format: uri */
+            organizations_url?: string;
+            /** Format: uri */
+            received_events_url?: string;
+            /** Format: uri */
+            repos_url?: string;
+            site_admin?: boolean;
+            /** Format: uri-template */
+            starred_url?: string;
+            /** Format: uri */
+            subscriptions_url?: string;
+            /** @enum {string} */
+            type?: "Bot" | "User" | "Organization";
+            /** Format: uri */
+            url?: string;
+            user_view_type?: string;
+          } | null;
+          /** @description The set of permissions for the GitHub app */
+          permissions?: {
+            /** @enum {string} */
+            actions?: "read" | "write";
+            /** @enum {string} */
+            administration?: "read" | "write";
+            /** @enum {string} */
+            checks?: "read" | "write";
+            /** @enum {string} */
+            content_references?: "read" | "write";
+            /** @enum {string} */
+            contents?: "read" | "write";
+            /** @enum {string} */
+            deployments?: "read" | "write";
+            /** @enum {string} */
+            discussions?: "read" | "write";
+            /** @enum {string} */
+            emails?: "read" | "write";
+            /** @enum {string} */
+            environments?: "read" | "write";
+            /** @enum {string} */
+            issues?: "read" | "write";
+            /** @enum {string} */
+            keys?: "read" | "write";
+            /** @enum {string} */
+            members?: "read" | "write";
+            /** @enum {string} */
+            metadata?: "read" | "write";
+            /** @enum {string} */
+            organization_administration?: "read" | "write";
+            /** @enum {string} */
+            organization_hooks?: "read" | "write";
+            /** @enum {string} */
+            organization_packages?: "read" | "write";
+            /** @enum {string} */
+            organization_plan?: "read" | "write";
+            /** @enum {string} */
+            organization_projects?: "read" | "write" | "admin";
+            /** @enum {string} */
+            organization_secrets?: "read" | "write";
+            /** @enum {string} */
+            organization_self_hosted_runners?: "read" | "write";
+            /** @enum {string} */
+            organization_user_blocking?: "read" | "write";
+            /** @enum {string} */
+            packages?: "read" | "write";
+            /** @enum {string} */
+            pages?: "read" | "write";
+            /** @enum {string} */
+            pull_requests?: "read" | "write";
+            /** @enum {string} */
+            repository_hooks?: "read" | "write";
+            /** @enum {string} */
+            repository_projects?: "read" | "write";
+            /** @enum {string} */
+            secret_scanning_alerts?: "read" | "write";
+            /** @enum {string} */
+            secrets?: "read" | "write";
+            /** @enum {string} */
+            security_events?: "read" | "write";
+            /** @enum {string} */
+            security_scanning_alert?: "read" | "write";
+            /** @enum {string} */
+            single_file?: "read" | "write";
+            /** @enum {string} */
+            statuses?: "read" | "write";
             /** @enum {string} */
             vulnerability_alerts?: "read" | "write";
             /** @enum {string} */
@@ -11514,63 +13294,17 @@ export interface components {
       repository: components["schemas"]["repository-webhooks"];
       sender: components["schemas"]["simple-user"];
     };
-    /** Sub-issues Summary */
-    "sub-issues-summary": {
-      total: number;
-      completed: number;
-      percent_completed: number;
+    /** @description The changes to the comment. */
+    webhooks_changes: {
+      body?: {
+        /** @description The previous version of the body. */
+        from: string;
+      };
     };
-    /** Issue Dependencies Summary */
-    "issue-dependencies-summary": {
-      blocked_by: number;
-      blocking: number;
-      total_blocked_by: number;
-      total_blocking: number;
-    };
-    /**
-     * Issue Type
-     * @description The type of issue.
-     */
-    "issue-type": {
-      /** @description The unique identifier of the issue type. */
-      id: number;
-      /** @description The node identifier of the issue type. */
-      node_id: string;
-      /** @description The name of the issue type. */
-      name: string;
-      /** @description The description of the issue type. */
-      description: string | null;
-      /**
-       * @description The color of the issue type.
-       * @enum {string|null}
-       */
-      color?:
-        | "gray"
-        | "blue"
-        | "green"
-        | "yellow"
-        | "orange"
-        | "red"
-        | "pink"
-        | "purple"
-        | null;
-      /**
-       * Format: date-time
-       * @description The time the issue type created.
-       */
-      created_at?: string;
-      /**
-       * Format: date-time
-       * @description The time the issue type last updated.
-       */
-      updated_at?: string;
-      /** @description The enabled state of the issue type. */
-      is_enabled?: boolean;
-    } | null;
-    /** issue_comment deleted event */
-    "webhook-issue-comment-deleted": {
+    /** issue_comment pinned event */
+    "webhook-issue-comment-pinned": {
       /** @enum {string} */
-      action: "deleted";
+      action: "pinned";
       comment: components["schemas"]["webhooks_issue_comment"];
       enterprise?: components["schemas"]["enterprise-webhooks"];
       installation?: components["schemas"]["simple-installation"];
@@ -12168,106 +13902,10 @@ export interface components {
       repository: components["schemas"]["repository-webhooks"];
       sender: components["schemas"]["simple-user"];
     };
-    /**
-     * issue comment
-     * @description The [comment](https://docs.github.com/rest/issues/comments#get-an-issue-comment) itself.
-     */
-    webhooks_issue_comment: {
-      /**
-       * AuthorAssociation
-       * @description How the author is associated with the repository.
-       * @enum {string}
-       */
-      author_association:
-        | "COLLABORATOR"
-        | "CONTRIBUTOR"
-        | "FIRST_TIMER"
-        | "FIRST_TIME_CONTRIBUTOR"
-        | "MANNEQUIN"
-        | "MEMBER"
-        | "NONE"
-        | "OWNER";
-      /** @description Contents of the issue comment */
-      body: string;
-      /** Format: date-time */
-      created_at: string;
-      /** Format: uri */
-      html_url: string;
-      /**
-       * Format: int64
-       * @description Unique identifier of the issue comment
-       */
-      id: number;
-      /** Format: uri */
-      issue_url: string;
-      node_id: string;
-      performed_via_github_app: components["schemas"]["integration"];
-      /** Reactions */
-      reactions: {
-        "+1": number;
-        "-1": number;
-        confused: number;
-        eyes: number;
-        heart: number;
-        hooray: number;
-        laugh: number;
-        rocket: number;
-        total_count: number;
-        /** Format: uri */
-        url: string;
-      };
-      /** Format: date-time */
-      updated_at: string;
-      /**
-       * Format: uri
-       * @description URL for the issue comment
-       */
-      url: string;
-      /** User */
-      user: {
-        /** Format: uri */
-        avatar_url?: string;
-        deleted?: boolean;
-        email?: string | null;
-        /** Format: uri-template */
-        events_url?: string;
-        /** Format: uri */
-        followers_url?: string;
-        /** Format: uri-template */
-        following_url?: string;
-        /** Format: uri-template */
-        gists_url?: string;
-        gravatar_id?: string;
-        /** Format: uri */
-        html_url?: string;
-        /** Format: int64 */
-        id: number;
-        login: string;
-        name?: string;
-        node_id?: string;
-        /** Format: uri */
-        organizations_url?: string;
-        /** Format: uri */
-        received_events_url?: string;
-        /** Format: uri */
-        repos_url?: string;
-        site_admin?: boolean;
-        /** Format: uri-template */
-        starred_url?: string;
-        /** Format: uri */
-        subscriptions_url?: string;
-        /** @enum {string} */
-        type?: "Bot" | "User" | "Organization" | "Mannequin";
-        /** Format: uri */
-        url?: string;
-        user_view_type?: string;
-      } | null;
-    };
-    /** issue_comment edited event */
-    "webhook-issue-comment-edited": {
+    /** issue_comment unpinned event */
+    "webhook-issue-comment-unpinned": {
       /** @enum {string} */
-      action: "edited";
-      changes: components["schemas"]["webhooks_changes"];
+      action: "unpinned";
       comment: components["schemas"]["webhooks_issue_comment"];
       enterprise?: components["schemas"]["enterprise-webhooks"];
       installation?: components["schemas"]["simple-installation"];
@@ -12532,8 +14170,6 @@ export interface components {
             | "watch"
             | "workflow_dispatch"
             | "workflow_run"
-            | "reminder"
-            | "pull_request_review_thread"
           )[];
           /** Format: uri */
           external_url: string | null;
@@ -12619,7 +14255,7 @@ export interface components {
             /** @enum {string} */
             organization_plan?: "read" | "write";
             /** @enum {string} */
-            organization_projects?: "read" | "write" | "admin";
+            organization_projects?: "read" | "write";
             /** @enum {string} */
             organization_secrets?: "read" | "write";
             /** @enum {string} */
@@ -12860,30 +14496,24 @@ export interface components {
           subscriptions_url?: string;
           type?: string;
           url?: string;
+          user_view_type?: string;
         };
       };
       organization?: components["schemas"]["organization-simple-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
       sender: components["schemas"]["simple-user"];
     };
-    /** @description The changes to the comment. */
-    webhooks_changes: {
-      body?: {
-        /** @description The previous version of the body. */
-        from: string;
-      };
-    };
     /** blocked by issue added event */
     "webhook-issue-dependencies-blocked-by-added": {
       /** @enum {string} */
       action: "blocked_by_added";
       /** @description The ID of the blocked issue. */
-      blocked_issue_id: number;
-      blocked_issue: components["schemas"]["issue"];
+      blocked_issue_id?: number;
+      blocked_issue?: components["schemas"]["issue"];
       /** @description The ID of the blocking issue. */
-      blocking_issue_id: number;
-      blocking_issue: components["schemas"]["issue"];
-      blocking_issue_repo: components["schemas"]["repository"];
+      blocking_issue_id?: number;
+      blocking_issue?: components["schemas"]["issue"];
+      blocking_issue_repo?: components["schemas"]["repository"];
       installation?: components["schemas"]["simple-installation"];
       organization: components["schemas"]["organization-simple-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
@@ -12944,11 +14574,13 @@ export interface components {
             description?: string | null;
             color?: string | null;
             default?: boolean;
+            /** @description The user who archived the label, or `null` if it has not been archived. */
+            archived_by?: null;
           },
         ]
       >[];
       assignee: null | components["schemas"]["simple-user"];
-      assignees?: components["schemas"]["simple-user"][] | null;
+      assignees?: components["schemas"]["simple-user"][];
       milestone: null | components["schemas"]["milestone"];
       locked: boolean;
       active_lock_reason?: string | null;
@@ -12988,6 +14620,7 @@ export interface components {
        * @description URL to get the parent issue of this issue, if it is a sub-issue
        */
       parent_issue_url?: string | null;
+      pinned_comment?: null | components["schemas"]["issue-comment"];
       issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
       issue_field_values?: components["schemas"]["issue-field-value"][];
     };
@@ -13006,6 +14639,41 @@ export interface components {
       rocket: number;
     };
     /**
+     * Issue Comment
+     * @description Comments provide a way for people to collaborate on an issue.
+     */
+    "issue-comment": {
+      /**
+       * Format: int64
+       * @description Unique identifier of the issue comment
+       */
+      id: number;
+      node_id: string;
+      /**
+       * Format: uri
+       * @description URL for the issue comment
+       */
+      url: string;
+      /** @description Contents of the issue comment */
+      body?: string;
+      body_text?: string;
+      body_html?: string;
+      /** Format: uri */
+      html_url: string;
+      user: null | components["schemas"]["simple-user"];
+      /** Format: date-time */
+      created_at: string;
+      /** Format: date-time */
+      updated_at: string;
+      /** Format: uri */
+      issue_url: string;
+      author_association?: components["schemas"]["author-association"];
+      performed_via_github_app?: null | components["schemas"]["integration"];
+      reactions?: components["schemas"]["reaction-rollup"];
+      pin?: null | components["schemas"]["pinned-issue-comment"];
+      minimized?: null | components["schemas"]["issue-comment-minimized"];
+    };
+    /**
      * Issue Field Value
      * @description A value assigned to an issue field
      */
@@ -13015,12 +14683,14 @@ export interface components {
        * @description Unique identifier for the issue field.
        */
       issue_field_id: number;
+      /** @description The human-readable name of the issue field. */
+      issue_field_name?: string;
       node_id: string;
       /**
        * @description The data type of the issue field
        * @enum {string}
        */
-      data_type: "text" | "single_select" | "number" | "date";
+      data_type: "text" | "single_select" | "multi_select" | "number" | "date";
       /** @description The value of the issue field */
       value: null | string | number;
       /** @description Details about the selected option (only present for single_select fields) */
@@ -13035,18 +14705,32 @@ export interface components {
         /** @description The color of the option */
         color: string;
       } | null;
+      /** @description Details about the selected options */
+      multi_select_options?:
+        | {
+            /**
+             * Format: int64
+             * @description Unique identifier for the option.
+             */
+            id: number;
+            /** @description The name of the option */
+            name: string;
+            /** @description The color of the option */
+            color: string;
+          }[]
+        | null;
     };
     /** blocked by issue removed event */
     "webhook-issue-dependencies-blocked-by-removed": {
       /** @enum {string} */
       action: "blocked_by_removed";
       /** @description The ID of the blocked issue. */
-      blocked_issue_id: number;
-      blocked_issue: components["schemas"]["issue"];
+      blocked_issue_id?: number;
+      blocked_issue?: components["schemas"]["issue"];
       /** @description The ID of the blocking issue. */
-      blocking_issue_id: number;
-      blocking_issue: components["schemas"]["issue"];
-      blocking_issue_repo: components["schemas"]["repository"];
+      blocking_issue_id?: number;
+      blocking_issue?: components["schemas"]["issue"];
+      blocking_issue_repo?: components["schemas"]["repository"];
       installation?: components["schemas"]["simple-installation"];
       organization: components["schemas"]["organization-simple-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
@@ -13057,12 +14741,12 @@ export interface components {
       /** @enum {string} */
       action: "blocking_added";
       /** @description The ID of the blocked issue. */
-      blocked_issue_id: number;
-      blocked_issue: components["schemas"]["issue"];
-      blocked_issue_repo: components["schemas"]["repository"];
+      blocked_issue_id?: number;
+      blocked_issue?: components["schemas"]["issue"];
+      blocked_issue_repo?: components["schemas"]["repository"];
       /** @description The ID of the blocking issue. */
-      blocking_issue_id: number;
-      blocking_issue: components["schemas"]["issue"];
+      blocking_issue_id?: number;
+      blocking_issue?: components["schemas"]["issue"];
       installation?: components["schemas"]["simple-installation"];
       organization: components["schemas"]["organization-simple-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
@@ -13073,12 +14757,42 @@ export interface components {
       /** @enum {string} */
       action: "blocking_removed";
       /** @description The ID of the blocked issue. */
-      blocked_issue_id: number;
-      blocked_issue: components["schemas"]["issue"];
-      blocked_issue_repo: components["schemas"]["repository"];
+      blocked_issue_id?: number;
+      blocked_issue?: components["schemas"]["issue"];
+      blocked_issue_repo?: components["schemas"]["repository"];
       /** @description The ID of the blocking issue. */
-      blocking_issue_id: number;
-      blocking_issue: components["schemas"]["issue"];
+      blocking_issue_id?: number;
+      blocking_issue?: components["schemas"]["issue"];
+      installation?: components["schemas"]["simple-installation"];
+      organization: components["schemas"]["organization-simple-webhooks"];
+      repository: components["schemas"]["repository-webhooks"];
+      sender: components["schemas"]["simple-user"];
+    };
+    /** relates to issue added event */
+    "webhook-issue-relates-to-added": {
+      /** @enum {string} */
+      action: "relates_to_added";
+      /** @description The ID of the issue the relationship was added to. */
+      issue_id?: number;
+      issue?: components["schemas"]["issue"];
+      /** @description The ID of the related issue. Only present when both issues belong to the same repository. */
+      related_issue_id?: number;
+      related_issue?: components["schemas"]["issue"];
+      installation?: components["schemas"]["simple-installation"];
+      organization: components["schemas"]["organization-simple-webhooks"];
+      repository: components["schemas"]["repository-webhooks"];
+      sender: components["schemas"]["simple-user"];
+    };
+    /** relates to issue removed event */
+    "webhook-issue-relates-to-removed": {
+      /** @enum {string} */
+      action: "relates_to_removed";
+      /** @description The ID of the issue the relationship was removed from. */
+      issue_id?: number;
+      issue?: components["schemas"]["issue"];
+      /** @description The ID of the related issue. Only present when both issues belong to the same repository. */
+      related_issue_id?: number;
+      related_issue?: components["schemas"]["issue"];
       installation?: components["schemas"]["simple-installation"];
       organization: components["schemas"]["organization-simple-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
@@ -13480,8 +15194,6 @@ export interface components {
           /** @enum {string} */
           statuses?: "read" | "write";
           /** @enum {string} */
-          team_discussions?: "read" | "write";
-          /** @enum {string} */
           vulnerability_alerts?: "read" | "write";
           /** @enum {string} */
           workflows?: "read" | "write";
@@ -13519,6 +15231,7 @@ export interface components {
       };
       /** Format: uri */
       repository_url: string;
+      pinned_comment?: null | components["schemas"]["issue-comment"];
       sub_issues_summary?: components["schemas"]["sub-issues-summary"];
       issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
       issue_field_values?: components["schemas"]["issue-field-value"][];
@@ -13968,8 +15681,6 @@ export interface components {
             /** @enum {string} */
             statuses?: "read" | "write";
             /** @enum {string} */
-            team_discussions?: "read" | "write";
-            /** @enum {string} */
             vulnerability_alerts?: "read" | "write";
             /** @enum {string} */
             workflows?: "read" | "write";
@@ -14007,6 +15718,7 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
+        pinned_comment?: null | components["schemas"]["issue-comment"];
         sub_issues_summary?: components["schemas"]["sub-issues-summary"];
         issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
         issue_field_values?: components["schemas"]["issue-field-value"][];
@@ -14519,8 +16231,6 @@ export interface components {
             /** @enum {string} */
             statuses?: "read" | "write";
             /** @enum {string} */
-            team_discussions?: "read" | "write";
-            /** @enum {string} */
             vulnerability_alerts?: "read" | "write";
             /** @enum {string} */
             workflows?: "read" | "write";
@@ -14558,6 +16268,7 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
+        pinned_comment?: null | components["schemas"]["issue-comment"];
         sub_issues_summary?: components["schemas"]["sub-issues-summary"];
         issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
         issue_field_values?: components["schemas"]["issue-field-value"][];
@@ -15006,8 +16717,6 @@ export interface components {
             /** @enum {string} */
             statuses?: "read" | "write";
             /** @enum {string} */
-            team_discussions?: "read" | "write";
-            /** @enum {string} */
             vulnerability_alerts?: "read" | "write";
             /** @enum {string} */
             workflows?: "read" | "write";
@@ -15045,6 +16754,7 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
+        pinned_comment?: null | components["schemas"]["issue-comment"];
         sub_issues_summary?: components["schemas"]["sub-issues-summary"];
         issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
         issue_field_values?: components["schemas"]["issue-field-value"][];
@@ -15581,8 +17291,6 @@ export interface components {
             /** @enum {string} */
             statuses?: "read" | "write";
             /** @enum {string} */
-            team_discussions?: "read" | "write";
-            /** @enum {string} */
             vulnerability_alerts?: "read" | "write";
             /** @enum {string} */
             workflows?: "read" | "write";
@@ -15620,6 +17328,7 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
+        pinned_comment?: null | components["schemas"]["issue-comment"];
         sub_issues_summary?: components["schemas"]["sub-issues-summary"];
         issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
         issue_field_values?: components["schemas"]["issue-field-value"][];
@@ -15682,6 +17391,143 @@ export interface components {
         } | null;
       };
       label?: components["schemas"]["webhooks_label"];
+      organization?: components["schemas"]["organization-simple-webhooks"];
+      repository: components["schemas"]["repository-webhooks"];
+      sender: components["schemas"]["simple-user"];
+    };
+    /** issues field_added event */
+    "webhook-issues-field-added": {
+      /** @enum {string} */
+      action: "field_added";
+      enterprise?: components["schemas"]["enterprise-webhooks"];
+      installation?: components["schemas"]["simple-installation"];
+      issue: components["schemas"]["webhooks_issue"];
+      /** @description The issue field whose value was set or updated on the issue. */
+      issue_field: {
+        /** @description The unique identifier of the issue field. */
+        id: number;
+        /** @description The name of the issue field. */
+        name: string;
+        /**
+         * @description The data type of the issue field.
+         * @enum {string}
+         */
+        field_type:
+          | "text"
+          | "date"
+          | "single_select"
+          | "multi_select"
+          | "number";
+      };
+      /** @description The value that was set or updated for the issue field. When updating an existing value, the previous value is available in `changes`. */
+      issue_field_value?: {
+        /** @description The unique identifier of the issue field value. */
+        id: number;
+        /** @description The value of the field. Present for text, date, and number field types. */
+        value?: null | string | number;
+        /** @description The identifier of the selected option. Present for single_select field types. */
+        value_id?: number;
+        /** @description The selected option details. Present for single_select field types. */
+        option?: {
+          id?: number;
+          name?: string;
+          color?: string;
+          description?: string | null;
+        };
+        /** @description The identifiers of the selected options. Present for multi_select field types. */
+        value_ids?: number[];
+        /** @description The selected option details. Present for multi_select field types. */
+        options?: {
+          id?: number;
+          name?: string;
+          color?: string;
+          description?: string | null;
+        }[];
+      };
+      /** @description The previous field value, present when an existing value was updated. */
+      changes?: {
+        /** @description The previous issue field value data. */
+        issue_field_value?: {
+          /** @description The previous value of the issue field before the update. */
+          from: {
+            /** @description The unique identifier of the issue field value. */
+            id: number;
+            /** @description The previous value. Present for text, date, and number field types. */
+            value?: null | string | number;
+            /** @description The identifier of the previously selected option. Present for single_select field types. */
+            value_id?: number;
+            /** @description The previously selected option details. Present for single_select field types. */
+            option?: {
+              id?: number;
+              name?: string;
+              color?: string;
+              description?: string | null;
+            };
+            /** @description The identifiers of the previously selected options. Present for multi_select field types. */
+            value_ids?: number[];
+            /** @description The previously selected option details. Present for multi_select field types. */
+            options?: {
+              id?: number;
+              name?: string;
+              color?: string;
+              description?: string | null;
+            }[];
+          };
+        };
+      };
+      organization?: components["schemas"]["organization-simple-webhooks"];
+      repository: components["schemas"]["repository-webhooks"];
+      sender: components["schemas"]["simple-user"];
+    };
+    /** issues field_removed event */
+    "webhook-issues-field-removed": {
+      /** @enum {string} */
+      action: "field_removed";
+      enterprise?: components["schemas"]["enterprise-webhooks"];
+      installation?: components["schemas"]["simple-installation"];
+      issue: components["schemas"]["webhooks_issue"];
+      /** @description The issue field whose value was cleared from the issue. */
+      issue_field: {
+        /** @description The unique identifier of the issue field. */
+        id: number;
+        /** @description The name of the issue field. */
+        name: string;
+        /**
+         * @description The data type of the issue field.
+         * @enum {string}
+         */
+        field_type:
+          | "text"
+          | "date"
+          | "single_select"
+          | "multi_select"
+          | "number";
+      };
+      /** @description The value that was cleared from the issue field. */
+      issue_field_value?: {
+        /** @description The unique identifier of the issue field value. */
+        id: number;
+        /** @description The value of the field. Present for text, date, and number field types. */
+        value?: null | string | number;
+        /** @description The identifier of the selected option. Present for single_select field types. */
+        value_id?: number;
+        /** @description The selected option details. Present for single_select field types. */
+        option?: {
+          id?: number;
+          name?: string;
+          color?: string;
+          description?: string | null;
+        };
+        /** @description The identifiers of the selected options. Present for multi_select field types. */
+        value_ids?: number[];
+        /** @description The selected option details. Present for multi_select field types. */
+        options?: {
+          id?: number;
+          name?: string;
+          color?: string;
+          description?: string | null;
+        }[];
+      };
       organization?: components["schemas"]["organization-simple-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
       sender: components["schemas"]["simple-user"];
@@ -15813,6 +17659,13 @@ export interface components {
           color: string;
           default: boolean;
           description: string | null;
+          /**
+           * Format: date-time
+           * @description Timestamp indicating when the label was archived, or `null` if it has not been archived.
+           */
+          archived_at: string | null;
+          /** @description The user who archived the label, or `null` if it has not been archived. */
+          archived_by: null;
           id: number;
           /** @description The name of the label. */
           name: string;
@@ -16072,8 +17925,6 @@ export interface components {
             /** @enum {string} */
             statuses?: "read" | "write";
             /** @enum {string} */
-            team_discussions?: "read" | "write";
-            /** @enum {string} */
             vulnerability_alerts?: "read" | "write";
             /** @enum {string} */
             workflows?: "read" | "write";
@@ -16111,6 +17962,7 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
+        pinned_comment?: null | components["schemas"]["issue-comment"];
         sub_issues_summary?: components["schemas"]["sub-issues-summary"];
         issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
         issue_field_values?: components["schemas"]["issue-field-value"][];
@@ -16565,8 +18417,6 @@ export interface components {
             /** @enum {string} */
             statuses?: "read" | "write";
             /** @enum {string} */
-            team_discussions?: "read" | "write";
-            /** @enum {string} */
             vulnerability_alerts?: "read" | "write";
             /** @enum {string} */
             workflows?: "read" | "write";
@@ -16604,6 +18454,7 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
+        pinned_comment?: null | components["schemas"]["issue-comment"];
         sub_issues_summary?: components["schemas"]["sub-issues-summary"];
         issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
         issue_field_values?: components["schemas"]["issue-field-value"][];
@@ -17053,8 +18904,6 @@ export interface components {
             /** @enum {string} */
             statuses?: "read" | "write";
             /** @enum {string} */
-            team_discussions?: "read" | "write";
-            /** @enum {string} */
             vulnerability_alerts?: "read" | "write";
             /** @enum {string} */
             workflows?: "read" | "write";
@@ -17092,6 +18941,7 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
+        pinned_comment?: null | components["schemas"]["issue-comment"];
         sub_issues_summary?: components["schemas"]["sub-issues-summary"];
         issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
         issue_field_values?: components["schemas"]["issue-field-value"][];
@@ -17542,8 +19392,6 @@ export interface components {
               /** @enum {string} */
               statuses?: "read" | "write";
               /** @enum {string} */
-              team_discussions?: "read" | "write";
-              /** @enum {string} */
               vulnerability_alerts?: "read" | "write";
               /** @enum {string} */
               workflows?: "read" | "write";
@@ -17601,6 +19449,7 @@ export interface components {
            * @description URL for the issue
            */
           url?: string;
+          pinned_comment?: null | components["schemas"]["issue-comment"];
           /** User */
           user?: {
             /** Format: uri */
@@ -17734,6 +19583,16 @@ export interface components {
           git_url: string;
           /** @description Whether the repository has discussions enabled. */
           has_discussions?: boolean;
+          /**
+           * @description Whether pull requests are enabled.
+           * @default true
+           */
+          has_pull_requests?: boolean;
+          /**
+           * @description The policy controlling who can create pull requests: all or collaborators_only.
+           * @enum {string}
+           */
+          pull_request_creation_policy?: "all" | "collaborators_only";
           /**
            * @description Whether downloads are enabled.
            * @default true
@@ -18274,8 +20133,6 @@ export interface components {
             /** @enum {string} */
             statuses?: "read" | "write";
             /** @enum {string} */
-            team_discussions?: "read" | "write";
-            /** @enum {string} */
             vulnerability_alerts?: "read" | "write";
             /** @enum {string} */
             workflows?: "read" | "write";
@@ -18334,6 +20191,7 @@ export interface components {
          * @description URL for the issue
          */
         url: string;
+        pinned_comment?: null | components["schemas"]["issue-comment"];
         /** User */
         user: {
           /** Format: uri */
@@ -18768,8 +20626,6 @@ export interface components {
           /** @enum {string} */
           statuses?: "read" | "write";
           /** @enum {string} */
-          team_discussions?: "read" | "write";
-          /** @enum {string} */
           vulnerability_alerts?: "read" | "write";
           /** @enum {string} */
           workflows?: "read" | "write";
@@ -18807,6 +20663,7 @@ export interface components {
       };
       /** Format: uri */
       repository_url: string;
+      pinned_comment?: null | components["schemas"]["issue-comment"];
       sub_issues_summary?: components["schemas"]["sub-issues-summary"];
       issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
       issue_field_values?: components["schemas"]["issue-field-value"][];
@@ -19253,8 +21110,6 @@ export interface components {
             /** @enum {string} */
             statuses?: "read" | "write";
             /** @enum {string} */
-            team_discussions?: "read" | "write";
-            /** @enum {string} */
             vulnerability_alerts?: "read" | "write";
             /** @enum {string} */
             workflows?: "read" | "write";
@@ -19292,6 +21147,7 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
+        pinned_comment?: null | components["schemas"]["issue-comment"];
         sub_issues_summary?: components["schemas"]["sub-issues-summary"];
         issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
         issue_field_values?: components["schemas"]["issue-field-value"][];
@@ -19741,8 +21597,6 @@ export interface components {
               /** @enum {string} */
               statuses?: "read" | "write";
               /** @enum {string} */
-              team_discussions?: "read" | "write";
-              /** @enum {string} */
               vulnerability_alerts?: "read" | "write";
               /** @enum {string} */
               workflows?: "read" | "write";
@@ -19780,6 +21634,7 @@ export interface components {
           };
           /** Format: uri */
           repository_url: string;
+          pinned_comment?: null | components["schemas"]["issue-comment"];
           sub_issues_summary?: components["schemas"]["sub-issues-summary"];
           issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
           issue_field_values?: components["schemas"]["issue-field-value"][];
@@ -19957,6 +21812,16 @@ export interface components {
            * @default false
            */
           has_discussions: boolean;
+          /**
+           * @description Whether pull requests are enabled.
+           * @default true
+           */
+          has_pull_requests?: boolean;
+          /**
+           * @description The policy controlling who can create pull requests: all or collaborators_only.
+           * @enum {string}
+           */
+          pull_request_creation_policy?: "all" | "collaborators_only";
           homepage: string | null;
           /** Format: uri */
           hooks_url: string;
@@ -20562,8 +22427,6 @@ export interface components {
             /** @enum {string} */
             statuses?: "read" | "write";
             /** @enum {string} */
-            team_discussions?: "read" | "write";
-            /** @enum {string} */
             vulnerability_alerts?: "read" | "write";
             /** @enum {string} */
             workflows?: "read" | "write";
@@ -20601,6 +22464,7 @@ export interface components {
         };
         /** Format: uri */
         repository_url: string;
+        pinned_comment?: null | components["schemas"]["issue-comment"];
         sub_issues_summary?: components["schemas"]["sub-issues-summary"];
         issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
         issue_field_values?: components["schemas"]["issue-field-value"][];
@@ -20689,6 +22553,27 @@ export interface components {
       repository: components["schemas"]["repository-webhooks"];
       sender: components["schemas"]["simple-user"];
     };
+    /** label archived event */
+    "webhook-label-archived": {
+      /** @enum {string} */
+      action: "archived";
+      enterprise?: components["schemas"]["enterprise-webhooks"];
+      installation?: components["schemas"]["simple-installation"];
+      label: components["schemas"]["webhooks_label_archived"];
+      organization?: components["schemas"]["organization-simple-webhooks"];
+      repository: components["schemas"]["repository-webhooks"];
+      sender: components["schemas"]["simple-user"];
+    };
+    /** Archived label */
+    webhooks_label_archived: components["schemas"]["webhooks_label"] & {
+      /**
+       * Format: date-time
+       * @description Timestamp indicating when the label was archived.
+       */
+      archived_at: string;
+      /** @description The user who archived the label. */
+      archived_by: components["schemas"]["simple-user"];
+    };
     /** label created event */
     "webhook-label-created": {
       /** @enum {string} */
@@ -20736,6 +22621,27 @@ export interface components {
       organization?: components["schemas"]["organization-simple-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
       sender: components["schemas"]["simple-user"];
+    };
+    /** label unarchived event */
+    "webhook-label-unarchived": {
+      /** @enum {string} */
+      action: "unarchived";
+      enterprise?: components["schemas"]["enterprise-webhooks"];
+      installation?: components["schemas"]["simple-installation"];
+      label: components["schemas"]["webhooks_label_unarchived"];
+      organization?: components["schemas"]["organization-simple-webhooks"];
+      repository: components["schemas"]["repository-webhooks"];
+      sender: components["schemas"]["simple-user"];
+    };
+    /** Unarchived label */
+    webhooks_label_unarchived: components["schemas"]["webhooks_label"] & {
+      /**
+       * Format: date-time
+       * @description Timestamp indicating when the label was archived. This is `null` after the label is unarchived.
+       */
+      archived_at: string | null;
+      /** @description The user who archived the label. This is `null` after the label is unarchived. */
+      archived_by: null;
     };
     /** marketplace_purchase cancelled event */
     "webhook-marketplace-purchase-cancelled": {
@@ -23768,6 +25674,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -24117,6 +26033,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -24627,6 +26553,7 @@ export interface components {
         review_comments?: number;
         /** Format: uri */
         review_comments_url: string;
+        stack?: components["schemas"]["pull-request-stack"];
         /**
          * @description State of this Pull Request. Either `open` or `closed`.
          * @enum {string}
@@ -24691,7 +26618,7 @@ export interface components {
       action: "auto_merge_disabled";
       enterprise?: components["schemas"]["enterprise-webhooks"];
       installation?: components["schemas"]["simple-installation"];
-      number: number;
+      number: components["schemas"]["webhooks_number"];
       organization?: components["schemas"]["organization-simple-webhooks"];
       /** Pull Request */
       pull_request: {
@@ -24990,6 +26917,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             has_pages: boolean;
             /**
              * @description Whether projects are enabled.
@@ -25350,6 +27287,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -25860,6 +27807,7 @@ export interface components {
         review_comments?: number;
         /** Format: uri */
         review_comments_url: string;
+        stack?: components["schemas"]["pull-request-stack"];
         /**
          * @description State of this Pull Request. Either `open` or `closed`.
          * @enum {string}
@@ -25923,7 +27871,7 @@ export interface components {
       action: "auto_merge_enabled";
       enterprise?: components["schemas"]["enterprise-webhooks"];
       installation?: components["schemas"]["simple-installation"];
-      number: number;
+      number: components["schemas"]["webhooks_number"];
       organization?: components["schemas"]["organization-simple-webhooks"];
       /** Pull Request */
       pull_request: {
@@ -26233,6 +28181,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -26582,6 +28540,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -27089,6 +29057,7 @@ export interface components {
         review_comments?: number;
         /** Format: uri */
         review_comments_url: string;
+        stack?: components["schemas"]["pull-request-stack"];
         /**
          * @description State of this Pull Request. Either `open` or `closed`.
          * @enum {string}
@@ -27224,12 +29193,13 @@ export interface components {
       /** @enum {string} */
       action: "demilestoned";
       enterprise?: components["schemas"]["enterprise-webhooks"];
+      installation?: components["schemas"]["simple-installation"];
       milestone?: components["schemas"]["milestone"];
       number: components["schemas"]["webhooks_number"];
       organization?: components["schemas"]["organization-simple-webhooks"];
       pull_request: components["schemas"]["webhooks_pull_request_5"];
       repository: components["schemas"]["repository-webhooks"];
-      sender?: components["schemas"]["simple-user"];
+      sender: components["schemas"]["simple-user"];
     };
     /** Pull Request */
     webhooks_pull_request_5: {
@@ -27539,6 +29509,16 @@ export interface components {
            * @default false
            */
           has_discussions: boolean;
+          /**
+           * @description Whether pull requests are enabled.
+           * @default true
+           */
+          has_pull_requests?: boolean;
+          /**
+           * @description The policy controlling who can create pull requests: all or collaborators_only.
+           * @enum {string}
+           */
+          pull_request_creation_policy?: "all" | "collaborators_only";
           homepage: string | null;
           /** Format: uri */
           hooks_url: string;
@@ -27885,6 +29865,16 @@ export interface components {
            * @default false
            */
           has_discussions: boolean;
+          /**
+           * @description Whether pull requests are enabled.
+           * @default true
+           */
+          has_pull_requests?: boolean;
+          /**
+           * @description The policy controlling who can create pull requests: all or collaborators_only.
+           * @enum {string}
+           */
+          pull_request_creation_policy?: "all" | "collaborators_only";
           homepage: string | null;
           /** Format: uri */
           hooks_url: string;
@@ -28391,6 +30381,7 @@ export interface components {
       review_comments?: number;
       /** Format: uri */
       review_comments_url: string;
+      stack?: components["schemas"]["pull-request-stack"];
       /**
        * @description State of this Pull Request. Either `open` or `closed`.
        * @enum {string}
@@ -28450,7 +30441,7 @@ export interface components {
       action: "dequeued";
       enterprise?: components["schemas"]["enterprise-webhooks"];
       installation?: components["schemas"]["simple-installation"];
-      number: number;
+      number: components["schemas"]["webhooks_number"];
       organization?: components["schemas"]["organization-simple-webhooks"];
       /** Pull Request */
       pull_request: {
@@ -28760,6 +30751,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -29109,6 +31110,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -29619,6 +31630,7 @@ export interface components {
         review_comments?: number;
         /** Format: uri */
         review_comments_url: string;
+        stack?: components["schemas"]["pull-request-stack"];
         /**
          * @description State of this Pull Request. Either `open` or `closed`.
          * @enum {string}
@@ -29718,7 +31730,7 @@ export interface components {
       organization?: components["schemas"]["organization-simple-webhooks"];
       pull_request: components["schemas"]["pull-request-webhook"];
       repository: components["schemas"]["repository-webhooks"];
-      sender?: components["schemas"]["simple-user"];
+      sender: components["schemas"]["simple-user"];
     };
     /** pull_request enqueued event */
     "webhook-pull-request-enqueued": {
@@ -29726,7 +31738,7 @@ export interface components {
       action: "enqueued";
       enterprise?: components["schemas"]["enterprise-webhooks"];
       installation?: components["schemas"]["simple-installation"];
-      number: number;
+      number: components["schemas"]["webhooks_number"];
       organization?: components["schemas"]["organization-simple-webhooks"];
       /** Pull Request */
       pull_request: {
@@ -30036,6 +32048,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -30385,6 +32407,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -30895,6 +32927,7 @@ export interface components {
         review_comments?: number;
         /** Format: uri */
         review_comments_url: string;
+        stack?: components["schemas"]["pull-request-stack"];
         /**
          * @description State of this Pull Request. Either `open` or `closed`.
          * @enum {string}
@@ -31268,6 +33301,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -31617,6 +33660,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -31844,6 +33897,13 @@ export interface components {
           color: string;
           default: boolean;
           description: string | null;
+          /**
+           * Format: date-time
+           * @description Timestamp indicating when the label was archived, or `null` if it has not been archived.
+           */
+          archived_at: string | null;
+          /** @description The user who archived the label, or `null` if it has not been archived. */
+          archived_by: null;
           id: number;
           /** @description The name of the label. */
           name: string;
@@ -32127,6 +34187,7 @@ export interface components {
         review_comments?: number;
         /** Format: uri */
         review_comments_url: string;
+        stack?: components["schemas"]["pull-request-stack"];
         /**
          * @description State of this Pull Request. Either `open` or `closed`.
          * @enum {string}
@@ -32499,6 +34560,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -32848,6 +34919,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -33358,6 +35439,7 @@ export interface components {
         review_comments?: number;
         /** Format: uri */
         review_comments_url: string;
+        stack?: components["schemas"]["pull-request-stack"];
         /**
          * @description State of this Pull Request. Either `open` or `closed`.
          * @enum {string}
@@ -33419,12 +35501,13 @@ export interface components {
       /** @enum {string} */
       action: "milestoned";
       enterprise?: components["schemas"]["enterprise-webhooks"];
+      installation?: components["schemas"]["simple-installation"];
       milestone?: components["schemas"]["milestone"];
       number: components["schemas"]["webhooks_number"];
       organization?: components["schemas"]["organization-simple-webhooks"];
       pull_request: components["schemas"]["webhooks_pull_request_5"];
       repository: components["schemas"]["repository-webhooks"];
-      sender?: components["schemas"]["simple-user"];
+      sender: components["schemas"]["simple-user"];
     };
     /** pull_request opened event */
     "webhook-pull-request-opened": {
@@ -33930,6 +36013,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -34272,6 +36365,16 @@ export interface components {
              * @default false
              */
             has_discussions?: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -34735,6 +36838,7 @@ export interface components {
         review_comment_url: string;
         /** Format: uri */
         review_comments_url: string;
+        stack?: components["schemas"]["pull-request-stack"];
         /** @enum {string} */
         state: "open" | "closed";
         /** Format: uri */
@@ -35100,6 +37204,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -35442,6 +37556,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -35905,6 +38029,7 @@ export interface components {
         review_comment_url: string;
         /** Format: uri */
         review_comments_url: string;
+        stack?: components["schemas"]["pull-request-stack"];
         /** @enum {string} */
         state: "open" | "closed";
         /** Format: uri */
@@ -36427,6 +38552,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -36769,6 +38904,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -37232,6 +39377,7 @@ export interface components {
         review_comment_url: string;
         /** Format: uri */
         review_comments_url: string;
+        stack?: components["schemas"]["pull-request-stack"];
         /** @enum {string} */
         state: "open" | "closed";
         /** Format: uri */
@@ -37597,6 +39743,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -37939,6 +40095,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -38402,6 +40568,7 @@ export interface components {
         review_comment_url: string;
         /** Format: uri */
         review_comments_url: string;
+        stack?: components["schemas"]["pull-request-stack"];
         /** @enum {string} */
         state: "open" | "closed";
         /** Format: uri */
@@ -40021,6 +42188,16 @@ export interface components {
                  * @default false
                  */
                 has_discussions: boolean;
+                /**
+                 * @description Whether pull requests are enabled.
+                 * @default true
+                 */
+                has_pull_requests?: boolean;
+                /**
+                 * @description The policy controlling who can create pull requests: all or collaborators_only.
+                 * @enum {string}
+                 */
+                pull_request_creation_policy?: "all" | "collaborators_only";
                 homepage: string | null;
                 /** Format: uri */
                 hooks_url: string;
@@ -40363,6 +42540,16 @@ export interface components {
                  * @default false
                  */
                 has_discussions: boolean;
+                /**
+                 * @description Whether pull requests are enabled.
+                 * @default true
+                 */
+                has_pull_requests?: boolean;
+                /**
+                 * @description The policy controlling who can create pull requests: all or collaborators_only.
+                 * @enum {string}
+                 */
+                pull_request_creation_policy?: "all" | "collaborators_only";
                 homepage: string | null;
                 /** Format: uri */
                 hooks_url: string;
@@ -40873,6 +43060,7 @@ export interface components {
             review_comments?: number;
             /** Format: uri */
             review_comments_url: string;
+            stack?: components["schemas"]["pull-request-stack"];
             /**
              * @description State of this Pull Request. Either `open` or `closed`.
              * @enum {string}
@@ -41284,6 +43472,16 @@ export interface components {
                  * @default false
                  */
                 has_discussions: boolean;
+                /**
+                 * @description Whether pull requests are enabled.
+                 * @default true
+                 */
+                has_pull_requests?: boolean;
+                /**
+                 * @description The policy controlling who can create pull requests: all or collaborators_only.
+                 * @enum {string}
+                 */
+                pull_request_creation_policy?: "all" | "collaborators_only";
                 homepage: string | null;
                 /** Format: uri */
                 hooks_url: string;
@@ -41633,6 +43831,16 @@ export interface components {
                  * @default false
                  */
                 has_discussions: boolean;
+                /**
+                 * @description Whether pull requests are enabled.
+                 * @default true
+                 */
+                has_pull_requests?: boolean;
+                /**
+                 * @description The policy controlling who can create pull requests: all or collaborators_only.
+                 * @enum {string}
+                 */
+                pull_request_creation_policy?: "all" | "collaborators_only";
                 homepage: string | null;
                 /** Format: uri */
                 hooks_url: string;
@@ -42143,6 +44351,7 @@ export interface components {
             review_comments?: number;
             /** Format: uri */
             review_comments_url: string;
+            stack?: components["schemas"]["pull-request-stack"];
             /**
              * @description State of this Pull Request. Either `open` or `closed`.
              * @enum {string}
@@ -42576,6 +44785,16 @@ export interface components {
                  * @default false
                  */
                 has_discussions: boolean;
+                /**
+                 * @description Whether pull requests are enabled.
+                 * @default true
+                 */
+                has_pull_requests?: boolean;
+                /**
+                 * @description The policy controlling who can create pull requests: all or collaborators_only.
+                 * @enum {string}
+                 */
+                pull_request_creation_policy?: "all" | "collaborators_only";
                 homepage: string | null;
                 /** Format: uri */
                 hooks_url: string;
@@ -42925,6 +45144,16 @@ export interface components {
                  * @default false
                  */
                 has_discussions: boolean;
+                /**
+                 * @description Whether pull requests are enabled.
+                 * @default true
+                 */
+                has_pull_requests?: boolean;
+                /**
+                 * @description The policy controlling who can create pull requests: all or collaborators_only.
+                 * @enum {string}
+                 */
+                pull_request_creation_policy?: "all" | "collaborators_only";
                 homepage: string | null;
                 /** Format: uri */
                 hooks_url: string;
@@ -43435,6 +45664,7 @@ export interface components {
             review_comments?: number;
             /** Format: uri */
             review_comments_url: string;
+            stack?: components["schemas"]["pull-request-stack"];
             /**
              * @description State of this Pull Request. Either `open` or `closed`.
              * @enum {string}
@@ -43846,6 +46076,16 @@ export interface components {
                  * @default false
                  */
                 has_discussions: boolean;
+                /**
+                 * @description Whether pull requests are enabled.
+                 * @default true
+                 */
+                has_pull_requests?: boolean;
+                /**
+                 * @description The policy controlling who can create pull requests: all or collaborators_only.
+                 * @enum {string}
+                 */
+                pull_request_creation_policy?: "all" | "collaborators_only";
                 homepage: string | null;
                 /** Format: uri */
                 hooks_url: string;
@@ -44195,6 +46435,16 @@ export interface components {
                  * @default false
                  */
                 has_discussions: boolean;
+                /**
+                 * @description Whether pull requests are enabled.
+                 * @default true
+                 */
+                has_pull_requests?: boolean;
+                /**
+                 * @description The policy controlling who can create pull requests: all or collaborators_only.
+                 * @enum {string}
+                 */
+                pull_request_creation_policy?: "all" | "collaborators_only";
                 homepage: string | null;
                 /** Format: uri */
                 hooks_url: string;
@@ -44705,6 +46955,7 @@ export interface components {
             review_comments?: number;
             /** Format: uri */
             review_comments_url: string;
+            stack?: components["schemas"]["pull-request-stack"];
             /**
              * @description State of this Pull Request. Either `open` or `closed`.
              * @enum {string}
@@ -45132,6 +47383,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -45474,6 +47735,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -45937,6 +48208,7 @@ export interface components {
         review_comment_url: string;
         /** Format: uri */
         review_comments_url: string;
+        stack?: components["schemas"]["pull-request-stack"];
         /** @enum {string} */
         state: "open" | "closed";
         /** Format: uri */
@@ -46303,6 +48575,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -46603,6 +48885,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -47024,6 +49316,7 @@ export interface components {
         review_comment_url: string;
         /** Format: uri */
         review_comments_url: string;
+        stack?: components["schemas"]["pull-request-stack"];
         /** @enum {string} */
         state: "open" | "closed";
         /** Format: uri */
@@ -47545,6 +49838,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -47845,6 +50148,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -48266,6 +50579,7 @@ export interface components {
         review_comment_url: string;
         /** Format: uri */
         review_comments_url: string;
+        stack?: components["schemas"]["pull-request-stack"];
         /** @enum {string} */
         state: "open" | "closed";
         /** Format: uri */
@@ -48472,6 +50786,1259 @@ export interface components {
       };
       /** Format: date-time */
       updated_at?: string | null;
+    };
+    /** pull_request stacked event */
+    "webhook-pull-request-stacked": {
+      /** @enum {string} */
+      action: "stacked";
+      enterprise?: components["schemas"]["enterprise-webhooks"];
+      installation?: components["schemas"]["simple-installation"];
+      stack?: components["schemas"]["pull-request-stack"];
+      number: components["schemas"]["webhooks_number"];
+      organization?: components["schemas"]["organization-simple-webhooks"];
+      /** Pull Request */
+      pull_request: {
+        _links: {
+          /** Link */
+          comments: {
+            /** Format: uri-template */
+            href: string;
+          };
+          /** Link */
+          commits: {
+            /** Format: uri-template */
+            href: string;
+          };
+          /** Link */
+          html: {
+            /** Format: uri-template */
+            href: string;
+          };
+          /** Link */
+          issue: {
+            /** Format: uri-template */
+            href: string;
+          };
+          /** Link */
+          review_comment: {
+            /** Format: uri-template */
+            href: string;
+          };
+          /** Link */
+          review_comments: {
+            /** Format: uri-template */
+            href: string;
+          };
+          /** Link */
+          self: {
+            /** Format: uri-template */
+            href: string;
+          };
+          /** Link */
+          statuses: {
+            /** Format: uri-template */
+            href: string;
+          };
+        };
+        /** @enum {string|null} */
+        active_lock_reason:
+          | "resolved"
+          | "off-topic"
+          | "too heated"
+          | "spam"
+          | null;
+        additions?: number;
+        /** User */
+        assignee: {
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization" | "Mannequin";
+          /** Format: uri */
+          url?: string;
+          user_view_type?: string;
+        } | null;
+        assignees: ({
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization" | "Mannequin";
+          /** Format: uri */
+          url?: string;
+        } | null)[];
+        /**
+         * AuthorAssociation
+         * @description How the author is associated with the repository.
+         * @enum {string}
+         */
+        author_association:
+          | "COLLABORATOR"
+          | "CONTRIBUTOR"
+          | "FIRST_TIMER"
+          | "FIRST_TIME_CONTRIBUTOR"
+          | "MANNEQUIN"
+          | "MEMBER"
+          | "NONE"
+          | "OWNER";
+        /**
+         * PullRequestAutoMerge
+         * @description The status of auto merging a pull request.
+         */
+        auto_merge: {
+          /** @description Commit message for the merge commit. */
+          commit_message: string | null;
+          /** @description Title for the merge commit message. */
+          commit_title: string | null;
+          /** User */
+          enabled_by: {
+            /** Format: uri */
+            avatar_url?: string;
+            deleted?: boolean;
+            email?: string | null;
+            /** Format: uri-template */
+            events_url?: string;
+            /** Format: uri */
+            followers_url?: string;
+            /** Format: uri-template */
+            following_url?: string;
+            /** Format: uri-template */
+            gists_url?: string;
+            gravatar_id?: string;
+            /** Format: uri */
+            html_url?: string;
+            id: number;
+            login: string;
+            name?: string;
+            node_id?: string;
+            /** Format: uri */
+            organizations_url?: string;
+            /** Format: uri */
+            received_events_url?: string;
+            /** Format: uri */
+            repos_url?: string;
+            site_admin?: boolean;
+            /** Format: uri-template */
+            starred_url?: string;
+            /** Format: uri */
+            subscriptions_url?: string;
+            /** @enum {string} */
+            type?: "Bot" | "User" | "Organization";
+            /** Format: uri */
+            url?: string;
+            user_view_type?: string;
+          } | null;
+          /**
+           * @description The merge method to use.
+           * @enum {string}
+           */
+          merge_method: "merge" | "squash" | "rebase";
+        } | null;
+        base: {
+          label: string;
+          ref: string;
+          /**
+           * Repository
+           * @description A git repository
+           */
+          repo: {
+            /**
+             * @description Whether to allow auto-merge for pull requests.
+             * @default false
+             */
+            allow_auto_merge?: boolean;
+            /** @description Whether to allow private forks */
+            allow_forking?: boolean;
+            /**
+             * @description Whether to allow merge commits for pull requests.
+             * @default true
+             */
+            allow_merge_commit?: boolean;
+            /**
+             * @description Whether to allow rebase merges for pull requests.
+             * @default true
+             */
+            allow_rebase_merge?: boolean;
+            /**
+             * @description Whether to allow squash merges for pull requests.
+             * @default true
+             */
+            allow_squash_merge?: boolean;
+            allow_update_branch?: boolean;
+            /** Format: uri-template */
+            archive_url: string;
+            /**
+             * @description Whether the repository is archived.
+             * @default false
+             */
+            archived: boolean;
+            /** Format: uri-template */
+            assignees_url: string;
+            /** Format: uri-template */
+            blobs_url: string;
+            /** Format: uri-template */
+            branches_url: string;
+            /** Format: uri */
+            clone_url: string;
+            /** Format: uri-template */
+            collaborators_url: string;
+            /** Format: uri-template */
+            comments_url: string;
+            /** Format: uri-template */
+            commits_url: string;
+            /** Format: uri-template */
+            compare_url: string;
+            /** Format: uri-template */
+            contents_url: string;
+            /** Format: uri */
+            contributors_url: string;
+            created_at: number | string;
+            /** @description The default branch of the repository. */
+            default_branch: string;
+            /**
+             * @description Whether to delete head branches when pull requests are merged
+             * @default false
+             */
+            delete_branch_on_merge?: boolean;
+            /** Format: uri */
+            deployments_url: string;
+            description: string | null;
+            /** @description Returns whether or not this repository is disabled. */
+            disabled?: boolean;
+            /** Format: uri */
+            downloads_url: string;
+            /** Format: uri */
+            events_url: string;
+            fork: boolean;
+            forks: number;
+            forks_count: number;
+            /** Format: uri */
+            forks_url: string;
+            full_name: string;
+            /** Format: uri-template */
+            git_commits_url: string;
+            /** Format: uri-template */
+            git_refs_url: string;
+            /** Format: uri-template */
+            git_tags_url: string;
+            /** Format: uri */
+            git_url: string;
+            /**
+             * @description Whether downloads are enabled.
+             * @default true
+             */
+            has_downloads: boolean;
+            /**
+             * @description Whether issues are enabled.
+             * @default true
+             */
+            has_issues: boolean;
+            has_pages: boolean;
+            /**
+             * @description Whether projects are enabled.
+             * @default true
+             */
+            has_projects: boolean;
+            /**
+             * @description Whether the wiki is enabled.
+             * @default true
+             */
+            has_wiki: boolean;
+            /**
+             * @description Whether discussions are enabled.
+             * @default false
+             */
+            has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
+            homepage: string | null;
+            /** Format: uri */
+            hooks_url: string;
+            /** Format: uri */
+            html_url: string;
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
+            id: number;
+            is_template?: boolean;
+            /** Format: uri-template */
+            issue_comment_url: string;
+            /** Format: uri-template */
+            issue_events_url: string;
+            /** Format: uri-template */
+            issues_url: string;
+            /** Format: uri-template */
+            keys_url: string;
+            /** Format: uri-template */
+            labels_url: string;
+            language: string | null;
+            /** Format: uri */
+            languages_url: string;
+            /** License */
+            license: {
+              key: string;
+              name: string;
+              node_id: string;
+              spdx_id: string;
+              /** Format: uri */
+              url: string | null;
+            } | null;
+            master_branch?: string;
+            /**
+             * @description The default value for a merge commit message.
+             *
+             * - `PR_TITLE` - default to the pull request's title.
+             * - `PR_BODY` - default to the pull request's body.
+             * - `BLANK` - default to a blank commit message.
+             * @enum {string}
+             */
+            merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
+            /**
+             * @description The default value for a merge commit title.
+             *
+             * - `PR_TITLE` - default to the pull request's title.
+             * - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
+             * @enum {string}
+             */
+            merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
+            /** Format: uri */
+            merges_url: string;
+            /** Format: uri-template */
+            milestones_url: string;
+            /** Format: uri */
+            mirror_url: string | null;
+            /** @description The name of the repository. */
+            name: string;
+            node_id: string;
+            /** Format: uri-template */
+            notifications_url: string;
+            open_issues: number;
+            open_issues_count: number;
+            organization?: string;
+            /** User */
+            owner: {
+              /** Format: uri */
+              avatar_url?: string;
+              deleted?: boolean;
+              email?: string | null;
+              /** Format: uri-template */
+              events_url?: string;
+              /** Format: uri */
+              followers_url?: string;
+              /** Format: uri-template */
+              following_url?: string;
+              /** Format: uri-template */
+              gists_url?: string;
+              gravatar_id?: string;
+              /** Format: uri */
+              html_url?: string;
+              id: number;
+              login: string;
+              name?: string;
+              node_id?: string;
+              /** Format: uri */
+              organizations_url?: string;
+              /** Format: uri */
+              received_events_url?: string;
+              /** Format: uri */
+              repos_url?: string;
+              site_admin?: boolean;
+              /** Format: uri-template */
+              starred_url?: string;
+              /** Format: uri */
+              subscriptions_url?: string;
+              /** @enum {string} */
+              type?: "Bot" | "User" | "Organization";
+              /** Format: uri */
+              url?: string;
+              user_view_type?: string;
+            } | null;
+            permissions?: {
+              admin: boolean;
+              maintain?: boolean;
+              pull: boolean;
+              push: boolean;
+              triage?: boolean;
+            };
+            /** @description Whether the repository is private or public. */
+            private: boolean;
+            public?: boolean;
+            /** Format: uri-template */
+            pulls_url: string;
+            pushed_at: number | string | null;
+            /** Format: uri-template */
+            releases_url: string;
+            role_name?: string | null;
+            size: number;
+            /**
+             * @description The default value for a squash merge commit message:
+             *
+             * - `PR_BODY` - default to the pull request's body.
+             * - `COMMIT_MESSAGES` - default to the branch's commit messages.
+             * - `BLANK` - default to a blank commit message.
+             * @enum {string}
+             */
+            squash_merge_commit_message?:
+              | "PR_BODY"
+              | "COMMIT_MESSAGES"
+              | "BLANK";
+            /**
+             * @description The default value for a squash merge commit title:
+             *
+             * - `PR_TITLE` - default to the pull request's title.
+             * - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+             * @enum {string}
+             */
+            squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
+            ssh_url: string;
+            stargazers?: number;
+            stargazers_count: number;
+            /** Format: uri */
+            stargazers_url: string;
+            /** Format: uri-template */
+            statuses_url: string;
+            /** Format: uri */
+            subscribers_url: string;
+            /** Format: uri */
+            subscription_url: string;
+            /** Format: uri */
+            svn_url: string;
+            /** Format: uri */
+            tags_url: string;
+            /** Format: uri */
+            teams_url: string;
+            topics: string[];
+            /** Format: uri-template */
+            trees_url: string;
+            /** Format: date-time */
+            updated_at: string;
+            /** Format: uri */
+            url: string;
+            /**
+             * @description Whether a squash merge commit can use the pull request title as default. **This property is closing down. Please use `squash_merge_commit_title` instead.
+             * @default false
+             */
+            use_squash_pr_title_as_default?: boolean;
+            /** @enum {string} */
+            visibility: "public" | "private" | "internal";
+            watchers: number;
+            watchers_count: number;
+            /** @description Whether to require contributors to sign off on web-based commits */
+            web_commit_signoff_required?: boolean;
+          };
+          sha: string;
+          /** User */
+          user: {
+            /** Format: uri */
+            avatar_url?: string;
+            deleted?: boolean;
+            email?: string | null;
+            /** Format: uri-template */
+            events_url?: string;
+            /** Format: uri */
+            followers_url?: string;
+            /** Format: uri-template */
+            following_url?: string;
+            /** Format: uri-template */
+            gists_url?: string;
+            gravatar_id?: string;
+            /** Format: uri */
+            html_url?: string;
+            /** Format: int64 */
+            id: number;
+            login: string;
+            name?: string;
+            node_id?: string;
+            /** Format: uri */
+            organizations_url?: string;
+            /** Format: uri */
+            received_events_url?: string;
+            /** Format: uri */
+            repos_url?: string;
+            site_admin?: boolean;
+            /** Format: uri-template */
+            starred_url?: string;
+            /** Format: uri */
+            subscriptions_url?: string;
+            /** @enum {string} */
+            type?: "Bot" | "User" | "Organization";
+            /** Format: uri */
+            url?: string;
+            user_view_type?: string;
+          } | null;
+        };
+        body: string | null;
+        changed_files?: number;
+        /** Format: date-time */
+        closed_at: string | null;
+        comments?: number;
+        /** Format: uri */
+        comments_url: string;
+        commits?: number;
+        /** Format: uri */
+        commits_url: string;
+        /** Format: date-time */
+        created_at: string;
+        deletions?: number;
+        /** Format: uri */
+        diff_url: string;
+        /** @description Indicates whether or not the pull request is a draft. */
+        draft: boolean;
+        head: {
+          label: string | null;
+          ref: string;
+          /**
+           * Repository
+           * @description A git repository
+           */
+          repo: {
+            /**
+             * @description Whether to allow auto-merge for pull requests.
+             * @default false
+             */
+            allow_auto_merge?: boolean;
+            /** @description Whether to allow private forks */
+            allow_forking?: boolean;
+            /**
+             * @description Whether to allow merge commits for pull requests.
+             * @default true
+             */
+            allow_merge_commit?: boolean;
+            /**
+             * @description Whether to allow rebase merges for pull requests.
+             * @default true
+             */
+            allow_rebase_merge?: boolean;
+            /**
+             * @description Whether to allow squash merges for pull requests.
+             * @default true
+             */
+            allow_squash_merge?: boolean;
+            allow_update_branch?: boolean;
+            /** Format: uri-template */
+            archive_url: string;
+            /**
+             * @description Whether the repository is archived.
+             * @default false
+             */
+            archived: boolean;
+            /** Format: uri-template */
+            assignees_url: string;
+            /** Format: uri-template */
+            blobs_url: string;
+            /** Format: uri-template */
+            branches_url: string;
+            /** Format: uri */
+            clone_url: string;
+            /** Format: uri-template */
+            collaborators_url: string;
+            /** Format: uri-template */
+            comments_url: string;
+            /** Format: uri-template */
+            commits_url: string;
+            /** Format: uri-template */
+            compare_url: string;
+            /** Format: uri-template */
+            contents_url: string;
+            /** Format: uri */
+            contributors_url: string;
+            created_at: number | string;
+            /** @description The default branch of the repository. */
+            default_branch: string;
+            /**
+             * @description Whether to delete head branches when pull requests are merged
+             * @default false
+             */
+            delete_branch_on_merge?: boolean;
+            /** Format: uri */
+            deployments_url: string;
+            description: string | null;
+            /** @description Returns whether or not this repository is disabled. */
+            disabled?: boolean;
+            /** Format: uri */
+            downloads_url: string;
+            /** Format: uri */
+            events_url: string;
+            fork: boolean;
+            forks: number;
+            forks_count: number;
+            /** Format: uri */
+            forks_url: string;
+            full_name: string;
+            /** Format: uri-template */
+            git_commits_url: string;
+            /** Format: uri-template */
+            git_refs_url: string;
+            /** Format: uri-template */
+            git_tags_url: string;
+            /** Format: uri */
+            git_url: string;
+            /**
+             * @description Whether downloads are enabled.
+             * @default true
+             */
+            has_downloads: boolean;
+            /**
+             * @description Whether issues are enabled.
+             * @default true
+             */
+            has_issues: boolean;
+            has_pages: boolean;
+            /**
+             * @description Whether projects are enabled.
+             * @default true
+             */
+            has_projects: boolean;
+            /**
+             * @description Whether the wiki is enabled.
+             * @default true
+             */
+            has_wiki: boolean;
+            /**
+             * @description Whether discussions are enabled.
+             * @default false
+             */
+            has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
+            homepage: string | null;
+            /** Format: uri */
+            hooks_url: string;
+            /** Format: uri */
+            html_url: string;
+            /**
+             * Format: int64
+             * @description Unique identifier of the repository
+             */
+            id: number;
+            is_template?: boolean;
+            /** Format: uri-template */
+            issue_comment_url: string;
+            /** Format: uri-template */
+            issue_events_url: string;
+            /** Format: uri-template */
+            issues_url: string;
+            /** Format: uri-template */
+            keys_url: string;
+            /** Format: uri-template */
+            labels_url: string;
+            language: string | null;
+            /** Format: uri */
+            languages_url: string;
+            /** License */
+            license: {
+              key: string;
+              name: string;
+              node_id: string;
+              spdx_id: string;
+              /** Format: uri */
+              url: string | null;
+            } | null;
+            master_branch?: string;
+            /**
+             * @description The default value for a merge commit message.
+             *
+             * - `PR_TITLE` - default to the pull request's title.
+             * - `PR_BODY` - default to the pull request's body.
+             * - `BLANK` - default to a blank commit message.
+             * @enum {string}
+             */
+            merge_commit_message?: "PR_BODY" | "PR_TITLE" | "BLANK";
+            /**
+             * @description The default value for a merge commit title.
+             *
+             * - `PR_TITLE` - default to the pull request's title.
+             * - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
+             * @enum {string}
+             */
+            merge_commit_title?: "PR_TITLE" | "MERGE_MESSAGE";
+            /** Format: uri */
+            merges_url: string;
+            /** Format: uri-template */
+            milestones_url: string;
+            /** Format: uri */
+            mirror_url: string | null;
+            /** @description The name of the repository. */
+            name: string;
+            node_id: string;
+            /** Format: uri-template */
+            notifications_url: string;
+            open_issues: number;
+            open_issues_count: number;
+            organization?: string;
+            /** User */
+            owner: {
+              /** Format: uri */
+              avatar_url?: string;
+              deleted?: boolean;
+              email?: string | null;
+              /** Format: uri-template */
+              events_url?: string;
+              /** Format: uri */
+              followers_url?: string;
+              /** Format: uri-template */
+              following_url?: string;
+              /** Format: uri-template */
+              gists_url?: string;
+              gravatar_id?: string;
+              /** Format: uri */
+              html_url?: string;
+              id: number;
+              login: string;
+              name?: string;
+              node_id?: string;
+              /** Format: uri */
+              organizations_url?: string;
+              /** Format: uri */
+              received_events_url?: string;
+              /** Format: uri */
+              repos_url?: string;
+              site_admin?: boolean;
+              /** Format: uri-template */
+              starred_url?: string;
+              /** Format: uri */
+              subscriptions_url?: string;
+              /** @enum {string} */
+              type?: "Bot" | "User" | "Organization";
+              /** Format: uri */
+              url?: string;
+              user_view_type?: string;
+            } | null;
+            permissions?: {
+              admin: boolean;
+              maintain?: boolean;
+              pull: boolean;
+              push: boolean;
+              triage?: boolean;
+            };
+            /** @description Whether the repository is private or public. */
+            private: boolean;
+            public?: boolean;
+            /** Format: uri-template */
+            pulls_url: string;
+            pushed_at: number | string | null;
+            /** Format: uri-template */
+            releases_url: string;
+            role_name?: string | null;
+            size: number;
+            /**
+             * @description The default value for a squash merge commit message:
+             *
+             * - `PR_BODY` - default to the pull request's body.
+             * - `COMMIT_MESSAGES` - default to the branch's commit messages.
+             * - `BLANK` - default to a blank commit message.
+             * @enum {string}
+             */
+            squash_merge_commit_message?:
+              | "PR_BODY"
+              | "COMMIT_MESSAGES"
+              | "BLANK";
+            /**
+             * @description The default value for a squash merge commit title:
+             *
+             * - `PR_TITLE` - default to the pull request's title.
+             * - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+             * @enum {string}
+             */
+            squash_merge_commit_title?: "PR_TITLE" | "COMMIT_OR_PR_TITLE";
+            ssh_url: string;
+            stargazers?: number;
+            stargazers_count: number;
+            /** Format: uri */
+            stargazers_url: string;
+            /** Format: uri-template */
+            statuses_url: string;
+            /** Format: uri */
+            subscribers_url: string;
+            /** Format: uri */
+            subscription_url: string;
+            /** Format: uri */
+            svn_url: string;
+            /** Format: uri */
+            tags_url: string;
+            /** Format: uri */
+            teams_url: string;
+            topics: string[];
+            /** Format: uri-template */
+            trees_url: string;
+            /** Format: date-time */
+            updated_at: string;
+            /** Format: uri */
+            url: string;
+            /**
+             * @description Whether a squash merge commit can use the pull request title as default. **This property is closing down. Please use `squash_merge_commit_title` instead.
+             * @default false
+             */
+            use_squash_pr_title_as_default?: boolean;
+            /** @enum {string} */
+            visibility: "public" | "private" | "internal";
+            watchers: number;
+            watchers_count: number;
+            /** @description Whether to require contributors to sign off on web-based commits */
+            web_commit_signoff_required?: boolean;
+          } | null;
+          sha: string;
+          /** User */
+          user: {
+            /** Format: uri */
+            avatar_url?: string;
+            deleted?: boolean;
+            email?: string | null;
+            /** Format: uri-template */
+            events_url?: string;
+            /** Format: uri */
+            followers_url?: string;
+            /** Format: uri-template */
+            following_url?: string;
+            /** Format: uri-template */
+            gists_url?: string;
+            gravatar_id?: string;
+            /** Format: uri */
+            html_url?: string;
+            /** Format: int64 */
+            id: number;
+            login: string;
+            name?: string;
+            node_id?: string;
+            /** Format: uri */
+            organizations_url?: string;
+            /** Format: uri */
+            received_events_url?: string;
+            /** Format: uri */
+            repos_url?: string;
+            site_admin?: boolean;
+            /** Format: uri-template */
+            starred_url?: string;
+            /** Format: uri */
+            subscriptions_url?: string;
+            /** @enum {string} */
+            type?: "Bot" | "User" | "Organization";
+            /** Format: uri */
+            url?: string;
+            user_view_type?: string;
+          } | null;
+        };
+        /** Format: uri */
+        html_url: string;
+        id: number;
+        /** Format: uri */
+        issue_url: string;
+        labels: {
+          /** @description 6-character hex code, without the leading #, identifying the color */
+          color: string;
+          default: boolean;
+          description: string | null;
+          id: number;
+          /** @description The name of the label. */
+          name: string;
+          node_id: string;
+          /**
+           * Format: uri
+           * @description URL for the label
+           */
+          url: string;
+        }[];
+        locked: boolean;
+        /** @description Indicates whether maintainers can modify the pull request. */
+        maintainer_can_modify?: boolean;
+        merge_commit_sha: string | null;
+        mergeable?: boolean | null;
+        mergeable_state?: string;
+        merged?: boolean | null;
+        /** Format: date-time */
+        merged_at: string | null;
+        /** User */
+        merged_by?: {
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization" | "Mannequin";
+          /** Format: uri */
+          url?: string;
+          user_view_type?: string;
+        } | null;
+        /**
+         * Milestone
+         * @description A collection of related issues and pull requests.
+         */
+        milestone: {
+          /** Format: date-time */
+          closed_at: string | null;
+          closed_issues: number;
+          /** Format: date-time */
+          created_at: string;
+          /** User */
+          creator: {
+            /** Format: uri */
+            avatar_url?: string;
+            deleted?: boolean;
+            email?: string | null;
+            /** Format: uri-template */
+            events_url?: string;
+            /** Format: uri */
+            followers_url?: string;
+            /** Format: uri-template */
+            following_url?: string;
+            /** Format: uri-template */
+            gists_url?: string;
+            gravatar_id?: string;
+            /** Format: uri */
+            html_url?: string;
+            id: number;
+            login: string;
+            name?: string;
+            node_id?: string;
+            /** Format: uri */
+            organizations_url?: string;
+            /** Format: uri */
+            received_events_url?: string;
+            /** Format: uri */
+            repos_url?: string;
+            site_admin?: boolean;
+            /** Format: uri-template */
+            starred_url?: string;
+            /** Format: uri */
+            subscriptions_url?: string;
+            /** @enum {string} */
+            type?: "Bot" | "User" | "Organization" | "Mannequin";
+            /** Format: uri */
+            url?: string;
+            user_view_type?: string;
+          } | null;
+          description: string | null;
+          /** Format: date-time */
+          due_on: string | null;
+          /** Format: uri */
+          html_url: string;
+          id: number;
+          /** Format: uri */
+          labels_url: string;
+          node_id: string;
+          /** @description The number of the milestone. */
+          number: number;
+          open_issues: number;
+          /**
+           * @description The state of the milestone.
+           * @enum {string}
+           */
+          state: "open" | "closed";
+          /** @description The title of the milestone. */
+          title: string;
+          /** Format: date-time */
+          updated_at: string;
+          /** Format: uri */
+          url: string;
+        } | null;
+        node_id: string;
+        /** @description Number uniquely identifying the pull request within its repository. */
+        number: number;
+        /** Format: uri */
+        patch_url: string;
+        rebaseable?: boolean | null;
+        requested_reviewers: OneOf<
+          [
+            {
+              /** Format: uri */
+              avatar_url?: string;
+              deleted?: boolean;
+              email?: string | null;
+              /** Format: uri-template */
+              events_url?: string;
+              /** Format: uri */
+              followers_url?: string;
+              /** Format: uri-template */
+              following_url?: string;
+              /** Format: uri-template */
+              gists_url?: string;
+              gravatar_id?: string;
+              /** Format: uri */
+              html_url?: string;
+              id: number;
+              login: string;
+              name?: string;
+              node_id?: string;
+              /** Format: uri */
+              organizations_url?: string;
+              /** Format: uri */
+              received_events_url?: string;
+              /** Format: uri */
+              repos_url?: string;
+              site_admin?: boolean;
+              /** Format: uri-template */
+              starred_url?: string;
+              /** Format: uri */
+              subscriptions_url?: string;
+              /** @enum {string} */
+              type?: "Bot" | "User" | "Organization" | "Mannequin";
+              /** Format: uri */
+              url?: string;
+              user_view_type?: string;
+            } | null,
+            {
+              deleted?: boolean;
+              /** @description Description of the team */
+              description: string | null;
+              /** Format: uri */
+              html_url: string;
+              /** @description Unique identifier of the team */
+              id: number;
+              /** Format: uri-template */
+              members_url: string;
+              /** @description Name of the team */
+              name: string;
+              node_id: string;
+              parent?: {
+                /** @description Description of the team */
+                description: string | null;
+                /** Format: uri */
+                html_url: string;
+                /** @description Unique identifier of the team */
+                id: number;
+                /** Format: uri-template */
+                members_url: string;
+                /** @description Name of the team */
+                name: string;
+                node_id: string;
+                /** @description Permission that the team will have for its repositories */
+                permission: string;
+                /** @enum {string} */
+                privacy: "open" | "closed" | "secret";
+                /** Format: uri */
+                repositories_url: string;
+                slug: string;
+                /**
+                 * Format: uri
+                 * @description URL for the team
+                 */
+                url: string;
+              } | null;
+              /** @description Permission that the team will have for its repositories */
+              permission: string;
+              /** @enum {string} */
+              privacy: "open" | "closed" | "secret";
+              /** Format: uri */
+              repositories_url: string;
+              slug: string;
+              /**
+               * Format: uri
+               * @description URL for the team
+               */
+              url: string;
+            },
+          ]
+        >[];
+        requested_teams: {
+          deleted?: boolean;
+          /** @description Description of the team */
+          description?: string | null;
+          /** Format: uri */
+          html_url?: string;
+          /** @description Unique identifier of the team */
+          id: number;
+          /** Format: uri-template */
+          members_url?: string;
+          /** @description Name of the team */
+          name: string;
+          node_id?: string;
+          parent?: {
+            /** @description Description of the team */
+            description: string | null;
+            /** Format: uri */
+            html_url: string;
+            /** @description Unique identifier of the team */
+            id: number;
+            /** Format: uri-template */
+            members_url: string;
+            /** @description Name of the team */
+            name: string;
+            node_id: string;
+            /** @description Permission that the team will have for its repositories */
+            permission: string;
+            /** @enum {string} */
+            privacy: "open" | "closed" | "secret";
+            /** Format: uri */
+            repositories_url: string;
+            slug: string;
+            /**
+             * Format: uri
+             * @description URL for the team
+             */
+            url: string;
+          } | null;
+          /** @description Permission that the team will have for its repositories */
+          permission?: string;
+          /** @enum {string} */
+          privacy?: "open" | "closed" | "secret";
+          /** Format: uri */
+          repositories_url?: string;
+          slug?: string;
+          /**
+           * Format: uri
+           * @description URL for the team
+           */
+          url?: string;
+        }[];
+        /** Format: uri-template */
+        review_comment_url: string;
+        review_comments?: number;
+        /** Format: uri */
+        review_comments_url: string;
+        stack?: components["schemas"]["pull-request-stack"];
+        /**
+         * @description State of this Pull Request. Either `open` or `closed`.
+         * @enum {string}
+         */
+        state: "open" | "closed";
+        /** Format: uri */
+        statuses_url: string;
+        /** @description The title of the pull request. */
+        title: string;
+        /** Format: date-time */
+        updated_at: string;
+        /** Format: uri */
+        url: string;
+        /** User */
+        user: {
+          /** Format: uri */
+          avatar_url?: string;
+          deleted?: boolean;
+          email?: string | null;
+          /** Format: uri-template */
+          events_url?: string;
+          /** Format: uri */
+          followers_url?: string;
+          /** Format: uri-template */
+          following_url?: string;
+          /** Format: uri-template */
+          gists_url?: string;
+          gravatar_id?: string;
+          /** Format: uri */
+          html_url?: string;
+          /** Format: int64 */
+          id: number;
+          login: string;
+          name?: string;
+          node_id?: string;
+          /** Format: uri */
+          organizations_url?: string;
+          /** Format: uri */
+          received_events_url?: string;
+          /** Format: uri */
+          repos_url?: string;
+          site_admin?: boolean;
+          /** Format: uri-template */
+          starred_url?: string;
+          /** Format: uri */
+          subscriptions_url?: string;
+          /** @enum {string} */
+          type?: "Bot" | "User" | "Organization" | "Mannequin";
+          /** Format: uri */
+          url?: string;
+          user_view_type?: string;
+        } | null;
+      };
+      repository: components["schemas"]["repository-webhooks"];
+      sender: components["schemas"]["simple-user"];
     };
     /** pull_request synchronize event */
     "webhook-pull-request-synchronize": {
@@ -48791,6 +52358,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -49140,6 +52717,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -49643,6 +53230,7 @@ export interface components {
         review_comments?: number;
         /** Format: uri */
         review_comments_url: string;
+        stack?: components["schemas"]["pull-request-stack"];
         /**
          * @description State of this Pull Request. Either `open` or `closed`.
          * @enum {string}
@@ -50016,6 +53604,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -50365,6 +53963,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -50875,6 +54483,7 @@ export interface components {
         review_comments?: number;
         /** Format: uri */
         review_comments_url: string;
+        stack?: components["schemas"]["pull-request-stack"];
         /**
          * @description State of this Pull Request. Either `open` or `closed`.
          * @enum {string}
@@ -50929,7 +54538,7 @@ export interface components {
         } | null;
       };
       repository: components["schemas"]["repository-webhooks"];
-      sender?: components["schemas"]["simple-user"];
+      sender: components["schemas"]["simple-user"];
     };
     /** pull_request unlabeled event */
     "webhook-pull-request-unlabeled": {
@@ -51248,6 +54857,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -51597,6 +55216,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -52100,6 +55729,7 @@ export interface components {
         review_comments?: number;
         /** Format: uri */
         review_comments_url: string;
+        stack?: components["schemas"]["pull-request-stack"];
         /**
          * @description State of this Pull Request. Either `open` or `closed`.
          * @enum {string}
@@ -52472,6 +56102,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -52821,6 +56461,16 @@ export interface components {
              * @default false
              */
             has_discussions: boolean;
+            /**
+             * @description Whether pull requests are enabled.
+             * @default true
+             */
+            has_pull_requests?: boolean;
+            /**
+             * @description The policy controlling who can create pull requests: all or collaborators_only.
+             * @enum {string}
+             */
+            pull_request_creation_policy?: "all" | "collaborators_only";
             homepage: string | null;
             /** Format: uri */
             hooks_url: string;
@@ -53331,6 +56981,7 @@ export interface components {
         review_comments?: number;
         /** Format: uri */
         review_comments_url: string;
+        stack?: components["schemas"]["pull-request-stack"];
         /**
          * @description State of this Pull Request. Either `open` or `closed`.
          * @enum {string}
@@ -53638,6 +57289,16 @@ export interface components {
          * @default false
          */
         has_discussions: boolean;
+        /**
+         * @description Whether pull requests are enabled.
+         * @default true
+         */
+        has_pull_requests?: boolean;
+        /**
+         * @description The policy controlling who can create pull requests: all or collaborators_only.
+         * @enum {string}
+         */
+        pull_request_creation_policy?: "all" | "collaborators_only";
         homepage: string | null;
         /** Format: uri */
         hooks_url: string;
@@ -54885,6 +58546,13 @@ export interface components {
        * @enum {string}
        */
       type: "enterprise" | "organization";
+      /**
+       * @description How the team's access to the repository was granted. This property is only
+       * present when the team is returned in a repository context, such as
+       * `GET /repos/{owner}/{repo}/teams`.
+       * @enum {string}
+       */
+      access_source?: "direct" | "organization" | "enterprise";
       /** @description Unique identifier of the organization to which this team belongs */
       organization_id?: number;
       /** @description Unique identifier of the enterprise to which this team belongs */
@@ -55241,7 +58909,7 @@ export interface components {
      * @description An actor that can bypass rules in a ruleset
      */
     "repository-ruleset-bypass-actor": {
-      /** @description The ID of the actor that can bypass a ruleset. Required for `Integration`, `RepositoryRole`, and `Team` actor types. If `actor_type` is `OrganizationAdmin`, this should be `1`. If `actor_type` is `DeployKey`, this should be null. `OrganizationAdmin` is not applicable for personal repositories. */
+      /** @description The ID of the actor that can bypass a ruleset. Required for `Integration`, `RepositoryRole`, `Team`, and `User` actor types. If `actor_type` is `OrganizationAdmin`, `actor_id` is ignored. If `actor_type` is `DeployKey`, this should be null. `OrganizationAdmin` is not applicable for personal repositories. */
       actor_id?: number | null;
       /**
        * @description The type of actor that can bypass a ruleset.
@@ -55252,7 +58920,8 @@ export interface components {
         | "OrganizationAdmin"
         | "RepositoryRole"
         | "Team"
-        | "DeployKey";
+        | "DeployKey"
+        | "User";
       /**
        * @description When the specified actor can bypass the ruleset. `pull_request` means that an actor can only bypass rules on pull requests. `pull_request` is not applicable for the `DeployKey` actor type. Also, `pull_request` is only applicable to branch rulesets. When `bypass_mode` is `exempt`, rules will not be run for that actor and a bypass audit entry will not be created.
        * @default always
@@ -55357,13 +59026,16 @@ export interface components {
       | components["schemas"]["repository-rule-committer-email-pattern"]
       | components["schemas"]["repository-rule-branch-name-pattern"]
       | components["schemas"]["repository-rule-tag-name-pattern"]
+      | components["schemas"]["repository-rule-workflows"]
+      | components["schemas"]["repository-rule-code-scanning"]
+      | components["schemas"]["repository-rule-code-quality"]
+      | components["schemas"]["repository-rule-code-coverage"]
+      | components["schemas"]["repository-rule-copilot-code-review"]
+      | components["schemas"]["repository-rule-license-compliance-scanning"]
       | components["schemas"]["repository-rule-file-path-restriction"]
       | components["schemas"]["repository-rule-max-file-path-length"]
       | components["schemas"]["repository-rule-file-extension-restriction"]
-      | components["schemas"]["repository-rule-max-file-size"]
-      | components["schemas"]["repository-rule-workflows"]
-      | components["schemas"]["repository-rule-code-scanning"]
-      | components["schemas"]["repository-rule-copilot-code-review"];
+      | components["schemas"]["repository-rule-max-file-size"];
     /**
      * creation
      * @description Only allow users with bypass permission to create matching refs.
@@ -55460,10 +59132,9 @@ export interface components {
       parameters?: {
         /** @description Array of allowed merge methods. Allowed values include `merge`, `squash`, and `rebase`. At least one option must be enabled. */
         allowed_merge_methods?: ("merge" | "squash" | "rebase")[];
-        /** @description Request Copilot code review for new pull requests automatically if the author has access to Copilot code review and their premium requests quota has not reached the limit. */
-        automatic_copilot_code_review_enabled?: boolean;
         /** @description New, reviewable commits pushed will dismiss previous pull request review approvals. */
         dismiss_stale_reviews_on_push: boolean;
+        dismissal_restriction?: components["schemas"]["repository-rule-params-dismissal-restriction"];
         /** @description Require an approving review in pull requests that modify files that have a designated code owner. */
         require_code_owner_review: boolean;
         /** @description Whether the most recent reviewable push must be approved by someone other than the person who pushed it. */
@@ -55480,6 +59151,29 @@ export interface components {
          */
         required_reviewers?: components["schemas"]["repository-rule-params-required-reviewer-configuration"][];
       };
+    };
+    /**
+     * DismissalRestriction
+     * @description Specify people, teams, or apps allowed to dismiss pull request reviews.
+     */
+    "repository-rule-params-dismissal-restriction": {
+      /** @description Specify people, teams, or apps allowed to dismiss pull request reviews. */
+      allowed_actors?: components["schemas"]["repository-rule-params-actor"][];
+      /** @description Whether to restrict review dismissal to specific actors. */
+      enabled: boolean;
+    };
+    /**
+     * Actor
+     * @description An actor allowed to dismiss pull request reviews
+     */
+    "repository-rule-params-actor": {
+      /** @description ID of the actor that can dismiss reviews. */
+      id: number;
+      /**
+       * @description The type of the actor
+       * @enum {string}
+       */
+      type: "User" | "Team" | "IntegrationInstallation" | "RepositoryRole";
     };
     /**
      * RequiredReviewerConfiguration
@@ -55547,7 +59241,7 @@ export interface components {
       /** @enum {string} */
       type: "commit_message_pattern";
       parameters?: {
-        /** @description How this rule will appear to users. */
+        /** @description How this rule appears when configuring it. */
         name?: string;
         /** @description If true, the rule will fail if the pattern matches. */
         negate?: boolean;
@@ -55568,7 +59262,7 @@ export interface components {
       /** @enum {string} */
       type: "commit_author_email_pattern";
       parameters?: {
-        /** @description How this rule will appear to users. */
+        /** @description How this rule appears when configuring it. */
         name?: string;
         /** @description If true, the rule will fail if the pattern matches. */
         negate?: boolean;
@@ -55589,7 +59283,7 @@ export interface components {
       /** @enum {string} */
       type: "committer_email_pattern";
       parameters?: {
-        /** @description How this rule will appear to users. */
+        /** @description How this rule appears when configuring it. */
         name?: string;
         /** @description If true, the rule will fail if the pattern matches. */
         negate?: boolean;
@@ -55610,7 +59304,7 @@ export interface components {
       /** @enum {string} */
       type: "branch_name_pattern";
       parameters?: {
-        /** @description How this rule will appear to users. */
+        /** @description How this rule appears when configuring it. */
         name?: string;
         /** @description If true, the rule will fail if the pattern matches. */
         negate?: boolean;
@@ -55631,7 +59325,7 @@ export interface components {
       /** @enum {string} */
       type: "tag_name_pattern";
       parameters?: {
-        /** @description How this rule will appear to users. */
+        /** @description How this rule appears when configuring it. */
         name?: string;
         /** @description If true, the rule will fail if the pattern matches. */
         negate?: boolean;
@@ -55642,54 +59336,6 @@ export interface components {
         operator: "starts_with" | "ends_with" | "contains" | "regex";
         /** @description The pattern to match with. */
         pattern: string;
-      };
-    };
-    /**
-     * file_path_restriction
-     * @description Prevent commits that include changes in specified file and folder paths from being pushed to the commit graph. This includes absolute paths that contain file names.
-     */
-    "repository-rule-file-path-restriction": {
-      /** @enum {string} */
-      type: "file_path_restriction";
-      parameters?: {
-        /** @description The file paths that are restricted from being pushed to the commit graph. */
-        restricted_file_paths: string[];
-      };
-    };
-    /**
-     * max_file_path_length
-     * @description Prevent commits that include file paths that exceed the specified character limit from being pushed to the commit graph.
-     */
-    "repository-rule-max-file-path-length": {
-      /** @enum {string} */
-      type: "max_file_path_length";
-      parameters?: {
-        /** @description The maximum amount of characters allowed in file paths. */
-        max_file_path_length: number;
-      };
-    };
-    /**
-     * file_extension_restriction
-     * @description Prevent commits that include files with specified file extensions from being pushed to the commit graph.
-     */
-    "repository-rule-file-extension-restriction": {
-      /** @enum {string} */
-      type: "file_extension_restriction";
-      parameters?: {
-        /** @description The file extensions that are restricted from being pushed to the commit graph. */
-        restricted_file_extensions: string[];
-      };
-    };
-    /**
-     * max_file_size
-     * @description Prevent commits with individual files that exceed the specified limit from being pushed to the commit graph.
-     */
-    "repository-rule-max-file-size": {
-      /** @enum {string} */
-      type: "max_file_size";
-      parameters?: {
-        /** @description The maximum file size allowed in megabytes. This limit does not apply to Git Large File Storage (Git LFS). */
-        max_file_size: number;
       };
     };
     /**
@@ -55756,6 +59402,41 @@ export interface components {
       tool: string;
     };
     /**
+     * code_quality
+     * @description Choose which severity levels of code quality results should block pull request merges. When configured, a code quality analysis must be done on the pull request before the changes can be merged.
+     */
+    "repository-rule-code-quality": {
+      /** @enum {string} */
+      type: "code_quality";
+      parameters?: {
+        /**
+         * @description The lowest severity level at which code quality reviews need to be resolved before commits can be merged.
+         * @enum {string}
+         */
+        severity: "errors" | "warnings" | "notes" | "all";
+      };
+    };
+    /**
+     * code_coverage
+     * @description Enforce minimum line coverage thresholds on pull requests. When configured, uploaded coverage data must meet the specified criteria before changes can be merged.
+     */
+    "repository-rule-code-coverage": {
+      /** @enum {string} */
+      type: "code_coverage";
+      parameters?: {
+        /**
+         * Format: float
+         * @description The maximum percentage points that line coverage may drop relative to the default branch. Pull requests that reduce line coverage by more than this amount will be blocked.
+         */
+        max_coverage_drop?: number;
+        /**
+         * Format: float
+         * @description The absolute minimum line coverage percentage required. Pull requests with line coverage below this threshold will be blocked.
+         */
+        minimum_coverage?: number;
+      };
+    };
+    /**
      * copilot_code_review
      * @description Request Copilot code review for new pull requests automatically if the author has access to Copilot code review and their premium requests quota has not reached the limit.
      */
@@ -55767,6 +59448,62 @@ export interface components {
         review_draft_pull_requests?: boolean;
         /** @description Copilot automatically reviews each new push to the pull request. */
         review_on_push?: boolean;
+      };
+    };
+    /**
+     * license_compliance_scanning
+     * @description Enforce any added or changed dependencies to comply with the organization's license policy.
+     */
+    "repository-rule-license-compliance-scanning": {
+      /** @enum {string} */
+      type: "license_compliance_scanning";
+    };
+    /**
+     * file_path_restriction
+     * @description Prevent commits that include changes in specified file and folder paths from being pushed to the commit graph. This includes absolute paths that contain file names.
+     */
+    "repository-rule-file-path-restriction": {
+      /** @enum {string} */
+      type: "file_path_restriction";
+      parameters?: {
+        /** @description The file paths that are restricted from being pushed to the commit graph. */
+        restricted_file_paths: string[];
+      };
+    };
+    /**
+     * max_file_path_length
+     * @description Prevent commits that include file paths that exceed the specified character limit from being pushed to the commit graph.
+     */
+    "repository-rule-max-file-path-length": {
+      /** @enum {string} */
+      type: "max_file_path_length";
+      parameters?: {
+        /** @description The maximum amount of characters allowed in file paths. */
+        max_file_path_length: number;
+      };
+    };
+    /**
+     * file_extension_restriction
+     * @description Prevent commits that include files with specified file extensions from being pushed to the commit graph.
+     */
+    "repository-rule-file-extension-restriction": {
+      /** @enum {string} */
+      type: "file_extension_restriction";
+      parameters?: {
+        /** @description The file extensions that are restricted from being pushed to the commit graph. */
+        restricted_file_extensions: string[];
+      };
+    };
+    /**
+     * max_file_size
+     * @description Prevent commits with individual files that exceed the specified limit from being pushed to the commit graph.
+     */
+    "repository-rule-max-file-size": {
+      /** @enum {string} */
+      type: "max_file_size";
+      parameters?: {
+        /** @description The maximum file size allowed in megabytes. This limit does not apply to Git Large File Storage (Git LFS). */
+        max_file_size: number;
       };
     };
     /** repository ruleset deleted event */
@@ -55999,7 +59736,7 @@ export interface components {
       number: number;
       severity: string;
       /** @enum {string} */
-      state: "open";
+      state: "auto_dismissed" | "open";
     };
     /** repository_vulnerability_alert dismiss event */
     "webhook-repository-vulnerability-alert-dismiss": {
@@ -56197,6 +59934,15 @@ export interface components {
        * For a list of built-in patterns, see "[Supported secret scanning patterns](https://docs.github.com/code-security/secret-scanning/introduction/supported-secret-scanning-patterns#supported-secrets)."
        */
       secret_type_display_name?: string;
+      /** @description The provider of the secret that was detected. */
+      provider?: string | null;
+      /** @description The slug identifier for the provider of the secret that was detected. */
+      provider_slug?: string | null;
+      /**
+       * @description The category of the detected secret. `default` covers specific provider patterns and custom patterns; `generic` covers non-specific patterns and AI-detected secrets.
+       * @enum {string}
+       */
+      secret_category?: "default" | "generic";
       /**
        * @description The token status as of the latest validity check.
        * @enum {string}
@@ -56227,6 +59973,12 @@ export interface components {
       /** @description Whether the detected secret was found in multiple repositories in the same organization or business. */
       multi_repo?: boolean | null;
       assigned_to?: null | components["schemas"]["simple-user"];
+      /** @description An optional comment from the closure request author. */
+      closure_request_comment?: string | null;
+      /** @description An optional comment from the closure request reviewer. */
+      closure_request_reviewer_comment?: string | null;
+      closure_request_reviewer?: null | components["schemas"]["simple-user"];
+      metadata?: components["schemas"]["secret-scanning-alert-metadata"];
     };
     /**
      * @description The reason for resolving the alert.
@@ -56240,6 +59992,13 @@ export interface components {
       | "pattern_deleted"
       | "pattern_edited"
       | null;
+    /** @description A list of metadata key/value pairs associated with the secret scanning alert. */
+    readonly "secret-scanning-alert-metadata": readonly {
+      /** @description The metadata key. */
+      key: string;
+      /** @description The metadata value. */
+      value: string;
+    }[];
     /** secret_scanning_alert created event */
     "webhook-secret-scanning-alert-created": {
       /** @enum {string} */
@@ -56316,6 +60075,11 @@ export interface components {
       commit_sha: string;
       /** @description The API URL to get the associated commit resource */
       commit_url: string;
+      /**
+       * Format: uri
+       * @description The GitHub URL to get the associated commit resource.
+       */
+      html_url?: string;
     };
     /** @description Represents a 'wiki_commit' secret scanning location type. This location type shows that a secret was detected inside a commit to a repository wiki. */
     "secret-scanning-location-wiki-commit": {
@@ -56345,6 +60109,11 @@ export interface components {
        * @description The API URL to get the issue where the secret was detected.
        */
       issue_title_url: string;
+      /**
+       * Format: uri
+       * @description The GitHub URL for the issue where the secret was detected.
+       */
+      html_url?: string;
     };
     /** @description Represents an 'issue_body' secret scanning location type. This location type shows that a secret was detected in the body of an issue. */
     "secret-scanning-location-issue-body": {
@@ -56353,6 +60122,11 @@ export interface components {
        * @description The API URL to get the issue where the secret was detected.
        */
       issue_body_url: string;
+      /**
+       * Format: uri
+       * @description The GitHub URL for the issue where the secret was detected.
+       */
+      html_url?: string;
     };
     /** @description Represents an 'issue_comment' secret scanning location type. This location type shows that a secret was detected in a comment on an issue. */
     "secret-scanning-location-issue-comment": {
@@ -56361,6 +60135,11 @@ export interface components {
        * @description The API URL to get the issue comment where the secret was detected.
        */
       issue_comment_url: string;
+      /**
+       * Format: uri
+       * @description The GitHub URL for the issue comment where the secret was detected.
+       */
+      html_url?: string;
     };
     /** @description Represents a 'discussion_title' secret scanning location type. This location type shows that a secret was detected in the title of a discussion. */
     "secret-scanning-location-discussion-title": {
@@ -56393,6 +60172,11 @@ export interface components {
        * @description The API URL to get the pull request where the secret was detected.
        */
       pull_request_title_url: string;
+      /**
+       * Format: uri
+       * @description The GitHub URL for the pull request where the secret was detected.
+       */
+      html_url?: string;
     };
     /** @description Represents a 'pull_request_body' secret scanning location type. This location type shows that a secret was detected in the body of a pull request. */
     "secret-scanning-location-pull-request-body": {
@@ -56401,6 +60185,11 @@ export interface components {
        * @description The API URL to get the pull request where the secret was detected.
        */
       pull_request_body_url: string;
+      /**
+       * Format: uri
+       * @description The GitHub URL for the pull request where the secret was detected.
+       */
+      html_url?: string;
     };
     /** @description Represents a 'pull_request_comment' secret scanning location type. This location type shows that a secret was detected in a comment on a pull request. */
     "secret-scanning-location-pull-request-comment": {
@@ -56409,6 +60198,11 @@ export interface components {
        * @description The API URL to get the pull request comment where the secret was detected.
        */
       pull_request_comment_url: string;
+      /**
+       * Format: uri
+       * @description The GitHub URL for the pull request comment where the secret was detected.
+       */
+      html_url?: string;
     };
     /** @description Represents a 'pull_request_review' secret scanning location type. This location type shows that a secret was detected in a review on a pull request. */
     "secret-scanning-location-pull-request-review": {
@@ -56417,6 +60211,11 @@ export interface components {
        * @description The API URL to get the pull request review where the secret was detected.
        */
       pull_request_review_url: string;
+      /**
+       * Format: uri
+       * @description The GitHub URL for the pull request review where the secret was detected.
+       */
+      html_url?: string;
     };
     /** @description Represents a 'pull_request_review_comment' secret scanning location type. This location type shows that a secret was detected in a review comment on a pull request. */
     "secret-scanning-location-pull-request-review-comment": {
@@ -56425,6 +60224,33 @@ export interface components {
        * @description The API URL to get the pull request review comment where the secret was detected.
        */
       pull_request_review_comment_url: string;
+      /**
+       * Format: uri
+       * @description The GitHub URL for the pull request review comment where the secret was detected.
+       */
+      html_url?: string;
+    };
+    /** secret_scanning_alert metadata created event */
+    "webhook-secret-scanning-alert-metadata-created": {
+      /** @enum {string} */
+      action: "metadata_created";
+      alert: components["schemas"]["secret-scanning-alert-webhook"];
+      enterprise?: components["schemas"]["enterprise-webhooks"];
+      installation?: components["schemas"]["simple-installation"];
+      organization?: components["schemas"]["organization-simple-webhooks"];
+      repository: components["schemas"]["repository-webhooks"];
+      sender?: components["schemas"]["simple-user"];
+    };
+    /** secret_scanning_alert metadata removed event */
+    "webhook-secret-scanning-alert-metadata-removed": {
+      /** @enum {string} */
+      action: "metadata_removed";
+      alert: components["schemas"]["secret-scanning-alert-webhook"];
+      enterprise?: components["schemas"]["enterprise-webhooks"];
+      installation?: components["schemas"]["simple-installation"];
+      organization?: components["schemas"]["organization-simple-webhooks"];
+      repository: components["schemas"]["repository-webhooks"];
+      sender?: components["schemas"]["simple-user"];
     };
     /** secret_scanning_alert publicly leaked event */
     "webhook-secret-scanning-alert-publicly-leaked": {
@@ -56738,6 +60564,12 @@ export interface components {
       has_pages: boolean;
       has_downloads?: boolean;
       has_discussions: boolean;
+      has_pull_requests?: boolean;
+      /**
+       * @description The policy controlling who can create pull requests: all or collaborators_only.
+       * @enum {string}
+       */
+      pull_request_creation_policy?: "all" | "collaborators_only";
       archived: boolean;
       /** @description Returns whether or not this repository disabled. */
       disabled: boolean;
@@ -57266,64 +61098,64 @@ export interface components {
       /** @enum {string} */
       action: "parent_issue_added";
       /** @description The ID of the parent issue. */
-      parent_issue_id: number;
-      parent_issue: components["schemas"]["issue"];
-      parent_issue_repo: components["schemas"]["repository"];
+      parent_issue_id?: number;
+      parent_issue?: components["schemas"]["issue"];
+      parent_issue_repo?: components["schemas"]["repository"];
       /** @description The ID of the sub-issue. */
       sub_issue_id: number;
       sub_issue: components["schemas"]["issue"];
       installation?: components["schemas"]["simple-installation"];
       organization?: components["schemas"]["organization-simple-webhooks"];
-      repository?: components["schemas"]["repository-webhooks"];
-      sender?: components["schemas"]["simple-user"];
+      repository: components["schemas"]["repository-webhooks"];
+      sender: components["schemas"]["simple-user"];
     };
     /** parent issue removed event */
     "webhook-sub-issues-parent-issue-removed": {
       /** @enum {string} */
       action: "parent_issue_removed";
       /** @description The ID of the parent issue. */
-      parent_issue_id: number;
-      parent_issue: components["schemas"]["issue"];
-      parent_issue_repo: components["schemas"]["repository"];
+      parent_issue_id?: number;
+      parent_issue?: components["schemas"]["issue"];
+      parent_issue_repo?: components["schemas"]["repository"];
       /** @description The ID of the sub-issue. */
       sub_issue_id: number;
       sub_issue: components["schemas"]["issue"];
       installation?: components["schemas"]["simple-installation"];
       organization?: components["schemas"]["organization-simple-webhooks"];
-      repository?: components["schemas"]["repository-webhooks"];
-      sender?: components["schemas"]["simple-user"];
+      repository: components["schemas"]["repository-webhooks"];
+      sender: components["schemas"]["simple-user"];
     };
     /** sub-issue added event */
     "webhook-sub-issues-sub-issue-added": {
       /** @enum {string} */
       action: "sub_issue_added";
       /** @description The ID of the sub-issue. */
-      sub_issue_id: number;
-      sub_issue: components["schemas"]["issue"];
-      sub_issue_repo: components["schemas"]["repository"];
+      sub_issue_id?: number;
+      sub_issue?: components["schemas"]["issue"];
+      sub_issue_repo?: components["schemas"]["repository"];
       /** @description The ID of the parent issue. */
       parent_issue_id: number;
       parent_issue: components["schemas"]["issue"];
       installation?: components["schemas"]["simple-installation"];
       organization?: components["schemas"]["organization-simple-webhooks"];
-      repository?: components["schemas"]["repository-webhooks"];
-      sender?: components["schemas"]["simple-user"];
+      repository: components["schemas"]["repository-webhooks"];
+      sender: components["schemas"]["simple-user"];
     };
     /** sub-issue removed event */
     "webhook-sub-issues-sub-issue-removed": {
       /** @enum {string} */
       action: "sub_issue_removed";
       /** @description The ID of the sub-issue. */
-      sub_issue_id: number;
-      sub_issue: components["schemas"]["issue"];
-      sub_issue_repo: components["schemas"]["repository"];
+      sub_issue_id?: number;
+      sub_issue?: components["schemas"]["issue"];
+      sub_issue_repo?: components["schemas"]["repository"];
       /** @description The ID of the parent issue. */
       parent_issue_id: number;
       parent_issue: components["schemas"]["issue"];
       installation?: components["schemas"]["simple-installation"];
       organization?: components["schemas"]["organization-simple-webhooks"];
-      repository?: components["schemas"]["repository-webhooks"];
-      sender?: components["schemas"]["simple-user"];
+      repository: components["schemas"]["repository-webhooks"];
+      sender: components["schemas"]["simple-user"];
     };
     /** team_add event */
     "webhook-team-add": {
@@ -60489,7 +64321,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example branch_protection_configuration */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -60528,7 +64360,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example branch_protection_configuration */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -60565,7 +64397,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example branch_protection_rule */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -60602,7 +64434,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example branch_protection_rule */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -60639,7 +64471,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example branch_protection_rule */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -60683,7 +64515,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example check_run */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -60727,7 +64559,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example check_run */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -60771,7 +64603,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example check_run */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -60815,7 +64647,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example check_run */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -60859,7 +64691,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example check_suite */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -60903,7 +64735,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example check_suite */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -60947,7 +64779,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example check_suite */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -60984,7 +64816,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example code_scanning_alert */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -61021,7 +64853,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example code_scanning_alert */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -61058,7 +64890,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example code_scanning_alert */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -61095,7 +64927,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example code_scanning_alert */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -61132,7 +64964,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example code_scanning_alert */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -61169,7 +65001,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example code_scanning_alert */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -61194,6 +65026,43 @@ export interface operations {
     };
   };
   /**
+   * This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see "[About code scanning](https://docs.github.com/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)" and "[About code scanning alerts](https://docs.github.com/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts)." For information about the API to manage code scanning, see "[Code scanning](https://docs.github.com/rest/code-scanning)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Code scanning alerts" repository permission.
+   * @description The assignees list of a code scanning alert has been updated.
+   */
+  "code-scanning-alert/updated-assignment": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example code_scanning_alert */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-code-scanning-alert-updated-assignment"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
    * This event occurs when there is activity relating to commit comments. For more information about commit comments, see "[Commenting on a pull request](https://docs.github.com/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request)." For information about the APIs to manage commit comments, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#commitcomment) or "[Commit comments](https://docs.github.com/rest/commits/comments)" in the REST API documentation.
    *
    * For activity relating to comments on pull request reviews, use the `pull_request_review_comment` event. For activity relating to issue comments, use the `issue_comment` event. For activity relating to discussion comments, use the `discussion_comment` event.
@@ -61208,7 +65077,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example commit_comment */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -61248,7 +65117,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example create */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -61287,7 +65156,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example custom_property */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -61326,7 +65195,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example custom_property */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -61365,7 +65234,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example custom_property */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -61404,7 +65273,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example custom_property */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -61443,7 +65312,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example custom_property_values */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -61483,7 +65352,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example delete */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -61513,9 +65382,45 @@ export interface operations {
    * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/rest/dependabot/alerts)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
+   * @description The assignees for a Dependabot alert were updated.
+   */
+  "dependabot-alert/assignees-changed": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example dependabot_alert */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-dependabot-alert-assignees-changed"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to Dependabot alerts.
    *
-   * > [!NOTE]
-   * > Webhook events for Dependabot alerts are currently in public preview and subject to change.
+   * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/rest/dependabot/alerts)" in the REST API documentation.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
    * @description A Dependabot alert was automatically closed by a Dependabot auto-triage rule.
    */
   "dependabot-alert/auto-dismissed": {
@@ -61525,7 +65430,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example dependabot_alert */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -61555,9 +65460,6 @@ export interface operations {
    * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/rest/dependabot/alerts)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
-   *
-   * > [!NOTE]
-   * > Webhook events for Dependabot alerts are currently in public preview and subject to change.
    * @description A Dependabot alert, that had been automatically closed by a Dependabot auto-triage rule, was automatically reopened because the alert metadata or rule changed.
    */
   "dependabot-alert/auto-reopened": {
@@ -61567,7 +65469,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example dependabot_alert */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -61597,9 +65499,6 @@ export interface operations {
    * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/rest/dependabot/alerts)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
-   *
-   * > [!NOTE]
-   * > Webhook events for Dependabot alerts are currently in public preview and subject to change.
    * @description A manifest file change introduced a vulnerable dependency, or a GitHub Security Advisory was published and an existing dependency was found to be vulnerable.
    */
   "dependabot-alert/created": {
@@ -61609,7 +65508,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example dependabot_alert */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -61639,9 +65538,6 @@ export interface operations {
    * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/rest/dependabot/alerts)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
-   *
-   * > [!NOTE]
-   * > Webhook events for Dependabot alerts are currently in public preview and subject to change.
    * @description A Dependabot alert was manually closed.
    */
   "dependabot-alert/dismissed": {
@@ -61651,7 +65547,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example dependabot_alert */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -61681,9 +65577,6 @@ export interface operations {
    * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/rest/dependabot/alerts)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
-   *
-   * > [!NOTE]
-   * > Webhook events for Dependabot alerts are currently in public preview and subject to change.
    * @description A manifest file change removed a vulnerability.
    */
   "dependabot-alert/fixed": {
@@ -61693,7 +65586,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example dependabot_alert */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -61723,9 +65616,6 @@ export interface operations {
    * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/rest/dependabot/alerts)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
-   *
-   * > [!NOTE]
-   * > Webhook events for Dependabot alerts are currently in public preview and subject to change.
    * @description A manifest file change introduced a vulnerable dependency that had previously been fixed.
    */
   "dependabot-alert/reintroduced": {
@@ -61735,7 +65625,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example dependabot_alert */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -61765,9 +65655,6 @@ export interface operations {
    * For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/rest/dependabot/alerts)" in the REST API documentation.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
-   *
-   * > [!NOTE]
-   * > Webhook events for Dependabot alerts are currently in public preview and subject to change.
    * @description A Dependabot alert was manually reopened.
    */
   "dependabot-alert/reopened": {
@@ -61777,7 +65664,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example dependabot_alert */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -61814,7 +65701,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example deploy_key */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -61851,7 +65738,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example deploy_key */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -61890,7 +65777,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example deployment */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -61927,7 +65814,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example deployment_protection_rule */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -61966,7 +65853,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example deployment_review */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -62005,7 +65892,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example deployment_review */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -62044,7 +65931,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example deployment_review */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -62086,7 +65973,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example deployment_status */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -62128,7 +66015,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example discussion */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -62170,7 +66057,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example discussion */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -62254,7 +66141,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example discussion_comment */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -62296,7 +66183,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example discussion_comment */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -62338,7 +66225,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example discussion_comment */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -62380,7 +66267,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example discussion */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -62422,7 +66309,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example discussion */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -62464,7 +66351,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example discussion */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -62506,7 +66393,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example discussion */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -62548,7 +66435,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example discussion */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -62590,7 +66477,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example discussion */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -62674,7 +66561,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example discussion */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -62716,7 +66603,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example discussion */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -62758,7 +66645,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example discussion */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -62800,7 +66687,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example discussion */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -62842,7 +66729,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example discussion */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -62878,7 +66765,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example fork */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -62917,7 +66804,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example github_app_authorization */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -62953,7 +66840,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example gollum */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -62990,7 +66877,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example installation */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -63027,7 +66914,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example installation */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -63064,7 +66951,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example installation */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -63101,7 +66988,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example installation_repositories */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -63138,7 +67025,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example installation_repositories */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -63175,7 +67062,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example installation */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -63210,7 +67097,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example installation_target */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -63247,7 +67134,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example installation */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -63286,7 +67173,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example issue_comment */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -63325,7 +67212,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example issue_comment */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -63364,7 +67251,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example issue_comment */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -63389,6 +67276,84 @@ export interface operations {
     };
   };
   /**
+   * This event occurs when there is activity relating to a comment on an issue or pull request. For more information about issues and pull requests, see "[About issues](https://docs.github.com/issues/tracking-your-work-with-issues/about-issues)" and "[About pull requests](https://docs.github.com/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage issue comments, see [the GraphQL documentation](https://docs.github.com/graphql/reference/objects#issuecomment) or "[Issue comments](https://docs.github.com/rest/issues/comments)" in the REST API documentation.
+   *
+   * For activity relating to an issue as opposed to comments on an issue, use the `issue` event. For activity related to pull request reviews or pull request review comments, use the `pull_request_review` or `pull_request_review_comment` events. For more information about the different types of pull request comments, see "[Working with comments](https://docs.github.com/rest/guides/working-with-comments)."
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
+   * @description A comment on an issue was pinned.
+   */
+  "issue-comment/pinned": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issue_comment */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-issue-comment-pinned"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to a comment on an issue or pull request. For more information about issues and pull requests, see "[About issues](https://docs.github.com/issues/tracking-your-work-with-issues/about-issues)" and "[About pull requests](https://docs.github.com/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage issue comments, see [the GraphQL documentation](https://docs.github.com/graphql/reference/objects#issuecomment) or "[Issue comments](https://docs.github.com/rest/issues/comments)" in the REST API documentation.
+   *
+   * For activity relating to an issue as opposed to comments on an issue, use the `issue` event. For activity related to pull request reviews or pull request review comments, use the `pull_request_review` or `pull_request_review_comment` events. For more information about the different types of pull request comments, see "[Working with comments](https://docs.github.com/rest/guides/working-with-comments)."
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
+   * @description A comment on an issue was unpinned.
+   */
+  "issue-comment/unpinned": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issue_comment */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-issue-comment-unpinned"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
    * This event occurs when there is activity relating to issue dependencies, such as blocking or blocked-by relationships.
    *
    * For activity relating to issues more generally, use the `issues` event instead.
@@ -63403,7 +67368,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example issue_dependencies */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -63442,7 +67407,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example issue_dependencies */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -63481,7 +67446,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example issue_dependencies */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -63520,7 +67485,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example issue_dependencies */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -63535,6 +67500,88 @@ export interface operations {
     requestBody: {
       content: {
         "application/json": components["schemas"]["webhook-issue-dependencies-blocking-removed"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to a "relates to" relationship between two issues.
+   *
+   * For relationships between issues in the same repository, GitHub sends one delivery containing both issues. For relationships between issues in different repositories, GitHub sends one delivery for each repository. Each cross-repository delivery contains only the issue in the repository receiving the delivery and omits the related issue, its ID, and its repository details.
+   *
+   * For activity relating to issues more generally, use the `issues` event instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permissions.
+   * @description An issue was marked as related to another issue.
+   */
+  "issue-relates-to/relates-to-added": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issue_relates_to */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-issue-relates-to-added"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to a "relates to" relationship between two issues.
+   *
+   * For relationships between issues in the same repository, GitHub sends one delivery containing both issues. For relationships between issues in different repositories, GitHub sends one delivery for each repository. Each cross-repository delivery contains only the issue in the repository receiving the delivery and omits the related issue, its ID, and its repository details.
+   *
+   * For activity relating to issues more generally, use the `issues` event instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permissions.
+   * @description An issue's relationship to another issue was removed.
+   */
+  "issue-relates-to/relates-to-removed": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issue_relates_to */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-issue-relates-to-removed"];
       };
     };
     responses: {
@@ -63730,6 +67777,84 @@ export interface operations {
     requestBody: {
       content: {
         "application/json": components["schemas"]["webhook-issues-edited"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/rest/issues)" in the REST API documentation.
+   *
+   * For activity relating to a comment on an issue, use the `issue_comment` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
+   * @description An issue field value was set or updated on an issue.
+   */
+  "issues/field-added": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-issues-field-added"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/rest/issues)" in the REST API documentation.
+   *
+   * For activity relating to a comment on an issue, use the `issue_comment` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
+   * @description An issue field value was cleared from an issue.
+   */
+  "issues/field-removed": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-issues-field-removed"];
       };
     };
     responses: {
@@ -64252,6 +68377,45 @@ export interface operations {
    * If you want to receive an event when a label is added to or removed from an issue, pull request, or discussion, use the `labeled` or `unlabeled` action type for the `issues`, `pull_request`, or `discussion` events instead.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
+   * @description A label was archived.
+   */
+  "label/archived": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example label */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-label-archived"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to labels. For more information, see "[Managing labels](https://docs.github.com/issues/using-labels-and-milestones-to-track-work/managing-labels)." For information about the APIs to manage labels, see [the GraphQL documentation](https://docs.github.com/graphql/reference/objects#label) or "[Labels](https://docs.github.com/rest/issues/labels)" in the REST API documentation.
+   *
+   * If you want to receive an event when a label is added to or removed from an issue, pull request, or discussion, use the `labeled` or `unlabeled` action type for the `issues`, `pull_request`, or `discussion` events instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
    * @description A label was created.
    */
   "label/created": {
@@ -64261,7 +68425,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example label */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -64300,7 +68464,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example label */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -64339,7 +68503,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example label */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -64364,6 +68528,45 @@ export interface operations {
     };
   };
   /**
+   * This event occurs when there is activity relating to labels. For more information, see "[Managing labels](https://docs.github.com/issues/using-labels-and-milestones-to-track-work/managing-labels)." For information about the APIs to manage labels, see [the GraphQL documentation](https://docs.github.com/graphql/reference/objects#label) or "[Labels](https://docs.github.com/rest/issues/labels)" in the REST API documentation.
+   *
+   * If you want to receive an event when a label is added to or removed from an issue, pull request, or discussion, use the `labeled` or `unlabeled` action type for the `issues`, `pull_request`, or `discussion` events instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Metadata" repository permission.
+   * @description A label was unarchived.
+   */
+  "label/unarchived": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example label */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-label-unarchived"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
    * This event occurs when there is activity relating to a GitHub Marketplace purchase. For more information, see "[GitHub Marketplace](https://docs.github.com/marketplace)." For information about the APIs to manage GitHub Marketplace listings, see [the GraphQL documentation](https://docs.github.com/graphql/reference/objects#marketplacelisting) or "[GitHub Marketplace](https://docs.github.com/rest/apps/marketplace)" in the REST API documentation.
    * @description Someone cancelled a GitHub Marketplace plan, and the last billing cycle has ended. The change will take effect on the account immediately.
    */
@@ -64374,7 +68577,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example marketplace_purchase */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -64409,7 +68612,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example marketplace_purchase */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -64444,7 +68647,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example marketplace_purchase */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -64479,7 +68682,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example marketplace_purchase */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -64514,7 +68717,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example marketplace_purchase */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -64551,7 +68754,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example member */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -64588,7 +68791,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example member */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -64625,7 +68828,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example member */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -64662,7 +68865,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example membership */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -64699,7 +68902,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example membership */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -64738,7 +68941,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example merge_group */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -64777,7 +68980,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example merge_group */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -64814,7 +69017,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example meta */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -64853,7 +69056,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example milestone */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -64892,7 +69095,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example milestone */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -64931,7 +69134,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example milestone */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -64970,7 +69173,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example milestone */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -65009,7 +69212,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example milestone */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -65048,7 +69251,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example org_block */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -65087,7 +69290,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example org_block */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -65126,7 +69329,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example organization */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -65165,7 +69368,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example organization */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -65204,7 +69407,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example organization */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -65243,7 +69446,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example organization */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -65282,7 +69485,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example organization */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -65308,8 +69511,6 @@ export interface operations {
   };
   /**
    * This event occurs when there is activity relating to GitHub Packages. For more information, see "[Introduction to GitHub Packages](https://docs.github.com/packages/learn-github-packages/introduction-to-github-packages)." For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#package) or "[Packages](https://docs.github.com/rest/packages)" in the REST API documentation.
-   *
-   * To install this event on a GitHub App, the app must have at least read-level access for the "Packages" repository permission.
    * @description A package was published to a registry.
    */
   "package/published": {
@@ -65319,7 +69520,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example package */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -65345,8 +69546,6 @@ export interface operations {
   };
   /**
    * This event occurs when there is activity relating to GitHub Packages. For more information, see "[Introduction to GitHub Packages](https://docs.github.com/packages/learn-github-packages/introduction-to-github-packages)." For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#package) or "[Packages](https://docs.github.com/rest/packages)" in the REST API documentation.
-   *
-   * To install this event on a GitHub App, the app must have at least read-level access for the "Packages" repository permission.
    * @description A previously published package was updated.
    */
   "package/updated": {
@@ -65356,7 +69555,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example package */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -65392,7 +69591,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example page_build */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -65572,7 +69771,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example ping */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -65613,7 +69812,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example project_card */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -65654,7 +69853,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example project_card */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -65695,7 +69894,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example project_card */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -65736,7 +69935,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example project_card */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -65777,7 +69976,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example project_card */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -65818,7 +70017,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example project */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -65859,7 +70058,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example project_column */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -65900,7 +70099,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example project_column */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -65941,7 +70140,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example project_column */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -65982,7 +70181,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example project_column */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -66023,7 +70222,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example project */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -66064,7 +70263,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example project */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -66105,7 +70304,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example project */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -66146,7 +70345,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example project */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -66812,7 +71011,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example public */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -66851,7 +71050,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example pull_request */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -66890,7 +71089,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example pull_request */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -66929,7 +71128,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example pull_request */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -66968,7 +71167,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example pull_request */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -67007,7 +71206,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example pull_request */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -67046,7 +71245,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example pull_request */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -67085,7 +71284,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example pull_request */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -67124,7 +71323,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example pull_request */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -67163,7 +71362,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example pull_request */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -67202,7 +71401,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example pull_request */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -67241,7 +71440,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example pull_request */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -67280,7 +71479,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example pull_request */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -67319,7 +71518,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example pull_request */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -67358,7 +71557,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example pull_request */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -67397,7 +71596,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example pull_request */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -67436,7 +71635,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example pull_request_review_comment */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -67475,7 +71674,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example pull_request_review_comment */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -67514,7 +71713,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example pull_request_review_comment */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -67553,7 +71752,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example pull_request_review */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -67592,7 +71791,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example pull_request_review */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -67631,7 +71830,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example pull_request */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -67670,7 +71869,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example pull_request */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -67709,7 +71908,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example pull_request_review */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -67748,7 +71947,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example pull_request_review_thread */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -67787,7 +71986,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example pull_request_review_thread */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -67817,6 +72016,45 @@ export interface operations {
    * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
+   * @description A pull request was added to a stack.
+   */
+  "pull-request/stacked": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example pull_request */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-pull-request-stacked"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity on a pull request. For more information, see "[About pull requests](https://docs.github.com/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)." For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#pullrequest) or "[Pulls](https://docs.github.com/rest/pulls/pulls)" in the REST API documentation.
+   *
+   * For activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Pull requests" repository permission.
    * @description A pull request's head branch was updated. For example, the head branch was updated from the base branch or new commits were pushed to the head branch.
    */
   "pull-request/synchronize": {
@@ -67826,7 +72064,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example pull_request */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -67865,7 +72103,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example pull_request */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -67904,7 +72142,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example pull_request */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -67943,7 +72181,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example pull_request */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -67984,7 +72222,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example push */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -68024,7 +72262,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example registry_package */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -68064,7 +72302,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example registry_package */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -68101,7 +72339,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example release */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -68138,7 +72376,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example release */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -68175,7 +72413,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example release */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -68212,7 +72450,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example release */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -68249,7 +72487,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example release */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -68286,7 +72524,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example release */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -68323,7 +72561,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example release */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -68360,7 +72598,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example repository_advisory */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -68397,7 +72635,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example repository_advisory */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -68434,7 +72672,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example repository */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -68471,7 +72709,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example repository */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -68508,7 +72746,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example repository */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -68544,7 +72782,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example repository_dispatch */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -68581,7 +72819,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example repository */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -68613,7 +72851,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example repository_import */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -68650,7 +72888,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example repository */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -68687,7 +72925,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example repository */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -68724,7 +72962,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example repository */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -68763,7 +73001,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example repository_ruleset */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -68802,7 +73040,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example repository_ruleset */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -68841,7 +73079,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example repository_ruleset */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -68878,7 +73116,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example repository */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -68915,7 +73153,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example repository */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -68953,7 +73191,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example repository_vulnerability_alert */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -68991,7 +73229,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example repository_vulnerability_alert */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -69029,7 +73267,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example repository_vulnerability_alert */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -69067,7 +73305,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example repository_vulnerability_alert */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -69106,7 +73344,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example secret_scanning_alert */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -69145,7 +73383,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example secret_scanning_alert */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -69186,7 +73424,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example secret_scanning_alert_location */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -69216,6 +73454,84 @@ export interface operations {
    * For activity relating to secret scanning alert locations, use the `secret_scanning_alert_location` event.
    *
    * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
+   * @description Metadata was created for a secret scanning alert.
+   */
+  "secret-scanning-alert/metadata-created": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example secret_scanning_alert */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-secret-scanning-alert-metadata-created"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to a secret scanning alert. For more information about secret scanning, see "[About secret scanning](https://docs.github.com/code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/rest/secret-scanning)" in the REST API documentation.
+   *
+   * For activity relating to secret scanning alert locations, use the `secret_scanning_alert_location` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
+   * @description Metadata was removed from a secret scanning alert.
+   */
+  "secret-scanning-alert/metadata-removed": {
+    parameters: {
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example secret_scanning_alert */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-secret-scanning-alert-metadata-removed"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * This event occurs when there is activity relating to a secret scanning alert. For more information about secret scanning, see "[About secret scanning](https://docs.github.com/code-security/secret-scanning/about-secret-scanning)." For information about the API to manage secret scanning alerts, see "[Secret scanning](https://docs.github.com/rest/secret-scanning)" in the REST API documentation.
+   *
+   * For activity relating to secret scanning alert locations, use the `secret_scanning_alert_location` event.
+   *
+   * To subscribe to this event, a GitHub App must have at least read-level access for the "Secret scanning alerts" repository permission.
    * @description A secret scanning alert was detected in a public repo.
    */
   "secret-scanning-alert/publicly-leaked": {
@@ -69225,7 +73541,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example secret_scanning_alert */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -69264,7 +73580,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example secret_scanning_alert */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -69303,7 +73619,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example secret_scanning_alert */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -69342,7 +73658,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example secret_scanning_alert */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -69381,7 +73697,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example secret_scanning_alert */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -69421,7 +73737,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example secret_scanning_scan */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -69458,7 +73774,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example security_advisory */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -69495,7 +73811,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example security_advisory */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -69532,7 +73848,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example security_advisory */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -69568,7 +73884,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example security_and_analysis */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -69607,7 +73923,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example sponsorship */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -69644,7 +73960,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example sponsorship */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -69681,7 +73997,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example sponsorship */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -69720,7 +74036,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example sponsorship */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -69757,7 +74073,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example sponsorship */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -69794,7 +74110,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example sponsorship */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -69831,7 +74147,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example star */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -69868,7 +74184,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example star */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -69904,7 +74220,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example status */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -69943,7 +74259,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example sub_issues */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -69982,7 +74298,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example sub_issues */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -70021,7 +74337,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example sub_issues */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -70060,7 +74376,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example sub_issues */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -70099,7 +74415,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example team_add */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -70137,7 +74453,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example team */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -70175,7 +74491,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example team */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -70213,7 +74529,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example team */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -70251,7 +74567,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example team */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -70289,7 +74605,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example team */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -70326,7 +74642,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example watch */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -70364,7 +74680,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example workflow_dispatch */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -70403,7 +74719,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example workflow_job */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -70442,7 +74758,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example workflow_job */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -70481,7 +74797,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example workflow_job */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -70520,7 +74836,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example workflow_job */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -70559,7 +74875,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example workflow_run */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -70598,7 +74914,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example workflow_run */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -70637,7 +74953,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example workflow_run */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;

@@ -57,13 +57,16 @@ export type CodeScanningAlertReopenedEvent =
   WebhookEventDefinition<"code-scanning-alert-reopened">;
 export type CodeScanningAlertReopenedByUserEvent =
   WebhookEventDefinition<"code-scanning-alert-reopened-by-user">;
+export type CodeScanningAlertUpdatedAssignmentEvent =
+  WebhookEventDefinition<"code-scanning-alert-updated-assignment">;
 export type CodeScanningAlertEvent =
   | WebhookEventDefinition<"code-scanning-alert-appeared-in-branch">
   | WebhookEventDefinition<"code-scanning-alert-closed-by-user">
   | WebhookEventDefinition<"code-scanning-alert-created">
   | WebhookEventDefinition<"code-scanning-alert-fixed">
   | WebhookEventDefinition<"code-scanning-alert-reopened">
-  | WebhookEventDefinition<"code-scanning-alert-reopened-by-user">;
+  | WebhookEventDefinition<"code-scanning-alert-reopened-by-user">
+  | WebhookEventDefinition<"code-scanning-alert-updated-assignment">;
 export type CommitCommentEvent =
   WebhookEventDefinition<"commit-comment-created">;
 export type CreateEvent = WebhookEventDefinition<"create">;
@@ -83,6 +86,8 @@ export type CustomPropertyEvent =
 export type CustomPropertyValuesEvent =
   WebhookEventDefinition<"custom-property-values-updated">;
 export type DeleteEvent = WebhookEventDefinition<"delete">;
+export type DependabotAlertAssigneesChangedEvent =
+  WebhookEventDefinition<"dependabot-alert-assignees-changed">;
 export type DependabotAlertAutoDismissedEvent =
   WebhookEventDefinition<"dependabot-alert-auto-dismissed">;
 export type DependabotAlertAutoReopenedEvent =
@@ -98,6 +103,7 @@ export type DependabotAlertReintroducedEvent =
 export type DependabotAlertReopenedEvent =
   WebhookEventDefinition<"dependabot-alert-reopened">;
 export type DependabotAlertEvent =
+  | WebhookEventDefinition<"dependabot-alert-assignees-changed">
   | WebhookEventDefinition<"dependabot-alert-auto-dismissed">
   | WebhookEventDefinition<"dependabot-alert-auto-reopened">
   | WebhookEventDefinition<"dependabot-alert-created">
@@ -214,10 +220,16 @@ export type IssueCommentDeletedEvent =
   WebhookEventDefinition<"issue-comment-deleted">;
 export type IssueCommentEditedEvent =
   WebhookEventDefinition<"issue-comment-edited">;
+export type IssueCommentPinnedEvent =
+  WebhookEventDefinition<"issue-comment-pinned">;
+export type IssueCommentUnpinnedEvent =
+  WebhookEventDefinition<"issue-comment-unpinned">;
 export type IssueCommentEvent =
   | WebhookEventDefinition<"issue-comment-created">
   | WebhookEventDefinition<"issue-comment-deleted">
-  | WebhookEventDefinition<"issue-comment-edited">;
+  | WebhookEventDefinition<"issue-comment-edited">
+  | WebhookEventDefinition<"issue-comment-pinned">
+  | WebhookEventDefinition<"issue-comment-unpinned">;
 export type IssueDependenciesBlockedByAddedEvent =
   WebhookEventDefinition<"issue-dependencies-blocked-by-added">;
 export type IssueDependenciesBlockedByRemovedEvent =
@@ -231,12 +243,23 @@ export type IssueDependenciesEvent =
   | WebhookEventDefinition<"issue-dependencies-blocked-by-removed">
   | WebhookEventDefinition<"issue-dependencies-blocking-added">
   | WebhookEventDefinition<"issue-dependencies-blocking-removed">;
+export type IssueRelatesToRelatesToAddedEvent =
+  WebhookEventDefinition<"issue-relates-to-relates-to-added">;
+export type IssueRelatesToRelatesToRemovedEvent =
+  WebhookEventDefinition<"issue-relates-to-relates-to-removed">;
+export type IssueRelatesToEvent =
+  | WebhookEventDefinition<"issue-relates-to-relates-to-added">
+  | WebhookEventDefinition<"issue-relates-to-relates-to-removed">;
 export type IssuesAssignedEvent = WebhookEventDefinition<"issues-assigned">;
 export type IssuesClosedEvent = WebhookEventDefinition<"issues-closed">;
 export type IssuesDeletedEvent = WebhookEventDefinition<"issues-deleted">;
 export type IssuesDemilestonedEvent =
   WebhookEventDefinition<"issues-demilestoned">;
 export type IssuesEditedEvent = WebhookEventDefinition<"issues-edited">;
+export type IssuesFieldAddedEvent =
+  WebhookEventDefinition<"issues-field-added">;
+export type IssuesFieldRemovedEvent =
+  WebhookEventDefinition<"issues-field-removed">;
 export type IssuesLabeledEvent = WebhookEventDefinition<"issues-labeled">;
 export type IssuesLockedEvent = WebhookEventDefinition<"issues-locked">;
 export type IssuesMilestonedEvent = WebhookEventDefinition<"issues-milestoned">;
@@ -257,6 +280,8 @@ export type IssuesEvent =
   | WebhookEventDefinition<"issues-deleted">
   | WebhookEventDefinition<"issues-demilestoned">
   | WebhookEventDefinition<"issues-edited">
+  | WebhookEventDefinition<"issues-field-added">
+  | WebhookEventDefinition<"issues-field-removed">
   | WebhookEventDefinition<"issues-labeled">
   | WebhookEventDefinition<"issues-locked">
   | WebhookEventDefinition<"issues-milestoned">
@@ -270,13 +295,17 @@ export type IssuesEvent =
   | WebhookEventDefinition<"issues-unlocked">
   | WebhookEventDefinition<"issues-unpinned">
   | WebhookEventDefinition<"issues-untyped">;
+export type LabelArchivedEvent = WebhookEventDefinition<"label-archived">;
 export type LabelCreatedEvent = WebhookEventDefinition<"label-created">;
 export type LabelDeletedEvent = WebhookEventDefinition<"label-deleted">;
 export type LabelEditedEvent = WebhookEventDefinition<"label-edited">;
+export type LabelUnarchivedEvent = WebhookEventDefinition<"label-unarchived">;
 export type LabelEvent =
+  | WebhookEventDefinition<"label-archived">
   | WebhookEventDefinition<"label-created">
   | WebhookEventDefinition<"label-deleted">
-  | WebhookEventDefinition<"label-edited">;
+  | WebhookEventDefinition<"label-edited">
+  | WebhookEventDefinition<"label-unarchived">;
 export type MarketplacePurchaseCancelledEvent =
   WebhookEventDefinition<"marketplace-purchase-cancelled">;
 export type MarketplacePurchaseChangedEvent =
@@ -490,6 +519,8 @@ export type PullRequestReviewRequestRemovedEvent =
   WebhookEventDefinition<"pull-request-review-request-removed">;
 export type PullRequestReviewRequestedEvent =
   WebhookEventDefinition<"pull-request-review-requested">;
+export type PullRequestStackedEvent =
+  WebhookEventDefinition<"pull-request-stacked">;
 export type PullRequestSynchronizeEvent =
   WebhookEventDefinition<"pull-request-synchronize">;
 export type PullRequestUnassignedEvent =
@@ -516,6 +547,7 @@ export type PullRequestEvent =
   | WebhookEventDefinition<"pull-request-reopened">
   | WebhookEventDefinition<"pull-request-review-request-removed">
   | WebhookEventDefinition<"pull-request-review-requested">
+  | WebhookEventDefinition<"pull-request-stacked">
   | WebhookEventDefinition<"pull-request-synchronize">
   | WebhookEventDefinition<"pull-request-unassigned">
   | WebhookEventDefinition<"pull-request-unlabeled">
@@ -636,6 +668,10 @@ export type SecretScanningAlertAssignedEvent =
   WebhookEventDefinition<"secret-scanning-alert-assigned">;
 export type SecretScanningAlertCreatedEvent =
   WebhookEventDefinition<"secret-scanning-alert-created">;
+export type SecretScanningAlertMetadataCreatedEvent =
+  WebhookEventDefinition<"secret-scanning-alert-metadata-created">;
+export type SecretScanningAlertMetadataRemovedEvent =
+  WebhookEventDefinition<"secret-scanning-alert-metadata-removed">;
 export type SecretScanningAlertPubliclyLeakedEvent =
   WebhookEventDefinition<"secret-scanning-alert-publicly-leaked">;
 export type SecretScanningAlertReopenedEvent =
@@ -649,6 +685,8 @@ export type SecretScanningAlertValidatedEvent =
 export type SecretScanningAlertEvent =
   | WebhookEventDefinition<"secret-scanning-alert-assigned">
   | WebhookEventDefinition<"secret-scanning-alert-created">
+  | WebhookEventDefinition<"secret-scanning-alert-metadata-created">
+  | WebhookEventDefinition<"secret-scanning-alert-metadata-removed">
   | WebhookEventDefinition<"secret-scanning-alert-publicly-leaked">
   | WebhookEventDefinition<"secret-scanning-alert-reopened">
   | WebhookEventDefinition<"secret-scanning-alert-resolved">
@@ -770,7 +808,8 @@ export type EventPayloadMap = {
     | WebhookEventDefinition<"code-scanning-alert-created">
     | WebhookEventDefinition<"code-scanning-alert-fixed">
     | WebhookEventDefinition<"code-scanning-alert-reopened">
-    | WebhookEventDefinition<"code-scanning-alert-reopened-by-user">;
+    | WebhookEventDefinition<"code-scanning-alert-reopened-by-user">
+    | WebhookEventDefinition<"code-scanning-alert-updated-assignment">;
   commit_comment: WebhookEventDefinition<"commit-comment-created">;
   create: WebhookEventDefinition<"create">;
   custom_property:
@@ -781,6 +820,7 @@ export type EventPayloadMap = {
   custom_property_values: WebhookEventDefinition<"custom-property-values-updated">;
   delete: WebhookEventDefinition<"delete">;
   dependabot_alert:
+    | WebhookEventDefinition<"dependabot-alert-assignees-changed">
     | WebhookEventDefinition<"dependabot-alert-auto-dismissed">
     | WebhookEventDefinition<"dependabot-alert-auto-reopened">
     | WebhookEventDefinition<"dependabot-alert-created">
@@ -834,18 +874,25 @@ export type EventPayloadMap = {
   issue_comment:
     | WebhookEventDefinition<"issue-comment-created">
     | WebhookEventDefinition<"issue-comment-deleted">
-    | WebhookEventDefinition<"issue-comment-edited">;
+    | WebhookEventDefinition<"issue-comment-edited">
+    | WebhookEventDefinition<"issue-comment-pinned">
+    | WebhookEventDefinition<"issue-comment-unpinned">;
   issue_dependencies:
     | WebhookEventDefinition<"issue-dependencies-blocked-by-added">
     | WebhookEventDefinition<"issue-dependencies-blocked-by-removed">
     | WebhookEventDefinition<"issue-dependencies-blocking-added">
     | WebhookEventDefinition<"issue-dependencies-blocking-removed">;
+  issue_relates_to:
+    | WebhookEventDefinition<"issue-relates-to-relates-to-added">
+    | WebhookEventDefinition<"issue-relates-to-relates-to-removed">;
   issues:
     | WebhookEventDefinition<"issues-assigned">
     | WebhookEventDefinition<"issues-closed">
     | WebhookEventDefinition<"issues-deleted">
     | WebhookEventDefinition<"issues-demilestoned">
     | WebhookEventDefinition<"issues-edited">
+    | WebhookEventDefinition<"issues-field-added">
+    | WebhookEventDefinition<"issues-field-removed">
     | WebhookEventDefinition<"issues-labeled">
     | WebhookEventDefinition<"issues-locked">
     | WebhookEventDefinition<"issues-milestoned">
@@ -860,9 +907,11 @@ export type EventPayloadMap = {
     | WebhookEventDefinition<"issues-unpinned">
     | WebhookEventDefinition<"issues-untyped">;
   label:
+    | WebhookEventDefinition<"label-archived">
     | WebhookEventDefinition<"label-created">
     | WebhookEventDefinition<"label-deleted">
-    | WebhookEventDefinition<"label-edited">;
+    | WebhookEventDefinition<"label-edited">
+    | WebhookEventDefinition<"label-unarchived">;
   marketplace_purchase:
     | WebhookEventDefinition<"marketplace-purchase-cancelled">
     | WebhookEventDefinition<"marketplace-purchase-changed">
@@ -959,6 +1008,7 @@ export type EventPayloadMap = {
     | WebhookEventDefinition<"pull-request-reopened">
     | WebhookEventDefinition<"pull-request-review-request-removed">
     | WebhookEventDefinition<"pull-request-review-requested">
+    | WebhookEventDefinition<"pull-request-stacked">
     | WebhookEventDefinition<"pull-request-synchronize">
     | WebhookEventDefinition<"pull-request-unassigned">
     | WebhookEventDefinition<"pull-request-unlabeled">
@@ -1013,6 +1063,8 @@ export type EventPayloadMap = {
   secret_scanning_alert:
     | WebhookEventDefinition<"secret-scanning-alert-assigned">
     | WebhookEventDefinition<"secret-scanning-alert-created">
+    | WebhookEventDefinition<"secret-scanning-alert-metadata-created">
+    | WebhookEventDefinition<"secret-scanning-alert-metadata-removed">
     | WebhookEventDefinition<"secret-scanning-alert-publicly-leaked">
     | WebhookEventDefinition<"secret-scanning-alert-reopened">
     | WebhookEventDefinition<"secret-scanning-alert-resolved">
@@ -1087,6 +1139,7 @@ export type WebhookEvent =
   | InstallationTargetEvent
   | IssueCommentEvent
   | IssueDependenciesEvent
+  | IssueRelatesToEvent
   | IssuesEvent
   | LabelEvent
   | MarketplacePurchaseEvent

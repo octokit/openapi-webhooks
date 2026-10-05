@@ -1,10 +1,10 @@
 {
-  "name": "@octokit/openapi-webhooks-types-ghes-3.16",
-  "description": "Generated TypeScript definitions based on GitHub's OpenAPI spec for ghes-3.16",
+  "name": "@octokit/openapi-webhooks-types-ghes-3.22",
+  "description": "Generated TypeScript definitions based on GitHub's OpenAPI spec for ghes-3.22",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/octokit/openapi-webhooks.git",
-    "directory": "packages/openapi-webhooks-types-ghes-3.16"
+    "directory": "packages/openapi-webhooks-types-ghes-3.22"
   },
   "publishConfig": {
     "access": "public",

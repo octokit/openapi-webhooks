@@ -3,12 +3,11 @@ import { resolve, join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const SUPPORTED_GHES_OPERATIONS = [
-  "3.14",
-  "3.15",
-  "3.16",
-  "3.17",
   "3.18",
   "3.19",
+  "3.20",
+  "3.21",
+  "3.22"
 ];
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
