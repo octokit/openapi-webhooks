@@ -3527,8 +3527,8 @@ export interface components {
     "exemption-request": {
       /** @description The ID of the exemption request. */
       id?: number;
-      /** @description The number uniquely identifying the exemption request within it's repository. */
-      number?: number | null;
+      /** @description The number uniquely identifying the exemption request within its repository. */
+      number?: number;
       /** @description The ID of the repository the exemption request is for. */
       repository_id?: number;
       /** @description The ID of the user who requested the exemption. */
@@ -3544,13 +3544,15 @@ export interface components {
         | "secret_scanning"
         | "secret_scanning_closure"
         | "code_scanning_alert_dismissal"
-        | "dependabot_alert_dismissal";
+        | "dependabot_alert_dismissal"
+        | "license_compliance_dismissal";
       exemption_request_data?:
         | components["schemas"]["exemption-request-push-ruleset-bypass"]
         | components["schemas"]["exemption-request-secret-scanning"]
         | components["schemas"]["dismissal-request-secret-scanning"]
         | components["schemas"]["dismissal-request-code-scanning"]
-        | components["schemas"]["dismissal-request-dependabot"];
+        | components["schemas"]["dismissal-request-dependabot"]
+        | components["schemas"]["dismissal-request-license-compliance"];
       /** @description The unique identifier for the request type of the exemption request. For example, a commit SHA. */
       resource_identifier?: string;
       /**
@@ -3567,6 +3569,7 @@ export interface components {
             | components["schemas"]["dismissal-request-secret-scanning-metadata"]
             | components["schemas"]["dismissal-request-code-scanning-metadata"]
             | components["schemas"]["dismissal-request-dependabot-metadata"]
+            | components["schemas"]["dismissal-request-license-compliance-metadata"]
           )
         | null;
       /**
@@ -3690,6 +3693,22 @@ export interface components {
       }[];
     };
     /**
+     * License compliance alert closure request data
+     * @description License compliance alerts that have closure requests.
+     */
+    "dismissal-request-license-compliance": {
+      /**
+       * @description The type of request
+       * @enum {string}
+       */
+      type?: "license_compliance_dismissal";
+      /** @description The data related to the License compliance alerts that have closure requests. */
+      data?: {
+        /** @description The number of the alert to be closed */
+        alert_number?: string;
+      }[];
+    };
+    /**
      * Secret Scanning Push Protection Exemption Request Metadata
      * @description Metadata for a secret scanning push protection exemption request.
      */
@@ -3745,6 +3764,19 @@ export interface components {
         | "no_bandwidth"
         | "not_used"
         | "tolerable_risk";
+    };
+    /**
+     * License compliance alert closure request metadata
+     * @description Metadata for a License compliance alert closure request.
+     */
+    "dismissal-request-license-compliance-metadata": {
+      /** @description The title of the License compliance alert */
+      alert_title?: string;
+      /**
+       * @description The reason for the closure request
+       * @enum {string}
+       */
+      reason?: "amendment" | "private package" | "inaccurate license";
     };
     /**
      * Exemption response
@@ -4717,6 +4749,8 @@ export interface components {
             /** @enum {string} */
             checks?: "read" | "write";
             /** @enum {string} */
+            code_quality?: "read" | "write";
+            /** @enum {string} */
             content_references?: "read" | "write";
             /** @enum {string} */
             contents?: "read" | "write";
@@ -4726,6 +4760,8 @@ export interface components {
             deployments?: "read" | "write";
             /** @enum {string} */
             discussions?: "read" | "write";
+            /** @enum {string} */
+            drives?: "read" | "write";
             /** @enum {string} */
             emails?: "read" | "write";
             /** @enum {string} */
@@ -5027,6 +5063,8 @@ export interface components {
             /** @enum {string} */
             checks?: "read" | "write";
             /** @enum {string} */
+            code_quality?: "read" | "write";
+            /** @enum {string} */
             content_references?: "read" | "write";
             /** @enum {string} */
             contents?: "read" | "write";
@@ -5036,6 +5074,8 @@ export interface components {
             deployments?: "read" | "write";
             /** @enum {string} */
             discussions?: "read" | "write";
+            /** @enum {string} */
+            drives?: "read" | "write";
             /** @enum {string} */
             emails?: "read" | "write";
             /** @enum {string} */
@@ -5272,6 +5312,7 @@ export interface components {
           | "false positive"
           | "won't fix"
           | "used in tests"
+          | "mitigated"
           | null;
         /** @description The time that the alert was fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`. */
         fixed_at?: null;
@@ -5413,6 +5454,7 @@ export interface components {
           | "false positive"
           | "won't fix"
           | "used in tests"
+          | "mitigated"
           | null;
         /** @description The time that the alert was fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`. */
         fixed_at?: null;
@@ -5544,7 +5586,7 @@ export interface components {
         dismissed_at: null;
         dismissed_by: null;
         dismissed_comment?: components["schemas"]["code-scanning-alert-dismissed-comment"];
-        /** @description The reason for dismissing or closing the alert. Can be one of: `false positive`, `won't fix`, and `used in tests`. */
+        /** @description The reason for dismissing or closing the alert. Can be one of: `false positive`, `won't fix`, `used in tests`, and `mitigated`. */
         dismissed_reason: null;
         /** @description The time that the alert was fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`. */
         fixed_at?: null;
@@ -5691,6 +5733,7 @@ export interface components {
           | "false positive"
           | "won't fix"
           | "used in tests"
+          | "mitigated"
           | null;
         /** @description The time that the alert was fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`. */
         fixed_at?: null;
@@ -5787,7 +5830,7 @@ export interface components {
         dismissed_at: string | null;
         dismissed_by: Record<string, never> | null;
         dismissed_comment?: components["schemas"]["code-scanning-alert-dismissed-comment"];
-        /** @description The reason for dismissing or closing the alert. Can be one of: `false positive`, `won't fix`, and `used in tests`. */
+        /** @description The reason for dismissing or closing the alert. Can be one of: `false positive`, `won't fix`, `used in tests`, and `mitigated`. */
         dismissed_reason: string | null;
         /** @description The time that the alert was fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`. */
         fixed_at?: null;
@@ -5887,7 +5930,7 @@ export interface components {
         dismissed_at: null;
         dismissed_by: null;
         dismissed_comment?: components["schemas"]["code-scanning-alert-dismissed-comment"];
-        /** @description The reason for dismissing or closing the alert. Can be one of: `false positive`, `won't fix`, and `used in tests`. */
+        /** @description The reason for dismissing or closing the alert. Can be one of: `false positive`, `won't fix`, `used in tests`, and `mitigated`. */
         dismissed_reason: null;
         /** @description The time that the alert was fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`. */
         fixed_at?: null;
@@ -6189,7 +6232,7 @@ export interface components {
       /** @description The name of the property */
       property_name: string;
       /** @description The value assigned to the property */
-      value: string | string[] | null | unknown[];
+      value: (string | null) | string[] | null | string | unknown[];
     };
     /** delete event */
     "webhook-delete": {
@@ -7226,6 +7269,8 @@ export interface components {
         description: string | null;
         color: string;
         default: boolean;
+        /** @description The user who archived the label, or `null` if it has not been archived. */
+        archived_by: null;
       }[];
       milestone: null | components["schemas"]["milestone"];
       active_lock_reason?: string | null;
@@ -7239,9 +7284,9 @@ export interface components {
       merged_at: string | null;
       merge_commit_sha: string | null;
       assignee: null | components["schemas"]["simple-user"];
-      assignees?: components["schemas"]["simple-user"][] | null;
-      requested_reviewers?: components["schemas"]["simple-user"][] | null;
-      requested_teams?: components["schemas"]["team-simple"][] | null;
+      assignees?: components["schemas"]["simple-user"][];
+      requested_reviewers?: components["schemas"]["simple-user"][];
+      requested_teams?: components["schemas"]["team-simple"][];
       head: {
         label: string;
         ref: string;
@@ -7268,6 +7313,7 @@ export interface components {
       };
       author_association: components["schemas"]["author-association"];
       auto_merge: components["schemas"]["auto-merge"];
+      stack?: components["schemas"]["pull-request-stack"];
       /** @description Indicates whether or not the pull request is a draft. */
       draft?: boolean;
       merged: boolean;
@@ -7650,6 +7696,26 @@ export interface components {
       commit_title: string;
       /** @description Commit message for the merge commit. */
       commit_message: string;
+    } | null;
+    /**
+     * Pull Request Stack
+     * @description The stack information associated with a pull request.
+     */
+    "pull-request-stack": {
+      base: {
+        /** @description The base ref of the stack this pull request belongs to. */
+        ref: string;
+        /** @description The base SHA of the stack this pull request belongs to. */
+        sha: string;
+      };
+      /** @description The total number of pull requests in the stack. */
+      size?: number;
+      /** @description The one-based position of this pull request within the stack, where 1 is the bottom of the stack. */
+      position?: number;
+      /** @description The ID of the stack that this pull request belongs to. */
+      id?: number;
+      /** @description The number of the stack that this pull request belongs to. */
+      number?: number;
     } | null;
     "webhook-deployment-review-approved": {
       /** @enum {string} */
@@ -9886,6 +9952,13 @@ export interface components {
       color: string;
       /** @description Whether this label comes by default in a new repository. */
       default: boolean;
+      /**
+       * Format: date-time
+       * @description Timestamp indicating when the label was archived, or `null` if it has not been archived.
+       */
+      archived_at: string | null;
+      /** @description The user who archived the label, or `null` if it has not been archived. */
+      archived_by: null;
     };
     /** discussion category changed event */
     "webhook-discussion-category-changed": {
@@ -10105,6 +10178,13 @@ export interface components {
       color: string;
       default: boolean;
       description: string | null;
+      /**
+       * Format: date-time
+       * @description Timestamp indicating when the label was archived, or `null` if it has not been archived.
+       */
+      archived_at: string | null;
+      /** @description The user who archived the label, or `null` if it has not been archived. */
+      archived_by: null;
       id: number;
       /** @description The name of the label. */
       name: string;
@@ -10657,7 +10737,7 @@ export interface components {
     };
     /**
      * App Permissions
-     * @description The permissions granted to the user access token.
+     * @description The permissions granted to the fine-grained access token.
      * @example {
      *   "contents": "read",
      *   "issues": "read",
@@ -10691,6 +10771,11 @@ export interface components {
        * @enum {string}
        */
       checks?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token to view and manage code quality data.
+       * @enum {string}
+       */
+      code_quality?: "read" | "write";
       /**
        * @description The level of permission to grant the access token to create, edit, delete, and list Codespaces.
        * @enum {string}
@@ -10830,7 +10915,17 @@ export interface components {
        * @description The level of permission to grant the access token for managing access to GitHub Copilot for members of an organization with a Copilot Business subscription. This property is in public preview and is subject to change.
        * @enum {string}
        */
-      organization_copilot_seat_management?: "write";
+      organization_copilot_seat_management?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token to view and manage Copilot cloud agent settings for an organization.
+       * @enum {string}
+       */
+      organization_copilot_agent_settings?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token for managing external custom properties for repositories in an organization.
+       * @enum {string}
+       */
+      organization_external_properties_for_repos?: "read" | "write" | "admin";
       /**
        * @description The level of permission to grant the access token to view and manage announcement banners for an organization.
        * @enum {string}
@@ -10975,7 +11070,7 @@ export interface components {
       installation: components["schemas"]["installation"];
       organization?: components["schemas"]["organization-simple-webhooks"];
       repositories_added: components["schemas"]["webhooks_repositories_added"];
-      /** @description An array of repository objects, which were removed from the installation. */
+      /** @description An array of repository objects, which were removed from the installation. When `repository_selection` changes from `all` to `selected`, this array is empty. */
       repositories_removed: {
         full_name?: string;
         /** @description Unique identifier of the repository */
@@ -11015,7 +11110,7 @@ export interface components {
       installation: components["schemas"]["installation"];
       organization?: components["schemas"]["organization-simple-webhooks"];
       repositories_added: components["schemas"]["webhooks_repositories_added"];
-      /** @description An array of repository objects, which were removed from the installation. */
+      /** @description An array of repository objects, which were removed from the installation. When `repository_selection` changes from `all` to `selected`, this array is empty. */
       repositories_removed: {
         full_name: string;
         /** @description Unique identifier of the repository */
@@ -11172,6 +11267,7 @@ export interface components {
          */
         url: string;
         pin?: null | components["schemas"]["pinned-issue-comment"];
+        minimized?: null | components["schemas"]["issue-comment-minimized"];
         /** User */
         user: {
           /** Format: uri */
@@ -11816,6 +11912,14 @@ export interface components {
       pinned_at: string;
       pinned_by: null | components["schemas"]["simple-user"];
     };
+    /**
+     * Minimized Issue Comment
+     * @description Details about why an issue comment was minimized.
+     */
+    "issue-comment-minimized": {
+      /** @description The reason the comment was minimized. */
+      reason: string | null;
+    };
     /** Sub-issues Summary */
     "sub-issues-summary": {
       total: number;
@@ -11831,7 +11935,7 @@ export interface components {
     };
     /**
      * Issue Type
-     * @description The type of issue.
+     * @description The type assigned to the issue. This is only present for issues in repositories where issue types are supported.
      */
     "issue-type": {
       /** @description The unique identifier of the issue type. */
@@ -12563,6 +12667,7 @@ export interface components {
         user_view_type?: string;
       } | null;
       pin?: null | components["schemas"]["pinned-issue-comment"];
+      minimized?: null | components["schemas"]["issue-comment-minimized"];
     };
     /** issue_comment edited event */
     "webhook-issue-comment-edited": {
@@ -13700,6 +13805,7 @@ export interface components {
       performed_via_github_app?: null | components["schemas"]["integration"];
       reactions?: components["schemas"]["reaction-rollup"];
       pin?: null | components["schemas"]["pinned-issue-comment"];
+      minimized?: null | components["schemas"]["issue-comment-minimized"];
     };
     /** Reaction Rollup */
     "reaction-rollup": {
@@ -13725,12 +13831,14 @@ export interface components {
        * @description Unique identifier for the issue field.
        */
       issue_field_id: number;
+      /** @description The human-readable name of the issue field. */
+      issue_field_name?: string;
       node_id: string;
       /**
        * @description The data type of the issue field
        * @enum {string}
        */
-      data_type: "text" | "single_select" | "number" | "date";
+      data_type: "text" | "single_select" | "multi_select" | "number" | "date";
       /** @description The value of the issue field */
       value: null | string | number;
       /** @description Details about the selected option (only present for single_select fields) */
@@ -13745,6 +13853,20 @@ export interface components {
         /** @description The color of the option */
         color: string;
       } | null;
+      /** @description Details about the selected options */
+      multi_select_options?:
+        | {
+            /**
+             * Format: int64
+             * @description Unique identifier for the option.
+             */
+            id: number;
+            /** @description The name of the option */
+            name: string;
+            /** @description The color of the option */
+            color: string;
+          }[]
+        | null;
     };
     /** issues closed event */
     "webhook-issues-closed": {
@@ -15975,6 +16097,13 @@ export interface components {
           color: string;
           default: boolean;
           description: string | null;
+          /**
+           * Format: date-time
+           * @description Timestamp indicating when the label was archived, or `null` if it has not been archived.
+           */
+          archived_at: string | null;
+          /** @description The user who archived the label, or `null` if it has not been archived. */
+          archived_by: null;
           id: number;
           /** @description The name of the label. */
           name: string;
@@ -24441,6 +24570,7 @@ export interface components {
         review_comments?: number;
         /** Format: uri */
         review_comments_url: string;
+        stack?: components["schemas"]["pull-request-stack"];
         /**
          * @description State of this Pull Request. Either `open` or `closed`.
          * @enum {string}
@@ -24505,7 +24635,7 @@ export interface components {
       action: "auto_merge_disabled";
       enterprise?: components["schemas"]["enterprise-webhooks"];
       installation?: components["schemas"]["simple-installation"];
-      number: number;
+      number: components["schemas"]["webhooks_number"];
       organization?: components["schemas"]["organization-simple-webhooks"];
       /** Pull Request */
       pull_request: {
@@ -25694,6 +25824,7 @@ export interface components {
         review_comments?: number;
         /** Format: uri */
         review_comments_url: string;
+        stack?: components["schemas"]["pull-request-stack"];
         /**
          * @description State of this Pull Request. Either `open` or `closed`.
          * @enum {string}
@@ -25757,7 +25888,7 @@ export interface components {
       action: "auto_merge_enabled";
       enterprise?: components["schemas"]["enterprise-webhooks"];
       installation?: components["schemas"]["simple-installation"];
-      number: number;
+      number: components["schemas"]["webhooks_number"];
       organization?: components["schemas"]["organization-simple-webhooks"];
       /** Pull Request */
       pull_request: {
@@ -26943,6 +27074,7 @@ export interface components {
         review_comments?: number;
         /** Format: uri */
         review_comments_url: string;
+        stack?: components["schemas"]["pull-request-stack"];
         /**
          * @description State of this Pull Request. Either `open` or `closed`.
          * @enum {string}
@@ -27078,12 +27210,13 @@ export interface components {
       /** @enum {string} */
       action: "demilestoned";
       enterprise?: components["schemas"]["enterprise-webhooks"];
+      installation?: components["schemas"]["simple-installation"];
       milestone?: components["schemas"]["milestone"];
       number: components["schemas"]["webhooks_number"];
       organization?: components["schemas"]["organization-simple-webhooks"];
       pull_request: components["schemas"]["webhooks_pull_request_5"];
       repository: components["schemas"]["repository-webhooks"];
-      sender?: components["schemas"]["simple-user"];
+      sender: components["schemas"]["simple-user"];
     };
     /** Pull Request */
     webhooks_pull_request_5: {
@@ -28265,6 +28398,7 @@ export interface components {
       review_comments?: number;
       /** Format: uri */
       review_comments_url: string;
+      stack?: components["schemas"]["pull-request-stack"];
       /**
        * @description State of this Pull Request. Either `open` or `closed`.
        * @enum {string}
@@ -28347,7 +28481,7 @@ export interface components {
       organization?: components["schemas"]["organization-simple-webhooks"];
       pull_request: components["schemas"]["pull-request-webhook"];
       repository: components["schemas"]["repository-webhooks"];
-      sender?: components["schemas"]["simple-user"];
+      sender: components["schemas"]["simple-user"];
     };
     /** pull_request labeled event */
     "webhook-pull-request-labeled": {
@@ -29262,6 +29396,13 @@ export interface components {
           color: string;
           default: boolean;
           description: string | null;
+          /**
+           * Format: date-time
+           * @description Timestamp indicating when the label was archived, or `null` if it has not been archived.
+           */
+          archived_at: string | null;
+          /** @description The user who archived the label, or `null` if it has not been archived. */
+          archived_by: null;
           id: number;
           /** @description The name of the label. */
           name: string;
@@ -29545,6 +29686,7 @@ export interface components {
         review_comments?: number;
         /** Format: uri */
         review_comments_url: string;
+        stack?: components["schemas"]["pull-request-stack"];
         /**
          * @description State of this Pull Request. Either `open` or `closed`.
          * @enum {string}
@@ -30796,6 +30938,7 @@ export interface components {
         review_comments?: number;
         /** Format: uri */
         review_comments_url: string;
+        stack?: components["schemas"]["pull-request-stack"];
         /**
          * @description State of this Pull Request. Either `open` or `closed`.
          * @enum {string}
@@ -30857,12 +31000,13 @@ export interface components {
       /** @enum {string} */
       action: "milestoned";
       enterprise?: components["schemas"]["enterprise-webhooks"];
+      installation?: components["schemas"]["simple-installation"];
       milestone?: components["schemas"]["milestone"];
       number: components["schemas"]["webhooks_number"];
       organization?: components["schemas"]["organization-simple-webhooks"];
       pull_request: components["schemas"]["webhooks_pull_request_5"];
       repository: components["schemas"]["repository-webhooks"];
-      sender?: components["schemas"]["simple-user"];
+      sender: components["schemas"]["simple-user"];
     };
     /** pull_request opened event */
     "webhook-pull-request-opened": {
@@ -32193,6 +32337,7 @@ export interface components {
         review_comment_url: string;
         /** Format: uri */
         review_comments_url: string;
+        stack?: components["schemas"]["pull-request-stack"];
         /** @enum {string} */
         state: "open" | "closed";
         /** Format: uri */
@@ -33383,6 +33528,7 @@ export interface components {
         review_comment_url: string;
         /** Format: uri */
         review_comments_url: string;
+        stack?: components["schemas"]["pull-request-stack"];
         /** @enum {string} */
         state: "open" | "closed";
         /** Format: uri */
@@ -34730,6 +34876,7 @@ export interface components {
         review_comment_url: string;
         /** Format: uri */
         review_comments_url: string;
+        stack?: components["schemas"]["pull-request-stack"];
         /** @enum {string} */
         state: "open" | "closed";
         /** Format: uri */
@@ -35920,6 +36067,7 @@ export interface components {
         review_comment_url: string;
         /** Format: uri */
         review_comments_url: string;
+        stack?: components["schemas"]["pull-request-stack"];
         /** @enum {string} */
         state: "open" | "closed";
         /** Format: uri */
@@ -38411,6 +38559,7 @@ export interface components {
             review_comments?: number;
             /** Format: uri */
             review_comments_url: string;
+            stack?: components["schemas"]["pull-request-stack"];
             /**
              * @description State of this Pull Request. Either `open` or `closed`.
              * @enum {string}
@@ -39701,6 +39850,7 @@ export interface components {
             review_comments?: number;
             /** Format: uri */
             review_comments_url: string;
+            stack?: components["schemas"]["pull-request-stack"];
             /**
              * @description State of this Pull Request. Either `open` or `closed`.
              * @enum {string}
@@ -41013,6 +41163,7 @@ export interface components {
             review_comments?: number;
             /** Format: uri */
             review_comments_url: string;
+            stack?: components["schemas"]["pull-request-stack"];
             /**
              * @description State of this Pull Request. Either `open` or `closed`.
              * @enum {string}
@@ -42303,6 +42454,7 @@ export interface components {
             review_comments?: number;
             /** Format: uri */
             review_comments_url: string;
+            stack?: components["schemas"]["pull-request-stack"];
             /**
              * @description State of this Pull Request. Either `open` or `closed`.
              * @enum {string}
@@ -43555,6 +43707,7 @@ export interface components {
         review_comment_url: string;
         /** Format: uri */
         review_comments_url: string;
+        stack?: components["schemas"]["pull-request-stack"];
         /** @enum {string} */
         state: "open" | "closed";
         /** Format: uri */
@@ -44662,6 +44815,7 @@ export interface components {
         review_comment_url: string;
         /** Format: uri */
         review_comments_url: string;
+        stack?: components["schemas"]["pull-request-stack"];
         /** @enum {string} */
         state: "open" | "closed";
         /** Format: uri */
@@ -45924,6 +46078,7 @@ export interface components {
         review_comment_url: string;
         /** Format: uri */
         review_comments_url: string;
+        stack?: components["schemas"]["pull-request-stack"];
         /** @enum {string} */
         state: "open" | "closed";
         /** Format: uri */
@@ -47321,6 +47476,7 @@ export interface components {
         review_comments?: number;
         /** Format: uri */
         review_comments_url: string;
+        stack?: components["schemas"]["pull-request-stack"];
         /**
          * @description State of this Pull Request. Either `open` or `closed`.
          * @enum {string}
@@ -48573,6 +48729,7 @@ export interface components {
         review_comments?: number;
         /** Format: uri */
         review_comments_url: string;
+        stack?: components["schemas"]["pull-request-stack"];
         /**
          * @description State of this Pull Request. Either `open` or `closed`.
          * @enum {string}
@@ -48627,7 +48784,7 @@ export interface components {
         } | null;
       };
       repository: components["schemas"]["repository-webhooks"];
-      sender?: components["schemas"]["simple-user"];
+      sender: components["schemas"]["simple-user"];
     };
     /** pull_request unlabeled event */
     "webhook-pull-request-unlabeled": {
@@ -49818,6 +49975,7 @@ export interface components {
         review_comments?: number;
         /** Format: uri */
         review_comments_url: string;
+        stack?: components["schemas"]["pull-request-stack"];
         /**
          * @description State of this Pull Request. Either `open` or `closed`.
          * @enum {string}
@@ -51069,6 +51227,7 @@ export interface components {
         review_comments?: number;
         /** Format: uri */
         review_comments_url: string;
+        stack?: components["schemas"]["pull-request-stack"];
         /**
          * @description State of this Pull Request. Either `open` or `closed`.
          * @enum {string}
@@ -52737,13 +52896,13 @@ export interface components {
       | components["schemas"]["repository-rule-committer-email-pattern"]
       | components["schemas"]["repository-rule-branch-name-pattern"]
       | components["schemas"]["repository-rule-tag-name-pattern"]
+      | components["schemas"]["repository-rule-workflows"]
+      | components["schemas"]["repository-rule-code-scanning"]
+      | components["schemas"]["repository-rule-copilot-code-review"]
       | components["schemas"]["repository-rule-file-path-restriction"]
       | components["schemas"]["repository-rule-max-file-path-length"]
       | components["schemas"]["repository-rule-file-extension-restriction"]
-      | components["schemas"]["repository-rule-max-file-size"]
-      | components["schemas"]["repository-rule-workflows"]
-      | components["schemas"]["repository-rule-code-scanning"]
-      | components["schemas"]["repository-rule-copilot-code-review"];
+      | components["schemas"]["repository-rule-max-file-size"];
     /**
      * creation
      * @description Only allow users with bypass permission to create matching refs.
@@ -52842,6 +53001,7 @@ export interface components {
         allowed_merge_methods?: ("merge" | "squash" | "rebase")[];
         /** @description New, reviewable commits pushed will dismiss previous pull request review approvals. */
         dismiss_stale_reviews_on_push: boolean;
+        dismissal_restriction?: components["schemas"]["repository-rule-params-dismissal-restriction"];
         /** @description Require an approving review in pull requests that modify files that have a designated code owner. */
         require_code_owner_review: boolean;
         /** @description Whether the most recent reviewable push must be approved by someone other than the person who pushed it. */
@@ -52858,6 +53018,29 @@ export interface components {
          */
         required_reviewers?: components["schemas"]["repository-rule-params-required-reviewer-configuration"][];
       };
+    };
+    /**
+     * DismissalRestriction
+     * @description Specify people, teams, or apps allowed to dismiss pull request reviews.
+     */
+    "repository-rule-params-dismissal-restriction": {
+      /** @description Specify people, teams, or apps allowed to dismiss pull request reviews. */
+      allowed_actors?: components["schemas"]["repository-rule-params-actor"][];
+      /** @description Whether to restrict review dismissal to specific actors. */
+      enabled: boolean;
+    };
+    /**
+     * Actor
+     * @description An actor allowed to dismiss pull request reviews
+     */
+    "repository-rule-params-actor": {
+      /** @description ID of the actor that can dismiss reviews. */
+      id: number;
+      /**
+       * @description The type of the actor
+       * @enum {string}
+       */
+      type: "User" | "Team" | "IntegrationInstallation" | "RepositoryRole";
     };
     /**
      * RequiredReviewerConfiguration
@@ -53023,54 +53206,6 @@ export interface components {
       };
     };
     /**
-     * file_path_restriction
-     * @description Prevent commits that include changes in specified file and folder paths from being pushed to the commit graph. This includes absolute paths that contain file names.
-     */
-    "repository-rule-file-path-restriction": {
-      /** @enum {string} */
-      type: "file_path_restriction";
-      parameters?: {
-        /** @description The file paths that are restricted from being pushed to the commit graph. */
-        restricted_file_paths: string[];
-      };
-    };
-    /**
-     * max_file_path_length
-     * @description Prevent commits that include file paths that exceed the specified character limit from being pushed to the commit graph.
-     */
-    "repository-rule-max-file-path-length": {
-      /** @enum {string} */
-      type: "max_file_path_length";
-      parameters?: {
-        /** @description The maximum amount of characters allowed in file paths. */
-        max_file_path_length: number;
-      };
-    };
-    /**
-     * file_extension_restriction
-     * @description Prevent commits that include files with specified file extensions from being pushed to the commit graph.
-     */
-    "repository-rule-file-extension-restriction": {
-      /** @enum {string} */
-      type: "file_extension_restriction";
-      parameters?: {
-        /** @description The file extensions that are restricted from being pushed to the commit graph. */
-        restricted_file_extensions: string[];
-      };
-    };
-    /**
-     * max_file_size
-     * @description Prevent commits with individual files that exceed the specified limit from being pushed to the commit graph.
-     */
-    "repository-rule-max-file-size": {
-      /** @enum {string} */
-      type: "max_file_size";
-      parameters?: {
-        /** @description The maximum file size allowed in megabytes. This limit does not apply to Git Large File Storage (Git LFS). */
-        max_file_size: number;
-      };
-    };
-    /**
      * workflows
      * @description Require all changes made to a targeted branch to pass the specified workflows before they can be merged.
      */
@@ -53145,6 +53280,54 @@ export interface components {
         review_draft_pull_requests?: boolean;
         /** @description Copilot automatically reviews each new push to the pull request. */
         review_on_push?: boolean;
+      };
+    };
+    /**
+     * file_path_restriction
+     * @description Prevent commits that include changes in specified file and folder paths from being pushed to the commit graph. This includes absolute paths that contain file names.
+     */
+    "repository-rule-file-path-restriction": {
+      /** @enum {string} */
+      type: "file_path_restriction";
+      parameters?: {
+        /** @description The file paths that are restricted from being pushed to the commit graph. */
+        restricted_file_paths: string[];
+      };
+    };
+    /**
+     * max_file_path_length
+     * @description Prevent commits that include file paths that exceed the specified character limit from being pushed to the commit graph.
+     */
+    "repository-rule-max-file-path-length": {
+      /** @enum {string} */
+      type: "max_file_path_length";
+      parameters?: {
+        /** @description The maximum amount of characters allowed in file paths. */
+        max_file_path_length: number;
+      };
+    };
+    /**
+     * file_extension_restriction
+     * @description Prevent commits that include files with specified file extensions from being pushed to the commit graph.
+     */
+    "repository-rule-file-extension-restriction": {
+      /** @enum {string} */
+      type: "file_extension_restriction";
+      parameters?: {
+        /** @description The file extensions that are restricted from being pushed to the commit graph. */
+        restricted_file_extensions: string[];
+      };
+    };
+    /**
+     * max_file_size
+     * @description Prevent commits with individual files that exceed the specified limit from being pushed to the commit graph.
+     */
+    "repository-rule-max-file-size": {
+      /** @enum {string} */
+      type: "max_file_size";
+      parameters?: {
+        /** @description The maximum file size allowed in megabytes. This limit does not apply to Git Large File Storage (Git LFS). */
+        max_file_size: number;
       };
     };
     /** repository ruleset deleted event */
@@ -57791,7 +57974,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example branch_protection_configuration */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -57830,7 +58013,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example branch_protection_configuration */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -57867,7 +58050,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example branch_protection_rule */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -57908,7 +58091,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example branch_protection_rule */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -57949,7 +58132,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example branch_protection_rule */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -57994,7 +58177,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example bypass_request_secret_scanning */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -58035,7 +58218,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example bypass_request_secret_scanning */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -58076,7 +58259,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example bypass_request_secret_scanning */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -58117,7 +58300,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example bypass_request_secret_scanning */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -58158,7 +58341,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example bypass_request_secret_scanning */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -58190,7 +58373,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example cache_sync */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -58238,7 +58421,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example check_run */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -58286,7 +58469,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example check_run */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -58334,7 +58517,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example check_run */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -58382,7 +58565,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example check_run */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -58430,7 +58613,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example check_suite */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -58478,7 +58661,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example check_suite */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -58526,7 +58709,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example check_suite */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -58567,7 +58750,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example code_scanning_alert */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -58608,7 +58791,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example code_scanning_alert */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -58649,7 +58832,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example code_scanning_alert */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -58690,7 +58873,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example code_scanning_alert */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -58731,7 +58914,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example code_scanning_alert */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -58772,7 +58955,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example code_scanning_alert */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -58815,7 +58998,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example commit_comment */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -58859,7 +59042,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example create */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -58902,7 +59085,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example custom_property */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -58941,7 +59124,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example custom_property */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -58980,7 +59163,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example custom_property */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -59019,7 +59202,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example custom_property */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -59058,7 +59241,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example custom_property_values */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -59098,7 +59281,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example delete */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -59141,7 +59324,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example dependabot_alert */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -59184,7 +59367,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example dependabot_alert */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -59227,7 +59410,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example dependabot_alert */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -59270,7 +59453,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example dependabot_alert */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -59313,7 +59496,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example dependabot_alert */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -59356,7 +59539,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example dependabot_alert */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -59399,7 +59582,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example dependabot_alert */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -59440,7 +59623,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example deploy_key */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -59481,7 +59664,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example deploy_key */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -59524,7 +59707,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example deployment */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -59565,7 +59748,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example deployment_protection_rule */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -59608,7 +59791,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example deployment_review */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -59651,7 +59834,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example deployment_review */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -59694,7 +59877,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example deployment_review */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -59740,7 +59923,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example deployment_status */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -59786,7 +59969,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example discussion */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -59832,7 +60015,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example discussion */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -59924,7 +60107,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example discussion_comment */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -59970,7 +60153,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example discussion_comment */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -60016,7 +60199,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example discussion_comment */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -60062,7 +60245,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example discussion */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -60108,7 +60291,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example discussion */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -60154,7 +60337,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example discussion */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -60200,7 +60383,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example discussion */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -60246,7 +60429,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example discussion */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -60292,7 +60475,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example discussion */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -60384,7 +60567,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example discussion */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -60430,7 +60613,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example discussion */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -60476,7 +60659,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example discussion */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -60522,7 +60705,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example discussion */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -60568,7 +60751,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example discussion */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -60609,7 +60792,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example dismissal_request_code_scanning */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -60646,7 +60829,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example dismissal_request_code_scanning */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -60797,7 +60980,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example dismissal_request_secret_scanning */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -60837,7 +61020,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example dismissal_request_secret_scanning */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -60877,7 +61060,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example dismissal_request_secret_scanning */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -60917,7 +61100,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example dismissal_request_secret_scanning */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -60957,7 +61140,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example dismissal_request_secret_scanning */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -60992,7 +61175,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example enterprise */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -61031,7 +61214,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example enterprise */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -61074,7 +61257,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example exemption_request_push_ruleset */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -61113,7 +61296,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example exemption_request_push_ruleset */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -61152,7 +61335,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example exemption_request_push_ruleset */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -61191,7 +61374,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example exemption_request_push_ruleset */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -61230,7 +61413,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example exemption_request_push_ruleset */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -61266,7 +61449,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example fork */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -61309,7 +61492,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example github_app_authorization */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -61349,7 +61532,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example gollum */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -61390,7 +61573,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example installation */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -61431,7 +61614,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example installation */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -61472,7 +61655,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example installation */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -61513,7 +61696,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example installation_repositories */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -61554,7 +61737,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example installation_repositories */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -61595,7 +61778,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example installation */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -61634,7 +61817,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example installation_target */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -61675,7 +61858,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example installation */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -61718,7 +61901,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example issue_comment */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -61761,7 +61944,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example issue_comment */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -61804,7 +61987,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example issue_comment */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -62535,7 +62718,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example label */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -62578,7 +62761,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example label */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -62621,7 +62804,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example label */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -62662,7 +62845,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example member */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -62703,7 +62886,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example member */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -62744,7 +62927,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example member */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -62785,7 +62968,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example membership */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -62826,7 +63009,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example membership */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -62867,7 +63050,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example meta */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -62910,7 +63093,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example milestone */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -62953,7 +63136,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example milestone */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -62996,7 +63179,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example milestone */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -63039,7 +63222,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example milestone */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -63082,7 +63265,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example milestone */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -63125,7 +63308,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example organization */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -63168,7 +63351,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example organization */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -63211,7 +63394,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example organization */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -63254,7 +63437,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example organization */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -63297,7 +63480,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example organization */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -63336,7 +63519,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example package */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -63375,7 +63558,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example package */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -63415,7 +63598,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example page_build */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -63599,7 +63782,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example ping */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -63644,7 +63827,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example project_card */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -63689,7 +63872,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example project_card */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -63734,7 +63917,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example project_card */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -63779,7 +63962,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example project_card */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -63824,7 +64007,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example project_card */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -63869,7 +64052,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example project */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -63914,7 +64097,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example project_column */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -63959,7 +64142,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example project_column */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -64004,7 +64187,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example project_column */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -64049,7 +64232,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example project_column */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -64094,7 +64277,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example project */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -64139,7 +64322,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example project */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -64184,7 +64367,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example project */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -64229,7 +64412,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example project */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -64821,7 +65004,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example public */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -64864,7 +65047,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example pull_request */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -64907,7 +65090,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example pull_request */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -64950,7 +65133,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example pull_request */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -64993,7 +65176,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example pull_request */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -65036,7 +65219,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example pull_request */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -65079,7 +65262,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example pull_request */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -65122,7 +65305,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example pull_request */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -65165,7 +65348,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example pull_request */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -65208,7 +65391,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example pull_request */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -65251,7 +65434,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example pull_request */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -65294,7 +65477,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example pull_request */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -65337,7 +65520,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example pull_request */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -65380,7 +65563,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example pull_request */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -65423,7 +65606,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example pull_request_review_comment */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -65466,7 +65649,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example pull_request_review_comment */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -65509,7 +65692,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example pull_request_review_comment */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -65552,7 +65735,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example pull_request_review */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -65595,7 +65778,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example pull_request_review */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -65638,7 +65821,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example pull_request */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -65681,7 +65864,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example pull_request */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -65724,7 +65907,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example pull_request_review */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -65767,7 +65950,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example pull_request_review_thread */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -65810,7 +65993,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example pull_request_review_thread */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -65853,7 +66036,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example pull_request */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -65896,7 +66079,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example pull_request */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -65939,7 +66122,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example pull_request */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -65982,7 +66165,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example pull_request */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -66027,7 +66210,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example push */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -66071,7 +66254,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example registry_package */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -66115,7 +66298,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example registry_package */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -66156,7 +66339,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example release */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -66197,7 +66380,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example release */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -66238,7 +66421,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example release */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -66279,7 +66462,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example release */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -66320,7 +66503,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example release */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -66361,7 +66544,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example release */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -66402,7 +66585,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example release */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -66443,7 +66626,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example repository */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -66484,7 +66667,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example repository */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -66525,7 +66708,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example repository */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -66566,7 +66749,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example repository */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -66607,7 +66790,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example repository */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -66647,7 +66830,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example repository_dispatch */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -66688,7 +66871,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example repository */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -66729,7 +66912,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example repository */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -66770,7 +66953,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example repository */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -66811,7 +66994,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example repository */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -66854,7 +67037,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example repository_ruleset */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -66893,7 +67076,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example repository_ruleset */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -66932,7 +67115,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example repository_ruleset */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -66969,7 +67152,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example repository */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -67010,7 +67193,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example repository */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -67052,7 +67235,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example repository_vulnerability_alert */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -67094,7 +67277,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example repository_vulnerability_alert */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -67136,7 +67319,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example repository_vulnerability_alert */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -67178,7 +67361,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example repository_vulnerability_alert */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -67221,7 +67404,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example secret_scanning_alert */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -67266,7 +67449,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example secret_scanning_alert_location */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -67309,7 +67492,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example secret_scanning_alert */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -67352,7 +67535,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example secret_scanning_alert */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -67395,7 +67578,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example secret_scanning_alert */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -67439,7 +67622,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example secret_scanning_scan */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -67476,7 +67659,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example security_advisory */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -67517,7 +67700,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example security_advisory */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -67558,7 +67741,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example security_advisory */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -67598,7 +67781,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example security_and_analysis */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -67641,7 +67824,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example sponsorship */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -67682,7 +67865,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example sponsorship */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -67723,7 +67906,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example sponsorship */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -67766,7 +67949,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example sponsorship */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -67807,7 +67990,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example sponsorship */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -67848,7 +68031,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example sponsorship */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -67889,7 +68072,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example star */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -67930,7 +68113,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example star */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -67970,7 +68153,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example status */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -68013,7 +68196,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example team_add */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -68055,7 +68238,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example team */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -68097,7 +68280,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example team */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -68139,7 +68322,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example team */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -68181,7 +68364,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example team */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -68223,7 +68406,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example team */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -68262,7 +68445,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example user */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -68301,7 +68484,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example user */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -68342,7 +68525,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example watch */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -68384,7 +68567,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example workflow_dispatch */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -68427,7 +68610,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example workflow_job */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -68470,7 +68653,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example workflow_job */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -68513,7 +68696,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example workflow_job */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -68556,7 +68739,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example workflow_job */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -68599,7 +68782,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example workflow_run */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -68642,7 +68825,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example workflow_run */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
@@ -68685,7 +68868,7 @@ export interface operations {
         "User-Agent": string;
         /** @example 12312312 */
         "X-Github-Hook-Id": string;
-        /** @example issues */
+        /** @example workflow_run */
         "X-Github-Event": string;
         /** @example 123123 */
         "X-Github-Hook-Installation-Target-Id": string;
