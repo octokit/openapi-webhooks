@@ -17,7 +17,7 @@ Download from https://unpkg.com/browse/@octokit/openapi-webhooks/generated/
 ```js
 import { schemas } from "@octokit/openapi-webhooks";
 const version = schemas["api.github.com"].info.version;
-const paths = Object.keys(schemas["api.github.com"].paths).sort();
+const webhooks = Object.keys(schemas["api.github.com"].webhooks).sort();
 ```
 
 ## Contributing
