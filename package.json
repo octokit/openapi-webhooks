@@ -24,12 +24,10 @@
   "author": "Wolfy1339 <webmaster@wolfy1339.com>",
   "license": "MIT",
   "devDependencies": {
-    "@octokit/core": "^6.0.0",
-    "deep-equal": "^2.0.5",
-    "github-enterprise-server-versions": "^2.0.1",
-    "lodash": "^4.17.21",
+    "@octokit/core": "^7.0.0",
+    "github-enterprise-server-versions": "^3.0.0",
     "openapi-typescript": "^7.0.0",
-    "prettier": "^3.0.0",
+    "prettier": "~3.9.0",
     "semantic-release-plugin-update-version-in-files": "^1.1.0"
   },
   "engines": {
@@ -66,12 +64,6 @@
       [
         "@semantic-release/npm",
         {
-          "pkgRoot": "packages/openapi-webhooks-types-transition"
-        }
-      ],
-      [
-        "@semantic-release/npm",
-        {
           "pkgRoot": "packages/openapi-webhooks-types"
         }
       ],
@@ -84,37 +76,37 @@
       [
         "@semantic-release/npm",
         {
-          "pkgRoot": "packages/openapi-webhooks-types-ghes-3.10"
+          "pkgRoot": "packages/openapi-webhooks-types-ghes-3.18"
         }
       ],
       [
         "@semantic-release/npm",
         {
-          "pkgRoot": "packages/openapi-webhooks-types-ghes-3.11"
+          "pkgRoot": "packages/openapi-webhooks-types-ghes-3.19"
         }
       ],
       [
         "@semantic-release/npm",
         {
-          "pkgRoot": "packages/openapi-webhooks-types-ghes-3.12"
+          "pkgRoot": "packages/openapi-webhooks-types-ghes-3.20"
         }
       ],
       [
         "@semantic-release/npm",
         {
-          "pkgRoot": "packages/openapi-webhooks-types-ghes-3.13"
+          "pkgRoot": "packages/openapi-webhooks-types-ghes-3.21"
         }
       ],
       [
         "@semantic-release/npm",
         {
-          "pkgRoot": "packages/openapi-webhooks-types-ghes-3.14"
+          "pkgRoot": "packages/openapi-webhooks-types-ghes-3.22"
         }
       ],
       [
         "@semantic-release/npm",
         {
-          "pkgRoot": "packages/openapi-webhooks-types-github.ae"
+          "pkgRoot": "packages/openapi-webhooks-types-transition"
         }
       ]
     ]

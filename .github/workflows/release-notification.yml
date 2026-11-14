@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: gr2m/await-npm-package-version-action@v1
         with:
-          package: "@octokit/openapi"
+          package: "@octokit/openapi-webhooks"
           version: ${{ github.event.release.tag_name }}
       - uses: gr2m/release-notifier-action@v1
         with:

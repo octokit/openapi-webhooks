@@ -1,5 +1,5 @@
-import { get } from "https";
-import fs from "fs";
+import { get } from "node:https";
+import fs from "node:fs";
 
 import { Octokit } from "@octokit/core";
 import { getCurrentVersions } from "github-enterprise-server-versions";
@@ -63,9 +63,9 @@ async function run() {
   }
 
   // temporarily hardcode versions until we unblock automated updates
-  const currentGhesVersions = [...(await getCurrentVersions())];
+  const currentGhesVersions = await getCurrentVersions();
 
-  for (const folder of data) {
+  for (const folder of data.filter((e) => e.name !== "github.ae")) {
     const { name } = folder;
     const ref = getDescriptionsOptions.ref;
 

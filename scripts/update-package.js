@@ -22,7 +22,10 @@ async function updatePackage() {
     [
       "semantic-release-plugin-update-version-in-files",
       {
-        files: ["packages/openapi-webhooks/generated/*"],
+        files: [
+          "packages/openapi-webhooks/generated/*",
+          "packages/openapi-webhooks-types-transition/package.json",
+        ],
       },
     ],
     [

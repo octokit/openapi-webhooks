@@ -48,7 +48,6 @@ async function run() {
     /**
      *  Function to handle special cases:
      * Check all instances of `$ref` in the OpenAPI spec, and add them to the definitions
-     * Remove all instances of `enterprise` in the OpenAPI spec for GitHub.com
      * @param {object} obj - The object to check for special cases
      * @returns {object} - The object with any special cases handled
      */
@@ -56,9 +55,6 @@ async function run() {
       if (typeof obj !== "object" || obj === null) return obj;
 
       for (let key of Object.keys(obj)) {
-        if (key === "enterprise" && file === "api.github.com.json") {
-          delete obj[key];
-        }
         if (key === "$ref" && typeof obj[key] === "string") {
           const ref = obj[key].split("/").at(-1);
           const originalSchemaComponent = schema.components.schemas[ref];
@@ -66,7 +62,7 @@ async function run() {
             throw new Error(`Schema component ${obj[key]} not found`);
           }
           tempSchema.components.schemas[ref] = originalSchemaComponent;
-          // Call the function with the new definition to handle any of it's `$ref`s, and `enterprise` keys
+          // Call the function with the new definition to handle any of it's `$ref`s
           specialHandling(tempSchema.components.schemas[ref]);
         } else {
           obj[key] = specialHandling(obj[key]);
@@ -128,12 +124,14 @@ async function run() {
   }
 
   let schemasCode = "";
+  let schemasTypes = "";
 
   for (const name of schemaFileNames) {
     schemasCode += `["${name.replace(
       ".json",
       "",
-    )}"]: require("./generated/${name}"),`;
+    )}"]: (await import("./generated/${name}", { with: { type: "json" } })).default,`;
+    schemasTypes += `"${name.replace(".json", "")}": Record<string, unknown>;`;
   }
 
   writeFileSync(
@@ -149,14 +147,25 @@ They are all generated, your changes would be overwritten with the next update. 
     "packages/openapi-webhooks/index.js",
     await prettier.format(
       `
-      module.exports = {
-        schemas: {
-          ${schemasCode}
-        }
+      export const schemas = {
+        ${schemasCode}
       }
     `,
       {
         parser: "babel",
+      },
+    ),
+  );
+  writeFileSync(
+    `packages/openapi-webhooks/types.d.ts`,
+    await prettier.format(
+      `
+    export declare const schemas: {
+      ${schemasTypes}
+    }
+    `,
+      {
+        parser: "typescript",
       },
     ),
   );
@@ -169,8 +178,9 @@ They are all generated, your changes would be overwritten with the next update. 
         description:
           "GitHub's official Webhooks OpenAPI spec with Octokit extensions",
         main: "index.js",
-        files: ["generated/*", "index.js"],
-        type: "commonjs",
+        types: "types.d.ts",
+        files: ["generated/*", "index.js", "types.d.ts"],
+        type: "module",
         repository: {
           type: "git",
           url: "git+https://github.com/octokit/openapi-webhooks.git",
@@ -182,6 +192,9 @@ They are all generated, your changes would be overwritten with the next update. 
         publishConfig: {
           access: "public",
           provenance: true,
+        },
+        engines: {
+          node: "^18.20.0 || >= 20.10.0",
         },
       }),
       { parser: "json-stringify" },

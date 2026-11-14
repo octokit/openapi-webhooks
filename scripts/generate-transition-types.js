@@ -5,10 +5,9 @@ const snakeToPascalCase = (str) =>
   str
     .toLowerCase()
     .replace(/([-_][a-z])/g, (group) =>
-      group.toUpperCase().replace("-", "").replace("_", "")
+      group.toUpperCase().replace("-", "").replace("_", ""),
     )
     .replace(/^[a-z]/, (match) => match.toUpperCase());
-
 
 const packageDefaults = {
   publishConfig: {
@@ -28,16 +27,21 @@ const packageDefaults = {
 async function run() {
   const packageName = "openapi-webhooks-types-transition";
   const schema = JSON.parse(
-    await readFile("packages/openapi-webhooks/generated/api.github.com.json")
+    await readFile("packages/openapi-webhooks/generated/api.github.com.json"),
   );
   const eventsMap = {};
 
   for (const webhookDefinitionKey of Object.keys(schema.webhooks)) {
     const webhookDefinition = schema.webhooks[webhookDefinitionKey];
     const operationDefinition = webhookDefinition.post;
-    const emitterEventName = operationDefinition.operationId
+    let emitterEventName = operationDefinition.operationId
       .replace(/-/g, "_")
       .replace("/", ".");
+
+    // Override these specific event names to fix a typo in the OpenAPI spec
+    if (emitterEventName === "custom_property.promote_to_enterprise") {
+      emitterEventName = "custom_property.promoted_to_enterprise";
+    }
 
     const [eventName] = emitterEventName.split(".");
 
@@ -58,19 +62,22 @@ async function run() {
 
   // Iterate over event groups and generate types
   for (const [eventName, webhooks] of Object.entries(eventsMap).toSorted()) {
-    const webhookArray = Array.from(webhooks).map(e => e.replace(".", "-").replaceAll("_", "-"));
+    const webhookArray = Array.from(webhooks).map((e) =>
+      e.replace(".", "-").replaceAll("_", "-"),
+    );
 
     if (webhookArray.length > 1 && webhookArray[0] !== eventName) {
       const webhookTypes = webhookArray.map(
         (event) =>
-          `export type ${snakeToPascalCase(event)}Event = WebhookEventDefinition<"${event}">;`
+          `export type ${snakeToPascalCase(event)}Event = WebhookEventDefinition<"${event}">;`,
       );
 
       typeDefinitions.push(...webhookTypes);
     }
 
-    const groupedEventType = `export type ${snakeToPascalCase(eventName)}Event = ${webhookArray.map(
-      (event) => `WebhookEventDefinition<"${event}">`).join(" | ")};`;
+    const groupedEventType = `export type ${snakeToPascalCase(eventName)}Event = ${webhookArray
+      .map((event) => `WebhookEventDefinition<"${event}">`)
+      .join(" | ")};`;
     typeDefinitions.push(groupedEventType);
   }
 
@@ -79,21 +86,22 @@ async function run() {
     ...Object.entries(eventsMap).map(
       ([eventName, webhooks]) =>
         `"${eventName}": ${Array.from(webhooks)
+          .map((e) => e.replace(".", "-").replaceAll("_", "-"))
           .map((event) => `WebhookEventDefinition<"${event}">`)
-          .join(" | ")}`
+          .join(" | ")}`,
     ),
     "};",
     "export type WebhookEvent =",
-    Object.keys(eventsMap).map(
-      (eventName) => `${snakeToPascalCase(eventName)}Event`
-    ).join(" | "),
+    Object.keys(eventsMap)
+      .map((eventName) => `${snakeToPascalCase(eventName)}Event`)
+      .join(" | "),
     "export type WebhookEventMap = EventPayloadMap;",
-    "export type WebhookEventName = keyof EventPayloadMap;"
+    "export type WebhookEventName = keyof EventPayloadMap;",
   );
 
   await writeFile(
     `packages/${packageName}/types.ts`,
-    await prettier.format(typeDefinitions.join("\n"), { parser: "typescript" })
+    await prettier.format(typeDefinitions.join("\n"), { parser: "typescript" }),
   );
   await copyFile("LICENSE", `packages/${packageName}/LICENSE`);
   await writeFile(
@@ -108,12 +116,12 @@ async function run() {
           directory: `packages/${packageName}`,
         },
         dependencies: {
-          "@octokit/openapi-webhooks-types": "^0.0.0-development"
+          "@octokit/openapi-webhooks-types": "^0.0.0-development",
         },
         ...packageDefaults,
       }),
-      { parser: "json-stringify" }
-    )
+      { parser: "json-stringify" },
+    ),
   );
 }
 

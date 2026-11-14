@@ -15,27 +15,9 @@ Download from https://unpkg.com/browse/@octokit/openapi-webhooks/generated/
 ## Node Usage
 
 ```js
-const { schemas } = require("@octokit/openapi-webhooks");
+import { schemas } from "@octokit/openapi-webhooks";
 const version = schemas["api.github.com"].info.version;
-const paths = Object.keys(schemas["api.github.com"].paths).sort();
-```
-
-## GitHub Actions usage
-
-1. Install [Octokit Release Notifier app](https://github.com/apps/octokit-release-notifier/)
-2. Create a new workflow file:
-
-```yml
-name: Update OpenAPI
-on:
-  repository_dispatch:
-    types: [octokit/openapi-webhooks release]
-
-jobs:
-  published:
-    runs-on: ubuntu-latest
-    steps:
-      - run: "echo: 'new release: ${{ github.event.release.tag_name }}'"
+const webhooks = Object.keys(schemas["api.github.com"].webhooks).sort();
 ```
 
 ## Contributing
