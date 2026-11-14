@@ -3233,6 +3233,11 @@ export interface components {
           pull?: boolean;
         };
         allow_rebase_merge?: boolean;
+        /**
+         * @description When present and non-empty, a temporary credential for read-only Git access to this repository.
+         *     It expires five minutes after generation and cannot be used to push changes.
+         *     Treat this value as sensitive and avoid recording it in logs.
+         */
         temp_clone_token?: string;
         allow_squash_merge?: boolean;
         allow_auto_merge?: boolean;
@@ -3277,6 +3282,11 @@ export interface components {
         subscribers_count?: number;
         network_count?: number;
       } | null;
+      /**
+       * @description When present and non-empty, a temporary credential for read-only Git access to this repository.
+       *     It expires five minutes after generation and cannot be used to push changes.
+       *     Treat this value as sensitive and avoid recording it in logs.
+       */
       temp_clone_token?: string;
       /**
        * @description Whether to allow squash merges for pull requests.
@@ -4210,6 +4220,11 @@ export interface components {
         pull?: boolean;
       };
       role_name?: string;
+      /**
+       * @description When present and non-empty, a temporary credential for read-only Git access to this repository.
+       *     It expires five minutes after generation and cannot be used to push changes.
+       *     Treat this value as sensitive and avoid recording it in logs.
+       */
       temp_clone_token?: string;
       delete_branch_on_merge?: boolean;
       subscribers_count?: number;
@@ -6220,6 +6235,12 @@ export interface components {
        * @enum {string|null}
        */
       values_editable_by?: "org_actors" | "org_and_repo_actors" | null;
+      /**
+       * @description A regular expression (RE2 syntax) that values of the property must match.
+       *     Only present for properties with a `value_type` of `string` that define a regular expression.
+       * @example ^[a-z0-9-]+$
+       */
+      regex?: string | null;
     };
     /** custom property deleted event */
     "webhook-custom-property-deleted": {
@@ -7619,6 +7640,11 @@ export interface components {
        * @default true
        */
       allow_rebase_merge?: boolean;
+      /**
+       * @description When present and non-empty, a temporary credential for read-only Git access to this repository.
+       *     It expires five minutes after generation and cannot be used to push changes.
+       *     Treat this value as sensitive and avoid recording it in logs.
+       */
       temp_clone_token?: string;
       /**
        * @description Whether to allow squash merges for pull requests.
@@ -10966,6 +10992,11 @@ export interface components {
        */
       organization_copilot_agent_settings?: "read" | "write";
       /**
+       * @description The level of permission to grant the access token to make Copilot requests billed to the organization where the app is installed. This property is in public preview and is subject to change.
+       * @enum {string}
+       */
+      organization_copilot_requests?: "read";
+      /**
        * @description The level of permission to grant the access token for managing external custom properties for repositories in an organization.
        * @enum {string}
        */
@@ -13728,21 +13759,7 @@ export interface components {
       html_url: string;
       /** Format: int64 */
       id: number;
-      labels?: {
-        /** @description 6-character hex code, without the leading #, identifying the color */
-        color: string;
-        default: boolean;
-        description: string | null;
-        id: number;
-        /** @description The name of the label. */
-        name: string;
-        node_id: string;
-        /**
-         * Format: uri
-         * @description URL for the label
-         */
-        url: string;
-      }[];
+      labels?: components["schemas"]["webhooks_label"][];
       /** Format: uri-template */
       labels_url: string;
       locked?: boolean;
@@ -14034,6 +14051,28 @@ export interface components {
       issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
       issue_field_values?: components["schemas"]["issue-field-value"][];
       /**
+       * Planning status
+       * @description The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.
+       */
+      status?: {
+        /**
+         * Format: int64
+         * @description The stable identifier of the planning status.
+         * @example 4
+         */
+        id: number;
+        /**
+         * @description The display name of the planning status, which may change in the future.
+         * @example In progress
+         */
+        name: string;
+        /**
+         * @description A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.
+         * @example started
+         */
+        category: string;
+      } | null;
+      /**
        * @description State of the issue; either 'open' or 'closed'
        * @enum {string}
        */
@@ -14214,21 +14253,7 @@ export interface components {
         html_url: string;
         /** Format: int64 */
         id: number;
-        labels?: {
-          /** @description 6-character hex code, without the leading #, identifying the color */
-          color: string;
-          default: boolean;
-          description: string | null;
-          id: number;
-          /** @description The name of the label. */
-          name: string;
-          node_id: string;
-          /**
-           * Format: uri
-           * @description URL for the label
-           */
-          url: string;
-        }[];
+        labels?: components["schemas"]["webhooks_label"][];
         /** Format: uri-template */
         labels_url: string;
         locked?: boolean;
@@ -14521,6 +14546,28 @@ export interface components {
         issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
         issue_field_values?: components["schemas"]["issue-field-value"][];
         /**
+         * Planning status
+         * @description The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.
+         */
+        status?: {
+          /**
+           * Format: int64
+           * @description The stable identifier of the planning status.
+           * @example 4
+           */
+          id: number;
+          /**
+           * @description The display name of the planning status, which may change in the future.
+           * @example In progress
+           */
+          name: string;
+          /**
+           * @description A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.
+           * @example started
+           */
+          category: string;
+        } | null;
+        /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
          */
@@ -14590,7 +14637,8 @@ export interface components {
         events_url?: string;
         html_url?: string;
         id?: number;
-        labels?: (Record<string, never> | null)[];
+        labels?: ((components["schemas"]["webhooks_label"] | null) &
+          components["schemas"]["webhooks_label"])[];
         labels_url?: string;
         locked?: boolean;
         milestone?: Record<string, never> | null;
@@ -15070,6 +15118,28 @@ export interface components {
         sub_issues_summary?: components["schemas"]["sub-issues-summary"];
         issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
         issue_field_values?: components["schemas"]["issue-field-value"][];
+        /**
+         * Planning status
+         * @description The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.
+         */
+        status?: {
+          /**
+           * Format: int64
+           * @description The stable identifier of the planning status.
+           * @example 4
+           */
+          id: number;
+          /**
+           * @description The display name of the planning status, which may change in the future.
+           * @example In progress
+           */
+          name: string;
+          /**
+           * @description A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.
+           * @example started
+           */
+          category: string;
+        } | null;
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -15557,6 +15627,28 @@ export interface components {
         issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
         issue_field_values?: components["schemas"]["issue-field-value"][];
         /**
+         * Planning status
+         * @description The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.
+         */
+        status?: {
+          /**
+           * Format: int64
+           * @description The stable identifier of the planning status.
+           * @example 4
+           */
+          id: number;
+          /**
+           * @description The display name of the planning status, which may change in the future.
+           * @example In progress
+           */
+          name: string;
+          /**
+           * @description A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.
+           * @example started
+           */
+          category: string;
+        } | null;
+        /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
          */
@@ -15824,21 +15916,7 @@ export interface components {
         html_url: string;
         /** Format: int64 */
         id: number;
-        labels?: {
-          /** @description 6-character hex code, without the leading #, identifying the color */
-          color: string;
-          default: boolean;
-          description: string | null;
-          id: number;
-          /** @description The name of the label. */
-          name: string;
-          node_id: string;
-          /**
-           * Format: uri
-           * @description URL for the label
-           */
-          url: string;
-        }[];
+        labels?: components["schemas"]["webhooks_label"][];
         /** Format: uri-template */
         labels_url: string;
         locked?: boolean;
@@ -16130,6 +16208,28 @@ export interface components {
         sub_issues_summary?: components["schemas"]["sub-issues-summary"];
         issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
         issue_field_values?: components["schemas"]["issue-field-value"][];
+        /**
+         * Planning status
+         * @description The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.
+         */
+        status?: {
+          /**
+           * Format: int64
+           * @description The stable identifier of the planning status.
+           * @example 4
+           */
+          id: number;
+          /**
+           * @description The display name of the planning status, which may change in the future.
+           * @example In progress
+           */
+          name: string;
+          /**
+           * @description A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.
+           * @example started
+           */
+          category: string;
+        } | null;
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -16628,6 +16728,28 @@ export interface components {
         issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
         issue_field_values?: components["schemas"]["issue-field-value"][];
         /**
+         * Planning status
+         * @description The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.
+         */
+        status?: {
+          /**
+           * Format: int64
+           * @description The stable identifier of the planning status.
+           * @example 4
+           */
+          id: number;
+          /**
+           * @description The display name of the planning status, which may change in the future.
+           * @example In progress
+           */
+          name: string;
+          /**
+           * @description A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.
+           * @example started
+           */
+          category: string;
+        } | null;
+        /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
          */
@@ -17120,6 +17242,28 @@ export interface components {
         issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
         issue_field_values?: components["schemas"]["issue-field-value"][];
         /**
+         * Planning status
+         * @description The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.
+         */
+        status?: {
+          /**
+           * Format: int64
+           * @description The stable identifier of the planning status.
+           * @example 4
+           */
+          id: number;
+          /**
+           * @description The display name of the planning status, which may change in the future.
+           * @example In progress
+           */
+          name: string;
+          /**
+           * @description A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.
+           * @example started
+           */
+          category: string;
+        } | null;
+        /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
          */
@@ -17607,6 +17751,28 @@ export interface components {
         issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
         issue_field_values?: components["schemas"]["issue-field-value"][];
         /**
+         * Planning status
+         * @description The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.
+         */
+        status?: {
+          /**
+           * Format: int64
+           * @description The stable identifier of the planning status.
+           * @example 4
+           */
+          id: number;
+          /**
+           * @description The display name of the planning status, which may change in the future.
+           * @example In progress
+           */
+          name: string;
+          /**
+           * @description A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.
+           * @example started
+           */
+          category: string;
+        } | null;
+        /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
          */
@@ -18093,6 +18259,28 @@ export interface components {
           sub_issues_summary?: components["schemas"]["sub-issues-summary"];
           issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
           issue_field_values?: components["schemas"]["issue-field-value"][];
+          /**
+           * Planning status
+           * @description The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.
+           */
+          status?: {
+            /**
+             * Format: int64
+             * @description The stable identifier of the planning status.
+             * @example 4
+             */
+            id: number;
+            /**
+             * @description The display name of the planning status, which may change in the future.
+             * @example In progress
+             */
+            name: string;
+            /**
+             * @description A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.
+             * @example started
+             */
+            category: string;
+          } | null;
           /**
            * @description State of the issue; either 'open' or 'closed'
            * @enum {string}
@@ -18835,6 +19023,28 @@ export interface components {
         issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
         issue_field_values?: components["schemas"]["issue-field-value"][];
         /**
+         * Planning status
+         * @description The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.
+         */
+        status?: {
+          /**
+           * Format: int64
+           * @description The stable identifier of the planning status.
+           * @example 4
+           */
+          id: number;
+          /**
+           * @description The display name of the planning status, which may change in the future.
+           * @example In progress
+           */
+          name: string;
+          /**
+           * @description A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.
+           * @example started
+           */
+          category: string;
+        } | null;
+        /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
          */
@@ -19025,21 +19235,7 @@ export interface components {
       html_url: string;
       /** Format: int64 */
       id: number;
-      labels?: {
-        /** @description 6-character hex code, without the leading #, identifying the color */
-        color: string;
-        default: boolean;
-        description: string | null;
-        id: number;
-        /** @description The name of the label. */
-        name: string;
-        node_id: string;
-        /**
-         * Format: uri
-         * @description URL for the label
-         */
-        url: string;
-      }[];
+      labels?: components["schemas"]["webhooks_label"][];
       /** Format: uri-template */
       labels_url: string;
       locked?: boolean;
@@ -19329,6 +19525,28 @@ export interface components {
       issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
       issue_field_values?: components["schemas"]["issue-field-value"][];
       /**
+       * Planning status
+       * @description The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.
+       */
+      status?: {
+        /**
+         * Format: int64
+         * @description The stable identifier of the planning status.
+         * @example 4
+         */
+        id: number;
+        /**
+         * @description The display name of the planning status, which may change in the future.
+         * @example In progress
+         */
+        name: string;
+        /**
+         * @description A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.
+         * @example started
+         */
+        category: string;
+      } | null;
+      /**
        * @description State of the issue; either 'open' or 'closed'
        * @enum {string}
        */
@@ -19508,6 +19726,13 @@ export interface components {
         /** Format: int64 */
         id: number;
         labels?: ({
+          /**
+           * Format: date-time
+           * @description Timestamp indicating when the label was archived, or `null` if it has not been archived.
+           */
+          archived_at?: string | null;
+          /** @description The user who archived the label, or `null` if it has not been archived. */
+          archived_by?: null & components["schemas"]["simple-user"];
           /** @description 6-character hex code, without the leading #, identifying the color */
           color: string;
           default: boolean;
@@ -19812,6 +20037,28 @@ export interface components {
         sub_issues_summary?: components["schemas"]["sub-issues-summary"];
         issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
         issue_field_values?: components["schemas"]["issue-field-value"][];
+        /**
+         * Planning status
+         * @description The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.
+         */
+        status?: {
+          /**
+           * Format: int64
+           * @description The stable identifier of the planning status.
+           * @example 4
+           */
+          id: number;
+          /**
+           * @description The display name of the planning status, which may change in the future.
+           * @example In progress
+           */
+          name: string;
+          /**
+           * @description A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.
+           * @example started
+           */
+          category: string;
+        } | null;
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -20299,6 +20546,28 @@ export interface components {
           sub_issues_summary?: components["schemas"]["sub-issues-summary"];
           issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
           issue_field_values?: components["schemas"]["issue-field-value"][];
+          /**
+           * Planning status
+           * @description The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.
+           */
+          status?: {
+            /**
+             * Format: int64
+             * @description The stable identifier of the planning status.
+             * @example 4
+             */
+            id: number;
+            /**
+             * @description The display name of the planning status, which may change in the future.
+             * @example In progress
+             */
+            name: string;
+            /**
+             * @description A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.
+             * @example started
+             */
+            category: string;
+          } | null;
           /**
            * @description State of the issue; either 'open' or 'closed'
            * @enum {string}
@@ -21117,6 +21386,28 @@ export interface components {
         sub_issues_summary?: components["schemas"]["sub-issues-summary"];
         issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
         issue_field_values?: components["schemas"]["issue-field-value"][];
+        /**
+         * Planning status
+         * @description The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.
+         */
+        status?: {
+          /**
+           * Format: int64
+           * @description The stable identifier of the planning status.
+           * @example 4
+           */
+          id: number;
+          /**
+           * @description The display name of the planning status, which may change in the future.
+           * @example In progress
+           */
+          name: string;
+          /**
+           * @description A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.
+           * @example started
+           */
+          category: string;
+        } | null;
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -53233,12 +53524,7 @@ export interface components {
         required_approving_review_count: number;
         /** @description All conversations on code must be resolved before a pull request can be merged. */
         required_review_thread_resolution: boolean;
-        /**
-         * @description > [!NOTE]
-         * > `required_reviewers` is in beta and subject to change.
-         *
-         * A collection of reviewers and associated file patterns. Each reviewer has a list of file patterns which determine the files that reviewer is required to review.
-         */
+        /** @description A collection of reviewers and associated file patterns. Each reviewer has a list of file patterns which determine the files that reviewer is required to review. */
         required_reviewers?: components["schemas"]["repository-rule-params-required-reviewer-configuration"][];
       };
     };
@@ -53493,7 +53779,7 @@ export interface components {
     };
     /**
      * copilot_code_review
-     * @description Request Copilot code review for new pull requests automatically if the author has access to Copilot code review and their premium requests quota has not reached the limit.
+     * @description Request Copilot code review for new pull requests automatically if the author has access to Copilot code review and AI credits.
      */
     "repository-rule-copilot-code-review": {
       /** @enum {string} */
@@ -54511,6 +54797,11 @@ export interface components {
       };
       allow_rebase_merge?: boolean;
       template_repository?: null | components["schemas"]["repository"];
+      /**
+       * @description When present and non-empty, a temporary credential for read-only Git access to this repository.
+       *     It expires five minutes after generation and cannot be used to push changes.
+       *     Treat this value as sensitive and avoid recording it in logs.
+       */
       temp_clone_token?: string | null;
       allow_squash_merge?: boolean;
       allow_auto_merge?: boolean;

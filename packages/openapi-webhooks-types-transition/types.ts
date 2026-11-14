@@ -102,6 +102,8 @@ export type DependabotAlertReintroducedEvent =
   WebhookEventDefinition<"dependabot-alert-reintroduced">;
 export type DependabotAlertReopenedEvent =
   WebhookEventDefinition<"dependabot-alert-reopened">;
+export type DependabotAlertWithdrawnEvent =
+  WebhookEventDefinition<"dependabot-alert-withdrawn">;
 export type DependabotAlertEvent =
   | WebhookEventDefinition<"dependabot-alert-assignees-changed">
   | WebhookEventDefinition<"dependabot-alert-auto-dismissed">
@@ -110,7 +112,8 @@ export type DependabotAlertEvent =
   | WebhookEventDefinition<"dependabot-alert-dismissed">
   | WebhookEventDefinition<"dependabot-alert-fixed">
   | WebhookEventDefinition<"dependabot-alert-reintroduced">
-  | WebhookEventDefinition<"dependabot-alert-reopened">;
+  | WebhookEventDefinition<"dependabot-alert-reopened">
+  | WebhookEventDefinition<"dependabot-alert-withdrawn">;
 export type DeployKeyCreatedEvent =
   WebhookEventDefinition<"deploy-key-created">;
 export type DeployKeyDeletedEvent =
@@ -266,6 +269,8 @@ export type IssuesMilestonedEvent = WebhookEventDefinition<"issues-milestoned">;
 export type IssuesOpenedEvent = WebhookEventDefinition<"issues-opened">;
 export type IssuesPinnedEvent = WebhookEventDefinition<"issues-pinned">;
 export type IssuesReopenedEvent = WebhookEventDefinition<"issues-reopened">;
+export type IssuesStatusChangedEvent =
+  WebhookEventDefinition<"issues-status-changed">;
 export type IssuesTransferredEvent =
   WebhookEventDefinition<"issues-transferred">;
 export type IssuesTypedEvent = WebhookEventDefinition<"issues-typed">;
@@ -288,6 +293,7 @@ export type IssuesEvent =
   | WebhookEventDefinition<"issues-opened">
   | WebhookEventDefinition<"issues-pinned">
   | WebhookEventDefinition<"issues-reopened">
+  | WebhookEventDefinition<"issues-status-changed">
   | WebhookEventDefinition<"issues-transferred">
   | WebhookEventDefinition<"issues-typed">
   | WebhookEventDefinition<"issues-unassigned">
@@ -827,7 +833,8 @@ export type EventPayloadMap = {
     | WebhookEventDefinition<"dependabot-alert-dismissed">
     | WebhookEventDefinition<"dependabot-alert-fixed">
     | WebhookEventDefinition<"dependabot-alert-reintroduced">
-    | WebhookEventDefinition<"dependabot-alert-reopened">;
+    | WebhookEventDefinition<"dependabot-alert-reopened">
+    | WebhookEventDefinition<"dependabot-alert-withdrawn">;
   deploy_key:
     | WebhookEventDefinition<"deploy-key-created">
     | WebhookEventDefinition<"deploy-key-deleted">;
@@ -899,6 +906,7 @@ export type EventPayloadMap = {
     | WebhookEventDefinition<"issues-opened">
     | WebhookEventDefinition<"issues-pinned">
     | WebhookEventDefinition<"issues-reopened">
+    | WebhookEventDefinition<"issues-status-changed">
     | WebhookEventDefinition<"issues-transferred">
     | WebhookEventDefinition<"issues-typed">
     | WebhookEventDefinition<"issues-unassigned">
