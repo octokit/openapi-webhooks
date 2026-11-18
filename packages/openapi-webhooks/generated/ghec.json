@@ -164,6 +164,14 @@
       "description": "Endpoints to manage Projects using the REST API."
     },
     {
+      "name": "agent-automations",
+      "description": "Endpoints to manage and interact with agent automations."
+    },
+    {
+      "name": "agent-merge",
+      "description": "Endpoints to manage Agent Merge enrollment for pull requests."
+    },
+    {
       "name": "agent-tasks",
       "description": "Endpoints to manage and interact with agent tasks."
     },
@@ -3474,6 +3482,88 @@
         }
       }
     },
+    "dependabot-alert-withdrawn": {
+      "post": {
+        "summary": "This event occurs when there is activity relating to Dependabot alerts.\n\nFor more information about Dependabot alerts, see \"[About Dependabot alerts](https://docs.github.com/enterprise-cloud@latest/code-security/dependabot/dependabot-alerts/about-dependabot-alerts).\" For information about the API to manage Dependabot alerts, see \"[Dependabot alerts](https://docs.github.com/enterprise-cloud@latest/rest/dependabot/alerts)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.",
+        "description": "A Dependabot alert was withdrawn because the advisory or the vulnerable version\nrange that produced it is no longer valid. The alert contains identifiers\ncaptured before deletion for matching external records, rather than the full\nalert payload used by other actions. Its alert URLs identify the deleted alert\nand may no longer resolve.\n",
+        "operationId": "dependabot-alert/withdrawn",
+        "externalDocs": {
+          "url": "https://docs.github.com/enterprise-cloud@latest/webhooks/webhook-events-and-payloads#dependabot_alert"
+        },
+        "parameters": [
+          {
+            "name": "User-Agent",
+            "in": "header",
+            "example": "GitHub-Hookshot/123abc",
+            "schema": { "type": "string" },
+            "required": true
+          },
+          {
+            "name": "X-Github-Hook-Id",
+            "in": "header",
+            "example": 12312312,
+            "schema": { "type": "string" },
+            "required": true
+          },
+          {
+            "name": "X-Github-Event",
+            "in": "header",
+            "example": "dependabot_alert",
+            "schema": { "type": "string" },
+            "required": true
+          },
+          {
+            "name": "X-Github-Hook-Installation-Target-Id",
+            "in": "header",
+            "example": 123123,
+            "schema": { "type": "string" },
+            "required": true
+          },
+          {
+            "name": "X-Github-Hook-Installation-Target-Type",
+            "in": "header",
+            "example": "repository",
+            "schema": { "type": "string" },
+            "required": true
+          },
+          {
+            "name": "X-GitHub-Delivery",
+            "in": "header",
+            "example": "0b989ba4-242f-11e5-81e1-c7b6966d2516",
+            "schema": { "type": "string" },
+            "required": true
+          },
+          {
+            "name": "X-Hub-Signature-256",
+            "in": "header",
+            "example": "sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e",
+            "schema": { "type": "string" },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/webhook-dependabot-alert-withdrawn"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Return a 200 status to indicate that the data was received successfully"
+          }
+        },
+        "x-github": {
+          "githubCloudOnly": false,
+          "category": "webhooks",
+          "subcategory": "dependabot_alert",
+          "supported-webhook-types": ["repository", "organization", "app"]
+        }
+      }
+    },
     "deploy-key-created": {
       "post": {
         "summary": "This event occurs when there is activity relating to deploy keys. For more information, see \"[Managing deploy keys](https://docs.github.com/enterprise-cloud@latest/developers/overview/managing-deploy-keys).\" For information about the APIs to manage deploy keys, see [the GraphQL API documentation](https://docs.github.com/enterprise-cloud@latest/graphql/reference/objects#deploykey) or \"[Deploy keys](https://docs.github.com/enterprise-cloud@latest/rest/deploy-keys)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Deployments\" repository permission.",
@@ -6012,6 +6102,252 @@
           "githubCloudOnly": true,
           "category": "webhooks",
           "subcategory": "dismissal_request_dependabot",
+          "supported-webhook-types": ["repository", "organization", "app"]
+        }
+      }
+    },
+    "dismissal-request-license-compliance-cancelled": {
+      "post": {
+        "summary": "This event occurs when there is activity related to a user's request to close a License compliance alert.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"License compliance alerts\" repository permission.",
+        "description": "A License compliance alert closure request was canceled.",
+        "operationId": "dismissal-request-license-compliance/cancelled",
+        "externalDocs": {
+          "url": "https://docs.github.com/enterprise-cloud@latest/webhooks/webhook-events-and-payloads#dismissal_request_license_compliance"
+        },
+        "parameters": [
+          {
+            "name": "User-Agent",
+            "in": "header",
+            "example": "GitHub-Hookshot/123abc",
+            "schema": { "type": "string" },
+            "required": true
+          },
+          {
+            "name": "X-Github-Hook-Id",
+            "in": "header",
+            "example": 12312312,
+            "schema": { "type": "string" },
+            "required": true
+          },
+          {
+            "name": "X-Github-Event",
+            "in": "header",
+            "example": "dismissal_request_license_compliance",
+            "schema": { "type": "string" },
+            "required": true
+          },
+          {
+            "name": "X-Github-Hook-Installation-Target-Id",
+            "in": "header",
+            "example": 123123,
+            "schema": { "type": "string" },
+            "required": true
+          },
+          {
+            "name": "X-Github-Hook-Installation-Target-Type",
+            "in": "header",
+            "example": "repository",
+            "schema": { "type": "string" },
+            "required": true
+          },
+          {
+            "name": "X-GitHub-Delivery",
+            "in": "header",
+            "example": "0b989ba4-242f-11e5-81e1-c7b6966d2516",
+            "schema": { "type": "string" },
+            "required": true
+          },
+          {
+            "name": "X-Hub-Signature-256",
+            "in": "header",
+            "example": "sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e",
+            "schema": { "type": "string" },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/webhook-exemption-request-cancelled"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Return a 200 status to indicate that the data was received successfully"
+          }
+        },
+        "x-github": {
+          "githubCloudOnly": true,
+          "category": "webhooks",
+          "subcategory": "dismissal_request_license_compliance",
+          "supported-webhook-types": ["repository", "organization", "app"]
+        }
+      }
+    },
+    "dismissal-request-license-compliance-created": {
+      "post": {
+        "summary": "This event occurs when there is activity related to a user's request to close a License compliance alert.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"License compliance alerts\" repository permission.",
+        "description": "A License compliance alert closure request was created.",
+        "operationId": "dismissal-request-license-compliance/created",
+        "externalDocs": {
+          "url": "https://docs.github.com/enterprise-cloud@latest/webhooks/webhook-events-and-payloads#dismissal_request_license_compliance"
+        },
+        "parameters": [
+          {
+            "name": "User-Agent",
+            "in": "header",
+            "example": "GitHub-Hookshot/123abc",
+            "schema": { "type": "string" },
+            "required": true
+          },
+          {
+            "name": "X-Github-Hook-Id",
+            "in": "header",
+            "example": 12312312,
+            "schema": { "type": "string" },
+            "required": true
+          },
+          {
+            "name": "X-Github-Event",
+            "in": "header",
+            "example": "dismissal_request_license_compliance",
+            "schema": { "type": "string" },
+            "required": true
+          },
+          {
+            "name": "X-Github-Hook-Installation-Target-Id",
+            "in": "header",
+            "example": 123123,
+            "schema": { "type": "string" },
+            "required": true
+          },
+          {
+            "name": "X-Github-Hook-Installation-Target-Type",
+            "in": "header",
+            "example": "repository",
+            "schema": { "type": "string" },
+            "required": true
+          },
+          {
+            "name": "X-GitHub-Delivery",
+            "in": "header",
+            "example": "0b989ba4-242f-11e5-81e1-c7b6966d2516",
+            "schema": { "type": "string" },
+            "required": true
+          },
+          {
+            "name": "X-Hub-Signature-256",
+            "in": "header",
+            "example": "sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e",
+            "schema": { "type": "string" },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/webhook-exemption-request-created"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Return a 200 status to indicate that the data was received successfully"
+          }
+        },
+        "x-github": {
+          "githubCloudOnly": true,
+          "category": "webhooks",
+          "subcategory": "dismissal_request_license_compliance",
+          "supported-webhook-types": ["repository", "organization", "app"]
+        }
+      }
+    },
+    "dismissal-request-license-compliance-response-submitted": {
+      "post": {
+        "summary": "This event occurs when there is activity related to a user's request to close a License compliance alert.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"License compliance alerts\" repository permission.",
+        "description": "A License compliance alert closure request received a response.",
+        "operationId": "dismissal-request-license-compliance/response-submitted",
+        "externalDocs": {
+          "url": "https://docs.github.com/enterprise-cloud@latest/webhooks/webhook-events-and-payloads#dismissal_request_license_compliance"
+        },
+        "parameters": [
+          {
+            "name": "User-Agent",
+            "in": "header",
+            "example": "GitHub-Hookshot/123abc",
+            "schema": { "type": "string" },
+            "required": true
+          },
+          {
+            "name": "X-Github-Hook-Id",
+            "in": "header",
+            "example": 12312312,
+            "schema": { "type": "string" },
+            "required": true
+          },
+          {
+            "name": "X-Github-Event",
+            "in": "header",
+            "example": "dismissal_request_license_compliance",
+            "schema": { "type": "string" },
+            "required": true
+          },
+          {
+            "name": "X-Github-Hook-Installation-Target-Id",
+            "in": "header",
+            "example": 123123,
+            "schema": { "type": "string" },
+            "required": true
+          },
+          {
+            "name": "X-Github-Hook-Installation-Target-Type",
+            "in": "header",
+            "example": "repository",
+            "schema": { "type": "string" },
+            "required": true
+          },
+          {
+            "name": "X-GitHub-Delivery",
+            "in": "header",
+            "example": "0b989ba4-242f-11e5-81e1-c7b6966d2516",
+            "schema": { "type": "string" },
+            "required": true
+          },
+          {
+            "name": "X-Hub-Signature-256",
+            "in": "header",
+            "example": "sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e",
+            "schema": { "type": "string" },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/webhook-exemption-request-response-submitted"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Return a 200 status to indicate that the data was received successfully"
+          }
+        },
+        "x-github": {
+          "githubCloudOnly": true,
+          "category": "webhooks",
+          "subcategory": "dismissal_request_license_compliance",
           "supported-webhook-types": ["repository", "organization", "app"]
         }
       }
@@ -9678,6 +10014,88 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/webhook-issues-reopened"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Return a 200 status to indicate that the data was received successfully"
+          }
+        },
+        "x-github": {
+          "githubCloudOnly": false,
+          "category": "webhooks",
+          "subcategory": "issues",
+          "supported-webhook-types": ["repository", "organization", "app"]
+        }
+      }
+    },
+    "issues-status-changed": {
+      "post": {
+        "summary": "This event occurs when there is activity relating to an issue. For more information about issues, see \"[About issues](https://docs.github.com/enterprise-cloud@latest/issues/tracking-your-work-with-issues/about-issues).\" For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/enterprise-cloud@latest/graphql/reference/objects#issue) or \"[Issues](https://docs.github.com/enterprise-cloud@latest/rest/issues)\" in the REST API documentation.\n\nFor activity relating to a comment on an issue, use the `issue_comment` event.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Issues\" repository permission.",
+        "description": "The status of an issue was changed. When the change also closes or reopens the issue, the `closed` or `reopened` action is sent too.\n\n> [!NOTE]\n> Issue statuses are in preview and subject to change. They're only available to accounts enrolled in the preview.",
+        "operationId": "issues/status-changed",
+        "externalDocs": {
+          "url": "https://docs.github.com/enterprise-cloud@latest/webhooks/webhook-events-and-payloads#issues"
+        },
+        "parameters": [
+          {
+            "name": "User-Agent",
+            "in": "header",
+            "example": "GitHub-Hookshot/123abc",
+            "schema": { "type": "string" },
+            "required": true
+          },
+          {
+            "name": "X-Github-Hook-Id",
+            "in": "header",
+            "example": 12312312,
+            "schema": { "type": "string" },
+            "required": true
+          },
+          {
+            "name": "X-Github-Event",
+            "in": "header",
+            "example": "issues",
+            "schema": { "type": "string" },
+            "required": true
+          },
+          {
+            "name": "X-Github-Hook-Installation-Target-Id",
+            "in": "header",
+            "example": 123123,
+            "schema": { "type": "string" },
+            "required": true
+          },
+          {
+            "name": "X-Github-Hook-Installation-Target-Type",
+            "in": "header",
+            "example": "repository",
+            "schema": { "type": "string" },
+            "required": true
+          },
+          {
+            "name": "X-GitHub-Delivery",
+            "in": "header",
+            "example": "0b989ba4-242f-11e5-81e1-c7b6966d2516",
+            "schema": { "type": "string" },
+            "required": true
+          },
+          {
+            "name": "X-Hub-Signature-256",
+            "in": "header",
+            "example": "sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e",
+            "schema": { "type": "string" },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/webhook-issues-status-changed"
               }
             }
           }
@@ -21982,6 +22400,334 @@
         }
       }
     },
+    "secret-scanning-public-monitoring-alert-created": {
+      "post": {
+        "summary": "This event occurs when there is activity relating to a secret scanning public monitoring alert. GitHub monitors secrets leaked across GitHub in real time. These findings may be associated with your enterprise.\n\nFor activity relating to secret scanning alerts within your repositories, use the `secret_scanning_alert` event.",
+        "description": "A secret attributed to your enterprise was detected.",
+        "operationId": "secret-scanning-public-monitoring-alert/created",
+        "externalDocs": {
+          "url": "https://docs.github.com/enterprise-cloud@latest/webhooks/webhook-events-and-payloads#secret_scanning_public_monitoring_alert"
+        },
+        "parameters": [
+          {
+            "name": "User-Agent",
+            "in": "header",
+            "example": "GitHub-Hookshot/123abc",
+            "schema": { "type": "string" },
+            "required": true
+          },
+          {
+            "name": "X-Github-Hook-Id",
+            "in": "header",
+            "example": 12312312,
+            "schema": { "type": "string" },
+            "required": true
+          },
+          {
+            "name": "X-Github-Event",
+            "in": "header",
+            "example": "secret_scanning_public_monitoring_alert",
+            "schema": { "type": "string" },
+            "required": true
+          },
+          {
+            "name": "X-Github-Hook-Installation-Target-Id",
+            "in": "header",
+            "example": 123123,
+            "schema": { "type": "string" },
+            "required": true
+          },
+          {
+            "name": "X-Github-Hook-Installation-Target-Type",
+            "in": "header",
+            "example": "business",
+            "schema": { "type": "string" },
+            "required": true
+          },
+          {
+            "name": "X-GitHub-Delivery",
+            "in": "header",
+            "example": "0b989ba4-242f-11e5-81e1-c7b6966d2516",
+            "schema": { "type": "string" },
+            "required": true
+          },
+          {
+            "name": "X-Hub-Signature-256",
+            "in": "header",
+            "example": "sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e",
+            "schema": { "type": "string" },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/webhook-secret-scanning-public-monitoring-alert-created"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Return a 200 status to indicate that the data was received successfully"
+          }
+        },
+        "x-github": {
+          "githubCloudOnly": true,
+          "category": "webhooks",
+          "subcategory": "secret_scanning_public_monitoring_alert",
+          "supported-webhook-types": ["business"]
+        }
+      }
+    },
+    "secret-scanning-public-monitoring-alert-dismissed": {
+      "post": {
+        "summary": "This event occurs when there is activity relating to a secret scanning public monitoring alert. GitHub monitors secrets leaked across GitHub in real time. These findings may be associated with your enterprise.\n\nFor activity relating to secret scanning alerts within your repositories, use the `secret_scanning_alert` event.",
+        "description": "A public monitoring alert attributed to the enterprise was resolved as `dismissed` or `fixed`.",
+        "operationId": "secret-scanning-public-monitoring-alert/dismissed",
+        "externalDocs": {
+          "url": "https://docs.github.com/enterprise-cloud@latest/webhooks/webhook-events-and-payloads#secret_scanning_public_monitoring_alert"
+        },
+        "parameters": [
+          {
+            "name": "User-Agent",
+            "in": "header",
+            "example": "GitHub-Hookshot/123abc",
+            "schema": { "type": "string" },
+            "required": true
+          },
+          {
+            "name": "X-Github-Hook-Id",
+            "in": "header",
+            "example": 12312312,
+            "schema": { "type": "string" },
+            "required": true
+          },
+          {
+            "name": "X-Github-Event",
+            "in": "header",
+            "example": "secret_scanning_public_monitoring_alert",
+            "schema": { "type": "string" },
+            "required": true
+          },
+          {
+            "name": "X-Github-Hook-Installation-Target-Id",
+            "in": "header",
+            "example": 123123,
+            "schema": { "type": "string" },
+            "required": true
+          },
+          {
+            "name": "X-Github-Hook-Installation-Target-Type",
+            "in": "header",
+            "example": "business",
+            "schema": { "type": "string" },
+            "required": true
+          },
+          {
+            "name": "X-GitHub-Delivery",
+            "in": "header",
+            "example": "0b989ba4-242f-11e5-81e1-c7b6966d2516",
+            "schema": { "type": "string" },
+            "required": true
+          },
+          {
+            "name": "X-Hub-Signature-256",
+            "in": "header",
+            "example": "sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e",
+            "schema": { "type": "string" },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/webhook-secret-scanning-public-monitoring-alert-dismissed"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Return a 200 status to indicate that the data was received successfully"
+          }
+        },
+        "x-github": {
+          "githubCloudOnly": true,
+          "category": "webhooks",
+          "subcategory": "secret_scanning_public_monitoring_alert",
+          "supported-webhook-types": ["business"]
+        }
+      }
+    },
+    "secret-scanning-public-monitoring-alert-reopened": {
+      "post": {
+        "summary": "This event occurs when there is activity relating to a secret scanning public monitoring alert. GitHub monitors secrets leaked across GitHub in real time. These findings may be associated with your enterprise.\n\nFor activity relating to secret scanning alerts within your repositories, use the `secret_scanning_alert` event.",
+        "description": "A previously resolved public monitoring alert was reopened.",
+        "operationId": "secret-scanning-public-monitoring-alert/reopened",
+        "externalDocs": {
+          "url": "https://docs.github.com/enterprise-cloud@latest/webhooks/webhook-events-and-payloads#secret_scanning_public_monitoring_alert"
+        },
+        "parameters": [
+          {
+            "name": "User-Agent",
+            "in": "header",
+            "example": "GitHub-Hookshot/123abc",
+            "schema": { "type": "string" },
+            "required": true
+          },
+          {
+            "name": "X-Github-Hook-Id",
+            "in": "header",
+            "example": 12312312,
+            "schema": { "type": "string" },
+            "required": true
+          },
+          {
+            "name": "X-Github-Event",
+            "in": "header",
+            "example": "secret_scanning_public_monitoring_alert",
+            "schema": { "type": "string" },
+            "required": true
+          },
+          {
+            "name": "X-Github-Hook-Installation-Target-Id",
+            "in": "header",
+            "example": 123123,
+            "schema": { "type": "string" },
+            "required": true
+          },
+          {
+            "name": "X-Github-Hook-Installation-Target-Type",
+            "in": "header",
+            "example": "business",
+            "schema": { "type": "string" },
+            "required": true
+          },
+          {
+            "name": "X-GitHub-Delivery",
+            "in": "header",
+            "example": "0b989ba4-242f-11e5-81e1-c7b6966d2516",
+            "schema": { "type": "string" },
+            "required": true
+          },
+          {
+            "name": "X-Hub-Signature-256",
+            "in": "header",
+            "example": "sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e",
+            "schema": { "type": "string" },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/webhook-secret-scanning-public-monitoring-alert-reopened"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Return a 200 status to indicate that the data was received successfully"
+          }
+        },
+        "x-github": {
+          "githubCloudOnly": true,
+          "category": "webhooks",
+          "subcategory": "secret_scanning_public_monitoring_alert",
+          "supported-webhook-types": ["business"]
+        }
+      }
+    },
+    "secret-scanning-public-monitoring-alert-validated": {
+      "post": {
+        "summary": "This event occurs when there is activity relating to a secret scanning public monitoring alert. GitHub monitors secrets leaked across GitHub in real time. These findings may be associated with your enterprise.\n\nFor activity relating to secret scanning alerts within your repositories, use the `secret_scanning_alert` event.",
+        "description": "The validity of a public monitoring alert attributed to the enterprise changed.\nThe payload contains the enterprise alert's current validity, not the source repository alert's validity.",
+        "operationId": "secret-scanning-public-monitoring-alert/validated",
+        "externalDocs": {
+          "url": "https://docs.github.com/enterprise-cloud@latest/webhooks/webhook-events-and-payloads#secret_scanning_public_monitoring_alert"
+        },
+        "parameters": [
+          {
+            "name": "User-Agent",
+            "in": "header",
+            "example": "GitHub-Hookshot/123abc",
+            "schema": { "type": "string" },
+            "required": true
+          },
+          {
+            "name": "X-Github-Hook-Id",
+            "in": "header",
+            "example": 12312312,
+            "schema": { "type": "string" },
+            "required": true
+          },
+          {
+            "name": "X-Github-Event",
+            "in": "header",
+            "example": "secret_scanning_public_monitoring_alert",
+            "schema": { "type": "string" },
+            "required": true
+          },
+          {
+            "name": "X-Github-Hook-Installation-Target-Id",
+            "in": "header",
+            "example": 123123,
+            "schema": { "type": "string" },
+            "required": true
+          },
+          {
+            "name": "X-Github-Hook-Installation-Target-Type",
+            "in": "header",
+            "example": "business",
+            "schema": { "type": "string" },
+            "required": true
+          },
+          {
+            "name": "X-GitHub-Delivery",
+            "in": "header",
+            "example": "0b989ba4-242f-11e5-81e1-c7b6966d2516",
+            "schema": { "type": "string" },
+            "required": true
+          },
+          {
+            "name": "X-Hub-Signature-256",
+            "in": "header",
+            "example": "sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e",
+            "schema": { "type": "string" },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/webhook-secret-scanning-public-monitoring-alert-validated"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Return a 200 status to indicate that the data was received successfully"
+          }
+        },
+        "x-github": {
+          "githubCloudOnly": true,
+          "category": "webhooks",
+          "subcategory": "secret_scanning_public_monitoring_alert",
+          "supported-webhook-types": ["business"]
+        }
+      }
+    },
     "secret-scanning-scan-completed": {
       "post": {
         "summary": "This event occurs when secret scanning completes certain scans on a repository. For more information about secret scanning, see \"[About secret scanning](https://docs.github.com/enterprise-cloud@latest/code-security/secret-scanning/about-secret-scanning).\"\n\nScans can originate from multiple events such as updates to a custom pattern, a push to a repository, or updates\nto patterns from partners. For more information on custom patterns, see \"[About custom patterns](https://docs.github.com/enterprise-cloud@latest/code-security/secret-scanning/using-advanced-secret-scanning-and-push-protection-features/custom-patterns).\"\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Secret scanning alerts\" repository permission.",
@@ -25405,7 +26151,10 @@
                 }
               },
               "allow_rebase_merge": { "type": "boolean" },
-              "temp_clone_token": { "type": "string" },
+              "temp_clone_token": {
+                "description": "When present and non-empty, a temporary credential for read-only Git access to this repository.\nIt expires five minutes after generation and cannot be used to push changes.\nTreat this value as sensitive and avoid recording it in logs.",
+                "type": "string"
+              },
               "allow_squash_merge": { "type": "boolean" },
               "allow_auto_merge": { "type": "boolean" },
               "delete_branch_on_merge": { "type": "boolean" },
@@ -25436,7 +26185,10 @@
               "network_count": { "type": "integer" }
             }
           },
-          "temp_clone_token": { "type": "string" },
+          "temp_clone_token": {
+            "description": "When present and non-empty, a temporary credential for read-only Git access to this repository.\nIt expires five minutes after generation and cannot be used to push changes.\nTreat this value as sensitive and avoid recording it in logs.",
+            "type": "string"
+          },
           "allow_squash_merge": {
             "description": "Whether to allow squash merges for pull requests.",
             "default": true,
@@ -27254,7 +28006,10 @@
             }
           },
           "role_name": { "type": "string", "examples": ["admin"] },
-          "temp_clone_token": { "type": "string" },
+          "temp_clone_token": {
+            "description": "When present and non-empty, a temporary credential for read-only Git access to this repository.\nIt expires five minutes after generation and cannot be used to push changes.\nTreat this value as sensitive and avoid recording it in logs.",
+            "type": "string"
+          },
           "delete_branch_on_merge": { "type": "boolean" },
           "subscribers_count": { "type": "integer" },
           "network_count": { "type": "integer" },
@@ -30819,6 +31574,11 @@
             "description": "Who can edit the values of the property",
             "examples": ["org_actors"]
           },
+          "regex": {
+            "type": ["string", "null"],
+            "description": "A regular expression (RE2 syntax) that values of the property must match.\nOnly present for properties with a `value_type` of `string` that define a regular expression.",
+            "examples": ["^[a-z0-9-]+$"]
+          },
           "require_explicit_values": {
             "type": "boolean",
             "description": "Whether setting properties values is mandatory"
@@ -31006,6 +31766,11 @@
                 "description": "The full path to the dependency manifest file, relative to the root of the repository.",
                 "readOnly": true
               },
+              "version_requirement": {
+                "type": ["string", "null"],
+                "description": "The dependency version or version constraint last recorded for the dependency associated with this alert.\nFor dependencies detected from a lockfile, this can be the resolved version.\nFor manifest-only dependencies, it can be the declared version constraint. Returns `null` when unavailable.\n\nAn empty string can indicate an unconstrained dependency. The stored value is limited to 64 bytes;\nlonger requirements may have been truncated and may no longer form a complete, valid version constraint.\n\nWhen multiple vulnerable versions of a dependency correspond to the same alert, this field contains one\nrecorded version or constraint and may not represent all vulnerable versions.\n",
+                "readOnly": true
+              },
               "scope": {
                 "type": ["string", "null"],
                 "description": "The execution scope of the vulnerable dependency.",
@@ -31072,6 +31837,48 @@
             "description": "The users assigned to this alert.",
             "readOnly": true,
             "items": { "$ref": "#/components/schemas/simple-user" }
+          },
+          "reachability": {
+            "type": "object",
+            "description": "The reachability result for the vulnerability that triggered the alert, indicating whether a\nvulnerable function is reachable from the repository's own code.\n",
+            "readOnly": true,
+            "properties": {
+              "verdict": {
+                "type": "string",
+                "description": "The reachability verdict for the alert.\n\n- `reachable`: a path from the repository's code reaches a vulnerable function.\n- `unreachable`: no path from the repository's code reaches a vulnerable function.\n- `potentially_reachable`: reachability could not be determined with confidence; review manually.\n- `unavailable`: no verdict has been computed for the alert yet.\n- `disabled`: reachability analysis is not enabled for the repository.\n",
+                "readOnly": true,
+                "enum": [
+                  "reachable",
+                  "unreachable",
+                  "potentially_reachable",
+                  "unavailable",
+                  "disabled"
+                ]
+              },
+              "reason": {
+                "type": "string",
+                "description": "The reason for the reachability verdict. This field is omitted when reachability analysis is disabled or no result has been computed.",
+                "readOnly": true,
+                "nullable": false,
+                "enum": [
+                  "unknown",
+                  "unavailable_unsupported_ecosystem",
+                  "unavailable_analysis_timed_out",
+                  "potentially_reachable_invalid_manifest_path",
+                  "potentially_reachable_missing_vulnerable_function_annotation",
+                  "potentially_reachable_dependency_not_found",
+                  "potentially_reachable_dependency_analysis_incomplete",
+                  "potentially_reachable_repository_analysis_incomplete",
+                  "potentially_reachable_call_found_outside_manifest_scope",
+                  "potentially_reachable_unclassified_analysis_state",
+                  "reachable_vulnerable_function_called",
+                  "unreachable_vulnerable_function_not_called",
+                  "potentially_reachable_unresolved_dynamic_call"
+                ]
+              }
+            },
+            "required": ["verdict"],
+            "additionalProperties": false
           }
         },
         "required": [
@@ -31610,6 +32417,131 @@
           "sender": { "$ref": "#/components/schemas/simple-user" }
         },
         "required": ["action", "alert", "repository", "sender"]
+      },
+      "webhook-dependabot-alert-withdrawn": {
+        "title": "Dependabot alert withdrawn event",
+        "type": "object",
+        "properties": {
+          "action": { "type": "string", "enum": ["withdrawn"] },
+          "alert": {
+            "$ref": "#/components/schemas/dependabot-alert-withdrawn-webhook"
+          },
+          "installation": {
+            "$ref": "#/components/schemas/simple-installation"
+          },
+          "organization": {
+            "$ref": "#/components/schemas/organization-simple-webhooks"
+          },
+          "enterprise": { "$ref": "#/components/schemas/enterprise-webhooks" },
+          "repository": { "$ref": "#/components/schemas/repository-webhooks" },
+          "sender": { "$ref": "#/components/schemas/simple-user" }
+        },
+        "required": ["action", "alert", "repository", "sender"]
+      },
+      "dependabot-alert-withdrawn-webhook": {
+        "type": "object",
+        "description": "Identifiers for a withdrawn Dependabot alert, captured before deletion so that\nconsumers can reconcile external records. This is not a full alert representation.\n",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "description": "The unique identifier of the withdrawn alert.",
+            "readOnly": true
+          },
+          "node_id": {
+            "type": "string",
+            "description": "The GraphQL node ID of the withdrawn alert.",
+            "readOnly": true
+          },
+          "number": { "$ref": "#/components/schemas/alert-number" },
+          "state": {
+            "type": "string",
+            "description": "The state of the Dependabot alert.",
+            "readOnly": true,
+            "enum": ["withdrawn"]
+          },
+          "dependency": {
+            "type": "object",
+            "description": "Details for the vulnerable dependency.",
+            "readOnly": true,
+            "properties": {
+              "package": {
+                "$ref": "#/components/schemas/dependabot-alert-package"
+              },
+              "manifest_path": {
+                "type": ["string", "null"],
+                "description": "The full path to the dependency manifest file, relative to the root of the repository.",
+                "readOnly": true
+              },
+              "version_requirement": {
+                "type": ["string", "null"],
+                "description": "The dependency version or version constraint last recorded for the dependency associated with this alert.\nFor dependencies detected from a lockfile, this can be the resolved version.\nFor manifest-only dependencies, it can be the declared version constraint. Returns `null` when unavailable.\n\nAn empty string can indicate an unconstrained dependency. The stored value is limited to 64 bytes;\nlonger requirements may have been truncated and may no longer form a complete, valid version constraint.\n\nWhen multiple vulnerable versions of a dependency correspond to the same alert, this field contains one\nrecorded version or constraint and may not represent all vulnerable versions.\n",
+                "readOnly": true
+              },
+              "scope": {
+                "type": ["string", "null"],
+                "description": "The execution scope of the vulnerable dependency.",
+                "readOnly": true,
+                "enum": ["development", "runtime", null]
+              },
+              "relationship": {
+                "type": ["string", "null"],
+                "description": "The vulnerable dependency's relationship to your project.\n\n> [!NOTE]\n> We are rolling out support for dependency relationship across ecosystems. This value will be \"unknown\" for all dependencies in unsupported ecosystems.\n",
+                "readOnly": true,
+                "enum": [
+                  "unknown",
+                  "direct",
+                  "transitive",
+                  "inconclusive",
+                  null
+                ]
+              }
+            },
+            "required": ["package", "manifest_path", "scope"],
+            "additionalProperties": false
+          },
+          "security_advisory": {
+            "type": "object",
+            "description": "Identifiers of the advisory that produced the withdrawn alert.",
+            "readOnly": true,
+            "properties": {
+              "ghsa_id": {
+                "type": "string",
+                "description": "The unique GitHub identifier assigned to the advisory.",
+                "readOnly": true
+              },
+              "cve_id": {
+                "type": ["string", "null"],
+                "description": "The CVE identifier assigned to the advisory, if any.",
+                "readOnly": true
+              }
+            },
+            "required": ["ghsa_id", "cve_id"],
+            "additionalProperties": false
+          },
+          "url": { "$ref": "#/components/schemas/alert-url" },
+          "html_url": { "$ref": "#/components/schemas/alert-html-url" },
+          "created_at": { "$ref": "#/components/schemas/alert-created-at" },
+          "withdrawn_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The time that the alert was withdrawn in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`. This is not the advisory's withdrawal time.",
+            "readOnly": true
+          }
+        },
+        "required": [
+          "id",
+          "node_id",
+          "number",
+          "state",
+          "dependency",
+          "security_advisory",
+          "url",
+          "html_url",
+          "created_at",
+          "withdrawn_at"
+        ],
+        "additionalProperties": false
       },
       "webhook-deploy-key-created": {
         "title": "deploy_key created event",
@@ -33606,7 +34538,10 @@
             "type": "boolean",
             "examples": [true]
           },
-          "temp_clone_token": { "type": "string" },
+          "temp_clone_token": {
+            "description": "When present and non-empty, a temporary credential for read-only Git access to this repository.\nIt expires five minutes after generation and cannot be used to push changes.\nTreat this value as sensitive and avoid recording it in logs.",
+            "type": "string"
+          },
           "allow_squash_merge": {
             "description": "Whether to allow squash merges for pull requests.",
             "default": true,
@@ -38295,6 +39230,11 @@
             "type": "string",
             "description": "The level of permission to grant the access token to view and manage Copilot cloud agent settings for an organization.",
             "enum": ["read", "write"]
+          },
+          "organization_copilot_requests": {
+            "type": "string",
+            "description": "The level of permission to grant the access token to make Copilot requests billed to the organization where the app is installed. This property is in public preview and is subject to change.",
+            "enum": ["read"]
           },
           "organization_external_properties_for_repos": {
             "type": "string",
@@ -43861,6 +44801,29 @@
             "type": "string",
             "examples": ["open"]
           },
+          "status": {
+            "description": "The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.",
+            "type": ["object", "null"],
+            "properties": {
+              "id": {
+                "description": "The stable identifier of the planning status.",
+                "type": "integer",
+                "format": "int64",
+                "examples": [4]
+              },
+              "name": {
+                "description": "The display name of the planning status, which may change in the future.",
+                "type": "string",
+                "examples": ["In progress"]
+              },
+              "category": {
+                "description": "A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.",
+                "type": "string",
+                "examples": ["started"]
+              }
+            },
+            "required": ["id", "name", "category"]
+          },
           "state_reason": {
             "description": "The reason for the current state",
             "type": ["string", "null"],
@@ -44517,38 +45480,7 @@
           "id": { "type": "integer", "format": "int64" },
           "labels": {
             "type": "array",
-            "items": {
-              "title": "Label",
-              "type": "object",
-              "properties": {
-                "color": {
-                  "description": "6-character hex code, without the leading #, identifying the color",
-                  "type": "string"
-                },
-                "default": { "type": "boolean" },
-                "description": { "type": ["string", "null"] },
-                "id": { "type": "integer" },
-                "name": {
-                  "description": "The name of the label.",
-                  "type": "string"
-                },
-                "node_id": { "type": "string" },
-                "url": {
-                  "description": "URL for the label",
-                  "type": "string",
-                  "format": "uri"
-                }
-              },
-              "required": [
-                "id",
-                "node_id",
-                "url",
-                "name",
-                "color",
-                "default",
-                "description"
-              ]
-            }
+            "items": { "$ref": "#/components/schemas/webhooks_label" }
           },
           "labels_url": { "type": "string", "format": "uri-template" },
           "locked": { "type": "boolean" },
@@ -44936,6 +45868,30 @@
             "type": "array",
             "items": { "$ref": "#/components/schemas/issue-field-value" }
           },
+          "status": {
+            "title": "Planning status",
+            "description": "The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.",
+            "type": ["object", "null"],
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64",
+                "description": "The stable identifier of the planning status.",
+                "examples": [4]
+              },
+              "name": {
+                "type": "string",
+                "description": "The display name of the planning status, which may change in the future.",
+                "examples": ["In progress"]
+              },
+              "category": {
+                "type": "string",
+                "description": "A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.",
+                "examples": ["started"]
+              }
+            },
+            "required": ["id", "name", "category"]
+          },
           "state": {
             "description": "State of the issue; either 'open' or 'closed'",
             "type": "string",
@@ -45180,38 +46136,7 @@
                   "id": { "type": "integer", "format": "int64" },
                   "labels": {
                     "type": "array",
-                    "items": {
-                      "title": "Label",
-                      "type": "object",
-                      "properties": {
-                        "color": {
-                          "description": "6-character hex code, without the leading #, identifying the color",
-                          "type": "string"
-                        },
-                        "default": { "type": "boolean" },
-                        "description": { "type": ["string", "null"] },
-                        "id": { "type": "integer" },
-                        "name": {
-                          "description": "The name of the label.",
-                          "type": "string"
-                        },
-                        "node_id": { "type": "string" },
-                        "url": {
-                          "description": "URL for the label",
-                          "type": "string",
-                          "format": "uri"
-                        }
-                      },
-                      "required": [
-                        "id",
-                        "node_id",
-                        "url",
-                        "name",
-                        "color",
-                        "default",
-                        "description"
-                      ]
-                    }
+                    "items": { "$ref": "#/components/schemas/webhooks_label" }
                   },
                   "labels_url": { "type": "string", "format": "uri-template" },
                   "locked": { "type": "boolean" },
@@ -45689,6 +46614,30 @@
                       "$ref": "#/components/schemas/issue-field-value"
                     }
                   },
+                  "status": {
+                    "title": "Planning status",
+                    "description": "The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.",
+                    "type": ["object", "null"],
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "The stable identifier of the planning status.",
+                        "examples": [4]
+                      },
+                      "name": {
+                        "type": "string",
+                        "description": "The display name of the planning status, which may change in the future.",
+                        "examples": ["In progress"]
+                      },
+                      "category": {
+                        "type": "string",
+                        "description": "A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.",
+                        "examples": ["started"]
+                      }
+                    },
+                    "required": ["id", "name", "category"]
+                  },
                   "state": {
                     "description": "State of the issue; either 'open' or 'closed'",
                     "type": "string",
@@ -45805,7 +46754,12 @@
                   "id": { "type": "integer" },
                   "labels": {
                     "type": "array",
-                    "items": { "type": ["object", "null"] }
+                    "items": {
+                      "type": ["object", "null"],
+                      "allOf": [
+                        { "$ref": "#/components/schemas/webhooks_label" }
+                      ]
+                    }
                   },
                   "labels_url": { "type": "string" },
                   "locked": { "type": "boolean" },
@@ -46486,6 +47440,30 @@
               "issue_field_values": {
                 "type": "array",
                 "items": { "$ref": "#/components/schemas/issue-field-value" }
+              },
+              "status": {
+                "title": "Planning status",
+                "description": "The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.",
+                "type": ["object", "null"],
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "The stable identifier of the planning status.",
+                    "examples": [4]
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "The display name of the planning status, which may change in the future.",
+                    "examples": ["In progress"]
+                  },
+                  "category": {
+                    "type": "string",
+                    "description": "A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.",
+                    "examples": ["started"]
+                  }
+                },
+                "required": ["id", "name", "category"]
               },
               "state": {
                 "description": "State of the issue; either 'open' or 'closed'",
@@ -47209,6 +48187,30 @@
                 "type": "array",
                 "items": { "$ref": "#/components/schemas/issue-field-value" }
               },
+              "status": {
+                "title": "Planning status",
+                "description": "The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.",
+                "type": ["object", "null"],
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "The stable identifier of the planning status.",
+                    "examples": [4]
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "The display name of the planning status, which may change in the future.",
+                    "examples": ["In progress"]
+                  },
+                  "category": {
+                    "type": "string",
+                    "description": "A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.",
+                    "examples": ["started"]
+                  }
+                },
+                "required": ["id", "name", "category"]
+              },
               "state": {
                 "description": "State of the issue; either 'open' or 'closed'",
                 "type": "string",
@@ -47512,38 +48514,7 @@
               "id": { "type": "integer", "format": "int64" },
               "labels": {
                 "type": "array",
-                "items": {
-                  "title": "Label",
-                  "type": "object",
-                  "properties": {
-                    "color": {
-                      "description": "6-character hex code, without the leading #, identifying the color",
-                      "type": "string"
-                    },
-                    "default": { "type": "boolean" },
-                    "description": { "type": ["string", "null"] },
-                    "id": { "type": "integer" },
-                    "name": {
-                      "description": "The name of the label.",
-                      "type": "string"
-                    },
-                    "node_id": { "type": "string" },
-                    "url": {
-                      "description": "URL for the label",
-                      "type": "string",
-                      "format": "uri"
-                    }
-                  },
-                  "required": [
-                    "id",
-                    "node_id",
-                    "url",
-                    "name",
-                    "color",
-                    "default",
-                    "description"
-                  ]
-                }
+                "items": { "$ref": "#/components/schemas/webhooks_label" }
               },
               "labels_url": { "type": "string", "format": "uri-template" },
               "locked": { "type": "boolean" },
@@ -47997,6 +48968,30 @@
               "issue_field_values": {
                 "type": "array",
                 "items": { "$ref": "#/components/schemas/issue-field-value" }
+              },
+              "status": {
+                "title": "Planning status",
+                "description": "The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.",
+                "type": ["object", "null"],
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "The stable identifier of the planning status.",
+                    "examples": [4]
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "The display name of the planning status, which may change in the future.",
+                    "examples": ["In progress"]
+                  },
+                  "category": {
+                    "type": "string",
+                    "description": "A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.",
+                    "examples": ["started"]
+                  }
+                },
+                "required": ["id", "name", "category"]
               },
               "state": {
                 "description": "State of the issue; either 'open' or 'closed'",
@@ -48970,6 +49965,30 @@
                 "type": "array",
                 "items": { "$ref": "#/components/schemas/issue-field-value" }
               },
+              "status": {
+                "title": "Planning status",
+                "description": "The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.",
+                "type": ["object", "null"],
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "The stable identifier of the planning status.",
+                    "examples": [4]
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "The display name of the planning status, which may change in the future.",
+                    "examples": ["In progress"]
+                  },
+                  "category": {
+                    "type": "string",
+                    "description": "A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.",
+                    "examples": ["started"]
+                  }
+                },
+                "required": ["id", "name", "category"]
+              },
               "state": {
                 "description": "State of the issue; either 'open' or 'closed'",
                 "type": "string",
@@ -49698,6 +50717,30 @@
                 "type": "array",
                 "items": { "$ref": "#/components/schemas/issue-field-value" }
               },
+              "status": {
+                "title": "Planning status",
+                "description": "The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.",
+                "type": ["object", "null"],
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "The stable identifier of the planning status.",
+                    "examples": [4]
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "The display name of the planning status, which may change in the future.",
+                    "examples": ["In progress"]
+                  },
+                  "category": {
+                    "type": "string",
+                    "description": "A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.",
+                    "examples": ["started"]
+                  }
+                },
+                "required": ["id", "name", "category"]
+              },
               "state": {
                 "description": "State of the issue; either 'open' or 'closed'",
                 "type": "string",
@@ -50397,6 +51440,30 @@
               "issue_field_values": {
                 "type": "array",
                 "items": { "$ref": "#/components/schemas/issue-field-value" }
+              },
+              "status": {
+                "title": "Planning status",
+                "description": "The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.",
+                "type": ["object", "null"],
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "The stable identifier of the planning status.",
+                    "examples": [4]
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "The display name of the planning status, which may change in the future.",
+                    "examples": ["In progress"]
+                  },
+                  "category": {
+                    "type": "string",
+                    "description": "A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.",
+                    "examples": ["started"]
+                  }
+                },
+                "required": ["id", "name", "category"]
               },
               "state": {
                 "description": "State of the issue; either 'open' or 'closed'",
@@ -51125,6 +52192,30 @@
                     "items": {
                       "$ref": "#/components/schemas/issue-field-value"
                     }
+                  },
+                  "status": {
+                    "title": "Planning status",
+                    "description": "The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.",
+                    "type": ["object", "null"],
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "The stable identifier of the planning status.",
+                        "examples": [4]
+                      },
+                      "name": {
+                        "type": "string",
+                        "description": "The display name of the planning status, which may change in the future.",
+                        "examples": ["In progress"]
+                      },
+                      "category": {
+                        "type": "string",
+                        "description": "A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.",
+                        "examples": ["started"]
+                      }
+                    },
+                    "required": ["id", "name", "category"]
                   },
                   "state": {
                     "description": "State of the issue; either 'open' or 'closed'",
@@ -52199,6 +53290,30 @@
                 "type": "array",
                 "items": { "$ref": "#/components/schemas/issue-field-value" }
               },
+              "status": {
+                "title": "Planning status",
+                "description": "The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.",
+                "type": ["object", "null"],
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "The stable identifier of the planning status.",
+                    "examples": [4]
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "The display name of the planning status, which may change in the future.",
+                    "examples": ["In progress"]
+                  },
+                  "category": {
+                    "type": "string",
+                    "description": "A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.",
+                    "examples": ["started"]
+                  }
+                },
+                "required": ["id", "name", "category"]
+              },
               "state": {
                 "description": "State of the issue; either 'open' or 'closed'",
                 "type": "string",
@@ -52414,38 +53529,7 @@
           "id": { "type": "integer", "format": "int64" },
           "labels": {
             "type": "array",
-            "items": {
-              "title": "Label",
-              "type": "object",
-              "properties": {
-                "color": {
-                  "description": "6-character hex code, without the leading #, identifying the color",
-                  "type": "string"
-                },
-                "default": { "type": "boolean" },
-                "description": { "type": ["string", "null"] },
-                "id": { "type": "integer" },
-                "name": {
-                  "description": "The name of the label.",
-                  "type": "string"
-                },
-                "node_id": { "type": "string" },
-                "url": {
-                  "description": "URL for the label",
-                  "type": "string",
-                  "format": "uri"
-                }
-              },
-              "required": [
-                "id",
-                "node_id",
-                "url",
-                "name",
-                "color",
-                "default",
-                "description"
-              ]
-            }
+            "items": { "$ref": "#/components/schemas/webhooks_label" }
           },
           "labels_url": { "type": "string", "format": "uri-template" },
           "locked": { "type": "boolean" },
@@ -52831,6 +53915,30 @@
             "type": "array",
             "items": { "$ref": "#/components/schemas/issue-field-value" }
           },
+          "status": {
+            "title": "Planning status",
+            "description": "The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.",
+            "type": ["object", "null"],
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64",
+                "description": "The stable identifier of the planning status.",
+                "examples": [4]
+              },
+              "name": {
+                "type": "string",
+                "description": "The display name of the planning status, which may change in the future.",
+                "examples": ["In progress"]
+              },
+              "category": {
+                "type": "string",
+                "description": "A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.",
+                "examples": ["started"]
+              }
+            },
+            "required": ["id", "name", "category"]
+          },
           "state": {
             "description": "State of the issue; either 'open' or 'closed'",
             "type": "string",
@@ -53070,6 +54178,16 @@
                     "description"
                   ],
                   "properties": {
+                    "archived_at": {
+                      "description": "Timestamp indicating when the label was archived, or `null` if it has not been archived.",
+                      "type": ["string", "null"],
+                      "format": "date-time"
+                    },
+                    "archived_by": {
+                      "description": "The user who archived the label, or `null` if it has not been archived.",
+                      "allOf": [{ "$ref": "#/components/schemas/simple-user" }],
+                      "type": ["null"]
+                    },
                     "color": {
                       "description": "6-character hex code, without the leading #, identifying the color",
                       "type": "string"
@@ -53542,6 +54660,30 @@
                 "type": "array",
                 "items": { "$ref": "#/components/schemas/issue-field-value" }
               },
+              "status": {
+                "title": "Planning status",
+                "description": "The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.",
+                "type": ["object", "null"],
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "The stable identifier of the planning status.",
+                    "examples": [4]
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "The display name of the planning status, which may change in the future.",
+                    "examples": ["In progress"]
+                  },
+                  "category": {
+                    "type": "string",
+                    "description": "A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.",
+                    "examples": ["started"]
+                  }
+                },
+                "required": ["id", "name", "category"]
+              },
               "state": {
                 "description": "State of the issue; either 'open' or 'closed'",
                 "type": "string",
@@ -53604,6 +54746,113 @@
           "sender": { "$ref": "#/components/schemas/simple-user" }
         },
         "required": ["action", "issue", "repository", "sender"]
+      },
+      "webhook-issues-status-changed": {
+        "title": "issues status_changed event",
+        "type": "object",
+        "properties": {
+          "action": { "type": "string", "enum": ["status_changed"] },
+          "changes": {
+            "description": "The changes to the issue. `state` and `state_reason` are only included when the status change also closed or reopened the issue, or changed the reason it was closed.",
+            "type": "object",
+            "properties": {
+              "status": {
+                "type": "object",
+                "properties": {
+                  "from": {
+                    "title": "Planning status",
+                    "description": "The status the issue had before the change, or `null` if it had none.",
+                    "type": ["object", "null"],
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "The stable identifier of the planning status.",
+                        "examples": [4]
+                      },
+                      "name": {
+                        "type": "string",
+                        "description": "The display name of the planning status, which may change in the future.",
+                        "examples": ["In progress"]
+                      },
+                      "category": {
+                        "type": "string",
+                        "description": "A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.",
+                        "examples": ["started"]
+                      }
+                    },
+                    "required": ["id", "name", "category"]
+                  }
+                },
+                "required": ["from"]
+              },
+              "state": {
+                "type": "object",
+                "properties": {
+                  "from": {
+                    "description": "The state of the issue before the change.",
+                    "type": "string",
+                    "enum": ["open", "closed"]
+                  }
+                },
+                "required": ["from"]
+              },
+              "state_reason": {
+                "type": "object",
+                "properties": {
+                  "from": {
+                    "description": "The reason for the state of the issue before the change.",
+                    "type": ["string", "null"]
+                  }
+                },
+                "required": ["from"]
+              }
+            },
+            "required": ["status"]
+          },
+          "enterprise": { "$ref": "#/components/schemas/enterprise-webhooks" },
+          "installation": {
+            "$ref": "#/components/schemas/simple-installation"
+          },
+          "issue": { "$ref": "#/components/schemas/webhooks_issue" },
+          "organization": {
+            "$ref": "#/components/schemas/organization-simple-webhooks"
+          },
+          "repository": { "$ref": "#/components/schemas/repository-webhooks" },
+          "sender": { "$ref": "#/components/schemas/simple-user" },
+          "status": {
+            "title": "Planning status",
+            "description": "The status the issue changed to.",
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64",
+                "description": "The stable identifier of the planning status.",
+                "examples": [4]
+              },
+              "name": {
+                "type": "string",
+                "description": "The display name of the planning status, which may change in the future.",
+                "examples": ["In progress"]
+              },
+              "category": {
+                "type": "string",
+                "description": "A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.",
+                "examples": ["started"]
+              }
+            },
+            "required": ["id", "name", "category"]
+          }
+        },
+        "required": [
+          "action",
+          "changes",
+          "issue",
+          "repository",
+          "sender",
+          "status"
+        ]
       },
       "webhook-issues-transferred": {
         "title": "issues transferred event",
@@ -54274,6 +55523,30 @@
                     "items": {
                       "$ref": "#/components/schemas/issue-field-value"
                     }
+                  },
+                  "status": {
+                    "title": "Planning status",
+                    "description": "The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.",
+                    "type": ["object", "null"],
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "The stable identifier of the planning status.",
+                        "examples": [4]
+                      },
+                      "name": {
+                        "type": "string",
+                        "description": "The display name of the planning status, which may change in the future.",
+                        "examples": ["In progress"]
+                      },
+                      "category": {
+                        "type": "string",
+                        "description": "A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.",
+                        "examples": ["started"]
+                      }
+                    },
+                    "required": ["id", "name", "category"]
                   },
                   "state": {
                     "description": "State of the issue; either 'open' or 'closed'",
@@ -55505,6 +56778,30 @@
               "issue_field_values": {
                 "type": "array",
                 "items": { "$ref": "#/components/schemas/issue-field-value" }
+              },
+              "status": {
+                "title": "Planning status",
+                "description": "The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.",
+                "type": ["object", "null"],
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "The stable identifier of the planning status.",
+                    "examples": [4]
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "The display name of the planning status, which may change in the future.",
+                    "examples": ["In progress"]
+                  },
+                  "category": {
+                    "type": "string",
+                    "description": "A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.",
+                    "examples": ["started"]
+                  }
+                },
+                "required": ["id", "name", "category"]
               },
               "state": {
                 "description": "State of the issue; either 'open' or 'closed'",
@@ -112992,6 +114289,10 @@
                 "type": "boolean",
                 "description": "Require an approving review in pull requests that modify files that have a designated code owner."
               },
+              "require_extra_approval_for_unattributed_changes": {
+                "type": "boolean",
+                "description": "When Copilot opens a pull request without a human collaborator, require one more approving review if a non-zero approval count is required."
+              },
               "require_last_push_approval": {
                 "type": "boolean",
                 "description": "Whether the most recent reviewable push must be approved by someone other than the person who pushed it."
@@ -113008,7 +114309,7 @@
               },
               "required_reviewers": {
                 "type": "array",
-                "description": "> [!NOTE]\n> `required_reviewers` is in beta and subject to change.\n\nA collection of reviewers and associated file patterns. Each reviewer has a list of file patterns which determine the files that reviewer is required to review.",
+                "description": "A collection of reviewers and associated file patterns. Each reviewer has a list of file patterns which determine the files that reviewer is required to review.",
                 "items": {
                   "$ref": "#/components/schemas/repository-rule-params-required-reviewer-configuration"
                 }
@@ -113442,7 +114743,7 @@
       },
       "repository-rule-code-coverage": {
         "title": "code_coverage",
-        "description": "Enforce minimum line coverage thresholds on pull requests. When configured, uploaded coverage data must meet the specified criteria before changes can be merged.",
+        "description": "Enforce minimum line coverage thresholds on pull requests. This rule evaluates uploaded coverage data but does not wait for coverage uploads. To ensure coverage is evaluated before merging, make each status check associated with a coverage upload a required status check.",
         "type": "object",
         "required": ["type"],
         "properties": {
@@ -113470,7 +114771,7 @@
       },
       "repository-rule-copilot-code-review": {
         "title": "copilot_code_review",
-        "description": "Request Copilot code review for new pull requests automatically if the author has access to Copilot code review and their premium requests quota has not reached the limit.",
+        "description": "Request Copilot code review for new pull requests automatically if the author has access to Copilot code review and AI credits.",
         "type": "object",
         "required": ["type"],
         "properties": {
@@ -113509,6 +114810,11 @@
           "parameters": {
             "type": "object",
             "properties": {
+              "ignored_file_paths": {
+                "type": "array",
+                "description": "Files matching these patterns are allowed even when they also match a restricted path.",
+                "items": { "type": "string" }
+              },
               "restricted_file_paths": {
                 "type": "array",
                 "description": "The file paths that are restricted from being pushed to the commit graph.",
@@ -113570,6 +114876,11 @@
           "parameters": {
             "type": "object",
             "properties": {
+              "ignored_file_paths": {
+                "type": "array",
+                "description": "Files matching these patterns may exceed the maximum size.",
+                "items": { "type": "string" }
+              },
               "max_file_size": {
                 "type": "integer",
                 "description": "The maximum file size allowed in megabytes. This limit does not apply to Git Large File Storage (Git LFS).",
@@ -114404,13 +115715,14 @@
               "pull_request_body",
               "pull_request_comment",
               "pull_request_review",
-              "pull_request_review_comment"
+              "pull_request_review_comment",
+              "actions_log"
             ],
             "description": "The location type. Because secrets may be found in different types of resources (ie. code, comments, issues, pull requests, discussions), this field identifies the type of resource where the secret was found.",
             "examples": ["commit"]
           },
           "details": {
-            "oneOf": [
+            "anyOf": [
               {
                 "$ref": "#/components/schemas/secret-scanning-location-commit"
               },
@@ -114449,6 +115761,9 @@
               },
               {
                 "$ref": "#/components/schemas/secret-scanning-location-pull-request-review-comment"
+              },
+              {
+                "$ref": "#/components/schemas/secret-scanning-location-actions-log"
               }
             ]
           }
@@ -114801,6 +116116,40 @@
         },
         "required": ["pull_request_review_comment_url"]
       },
+      "secret-scanning-location-actions-log": {
+        "description": "Represents an 'actions_log' secret scanning location type. The path identifies the workflow definition, while line and column positions identify the secret in the raw job log, not in the workflow file.",
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "The workflow definition path. Dynamically generated workflows can have a synthetic path.",
+            "examples": [".github/workflows/build.yml"]
+          },
+          "start_line": {
+            "type": "number",
+            "description": "Line number at which the secret starts in the raw job log."
+          },
+          "end_line": {
+            "type": "number",
+            "description": "Line number at which the secret ends in the raw job log."
+          },
+          "start_column": {
+            "type": "number",
+            "description": "The one-based column at which the secret starts within the start line of the raw job log."
+          },
+          "end_column": {
+            "type": "number",
+            "description": "The one-based column at which the secret ends within the end line of the raw job log."
+          }
+        },
+        "required": [
+          "path",
+          "start_line",
+          "end_line",
+          "start_column",
+          "end_column"
+        ]
+      },
       "webhook-secret-scanning-alert-metadata-created": {
         "title": "secret_scanning_alert metadata created event",
         "type": "object",
@@ -114941,6 +116290,459 @@
           "sender": { "$ref": "#/components/schemas/simple-user" }
         },
         "required": ["action", "alert", "repository"]
+      },
+      "webhook-secret-scanning-public-monitoring-alert-created": {
+        "title": "secret_scanning_public_monitoring_alert created event",
+        "type": "object",
+        "properties": {
+          "action": { "type": "string", "enum": ["created"] },
+          "alert": {
+            "$ref": "#/components/schemas/public-monitoring-alert-webhook"
+          },
+          "enterprise": { "$ref": "#/components/schemas/enterprise-webhooks" },
+          "installation": {
+            "$ref": "#/components/schemas/simple-installation"
+          },
+          "organization": {
+            "$ref": "#/components/schemas/organization-simple-webhooks"
+          },
+          "repository": { "$ref": "#/components/schemas/repository-webhooks" }
+        },
+        "required": ["action", "alert", "enterprise"]
+      },
+      "public-monitoring-alert-webhook": {
+        "title": "Public Monitoring Alert Webhook",
+        "description": "A public monitoring alert as delivered via webhook.",
+        "type": "object",
+        "properties": {
+          "number": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "The enterprise-scoped number of the public monitoring alert."
+          },
+          "url": { "$ref": "#/components/schemas/alert-url" },
+          "secret_type": {
+            "type": "string",
+            "description": "The type of secret that secret scanning detected."
+          },
+          "secret_type_display_name": {
+            "type": "string",
+            "description": "User-friendly name for the detected secret, matching the `secret_type`.\nFor a list of built-in patterns, see \"[Supported secret scanning patterns](https://docs.github.com/enterprise-cloud@latest/code-security/secret-scanning/introduction/supported-secret-scanning-patterns#supported-secrets).\""
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The time that the secret was detected in ISO 8601 format."
+          },
+          "validity": {
+            "type": "string",
+            "description": "The validity status of the secret as of the latest validity check for the enterprise alert.",
+            "enum": ["active", "inactive", "unknown"]
+          },
+          "repository": {
+            "anyOf": [
+              {
+                "anyOf": [
+                  { "type": "null" },
+                  { "$ref": "#/components/schemas/simple-repository" }
+                ]
+              },
+              { "$ref": "#/components/schemas/public-monitoring-repository" }
+            ],
+            "type": ["null", "object"]
+          },
+          "gist": {
+            "anyOf": [
+              { "type": "null" },
+              { "$ref": "#/components/schemas/base-gist" }
+            ]
+          },
+          "attribution": {
+            "type": "object",
+            "description": "Attribution information for the alert.",
+            "properties": {
+              "secret_author": {
+                "anyOf": [
+                  {
+                    "anyOf": [
+                      { "type": "null" },
+                      { "$ref": "#/components/schemas/simple-user" }
+                    ]
+                  },
+                  {
+                    "$ref": "#/components/schemas/public-monitoring-secret-author"
+                  }
+                ],
+                "type": ["null", "object"]
+              },
+              "committer_email": {
+                "type": ["string", "null"],
+                "description": "The email address associated with the secret's author."
+              },
+              "commit": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/secret-scanning-location-commit"
+                  },
+                  {
+                    "$ref": "#/components/schemas/public-monitoring-alert-location"
+                  }
+                ]
+              },
+              "wiki_commit": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/secret-scanning-location-wiki-commit"
+                  },
+                  {
+                    "$ref": "#/components/schemas/public-monitoring-alert-location"
+                  }
+                ]
+              },
+              "issue_title": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/secret-scanning-location-issue-title"
+                  },
+                  {
+                    "$ref": "#/components/schemas/public-monitoring-alert-location"
+                  }
+                ]
+              },
+              "issue_body": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/secret-scanning-location-issue-body"
+                  },
+                  {
+                    "$ref": "#/components/schemas/public-monitoring-alert-location"
+                  }
+                ]
+              },
+              "issue_comment": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/secret-scanning-location-issue-comment"
+                  },
+                  {
+                    "$ref": "#/components/schemas/public-monitoring-alert-location"
+                  }
+                ]
+              },
+              "pull_request_title": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/secret-scanning-location-pull-request-title"
+                  },
+                  {
+                    "$ref": "#/components/schemas/public-monitoring-alert-location"
+                  }
+                ]
+              },
+              "pull_request_body": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/secret-scanning-location-pull-request-body"
+                  },
+                  {
+                    "$ref": "#/components/schemas/public-monitoring-alert-location"
+                  }
+                ]
+              },
+              "pull_request_comment": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/secret-scanning-location-pull-request-comment"
+                  },
+                  {
+                    "$ref": "#/components/schemas/public-monitoring-alert-location"
+                  }
+                ]
+              },
+              "pull_request_review_comment": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/secret-scanning-location-pull-request-review-comment"
+                  },
+                  {
+                    "$ref": "#/components/schemas/public-monitoring-alert-location"
+                  }
+                ]
+              },
+              "pull_request_review": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/secret-scanning-location-pull-request-review"
+                  },
+                  {
+                    "$ref": "#/components/schemas/public-monitoring-alert-location"
+                  }
+                ]
+              },
+              "pull_request_timeline_comment": {
+                "$ref": "#/components/schemas/public-monitoring-alert-location"
+              },
+              "discussion_title": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/secret-scanning-location-discussion-title"
+                  },
+                  {
+                    "$ref": "#/components/schemas/public-monitoring-alert-location"
+                  }
+                ]
+              },
+              "discussion_body": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/secret-scanning-location-discussion-body"
+                  },
+                  {
+                    "$ref": "#/components/schemas/public-monitoring-alert-location"
+                  }
+                ]
+              },
+              "discussion_comment": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/secret-scanning-location-discussion-comment"
+                  },
+                  {
+                    "$ref": "#/components/schemas/public-monitoring-alert-location"
+                  }
+                ]
+              },
+              "commit_metadata": {
+                "$ref": "#/components/schemas/public-monitoring-alert-location"
+              },
+              "commit_comment": {
+                "$ref": "#/components/schemas/public-monitoring-alert-location"
+              },
+              "actions_log": {
+                "$ref": "#/components/schemas/public-monitoring-alert-location"
+              },
+              "gist_blob": {
+                "$ref": "#/components/schemas/public-monitoring-alert-location"
+              },
+              "method": {
+                "$ref": "#/components/schemas/public-monitoring-alert-attribution-method"
+              }
+            }
+          }
+        },
+        "required": [
+          "number",
+          "url",
+          "secret_type",
+          "secret_type_display_name",
+          "created_at",
+          "validity",
+          "repository",
+          "attribution"
+        ]
+      },
+      "public-monitoring-repository": {
+        "description": "Delivered details for the public repository where the secret was found.",
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "full_name": { "type": "string" },
+          "private": { "type": "boolean" },
+          "html_url": { "type": ["string", "null"], "format": "uri" }
+        },
+        "required": ["name", "full_name", "private"]
+      },
+      "base-gist": {
+        "title": "Base Gist",
+        "description": "Base Gist",
+        "type": "object",
+        "properties": {
+          "url": { "type": "string", "format": "uri" },
+          "forks_url": { "type": "string", "format": "uri" },
+          "commits_url": { "type": "string", "format": "uri" },
+          "id": { "type": "string" },
+          "node_id": { "type": "string" },
+          "git_pull_url": { "type": "string", "format": "uri" },
+          "git_push_url": { "type": "string", "format": "uri" },
+          "html_url": { "type": "string", "format": "uri" },
+          "files": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object",
+              "properties": {
+                "filename": { "type": "string" },
+                "type": { "type": "string" },
+                "language": { "type": "string" },
+                "raw_url": { "type": "string" },
+                "size": { "type": "integer" },
+                "encoding": {
+                  "type": "string",
+                  "description": "The encoding used for `content`. Currently, `\"utf-8\"` and `\"base64\"` are supported.",
+                  "default": "utf-8"
+                }
+              }
+            }
+          },
+          "public": { "type": "boolean" },
+          "created_at": { "type": "string", "format": "date-time" },
+          "updated_at": { "type": "string", "format": "date-time" },
+          "description": { "type": ["string", "null"] },
+          "comments": { "type": "integer" },
+          "comments_enabled": { "type": "boolean" },
+          "user": {
+            "anyOf": [
+              { "type": "null" },
+              { "$ref": "#/components/schemas/simple-user" }
+            ]
+          },
+          "comments_url": { "type": "string", "format": "uri" },
+          "owner": { "$ref": "#/components/schemas/simple-user" },
+          "truncated": { "type": "boolean" },
+          "forks": { "type": "array", "items": {} },
+          "history": { "type": "array", "items": {} }
+        },
+        "required": [
+          "id",
+          "node_id",
+          "url",
+          "forks_url",
+          "commits_url",
+          "git_pull_url",
+          "git_push_url",
+          "html_url",
+          "comments_url",
+          "public",
+          "description",
+          "comments",
+          "user",
+          "files",
+          "created_at",
+          "updated_at"
+        ],
+        "x-github-breaking-changes": [
+          {
+            "changeset": "deprecate_beta_media_type",
+            "patch": {
+              "properties": { "user": null },
+              "required": [
+                "id",
+                "node_id",
+                "url",
+                "forks_url",
+                "commits_url",
+                "git_pull_url",
+                "git_push_url",
+                "html_url",
+                "comments_url",
+                "public",
+                "description",
+                "comments",
+                "files",
+                "created_at",
+                "updated_at"
+              ]
+            },
+            "version": "2026-03-10"
+          },
+          {
+            "changeset": "remove_forks_history_from_base_gist",
+            "patch": [
+              { "op": "remove", "path": "/properties/forks" },
+              { "op": "remove", "path": "/properties/history" }
+            ],
+            "version": "2026-03-10"
+          }
+        ]
+      },
+      "public-monitoring-secret-author": {
+        "description": "Delivered public details for the user attributed as the secret author.",
+        "type": "object",
+        "properties": {
+          "login": { "type": "string" },
+          "avatar_url": { "type": ["string", "null"], "format": "uri" },
+          "html_url": { "type": ["string", "null"], "format": "uri" }
+        },
+        "required": ["login"]
+      },
+      "public-monitoring-alert-location": {
+        "description": "Delivered source location details for a public monitoring alert.",
+        "type": "object",
+        "properties": {
+          "path": { "type": "string" },
+          "start_line": { "type": "integer" },
+          "end_line": { "type": "integer" },
+          "start_column": { "type": "integer" },
+          "end_column": { "type": "integer" },
+          "blob_sha": { "type": "string" },
+          "commit_sha": { "type": "string" },
+          "html_url": { "type": "string", "format": "uri" },
+          "content_number": { "type": "integer" },
+          "content_id": { "type": "integer" }
+        }
+      },
+      "public-monitoring-alert-attribution-method": {
+        "description": "The method used to attribute the alert to the enterprise.",
+        "type": "string",
+        "enum": ["member_activity", "verified_domain"]
+      },
+      "webhook-secret-scanning-public-monitoring-alert-dismissed": {
+        "title": "secret_scanning_public_monitoring_alert dismissed event",
+        "type": "object",
+        "properties": {
+          "action": { "type": "string", "enum": ["dismissed"] },
+          "alert": {
+            "$ref": "#/components/schemas/public-monitoring-alert-webhook"
+          },
+          "enterprise": { "$ref": "#/components/schemas/enterprise-webhooks" },
+          "installation": {
+            "$ref": "#/components/schemas/simple-installation"
+          },
+          "organization": {
+            "$ref": "#/components/schemas/organization-simple-webhooks"
+          },
+          "repository": { "$ref": "#/components/schemas/repository-webhooks" },
+          "sender": { "$ref": "#/components/schemas/simple-user" }
+        },
+        "required": ["action", "alert", "enterprise"]
+      },
+      "webhook-secret-scanning-public-monitoring-alert-reopened": {
+        "title": "secret_scanning_public_monitoring_alert reopened event",
+        "type": "object",
+        "properties": {
+          "action": { "type": "string", "enum": ["reopened"] },
+          "alert": {
+            "$ref": "#/components/schemas/public-monitoring-alert-webhook"
+          },
+          "enterprise": { "$ref": "#/components/schemas/enterprise-webhooks" },
+          "installation": {
+            "$ref": "#/components/schemas/simple-installation"
+          },
+          "organization": {
+            "$ref": "#/components/schemas/organization-simple-webhooks"
+          },
+          "repository": { "$ref": "#/components/schemas/repository-webhooks" },
+          "sender": { "$ref": "#/components/schemas/simple-user" }
+        },
+        "required": ["action", "alert", "enterprise"]
+      },
+      "webhook-secret-scanning-public-monitoring-alert-validated": {
+        "title": "secret_scanning_public_monitoring_alert validated event",
+        "type": "object",
+        "properties": {
+          "action": { "type": "string", "enum": ["validated"] },
+          "alert": {
+            "$ref": "#/components/schemas/public-monitoring-alert-webhook"
+          },
+          "enterprise": { "$ref": "#/components/schemas/enterprise-webhooks" },
+          "installation": {
+            "$ref": "#/components/schemas/simple-installation"
+          },
+          "organization": {
+            "$ref": "#/components/schemas/organization-simple-webhooks"
+          },
+          "repository": { "$ref": "#/components/schemas/repository-webhooks" }
+        },
+        "required": ["action", "alert", "enterprise"]
       },
       "webhook-secret-scanning-scan-completed": {
         "title": "secret_scanning_scan completed event",
@@ -115674,7 +117476,10 @@
               { "$ref": "#/components/schemas/repository" }
             ]
           },
-          "temp_clone_token": { "type": ["string", "null"] },
+          "temp_clone_token": {
+            "description": "When present and non-empty, a temporary credential for read-only Git access to this repository.\nIt expires five minutes after generation and cannot be used to push changes.\nTreat this value as sensitive and avoid recording it in logs.",
+            "type": ["string", "null"]
+          },
           "allow_squash_merge": { "type": "boolean", "examples": [true] },
           "allow_auto_merge": { "type": "boolean", "examples": [false] },
           "delete_branch_on_merge": { "type": "boolean", "examples": [false] },
@@ -122641,7 +124446,7 @@
             "events": ["*"],
             "config": {
               "content_type": "json",
-              "url": "https://smee.io/****************",
+              "url": "https://example.com/",
               "insecure_ssl": "0"
             },
             "updated_at": "2019-05-15T15:20:49Z",

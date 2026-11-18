@@ -862,6 +862,34 @@ export interface webhooks {
     patch?: never;
     trace?: never;
   };
+  "dependabot-alert-withdrawn": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * This event occurs when there is activity relating to Dependabot alerts.
+     *
+     *     For more information about Dependabot alerts, see "[About Dependabot alerts](https://docs.github.com/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)." For information about the API to manage Dependabot alerts, see "[Dependabot alerts](https://docs.github.com/rest/dependabot/alerts)" in the REST API documentation.
+     *
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Dependabot alerts" repository permission.
+     * @description A Dependabot alert was withdrawn because the advisory or the vulnerable version
+     *     range that produced it is no longer valid. The alert contains identifiers
+     *     captured before deletion for matching external records, rather than the full
+     *     alert payload used by other actions. Its alert URLs identify the deleted alert
+     *     and may no longer resolve.
+     */
+    post: operations["dependabot-alert/withdrawn"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "deploy-key-created": {
     parameters: {
       query?: never;
@@ -2351,6 +2379,33 @@ export interface webhooks {
      * @description A closed issue was reopened.
      */
     post: operations["issues/reopened"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "issues-status-changed": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * This event occurs when there is activity relating to an issue. For more information about issues, see "[About issues](https://docs.github.com/issues/tracking-your-work-with-issues/about-issues)." For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/graphql/reference/objects#issue) or "[Issues](https://docs.github.com/rest/issues)" in the REST API documentation.
+     *
+     *     For activity relating to a comment on an issue, use the `issue_comment` event.
+     *
+     *     To subscribe to this event, a GitHub App must have at least read-level access for the "Issues" repository permission.
+     * @description The status of an issue was changed. When the change also closes or reopens the issue, the `closed` or `reopened` action is sent too.
+     *
+     *     > [!NOTE]
+     *     > Issue statuses are in preview and subject to change. They're only available to accounts enrolled in the preview.
+     */
+    post: operations["issues/status-changed"];
     delete?: never;
     options?: never;
     head?: never;
@@ -7073,6 +7128,11 @@ export interface components {
           pull?: boolean;
         };
         allow_rebase_merge?: boolean;
+        /**
+         * @description When present and non-empty, a temporary credential for read-only Git access to this repository.
+         *     It expires five minutes after generation and cannot be used to push changes.
+         *     Treat this value as sensitive and avoid recording it in logs.
+         */
         temp_clone_token?: string;
         allow_squash_merge?: boolean;
         allow_auto_merge?: boolean;
@@ -7117,6 +7177,11 @@ export interface components {
         subscribers_count?: number;
         network_count?: number;
       } | null;
+      /**
+       * @description When present and non-empty, a temporary credential for read-only Git access to this repository.
+       *     It expires five minutes after generation and cannot be used to push changes.
+       *     Treat this value as sensitive and avoid recording it in logs.
+       */
       temp_clone_token?: string;
       /**
        * @description Whether to allow squash merges for pull requests.
@@ -7919,6 +7984,11 @@ export interface components {
       };
       /** @example admin */
       role_name?: string;
+      /**
+       * @description When present and non-empty, a temporary credential for read-only Git access to this repository.
+       *     It expires five minutes after generation and cannot be used to push changes.
+       *     Treat this value as sensitive and avoid recording it in logs.
+       */
       temp_clone_token?: string;
       delete_branch_on_merge?: boolean;
       subscribers_count?: number;
@@ -10170,6 +10240,12 @@ export interface components {
        * @enum {string|null}
        */
       values_editable_by?: "org_actors" | "org_and_repo_actors" | null;
+      /**
+       * @description A regular expression (RE2 syntax) that values of the property must match.
+       *     Only present for properties with a `value_type` of `string` that define a regular expression.
+       * @example ^[a-z0-9-]+$
+       */
+      regex?: string | null;
       /** @description Whether setting properties values is mandatory */
       require_explicit_values?: boolean;
     };
@@ -10270,6 +10346,18 @@ export interface components {
         /** @description The full path to the dependency manifest file, relative to the root of the repository. */
         readonly manifest_path?: string;
         /**
+         * @description The dependency version or version constraint last recorded for the dependency associated with this alert.
+         *     For dependencies detected from a lockfile, this can be the resolved version.
+         *     For manifest-only dependencies, it can be the declared version constraint. Returns `null` when unavailable.
+         *
+         *     An empty string can indicate an unconstrained dependency. The stored value is limited to 64 bytes;
+         *     longer requirements may have been truncated and may no longer form a complete, valid version constraint.
+         *
+         *     When multiple vulnerable versions of a dependency correspond to the same alert, this field contains one
+         *     recorded version or constraint and may not represent all vulnerable versions.
+         */
+        readonly version_requirement?: string | null;
+        /**
          * @description The execution scope of the vulnerable dependency.
          * @enum {string|null}
          */
@@ -10310,6 +10398,46 @@ export interface components {
       dismissal_request?: components["schemas"]["dependabot-alert-dismissal-request-simple"];
       /** @description The users assigned to this alert. */
       readonly assignees?: components["schemas"]["simple-user"][];
+      /**
+       * @description The reachability result for the vulnerability that triggered the alert, indicating whether a
+       *     vulnerable function is reachable from the repository's own code.
+       */
+      readonly reachability?: {
+        /**
+         * @description The reachability verdict for the alert.
+         *
+         *     - `reachable`: a path from the repository's code reaches a vulnerable function.
+         *     - `unreachable`: no path from the repository's code reaches a vulnerable function.
+         *     - `potentially_reachable`: reachability could not be determined with confidence; review manually.
+         *     - `unavailable`: no verdict has been computed for the alert yet.
+         *     - `disabled`: reachability analysis is not enabled for the repository.
+         * @enum {string}
+         */
+        readonly verdict:
+          | "reachable"
+          | "unreachable"
+          | "potentially_reachable"
+          | "unavailable"
+          | "disabled";
+        /**
+         * @description The reason for the reachability verdict. This field is omitted when reachability analysis is disabled or no result has been computed.
+         * @enum {string}
+         */
+        readonly reason?:
+          | "unknown"
+          | "unavailable_unsupported_ecosystem"
+          | "unavailable_analysis_timed_out"
+          | "potentially_reachable_invalid_manifest_path"
+          | "potentially_reachable_missing_vulnerable_function_annotation"
+          | "potentially_reachable_dependency_not_found"
+          | "potentially_reachable_dependency_analysis_incomplete"
+          | "potentially_reachable_repository_analysis_incomplete"
+          | "potentially_reachable_call_found_outside_manifest_scope"
+          | "potentially_reachable_unclassified_analysis_state"
+          | "reachable_vulnerable_function_called"
+          | "unreachable_vulnerable_function_not_called"
+          | "potentially_reachable_unresolved_dynamic_call";
+      };
     };
     /** @description The security alert number. */
     "alert-number": number;
@@ -10568,6 +10696,83 @@ export interface components {
       enterprise?: components["schemas"]["enterprise-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
       sender: components["schemas"]["simple-user"];
+    };
+    /** Dependabot alert withdrawn event */
+    "webhook-dependabot-alert-withdrawn": {
+      /** @enum {string} */
+      action: "withdrawn";
+      alert: components["schemas"]["dependabot-alert-withdrawn-webhook"];
+      installation?: components["schemas"]["simple-installation"];
+      organization?: components["schemas"]["organization-simple-webhooks"];
+      enterprise?: components["schemas"]["enterprise-webhooks"];
+      repository: components["schemas"]["repository-webhooks"];
+      sender: components["schemas"]["simple-user"];
+    };
+    /**
+     * @description Identifiers for a withdrawn Dependabot alert, captured before deletion so that
+     *     consumers can reconcile external records. This is not a full alert representation.
+     */
+    "dependabot-alert-withdrawn-webhook": {
+      /**
+       * Format: int64
+       * @description The unique identifier of the withdrawn alert.
+       */
+      readonly id: number;
+      /** @description The GraphQL node ID of the withdrawn alert. */
+      readonly node_id: string;
+      number: components["schemas"]["alert-number"];
+      /**
+       * @description The state of the Dependabot alert.
+       * @enum {string}
+       */
+      readonly state: "withdrawn";
+      /** @description Details for the vulnerable dependency. */
+      readonly dependency: {
+        package: components["schemas"]["dependabot-alert-package"];
+        /** @description The full path to the dependency manifest file, relative to the root of the repository. */
+        readonly manifest_path: string | null;
+        /**
+         * @description The dependency version or version constraint last recorded for the dependency associated with this alert.
+         *     For dependencies detected from a lockfile, this can be the resolved version.
+         *     For manifest-only dependencies, it can be the declared version constraint. Returns `null` when unavailable.
+         *
+         *     An empty string can indicate an unconstrained dependency. The stored value is limited to 64 bytes;
+         *     longer requirements may have been truncated and may no longer form a complete, valid version constraint.
+         *
+         *     When multiple vulnerable versions of a dependency correspond to the same alert, this field contains one
+         *     recorded version or constraint and may not represent all vulnerable versions.
+         */
+        readonly version_requirement?: string | null;
+        /**
+         * @description The execution scope of the vulnerable dependency.
+         * @enum {string|null}
+         */
+        readonly scope: "development" | "runtime" | null;
+        /**
+         * @description The vulnerable dependency's relationship to your project.
+         *
+         *     > [!NOTE]
+         *     > We are rolling out support for dependency relationship across ecosystems. This value will be "unknown" for all dependencies in unsupported ecosystems.
+         * @enum {string|null}
+         */
+        readonly relationship?:
+          "unknown" | "direct" | "transitive" | "inconclusive" | null;
+      };
+      /** @description Identifiers of the advisory that produced the withdrawn alert. */
+      readonly security_advisory: {
+        /** @description The unique GitHub identifier assigned to the advisory. */
+        readonly ghsa_id: string;
+        /** @description The CVE identifier assigned to the advisory, if any. */
+        readonly cve_id: string | null;
+      };
+      url: components["schemas"]["alert-url"];
+      html_url: components["schemas"]["alert-html-url"];
+      created_at: components["schemas"]["alert-created-at"];
+      /**
+       * Format: date-time
+       * @description The time that the alert was withdrawn in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`. This is not the advisory's withdrawal time.
+       */
+      readonly withdrawn_at: string;
     };
     /** deploy_key created event */
     "webhook-deploy-key-created": {
@@ -11885,6 +12090,11 @@ export interface components {
        * @example true
        */
       allow_rebase_merge?: boolean;
+      /**
+       * @description When present and non-empty, a temporary credential for read-only Git access to this repository.
+       *     It expires five minutes after generation and cannot be used to push changes.
+       *     Treat this value as sensitive and avoid recording it in logs.
+       */
       temp_clone_token?: string;
       /**
        * @description Whether to allow squash merges for pull requests.
@@ -15274,6 +15484,11 @@ export interface components {
        * @enum {string}
        */
       organization_copilot_agent_settings?: "read" | "write";
+      /**
+       * @description The level of permission to grant the access token to make Copilot requests billed to the organization where the app is installed. This property is in public preview and is subject to change.
+       * @enum {string}
+       */
+      organization_copilot_requests?: "read";
       /**
        * @description The level of permission to grant the access token for managing external custom properties for repositories in an organization.
        * @enum {string}
@@ -18863,6 +19078,25 @@ export interface components {
        * @example open
        */
       state: string;
+      /** @description The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview. */
+      status?: {
+        /**
+         * Format: int64
+         * @description The stable identifier of the planning status.
+         * @example 4
+         */
+        id: number;
+        /**
+         * @description The display name of the planning status, which may change in the future.
+         * @example In progress
+         */
+        name: string;
+        /**
+         * @description A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.
+         * @example started
+         */
+        category: string;
+      } | null;
       /**
        * @description The reason for the current state
        * @example not_planned
@@ -19283,21 +19517,7 @@ export interface components {
       html_url: string;
       /** Format: int64 */
       id: number;
-      labels?: {
-        /** @description 6-character hex code, without the leading #, identifying the color */
-        color: string;
-        default: boolean;
-        description: string | null;
-        id: number;
-        /** @description The name of the label. */
-        name: string;
-        node_id: string;
-        /**
-         * Format: uri
-         * @description URL for the label
-         */
-        url: string;
-      }[];
+      labels?: components["schemas"]["webhooks_label"][];
       /** Format: uri-template */
       labels_url: string;
       locked?: boolean;
@@ -19589,6 +19809,28 @@ export interface components {
       issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
       issue_field_values?: components["schemas"]["issue-field-value"][];
       /**
+       * Planning status
+       * @description The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.
+       */
+      status?: {
+        /**
+         * Format: int64
+         * @description The stable identifier of the planning status.
+         * @example 4
+         */
+        id: number;
+        /**
+         * @description The display name of the planning status, which may change in the future.
+         * @example In progress
+         */
+        name: string;
+        /**
+         * @description A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.
+         * @example started
+         */
+        category: string;
+      } | null;
+      /**
        * @description State of the issue; either 'open' or 'closed'
        * @enum {string}
        */
@@ -19765,21 +20007,7 @@ export interface components {
         html_url: string;
         /** Format: int64 */
         id: number;
-        labels?: {
-          /** @description 6-character hex code, without the leading #, identifying the color */
-          color: string;
-          default: boolean;
-          description: string | null;
-          id: number;
-          /** @description The name of the label. */
-          name: string;
-          node_id: string;
-          /**
-           * Format: uri
-           * @description URL for the label
-           */
-          url: string;
-        }[];
+        labels?: components["schemas"]["webhooks_label"][];
         /** Format: uri-template */
         labels_url: string;
         locked?: boolean;
@@ -20072,6 +20300,28 @@ export interface components {
         issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
         issue_field_values?: components["schemas"]["issue-field-value"][];
         /**
+         * Planning status
+         * @description The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.
+         */
+        status?: {
+          /**
+           * Format: int64
+           * @description The stable identifier of the planning status.
+           * @example 4
+           */
+          id: number;
+          /**
+           * @description The display name of the planning status, which may change in the future.
+           * @example In progress
+           */
+          name: string;
+          /**
+           * @description A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.
+           * @example started
+           */
+          category: string;
+        } | null;
+        /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
          */
@@ -20141,7 +20391,8 @@ export interface components {
         events_url?: string;
         html_url?: string;
         id?: number;
-        labels?: (Record<string, never> | null)[];
+        labels?: ((components["schemas"]["webhooks_label"] | null) &
+          components["schemas"]["webhooks_label"])[];
         labels_url?: string;
         locked?: boolean;
         milestone?: Record<string, never> | null;
@@ -20617,6 +20868,28 @@ export interface components {
         sub_issues_summary?: components["schemas"]["sub-issues-summary"];
         issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
         issue_field_values?: components["schemas"]["issue-field-value"][];
+        /**
+         * Planning status
+         * @description The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.
+         */
+        status?: {
+          /**
+           * Format: int64
+           * @description The stable identifier of the planning status.
+           * @example 4
+           */
+          id: number;
+          /**
+           * @description The display name of the planning status, which may change in the future.
+           * @example In progress
+           */
+          name: string;
+          /**
+           * @description A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.
+           * @example started
+           */
+          category: string;
+        } | null;
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -21100,6 +21373,28 @@ export interface components {
         issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
         issue_field_values?: components["schemas"]["issue-field-value"][];
         /**
+         * Planning status
+         * @description The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.
+         */
+        status?: {
+          /**
+           * Format: int64
+           * @description The stable identifier of the planning status.
+           * @example 4
+           */
+          id: number;
+          /**
+           * @description The display name of the planning status, which may change in the future.
+           * @example In progress
+           */
+          name: string;
+          /**
+           * @description A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.
+           * @example started
+           */
+          category: string;
+        } | null;
+        /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
          */
@@ -21363,21 +21658,7 @@ export interface components {
         html_url: string;
         /** Format: int64 */
         id: number;
-        labels?: {
-          /** @description 6-character hex code, without the leading #, identifying the color */
-          color: string;
-          default: boolean;
-          description: string | null;
-          id: number;
-          /** @description The name of the label. */
-          name: string;
-          node_id: string;
-          /**
-           * Format: uri
-           * @description URL for the label
-           */
-          url: string;
-        }[];
+        labels?: components["schemas"]["webhooks_label"][];
         /** Format: uri-template */
         labels_url: string;
         locked?: boolean;
@@ -21669,6 +21950,28 @@ export interface components {
         sub_issues_summary?: components["schemas"]["sub-issues-summary"];
         issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
         issue_field_values?: components["schemas"]["issue-field-value"][];
+        /**
+         * Planning status
+         * @description The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.
+         */
+        status?: {
+          /**
+           * Format: int64
+           * @description The stable identifier of the planning status.
+           * @example 4
+           */
+          id: number;
+          /**
+           * @description The display name of the planning status, which may change in the future.
+           * @example In progress
+           */
+          name: string;
+          /**
+           * @description A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.
+           * @example started
+           */
+          category: string;
+        } | null;
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -22306,6 +22609,28 @@ export interface components {
         issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
         issue_field_values?: components["schemas"]["issue-field-value"][];
         /**
+         * Planning status
+         * @description The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.
+         */
+        status?: {
+          /**
+           * Format: int64
+           * @description The stable identifier of the planning status.
+           * @example 4
+           */
+          id: number;
+          /**
+           * @description The display name of the planning status, which may change in the future.
+           * @example In progress
+           */
+          name: string;
+          /**
+           * @description A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.
+           * @example started
+           */
+          category: string;
+        } | null;
+        /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
          */
@@ -22794,6 +23119,28 @@ export interface components {
         issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
         issue_field_values?: components["schemas"]["issue-field-value"][];
         /**
+         * Planning status
+         * @description The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.
+         */
+        status?: {
+          /**
+           * Format: int64
+           * @description The stable identifier of the planning status.
+           * @example 4
+           */
+          id: number;
+          /**
+           * @description The display name of the planning status, which may change in the future.
+           * @example In progress
+           */
+          name: string;
+          /**
+           * @description A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.
+           * @example started
+           */
+          category: string;
+        } | null;
+        /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
          */
@@ -23277,6 +23624,28 @@ export interface components {
         issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
         issue_field_values?: components["schemas"]["issue-field-value"][];
         /**
+         * Planning status
+         * @description The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.
+         */
+        status?: {
+          /**
+           * Format: int64
+           * @description The stable identifier of the planning status.
+           * @example 4
+           */
+          id: number;
+          /**
+           * @description The display name of the planning status, which may change in the future.
+           * @example In progress
+           */
+          name: string;
+          /**
+           * @description A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.
+           * @example started
+           */
+          category: string;
+        } | null;
+        /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
          */
@@ -23759,6 +24128,28 @@ export interface components {
           sub_issues_summary?: components["schemas"]["sub-issues-summary"];
           issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
           issue_field_values?: components["schemas"]["issue-field-value"][];
+          /**
+           * Planning status
+           * @description The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.
+           */
+          status?: {
+            /**
+             * Format: int64
+             * @description The stable identifier of the planning status.
+             * @example 4
+             */
+            id: number;
+            /**
+             * @description The display name of the planning status, which may change in the future.
+             * @example In progress
+             */
+            name: string;
+            /**
+             * @description A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.
+             * @example started
+             */
+            category: string;
+          } | null;
           /**
            * @description State of the issue; either 'open' or 'closed'
            * @enum {string}
@@ -24497,6 +24888,28 @@ export interface components {
         issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
         issue_field_values?: components["schemas"]["issue-field-value"][];
         /**
+         * Planning status
+         * @description The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.
+         */
+        status?: {
+          /**
+           * Format: int64
+           * @description The stable identifier of the planning status.
+           * @example 4
+           */
+          id: number;
+          /**
+           * @description The display name of the planning status, which may change in the future.
+           * @example In progress
+           */
+          name: string;
+          /**
+           * @description A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.
+           * @example started
+           */
+          category: string;
+        } | null;
+        /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
          */
@@ -24683,21 +25096,7 @@ export interface components {
       html_url: string;
       /** Format: int64 */
       id: number;
-      labels?: {
-        /** @description 6-character hex code, without the leading #, identifying the color */
-        color: string;
-        default: boolean;
-        description: string | null;
-        id: number;
-        /** @description The name of the label. */
-        name: string;
-        node_id: string;
-        /**
-         * Format: uri
-         * @description URL for the label
-         */
-        url: string;
-      }[];
+      labels?: components["schemas"]["webhooks_label"][];
       /** Format: uri-template */
       labels_url: string;
       locked?: boolean;
@@ -24987,6 +25386,28 @@ export interface components {
       issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
       issue_field_values?: components["schemas"]["issue-field-value"][];
       /**
+       * Planning status
+       * @description The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.
+       */
+      status?: {
+        /**
+         * Format: int64
+         * @description The stable identifier of the planning status.
+         * @example 4
+         */
+        id: number;
+        /**
+         * @description The display name of the planning status, which may change in the future.
+         * @example In progress
+         */
+        name: string;
+        /**
+         * @description A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.
+         * @example started
+         */
+        category: string;
+      } | null;
+      /**
        * @description State of the issue; either 'open' or 'closed'
        * @enum {string}
        */
@@ -25162,6 +25583,13 @@ export interface components {
         /** Format: int64 */
         id: number;
         labels?: ({
+          /**
+           * Format: date-time
+           * @description Timestamp indicating when the label was archived, or `null` if it has not been archived.
+           */
+          archived_at?: string | null;
+          /** @description The user who archived the label, or `null` if it has not been archived. */
+          archived_by?: null & components["schemas"]["simple-user"];
           /** @description 6-character hex code, without the leading #, identifying the color */
           color: string;
           default: boolean;
@@ -25467,6 +25895,28 @@ export interface components {
         issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
         issue_field_values?: components["schemas"]["issue-field-value"][];
         /**
+         * Planning status
+         * @description The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.
+         */
+        status?: {
+          /**
+           * Format: int64
+           * @description The stable identifier of the planning status.
+           * @example 4
+           */
+          id: number;
+          /**
+           * @description The display name of the planning status, which may change in the future.
+           * @example In progress
+           */
+          name: string;
+          /**
+           * @description A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.
+           * @example started
+           */
+          category: string;
+        } | null;
+        /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
          */
@@ -25527,6 +25977,77 @@ export interface components {
       organization?: components["schemas"]["organization-simple-webhooks"];
       repository: components["schemas"]["repository-webhooks"];
       sender: components["schemas"]["simple-user"];
+    };
+    /** issues status_changed event */
+    "webhook-issues-status-changed": {
+      /** @enum {string} */
+      action: "status_changed";
+      /** @description The changes to the issue. `state` and `state_reason` are only included when the status change also closed or reopened the issue, or changed the reason it was closed. */
+      changes: {
+        status: {
+          /**
+           * Planning status
+           * @description The status the issue had before the change, or `null` if it had none.
+           */
+          from: {
+            /**
+             * Format: int64
+             * @description The stable identifier of the planning status.
+             * @example 4
+             */
+            id: number;
+            /**
+             * @description The display name of the planning status, which may change in the future.
+             * @example In progress
+             */
+            name: string;
+            /**
+             * @description A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.
+             * @example started
+             */
+            category: string;
+          } | null;
+        };
+        state?: {
+          /**
+           * @description The state of the issue before the change.
+           * @enum {string}
+           */
+          from: "open" | "closed";
+        };
+        state_reason?: {
+          /** @description The reason for the state of the issue before the change. */
+          from: string | null;
+        };
+      };
+      enterprise?: components["schemas"]["enterprise-webhooks"];
+      installation?: components["schemas"]["simple-installation"];
+      issue: components["schemas"]["webhooks_issue"];
+      organization?: components["schemas"]["organization-simple-webhooks"];
+      repository: components["schemas"]["repository-webhooks"];
+      sender: components["schemas"]["simple-user"];
+      /**
+       * Planning status
+       * @description The status the issue changed to.
+       */
+      status: {
+        /**
+         * Format: int64
+         * @description The stable identifier of the planning status.
+         * @example 4
+         */
+        id: number;
+        /**
+         * @description The display name of the planning status, which may change in the future.
+         * @example In progress
+         */
+        name: string;
+        /**
+         * @description A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.
+         * @example started
+         */
+        category: string;
+      };
     };
     /** issues transferred event */
     "webhook-issues-transferred": {
@@ -25949,6 +26470,28 @@ export interface components {
           sub_issues_summary?: components["schemas"]["sub-issues-summary"];
           issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
           issue_field_values?: components["schemas"]["issue-field-value"][];
+          /**
+           * Planning status
+           * @description The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.
+           */
+          status?: {
+            /**
+             * Format: int64
+             * @description The stable identifier of the planning status.
+             * @example 4
+             */
+            id: number;
+            /**
+             * @description The display name of the planning status, which may change in the future.
+             * @example In progress
+             */
+            name: string;
+            /**
+             * @description A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.
+             * @example started
+             */
+            category: string;
+          } | null;
           /**
            * @description State of the issue; either 'open' or 'closed'
            * @enum {string}
@@ -26775,6 +27318,28 @@ export interface components {
         sub_issues_summary?: components["schemas"]["sub-issues-summary"];
         issue_dependencies_summary?: components["schemas"]["issue-dependencies-summary"];
         issue_field_values?: components["schemas"]["issue-field-value"][];
+        /**
+         * Planning status
+         * @description The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.
+         */
+        status?: {
+          /**
+           * Format: int64
+           * @description The stable identifier of the planning status.
+           * @example 4
+           */
+          id: number;
+          /**
+           * @description The display name of the planning status, which may change in the future.
+           * @example In progress
+           */
+          name: string;
+          /**
+           * @description A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.
+           * @example started
+           */
+          category: string;
+        } | null;
         /**
          * @description State of the issue; either 'open' or 'closed'
          * @enum {string}
@@ -63353,18 +63918,15 @@ export interface components {
         dismissal_restriction?: components["schemas"]["repository-rule-params-dismissal-restriction"];
         /** @description Require an approving review in pull requests that modify files that have a designated code owner. */
         require_code_owner_review: boolean;
+        /** @description When Copilot opens a pull request without a human collaborator, require one more approving review if a non-zero approval count is required. */
+        require_extra_approval_for_unattributed_changes?: boolean;
         /** @description Whether the most recent reviewable push must be approved by someone other than the person who pushed it. */
         require_last_push_approval: boolean;
         /** @description The number of approving reviews that are required before a pull request can be merged. */
         required_approving_review_count: number;
         /** @description All conversations on code must be resolved before a pull request can be merged. */
         required_review_thread_resolution: boolean;
-        /**
-         * @description > [!NOTE]
-         *     > `required_reviewers` is in beta and subject to change.
-         *
-         *     A collection of reviewers and associated file patterns. Each reviewer has a list of file patterns which determine the files that reviewer is required to review.
-         */
+        /** @description A collection of reviewers and associated file patterns. Each reviewer has a list of file patterns which determine the files that reviewer is required to review. */
         required_reviewers?: components["schemas"]["repository-rule-params-required-reviewer-configuration"][];
       };
     };
@@ -63630,7 +64192,7 @@ export interface components {
     };
     /**
      * code_coverage
-     * @description Enforce minimum line coverage thresholds on pull requests. When configured, uploaded coverage data must meet the specified criteria before changes can be merged.
+     * @description Enforce minimum line coverage thresholds on pull requests. This rule evaluates uploaded coverage data but does not wait for coverage uploads. To ensure coverage is evaluated before merging, make each status check associated with a coverage upload a required status check.
      */
     "repository-rule-code-coverage": {
       /** @enum {string} */
@@ -63650,7 +64212,7 @@ export interface components {
     };
     /**
      * copilot_code_review
-     * @description Request Copilot code review for new pull requests automatically if the author has access to Copilot code review and their premium requests quota has not reached the limit.
+     * @description Request Copilot code review for new pull requests automatically if the author has access to Copilot code review and AI credits.
      */
     "repository-rule-copilot-code-review": {
       /** @enum {string} */
@@ -63678,6 +64240,8 @@ export interface components {
       /** @enum {string} */
       type: "file_path_restriction";
       parameters?: {
+        /** @description Files matching these patterns are allowed even when they also match a restricted path. */
+        ignored_file_paths?: string[];
         /** @description The file paths that are restricted from being pushed to the commit graph. */
         restricted_file_paths: string[];
       };
@@ -63714,6 +64278,8 @@ export interface components {
       /** @enum {string} */
       type: "max_file_size";
       parameters?: {
+        /** @description Files matching these patterns may exceed the maximum size. */
+        ignored_file_paths?: string[];
         /** @description The maximum file size allowed in megabytes. This limit does not apply to Git Large File Storage (Git LFS). */
         max_file_size: number;
       };
@@ -64251,7 +64817,8 @@ export interface components {
         | "pull_request_body"
         | "pull_request_comment"
         | "pull_request_review"
-        | "pull_request_review_comment";
+        | "pull_request_review_comment"
+        | "actions_log";
       details?:
         | components["schemas"]["secret-scanning-location-commit"]
         | components["schemas"]["secret-scanning-location-wiki-commit"]
@@ -64265,7 +64832,8 @@ export interface components {
         | components["schemas"]["secret-scanning-location-pull-request-body"]
         | components["schemas"]["secret-scanning-location-pull-request-comment"]
         | components["schemas"]["secret-scanning-location-pull-request-review"]
-        | components["schemas"]["secret-scanning-location-pull-request-review-comment"];
+        | components["schemas"]["secret-scanning-location-pull-request-review-comment"]
+        | components["schemas"]["secret-scanning-location-actions-log"];
     };
     /** @description Represents a 'commit' secret scanning location type. This location type shows that a secret was detected inside a commit to a repository. */
     "secret-scanning-location-commit": {
@@ -64485,6 +65053,22 @@ export interface components {
        * @example https://github.com/octocat/Hello-World/pull/2846#discussion_r12
        */
       html_url?: string;
+    };
+    /** @description Represents an 'actions_log' secret scanning location type. The path identifies the workflow definition, while line and column positions identify the secret in the raw job log, not in the workflow file. */
+    "secret-scanning-location-actions-log": {
+      /**
+       * @description The workflow definition path. Dynamically generated workflows can have a synthetic path.
+       * @example .github/workflows/build.yml
+       */
+      path: string;
+      /** @description Line number at which the secret starts in the raw job log. */
+      start_line: number;
+      /** @description Line number at which the secret ends in the raw job log. */
+      end_line: number;
+      /** @description The one-based column at which the secret starts within the start line of the raw job log. */
+      start_column: number;
+      /** @description The one-based column at which the secret ends within the end line of the raw job log. */
+      end_column: number;
     };
     /** secret_scanning_alert metadata created event */
     "webhook-secret-scanning-alert-metadata-created": {
@@ -64965,6 +65549,11 @@ export interface components {
       /** @example true */
       allow_rebase_merge?: boolean;
       template_repository?: null | components["schemas"]["repository"];
+      /**
+       * @description When present and non-empty, a temporary credential for read-only Git access to this repository.
+       *     It expires five minutes after generation and cannot be used to push changes.
+       *     Treat this value as sensitive and avoid recording it in logs.
+       */
       temp_clone_token?: string | null;
       /** @example true */
       allow_squash_merge?: boolean;
@@ -70000,6 +70589,43 @@ export interface operations {
       };
     };
   };
+  "dependabot-alert/withdrawn": {
+    parameters: {
+      query?: never;
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example dependabot_alert */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-dependabot-alert-withdrawn"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
   "deploy-key/created": {
     parameters: {
       query?: never;
@@ -72245,6 +72871,43 @@ export interface operations {
     requestBody: {
       content: {
         "application/json": components["schemas"]["webhook-issues-reopened"];
+      };
+    };
+    responses: {
+      /** @description Return a 200 status to indicate that the data was received successfully */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  "issues/status-changed": {
+    parameters: {
+      query?: never;
+      header: {
+        /** @example GitHub-Hookshot/123abc */
+        "User-Agent": string;
+        /** @example 12312312 */
+        "X-Github-Hook-Id": string;
+        /** @example issues */
+        "X-Github-Event": string;
+        /** @example 123123 */
+        "X-Github-Hook-Installation-Target-Id": string;
+        /** @example repository */
+        "X-Github-Hook-Installation-Target-Type": string;
+        /** @example 0b989ba4-242f-11e5-81e1-c7b6966d2516 */
+        "X-GitHub-Delivery": string;
+        /** @example sha256=6dcb09b5b57875f334f61aebed695e2e4193db5e */
+        "X-Hub-Signature-256": string;
+      };
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["webhook-issues-status-changed"];
       };
     };
     responses: {

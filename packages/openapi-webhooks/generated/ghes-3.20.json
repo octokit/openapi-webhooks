@@ -25835,7 +25835,10 @@
                 }
               },
               "allow_rebase_merge": { "type": "boolean" },
-              "temp_clone_token": { "type": "string" },
+              "temp_clone_token": {
+                "description": "When present and non-empty, a temporary credential for read-only Git access to this repository.\nIt expires five minutes after generation and cannot be used to push changes.\nTreat this value as sensitive and avoid recording it in logs.",
+                "type": "string"
+              },
               "allow_squash_merge": { "type": "boolean" },
               "allow_auto_merge": { "type": "boolean" },
               "delete_branch_on_merge": { "type": "boolean" },
@@ -25866,7 +25869,10 @@
               "network_count": { "type": "integer" }
             }
           },
-          "temp_clone_token": { "type": "string" },
+          "temp_clone_token": {
+            "description": "When present and non-empty, a temporary credential for read-only Git access to this repository.\nIt expires five minutes after generation and cannot be used to push changes.\nTreat this value as sensitive and avoid recording it in logs.",
+            "type": "string"
+          },
           "allow_squash_merge": {
             "description": "Whether to allow squash merges for pull requests.",
             "default": true,
@@ -27684,7 +27690,10 @@
             }
           },
           "role_name": { "type": "string", "examples": ["admin"] },
-          "temp_clone_token": { "type": "string" },
+          "temp_clone_token": {
+            "description": "When present and non-empty, a temporary credential for read-only Git access to this repository.\nIt expires five minutes after generation and cannot be used to push changes.\nTreat this value as sensitive and avoid recording it in logs.",
+            "type": "string"
+          },
           "delete_branch_on_merge": { "type": "boolean" },
           "subscribers_count": { "type": "integer" },
           "network_count": { "type": "integer" },
@@ -31187,6 +31196,11 @@
             "enum": ["org_actors", "org_and_repo_actors", null],
             "description": "Who can edit the values of the property",
             "examples": ["org_actors"]
+          },
+          "regex": {
+            "type": ["string", "null"],
+            "description": "A regular expression (RE2 syntax) that values of the property must match.\nOnly present for properties with a `value_type` of `string` that define a regular expression.",
+            "examples": ["^[a-z0-9-]+$"]
           }
         },
         "required": ["property_name", "value_type"]
@@ -33805,7 +33819,10 @@
             "type": "boolean",
             "examples": [true]
           },
-          "temp_clone_token": { "type": "string" },
+          "temp_clone_token": {
+            "description": "When present and non-empty, a temporary credential for read-only Git access to this repository.\nIt expires five minutes after generation and cannot be used to push changes.\nTreat this value as sensitive and avoid recording it in logs.",
+            "type": "string"
+          },
           "allow_squash_merge": {
             "description": "Whether to allow squash merges for pull requests.",
             "default": true,
@@ -38416,6 +38433,11 @@
             "description": "The level of permission to grant the access token to view and manage Copilot cloud agent settings for an organization.",
             "enum": ["read", "write"]
           },
+          "organization_copilot_requests": {
+            "type": "string",
+            "description": "The level of permission to grant the access token to make Copilot requests billed to the organization where the app is installed. This property is in public preview and is subject to change.",
+            "enum": ["read"]
+          },
           "organization_external_properties_for_repos": {
             "type": "string",
             "description": "The level of permission to grant the access token for managing external custom properties for repositories in an organization.",
@@ -42670,38 +42692,7 @@
           "id": { "type": "integer", "format": "int64" },
           "labels": {
             "type": "array",
-            "items": {
-              "title": "Label",
-              "type": "object",
-              "properties": {
-                "color": {
-                  "description": "6-character hex code, without the leading #, identifying the color",
-                  "type": "string"
-                },
-                "default": { "type": "boolean" },
-                "description": { "type": ["string", "null"] },
-                "id": { "type": "integer" },
-                "name": {
-                  "description": "The name of the label.",
-                  "type": "string"
-                },
-                "node_id": { "type": "string" },
-                "url": {
-                  "description": "URL for the label",
-                  "type": "string",
-                  "format": "uri"
-                }
-              },
-              "required": [
-                "id",
-                "node_id",
-                "url",
-                "name",
-                "color",
-                "default",
-                "description"
-              ]
-            }
+            "items": { "$ref": "#/components/schemas/webhooks_label" }
           },
           "labels_url": { "type": "string", "format": "uri-template" },
           "locked": { "type": "boolean" },
@@ -43089,6 +43080,30 @@
             "type": "array",
             "items": { "$ref": "#/components/schemas/issue-field-value" }
           },
+          "status": {
+            "title": "Planning status",
+            "description": "The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.",
+            "type": ["object", "null"],
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64",
+                "description": "The stable identifier of the planning status.",
+                "examples": [4]
+              },
+              "name": {
+                "type": "string",
+                "description": "The display name of the planning status, which may change in the future.",
+                "examples": ["In progress"]
+              },
+              "category": {
+                "type": "string",
+                "description": "A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.",
+                "examples": ["started"]
+              }
+            },
+            "required": ["id", "name", "category"]
+          },
           "state": {
             "description": "State of the issue; either 'open' or 'closed'",
             "type": "string",
@@ -43333,38 +43348,7 @@
                   "id": { "type": "integer", "format": "int64" },
                   "labels": {
                     "type": "array",
-                    "items": {
-                      "title": "Label",
-                      "type": "object",
-                      "properties": {
-                        "color": {
-                          "description": "6-character hex code, without the leading #, identifying the color",
-                          "type": "string"
-                        },
-                        "default": { "type": "boolean" },
-                        "description": { "type": ["string", "null"] },
-                        "id": { "type": "integer" },
-                        "name": {
-                          "description": "The name of the label.",
-                          "type": "string"
-                        },
-                        "node_id": { "type": "string" },
-                        "url": {
-                          "description": "URL for the label",
-                          "type": "string",
-                          "format": "uri"
-                        }
-                      },
-                      "required": [
-                        "id",
-                        "node_id",
-                        "url",
-                        "name",
-                        "color",
-                        "default",
-                        "description"
-                      ]
-                    }
+                    "items": { "$ref": "#/components/schemas/webhooks_label" }
                   },
                   "labels_url": { "type": "string", "format": "uri-template" },
                   "locked": { "type": "boolean" },
@@ -43842,6 +43826,30 @@
                       "$ref": "#/components/schemas/issue-field-value"
                     }
                   },
+                  "status": {
+                    "title": "Planning status",
+                    "description": "The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.",
+                    "type": ["object", "null"],
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "The stable identifier of the planning status.",
+                        "examples": [4]
+                      },
+                      "name": {
+                        "type": "string",
+                        "description": "The display name of the planning status, which may change in the future.",
+                        "examples": ["In progress"]
+                      },
+                      "category": {
+                        "type": "string",
+                        "description": "A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.",
+                        "examples": ["started"]
+                      }
+                    },
+                    "required": ["id", "name", "category"]
+                  },
                   "state": {
                     "description": "State of the issue; either 'open' or 'closed'",
                     "type": "string",
@@ -43958,7 +43966,12 @@
                   "id": { "type": "integer" },
                   "labels": {
                     "type": "array",
-                    "items": { "type": ["object", "null"] }
+                    "items": {
+                      "type": ["object", "null"],
+                      "allOf": [
+                        { "$ref": "#/components/schemas/webhooks_label" }
+                      ]
+                    }
                   },
                   "labels_url": { "type": "string" },
                   "locked": { "type": "boolean" },
@@ -44639,6 +44652,30 @@
               "issue_field_values": {
                 "type": "array",
                 "items": { "$ref": "#/components/schemas/issue-field-value" }
+              },
+              "status": {
+                "title": "Planning status",
+                "description": "The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.",
+                "type": ["object", "null"],
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "The stable identifier of the planning status.",
+                    "examples": [4]
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "The display name of the planning status, which may change in the future.",
+                    "examples": ["In progress"]
+                  },
+                  "category": {
+                    "type": "string",
+                    "description": "A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.",
+                    "examples": ["started"]
+                  }
+                },
+                "required": ["id", "name", "category"]
               },
               "state": {
                 "description": "State of the issue; either 'open' or 'closed'",
@@ -45362,6 +45399,30 @@
                 "type": "array",
                 "items": { "$ref": "#/components/schemas/issue-field-value" }
               },
+              "status": {
+                "title": "Planning status",
+                "description": "The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.",
+                "type": ["object", "null"],
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "The stable identifier of the planning status.",
+                    "examples": [4]
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "The display name of the planning status, which may change in the future.",
+                    "examples": ["In progress"]
+                  },
+                  "category": {
+                    "type": "string",
+                    "description": "A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.",
+                    "examples": ["started"]
+                  }
+                },
+                "required": ["id", "name", "category"]
+              },
               "state": {
                 "description": "State of the issue; either 'open' or 'closed'",
                 "type": "string",
@@ -45665,38 +45726,7 @@
               "id": { "type": "integer", "format": "int64" },
               "labels": {
                 "type": "array",
-                "items": {
-                  "title": "Label",
-                  "type": "object",
-                  "properties": {
-                    "color": {
-                      "description": "6-character hex code, without the leading #, identifying the color",
-                      "type": "string"
-                    },
-                    "default": { "type": "boolean" },
-                    "description": { "type": ["string", "null"] },
-                    "id": { "type": "integer" },
-                    "name": {
-                      "description": "The name of the label.",
-                      "type": "string"
-                    },
-                    "node_id": { "type": "string" },
-                    "url": {
-                      "description": "URL for the label",
-                      "type": "string",
-                      "format": "uri"
-                    }
-                  },
-                  "required": [
-                    "id",
-                    "node_id",
-                    "url",
-                    "name",
-                    "color",
-                    "default",
-                    "description"
-                  ]
-                }
+                "items": { "$ref": "#/components/schemas/webhooks_label" }
               },
               "labels_url": { "type": "string", "format": "uri-template" },
               "locked": { "type": "boolean" },
@@ -46150,6 +46180,30 @@
               "issue_field_values": {
                 "type": "array",
                 "items": { "$ref": "#/components/schemas/issue-field-value" }
+              },
+              "status": {
+                "title": "Planning status",
+                "description": "The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.",
+                "type": ["object", "null"],
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "The stable identifier of the planning status.",
+                    "examples": [4]
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "The display name of the planning status, which may change in the future.",
+                    "examples": ["In progress"]
+                  },
+                  "category": {
+                    "type": "string",
+                    "description": "A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.",
+                    "examples": ["started"]
+                  }
+                },
+                "required": ["id", "name", "category"]
               },
               "state": {
                 "description": "State of the issue; either 'open' or 'closed'",
@@ -46865,6 +46919,30 @@
               "issue_field_values": {
                 "type": "array",
                 "items": { "$ref": "#/components/schemas/issue-field-value" }
+              },
+              "status": {
+                "title": "Planning status",
+                "description": "The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.",
+                "type": ["object", "null"],
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "The stable identifier of the planning status.",
+                    "examples": [4]
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "The display name of the planning status, which may change in the future.",
+                    "examples": ["In progress"]
+                  },
+                  "category": {
+                    "type": "string",
+                    "description": "A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.",
+                    "examples": ["started"]
+                  }
+                },
+                "required": ["id", "name", "category"]
               },
               "state": {
                 "description": "State of the issue; either 'open' or 'closed'",
@@ -47594,6 +47672,30 @@
                 "type": "array",
                 "items": { "$ref": "#/components/schemas/issue-field-value" }
               },
+              "status": {
+                "title": "Planning status",
+                "description": "The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.",
+                "type": ["object", "null"],
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "The stable identifier of the planning status.",
+                    "examples": [4]
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "The display name of the planning status, which may change in the future.",
+                    "examples": ["In progress"]
+                  },
+                  "category": {
+                    "type": "string",
+                    "description": "A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.",
+                    "examples": ["started"]
+                  }
+                },
+                "required": ["id", "name", "category"]
+              },
               "state": {
                 "description": "State of the issue; either 'open' or 'closed'",
                 "type": "string",
@@ -48293,6 +48395,30 @@
               "issue_field_values": {
                 "type": "array",
                 "items": { "$ref": "#/components/schemas/issue-field-value" }
+              },
+              "status": {
+                "title": "Planning status",
+                "description": "The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.",
+                "type": ["object", "null"],
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "The stable identifier of the planning status.",
+                    "examples": [4]
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "The display name of the planning status, which may change in the future.",
+                    "examples": ["In progress"]
+                  },
+                  "category": {
+                    "type": "string",
+                    "description": "A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.",
+                    "examples": ["started"]
+                  }
+                },
+                "required": ["id", "name", "category"]
               },
               "state": {
                 "description": "State of the issue; either 'open' or 'closed'",
@@ -49021,6 +49147,30 @@
                     "items": {
                       "$ref": "#/components/schemas/issue-field-value"
                     }
+                  },
+                  "status": {
+                    "title": "Planning status",
+                    "description": "The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.",
+                    "type": ["object", "null"],
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "The stable identifier of the planning status.",
+                        "examples": [4]
+                      },
+                      "name": {
+                        "type": "string",
+                        "description": "The display name of the planning status, which may change in the future.",
+                        "examples": ["In progress"]
+                      },
+                      "category": {
+                        "type": "string",
+                        "description": "A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.",
+                        "examples": ["started"]
+                      }
+                    },
+                    "required": ["id", "name", "category"]
                   },
                   "state": {
                     "description": "State of the issue; either 'open' or 'closed'",
@@ -50095,6 +50245,30 @@
                 "type": "array",
                 "items": { "$ref": "#/components/schemas/issue-field-value" }
               },
+              "status": {
+                "title": "Planning status",
+                "description": "The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.",
+                "type": ["object", "null"],
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "The stable identifier of the planning status.",
+                    "examples": [4]
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "The display name of the planning status, which may change in the future.",
+                    "examples": ["In progress"]
+                  },
+                  "category": {
+                    "type": "string",
+                    "description": "A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.",
+                    "examples": ["started"]
+                  }
+                },
+                "required": ["id", "name", "category"]
+              },
               "state": {
                 "description": "State of the issue; either 'open' or 'closed'",
                 "type": "string",
@@ -50310,38 +50484,7 @@
           "id": { "type": "integer", "format": "int64" },
           "labels": {
             "type": "array",
-            "items": {
-              "title": "Label",
-              "type": "object",
-              "properties": {
-                "color": {
-                  "description": "6-character hex code, without the leading #, identifying the color",
-                  "type": "string"
-                },
-                "default": { "type": "boolean" },
-                "description": { "type": ["string", "null"] },
-                "id": { "type": "integer" },
-                "name": {
-                  "description": "The name of the label.",
-                  "type": "string"
-                },
-                "node_id": { "type": "string" },
-                "url": {
-                  "description": "URL for the label",
-                  "type": "string",
-                  "format": "uri"
-                }
-              },
-              "required": [
-                "id",
-                "node_id",
-                "url",
-                "name",
-                "color",
-                "default",
-                "description"
-              ]
-            }
+            "items": { "$ref": "#/components/schemas/webhooks_label" }
           },
           "labels_url": { "type": "string", "format": "uri-template" },
           "locked": { "type": "boolean" },
@@ -50727,6 +50870,30 @@
             "type": "array",
             "items": { "$ref": "#/components/schemas/issue-field-value" }
           },
+          "status": {
+            "title": "Planning status",
+            "description": "The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.",
+            "type": ["object", "null"],
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64",
+                "description": "The stable identifier of the planning status.",
+                "examples": [4]
+              },
+              "name": {
+                "type": "string",
+                "description": "The display name of the planning status, which may change in the future.",
+                "examples": ["In progress"]
+              },
+              "category": {
+                "type": "string",
+                "description": "A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.",
+                "examples": ["started"]
+              }
+            },
+            "required": ["id", "name", "category"]
+          },
           "state": {
             "description": "State of the issue; either 'open' or 'closed'",
             "type": "string",
@@ -50966,6 +51133,16 @@
                     "description"
                   ],
                   "properties": {
+                    "archived_at": {
+                      "description": "Timestamp indicating when the label was archived, or `null` if it has not been archived.",
+                      "type": ["string", "null"],
+                      "format": "date-time"
+                    },
+                    "archived_by": {
+                      "description": "The user who archived the label, or `null` if it has not been archived.",
+                      "allOf": [{ "$ref": "#/components/schemas/simple-user" }],
+                      "type": ["null"]
+                    },
                     "color": {
                       "description": "6-character hex code, without the leading #, identifying the color",
                       "type": "string"
@@ -51437,6 +51614,30 @@
               "issue_field_values": {
                 "type": "array",
                 "items": { "$ref": "#/components/schemas/issue-field-value" }
+              },
+              "status": {
+                "title": "Planning status",
+                "description": "The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.",
+                "type": ["object", "null"],
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "The stable identifier of the planning status.",
+                    "examples": [4]
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "The display name of the planning status, which may change in the future.",
+                    "examples": ["In progress"]
+                  },
+                  "category": {
+                    "type": "string",
+                    "description": "A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.",
+                    "examples": ["started"]
+                  }
+                },
+                "required": ["id", "name", "category"]
               },
               "state": {
                 "description": "State of the issue; either 'open' or 'closed'",
@@ -52170,6 +52371,30 @@
                     "items": {
                       "$ref": "#/components/schemas/issue-field-value"
                     }
+                  },
+                  "status": {
+                    "title": "Planning status",
+                    "description": "The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.",
+                    "type": ["object", "null"],
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "The stable identifier of the planning status.",
+                        "examples": [4]
+                      },
+                      "name": {
+                        "type": "string",
+                        "description": "The display name of the planning status, which may change in the future.",
+                        "examples": ["In progress"]
+                      },
+                      "category": {
+                        "type": "string",
+                        "description": "A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.",
+                        "examples": ["started"]
+                      }
+                    },
+                    "required": ["id", "name", "category"]
                   },
                   "state": {
                     "description": "State of the issue; either 'open' or 'closed'",
@@ -53382,6 +53607,30 @@
               "issue_field_values": {
                 "type": "array",
                 "items": { "$ref": "#/components/schemas/issue-field-value" }
+              },
+              "status": {
+                "title": "Planning status",
+                "description": "The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.",
+                "type": ["object", "null"],
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "The stable identifier of the planning status.",
+                    "examples": [4]
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "The display name of the planning status, which may change in the future.",
+                    "examples": ["In progress"]
+                  },
+                  "category": {
+                    "type": "string",
+                    "description": "A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.",
+                    "examples": ["started"]
+                  }
+                },
+                "required": ["id", "name", "category"]
               },
               "state": {
                 "description": "State of the issue; either 'open' or 'closed'",
@@ -102750,7 +102999,7 @@
               },
               "required_reviewers": {
                 "type": "array",
-                "description": "> [!NOTE]\n> `required_reviewers` is in beta and subject to change.\n\nA collection of reviewers and associated file patterns. Each reviewer has a list of file patterns which determine the files that reviewer is required to review.",
+                "description": "A collection of reviewers and associated file patterns. Each reviewer has a list of file patterns which determine the files that reviewer is required to review.",
                 "items": {
                   "$ref": "#/components/schemas/repository-rule-params-required-reviewer-configuration"
                 }
@@ -103164,7 +103413,7 @@
       },
       "repository-rule-copilot-code-review": {
         "title": "copilot_code_review",
-        "description": "Request Copilot code review for new pull requests automatically if the author has access to Copilot code review and their premium requests quota has not reached the limit.",
+        "description": "Request Copilot code review for new pull requests automatically if the author has access to Copilot code review and AI credits.",
         "type": "object",
         "required": ["type"],
         "properties": {
@@ -104048,7 +104297,7 @@
             "examples": ["commit"]
           },
           "details": {
-            "oneOf": [
+            "anyOf": [
               {
                 "$ref": "#/components/schemas/secret-scanning-location-commit"
               },
@@ -105150,7 +105399,10 @@
               { "$ref": "#/components/schemas/repository" }
             ]
           },
-          "temp_clone_token": { "type": ["string", "null"] },
+          "temp_clone_token": {
+            "description": "When present and non-empty, a temporary credential for read-only Git access to this repository.\nIt expires five minutes after generation and cannot be used to push changes.\nTreat this value as sensitive and avoid recording it in logs.",
+            "type": ["string", "null"]
+          },
           "allow_squash_merge": { "type": "boolean", "examples": [true] },
           "allow_auto_merge": { "type": "boolean", "examples": [false] },
           "delete_branch_on_merge": { "type": "boolean", "examples": [false] },
@@ -112005,7 +112257,7 @@
             "events": ["*"],
             "config": {
               "content_type": "json",
-              "url": "https://smee.io/****************",
+              "url": "https://example.com/",
               "insecure_ssl": "0"
             },
             "updated_at": "2019-05-15T15:20:49Z",

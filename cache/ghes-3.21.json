@@ -24271,6 +24271,11 @@
             "description": "The level of permission to grant the access token to view and manage Copilot cloud agent settings for an organization.",
             "enum": ["read", "write"]
           },
+          "organization_copilot_requests": {
+            "type": "string",
+            "description": "The level of permission to grant the access token to make Copilot requests billed to the organization where the app is installed. This property is in public preview and is subject to change.",
+            "enum": ["read"]
+          },
           "organization_external_properties_for_repos": {
             "type": "string",
             "description": "The level of permission to grant the access token for managing external custom properties for repositories in an organization.",
@@ -25883,7 +25888,10 @@
             "type": "boolean",
             "examples": [true]
           },
-          "temp_clone_token": { "type": "string" },
+          "temp_clone_token": {
+            "description": "When present and non-empty, a temporary credential for read-only Git access to this repository.\nIt expires five minutes after generation and cannot be used to push changes.\nTreat this value as sensitive and avoid recording it in logs.",
+            "type": "string"
+          },
           "allow_squash_merge": {
             "description": "Whether to allow squash merges for pull requests.",
             "default": true,
@@ -29271,6 +29279,72 @@
             "description": "Who can edit the values of the property",
             "examples": ["org_actors"]
           },
+          "regex": {
+            "type": ["string", "null"],
+            "description": "A regular expression (RE2 syntax) that values of the property must match.\nOnly present for properties with a `value_type` of `string` that define a regular expression.",
+            "examples": ["^[a-z0-9-]+$"]
+          },
+          "require_explicit_values": {
+            "type": "boolean",
+            "description": "Whether setting properties values is mandatory"
+          }
+        },
+        "required": ["property_name", "value_type"]
+      },
+      "custom-property-batch-item-payload": {
+        "title": "Custom Property Batch Item Payload",
+        "description": "Payload for a single custom property definition when creating or updating custom properties in a batch",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "property_name": {
+            "type": "string",
+            "description": "The name of the property"
+          },
+          "value_type": {
+            "type": "string",
+            "enum": [
+              "string",
+              "single_select",
+              "multi_select",
+              "true_false",
+              "url"
+            ],
+            "description": "The type of the value for the property",
+            "examples": ["single_select"]
+          },
+          "required": {
+            "type": "boolean",
+            "description": "Whether the property is required."
+          },
+          "default_value": {
+            "oneOf": [
+              { "type": ["string", "null"] },
+              { "type": "array", "items": { "type": "string" } }
+            ],
+            "description": "Default value of the property",
+            "type": ["null", "string", "array"]
+          },
+          "description": {
+            "type": ["string", "null"],
+            "description": "Short description of the property"
+          },
+          "allowed_values": {
+            "type": ["array", "null"],
+            "items": { "type": "string" },
+            "description": "An ordered list of the allowed values of the property.\nThe property can have up to 200 allowed values."
+          },
+          "values_editable_by": {
+            "type": ["string", "null"],
+            "enum": ["org_actors", "org_and_repo_actors", null],
+            "description": "Who can edit the values of the property",
+            "examples": ["org_actors"]
+          },
+          "regex": {
+            "type": ["string", "null"],
+            "description": "A regular expression (RE2 syntax) that values of the property must match.\nOnly supported for properties with a `value_type` of `string`.",
+            "examples": ["^[a-z0-9-]+$"]
+          },
           "require_explicit_values": {
             "type": "boolean",
             "description": "Whether setting properties values is mandatory"
@@ -29321,6 +29395,11 @@
             "enum": ["org_actors", "org_and_repo_actors", null],
             "description": "Who can edit the values of the property",
             "examples": ["org_actors"]
+          },
+          "regex": {
+            "type": ["string", "null"],
+            "description": "A regular expression (RE2 syntax) that values of the property must match.\nOnly supported for properties with a `value_type` of `string`.",
+            "examples": ["^[a-z0-9-]+$"]
           },
           "require_explicit_values": {
             "type": "boolean",
@@ -29659,8 +29738,8 @@
         "required": ["pull_request_review_comment_url"]
       },
       "secret-scanning-first-detected-location": {
-        "description": "Details on the location where the token was initially detected. This can be a commit, wiki commit, issue, discussion, pull request.\n",
-        "oneOf": [
+        "description": "Details on the location where the token was initially detected. This can be a commit, wiki commit, issue, discussion, or pull request.\n",
+        "anyOf": [
           { "$ref": "#/components/schemas/secret-scanning-location-commit" },
           {
             "$ref": "#/components/schemas/secret-scanning-location-wiki-commit"
@@ -33271,7 +33350,10 @@
             }
           },
           "role_name": { "type": "string", "examples": ["admin"] },
-          "temp_clone_token": { "type": "string" },
+          "temp_clone_token": {
+            "description": "When present and non-empty, a temporary credential for read-only Git access to this repository.\nIt expires five minutes after generation and cannot be used to push changes.\nTreat this value as sensitive and avoid recording it in logs.",
+            "type": "string"
+          },
           "delete_branch_on_merge": { "type": "boolean" },
           "subscribers_count": { "type": "integer" },
           "network_count": { "type": "integer" },
@@ -34923,7 +35005,15 @@
           "base_role": {
             "type": ["string", "null"],
             "description": "The system role from which this role inherits permissions.",
-            "enum": ["read", "triage", "write", "maintain", "admin", null]
+            "enum": [
+              "read",
+              "triage",
+              "moderate",
+              "write",
+              "maintain",
+              "admin",
+              null
+            ]
           },
           "source": {
             "type": ["string", "null"],
@@ -35501,7 +35591,8 @@
               "oidc_aws",
               "oidc_jfrog",
               "oidc_cloudsmith",
-              "oidc_gcp"
+              "oidc_gcp",
+              "anonymous"
             ],
             "type": "string"
           },
@@ -35630,7 +35721,8 @@
               "oidc_aws",
               "oidc_jfrog",
               "oidc_cloudsmith",
-              "oidc_gcp"
+              "oidc_gcp",
+              "anonymous"
             ],
             "type": "string"
           },
@@ -37218,7 +37310,10 @@
               { "$ref": "#/components/schemas/repository" }
             ]
           },
-          "temp_clone_token": { "type": ["string", "null"] },
+          "temp_clone_token": {
+            "description": "When present and non-empty, a temporary credential for read-only Git access to this repository.\nIt expires five minutes after generation and cannot be used to push changes.\nTreat this value as sensitive and avoid recording it in logs.",
+            "type": ["string", "null"]
+          },
           "allow_squash_merge": { "type": "boolean", "examples": [true] },
           "allow_auto_merge": { "type": "boolean", "examples": [false] },
           "delete_branch_on_merge": { "type": "boolean", "examples": [false] },
@@ -37858,7 +37953,7 @@
               },
               "required_reviewers": {
                 "type": "array",
-                "description": "> [!NOTE]\n> `required_reviewers` is in beta and subject to change.\n\nA collection of reviewers and associated file patterns. Each reviewer has a list of file patterns which determine the files that reviewer is required to review.",
+                "description": "A collection of reviewers and associated file patterns. Each reviewer has a list of file patterns which determine the files that reviewer is required to review.",
                 "items": {
                   "$ref": "#/components/schemas/repository-rule-params-required-reviewer-configuration"
                 }
@@ -38194,7 +38289,7 @@
       },
       "repository-rule-copilot-code-review": {
         "title": "copilot_code_review",
-        "description": "Request Copilot code review for new pull requests automatically if the author has access to Copilot code review and their premium requests quota has not reached the limit.",
+        "description": "Request Copilot code review for new pull requests automatically if the author has access to Copilot code review and AI credits.",
         "type": "object",
         "required": ["type"],
         "properties": {
@@ -38547,130 +38642,6 @@
               "type": "string",
               "enum": ["pass", "fail", "bypass"],
               "description": "The result of the rule evaluations for rules with the `active` and `evaluate` enforcement statuses, demonstrating whether rules would pass or fail if all rules in the rule suite were `active`."
-            }
-          }
-        }
-      },
-      "rule-suite-pull-request": {
-        "title": "Pull request rule suite metadata",
-        "description": "Metadata for a pull request rule evaluation result.",
-        "type": "object",
-        "properties": {
-          "pull_request": {
-            "type": "object",
-            "description": "The pull request associated with the rule evaluation.",
-            "properties": {
-              "id": {
-                "type": "integer",
-                "description": "The unique identifier of the pull request."
-              },
-              "number": {
-                "type": "integer",
-                "description": "The number of the pull request."
-              },
-              "user": {
-                "type": "object",
-                "description": "The user who created the pull request.",
-                "properties": {
-                  "id": {
-                    "type": "integer",
-                    "description": "The unique identifier of the user."
-                  },
-                  "login": {
-                    "type": "string",
-                    "description": "The handle for the GitHub user account."
-                  },
-                  "type": {
-                    "type": "string",
-                    "description": "The type of the user."
-                  }
-                }
-              },
-              "reviews": {
-                "type": "array",
-                "description": "The reviews associated with the pull request.",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "integer",
-                      "description": "The unique identifier of the review."
-                    },
-                    "user": {
-                      "type": "object",
-                      "description": "The user who submitted the review.",
-                      "properties": {
-                        "id": {
-                          "type": "integer",
-                          "description": "The unique identifier of the user."
-                        },
-                        "login": {
-                          "type": "string",
-                          "description": "The handle for the GitHub user account."
-                        },
-                        "type": {
-                          "type": "string",
-                          "description": "The type of the user."
-                        }
-                      }
-                    },
-                    "state": {
-                      "type": "string",
-                      "description": "The state of the review."
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "rule-suite-required-status-checks": {
-        "title": "Required status checks rule suite metadata",
-        "description": "Metadata for a required status checks rule evaluation result.",
-        "type": "object",
-        "properties": {
-          "checks": {
-            "type": "array",
-            "description": "The status checks associated with the rule evaluation.",
-            "items": {
-              "type": "object",
-              "properties": {
-                "id": {
-                  "type": "integer",
-                  "description": "The unique identifier of the status check."
-                },
-                "context": {
-                  "type": "string",
-                  "description": "The context name of the status check."
-                },
-                "state": {
-                  "type": "string",
-                  "description": "The state of the status check."
-                },
-                "type": {
-                  "type": "string",
-                  "description": "The type of the status check."
-                },
-                "app": {
-                  "type": ["object", "null"],
-                  "description": "The GitHub App associated with the status check.",
-                  "properties": {
-                    "id": {
-                      "type": "integer",
-                      "description": "The unique identifier of the GitHub App."
-                    },
-                    "slug": {
-                      "type": "string",
-                      "description": "The slug of the GitHub App."
-                    },
-                    "name": {
-                      "type": "string",
-                      "description": "The name of the GitHub App."
-                    }
-                  }
-                }
-              }
             }
           }
         }
@@ -39628,7 +39599,10 @@
             "type": "boolean",
             "examples": [true]
           },
-          "temp_clone_token": { "type": "string" },
+          "temp_clone_token": {
+            "description": "When present and non-empty, a temporary credential for read-only Git access to this repository.\nIt expires five minutes after generation and cannot be used to push changes.\nTreat this value as sensitive and avoid recording it in logs.",
+            "type": "string"
+          },
           "allow_squash_merge": {
             "description": "Whether to allow squash merges for pull requests.",
             "default": true,
@@ -39843,7 +39817,7 @@
       },
       "rate-limit-overview": {
         "title": "Rate Limit Overview",
-        "description": "Rate Limit Overview",
+        "description": "Rate limit status for the applicable requester and resource category. Requests\nauthenticated as a user share the user's rate limit across credentials. Requests\nwithout authentication use the requesting IP address. API requests routed through\neither an API hostname or a web hostname can count against the same applicable limit.",
         "type": "object",
         "properties": {
           "resources": {
@@ -42323,6 +42297,98 @@
           "repository": { "$ref": "#/components/schemas/minimal-repository" }
         }
       },
+      "pull-requests-on-alerts": {
+        "title": "Pull Requests on Alerts",
+        "description": "A pull request linked to a code scanning alert.",
+        "type": "object",
+        "properties": {
+          "number": {
+            "type": "integer",
+            "description": "The number of the linked pull request."
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "description": "The ID of the linked pull request."
+          },
+          "repository": { "$ref": "#/components/schemas/simple-repository" },
+          "title": {
+            "type": "string",
+            "description": "The title of the linked pull request."
+          },
+          "state": {
+            "type": "string",
+            "description": "The state of the referenced pull request.",
+            "enum": ["open", "closed", "merged"]
+          },
+          "merged_at": {
+            "type": ["string", "null"],
+            "format": "date-time",
+            "description": "The time the linked pull request was merged. Null if it has not been merged."
+          },
+          "html_url": {
+            "type": "string",
+            "format": "uri",
+            "description": "The URL of the linked pull request on GitHub."
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "description": "The REST API URL for the linked pull request."
+          },
+          "draft": {
+            "type": "boolean",
+            "description": "Whether the linked pull request is a draft."
+          }
+        },
+        "required": [
+          "number",
+          "id",
+          "repository",
+          "title",
+          "state",
+          "merged_at",
+          "html_url",
+          "url",
+          "draft"
+        ]
+      },
+      "code-scanning-alert-linked-issue": {
+        "description": "A GitHub issue linked to a code scanning alert. The issue may belong to a different repository.",
+        "type": "object",
+        "properties": {
+          "number": { "type": "integer", "description": "The issue number." },
+          "title": {
+            "type": "string",
+            "description": "The title of the issue."
+          },
+          "state": {
+            "type": "string",
+            "description": "The state of the issue."
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "description": "The REST API URL of the issue."
+          },
+          "html_url": {
+            "type": "string",
+            "format": "uri",
+            "description": "The URL to view the issue on GitHub."
+          },
+          "repository": { "$ref": "#/components/schemas/simple-repository" },
+          "issue_type": { "$ref": "#/components/schemas/issue-type" }
+        },
+        "required": [
+          "number",
+          "title",
+          "state",
+          "url",
+          "html_url",
+          "repository",
+          "issue_type"
+        ]
+      },
       "code-scanning-alert-items": {
         "type": "object",
         "properties": {
@@ -42367,6 +42433,18 @@
           "assignees": {
             "type": "array",
             "items": { "$ref": "#/components/schemas/simple-user" }
+          },
+          "linked_pull_requests": {
+            "description": "Pull requests linked to this alert.",
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/pull-requests-on-alerts" }
+          },
+          "linked_issues": {
+            "description": "Issues linked to this alert.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/code-scanning-alert-linked-issue"
+            }
           }
         },
         "required": [
@@ -42475,6 +42553,13 @@
             "description": "Pull requests linked to this alert.",
             "type": "array",
             "items": { "$ref": "#/components/schemas/pull-request-simple" }
+          },
+          "linked_issues": {
+            "description": "Issues linked to this alert.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/code-scanning-alert-linked-issue"
+            }
           }
         },
         "required": [
@@ -45051,7 +45136,7 @@
               "write",
               "admin",
               "triage",
-              "triage_plus",
+              "moderate",
               "maintain"
             ],
             "examples": ["read"]
@@ -47526,7 +47611,7 @@
             "type": "string",
             "description": "The URI to the deployed GitHub Pages.",
             "format": "uri",
-            "examples": ["hello-world.github.io"]
+            "examples": ["github.github.io"]
           },
           "preview_url": {
             "type": "string",
@@ -48294,7 +48379,7 @@
             "examples": ["commit"]
           },
           "details": {
-            "oneOf": [
+            "anyOf": [
               {
                 "$ref": "#/components/schemas/secret-scanning-location-commit"
               },
@@ -49587,7 +49672,10 @@
           "text_matches": {
             "$ref": "#/components/schemas/search-result-text-matches"
           },
-          "temp_clone_token": { "type": "string" },
+          "temp_clone_token": {
+            "description": "When present and non-empty, a temporary credential for read-only Git access to this repository.\nIt expires five minutes after generation and cannot be used to push changes.\nTreat this value as sensitive and avoid recording it in logs.",
+            "type": "string"
+          },
           "allow_merge_commit": { "type": "boolean" },
           "allow_squash_merge": { "type": "boolean" },
           "allow_rebase_merge": { "type": "boolean" },
@@ -50888,7 +50976,10 @@
                 }
               },
               "allow_rebase_merge": { "type": "boolean" },
-              "temp_clone_token": { "type": "string" },
+              "temp_clone_token": {
+                "description": "When present and non-empty, a temporary credential for read-only Git access to this repository.\nIt expires five minutes after generation and cannot be used to push changes.\nTreat this value as sensitive and avoid recording it in logs.",
+                "type": "string"
+              },
               "allow_squash_merge": { "type": "boolean" },
               "allow_auto_merge": { "type": "boolean" },
               "delete_branch_on_merge": { "type": "boolean" },
@@ -50919,7 +51010,10 @@
               "network_count": { "type": "integer" }
             }
           },
-          "temp_clone_token": { "type": "string" },
+          "temp_clone_token": {
+            "description": "When present and non-empty, a temporary credential for read-only Git access to this repository.\nIt expires five minutes after generation and cannot be used to push changes.\nTreat this value as sensitive and avoid recording it in logs.",
+            "type": "string"
+          },
           "allow_squash_merge": {
             "description": "Whether to allow squash merges for pull requests.",
             "default": true,
@@ -52732,38 +52826,7 @@
           "id": { "type": "integer", "format": "int64" },
           "labels": {
             "type": "array",
-            "items": {
-              "title": "Label",
-              "type": "object",
-              "properties": {
-                "color": {
-                  "description": "6-character hex code, without the leading #, identifying the color",
-                  "type": "string"
-                },
-                "default": { "type": "boolean" },
-                "description": { "type": ["string", "null"] },
-                "id": { "type": "integer" },
-                "name": {
-                  "description": "The name of the label.",
-                  "type": "string"
-                },
-                "node_id": { "type": "string" },
-                "url": {
-                  "description": "URL for the label",
-                  "type": "string",
-                  "format": "uri"
-                }
-              },
-              "required": [
-                "id",
-                "node_id",
-                "url",
-                "name",
-                "color",
-                "default",
-                "description"
-              ]
-            }
+            "items": { "$ref": "#/components/schemas/webhooks_label" }
           },
           "labels_url": { "type": "string", "format": "uri-template" },
           "locked": { "type": "boolean" },
@@ -53151,6 +53214,30 @@
             "type": "array",
             "items": { "$ref": "#/components/schemas/issue-field-value" }
           },
+          "status": {
+            "title": "Planning status",
+            "description": "The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.",
+            "type": ["object", "null"],
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64",
+                "description": "The stable identifier of the planning status.",
+                "examples": [4]
+              },
+              "name": {
+                "type": "string",
+                "description": "The display name of the planning status, which may change in the future.",
+                "examples": ["In progress"]
+              },
+              "category": {
+                "type": "string",
+                "description": "A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.",
+                "examples": ["started"]
+              }
+            },
+            "required": ["id", "name", "category"]
+          },
           "state": {
             "description": "State of the issue; either 'open' or 'closed'",
             "type": "string",
@@ -53410,38 +53497,7 @@
           "id": { "type": "integer", "format": "int64" },
           "labels": {
             "type": "array",
-            "items": {
-              "title": "Label",
-              "type": "object",
-              "properties": {
-                "color": {
-                  "description": "6-character hex code, without the leading #, identifying the color",
-                  "type": "string"
-                },
-                "default": { "type": "boolean" },
-                "description": { "type": ["string", "null"] },
-                "id": { "type": "integer" },
-                "name": {
-                  "description": "The name of the label.",
-                  "type": "string"
-                },
-                "node_id": { "type": "string" },
-                "url": {
-                  "description": "URL for the label",
-                  "type": "string",
-                  "format": "uri"
-                }
-              },
-              "required": [
-                "id",
-                "node_id",
-                "url",
-                "name",
-                "color",
-                "default",
-                "description"
-              ]
-            }
+            "items": { "$ref": "#/components/schemas/webhooks_label" }
           },
           "labels_url": { "type": "string", "format": "uri-template" },
           "locked": { "type": "boolean" },
@@ -53826,6 +53882,30 @@
           "issue_field_values": {
             "type": "array",
             "items": { "$ref": "#/components/schemas/issue-field-value" }
+          },
+          "status": {
+            "title": "Planning status",
+            "description": "The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.",
+            "type": ["object", "null"],
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64",
+                "description": "The stable identifier of the planning status.",
+                "examples": [4]
+              },
+              "name": {
+                "type": "string",
+                "description": "The display name of the planning status, which may change in the future.",
+                "examples": ["In progress"]
+              },
+              "category": {
+                "type": "string",
+                "description": "A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.",
+                "examples": ["started"]
+              }
+            },
+            "required": ["id", "name", "category"]
           },
           "state": {
             "description": "State of the issue; either 'open' or 'closed'",
@@ -71181,38 +71261,7 @@
                   "id": { "type": "integer", "format": "int64" },
                   "labels": {
                     "type": "array",
-                    "items": {
-                      "title": "Label",
-                      "type": "object",
-                      "properties": {
-                        "color": {
-                          "description": "6-character hex code, without the leading #, identifying the color",
-                          "type": "string"
-                        },
-                        "default": { "type": "boolean" },
-                        "description": { "type": ["string", "null"] },
-                        "id": { "type": "integer" },
-                        "name": {
-                          "description": "The name of the label.",
-                          "type": "string"
-                        },
-                        "node_id": { "type": "string" },
-                        "url": {
-                          "description": "URL for the label",
-                          "type": "string",
-                          "format": "uri"
-                        }
-                      },
-                      "required": [
-                        "id",
-                        "node_id",
-                        "url",
-                        "name",
-                        "color",
-                        "default",
-                        "description"
-                      ]
-                    }
+                    "items": { "$ref": "#/components/schemas/webhooks_label" }
                   },
                   "labels_url": { "type": "string", "format": "uri-template" },
                   "locked": { "type": "boolean" },
@@ -71690,6 +71739,30 @@
                       "$ref": "#/components/schemas/issue-field-value"
                     }
                   },
+                  "status": {
+                    "title": "Planning status",
+                    "description": "The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.",
+                    "type": ["object", "null"],
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "The stable identifier of the planning status.",
+                        "examples": [4]
+                      },
+                      "name": {
+                        "type": "string",
+                        "description": "The display name of the planning status, which may change in the future.",
+                        "examples": ["In progress"]
+                      },
+                      "category": {
+                        "type": "string",
+                        "description": "A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.",
+                        "examples": ["started"]
+                      }
+                    },
+                    "required": ["id", "name", "category"]
+                  },
                   "state": {
                     "description": "State of the issue; either 'open' or 'closed'",
                     "type": "string",
@@ -71806,7 +71879,12 @@
                   "id": { "type": "integer" },
                   "labels": {
                     "type": "array",
-                    "items": { "type": ["object", "null"] }
+                    "items": {
+                      "type": ["object", "null"],
+                      "allOf": [
+                        { "$ref": "#/components/schemas/webhooks_label" }
+                      ]
+                    }
                   },
                   "labels_url": { "type": "string" },
                   "locked": { "type": "boolean" },
@@ -72487,6 +72565,30 @@
               "issue_field_values": {
                 "type": "array",
                 "items": { "$ref": "#/components/schemas/issue-field-value" }
+              },
+              "status": {
+                "title": "Planning status",
+                "description": "The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.",
+                "type": ["object", "null"],
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "The stable identifier of the planning status.",
+                    "examples": [4]
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "The display name of the planning status, which may change in the future.",
+                    "examples": ["In progress"]
+                  },
+                  "category": {
+                    "type": "string",
+                    "description": "A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.",
+                    "examples": ["started"]
+                  }
+                },
+                "required": ["id", "name", "category"]
               },
               "state": {
                 "description": "State of the issue; either 'open' or 'closed'",
@@ -73210,6 +73312,30 @@
                 "type": "array",
                 "items": { "$ref": "#/components/schemas/issue-field-value" }
               },
+              "status": {
+                "title": "Planning status",
+                "description": "The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.",
+                "type": ["object", "null"],
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "The stable identifier of the planning status.",
+                    "examples": [4]
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "The display name of the planning status, which may change in the future.",
+                    "examples": ["In progress"]
+                  },
+                  "category": {
+                    "type": "string",
+                    "description": "A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.",
+                    "examples": ["started"]
+                  }
+                },
+                "required": ["id", "name", "category"]
+              },
               "state": {
                 "description": "State of the issue; either 'open' or 'closed'",
                 "type": "string",
@@ -73431,38 +73557,7 @@
               "id": { "type": "integer", "format": "int64" },
               "labels": {
                 "type": "array",
-                "items": {
-                  "title": "Label",
-                  "type": "object",
-                  "properties": {
-                    "color": {
-                      "description": "6-character hex code, without the leading #, identifying the color",
-                      "type": "string"
-                    },
-                    "default": { "type": "boolean" },
-                    "description": { "type": ["string", "null"] },
-                    "id": { "type": "integer" },
-                    "name": {
-                      "description": "The name of the label.",
-                      "type": "string"
-                    },
-                    "node_id": { "type": "string" },
-                    "url": {
-                      "description": "URL for the label",
-                      "type": "string",
-                      "format": "uri"
-                    }
-                  },
-                  "required": [
-                    "id",
-                    "node_id",
-                    "url",
-                    "name",
-                    "color",
-                    "default",
-                    "description"
-                  ]
-                }
+                "items": { "$ref": "#/components/schemas/webhooks_label" }
               },
               "labels_url": { "type": "string", "format": "uri-template" },
               "locked": { "type": "boolean" },
@@ -73916,6 +74011,30 @@
               "issue_field_values": {
                 "type": "array",
                 "items": { "$ref": "#/components/schemas/issue-field-value" }
+              },
+              "status": {
+                "title": "Planning status",
+                "description": "The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.",
+                "type": ["object", "null"],
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "The stable identifier of the planning status.",
+                    "examples": [4]
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "The display name of the planning status, which may change in the future.",
+                    "examples": ["In progress"]
+                  },
+                  "category": {
+                    "type": "string",
+                    "description": "A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.",
+                    "examples": ["started"]
+                  }
+                },
+                "required": ["id", "name", "category"]
               },
               "state": {
                 "description": "State of the issue; either 'open' or 'closed'",
@@ -74631,6 +74750,30 @@
               "issue_field_values": {
                 "type": "array",
                 "items": { "$ref": "#/components/schemas/issue-field-value" }
+              },
+              "status": {
+                "title": "Planning status",
+                "description": "The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.",
+                "type": ["object", "null"],
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "The stable identifier of the planning status.",
+                    "examples": [4]
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "The display name of the planning status, which may change in the future.",
+                    "examples": ["In progress"]
+                  },
+                  "category": {
+                    "type": "string",
+                    "description": "A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.",
+                    "examples": ["started"]
+                  }
+                },
+                "required": ["id", "name", "category"]
               },
               "state": {
                 "description": "State of the issue; either 'open' or 'closed'",
@@ -75360,6 +75503,30 @@
                 "type": "array",
                 "items": { "$ref": "#/components/schemas/issue-field-value" }
               },
+              "status": {
+                "title": "Planning status",
+                "description": "The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.",
+                "type": ["object", "null"],
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "The stable identifier of the planning status.",
+                    "examples": [4]
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "The display name of the planning status, which may change in the future.",
+                    "examples": ["In progress"]
+                  },
+                  "category": {
+                    "type": "string",
+                    "description": "A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.",
+                    "examples": ["started"]
+                  }
+                },
+                "required": ["id", "name", "category"]
+              },
               "state": {
                 "description": "State of the issue; either 'open' or 'closed'",
                 "type": "string",
@@ -76059,6 +76226,30 @@
               "issue_field_values": {
                 "type": "array",
                 "items": { "$ref": "#/components/schemas/issue-field-value" }
+              },
+              "status": {
+                "title": "Planning status",
+                "description": "The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.",
+                "type": ["object", "null"],
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "The stable identifier of the planning status.",
+                    "examples": [4]
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "The display name of the planning status, which may change in the future.",
+                    "examples": ["In progress"]
+                  },
+                  "category": {
+                    "type": "string",
+                    "description": "A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.",
+                    "examples": ["started"]
+                  }
+                },
+                "required": ["id", "name", "category"]
               },
               "state": {
                 "description": "State of the issue; either 'open' or 'closed'",
@@ -76787,6 +76978,30 @@
                     "items": {
                       "$ref": "#/components/schemas/issue-field-value"
                     }
+                  },
+                  "status": {
+                    "title": "Planning status",
+                    "description": "The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.",
+                    "type": ["object", "null"],
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "The stable identifier of the planning status.",
+                        "examples": [4]
+                      },
+                      "name": {
+                        "type": "string",
+                        "description": "The display name of the planning status, which may change in the future.",
+                        "examples": ["In progress"]
+                      },
+                      "category": {
+                        "type": "string",
+                        "description": "A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.",
+                        "examples": ["started"]
+                      }
+                    },
+                    "required": ["id", "name", "category"]
                   },
                   "state": {
                     "description": "State of the issue; either 'open' or 'closed'",
@@ -77861,6 +78076,30 @@
                 "type": "array",
                 "items": { "$ref": "#/components/schemas/issue-field-value" }
               },
+              "status": {
+                "title": "Planning status",
+                "description": "The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.",
+                "type": ["object", "null"],
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "The stable identifier of the planning status.",
+                    "examples": [4]
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "The display name of the planning status, which may change in the future.",
+                    "examples": ["In progress"]
+                  },
+                  "category": {
+                    "type": "string",
+                    "description": "A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.",
+                    "examples": ["started"]
+                  }
+                },
+                "required": ["id", "name", "category"]
+              },
               "state": {
                 "description": "State of the issue; either 'open' or 'closed'",
                 "type": "string",
@@ -78138,6 +78377,16 @@
                     "description"
                   ],
                   "properties": {
+                    "archived_at": {
+                      "description": "Timestamp indicating when the label was archived, or `null` if it has not been archived.",
+                      "type": ["string", "null"],
+                      "format": "date-time"
+                    },
+                    "archived_by": {
+                      "description": "The user who archived the label, or `null` if it has not been archived.",
+                      "allOf": [{ "$ref": "#/components/schemas/simple-user" }],
+                      "type": ["null"]
+                    },
                     "color": {
                       "description": "6-character hex code, without the leading #, identifying the color",
                       "type": "string"
@@ -78609,6 +78858,30 @@
               "issue_field_values": {
                 "type": "array",
                 "items": { "$ref": "#/components/schemas/issue-field-value" }
+              },
+              "status": {
+                "title": "Planning status",
+                "description": "The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.",
+                "type": ["object", "null"],
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "The stable identifier of the planning status.",
+                    "examples": [4]
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "The display name of the planning status, which may change in the future.",
+                    "examples": ["In progress"]
+                  },
+                  "category": {
+                    "type": "string",
+                    "description": "A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.",
+                    "examples": ["started"]
+                  }
+                },
+                "required": ["id", "name", "category"]
               },
               "state": {
                 "description": "State of the issue; either 'open' or 'closed'",
@@ -79342,6 +79615,30 @@
                     "items": {
                       "$ref": "#/components/schemas/issue-field-value"
                     }
+                  },
+                  "status": {
+                    "title": "Planning status",
+                    "description": "The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.",
+                    "type": ["object", "null"],
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "The stable identifier of the planning status.",
+                        "examples": [4]
+                      },
+                      "name": {
+                        "type": "string",
+                        "description": "The display name of the planning status, which may change in the future.",
+                        "examples": ["In progress"]
+                      },
+                      "category": {
+                        "type": "string",
+                        "description": "A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.",
+                        "examples": ["started"]
+                      }
+                    },
+                    "required": ["id", "name", "category"]
                   },
                   "state": {
                     "description": "State of the issue; either 'open' or 'closed'",
@@ -80522,6 +80819,30 @@
               "issue_field_values": {
                 "type": "array",
                 "items": { "$ref": "#/components/schemas/issue-field-value" }
+              },
+              "status": {
+                "title": "Planning status",
+                "description": "The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.",
+                "type": ["object", "null"],
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "The stable identifier of the planning status.",
+                    "examples": [4]
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "The display name of the planning status, which may change in the future.",
+                    "examples": ["In progress"]
+                  },
+                  "category": {
+                    "type": "string",
+                    "description": "A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added.",
+                    "examples": ["started"]
+                  }
+                },
+                "required": ["id", "name", "category"]
               },
               "state": {
                 "description": "State of the issue; either 'open' or 'closed'",
@@ -133300,7 +133621,7 @@
           {
             "id": 2,
             "name": "DevTools Hook Env",
-            "image_url": "https://my_file_server/path/to/devtools_env.tar.gz",
+            "image_url": "https://fileserver.example.com/path/to/devtools_env.tar.gz",
             "url": "https://github.example.com/api/v3/admin/pre-receive-environments/2",
             "html_url": "https://github.example.com/admin/pre-receive-environments/2",
             "default_environment": false,
@@ -133319,7 +133640,7 @@
         "value": {
           "id": 2,
           "name": "DevTools Hook Env",
-          "image_url": "https://my_file_server/path/to/devtools_env.tar.gz",
+          "image_url": "https://fileserver.example.com/path/to/devtools_env.tar.gz",
           "url": "https://github.example.com/api/v3/admin/pre-receive-environments/2",
           "html_url": "https://github.example.com/admin/pre-receive-environments/2",
           "default_environment": false,
@@ -133337,7 +133658,7 @@
         "value": {
           "id": 2,
           "name": "DevTools Hook Env",
-          "image_url": "https://my_file_server/path/to/devtools_env.tar.gz",
+          "image_url": "https://fileserver.example.com/path/to/devtools_env.tar.gz",
           "url": "https://github.example.com/api/v3/admin/pre-receive-environments/2",
           "html_url": "https://github.example.com/admin/pre-receive-environments/2",
           "default_environment": false,
@@ -133383,7 +133704,7 @@
             "environment": {
               "id": 2,
               "name": "DevTools Hook Env",
-              "image_url": "https://my_file_server/path/to/devtools_env.tar.gz",
+              "image_url": "https://fileserver.example.com/path/to/devtools_env.tar.gz",
               "url": "https://github.example.com/api/v3/admin/pre-receive-environments/2",
               "html_url": "https://github.example.com/admin/pre-receive-environments/2",
               "default_environment": false,
@@ -133415,7 +133736,7 @@
           "environment": {
             "id": 2,
             "name": "DevTools Hook Env",
-            "image_url": "https://my_file_server/path/to/devtools_env.tar.gz",
+            "image_url": "https://fileserver.example.com/path/to/devtools_env.tar.gz",
             "url": "https://github.example.com/api/v3/admin/pre-receive-environments/2",
             "html_url": "https://github.example.com/admin/pre-receive-environments/2",
             "default_environment": false,
@@ -133554,7 +133875,7 @@
             "client_id": "abcde12345fghij67890"
           },
           "note": "optional note",
-          "note_url": "http://optional/note/url",
+          "note_url": "https://example.com/optional/note/url",
           "updated_at": "2011-09-06T20:39:23Z",
           "created_at": "2011-09-06T17:26:27Z",
           "expires_at": "2011-10-06T17:26:27Z",
@@ -134198,7 +134519,7 @@
             "client_id": "Iv1.8a61f9b3a7aba766"
           },
           "note": "optional note",
-          "note_url": "http://optional/note/url",
+          "note_url": "https://example.com/optional/note/url",
           "updated_at": "2011-09-06T20:39:23Z",
           "created_at": "2011-09-06T17:26:27Z",
           "fingerprint": "jklmnop12345678",
@@ -134239,7 +134560,7 @@
             "client_id": "Iv1.8a61f9b3a7aba766"
           },
           "note": "optional note",
-          "note_url": "http://optional/note/url",
+          "note_url": "https://example.com/optional/note/url",
           "updated_at": "2011-09-06T20:39:23Z",
           "created_at": "2011-09-06T17:26:27Z",
           "fingerprint": "jklmnop12345678",
@@ -134348,7 +134669,7 @@
             "client_id": "abcde12345fghij67890"
           },
           "note": "optional note",
-          "note_url": "http://optional/note/url",
+          "note_url": "https://example.com/optional/note/url",
           "updated_at": "2011-09-06T20:39:23Z",
           "created_at": "2011-09-06T17:26:27Z",
           "expires_at": "2011-10-06T17:26:27Z",
@@ -134369,7 +134690,7 @@
             "client_id": "abcde12345fghij67890"
           },
           "note": "optional note",
-          "note_url": "http://optional/note/url",
+          "note_url": "https://example.com/optional/note/url",
           "updated_at": "2011-09-06T20:39:23Z",
           "created_at": "2011-09-06T17:26:27Z",
           "expires_at": "2011-10-06T17:26:27Z",
@@ -134390,7 +134711,7 @@
             "client_id": "abcde12345fghij67890"
           },
           "note": "optional note",
-          "note_url": "http://optional/note/url",
+          "note_url": "https://example.com/optional/note/url",
           "updated_at": "2011-09-06T20:39:23Z",
           "created_at": "2011-09-06T17:26:27Z",
           "expires_at": "2012-10-06T17:26:27Z",
@@ -134411,7 +134732,7 @@
             "client_id": "abcde12345fghij67890"
           },
           "note": "optional note",
-          "note_url": "http://optional/note/url",
+          "note_url": "https://example.com/optional/note/url",
           "updated_at": "2011-09-06T20:39:23Z",
           "created_at": "2011-09-06T17:26:27Z",
           "expires_at": "2011-10-06T17:26:27Z",
@@ -142628,13 +142949,13 @@
           "is_template": true
         }
       },
-      "projects-v2-item-simple": {
+      "projects-v2-item-simple-org": {
         "value": {
           "id": 17,
           "node_id": "PVTI_lADOANN5s84ACbL0zgBueEI",
           "content": {
             "id": 38,
-            "node_id": "I_kwDOANN5s85FtLts",
+            "node_id": "DI_kwDOANN5s85FtLts",
             "title": "Example Draft Issue",
             "body": "This is a draft issue in the project.",
             "created_at": "2022-04-28T12:00:00Z",
@@ -142657,6 +142978,7 @@
               "events_url": "https://api.github.com/users/octocat/events{/privacy}",
               "received_events_url": "https://api.github.com/users/octocat/received_events",
               "type": "User",
+              "user_view_type": "public",
               "site_admin": false
             }
           },
@@ -142679,13 +143001,14 @@
             "events_url": "https://api.github.com/users/octocat/events{/privacy}",
             "received_events_url": "https://api.github.com/users/octocat/received_events",
             "type": "User",
+            "user_view_type": "public",
             "site_admin": false
           },
           "created_at": "2022-04-28T12:00:00Z",
           "updated_at": "2022-04-28T12:00:00Z",
           "archived_at": null,
-          "project_url": "https://api.github.com/users/octocat/projectsV2/1",
-          "item_url": "https://api.github.com/users/octocat/projectsV2/items/17"
+          "project_url": "https://api.github.com/orgs/octo-org/projectsV2/1",
+          "item_url": "https://api.github.com/orgs/octo-org/projectsV2/1/items/17"
         }
       },
       "projects-v2-field-items": {
@@ -143301,8 +143624,8 @@
                 "created_at": "2025-08-01T18:44:14Z",
                 "updated_at": "2025-08-01T18:48:38Z",
                 "pushed_at": "2025-08-01T18:44:50Z",
-                "git_url": "git://github.localhost/github/Hello-World.git",
-                "ssh_url": "ssh://git@localhost:3035/github/Hello-World.git",
+                "git_url": "git://github.example.com/github/Hello-World.git",
+                "ssh_url": "ssh://git@example.com:3035/github/Hello-World.git",
                 "clone_url": "https://github.com/github/Hello-World.git",
                 "svn_url": "https://github.com/github/Hello-World",
                 "homepage": null,
@@ -143428,8 +143751,8 @@
                 "created_at": "2025-08-01T18:44:14Z",
                 "updated_at": "2025-08-01T18:48:38Z",
                 "pushed_at": "2025-08-01T18:44:50Z",
-                "git_url": "git://github.localhost/github/Hello-World.git",
-                "ssh_url": "ssh://git@localhost:3035/github/Hello-World.git",
+                "git_url": "git://github.example.com/github/Hello-World.git",
+                "ssh_url": "ssh://git@example.com:3035/github/Hello-World.git",
                 "clone_url": "https://github.com/github/Hello-World.git",
                 "svn_url": "https://github.com/github/Hello-World",
                 "homepage": null,
@@ -143768,6 +144091,178 @@
               "value": null
             }
           ]
+        }
+      },
+      "projects-v2-item-issue-org": {
+        "value": {
+          "id": 17,
+          "node_id": "PVTI_lADOANN5s84ACbL0zgBueEI",
+          "content": {
+            "id": 38,
+            "node_id": "I_kwDOANN5s85FtLts",
+            "url": "https://api.github.com/repos/octocat/hello-world/issues/42",
+            "repository_url": "https://api.github.com/repos/octocat/hello-world",
+            "labels_url": "https://api.github.com/repos/octocat/hello-world/issues/42/labels{/name}",
+            "comments_url": "https://api.github.com/repos/octocat/hello-world/issues/42/comments",
+            "events_url": "https://api.github.com/repos/octocat/hello-world/issues/42/events",
+            "html_url": "https://github.com/octocat/hello-world/issues/42",
+            "number": 42,
+            "state": "open",
+            "title": "Example issue",
+            "user": {
+              "login": "octocat",
+              "id": 1,
+              "node_id": "MDQ6VXNlcjE=",
+              "avatar_url": "https://github.com/images/error/octocat_happy.gif",
+              "gravatar_id": "",
+              "url": "https://api.github.com/users/octocat",
+              "html_url": "https://github.com/octocat",
+              "followers_url": "https://api.github.com/users/octocat/followers",
+              "following_url": "https://api.github.com/users/octocat/following{/other_user}",
+              "gists_url": "https://api.github.com/users/octocat/gists{/gist_id}",
+              "starred_url": "https://api.github.com/users/octocat/starred{/owner}{/repo}",
+              "subscriptions_url": "https://api.github.com/users/octocat/subscriptions",
+              "organizations_url": "https://api.github.com/users/octocat/orgs",
+              "repos_url": "https://api.github.com/users/octocat/repos",
+              "events_url": "https://api.github.com/users/octocat/events{/privacy}",
+              "received_events_url": "https://api.github.com/users/octocat/received_events",
+              "type": "User",
+              "user_view_type": "public",
+              "site_admin": false
+            },
+            "labels": [],
+            "assignee": null,
+            "milestone": null,
+            "locked": false,
+            "comments": 0,
+            "closed_at": null,
+            "created_at": "2022-04-28T12:00:00Z",
+            "updated_at": "2022-04-28T12:00:00Z"
+          },
+          "content_type": "Issue",
+          "created_at": "2022-04-28T12:00:00Z",
+          "updated_at": "2022-04-28T12:00:00Z",
+          "archived_at": null,
+          "project_url": "https://api.github.com/orgs/octo-org/projectsV2/1",
+          "item_url": "https://api.github.com/orgs/octo-org/projectsV2/1/items/17"
+        }
+      },
+      "projects-v2-item-pull-request-org": {
+        "value": {
+          "id": 18,
+          "node_id": "PVTI_lADOANN5s84ACbL0zgBueEJ",
+          "content": {
+            "id": 39,
+            "node_id": "PR_kwDOANN5s85FtLtu",
+            "url": "https://api.github.com/repos/octocat/hello-world/pulls/123",
+            "html_url": "https://github.com/octocat/hello-world/pull/123",
+            "diff_url": "https://github.com/octocat/hello-world/pull/123.diff",
+            "patch_url": "https://github.com/octocat/hello-world/pull/123.patch",
+            "issue_url": "https://api.github.com/repos/octocat/hello-world/issues/123",
+            "comments_url": "https://api.github.com/repos/octocat/hello-world/issues/123/comments",
+            "commits_url": "https://api.github.com/repos/octocat/hello-world/pulls/123/commits",
+            "statuses_url": "https://api.github.com/repos/octocat/hello-world/statuses/abcdef123456",
+            "review_comment_url": "https://api.github.com/repos/octocat/hello-world/pulls/comments{/number}",
+            "review_comments_url": "https://api.github.com/repos/octocat/hello-world/pulls/123/comments",
+            "number": 123,
+            "state": "open",
+            "title": "Example pull request",
+            "user": {
+              "login": "octocat",
+              "id": 1,
+              "node_id": "MDQ6VXNlcjE=",
+              "avatar_url": "https://github.com/images/error/octocat_happy.gif",
+              "gravatar_id": "",
+              "url": "https://api.github.com/users/octocat",
+              "html_url": "https://github.com/octocat",
+              "followers_url": "https://api.github.com/users/octocat/followers",
+              "following_url": "https://api.github.com/users/octocat/following{/other_user}",
+              "gists_url": "https://api.github.com/users/octocat/gists{/gist_id}",
+              "starred_url": "https://api.github.com/users/octocat/starred{/owner}{/repo}",
+              "subscriptions_url": "https://api.github.com/users/octocat/subscriptions",
+              "organizations_url": "https://api.github.com/users/octocat/orgs",
+              "repos_url": "https://api.github.com/users/octocat/repos",
+              "events_url": "https://api.github.com/users/octocat/events{/privacy}",
+              "received_events_url": "https://api.github.com/users/octocat/received_events",
+              "type": "User",
+              "user_view_type": "public",
+              "site_admin": false
+            },
+            "body": "Example pull request body",
+            "labels": [],
+            "assignee": null,
+            "assignees": [],
+            "milestone": null,
+            "locked": false,
+            "created_at": "2022-04-28T12:00:00Z",
+            "updated_at": "2022-04-28T12:00:00Z",
+            "closed_at": null,
+            "merged_at": null,
+            "merge_commit_sha": null,
+            "draft": false,
+            "author_association": "MEMBER",
+            "auto_merge": null,
+            "_links": {
+              "comments": {
+                "href": "https://api.github.com/repos/octocat/hello-world/issues/123/comments"
+              },
+              "commits": {
+                "href": "https://api.github.com/repos/octocat/hello-world/pulls/123/commits"
+              },
+              "statuses": {
+                "href": "https://api.github.com/repos/octocat/hello-world/statuses/abcdef123456"
+              },
+              "html": {
+                "href": "https://github.com/octocat/hello-world/pull/123"
+              },
+              "issue": {
+                "href": "https://api.github.com/repos/octocat/hello-world/issues/123"
+              },
+              "review_comments": {
+                "href": "https://api.github.com/repos/octocat/hello-world/pulls/123/comments"
+              },
+              "review_comment": {
+                "href": "https://api.github.com/repos/octocat/hello-world/pulls/comments{/number}"
+              },
+              "self": {
+                "href": "https://api.github.com/repos/octocat/hello-world/pulls/123"
+              }
+            },
+            "base": {
+              "label": "octocat:main",
+              "ref": "main",
+              "repo": {
+                "id": 2,
+                "node_id": "MDEwOlJlcG9zaXRvcnky",
+                "name": "hello-world",
+                "full_name": "octocat/hello-world",
+                "private": false,
+                "owner": { "login": "octocat", "id": 1 }
+              },
+              "sha": "abcdef123456",
+              "user": { "login": "octocat", "id": 1 }
+            },
+            "head": {
+              "label": "octocat:feature",
+              "ref": "feature",
+              "repo": {
+                "id": 2,
+                "node_id": "MDEwOlJlcG9zaXRvcnky",
+                "name": "hello-world",
+                "full_name": "octocat/hello-world",
+                "private": false,
+                "owner": { "login": "octocat", "id": 1 }
+              },
+              "sha": "abcdef123456",
+              "user": { "login": "octocat", "id": 1 }
+            }
+          },
+          "content_type": "PullRequest",
+          "created_at": "2022-04-28T12:00:00Z",
+          "updated_at": "2022-04-28T12:00:00Z",
+          "archived_at": null,
+          "project_url": "https://api.github.com/orgs/octo-org/projectsV2/1",
+          "item_url": "https://api.github.com/orgs/octo-org/projectsV2/1/items/18"
         }
       },
       "projects-v2-view": {
@@ -147065,7 +147560,7 @@
             },
             "author": {
               "gravatar_id": "",
-              "avatar_url": "https://secure.gravatar.com/avatar/7ad39074b0584bc555d0417ae3e7d974?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png",
+              "avatar_url": "https://example.com/example.png",
               "url": "https://api.github.com/users/octocat",
               "id": 583231,
               "login": "octocat",
@@ -147096,7 +147591,7 @@
             "url": "https://api.github.com/repos/octocat/Hello-World/commits/7fd1a60b01f91b314f59955a4e4d4e80d8edf11d",
             "committer": {
               "gravatar_id": "",
-              "avatar_url": "https://secure.gravatar.com/avatar/7ad39074b0584bc555d0417ae3e7d974?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png",
+              "avatar_url": "https://example.com/example.png",
               "url": "https://api.github.com/users/octocat",
               "id": 583231,
               "login": "octocat",
@@ -157370,7 +157865,7 @@
                   "login": "jquery",
                   "id": 70142,
                   "node_id": "MDQ6VXNlcjcwMTQy",
-                  "avatar_url": "https://0.gravatar.com/avatar/6906f317a4733f4379b06c32229ef02f?d=https%3A%2F%2Fidenticons.github.com%2Ff426f04f2f9813718fb806b30e0093de.png",
+                  "avatar_url": "https://avatars.githubusercontent.com/u/70142?v=4",
                   "gravatar_id": "",
                   "url": "https://api.github.com/users/jquery",
                   "html_url": "https://github.com/jquery",
@@ -157595,7 +158090,7 @@
                 "login": "Nick3C",
                 "id": 90254,
                 "node_id": "MDQ6VXNlcjkwMjU0",
-                "avatar_url": "https://secure.gravatar.com/avatar/934442aadfe3b2f4630510de416c5718?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
+                "avatar_url": "https://avatars.githubusercontent.com/u/90254?v=4",
                 "gravatar_id": "",
                 "url": "https://api.github.com/users/Nick3C",
                 "html_url": "https://github.com/Nick3C",
@@ -157664,7 +158159,7 @@
               "updated_at": "2009-07-19T09:23:43Z",
               "closed_at": null,
               "pull_request": {
-                "url": "https://api/github.com/repos/octocat/Hello-World/pull/1347",
+                "url": "https://api.github.com/repos/octocat/Hello-World/pull/1347",
                 "html_url": "https://github.com/octocat/Hello-World/pull/1347",
                 "diff_url": "https://github.com/octocat/Hello-World/pull/1347.diff",
                 "patch_url": "https://api.github.com/repos/octocat/Hello-World/pulls/1347"
@@ -157761,7 +158256,7 @@
                 "login": "dtrupenn",
                 "id": 872147,
                 "node_id": "MDQ6VXNlcjg3MjE0Nw==",
-                "avatar_url": "https://secure.gravatar.com/avatar/e7956084e75f239de85d3a31bc172ace?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
+                "avatar_url": "https://example.com/avatar/e7956084e75f239de85d3a31bc172ace",
                 "gravatar_id": "",
                 "url": "https://api.github.com/users/dtrupenn",
                 "received_events_url": "https://api.github.com/users/dtrupenn/received_events",
@@ -159569,6 +160064,68 @@
           }
         }
       },
+      "projects-v2-item-simple": {
+        "value": {
+          "id": 17,
+          "node_id": "PVTI_lADOANN5s84ACbL0zgBueEI",
+          "content": {
+            "id": 38,
+            "node_id": "DI_kwDOANN5s85FtLts",
+            "title": "Example Draft Issue",
+            "body": "This is a draft issue in the project.",
+            "created_at": "2022-04-28T12:00:00Z",
+            "updated_at": "2022-04-28T12:00:00Z",
+            "user": {
+              "login": "octocat",
+              "id": 1,
+              "node_id": "MDQ6VXNlcjE=",
+              "avatar_url": "https://github.com/images/error/octocat_happy.gif",
+              "gravatar_id": "",
+              "url": "https://api.github.com/users/octocat",
+              "html_url": "https://github.com/octocat",
+              "followers_url": "https://api.github.com/users/octocat/followers",
+              "following_url": "https://api.github.com/users/octocat/following{/other_user}",
+              "gists_url": "https://api.github.com/users/octocat/gists{/gist_id}",
+              "starred_url": "https://api.github.com/users/octocat/starred{/owner}{/repo}",
+              "subscriptions_url": "https://api.github.com/users/octocat/subscriptions",
+              "organizations_url": "https://api.github.com/users/octocat/orgs",
+              "repos_url": "https://api.github.com/users/octocat/repos",
+              "events_url": "https://api.github.com/users/octocat/events{/privacy}",
+              "received_events_url": "https://api.github.com/users/octocat/received_events",
+              "type": "User",
+              "user_view_type": "public",
+              "site_admin": false
+            }
+          },
+          "content_type": "DraftIssue",
+          "creator": {
+            "login": "octocat",
+            "id": 1,
+            "node_id": "MDQ6VXNlcjE=",
+            "avatar_url": "https://github.com/images/error/octocat_happy.gif",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/octocat",
+            "html_url": "https://github.com/octocat",
+            "followers_url": "https://api.github.com/users/octocat/followers",
+            "following_url": "https://api.github.com/users/octocat/following{/other_user}",
+            "gists_url": "https://api.github.com/users/octocat/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/octocat/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/octocat/subscriptions",
+            "organizations_url": "https://api.github.com/users/octocat/orgs",
+            "repos_url": "https://api.github.com/users/octocat/repos",
+            "events_url": "https://api.github.com/users/octocat/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/octocat/received_events",
+            "type": "User",
+            "user_view_type": "public",
+            "site_admin": false
+          },
+          "created_at": "2022-04-28T12:00:00Z",
+          "updated_at": "2022-04-28T12:00:00Z",
+          "archived_at": null,
+          "project_url": "https://api.github.com/users/octocat/projectsV2/1",
+          "item_url": "https://api.github.com/users/octocat/projectsV2/1/items/17"
+        }
+      },
       "user-events-items": {
         "value": [
           {
@@ -159838,6 +160395,178 @@
           "description": "Octo-name client for Ruby",
           "html_url": "https://github.com/octocat/octo-name-repo/packages/40201?version=0.2.0",
           "metadata": { "package_type": "rubygems" }
+        }
+      },
+      "projects-v2-item-issue": {
+        "value": {
+          "id": 17,
+          "node_id": "PVTI_lADOANN5s84ACbL0zgBueEI",
+          "content": {
+            "id": 38,
+            "node_id": "I_kwDOANN5s85FtLts",
+            "url": "https://api.github.com/repos/octocat/hello-world/issues/42",
+            "repository_url": "https://api.github.com/repos/octocat/hello-world",
+            "labels_url": "https://api.github.com/repos/octocat/hello-world/issues/42/labels{/name}",
+            "comments_url": "https://api.github.com/repos/octocat/hello-world/issues/42/comments",
+            "events_url": "https://api.github.com/repos/octocat/hello-world/issues/42/events",
+            "html_url": "https://github.com/octocat/hello-world/issues/42",
+            "number": 42,
+            "state": "open",
+            "title": "Example issue",
+            "user": {
+              "login": "octocat",
+              "id": 1,
+              "node_id": "MDQ6VXNlcjE=",
+              "avatar_url": "https://github.com/images/error/octocat_happy.gif",
+              "gravatar_id": "",
+              "url": "https://api.github.com/users/octocat",
+              "html_url": "https://github.com/octocat",
+              "followers_url": "https://api.github.com/users/octocat/followers",
+              "following_url": "https://api.github.com/users/octocat/following{/other_user}",
+              "gists_url": "https://api.github.com/users/octocat/gists{/gist_id}",
+              "starred_url": "https://api.github.com/users/octocat/starred{/owner}{/repo}",
+              "subscriptions_url": "https://api.github.com/users/octocat/subscriptions",
+              "organizations_url": "https://api.github.com/users/octocat/orgs",
+              "repos_url": "https://api.github.com/users/octocat/repos",
+              "events_url": "https://api.github.com/users/octocat/events{/privacy}",
+              "received_events_url": "https://api.github.com/users/octocat/received_events",
+              "type": "User",
+              "user_view_type": "public",
+              "site_admin": false
+            },
+            "labels": [],
+            "assignee": null,
+            "milestone": null,
+            "locked": false,
+            "comments": 0,
+            "closed_at": null,
+            "created_at": "2022-04-28T12:00:00Z",
+            "updated_at": "2022-04-28T12:00:00Z"
+          },
+          "content_type": "Issue",
+          "created_at": "2022-04-28T12:00:00Z",
+          "updated_at": "2022-04-28T12:00:00Z",
+          "archived_at": null,
+          "project_url": "https://api.github.com/users/octocat/projectsV2/1",
+          "item_url": "https://api.github.com/users/octocat/projectsV2/1/items/17"
+        }
+      },
+      "projects-v2-item-pull-request": {
+        "value": {
+          "id": 18,
+          "node_id": "PVTI_lADOANN5s84ACbL0zgBueEJ",
+          "content": {
+            "id": 39,
+            "node_id": "PR_kwDOANN5s85FtLtu",
+            "url": "https://api.github.com/repos/octocat/hello-world/pulls/123",
+            "html_url": "https://github.com/octocat/hello-world/pull/123",
+            "diff_url": "https://github.com/octocat/hello-world/pull/123.diff",
+            "patch_url": "https://github.com/octocat/hello-world/pull/123.patch",
+            "issue_url": "https://api.github.com/repos/octocat/hello-world/issues/123",
+            "comments_url": "https://api.github.com/repos/octocat/hello-world/issues/123/comments",
+            "commits_url": "https://api.github.com/repos/octocat/hello-world/pulls/123/commits",
+            "statuses_url": "https://api.github.com/repos/octocat/hello-world/statuses/abcdef123456",
+            "review_comment_url": "https://api.github.com/repos/octocat/hello-world/pulls/comments{/number}",
+            "review_comments_url": "https://api.github.com/repos/octocat/hello-world/pulls/123/comments",
+            "number": 123,
+            "state": "open",
+            "title": "Example pull request",
+            "user": {
+              "login": "octocat",
+              "id": 1,
+              "node_id": "MDQ6VXNlcjE=",
+              "avatar_url": "https://github.com/images/error/octocat_happy.gif",
+              "gravatar_id": "",
+              "url": "https://api.github.com/users/octocat",
+              "html_url": "https://github.com/octocat",
+              "followers_url": "https://api.github.com/users/octocat/followers",
+              "following_url": "https://api.github.com/users/octocat/following{/other_user}",
+              "gists_url": "https://api.github.com/users/octocat/gists{/gist_id}",
+              "starred_url": "https://api.github.com/users/octocat/starred{/owner}{/repo}",
+              "subscriptions_url": "https://api.github.com/users/octocat/subscriptions",
+              "organizations_url": "https://api.github.com/users/octocat/orgs",
+              "repos_url": "https://api.github.com/users/octocat/repos",
+              "events_url": "https://api.github.com/users/octocat/events{/privacy}",
+              "received_events_url": "https://api.github.com/users/octocat/received_events",
+              "type": "User",
+              "user_view_type": "public",
+              "site_admin": false
+            },
+            "body": "Example pull request body",
+            "labels": [],
+            "assignee": null,
+            "assignees": [],
+            "milestone": null,
+            "locked": false,
+            "created_at": "2022-04-28T12:00:00Z",
+            "updated_at": "2022-04-28T12:00:00Z",
+            "closed_at": null,
+            "merged_at": null,
+            "merge_commit_sha": null,
+            "draft": false,
+            "author_association": "MEMBER",
+            "auto_merge": null,
+            "_links": {
+              "comments": {
+                "href": "https://api.github.com/repos/octocat/hello-world/issues/123/comments"
+              },
+              "commits": {
+                "href": "https://api.github.com/repos/octocat/hello-world/pulls/123/commits"
+              },
+              "statuses": {
+                "href": "https://api.github.com/repos/octocat/hello-world/statuses/abcdef123456"
+              },
+              "html": {
+                "href": "https://github.com/octocat/hello-world/pull/123"
+              },
+              "issue": {
+                "href": "https://api.github.com/repos/octocat/hello-world/issues/123"
+              },
+              "review_comments": {
+                "href": "https://api.github.com/repos/octocat/hello-world/pulls/123/comments"
+              },
+              "review_comment": {
+                "href": "https://api.github.com/repos/octocat/hello-world/pulls/comments{/number}"
+              },
+              "self": {
+                "href": "https://api.github.com/repos/octocat/hello-world/pulls/123"
+              }
+            },
+            "base": {
+              "label": "octocat:main",
+              "ref": "main",
+              "repo": {
+                "id": 2,
+                "node_id": "MDEwOlJlcG9zaXRvcnky",
+                "name": "hello-world",
+                "full_name": "octocat/hello-world",
+                "private": false,
+                "owner": { "login": "octocat", "id": 1 }
+              },
+              "sha": "abcdef123456",
+              "user": { "login": "octocat", "id": 1 }
+            },
+            "head": {
+              "label": "octocat:feature",
+              "ref": "feature",
+              "repo": {
+                "id": 2,
+                "node_id": "MDEwOlJlcG9zaXRvcnky",
+                "name": "hello-world",
+                "full_name": "octocat/hello-world",
+                "private": false,
+                "owner": { "login": "octocat", "id": 1 }
+              },
+              "sha": "abcdef123456",
+              "user": { "login": "octocat", "id": 1 }
+            }
+          },
+          "content_type": "PullRequest",
+          "created_at": "2022-04-28T12:00:00Z",
+          "updated_at": "2022-04-28T12:00:00Z",
+          "archived_at": null,
+          "project_url": "https://api.github.com/users/octocat/projectsV2/1",
+          "item_url": "https://api.github.com/users/octocat/projectsV2/1/items/18"
         }
       },
       "user-received-events-items": {
@@ -161288,7 +162017,7 @@
             "events": ["*"],
             "config": {
               "content_type": "json",
-              "url": "https://smee.io/****************",
+              "url": "https://example.com/",
               "insecure_ssl": "0"
             },
             "updated_at": "2019-05-15T15:20:49Z",
@@ -162580,7 +163309,7 @@
       },
       "team-type": {
         "name": "team_type",
-        "description": "Filter team results by their type. For more information, see \"[What kind of team should I use?](https://docs.github.com/enterprise-server@3.21/enterprise-cloud@latest/admin/concepts/enterprise-fundamentals/teams-in-an-enterprise#what-kind-of-team-should-i-use)\"",
+        "description": "Filter team results by their type. For more information, see \"[What kind of team should I use?](https://docs.github.com/enterprise-server@3.21/admin/concepts/enterprise-fundamentals/teams-in-an-enterprise#what-kind-of-team-should-i-use)\"",
         "in": "query",
         "required": false,
         "schema": {
@@ -163183,6 +163912,29 @@
           }
         }
       },
+      "requires_authentication": {
+        "description": "Requires authentication",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/basic-error" }
+          }
+        }
+      },
+      "service_unavailable": {
+        "description": "Service unavailable",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": { "type": "string" },
+                "message": { "type": "string" },
+                "documentation_url": { "type": "string" }
+              }
+            }
+          }
+        }
+      },
       "bad_request": {
         "description": "Bad Request",
         "content": {
@@ -163212,14 +163964,6 @@
         }
       },
       "not_modified": { "description": "Not modified" },
-      "requires_authentication": {
-        "description": "Requires authentication",
-        "content": {
-          "application/json": {
-            "schema": { "$ref": "#/components/schemas/basic-error" }
-          }
-        }
-      },
       "forbidden": {
         "description": "Forbidden",
         "content": {
@@ -163241,21 +163985,6 @@
         "content": {
           "application/json": {
             "schema": { "$ref": "#/components/schemas/basic-error" }
-          }
-        }
-      },
-      "service_unavailable": {
-        "description": "Service unavailable",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "code": { "type": "string" },
-                "message": { "type": "string" },
-                "documentation_url": { "type": "string" }
-              }
-            }
           }
         }
       },
